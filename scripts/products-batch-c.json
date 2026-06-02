@@ -1,0 +1,250 @@
+[
+  {
+    "id": "review-radio-flyer-4in1-trike",
+    "productName": "Radio Flyer 4-in-1 Stroll 'N Trike",
+    "brand": "Radio Flyer",
+    "category": "cat-outdoor",
+    "ageMinMonths": 12,
+    "ageMaxMonths": 60,
+    "scores": {
+      "materialSafety": 86,
+      "chokingRisk": 90,
+      "recallHistory": 82,
+      "certificationPresence": 84,
+      "motorSkills": 90,
+      "cognitiveSkills": 66,
+      "sensoryEngagement": 70
+    },
+    "materials": ["steel frame", "molded plastic", "EVA tires"],
+    "chokingHazardAssessment": "Large, fully assembled ride-on with no small detachable parts intended for child handling; the removable footrest, tray, and push handle are adult-installed components. Low choking risk for the intended 1-5 year range, though youngest riders should always be supervised and harnessed.",
+    "certifications": ["ASTM F963", "CPSIA"],
+    "pros": [
+      "Converts through four ride modes, so it grows from infant push-trike to independent classic trike",
+      "Three-point harness, high back seat, and adult steer-and-stroll handle give strong control for younger riders",
+      "Sturdy steel frame and adjustable seat hold up to years of use"
+    ],
+    "cons": [
+      "Heavier and bulkier than a basic trike, so it takes more storage space",
+      "Assembly and mode conversions take time and can be fiddly"
+    ],
+    "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_66595935-a745-4273-a08d-e7622e8b3aeb?wid=800&hei=800&qlt=80",
+    "imageAlt": "Radio Flyer 4-in-1 Stroll 'N Trike with canopy, push handle, and rear storage bucket"
+  },
+  {
+    "id": "review-little-tikes-snug-secure-swing",
+    "productName": "Little Tikes 2-in-1 Snug 'n Secure Swing",
+    "brand": "Little Tikes",
+    "category": "cat-outdoor",
+    "ageMinMonths": 9,
+    "ageMaxMonths": 48,
+    "scores": {
+      "materialSafety": 88,
+      "chokingRisk": 92,
+      "recallHistory": 80,
+      "certificationPresence": 84,
+      "motorSkills": 80,
+      "cognitiveSkills": 58,
+      "sensoryEngagement": 76
+    },
+    "materials": ["molded plastic seat", "rope/cord hangers", "metal hardware"],
+    "chokingHazardAssessment": "One-piece molded plastic seat with no small parts; primary safety considerations are correct hanging height, secure anchoring, and the suspension ropes/straps, which should be inspected for wear. Choking risk itself is low for the seated infant-to-toddler user.",
+    "certifications": ["ASTM F963", "CPSIA"],
+    "pros": [
+      "Hinged T-bar and stay-put shoulder straps hold baby securely and store away as the child grows",
+      "Two-stage design extends use from baby through toddler (up to 50 lb)",
+      "Durable weather-resistant plastic suited to outdoor swing sets"
+    ],
+    "cons": [
+      "Does not include anchors or hanging hardware sized for every set",
+      "Requires correct installation height and fall-zone clearance for safe use"
+    ],
+    "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_04506594-9c92-4417-823c-fa7b9f77802d?wid=800&hei=800&qlt=80",
+    "imageAlt": "Little Tikes 2-in-1 Snug 'n Secure blue baby swing with T-bar and shoulder straps"
+  },
+  {
+    "id": "review-step2-waterwheel-play-table",
+    "productName": "Step2 WaterWheel Play Table",
+    "brand": "Step2",
+    "category": "cat-outdoor",
+    "ageMinMonths": 18,
+    "ageMaxMonths": 60,
+    "scores": {
+      "materialSafety": 85,
+      "chokingRisk": 80,
+      "recallHistory": 84,
+      "certificationPresence": 82,
+      "motorSkills": 82,
+      "cognitiveSkills": 72,
+      "sensoryEngagement": 90
+    },
+    "materials": ["molded polyethylene plastic", "removable accessory cups and waterwheel"],
+    "chokingHazardAssessment": "The table itself is large and one-piece, but the set includes smaller loose accessories (cups, spinning waterwheel pieces) that can be a concern for children who still mouth objects; best for 18 months and up with supervision near standing water.",
+    "certifications": ["ASTM F963", "CPSIA"],
+    "pros": [
+      "Open 360-degree design lets several toddlers play and pour together",
+      "Spinning waterwheel and pour cups build cause-and-effect understanding and fine motor control",
+      "Sturdy molded plastic with a drain for easy emptying and cleanup"
+    ],
+    "cons": [
+      "Requires constant supervision because of standing water",
+      "Loose accessory pieces are easy to misplace"
+    ],
+    "imageUrl": "https://d1jqecz1iy566e.cloudfront.net/large/tsc027.jpg",
+    "imageAlt": "Step2 WaterWheel Play Table, a blue molded water activity table with spinning waterwheel and cups"
+  },
+  {
+    "id": "review-skip-hop-alphabet-zoo-pull-toy",
+    "productName": "Skip Hop Alphabet Zoo Rock & Stack Pull Toy",
+    "brand": "Skip Hop",
+    "category": "cat-outdoor",
+    "ageMinMonths": 12,
+    "ageMaxMonths": 36,
+    "scores": {
+      "materialSafety": 86,
+      "chokingRisk": 78,
+      "recallHistory": 86,
+      "certificationPresence": 82,
+      "motorSkills": 88,
+      "cognitiveSkills": 74,
+      "sensoryEngagement": 80
+    },
+    "materials": ["plastic", "wood-look stacking rings", "pull cord"],
+    "chokingHazardAssessment": "Designed for early walkers, but the stacking rings and pull cord warrant attention: rings are sized for toddler hands rather than infants, and the cord length meets pull-toy safety norms. Supervise children under 12 months and keep the cord away from the neck.",
+    "certifications": ["ASTM F963", "CPSIA"],
+    "pros": [
+      "Pull-along motion encourages walking, balance, and gross motor development",
+      "Stackable rings add fine motor and early shape/letter play",
+      "Compact and lightweight for indoor or backyard use"
+    ],
+    "cons": [
+      "Pull cord requires supervision with the youngest users",
+      "Fewer features than Skip Hop's electronic activity toys"
+    ],
+    "imageUrl": "https://d1jqecz1iy566e.cloudfront.net/large/ski043.jpg",
+    "imageAlt": "Skip Hop Alphabet Zoo Rock & Stack Pull Toy with stacking rings and pull cord"
+  },
+  {
+    "id": "review-fisher-price-crawl-around-car",
+    "productName": "Fisher-Price Laugh & Learn Crawl Around Car",
+    "brand": "Fisher-Price",
+    "category": "cat-outdoor",
+    "ageMinMonths": 6,
+    "ageMaxMonths": 36,
+    "scores": {
+      "materialSafety": 84,
+      "chokingRisk": 88,
+      "recallHistory": 82,
+      "certificationPresence": 84,
+      "motorSkills": 82,
+      "cognitiveSkills": 80,
+      "sensoryEngagement": 88
+    },
+    "materials": ["molded plastic", "electronic activity panel", "battery compartment"],
+    "chokingHazardAssessment": "Stationary activity car with attached, non-removable manipulatives and no loose small parts; battery compartment is screw-secured. Low choking risk for the 6-month-and-up infant user when batteries and screws are kept secured.",
+    "certifications": ["ASTM F963", "CPSIA"],
+    "pros": [
+      "Smart Stages content adapts songs and phrases as baby grows",
+      "Surrounding activities (steering wheel, gear shift, key, buttons) encourage sitting, reaching, and cruising",
+      "Lights, music, and role-play support early language and cause-and-effect learning"
+    ],
+    "cons": [
+      "Battery-powered electronics mean ongoing battery replacement and volume can be loud",
+      "Stationary design is bulkier than a simple push toy"
+    ],
+    "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_34aafa81-6749-4ae6-a886-b76e84407306?wid=800&hei=800&qlt=80",
+    "imageAlt": "Fisher-Price Laugh & Learn Crawl Around Car activity center in pink with interactive panels"
+  },
+  {
+    "id": "review-melissa-doug-seaside-sand-baking-set",
+    "productName": "Melissa & Doug Sunny Patch Seaside Sidekicks Sand Baking Set",
+    "brand": "Melissa & Doug",
+    "category": "cat-outdoor",
+    "ageMinMonths": 24,
+    "ageMaxMonths": 72,
+    "scores": {
+      "materialSafety": 85,
+      "chokingRisk": 76,
+      "recallHistory": 88,
+      "certificationPresence": 82,
+      "motorSkills": 84,
+      "cognitiveSkills": 78,
+      "sensoryEngagement": 88
+    },
+    "materials": ["molded plastic", "sea-creature-shaped sand tools"],
+    "chokingHazardAssessment": "Set of toddler-sized sand tools (shell measuring cups, octopus whisk, crab spoon); pieces are larger than typical small-part choke hazards but the set is intended for ages 3+. Supervise to prevent sand ingestion and mouthing by younger siblings.",
+    "certifications": ["ASTM F963", "CPSIA"],
+    "pros": [
+      "Pretend-baking theme drives imaginative outdoor sand play",
+      "Varied tool shapes build fine motor skills and hand strength",
+      "Durable, easy-to-rinse plastic holds up at the beach or sandbox"
+    ],
+    "cons": [
+      "Multiple loose pieces are easy to lose in sand",
+      "Not suited to children under 3 who still mouth toys"
+    ],
+    "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_cc839a84-7be8-43af-82c7-55229f9826cb?wid=800&hei=800&qlt=80",
+    "imageAlt": "Melissa & Doug Seaside Sidekicks Sand Baking Set with shell measuring cups, octopus whisk, and crab spoon"
+  },
+  {
+    "id": "review-green-toys-tea-set",
+    "productName": "Green Toys Tea Set",
+    "brand": "Green Toys",
+    "category": "cat-educational",
+    "ageMinMonths": 24,
+    "ageMaxMonths": 72,
+    "scores": {
+      "materialSafety": 95,
+      "chokingRisk": 80,
+      "recallHistory": 90,
+      "certificationPresence": 90,
+      "motorSkills": 78,
+      "cognitiveSkills": 82,
+      "sensoryEngagement": 80
+    },
+    "materials": ["100% recycled HDPE plastic (recycled milk jugs)", "BPA-free", "phthalate-free"],
+    "chokingHazardAssessment": "17-piece set with several toddler-scaled pieces (cups, saucers, spoons, lids); individual pieces are larger than typical choke-tube hazards and the set is rated ages 2+. Supervise younger toddlers, as small spoons and lids still warrant attention.",
+    "certifications": ["FDA food-contact standards", "CPSIA"],
+    "pros": [
+      "Made in the USA from 100% recycled milk jugs with no BPA, PVC, or phthalates",
+      "Dishwasher-safe and meets FDA food-contact standards",
+      "Pretend tea service builds social, language, and imaginative play skills"
+    ],
+    "cons": [
+      "Multiple small pieces can be misplaced",
+      "Pastel set is a single style with no electronic or interactive features"
+    ],
+    "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_02e18895-7127-4df9-9237-8d004545b41a?wid=800&hei=800&qlt=80",
+    "imageAlt": "Green Toys 17-piece pastel recycled-plastic tea set with teapot, cups, saucers, and spoons"
+  },
+  {
+    "id": "review-green-toys-submarine",
+    "productName": "Green Toys Submarine",
+    "brand": "Green Toys",
+    "category": "cat-outdoor",
+    "ageMinMonths": 6,
+    "ageMaxMonths": 48,
+    "scores": {
+      "materialSafety": 95,
+      "chokingRisk": 90,
+      "recallHistory": 90,
+      "certificationPresence": 90,
+      "motorSkills": 74,
+      "cognitiveSkills": 68,
+      "sensoryEngagement": 82
+    },
+    "materials": ["100% recycled HDPE plastic (recycled milk jugs)", "BPA-free", "phthalate-free"],
+    "chokingHazardAssessment": "One-piece molded submarine with no small detachable parts and an open, easy-drain design; sized as a chunky bath and water toy. Low choking risk for the 6-month-and-up bath user.",
+    "certifications": ["FDA food-contact standards", "CPSIA"],
+    "pros": [
+      "Made from 100% recycled plastic with no BPA, PVC, or phthalates",
+      "Open design drains and dries easily, helping limit trapped water and mildew",
+      "Sturdy single-piece build is safe for bath, pool, and beach water play"
+    ],
+    "cons": [
+      "Simple float-and-pour toy with no moving or interactive features",
+      "Larger size takes more storage than a basic bath toy"
+    ],
+    "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_7e7c3a42-04c1-4ce8-bebb-aa3e3c517f5f?wid=800&hei=800&qlt=80",
+    "imageAlt": "Green Toys recycled-plastic submarine bath and water toy in blue and yellow"
+  }
+]

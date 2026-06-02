@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String     @id @default(cuid())
+  clerkId   String     @unique
+  email     String     @unique
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  favorites Favorite[]
+
+  @@index([clerkId])
+}
+
+model Favorite {
+  id         String   @id @default(cuid())
+  userId     String
+  reviewSlug String // References Sanity document slug
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, reviewSlug])
+  @@index([userId])
+}
+
+model AffiliateClick {
+  id            String   @id @default(cuid())
+  timestamp     DateTime @default(now())
+  productId     String
+  sourcePageUrl String
+  partnerId     String
+  sessionId     String // Anonymized
+
+  @@index([productId])
+  @@index([timestamp])
+  @@index([partnerId, timestamp])
+}
+
+model AffiliateLinkStatus {
+  id             String    @id @default(cuid())
+  productId      String
+  partnerId      String
+  destinationUrl String
+  lastChecked    DateTime
+  httpStatus     Int?
+  isHealthy      Boolean   @default(true)
+  flaggedAt      DateTime?
+
+  @@unique([productId, partnerId])
+  @@index([isHealthy])
+}
+
+model NewsletterSubscription {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  ageRange  String // '0-2' | '3-5' | '6-8' | '9-12'
+  klaviyoId String?
+  syncedAt  DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([email])
+  @@index([ageRange])
+}

@@ -1,0 +1,9 @@
+{
+  "name": "SafeNest Toys",
+  "short_name": "SafeNest",
+  "description": "Toy safety reviews for parents",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4a6b8a"
+}

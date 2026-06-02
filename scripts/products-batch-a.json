@@ -1,0 +1,290 @@
+[
+  {
+    "id": "review-hape-maple-blocks",
+    "productName": "Hape Maple Wood Blocks",
+    "brand": "Hape",
+    "category": "cat-building",
+    "ageMinMonths": 12,
+    "ageMaxMonths": 48,
+    "scores": {
+      "materialSafety": 93,
+      "chokingRisk": 80,
+      "recallHistory": 95,
+      "certificationPresence": 90,
+      "motorSkills": 88,
+      "cognitiveSkills": 82,
+      "sensoryEngagement": 70
+    },
+    "materials": ["solid maple wood", "water-based paint"],
+    "chokingHazardAssessment": "50-piece solid maple set in assorted shapes and sizes. Larger blocks are well-suited to 12m+, but the smallest blocks approach the small-parts range, so supervision is recommended for the youngest builders.",
+    "certifications": ["ASTM F963", "EN-71"],
+    "pros": [
+      "Solid maple construction is durable enough to last for years and pass between siblings",
+      "Wood is sourced from sustainably managed forests and finished with child-safe water-based paint",
+      "Mix of natural and brightly colored shapes supports open-ended stacking and early color play",
+      "Includes a storage bag for easy cleanup"
+    ],
+    "cons": [
+      "Smaller blocks in the set warrant supervision for children near the 12-month minimum",
+      "Higher price point than basic cardboard or plastic block sets"
+    ],
+    "imageUrl": "https://toys.hape.com/cdn/shop/files/Hape-Maple-Wood-Kids-Building-Blocks-Hape-Toy-Market-44373876.jpg?v=1747721410",
+    "imageAlt": "Hape Maple Wood Kids Building Blocks set with brightly colored and natural wooden blocks in assorted shapes"
+  },
+  {
+    "id": "review-melissa-doug-jumbo-cardboard-blocks",
+    "productName": "Melissa & Doug Jumbo Cardboard Blocks",
+    "brand": "Melissa & Doug",
+    "category": "cat-building",
+    "ageMinMonths": 24,
+    "ageMaxMonths": 72,
+    "scores": {
+      "materialSafety": 88,
+      "chokingRisk": 95,
+      "recallHistory": 92,
+      "certificationPresence": 85,
+      "motorSkills": 84,
+      "cognitiveSkills": 80,
+      "sensoryEngagement": 68
+    },
+    "materials": ["extra-thick cardboard"],
+    "chokingHazardAssessment": "All pieces are oversized 'jumbo' cardboard bricks far larger than any small-parts gauge, so choking risk is minimal. Lightweight design also reduces injury risk if a stack topples.",
+    "certifications": ["ASTM F963"],
+    "pros": [
+      "Oversized lightweight bricks are safe for big builds with no choking risk",
+      "Extra-thick cardboard is surprisingly sturdy and supports significant weight",
+      "Wipe-clean printed surface keeps blocks looking new",
+      "Easy for toddlers to lift, carry, and stack independently"
+    ],
+    "cons": [
+      "Cardboard can dent or crease over time with heavy use",
+      "Not suitable for outdoor or wet play"
+    ],
+    "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_27bed2ad-4b86-466b-9fda-a46658d1d5d0?wid=800&hei=800&qlt=80",
+    "imageAlt": "Melissa & Doug jumbo extra-thick cardboard building blocks in red brick pattern stacked into a wall"
+  },
+  {
+    "id": "review-picassotiles-100-piece-magnetic-tiles",
+    "productName": "PicassoTiles 100 Piece Magnetic Tiles",
+    "brand": "PicassoTiles",
+    "category": "cat-building",
+    "ageMinMonths": 36,
+    "ageMaxMonths": 120,
+    "scores": {
+      "materialSafety": 85,
+      "chokingRisk": 70,
+      "recallHistory": 88,
+      "certificationPresence": 86,
+      "motorSkills": 88,
+      "cognitiveSkills": 90,
+      "sensoryEngagement": 82
+    },
+    "materials": ["non-toxic ABS plastic", "neodymium magnets"],
+    "chokingHazardAssessment": "Tiles themselves are large and safe, but the set is rated 3+ because the embedded magnets pose a serious ingestion hazard if a tile were to break. Keep away from children under 3 and discard any cracked tiles immediately.",
+    "certifications": ["ASTM F963", "CPSIA"],
+    "pros": [
+      "100 translucent tiles enable elaborate 2D and 3D builds that grow with the child",
+      "Strong, well-sealed magnets connect cleanly and hold structures together",
+      "Encourages STEM concepts: geometry, symmetry, and spatial reasoning",
+      "Compatible with most other major magnetic tile brands"
+    ],
+    "cons": [
+      "Embedded magnets make this unsafe for children under 3",
+      "Damaged tiles must be removed from play immediately due to magnet ingestion risk"
+    ],
+    "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_0953bc12-4fb8-4078-973a-5bdf2fb5e794?wid=800&hei=800&qlt=80",
+    "imageAlt": "PicassoTiles 100-piece colorful translucent magnetic building tiles set with carry case"
+  },
+  {
+    "id": "review-melissa-doug-wooden-stacking-train",
+    "productName": "Melissa & Doug Wooden Stacking Train",
+    "brand": "Melissa & Doug",
+    "category": "cat-building",
+    "ageMinMonths": 24,
+    "ageMaxMonths": 60,
+    "scores": {
+      "materialSafety": 90,
+      "chokingRisk": 82,
+      "recallHistory": 92,
+      "certificationPresence": 85,
+      "motorSkills": 88,
+      "cognitiveSkills": 84,
+      "sensoryEngagement": 72
+    },
+    "materials": ["solid wood", "non-toxic paint"],
+    "chokingHazardAssessment": "14 solid-wood blocks and three interlocking train cars are sized for toddler hands. Most pieces clear the small-parts gauge; supervise children near the 24-month minimum with the smaller blocks.",
+    "certifications": ["ASTM F963"],
+    "pros": [
+      "Combines stacking, sorting, counting, and pretend train play in one toy",
+      "Solid-wood blocks in four classic colors are durable and attractive",
+      "Connected train stretches over two feet long for engaging floor play",
+      "Reinforces color recognition and early counting skills"
+    ],
+    "cons": [
+      "Loose blocks can scatter and are easy to misplace",
+      "Wooden pieces are heavier than plastic alternatives"
+    ],
+    "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_f6eb3253-ef37-4ab8-8114-41ecfea7d913?wid=800&hei=800&qlt=80",
+    "imageAlt": "Melissa & Doug wooden jumbo stacking train with red, yellow, green, and blue blocks on natural wood train cars"
+  },
+  {
+    "id": "review-melissa-doug-shape-sorting-cube",
+    "productName": "Melissa & Doug Shape Sorting Cube",
+    "brand": "Melissa & Doug",
+    "category": "cat-educational",
+    "ageMinMonths": 24,
+    "ageMaxMonths": 48,
+    "scores": {
+      "materialSafety": 90,
+      "chokingRisk": 80,
+      "recallHistory": 92,
+      "certificationPresence": 85,
+      "motorSkills": 90,
+      "cognitiveSkills": 86,
+      "sensoryEngagement": 74
+    },
+    "materials": ["solid wood", "non-toxic paint"],
+    "chokingHazardAssessment": "Includes 12 chunky wooden shapes designed for little hands. Pieces are larger than typical small parts but the smallest shapes warrant supervision for children near the 24-month minimum.",
+    "certifications": ["ASTM F963"],
+    "pros": [
+      "Classic shape-sorting play builds problem-solving and fine motor skills",
+      "12 chunky, brightly colored shapes promote color and shape recognition",
+      "Sturdy natural-finish hardwood cube holds up to repeated drops",
+      "Satisfying drop-through design keeps toddlers engaged"
+    ],
+    "cons": [
+      "Twelve shapes is more challenging than basic sorters and can frustrate younger toddlers at first",
+      "Loose shapes are easy to lose"
+    ],
+    "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_a3824636-e907-4c32-bf60-9f01d185de0d?wid=800&hei=800&qlt=80",
+    "imageAlt": "Melissa & Doug wooden shape sorting cube with twelve colorful geometric shapes"
+  },
+  {
+    "id": "review-learning-resources-spike-fine-motor-hedgehog",
+    "productName": "Learning Resources Spike the Fine Motor Hedgehog",
+    "brand": "Learning Resources",
+    "category": "cat-educational",
+    "ageMinMonths": 18,
+    "ageMaxMonths": 60,
+    "scores": {
+      "materialSafety": 88,
+      "chokingRisk": 84,
+      "recallHistory": 90,
+      "certificationPresence": 85,
+      "motorSkills": 92,
+      "cognitiveSkills": 82,
+      "sensoryEngagement": 80
+    },
+    "materials": ["BPA-free plastic"],
+    "chokingHazardAssessment": "The 12 chunky peg 'quills' are sized for toddler hands and the two-piece hedgehog body is about 6 inches across. Pieces are designed for the 18m+ range; supervise younger toddlers who may mouth the quills.",
+    "certifications": ["ASTM F963", "CPSIA"],
+    "pros": [
+      "Chunky peg quills are excellent for building hand strength and a pincer grasp",
+      "Color-coded quills support sorting, counting, and pattern activities",
+      "Quills store inside the body for easy cleanup and portability",
+      "Tactile, approachable design also works well for visually impaired children"
+    ],
+    "cons": [
+      "Only 12 quills, so pieces can go missing over time",
+      "Single-activity toy that some children outgrow quickly"
+    ],
+    "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_f259c796-fffa-48c8-a32a-8be16d667343?wid=800&hei=800&qlt=80",
+    "imageAlt": "Learning Resources Spike the Fine Motor Hedgehog with colorful peg quills inserted into its back"
+  },
+  {
+    "id": "review-melissa-doug-see-and-spell",
+    "productName": "Melissa & Doug See & Spell Learning Toy",
+    "brand": "Melissa & Doug",
+    "category": "cat-educational",
+    "ageMinMonths": 48,
+    "ageMaxMonths": 84,
+    "scores": {
+      "materialSafety": 90,
+      "chokingRisk": 78,
+      "recallHistory": 92,
+      "certificationPresence": 85,
+      "motorSkills": 80,
+      "cognitiveSkills": 92,
+      "sensoryEngagement": 66
+    },
+    "materials": ["wood", "non-toxic paint"],
+    "chokingHazardAssessment": "Contains 64 small wooden letter tiles that are well within the small-parts range. Rated for ages 4+ and not appropriate for children who still mouth objects; intended for preschoolers building spelling skills.",
+    "certifications": ["ASTM F963"],
+    "pros": [
+      "Eight double-sided boards with picture cues build early reading and spelling vocabulary",
+      "64 chunky wooden letters help children connect letters to sounds",
+      "Self-correcting picture boards let kids learn at their own pace",
+      "Sturdy wooden storage box keeps all pieces organized"
+    ],
+    "cons": [
+      "Small letter tiles make it unsuitable for children under 4",
+      "Many loose pieces require cleanup and can be misplaced"
+    ],
+    "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_0906616e-39ae-4df7-a11a-ce1b1d919105?wid=800&hei=800&qlt=80",
+    "imageAlt": "Melissa & Doug See & Spell wooden learning toy with double-sided picture boards and wooden letter tiles"
+  },
+  {
+    "id": "review-leapfrog-my-pal-scout",
+    "productName": "LeapFrog My Pal Scout",
+    "brand": "LeapFrog",
+    "category": "cat-educational",
+    "ageMinMonths": 6,
+    "ageMaxMonths": 36,
+    "scores": {
+      "materialSafety": 86,
+      "chokingRisk": 90,
+      "recallHistory": 90,
+      "certificationPresence": 84,
+      "motorSkills": 60,
+      "cognitiveSkills": 85,
+      "sensoryEngagement": 88
+    },
+    "materials": ["plush polyester fabric", "electronic components"],
+    "chokingHazardAssessment": "Soft one-piece plush with no detachable small parts, suitable from 6 months. Requires batteries; the battery compartment is secured with a screw to keep button cells inaccessible to children.",
+    "certifications": ["ASTM F963", "CPSIA"],
+    "pros": [
+      "Personalizable puppy speaks the child's name and favorite things for an engaging experience",
+      "Teaches colors, counting, first words, and emotions through songs and activities",
+      "Soft, huggable plush is safe and comforting from infancy",
+      "Three light-up activity paws encourage interaction and cause-and-effect learning"
+    ],
+    "cons": [
+      "Requires batteries and occasional setup via computer for personalization",
+      "Electronic plush cannot be fully machine washed"
+    ],
+    "imageUrl": "https://t7.leapfrog.com/images/prod-lg/19156_2014_PR01.jpg",
+    "imageAlt": "LeapFrog My Pal Scout green plush puppy learning toy with light-up collar"
+  },
+  {
+    "id": "review-hape-country-critters-play-cube",
+    "productName": "Hape Country Critters Wooden Play Cube",
+    "brand": "Hape",
+    "category": "cat-educational",
+    "ageMinMonths": 12,
+    "ageMaxMonths": 48,
+    "scores": {
+      "materialSafety": 92,
+      "chokingRisk": 82,
+      "recallHistory": 94,
+      "certificationPresence": 90,
+      "motorSkills": 88,
+      "cognitiveSkills": 86,
+      "sensoryEngagement": 85
+    },
+    "materials": ["solid wood", "water-based paint", "metal wire"],
+    "chokingHazardAssessment": "Large five-sided wooden activity center with attached bead-maze wires that cannot be removed. Includes loose shapes and balls; the largest pieces are toddler-safe but smaller loose pieces warrant supervision near the 12-month minimum.",
+    "certifications": ["ASTM F963", "EN-71"],
+    "pros": [
+      "Five activity surfaces (bead maze, shape sorter, turnplate, and more) keep toddlers engaged",
+      "Solid wood with water-based paint is durable and built to last for years",
+      "Multi-activity design supports fine motor, shape recognition, and cause-and-effect learning",
+      "Sturdy cube shape is stable during active play"
+    ],
+    "cons": [
+      "Bulky and heavier than single-activity toys, taking up notable floor space",
+      "Loose shape pieces require supervision and can be misplaced"
+    ],
+    "imageUrl": "https://toys.hape.com/cdn/shop/files/Hape-Country-Critters-Wooden-Activity-Play-Cube-Hape-Toy-Market-44322517.jpg?v=1747721366",
+    "imageAlt": "Hape Country Critters five-sided wooden activity play cube with bead maze, shape sorter, and forest animal designs"
+  }
+]

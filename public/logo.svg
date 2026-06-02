@@ -1,0 +1,20 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="24" cy="24" r="22" fill="url(#nest-gradient)"/>
+  <path d="M12 32C12 32 15.5 37 24 37C32.5 37 36 32 36 32" stroke="#7C6650" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M14 30C14 30 17 34 24 34C31 34 34 30 34 30" stroke="#9E8570" stroke-width="2" stroke-linecap="round"/>
+  <path d="M16 28.5C16 28.5 18.5 31.5 24 31.5C29.5 31.5 32 28.5 32 28.5" stroke="#B8A08A" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M24 10L17 13.5V20C17 24.5 20 27.5 24 29C28 27.5 31 24.5 31 20V13.5L24 10Z" fill="url(#shield-gradient)"/>
+  <path d="M24 10L17 13.5V20C17 24.5 20 27.5 24 29C28 27.5 31 24.5 31 20V13.5L24 10Z" stroke="#3D7A5F" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M20.5 20L23 22.5L27.5 17.5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M24 10C24 10 25.5 8 27 8.5C27 8.5 25.5 9.5 24 10Z" fill="#5CAE7E" opacity="0.7"/>
+  <defs>
+    <linearGradient id="nest-gradient" x1="24" y1="2" x2="24" y2="46" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F0F7F4"/>
+      <stop offset="1" stop-color="#E2EDE7"/>
+    </linearGradient>
+    <linearGradient id="shield-gradient" x1="24" y1="10" x2="24" y2="29" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5CAE7E"/>
+      <stop offset="1" stop-color="#3D7A5F"/>
+    </linearGradient>
+  </defs>
+</svg>

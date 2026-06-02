@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: Lint, Type Check & Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      # Dummy values for build/type-check (no real secrets in CI source)
+      DATABASE_URL: "postgresql://ci:ci@localhost:5432/safenest_ci"
+      NEXT_PUBLIC_SANITY_PROJECT_ID: "ci-project"
+      NEXT_PUBLIC_SANITY_DATASET: "production"
+      NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: "pk_test_ci"
+      CLERK_SECRET_KEY: "sk_test_ci"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Run tests
+        run: npm run test
+
+  notify-failure:
+    name: Notify on Failure
+    runs-on: ubuntu-latest
+    needs: [ci]
+    if: failure()
+    steps:
+      - name: Send deployment failure notification
+        env:
+          ADMIN_WEBHOOK_URL: ${{ secrets.ADMIN_WEBHOOK_URL }}
+        run: |
+          if [ -n "$ADMIN_WEBHOOK_URL" ]; then
+            curl -X POST "$ADMIN_WEBHOOK_URL" \
+              -H "Content-Type: application/json" \
+              -d "{\"text\":\"❌ CI pipeline failed for commit ${{ github.sha }} on branch ${{ github.ref_name }} by ${{ github.actor }}. See: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" \
+              --max-time 10 || true
+          fi
