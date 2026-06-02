@@ -39,23 +39,32 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <ClerkProvider>
-      <html
-        lang="en"
-        className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-      >
-        <body className="min-h-full flex flex-col">
-          <Suspense>
-            <AnalyticsProvider>
-              <Header />
-              <main className="flex-1">{children}</main>
-              <Footer />
-              <ExitIntentModal />
-            </AnalyticsProvider>
-          </Suspense>
-        </body>
-      </html>
-    </ClerkProvider>
+  const clerkEnabled = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
+
+  const shell = (
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">
+        <Suspense>
+          <AnalyticsProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <ExitIntentModal />
+          </AnalyticsProvider>
+        </Suspense>
+      </body>
+    </html>
   );
+
+  // Only wrap in ClerkProvider when a publishable key is configured. Without a
+  // key, Clerk throws at render in production; gating it keeps the public site
+  // fully functional and lets auth activate automatically once keys are added.
+  if (clerkEnabled) {
+    return <ClerkProvider>{shell}</ClerkProvider>;
+  }
+
+  return shell;
 }
