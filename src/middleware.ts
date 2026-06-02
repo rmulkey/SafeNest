@@ -2,6 +2,10 @@ import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+const clerkEnabled =
+  Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY) &&
+  Boolean(process.env.CLERK_SECRET_KEY);
+
 /**
  * Routes that require authentication.
  * All routes under the (auth) route group require a signed-in user.
@@ -9,40 +13,32 @@ import type { NextRequest } from "next/server";
 const isProtectedRoute = createRouteMatcher(["/(auth)(.*)"]);
 
 /**
- * Public routes that should always be accessible without authentication.
- * Includes public pages, API routes, and static assets.
+ * Clerk-enabled middleware: protects (auth) routes, lets everything else through.
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const isPublicRoute = createRouteMatcher([
-  "/(public)(.*)",
-  "/api(.*)",
-  "/",
-  "/sign-in(.*)",
-  "/sign-up(.*)",
-]);
-
-export default clerkMiddleware(async (auth, req: NextRequest) => {
-  // If Clerk keys are not configured, allow all requests through
-  // This handles Clerk unavailability gracefully
-  if (!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || !process.env.CLERK_SECRET_KEY) {
-    return NextResponse.next();
-  }
-
-  // Protect authenticated routes
+const authMiddleware = clerkMiddleware(async (auth, req: NextRequest) => {
   if (isProtectedRoute(req)) {
     try {
       await auth.protect();
     } catch {
-      // Session expired or unauthenticated — redirect to sign-in
-      // Preserve the intended destination URL for post-login redirect
       const signInUrl = new URL("/sign-in", req.url);
       signInUrl.searchParams.set("redirect_url", req.url);
       return NextResponse.redirect(signInUrl);
     }
   }
-
   return NextResponse.next();
 });
+
+/**
+ * Pass-through middleware used when Clerk keys are not configured. This keeps
+ * the public site fully functional in environments without auth credentials.
+ * `clerkMiddleware()` requires a publishable key at initialization, so we must
+ * avoid invoking it at all when keys are absent — not just guard inside it.
+ */
+function passthroughMiddleware() {
+  return NextResponse.next();
+}
+
+export default clerkEnabled ? authMiddleware : passthroughMiddleware;
 
 export const config = {
   matcher: [
