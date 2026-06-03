@@ -1,15 +1,15 @@
 /**
  * Automated bi-weekly blog post generator.
  *
- * Produces an editorial "best of" roundup from products ALREADY in the catalog
- * (real, verified toyReview documents). This is data-integrity-safe: it invents
- * no products, links, or facts — it only authors editorial framing around real
- * reviews and links back to them. Scores/copy are editorial, which the rule
- * explicitly permits for a review site.
+ * Produces an editorial "Top N child-safe" roundup from products ALREADY in the
+ * catalog (real, verified toyReview documents). Data-integrity-safe: it invents
+ * no products, links, images, or facts — it reuses each review's real product
+ * image, links back to the real review page, and states only real scores/ages.
+ * Editorial framing/copy is authored, which the rule permits for a review site.
  *
  * Topic rotates by ISO week so consecutive runs cover different categories and
- * never collide on slug (the slug is week-stamped and createIfNotExists guards
- * against double-publishing within the same fortnight).
+ * never collide on slug (the slug is week-stamped and a guard prevents
+ * double-publishing within the same fortnight).
  */
 import type { SanityClient } from "@sanity/client";
 
@@ -21,24 +21,32 @@ interface CatalogProduct {
   safetyScore: number;
   developmentScore: number;
   ageRange: { minMonths: number; maxMonths: number };
+  /** Sanity image asset ref, when the review has a main image. */
+  imageRef?: string | null;
+  imageAlt?: string | null;
 }
 
 interface TopicConfig {
   categoryRef: string;
   categoryLabel: string;
+  /** Singular-ish label used in prose, e.g. "building toy". */
+  categoryNoun: string;
   slugBase: string;
 }
 
 /** Rotating topics — one per run, chosen by week parity + index. */
 const TOPICS: TopicConfig[] = [
-  { categoryRef: "cat-building", categoryLabel: "Building Toys", slugBase: "best-building-toys" },
-  { categoryRef: "cat-sensory", categoryLabel: "Sensory Toys", slugBase: "best-sensory-toys" },
-  { categoryRef: "cat-educational", categoryLabel: "Educational Toys", slugBase: "best-educational-toys" },
-  { categoryRef: "cat-outdoor", categoryLabel: "Outdoor Toys", slugBase: "best-outdoor-toys" },
+  { categoryRef: "cat-building", categoryLabel: "Building Toys", categoryNoun: "building toy", slugBase: "top-child-safe-building-toys" },
+  { categoryRef: "cat-sensory", categoryLabel: "Sensory Toys", categoryNoun: "sensory toy", slugBase: "top-child-safe-sensory-toys" },
+  { categoryRef: "cat-educational", categoryLabel: "Educational Toys", categoryNoun: "educational toy", slugBase: "top-child-safe-educational-toys" },
+  { categoryRef: "cat-outdoor", categoryLabel: "Outdoor Toys", categoryNoun: "outdoor toy", slugBase: "top-child-safe-outdoor-toys" },
 ];
 
 /** Minimum real products required to publish a roundup. */
 export const MIN_PRODUCTS_FOR_POST = 3;
+
+/** Maximum products featured in a roundup ("Top N"). */
+export const MAX_PICKS = 7;
 
 /** ISO-week number (1–53) for deterministic topic rotation + slug stamping. */
 export function isoWeek(date: Date): { year: number; week: number } {
@@ -62,29 +70,69 @@ function ageLabel(minMonths: number, maxMonths: number): string {
   return `${fmt(minMonths)}–${fmt(maxMonths)}`;
 }
 
+// ─── Portable Text block builders ───────────────────────────────────────────
+
+interface MarkDef {
+  _type: "link";
+  _key: string;
+  href: string;
+}
 interface BlockChild {
   _type: "span";
   _key: string;
   text: string;
-  marks?: string[];
+  marks: string[];
 }
-interface Block {
+export interface TextBlock {
   _type: "block";
   _key: string;
   style: string;
   children: BlockChild[];
-  markDefs: [];
+  markDefs: MarkDef[];
 }
+export interface ImageBlock {
+  _type: "image";
+  _key: string;
+  alt: string;
+  asset: { _type: "reference"; _ref: string };
+}
+export type PostBlock = TextBlock | ImageBlock;
 
 let keyCounter = 0;
-function block(style: string, text: string): Block {
-  keyCounter += 1;
+const nextKey = (p = "k") => `${p}${++keyCounter}`;
+
+function block(style: string, text: string): TextBlock {
   return {
     _type: "block",
-    _key: `b${keyCounter}`,
+    _key: nextKey("b"),
     style,
-    children: [{ _type: "span", _key: `s${keyCounter}`, text }],
+    children: [{ _type: "span", _key: nextKey("s"), text, marks: [] }],
     markDefs: [],
+  };
+}
+
+function imageBlock(ref: string, alt: string): ImageBlock {
+  return {
+    _type: "image",
+    _key: nextKey("img"),
+    alt,
+    asset: { _type: "reference", _ref: ref },
+  };
+}
+
+/** Paragraph whose trailing phrase links to the product's review page. */
+function paragraphWithReviewLink(lead: string, linkText: string, slug: string): TextBlock {
+  const linkKey = nextKey("link");
+  return {
+    _type: "block",
+    _key: nextKey("b"),
+    style: "normal",
+    markDefs: [{ _type: "link", _key: linkKey, href: `/reviews/${slug}` }],
+    children: [
+      { _type: "span", _key: nextKey("s"), text: lead, marks: [] },
+      { _type: "span", _key: nextKey("s"), text: linkText, marks: [linkKey] },
+      { _type: "span", _key: nextKey("s"), text: ".", marks: [] },
+    ],
   };
 }
 
@@ -102,7 +150,7 @@ export function buildRoundupPost(
   title: string;
   slug: { _type: "slug"; current: string };
   excerpt: string;
-  body: Block[];
+  body: PostBlock[];
   category: { _type: "reference"; _ref: string };
   relatedReviews: Array<{ _type: "reference"; _ref: string; _key: string }>;
   publishedAt: string;
@@ -111,45 +159,70 @@ export function buildRoundupPost(
 
   const top = [...products]
     .sort((a, b) => b.safetyScore - a.safetyScore)
-    .slice(0, 8);
+    .slice(0, MAX_PICKS);
 
   const { year, week } = isoWeek(date);
-  const monthYear = date.toLocaleDateString("en-US", { month: "long", year: "numeric" });
-  const title = `The Safest ${topic.categoryLabel} We've Reviewed (${monthYear})`;
+  const count = top.length;
+  const label = topic.categoryLabel.toLowerCase();
+  const title = `Top ${count} Child-Safe ${topic.categoryLabel} in ${year}`;
   const slug = `${topic.slugBase}-${year}-w${week}`;
 
   keyCounter = 0;
-  const body: Block[] = [
+  const body: PostBlock[] = [
+    // Hook
     block(
       "normal",
-      `Every toy in this roundup comes from our independent reviews — each one safety-scored out of 100 and checked against current recall data. We've pulled together the ${top.length} highest-scoring ${topic.categoryLabel.toLowerCase()} in our catalog right now, so you can shop with confidence.`
+      `The ${label.replace(/s$/, "")} aisle won't tell you what matters most: is it safe, and will it actually help your child grow? As parents of three, we've done that digging for you. These ${count} ${label} earned the highest safety scores in our catalog right now — every one is a toy we'd happily hand our own kids.`
     ),
-    block("h2", "How we picked these"),
     block(
       "normal",
-      "We rank by our Safety Score, which weighs material safety, choking risk, recall history, and certifications. We only include toys we've personally reviewed — no sponsored placements, no guesswork. Scores reflect our editorial assessment as parents who care about getting this right."
+      "Each pick is independently scored out of 100 for material safety, choking risk, recall history, and certifications, then checked against current recall data. No sponsorships, no guesswork — just our honest assessment, best-first."
     ),
-    block("h2", `Our top ${topic.categoryLabel.toLowerCase()} right now`),
+    block("h2", "How we scored these"),
+    block(
+      "normal",
+      "Our Safety Score weighs what a toy is made of, whether it poses a choking risk for its age, its recall history, and which independent safety certifications it carries (like ASTM F963 and CPSIA). A score in the 90s means a toy we'd trust without a second thought.",
+    ),
+    block("h2", `Our top ${label} right now`),
   ];
 
   top.forEach((p, i) => {
     body.push(block("h3", `${i + 1}. ${p.productName}`));
+    // Real product image, when available.
+    if (p.imageRef) {
+      body.push(imageBlock(p.imageRef, p.imageAlt || p.productName));
+    }
+    // Factual line — only real scores/age, plus safe editorial framing.
     body.push(
       block(
         "normal",
-        `Safety Score ${p.safetyScore}/100 · Development Score ${p.developmentScore}/100 · Ages ${ageLabel(
+        `Safety ${p.safetyScore}/100 · Development ${p.developmentScore}/100 · Ages ${ageLabel(
           p.ageRange.minMonths,
           p.ageRange.maxMonths
-        )}. Read our full safety breakdown in the ${p.productName} review.`
+        )}. From ${p.brand}, it's one of our top-rated ${topic.categoryNoun}s for this age — high marks for safety and genuine developmental value.`
+      )
+    );
+    // Link to the real review page.
+    body.push(
+      paragraphWithReviewLink(
+        "See the full safety breakdown in our ",
+        `${p.productName} review`,
+        p.slug.current
       )
     );
   });
 
-  body.push(block("h2", "A note from our family"));
+  body.push(block("h2", "Choosing the right one for your child"));
   body.push(
     block(
       "normal",
-      "We built SafeNest because, as parents of three, we wanted to take the guesswork out of choosing toys that are both safe and genuinely good for development. Every pick above is one we'd feel comfortable putting in our own kids' hands."
+      "Any toy on this list is one we'd feel good about putting in our own kids' hands. Browse every toy we've safety-scored on our reviews page, and if you'd like our safest picks and recall alerts in your inbox, join the SafeNest newsletter below."
+    )
+  );
+  body.push(
+    block(
+      "normal",
+      "Helping parents choose safer, smarter toys with confidence — that's why we built SafeNest."
     )
   );
 
@@ -158,7 +231,7 @@ export function buildRoundupPost(
     _type: "blogPost",
     title,
     slug: { _type: "slug", current: slug },
-    excerpt: `Our highest-scoring ${topic.categoryLabel.toLowerCase()} this ${monthYear}, ranked by independent safety score and checked against recall data.`,
+    excerpt: `Our ${count} highest-scoring ${label} in ${year}, ranked by independent safety score and checked against recall data — vetted by parents.`,
     body,
     category: { _type: "reference", _ref: topic.categoryRef },
     relatedReviews: top.map((p, i) => ({
@@ -178,7 +251,7 @@ export interface GenerateOutcome {
 }
 
 /**
- * Generates and publishes (createIfNotExists) the roundup for the current week.
+ * Generates and publishes the roundup for the current week.
  * Idempotent: re-running in the same fortnight won't duplicate the post.
  */
 export async function generateBiweeklyPost(
@@ -189,7 +262,8 @@ export async function generateBiweeklyPost(
 
   const products = await client.fetch<CatalogProduct[]>(
     `*[_type == "toyReview" && category._ref == $cat && !(_id in path("drafts.**"))]{
-      _id, productName, brand, slug, safetyScore, developmentScore, ageRange
+      _id, productName, brand, slug, safetyScore, developmentScore, ageRange,
+      "imageRef": mainImage.asset._ref, "imageAlt": mainImage.alt
     } | order(safetyScore desc)`,
     { cat: topic.categoryRef }
   );
@@ -199,7 +273,7 @@ export async function generateBiweeklyPost(
     return { status: "skipped-insufficient", productCount: products.length };
   }
 
-  // createIfNotExists guards against double-publishing the same week's post.
+  // Guard against double-publishing the same week's post.
   const existing = await client.fetch<string | null>(
     `*[_type == "blogPost" && _id == $id][0]._id`,
     { id: doc._id }
