@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { PackageOpen, ArrowRight } from "lucide-react";
 import { sanityClient } from "@/lib/sanity/client";
 import { urlForImage } from "@/lib/sanity/client";
 import {
@@ -108,9 +109,26 @@ export default async function CategoryPage({
       </header>
 
       {reviews.length === 0 ? (
-        <p className="text-center text-muted-foreground py-12">
-          No reviews are available for this category yet.
-        </p>
+        <div className="flex flex-col items-center rounded-xl border border-dashed border-border bg-muted/30 px-6 py-16 text-center">
+          <div className="mb-4 flex size-16 items-center justify-center rounded-full bg-secondary-50">
+            <PackageOpen className="size-8 text-primary-600" aria-hidden="true" />
+          </div>
+          <h2 className="text-xl font-semibold text-foreground">
+            No reviews here yet
+          </h2>
+          <p className="mt-2 max-w-md text-sm text-muted-foreground">
+            We haven&apos;t published any {category.title.toLowerCase()} reviews
+            so far. Our team is hard at work testing toys in this category —
+            check back soon, or explore everything we&apos;ve reviewed.
+          </p>
+          <Link
+            href="/reviews"
+            className="mt-6 inline-flex items-center gap-1.5 rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary-700"
+          >
+            Browse all reviews
+            <ArrowRight className="size-4" aria-hidden="true" />
+          </Link>
+        </div>
       ) : (
         <>
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

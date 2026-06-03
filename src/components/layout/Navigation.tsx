@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, BookOpen, Shield, AlertTriangle, FileText, Baby } from "lucide-react";
@@ -21,16 +21,30 @@ const ageGroups = [
 ];
 
 const mobileCategories = [
-  { href: "/categories/building", label: "Building" },
-  { href: "/categories/sensory", label: "Sensory" },
-  { href: "/categories/outdoor", label: "Outdoor" },
-  { href: "/categories/educational", label: "Educational" },
+  { href: "/categories/building-toys", label: "Building" },
+  { href: "/categories/sensory-toys", label: "Sensory" },
+  { href: "/categories/outdoor-toys", label: "Outdoor" },
+  { href: "/categories/educational-toys", label: "Educational" },
 ];
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [ageDropdownOpen, setAgeDropdownOpen] = useState(false);
   const pathname = usePathname();
+  const ageTriggerRef = useRef<HTMLButtonElement>(null);
+
+  // Close the Age Groups dropdown on Escape and return focus to its trigger.
+  useEffect(() => {
+    if (!ageDropdownOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setAgeDropdownOpen(false);
+        ageTriggerRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [ageDropdownOpen]);
 
   return (
     <nav aria-label="Main navigation">
@@ -70,6 +84,7 @@ export function Navigation() {
         {/* Age Groups dropdown */}
         <li className="relative">
           <button
+            ref={ageTriggerRef}
             onClick={() => setAgeDropdownOpen(!ageDropdownOpen)}
             onBlur={() => setTimeout(() => setAgeDropdownOpen(false), 150)}
             className="inline-flex items-center gap-1 px-3 py-2 text-sm font-medium text-foreground/70 rounded-md hover:text-foreground hover:bg-muted transition-colors"
@@ -101,11 +116,11 @@ export function Navigation() {
       </ul>
 
       {/* Mobile navigation */}
-      {isOpen && (
-        <div
-          id="mobile-nav"
-          className="absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg lg:hidden z-50 animate-in slide-in-from-top-2 duration-200"
-        >
+      <div id="mobile-nav">
+        {isOpen && (
+          <div
+            className="absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg lg:hidden z-50 animate-in slide-in-from-top-2 duration-200"
+          >
           <div className="p-4 space-y-4">
             {/* Main nav links */}
             <div>
@@ -185,7 +200,8 @@ export function Navigation() {
             </div>
           </div>
         </div>
-      )}
+        )}
+      </div>
     </nav>
   );
 }

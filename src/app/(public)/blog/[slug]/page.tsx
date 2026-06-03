@@ -1,9 +1,9 @@
 import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { sanityClient } from "@/lib/sanity/client";
 import { blogPostBySlugQuery } from "@/lib/sanity/queries";
-import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
 
 interface PortableSpan {
@@ -192,12 +192,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     <main className="mx-auto max-w-3xl px-4 py-12">
       <article>
         <header className="mb-10 border-b border-border pb-8">
-          <a
+          <Link
             href="/blog"
             className="text-sm font-medium text-primary-600 hover:text-primary-700"
           >
             ← Back to Blog
-          </a>
+          </Link>
           <h1 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-foreground leading-tight">
             {post.title}
           </h1>

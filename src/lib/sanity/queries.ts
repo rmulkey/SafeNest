@@ -91,6 +91,20 @@ export const featuredToyReviewsQuery = groq`
   }
 `;
 
+// Lightweight projection of ALL reviews for the global client-side search.
+// Returns only the fields the search UI needs to render results.
+export const searchableToyReviewsQuery = groq`
+  *[_type == "toyReview"] | order(safetyScore desc) {
+    _id,
+    productName,
+    slug,
+    "category": category->title,
+    safetyScore,
+    ageRange,
+    mainImage
+  }
+`;
+
 // ─── Buying Guides ──────────────────────────────────────────────────────────────
 
 export const allBuyingGuidesQuery = groq`

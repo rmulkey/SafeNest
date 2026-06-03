@@ -1,4 +1,5 @@
 /** @vitest-environment jsdom */
+import type { ReactNode } from "react";
 import { describe, it, expect, afterEach, vi } from "vitest";
 import { render, screen, within, cleanup } from "@testing-library/react";
 import type { ToyReviewSummary } from "@/lib/seo/programmatic-pages";
@@ -8,14 +9,21 @@ import type { AwardVariant } from "@/components/reviews/AwardBadge";
 // replace them with simple DOM-friendly stand-ins. urlForImage is mocked so the
 // component never reaches the real Sanity client.
 vi.mock("next/image", () => ({
-  default: (props: any) => {
-    const { fill, ...rest } = props;
-    return <img {...rest} />;
-  },
+  default: ({ fill: _fill, ...rest }: Record<string, unknown>) => (
+    // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
+    <img {...(rest as Record<string, string>)} />
+  ),
 }));
 vi.mock("next/link", () => ({
-  default: ({ href, children, ...rest }: any) => (
-    <a href={href} {...rest}>
+  default: ({
+    href,
+    children,
+    ...rest
+  }: {
+    href: string;
+    children: ReactNode;
+  } & Record<string, unknown>) => (
+    <a href={href} {...(rest as Record<string, string>)}>
       {children}
     </a>
   ),

@@ -1,14 +1,14 @@
 import Link from "next/link";
-import { Search } from "lucide-react";
 import { Navigation } from "./Navigation";
 import { Logo } from "@/components/brand/Logo";
 import { Button } from "@/components/ui/button";
+import { SearchTrigger } from "@/components/search/SearchTrigger";
 
 const categoryLinks = [
-  { href: "/categories/building", label: "Building" },
-  { href: "/categories/sensory", label: "Sensory" },
-  { href: "/categories/outdoor", label: "Outdoor" },
-  { href: "/categories/educational", label: "Educational" },
+  { href: "/categories/building-toys", label: "Building" },
+  { href: "/categories/sensory-toys", label: "Sensory" },
+  { href: "/categories/outdoor-toys", label: "Outdoor" },
+  { href: "/categories/educational-toys", label: "Educational" },
 ];
 
 export function Header() {
@@ -29,9 +29,7 @@ export function Header() {
 
           {/* Right side: Search + Sign In */}
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" aria-label="Search" className="text-muted-foreground hover:text-foreground">
-              <Search className="size-5" />
-            </Button>
+            <SearchTrigger />
             <Button variant="outline" size="sm" className="hidden lg:inline-flex">
               Sign In
             </Button>
