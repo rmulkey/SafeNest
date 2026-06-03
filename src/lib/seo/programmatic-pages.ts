@@ -16,6 +16,63 @@ export const AGE_GROUPS = [
 
 export type AgeGroup = (typeof AGE_GROUPS)[number];
 
+/**
+ * Named age-range slugs used across the site's navigation, homepage age cards,
+ * and sitemap (e.g. /best-toys/1-2-years). Each maps to a representative age in
+ * months that the age page query uses to surface matching reviews.
+ *
+ * These MUST stay in sync with the links in Header/Navigation, the homepage
+ * "Browse by Age" cards, and the static sitemap entries — they are public URLs.
+ */
+export const AGE_SLUG_TO_MONTHS: Record<string, number> = {
+  "0-6-months": 3,
+  "6-12-months": 9,
+  "0-12-months": 9,
+  "12-24-months": 18,
+  "1-2-years": 18,
+  "2-3-years": 30,
+  "24-36-months": 30,
+  "3-plus-years": 42,
+  "3-4-years": 42,
+};
+
+/**
+ * Resolve a best-toys age route param to an age in months.
+ *
+ * Accepts either a raw numeric value ("3", "18") or a named slug
+ * ("1-2-years", "0-6-months"). Returns null when the param is neither a known
+ * slug nor a positive integer, so the page can render notFound().
+ */
+export function resolveAgeParam(param: string): number | null {
+  if (param in AGE_SLUG_TO_MONTHS) {
+    return AGE_SLUG_TO_MONTHS[param];
+  }
+  const n = Number(param);
+  return Number.isInteger(n) && n > 0 ? n : null;
+}
+
+/**
+ * Human-readable label for a best-toys age route param. Named slugs use their
+ * range label (e.g. "1–2 years"); numeric values fall back to formatAgeLabel.
+ */
+export function formatAgeParamLabel(param: string): string {
+  const slugLabels: Record<string, string> = {
+    "0-6-months": "0–6 months",
+    "6-12-months": "6–12 months",
+    "0-12-months": "0–12 months",
+    "12-24-months": "12–24 months",
+    "1-2-years": "1–2 years",
+    "2-3-years": "2–3 years",
+    "24-36-months": "24–36 months",
+    "3-plus-years": "3+ years",
+    "3-4-years": "3–4 years",
+  };
+  if (param in slugLabels) {
+    return slugLabels[param];
+  }
+  return formatAgeLabel(Number(param));
+}
+
 /** Minimum number of matching reviews required to generate a page */
 export const MIN_REVIEWS_FOR_PAGE = 3;
 

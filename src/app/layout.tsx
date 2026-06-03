@@ -8,6 +8,8 @@ import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
 import { ExitIntentModal } from "@/components/marketing/ExitIntentModal";
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -70,6 +72,10 @@ export default function RootLayout({
             <ExitIntentModal />
           </AnalyticsProvider>
         </Suspense>
+        {/* Vercel Web Analytics (cookieless, privacy-friendly) + Speed Insights.
+            Render outside Suspense so they always mount on every route. */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
