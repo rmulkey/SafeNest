@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Navigation } from "./Navigation";
 import { Logo } from "@/components/brand/Logo";
-import { Button } from "@/components/ui/button";
 import { SearchTrigger } from "@/components/search/SearchTrigger";
 
 const categoryLinks = [
@@ -27,12 +26,9 @@ export function Header() {
           {/* Navigation */}
           <Navigation />
 
-          {/* Right side: Search + Sign In */}
+          {/* Right side: Search */}
           <div className="flex items-center gap-2">
             <SearchTrigger />
-            <Button variant="outline" size="sm" className="hidden lg:inline-flex">
-              Sign In
-            </Button>
           </div>
         </div>
       </div>

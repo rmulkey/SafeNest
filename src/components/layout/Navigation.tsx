@@ -192,13 +192,6 @@ export function Navigation() {
                 ))}
               </ul>
             </div>
-
-            {/* Sign In button on mobile */}
-            <div className="px-2 pt-2 border-t border-border">
-              <Button variant="outline" className="w-full" size="sm">
-                Sign In
-              </Button>
-            </div>
           </div>
         </div>
         )}

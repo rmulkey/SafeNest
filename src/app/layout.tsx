@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
@@ -48,9 +47,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const clerkEnabled = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
-
-  const shell = (
+  return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
@@ -79,13 +76,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-
-  // Only wrap in ClerkProvider when a publishable key is configured. Without a
-  // key, Clerk throws at render in production; gating it keeps the public site
-  // fully functional and lets auth activate automatically once keys are added.
-  if (clerkEnabled) {
-    return <ClerkProvider>{shell}</ClerkProvider>;
-  }
-
-  return shell;
 }
