@@ -2,10 +2,17 @@ import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { sanityClient } from "@/lib/sanity/client";
+import Image from "next/image";
+import { sanityClient, urlForImage } from "@/lib/sanity/client";
 import { blogPostBySlugQuery } from "@/lib/sanity/queries";
 import { SITE_URL } from "@/lib/seo/site-config";
 import { NewsletterForm } from "@/components/newsletter/NewsletterForm";
+
+interface PortableMarkDef {
+  _type: string;
+  _key: string;
+  href?: string;
+}
 
 interface PortableSpan {
   _type: string;
@@ -21,6 +28,10 @@ interface PortableBlock {
   listItem?: "bullet" | "number";
   level?: number;
   children?: PortableSpan[];
+  markDefs?: PortableMarkDef[];
+  // image block fields
+  alt?: string;
+  asset?: { _ref: string };
 }
 
 interface BlogPost {
@@ -33,15 +44,50 @@ interface BlogPost {
   author: string;
 }
 
-/** Renders the inline spans of a block, honoring strong/em marks. */
-function renderSpans(children: PortableSpan[] | undefined) {
+/**
+ * Renders the inline spans of a block, honoring strong/em marks and link
+ * annotations (markDefs). Link marks render as styled anchors; internal links
+ * (same-origin) use next/link for client navigation.
+ */
+function renderSpans(
+  children: PortableSpan[] | undefined,
+  markDefs: PortableMarkDef[] | undefined
+) {
   if (!children) return null;
   return children.map((span) => {
     const isStrong = span.marks?.includes("strong");
     const isEm = span.marks?.includes("em");
+    // A mark that isn't a decorator is a markDef key (e.g. a link annotation).
+    const linkDef = span.marks
+      ?.map((m) => markDefs?.find((d) => d._key === m && d._type === "link"))
+      .find(Boolean);
+
     let node: React.ReactNode = span.text;
     if (isStrong) node = <strong className="font-semibold text-foreground">{node}</strong>;
     if (isEm) node = <em>{node}</em>;
+
+    if (linkDef?.href) {
+      const href = linkDef.href;
+      const isInternal = href.startsWith("/");
+      node = isInternal ? (
+        <Link
+          href={href}
+          className="font-medium text-primary-600 underline underline-offset-2 hover:text-primary-700"
+        >
+          {node}
+        </Link>
+      ) : (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-primary-600 underline underline-offset-2 hover:text-primary-700"
+        >
+          {node}
+        </a>
+      );
+    }
+
     return <span key={span._key}>{node}</span>;
   });
 }
@@ -59,7 +105,7 @@ function renderBody(body: PortableBlock[]) {
     if (listBuffer.length === 0) return;
     const items = listBuffer.map((b) => (
       <li key={b._key} className="leading-relaxed">
-        {renderSpans(b.children)}
+        {renderSpans(b.children, b.markDefs)}
       </li>
     ));
     if (listType === "number") {
@@ -80,6 +126,30 @@ function renderBody(body: PortableBlock[]) {
   };
 
   for (const block of body) {
+    // Inline image blocks (Portable Text image type).
+    if (block._type === "image" && block.asset?._ref) {
+      flushList();
+      elements.push(
+        <figure key={block._key} className="my-8">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-border bg-muted">
+            <Image
+              src={urlForImage({ asset: block.asset }).width(800).height(600).url()}
+              alt={block.alt || ""}
+              fill
+              className="object-contain"
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
+          </div>
+          {block.alt && (
+            <figcaption className="mt-2 text-center text-sm text-muted-foreground">
+              {block.alt}
+            </figcaption>
+          )}
+        </figure>
+      );
+      continue;
+    }
+
     if (block._type !== "block") continue;
 
     if (block.listItem) {
@@ -90,7 +160,7 @@ function renderBody(body: PortableBlock[]) {
     }
 
     flushList();
-    const content = renderSpans(block.children);
+    const content = renderSpans(block.children, block.markDefs);
 
     switch (block.style) {
       case "h2":
