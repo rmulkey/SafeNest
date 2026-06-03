@@ -11,6 +11,7 @@ import { recallAlert } from "./recallAlert";
 import { safetyArticle } from "./safetyArticle";
 import { testimonial } from "./testimonial";
 import { toyReview } from "./toyReview";
+import { queuedProduct } from "./queuedProduct";
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   // Object types (must be registered before documents that reference them)
@@ -26,6 +27,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   blogPost,
   testimonial,
   expertEndorsement,
+  queuedProduct,
 ];
 
 export {
@@ -40,4 +42,5 @@ export {
   safetyArticle,
   testimonial,
   toyReview,
+  queuedProduct,
 };
