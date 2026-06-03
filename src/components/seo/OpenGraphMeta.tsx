@@ -17,8 +17,9 @@ export interface OpenGraphMetaOptions {
 }
 
 const DEFAULT_SITE_NAME = "SafeNest Toys";
-const DEFAULT_OG_IMAGE = "/og-default.png";
-const DEFAULT_IMAGE_ALT = "SafeNest Toys - Toy Safety Intelligence for Parents";
+// Branded OG image generated dynamically at /opengraph-image (1200×630).
+const DEFAULT_OG_IMAGE = "/opengraph-image";
+const DEFAULT_IMAGE_ALT = "SafeNest Toys — Toy safety reviews built by parents";
 
 /**
  * Generates Open Graph and Twitter Card metadata for Next.js Metadata API.
@@ -37,7 +38,7 @@ const DEFAULT_IMAGE_ALT = "SafeNest Toys - Toy Safety Intelligence for Parents";
  *   ...generateOpenGraphMeta({
  *     title: "Page Title",
  *     description: "Page description",
- *     url: "https://safenest.toys/page",
+ *     url: "https://safenesttoys.com/page",
  *   }),
  * };
  * ```

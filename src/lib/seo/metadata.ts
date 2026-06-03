@@ -8,10 +8,10 @@
  */
 
 import type { Metadata } from "next";
+import { SITE_URL, SITE_NAME } from "./site-config";
 
-const SITE_NAME = "SafeNest Toys";
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.safenesttoys.com";
-const DEFAULT_IMAGE = `${SITE_URL}/og-default.png`;
+// Branded OG image generated dynamically at /opengraph-image (1200×630).
+const DEFAULT_IMAGE = `${SITE_URL}/opengraph-image`;
 
 export interface ReviewMetadataInput {
   productName: string;

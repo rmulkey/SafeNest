@@ -1,8 +1,9 @@
 /**
  * OrganizationSchema - Renders Organization structured data as JSON-LD.
  *
- * Placed in the root layout or homepage to give search engines
- * context about the business entity behind the site.
+ * Gives search engines context about the family-run business behind the site.
+ * The founder + location signals reinforce E-E-A-T (experience/authority/trust),
+ * which matters for a child-safety/YMYL topic.
  */
 
 import { JsonLd } from "./JsonLd";
@@ -14,9 +15,32 @@ export function OrganizationSchema() {
     "@type": "Organization",
     name: "SafeNest Toys",
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
+    // Use the SVG logo that actually exists in /public.
+    logo: `${SITE_URL}/logo.svg`,
+    image: `${SITE_URL}/opengraph-image`,
     description:
-      "Independent toy safety reviews and developmental play guides for parents",
+      "Independent, family-run toy safety reviews and developmental play guides. SafeNest was built by Rodrigo and Vanessa, homeschooling parents of three in Kennesaw, Georgia, to help families choose safer, smarter toys with confidence.",
+    foundingLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Kennesaw",
+        addressRegion: "GA",
+        addressCountry: "US",
+      },
+    },
+    founder: [
+      { "@type": "Person", name: "Rodrigo Mulkey" },
+      { "@type": "Person", name: "Vanessa Mulkey" },
+    ],
+    knowsAbout: [
+      "toy safety",
+      "child development",
+      "developmental play",
+      "toy recalls",
+      "ASTM F963",
+      "CPSIA",
+    ],
     sameAs: [],
   };
 

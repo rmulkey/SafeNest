@@ -21,14 +21,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SafeNest Toys - Toy Safety Intelligence for Parents",
+  title: "SafeNest Toys — Safer Toys, Smarter Play, Built by Parents",
   description:
-    "Trusted toy safety reviews, developmental play guides, and transparent safety scores for parents of babies and toddlers.",
+    "Independent toy safety reviews, transparent safety scores, and developmental play guides — built by Rodrigo and Vanessa, homeschooling parents of three in Kennesaw, Georgia, to help families choose safer, smarter toys with confidence.",
   metadataBase: new URL(SITE_URL),
   ...generateOpenGraphMeta({
-    title: "SafeNest Toys - Toy Safety Intelligence for Parents",
+    title: "SafeNest Toys — Safer Toys, Smarter Play, Built by Parents",
     description:
-      "Trusted toy safety reviews, developmental play guides, and transparent safety scores for parents of babies and toddlers.",
+      "Independent toy safety reviews and developmental play guides, built by parents to help families choose safer, smarter toys with confidence.",
     url: SITE_URL,
     type: "website",
   }),

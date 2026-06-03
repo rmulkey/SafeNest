@@ -62,7 +62,7 @@ const SEARCH_ENGINE_PING_URLS = [
  * Sends the sitemap URL to each engine's ping endpoint.
  * Failures are logged but do not throw — search engine pinging is best-effort.
  *
- * @param sitemapUrl - The full URL to the sitemap (e.g., https://safenest.toys/sitemap.xml)
+ * @param sitemapUrl - The full URL to the sitemap (e.g., https://safenesttoys.com/sitemap.xml)
  */
 export async function pingSearchEngines(sitemapUrl?: string): Promise<void> {
   const resolvedUrl = sitemapUrl ?? `${getBaseUrl()}/sitemap.xml`;

@@ -101,7 +101,7 @@ describe("generateArticleMetadata", () => {
 describe("generatePageMetadata", () => {
   it("generates correct OG and Twitter tags for a generic page", () => {
     const result = generatePageMetadata("About Us", "Learn about SafeNest Toys.", {
-      url: "https://www.safenesttoys.com/about",
+      url: "https://safenesttoys.com/about",
     });
 
     expect(result.title).toBe("About Us | SafeNest Toys");
@@ -109,7 +109,7 @@ describe("generatePageMetadata", () => {
     expect(result.openGraph).toMatchObject({
       title: "About Us | SafeNest Toys",
       description: "Learn about SafeNest Toys.",
-      url: "https://www.safenesttoys.com/about",
+      url: "https://safenesttoys.com/about",
       type: "website",
     });
     expect(result.twitter).toMatchObject({
@@ -124,6 +124,6 @@ describe("generatePageMetadata", () => {
 
     const og = result.openGraph as Record<string, unknown>;
     expect(og.url).toBeDefined();
-    expect((og.images as Array<{ url: string }>)[0].url).toContain("og-default.png");
+    expect((og.images as Array<{ url: string }>)[0].url).toContain("/opengraph-image");
   });
 });

@@ -22,9 +22,9 @@ import { OrganizationSchema } from "@/components/seo/OrganizationSchema";
 import { WebSiteSchema } from "@/components/seo/WebSiteSchema";
 
 export const metadata: Metadata = {
-  title: "SafeNest Toys - Toy Safety Intelligence for Parents",
+  title: "SafeNest Toys — Safer Toys, Smarter Play, Built by Parents",
   description:
-    "Expert toy safety reviews scored out of 100 for babies & toddlers. Find safe, developmental toys with our independent ratings.",
+    "Independent toy safety reviews scored out of 100 for babies & toddlers — built by Rodrigo and Vanessa, homeschooling parents of three, to help families choose safer, smarter toys with confidence.",
   keywords: [
     "toy safety reviews",
     "safe toys for babies",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   ...generateOpenGraphMeta({
-    title: "SafeNest Toys - Toy Safety Intelligence for Parents",
+    title: "SafeNest Toys — Safer Toys, Smarter Play, Built by Parents",
     description:
-      "Expert toy safety reviews scored out of 100 for babies & toddlers. Find safe, developmental toys with our independent ratings.",
+      "Independent toy safety reviews scored out of 100 for babies & toddlers — built by parents to help families choose safer, smarter toys with confidence.",
     url: SITE_URL,
   }),
 };

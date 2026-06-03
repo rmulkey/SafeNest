@@ -1,9 +1,9 @@
 {
   "name": "SafeNest Toys",
   "short_name": "SafeNest",
-  "description": "Toy safety reviews for parents",
+  "description": "Independent toy safety reviews and developmental play guides, built by Rodrigo and Vanessa — homeschooling parents of three in Kennesaw, Georgia — to help families choose safer, smarter toys with confidence.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#4a6b8a"
+  "theme_color": "#2D6B5A"
 }
