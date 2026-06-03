@@ -14,6 +14,7 @@ import {
 import { ScoreBadge } from "@/components/reviews/ScoreBadge";
 import { ToyFinder } from "@/components/finder/ToyFinder";
 import { TrustSection } from "@/components/trust/TrustSection";
+import { FounderStrip } from "@/components/trust/FounderStrip";
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
 import { FAQSchema } from "@/components/seo/FAQSchema";
@@ -203,6 +204,11 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Founder identity strip — quiet trust signal, below the fold-defining hero */}
+      <div className="-mt-4 mb-4">
+        <FounderStrip />
+      </div>
 
       {/* Featured Toy Reviews */}
       <section className="py-16 mx-auto max-w-7xl px-4 md:px-6 lg:px-8">

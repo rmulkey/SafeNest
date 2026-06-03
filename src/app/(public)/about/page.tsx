@@ -4,13 +4,13 @@ import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
 
 export const metadata: Metadata = {
-  title: "About SafeNest Toys - Our Mission & Editorial Policy",
+  title: "About SafeNest Toys — A Family-Built Toy Safety Guide",
   description:
-    "Learn about SafeNest Toys, our mission to bring transparency to toy safety, and our editorial independence policy.",
+    "SafeNest was built by Rodrigo and Vanessa, homeschooling parents of three in Kennesaw, Georgia, to help families choose safer, smarter toys with confidence.",
   ...generateOpenGraphMeta({
-    title: "About SafeNest Toys - Our Mission & Editorial Policy",
+    title: "About SafeNest Toys — A Family-Built Toy Safety Guide",
     description:
-      "Learn about SafeNest Toys, our mission to bring transparency to toy safety, and our editorial independence policy.",
+      "Built by Rodrigo and Vanessa, homeschooling parents of three, to take the guesswork out of choosing safe, developmental toys.",
     url: `${SITE_URL}/about`,
   }),
 };
@@ -20,78 +20,129 @@ export default function AboutPage() {
     <div className="mx-auto max-w-3xl px-4 py-16 md:px-6 lg:px-8">
       {/* Hero */}
       <header className="mb-12">
+        <p className="text-sm font-medium uppercase tracking-wider text-primary-600 mb-3">
+          A family-built guide
+        </p>
         <h1 className="text-4xl font-semibold tracking-tight text-foreground mb-4">
           About SafeNest Toys
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
-          Toy safety intelligence built on trust, transparency, and independent
-          research.
+          Helping parents choose safer, smarter toys with confidence.
         </p>
       </header>
 
-      {/* Brand Story */}
+      {/* Founder Story */}
       <section className="mb-12" aria-labelledby="our-story">
+        <h2 id="our-story" className="text-2xl font-semibold text-foreground mb-4">
+          Why we built SafeNest
+        </h2>
+        <p className="text-base text-foreground/80 leading-relaxed mb-4">
+          SafeNest started in our home in Kennesaw, Georgia. We&apos;re Rodrigo and
+          Vanessa, parents to Liam, Amy, and Zoe — and, depending on the day, to
+          two very opinionated Pomeranians.
+        </p>
+        <p className="text-base text-foreground/80 leading-relaxed mb-4">
+          When we decided to homeschool our three kids, our home became their
+          main learning environment. That raised the stakes on something most
+          parents only think about occasionally: the toys we brought in. They
+          weren&apos;t just playthings — they were part of how our children
+          learned, explored, and grew. We found ourselves digging through recall
+          notices, certification standards, and conflicting advice for every
+          purchase.
+        </p>
+        <blockquote className="my-6 border-l-4 border-primary-300 bg-primary-50/50 py-4 pl-5 pr-4 text-foreground/90 italic rounded-r-lg">
+          We built SafeNest because, as parents, we wanted to remove the
+          guesswork when it came to choosing toys that were both safe and
+          genuinely helped our children learn and grow.
+        </blockquote>
+        <p className="text-base text-foreground/80 leading-relaxed">
+          What began as our own research became a guide we wanted to share with
+          other families facing the same decisions.
+        </p>
+      </section>
+
+      {/* Philosophy */}
+      <section className="mb-12" aria-labelledby="our-philosophy">
         <h2
-          id="our-story"
+          id="our-philosophy"
           className="text-2xl font-semibold text-foreground mb-4"
         >
-          Our Story
+          How we think about toys
         </h2>
-        <p className="text-base text-muted-foreground leading-relaxed mb-4">
-          SafeNest Toys is a toy safety intelligence platform that helps parents
-          make informed decisions about the toys they bring into their homes. We
-          combine rigorous safety research, transparent scoring methodologies,
-          and developmental science to give every parent the confidence they
-          deserve.
+        <p className="text-base text-foreground/80 leading-relaxed mb-4">
+          Two questions guide every review: <em>Is it safe?</em> and{" "}
+          <em>does it genuinely help a child develop?</em> We look at materials,
+          choking risk, recall history, and certifications on the safety side —
+          and motor, cognitive, and sensory engagement on the development side.
+          Every toy is scored the same way, with the math published openly.
         </p>
-        <p className="text-base text-muted-foreground leading-relaxed">
-          Founded by parents who found the toy safety landscape confusing and
-          opaque, SafeNest exists to cut through marketing noise and deliver
-          clear, actionable safety information you can trust.
-        </p>
+        <ul className="space-y-3 text-base text-foreground/80">
+          <li className="flex items-start gap-3">
+            <span className="text-secondary-500 mt-0.5" aria-hidden="true">✓</span>
+            <span>
+              <strong className="text-foreground">Safety first</strong> — we
+              check materials, choking hazards, recalls, and certifications
+              against recognized standards.
+            </span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="text-secondary-500 mt-0.5" aria-hidden="true">✓</span>
+            <span>
+              <strong className="text-foreground">Development matters</strong> —
+              we favor toys that support curiosity, independence, and
+              learning through play.
+            </span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="text-secondary-500 mt-0.5" aria-hidden="true">✓</span>
+            <span>
+              <strong className="text-foreground">Transparent scoring</strong> —
+              our methodology is public and reproducible, never a black box.
+            </span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="text-secondary-500 mt-0.5" aria-hidden="true">✓</span>
+            <span>
+              <strong className="text-foreground">No medical claims</strong> — we
+              share developmental insights, never medical advice.
+            </span>
+          </li>
+        </ul>
       </section>
 
       {/* Mission */}
       <section className="mb-12" aria-labelledby="our-mission">
-        <h2
-          id="our-mission"
-          className="text-2xl font-semibold text-foreground mb-4"
-        >
-          Our Mission
+        <h2 id="our-mission" className="text-2xl font-semibold text-foreground mb-4">
+          Our mission
         </h2>
-        <p className="text-base text-muted-foreground leading-relaxed mb-4">
-          We believe every parent deserves access to clear, honest, and
-          science-backed toy safety information — free from hidden agendas.
-        </p>
-        <p className="text-base text-muted-foreground leading-relaxed">
-          Our trust-first approach means we will never compromise editorial
-          integrity for commercial gain. Safety scores are computed using a
-          transparent, published methodology. Every review follows the same
-          rigorous evaluation criteria, regardless of brand or affiliate
-          relationship.
+        <p className="text-base text-foreground/80 leading-relaxed">
+          To take the guesswork out of choosing toys — so any parent can pick
+          something safe and developmentally meaningful in minutes, with
+          confidence. We&apos;ve already done the hard part; we just want to share
+          it.
         </p>
       </section>
 
       {/* Editorial Policy Disclosure */}
       <section
-        className="mb-12 rounded-lg border border-border bg-muted/30 p-6"
+        className="rounded-lg border border-border bg-muted/30 p-6"
         aria-labelledby="editorial-policy"
       >
         <h2
           id="editorial-policy"
           className="text-2xl font-semibold text-foreground mb-4"
         >
-          Editorial Policy &amp; Affiliate Disclosure
+          Editorial policy &amp; affiliate disclosure
         </h2>
         <p className="text-base text-muted-foreground leading-relaxed mb-4">
           Our editorial selections are independent of affiliate partnerships.
           When you purchase through our affiliate links, we may earn a commission
           at no additional cost to you. This revenue supports our independent
-          safety research and content creation.
+          safety research.
         </p>
         <p className="text-base text-muted-foreground leading-relaxed">
-          We never allow affiliate relationships to influence safety scores,
-          editorial recommendations, or review outcomes. Our{" "}
+          Affiliate relationships never influence safety scores or
+          recommendations. Our{" "}
           <Link
             href="/transparency"
             className="text-primary-600 hover:text-primary-700 underline underline-offset-2"
@@ -100,54 +151,6 @@ export default function AboutPage() {
           </Link>{" "}
           details exactly how scores are computed.
         </p>
-      </section>
-
-      {/* Philosophy */}
-      <section aria-labelledby="our-philosophy">
-        <h2
-          id="our-philosophy"
-          className="text-2xl font-semibold text-foreground mb-4"
-        >
-          Our Philosophy
-        </h2>
-        <ul className="space-y-3 text-base text-muted-foreground">
-          <li className="flex items-start gap-3">
-            <span className="text-secondary-500 mt-0.5" aria-hidden="true">
-              ✓
-            </span>
-            <span>
-              <strong className="text-foreground">Transparency first</strong> —
-              Our scoring methodology is fully public and reproducible.
-            </span>
-          </li>
-          <li className="flex items-start gap-3">
-            <span className="text-secondary-500 mt-0.5" aria-hidden="true">
-              ✓
-            </span>
-            <span>
-              <strong className="text-foreground">No medical claims</strong> — We
-              share developmental insights, never medical advice.
-            </span>
-          </li>
-          <li className="flex items-start gap-3">
-            <span className="text-secondary-500 mt-0.5" aria-hidden="true">
-              ✓
-            </span>
-            <span>
-              <strong className="text-foreground">Independent research</strong>{" "}
-              — Our reviews are never influenced by commercial relationships.
-            </span>
-          </li>
-          <li className="flex items-start gap-3">
-            <span className="text-secondary-500 mt-0.5" aria-hidden="true">
-              ✓
-            </span>
-            <span>
-              <strong className="text-foreground">Parent-centered</strong> — We
-              design every page for busy parents who need clear answers fast.
-            </span>
-          </li>
-        </ul>
       </section>
     </div>
   );
