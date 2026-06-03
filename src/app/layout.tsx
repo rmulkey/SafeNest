@@ -25,6 +25,13 @@ export const metadata: Metadata = {
   description:
     "Independent toy safety reviews, transparent safety scores, and developmental play guides — built by Rodrigo and Vanessa, homeschooling parents of three in Kennesaw, Georgia, to help families choose safer, smarter toys with confidence.",
   metadataBase: new URL(SITE_URL),
+  // Google Search Console HTML-tag verification. Set GOOGLE_SITE_VERIFICATION
+  // to the token from the "HTML tag" method and redeploy; Next.js renders it as
+  // <meta name="google-site-verification" content="..."/>. Optional — DNS TXT
+  // verification via Vercel works without this.
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
   ...generateOpenGraphMeta({
     title: "SafeNest Toys — Safer Toys, Smarter Play, Built by Parents",
     description:
