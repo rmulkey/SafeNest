@@ -38,15 +38,16 @@ export default function AboutPage() {
           Why we built SafeNest
         </h2>
 
-        {/* Founder photo */}
+        {/* Founder photo — portrait selfie shown in its natural aspect ratio so
+            faces are never cropped; capped width and centered. */}
         <figure className="mb-6">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border bg-muted sm:aspect-[3/2]">
+          <div className="relative mx-auto aspect-[3/4] w-full max-w-xs overflow-hidden rounded-2xl border border-border bg-muted">
             <Image
               src="/founders.jpg"
               alt="Rodrigo and Vanessa, the parents who founded SafeNest Toys, outdoors among trees"
               fill
-              className="object-cover object-top"
-              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover object-center"
+              sizes="(max-width: 768px) 80vw, 320px"
               priority
             />
           </div>
