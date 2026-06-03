@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
 
@@ -36,6 +37,24 @@ export default function AboutPage() {
         <h2 id="our-story" className="text-2xl font-semibold text-foreground mb-4">
           Why we built SafeNest
         </h2>
+
+        {/* Founder photo */}
+        <figure className="mb-6">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border bg-muted sm:aspect-[3/2]">
+            <Image
+              src="/founders.jpg"
+              alt="Rodrigo and Vanessa, the parents who founded SafeNest Toys, outdoors among trees"
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 768px"
+              priority
+            />
+          </div>
+          <figcaption className="mt-2 text-center text-sm text-muted-foreground">
+            Rodrigo &amp; Vanessa — founders of SafeNest
+          </figcaption>
+        </figure>
+
         <p className="text-base text-foreground/80 leading-relaxed mb-4">
           SafeNest started in our home in Kennesaw, Georgia. We&apos;re Rodrigo and
           Vanessa, parents to Liam, Amy, and Zoe — and, depending on the day, to

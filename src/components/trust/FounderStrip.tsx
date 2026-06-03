@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Home } from "lucide-react";
 
 /**
  * Compact founder-identity strip for the homepage. A quiet "real family behind
@@ -45,30 +44,15 @@ export function FounderStrip() {
  * succeeds and only this element is affected.
  */
 function FamilyAvatar() {
-  // We intentionally avoid a stock photo. If a real family photo is added at
-  // /public/founders.jpg, swap the monogram block below for the <Image>.
-  const hasPhoto = false;
-
-  if (hasPhoto) {
-    return (
-      <span className="relative size-14 shrink-0 overflow-hidden rounded-full bg-muted ring-2 ring-primary-100">
-        <Image
-          src="/founders.jpg"
-          alt="Rodrigo and Vanessa, founders of SafeNest Toys"
-          fill
-          className="object-cover"
-          sizes="56px"
-        />
-      </span>
-    );
-  }
-
   return (
-    <span
-      className="flex size-14 shrink-0 items-center justify-center rounded-full bg-primary-100 ring-2 ring-primary-50"
-      aria-hidden="true"
-    >
-      <Home className="size-6 text-primary-600" />
+    <span className="relative size-14 shrink-0 overflow-hidden rounded-full bg-muted ring-2 ring-primary-100">
+      <Image
+        src="/founders.jpg"
+        alt="Rodrigo and Vanessa, founders of SafeNest Toys"
+        fill
+        className="object-cover"
+        sizes="56px"
+      />
     </span>
   );
 }
