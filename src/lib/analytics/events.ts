@@ -64,6 +64,22 @@ function isFbqLoaded(): boolean {
   return typeof window !== 'undefined' && typeof window.fbq === 'function';
 }
 
+// ─── Vercel Web Analytics custom events ─────────────────────────────────────────
+// @vercel/analytics exposes a `track(name, props)` for custom events. We import
+// it lazily/defensively so this module stays usable in non-browser/test contexts
+// and never throws if the package isn't present.
+type VercelTrack = (name: string, props?: Record<string, string | number | boolean | null>) => void;
+
+function vercelTrack(name: string, props?: Record<string, string | number | boolean | null>): void {
+  if (typeof window === 'undefined') return;
+  const w = window as unknown as { va?: (event: string, name: string, props?: unknown) => void };
+  // The Vercel Analytics script attaches `window.va`. Using it directly avoids a
+  // hard import dependency and is the same channel the `track()` helper uses.
+  if (typeof w.va === 'function') {
+    w.va('event', name, props);
+  }
+}
+
 // ─── Conversion events ─────────────────────────────────────────────────────────
 
 /**
@@ -98,6 +114,14 @@ export function trackAffiliateClick(event: AffiliateClickEvent): void {
       partner_id: partnerId,
     });
   }
+
+  // Vercel Web Analytics (cookieless) — lets the funnel show up in the Vercel
+  // dashboard even before GA4/PostHog consent is granted.
+  vercelTrack('affiliate_click', {
+    product_id: productId,
+    source_page: sourcePageUrl,
+    partner_id: partnerId,
+  });
 }
 
 /**
@@ -126,6 +150,8 @@ export function trackNewsletterSignup(event: NewsletterSignupEvent): void {
       age_range: ageRange,
     });
   }
+
+  vercelTrack('newsletter_signup', { age_range: ageRange });
 }
 
 // ─── Product analytics events (PostHog) ────────────────────────────────────────

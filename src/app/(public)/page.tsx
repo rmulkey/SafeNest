@@ -15,6 +15,7 @@ import { ScoreBadge } from "@/components/reviews/ScoreBadge";
 import { ToyFinder } from "@/components/finder/ToyFinder";
 import { TrustSection } from "@/components/trust/TrustSection";
 import { FounderStrip } from "@/components/trust/FounderStrip";
+import { NewsletterForm } from "@/components/newsletter/NewsletterForm";
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
 import { FAQSchema } from "@/components/seo/FAQSchema";
@@ -352,40 +353,9 @@ export default async function HomePage() {
             Get recall alerts, new reviews, and age-appropriate recommendations
             delivered to your inbox.
           </p>
-          <form className="mt-6 flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
-            <input
-              type="email"
-              name="email"
-              placeholder="Your email address"
-              required
-              aria-label="Email address"
-              className="flex-1 rounded-lg border border-border bg-white px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-            />
-            <select
-              name="ageRange"
-              required
-              aria-label="Child age range"
-              className="rounded-lg border border-border bg-white px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Child age range
-              </option>
-              <option value="0-2">0–2 years</option>
-              <option value="3-5">3–5 years</option>
-              <option value="6-8">6–8 years</option>
-              <option value="9-12">9–12 years</option>
-            </select>
-            <button
-              type="submit"
-              className="rounded-lg bg-primary-600 px-6 py-2.5 text-sm font-medium text-white hover:bg-primary-700 transition-colors shadow-sm"
-            >
-              Subscribe
-            </button>
-          </form>
-          <p className="mt-3 text-xs text-muted-foreground">
-            No spam. Unsubscribe anytime.
-          </p>
+          <div className="mt-6">
+            <NewsletterForm variant="hero" />
+          </div>
         </div>
       </section>
     </div>

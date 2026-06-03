@@ -5,6 +5,7 @@ import Link from "next/link";
 import { sanityClient } from "@/lib/sanity/client";
 import { blogPostBySlugQuery } from "@/lib/sanity/queries";
 import { SITE_URL } from "@/lib/seo/site-config";
+import { NewsletterForm } from "@/components/newsletter/NewsletterForm";
 
 interface PortableSpan {
   _type: string;
@@ -253,25 +254,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           Subscribe to get the latest toy safety news and reviews delivered to
           your inbox.
         </p>
-        <form className="mt-4 flex flex-col gap-3 sm:flex-row">
-          <label htmlFor="post-newsletter-email" className="sr-only">
-            Email address
-          </label>
-          <input
-            id="post-newsletter-email"
-            type="email"
-            name="email"
-            placeholder="you@example.com"
-            required
-            className="flex-1 rounded-lg border border-border bg-white px-4 py-2.5 text-sm placeholder:text-muted-foreground focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
-          />
-          <button
-            type="submit"
-            className="rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-700 transition-colors shadow-sm"
-          >
-            Subscribe
-          </button>
-        </form>
+        <div className="mt-4">
+          <NewsletterForm variant="inline" />
+        </div>
       </section>
     </main>
   );

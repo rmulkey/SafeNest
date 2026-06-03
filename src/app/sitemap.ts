@@ -15,6 +15,7 @@ import {
   createSitemapEntries,
   createStaticPageEntries,
 } from "@/lib/seo/sitemap";
+import { GIFT_GUIDES } from "@/lib/seo/gift-guides";
 
 /** GROQ query to fetch all published content slugs for the sitemap. */
 const sitemapContentQuery = groq`{
@@ -55,6 +56,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   const staticPages = createStaticPageEntries(baseUrl);
+  const giftGuideEntries = GIFT_GUIDES.map((g) => ({
+    url: `${baseUrl}/gift-guides/${g.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
   const reviewEntries = createSitemapEntries(content.reviews, "/reviews", "weekly", 0.9);
   const guideEntries = createSitemapEntries(content.guides, "/guides", "weekly", 0.8);
   const blogEntries = createSitemapEntries(content.blogPosts, "/blog", "weekly", 0.7);
@@ -64,6 +71,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...staticPages,
+    ...giftGuideEntries,
     ...reviewEntries,
     ...guideEntries,
     ...blogEntries,

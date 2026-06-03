@@ -3,11 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, BookOpen, Shield, AlertTriangle, FileText, Baby } from "lucide-react";
+import { Menu, X, BookOpen, Shield, AlertTriangle, FileText, Baby, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
   { href: "/reviews", label: "Reviews", icon: BookOpen },
+  { href: "/gift-guides", label: "Gift Guides", icon: Gift },
   { href: "/guides", label: "Guides", icon: FileText },
   { href: "/recalls", label: "Recalls", icon: AlertTriangle },
   { href: "/blog", label: "Blog", icon: Shield },

@@ -4,7 +4,7 @@
  * For any string that does not conform to standard email format
  * (missing @, missing domain, invalid characters), the newsletter system
  * SHALL reject the submission, display a validation error, and SHALL NOT
- * sync any data to Klaviyo.
+ * persist any record to the database.
  *
  * **Validates: Requirements 6.5**
  */
@@ -12,23 +12,20 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import * as fc from "fast-check";
 
-// Mock Klaviyo module to verify it is never called for invalid emails
-vi.mock("@/lib/newsletter/klaviyo", () => ({
-  syncSubscriber: vi.fn(),
-}));
-
-// Mock Prisma to avoid DB calls
+// Mock Prisma to avoid DB calls and verify no record is created.
+// `createMock` must be wrapped in vi.hoisted() because vi.mock factories are
+// hoisted above imports — a plain top-level const would not be initialized yet.
+const { createMock } = vi.hoisted(() => ({ createMock: vi.fn() }));
 vi.mock("@/lib/db/prisma", () => ({
   prisma: {
     newsletterSubscription: {
       findUnique: vi.fn(),
-      create: vi.fn(),
+      create: createMock,
     },
   },
 }));
 
 import { POST } from "../route";
-import { syncSubscriber } from "@/lib/newsletter/klaviyo";
 
 /**
  * Generates strings that are guaranteed NOT to be valid emails.
@@ -113,8 +110,8 @@ describe("Property 4: Invalid email format rejection", () => {
         // Must include validation error message
         expect(data.message).toContain("Invalid email");
 
-        // Klaviyo sync must NEVER be called for invalid emails
-        expect(syncSubscriber).not.toHaveBeenCalled();
+        // No record must ever be written to the database for invalid emails
+        expect(createMock).not.toHaveBeenCalled();
       }),
       { numRuns: 100 }
     );

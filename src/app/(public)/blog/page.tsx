@@ -4,6 +4,7 @@ import { sanityClient } from "@/lib/sanity/client";
 import { allBlogPostsQuery, blogPostCountQuery } from "@/lib/sanity/queries";
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
+import { NewsletterForm } from "@/components/newsletter/NewsletterForm";
 
 export const metadata: Metadata = {
   title: "Toy Safety Blog - Expert Guides & Tips | SafeNest Toys",
@@ -135,25 +136,9 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           Get the latest safety alerts, reviews, and parenting tips delivered to
           your inbox.
         </p>
-        <form className="mt-4 flex flex-col gap-3 sm:flex-row">
-          <label htmlFor="blog-newsletter-email" className="sr-only">
-            Email address
-          </label>
-          <input
-            id="blog-newsletter-email"
-            type="email"
-            name="email"
-            placeholder="you@example.com"
-            required
-            className="flex-1 rounded-md border border-zinc-300 px-4 py-2 text-sm placeholder:text-zinc-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-50"
-          />
-          <button
-            type="submit"
-            className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-          >
-            Subscribe
-          </button>
-        </form>
+        <div className="mt-4">
+          <NewsletterForm variant="inline" />
+        </div>
       </section>
     </main>
   );

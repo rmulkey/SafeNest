@@ -1,6 +1,13 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db/prisma";
-import { syncSubscriber } from "@/lib/newsletter/klaviyo";
+
+/**
+ * Newsletter subscription endpoint.
+ *
+ * Stores subscribers in SafeNest's own PostgreSQL database — this is a
+ * first-party email list with no third-party email service provider. The
+ * `NewsletterSubscription` table is the single source of truth for the audience.
+ */
 
 const VALID_AGE_RANGES = ["0-2", "3-5", "6-8", "9-12"] as const;
 type AgeRange = (typeof VALID_AGE_RANGES)[number];
@@ -44,9 +51,11 @@ export async function POST(request: Request) {
       );
     }
 
-    // Check for existing subscription
+    const normalizedEmail = email.toLowerCase();
+
+    // Dedupe: don't create a second record for an email we already have.
     const existing = await prisma.newsletterSubscription.findUnique({
-      where: { email: email.toLowerCase() },
+      where: { email: normalizedEmail },
     });
 
     if (existing) {
@@ -60,39 +69,11 @@ export async function POST(request: Request) {
       );
     }
 
-    // Sync to Klaviyo
-    const klaviyoResult = await syncSubscriber(email.toLowerCase(), ageRange);
-
-    if (!klaviyoResult.success) {
-      // If the error is a timeout, return specific message
-      if (klaviyoResult.error?.includes("timed out")) {
-        return NextResponse.json(
-          {
-            success: false,
-            message:
-              "Subscription could not be completed due to a timeout. Please try again.",
-          },
-          { status: 503 }
-        );
-      }
-
-      return NextResponse.json(
-        {
-          success: false,
-          message:
-            "Subscription could not be completed. Please try again later.",
-        },
-        { status: 500 }
-      );
-    }
-
-    // Store in PostgreSQL
+    // Store in our own PostgreSQL database (first-party list).
     await prisma.newsletterSubscription.create({
       data: {
-        email: email.toLowerCase(),
+        email: normalizedEmail,
         ageRange,
-        klaviyoId: klaviyoResult.klaviyoId ?? null,
-        syncedAt: new Date(),
       },
     });
 

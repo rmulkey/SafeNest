@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { trackAffiliateClick } from "@/lib/analytics/events";
 
 interface BuyButtonProps {
   url: string;
@@ -8,6 +11,10 @@ interface BuyButtonProps {
   /** Optional label override; defaults to "Buy on Amazon" */
   label?: string;
   className?: string;
+  /** Product identifier for conversion tracking (e.g. review slug or _id). */
+  productId?: string;
+  /** Affiliate partner for conversion tracking. Defaults to "amazon". */
+  partnerId?: string;
 }
 
 /**
@@ -48,12 +55,25 @@ export function BuyButton({
   size = "md",
   label = "Buy on Amazon",
   className = "",
+  productId,
+  partnerId = "amazon",
 }: BuyButtonProps) {
+  function handleClick() {
+    // Fire the affiliate-click conversion event. No-ops gracefully when
+    // analytics scripts aren't loaded (e.g. consent not granted).
+    trackAffiliateClick({
+      productId: productId ?? url,
+      sourcePageUrl: typeof window !== "undefined" ? window.location.pathname : "",
+      partnerId,
+    });
+  }
+
   return (
     <a
       href={buildAmazonUrl(url, tag)}
       target="_blank"
       rel="nofollow sponsored noopener"
+      onClick={handleClick}
       className={`inline-flex items-center justify-center rounded-lg bg-[#FF9900] font-semibold text-white hover:bg-[#E88B00] transition-colors shadow-sm ${sizeClasses[size]} ${className}`}
     >
       <AmazonGlyph className={glyphSize[size]} />

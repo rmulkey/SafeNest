@@ -16,17 +16,10 @@ vi.mock("@/lib/db/prisma", () => ({
   },
 }));
 
-// Mock Klaviyo
-vi.mock("@/lib/newsletter/klaviyo", () => ({
-  syncSubscriber: vi.fn(),
-}));
-
 import { POST } from "./route";
 import { prisma } from "@/lib/db/prisma";
-import { syncSubscriber } from "@/lib/newsletter/klaviyo";
 
 const mockedPrisma = vi.mocked(prisma);
-const mockedSyncSubscriber = vi.mocked(syncSubscriber);
 
 /**
  * Generates a random valid email address.
@@ -62,15 +55,10 @@ describe("Property 9: Duplicate email subscription prevention", () => {
             id: "sub_1",
             email: email.toLowerCase(),
             ageRange,
-            klaviyoId: "klv_123",
-            syncedAt: new Date(),
+            klaviyoId: null,
+            syncedAt: null,
             createdAt: new Date(),
           });
-
-        mockedSyncSubscriber.mockResolvedValue({
-          success: true,
-          klaviyoId: "klv_123",
-        });
 
         (mockedPrisma.newsletterSubscription.create as ReturnType<typeof vi.fn>).mockImplementation(
           async () => {
@@ -79,8 +67,8 @@ describe("Property 9: Duplicate email subscription prevention", () => {
               id: "sub_1",
               email: email.toLowerCase(),
               ageRange,
-              klaviyoId: "klv_123",
-              syncedAt: new Date(),
+              klaviyoId: null,
+              syncedAt: null,
               createdAt: new Date(),
             };
           }

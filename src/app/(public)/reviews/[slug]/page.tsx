@@ -202,6 +202,7 @@ export default async function ToyReviewPage({ params }: PageProps) {
               tag={link.tag}
               size="lg"
               label="Check Price on Amazon"
+              productId={review.slug?.current ?? review.productName}
             />
           ))}
         </div>
@@ -308,6 +309,7 @@ export default async function ToyReviewPage({ params }: PageProps) {
                 tag={link.tag}
                 size="lg"
                 label={`Check Price on Amazon`}
+                productId={review.slug?.current ?? review.productName}
               />
             ))}
           </div>
