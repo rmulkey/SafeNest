@@ -4,6 +4,6 @@
  * falls back to the production domain.
  */
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://safenest.toys";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://safenesttoys.com";
 
 export const SITE_NAME = "SafeNest Toys";
