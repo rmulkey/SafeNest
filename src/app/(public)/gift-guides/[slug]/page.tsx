@@ -44,6 +44,7 @@ export async function generateMetadata({
       title: `${guide.title} (2026) | SafeNest Toys`,
       description: guide.description,
       url: `${SITE_URL}/gift-guides/${slug}`,
+      useRouteImage: true,
     }),
   };
 }

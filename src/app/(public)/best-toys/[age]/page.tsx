@@ -55,6 +55,7 @@ export async function generateMetadata({
       title,
       description,
       url: `${SITE_URL}/best-toys/${age}`,
+      useRouteImage: true,
     }),
   };
 }

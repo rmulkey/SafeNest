@@ -14,6 +14,13 @@ export interface OpenGraphMetaOptions {
   image?: string;
   imageAlt?: string;
   siteName?: string;
+  /**
+   * When true, omit the explicit `images` field so a co-located file-based
+   * `opengraph-image.tsx` route takes over (Next.js auto-populates og:image
+   * and twitter:image from it). Use this on pages that ship their own
+   * per-route OG image (e.g. gift guides, best-toys age pages).
+   */
+  useRouteImage?: boolean;
 }
 
 const DEFAULT_SITE_NAME = "SafeNest Toys";
@@ -54,7 +61,17 @@ export function generateOpenGraphMeta(
     image = DEFAULT_OG_IMAGE,
     imageAlt = DEFAULT_IMAGE_ALT,
     siteName = DEFAULT_SITE_NAME,
+    useRouteImage = false,
   } = options;
+
+  // When a page provides its own file-based opengraph-image route, omit the
+  // explicit images so Next.js auto-wires og:image/twitter:image from it.
+  if (useRouteImage) {
+    return {
+      openGraph: { title, description, url, type, siteName },
+      twitter: { card: "summary_large_image", title, description },
+    };
+  }
 
   return {
     openGraph: {
