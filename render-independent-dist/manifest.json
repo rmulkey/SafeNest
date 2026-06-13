@@ -3,7 +3,7 @@
   "indexNowKey": "d0d7459d522cb7137ce2f9513ec0b6072076e3732352c802",
   "lastUpdated": "2026-06-12",
   "baseDomain": "onrender.com",
-  "siteCount": 20,
+  "siteCount": 25,
   "sites": [
     {
       "slug": "compact-calm-home",
@@ -143,6 +143,41 @@
       "brand": "Court & Clover",
       "projectName": "courtandclover",
       "baseUrl": "https://courtandclover.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "arvella",
+      "brand": "Arvella",
+      "projectName": "arvella",
+      "baseUrl": "https://arvella.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "kairove",
+      "brand": "Kairove",
+      "projectName": "kairove",
+      "baseUrl": "https://kairove.onrender.com",
+      "productCount": 56
+    },
+    {
+      "slug": "nuvanta",
+      "brand": "Nuvanta",
+      "projectName": "nuvanta",
+      "baseUrl": "https://nuvanta.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "orvyn",
+      "brand": "Orvyn",
+      "projectName": "orvyn",
+      "baseUrl": "https://orvyn.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "maisonvale",
+      "brand": "Maison Vale",
+      "projectName": "maisonvale",
+      "baseUrl": "https://maisonvale.onrender.com",
       "productCount": 60
     }
   ]

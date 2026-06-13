@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://arvella.onrender.com/sitemap.xml

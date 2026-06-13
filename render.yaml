@@ -138,3 +138,38 @@ services:
     buildCommand: echo "Static site already generated"
     staticPublishPath: render-independent-dist/courtandclover
     autoDeployTrigger: commit
+
+  - type: web
+    name: arvella
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/arvella
+    autoDeployTrigger: commit
+
+  - type: web
+    name: kairove
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/kairove
+    autoDeployTrigger: commit
+
+  - type: web
+    name: nuvanta
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/nuvanta
+    autoDeployTrigger: commit
+
+  - type: web
+    name: orvyn
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/orvyn
+    autoDeployTrigger: commit
+
+  - type: web
+    name: maisonvale
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/maisonvale
+    autoDeployTrigger: commit
