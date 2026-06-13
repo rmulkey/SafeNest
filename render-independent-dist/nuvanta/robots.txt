@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://nuvanta.onrender.com/sitemap.xml
+Sitemap: https://nuvanta-hqsd.onrender.com/sitemap.xml

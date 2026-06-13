@@ -1,7 +1,7 @@
 {
   "slug": "orvyn",
   "brand": "Orvyn",
-  "baseUrl": "https://orvyn.onrender.com",
+  "baseUrl": "https://orvyn-gdfi.onrender.com",
   "platform": "Render Static Site Hosting",
   "affiliateTag": "render-sites-20",
   "lastUpdated": "2026-06-12",
@@ -27,15 +27,15 @@
     "phone-loop"
   ],
   "urls": [
-    "https://orvyn.onrender.com/",
-    "https://orvyn.onrender.com/products/",
-    "https://orvyn.onrender.com/top-50/",
-    "https://orvyn.onrender.com/best/orvyn-desk/",
-    "https://orvyn.onrender.com/best/orvyn-light/",
-    "https://orvyn.onrender.com/best/orvyn-phone/",
-    "https://orvyn.onrender.com/affiliate-disclosure/",
-    "https://orvyn.onrender.com/editorial-policy/",
-    "https://orvyn.onrender.com/contact/"
+    "https://orvyn-gdfi.onrender.com/",
+    "https://orvyn-gdfi.onrender.com/products/",
+    "https://orvyn-gdfi.onrender.com/top-50/",
+    "https://orvyn-gdfi.onrender.com/best/orvyn-desk/",
+    "https://orvyn-gdfi.onrender.com/best/orvyn-light/",
+    "https://orvyn-gdfi.onrender.com/best/orvyn-phone/",
+    "https://orvyn-gdfi.onrender.com/affiliate-disclosure/",
+    "https://orvyn-gdfi.onrender.com/editorial-policy/",
+    "https://orvyn-gdfi.onrender.com/contact/"
   ],
   "products": [
     {

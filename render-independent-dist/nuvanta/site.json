@@ -1,7 +1,7 @@
 {
   "slug": "nuvanta",
   "brand": "Nuvanta",
-  "baseUrl": "https://nuvanta.onrender.com",
+  "baseUrl": "https://nuvanta-hqsd.onrender.com",
   "platform": "Render Static Site Hosting",
   "affiliateTag": "render-sites-20",
   "lastUpdated": "2026-06-12",
@@ -23,15 +23,15 @@
     "bike-lane"
   ],
   "urls": [
-    "https://nuvanta.onrender.com/",
-    "https://nuvanta.onrender.com/products/",
-    "https://nuvanta.onrender.com/top-50/",
-    "https://nuvanta.onrender.com/best/nuvanta-walk/",
-    "https://nuvanta.onrender.com/best/nuvanta-train/",
-    "https://nuvanta.onrender.com/best/nuvanta-hydrate/",
-    "https://nuvanta.onrender.com/affiliate-disclosure/",
-    "https://nuvanta.onrender.com/editorial-policy/",
-    "https://nuvanta.onrender.com/contact/"
+    "https://nuvanta-hqsd.onrender.com/",
+    "https://nuvanta-hqsd.onrender.com/products/",
+    "https://nuvanta-hqsd.onrender.com/top-50/",
+    "https://nuvanta-hqsd.onrender.com/best/nuvanta-walk/",
+    "https://nuvanta-hqsd.onrender.com/best/nuvanta-train/",
+    "https://nuvanta-hqsd.onrender.com/best/nuvanta-hydrate/",
+    "https://nuvanta-hqsd.onrender.com/affiliate-disclosure/",
+    "https://nuvanta-hqsd.onrender.com/editorial-policy/",
+    "https://nuvanta-hqsd.onrender.com/contact/"
   ],
   "products": [
     {
