@@ -173,38 +173,3 @@ services:
     buildCommand: echo "Static site already generated"
     staticPublishPath: render-independent-dist/maisonvale
     autoDeployTrigger: commit
-
-  - type: web
-    name: vellumvolt
-    runtime: static
-    buildCommand: echo "Static site already generated"
-    staticPublishPath: render-independent-dist/vellumvolt
-    autoDeployTrigger: commit
-
-  - type: web
-    name: hearthhalo
-    runtime: static
-    buildCommand: echo "Static site already generated"
-    staticPublishPath: render-independent-dist/hearthhalo
-    autoDeployTrigger: commit
-
-  - type: web
-    name: marlowkin
-    runtime: static
-    buildCommand: echo "Static site already generated"
-    staticPublishPath: render-independent-dist/marlowkin
-    autoDeployTrigger: commit
-
-  - type: web
-    name: wilderrue
-    runtime: static
-    buildCommand: echo "Static site already generated"
-    staticPublishPath: render-independent-dist/wilderrue
-    autoDeployTrigger: commit
-
-  - type: web
-    name: figrally
-    runtime: static
-    buildCommand: echo "Static site already generated"
-    staticPublishPath: render-independent-dist/figrally
-    autoDeployTrigger: commit
