@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://figrally.onrender.com/sitemap.xml
+Sitemap: https://fig-rally-0b2yl.kinsta.page/sitemap.xml

@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://hearthhalo.onrender.com/sitemap.xml
+Sitemap: https://hearth-halo-i3neg.kinsta.page/sitemap.xml
