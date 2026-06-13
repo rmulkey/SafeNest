@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://campus-carry.onrender.com/sitemap.xml

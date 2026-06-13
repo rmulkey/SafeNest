@@ -1,0 +1,79 @@
+{
+  "affiliateTag": "render-sites-20",
+  "indexNowKey": "d0d7459d522cb7137ce2f9513ec0b6072076e3732352c802",
+  "lastUpdated": "2026-06-12",
+  "baseDomain": "onrender.com",
+  "siteCount": 10,
+  "sites": [
+    {
+      "slug": "compact-calm-home",
+      "brand": "Compact Calm Home",
+      "projectName": "compact-calm-home",
+      "baseUrl": "https://compact-calm-home.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "hosting-shelf",
+      "brand": "Hosting Shelf",
+      "projectName": "hosting-shelf",
+      "baseUrl": "https://hosting-shelf.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "campus-carry",
+      "brand": "Campus Carry",
+      "projectName": "campus-carry",
+      "baseUrl": "https://campus-carry.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "mirror-routine",
+      "brand": "Mirror Routine",
+      "projectName": "mirror-routine",
+      "baseUrl": "https://mirror-routine.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "yard-and-leaf",
+      "brand": "Yard And Leaf",
+      "projectName": "yard-and-leaf",
+      "baseUrl": "https://yard-and-leaf.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "weekend-motion",
+      "brand": "Weekend Motion",
+      "projectName": "weekend-motion",
+      "baseUrl": "https://weekend-motion.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "road-trail-ready",
+      "brand": "Road Trail Ready",
+      "projectName": "road-trail-ready",
+      "baseUrl": "https://road-trail-ready.onrender.com",
+      "productCount": 56
+    },
+    {
+      "slug": "desk-signal",
+      "brand": "Desk Signal",
+      "projectName": "desk-signal",
+      "baseUrl": "https://desk-signal.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "maker-table",
+      "brand": "Maker Table",
+      "projectName": "maker-table",
+      "baseUrl": "https://maker-table.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "sport-and-play",
+      "brand": "Sport And Play",
+      "projectName": "sport-and-play",
+      "baseUrl": "https://sport-and-play.onrender.com",
+      "productCount": 60
+    }
+  ]
+}

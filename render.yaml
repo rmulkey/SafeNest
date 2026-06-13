@@ -1,0 +1,70 @@
+services:
+  - type: web
+    name: compact-calm-home
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/compact-calm-home
+    autoDeployTrigger: commit
+
+  - type: web
+    name: hosting-shelf
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/hosting-shelf
+    autoDeployTrigger: commit
+
+  - type: web
+    name: campus-carry
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/campus-carry
+    autoDeployTrigger: commit
+
+  - type: web
+    name: mirror-routine
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/mirror-routine
+    autoDeployTrigger: commit
+
+  - type: web
+    name: yard-and-leaf
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/yard-and-leaf
+    autoDeployTrigger: commit
+
+  - type: web
+    name: weekend-motion
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/weekend-motion
+    autoDeployTrigger: commit
+
+  - type: web
+    name: road-trail-ready
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/road-trail-ready
+    autoDeployTrigger: commit
+
+  - type: web
+    name: desk-signal
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/desk-signal
+    autoDeployTrigger: commit
+
+  - type: web
+    name: maker-table
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/maker-table
+    autoDeployTrigger: commit
+
+  - type: web
+    name: sport-and-play
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/sport-and-play
+    autoDeployTrigger: commit

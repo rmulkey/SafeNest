@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mirror-routine.onrender.com/sitemap.xml

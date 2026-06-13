@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hosting-shelf.onrender.com/sitemap.xml

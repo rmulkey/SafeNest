@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yard-and-leaf.onrender.com/sitemap.xml
