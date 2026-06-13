@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lumoradesk.onrender.com/sitemap.xml

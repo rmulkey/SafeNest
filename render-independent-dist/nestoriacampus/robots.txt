@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nestoriacampus.onrender.com/sitemap.xml

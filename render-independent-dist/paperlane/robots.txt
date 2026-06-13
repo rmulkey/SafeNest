@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://paperlane.onrender.com/sitemap.xml

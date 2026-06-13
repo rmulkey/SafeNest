@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rovekind.onrender.com/sitemap.xml

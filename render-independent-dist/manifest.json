@@ -3,7 +3,7 @@
   "indexNowKey": "d0d7459d522cb7137ce2f9513ec0b6072076e3732352c802",
   "lastUpdated": "2026-06-12",
   "baseDomain": "onrender.com",
-  "siteCount": 10,
+  "siteCount": 20,
   "sites": [
     {
       "slug": "compact-calm-home",
@@ -73,6 +73,76 @@
       "brand": "Sport And Play",
       "projectName": "sport-and-play",
       "baseUrl": "https://sport-and-play.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "halorahome",
+      "brand": "Halora Home",
+      "projectName": "halorahome",
+      "baseUrl": "https://halorahome.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "gatherlygoods",
+      "brand": "Gatherly Goods",
+      "projectName": "gatherlygoods",
+      "baseUrl": "https://gatherlygoods.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "nestoriacampus",
+      "brand": "Nestoria Campus",
+      "projectName": "nestoriacampus",
+      "baseUrl": "https://nestoriacampus.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "bellemere",
+      "brand": "Bellemere",
+      "projectName": "bellemere",
+      "baseUrl": "https://bellemere.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "verdalia",
+      "brand": "Verdalia",
+      "projectName": "verdalia",
+      "baseUrl": "https://verdalia.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "dailywell",
+      "brand": "Dailywell",
+      "projectName": "dailywell",
+      "baseUrl": "https://dailywell.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "rovekind",
+      "brand": "RoveKind",
+      "projectName": "rovekind",
+      "baseUrl": "https://rovekind.onrender.com",
+      "productCount": 56
+    },
+    {
+      "slug": "lumoradesk",
+      "brand": "Lumora Desk",
+      "projectName": "lumoradesk",
+      "baseUrl": "https://lumoradesk.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "paperlane",
+      "brand": "Paperlane",
+      "projectName": "paperlane",
+      "baseUrl": "https://paperlane.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "courtandclover",
+      "brand": "Court & Clover",
+      "projectName": "courtandclover",
+      "baseUrl": "https://courtandclover.onrender.com",
       "productCount": 60
     }
   ]

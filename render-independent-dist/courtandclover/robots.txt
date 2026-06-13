@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://courtandclover.onrender.com/sitemap.xml

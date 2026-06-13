@@ -68,3 +68,73 @@ services:
     buildCommand: echo "Static site already generated"
     staticPublishPath: render-independent-dist/sport-and-play
     autoDeployTrigger: commit
+
+  - type: web
+    name: halorahome
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/halorahome
+    autoDeployTrigger: commit
+
+  - type: web
+    name: gatherlygoods
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/gatherlygoods
+    autoDeployTrigger: commit
+
+  - type: web
+    name: nestoriacampus
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/nestoriacampus
+    autoDeployTrigger: commit
+
+  - type: web
+    name: bellemere
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/bellemere
+    autoDeployTrigger: commit
+
+  - type: web
+    name: verdalia
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/verdalia
+    autoDeployTrigger: commit
+
+  - type: web
+    name: dailywell
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/dailywell
+    autoDeployTrigger: commit
+
+  - type: web
+    name: rovekind
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/rovekind
+    autoDeployTrigger: commit
+
+  - type: web
+    name: lumoradesk
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/lumoradesk
+    autoDeployTrigger: commit
+
+  - type: web
+    name: paperlane
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/paperlane
+    autoDeployTrigger: commit
+
+  - type: web
+    name: courtandclover
+    runtime: static
+    buildCommand: echo "Static site already generated"
+    staticPublishPath: render-independent-dist/courtandclover
+    autoDeployTrigger: commit
