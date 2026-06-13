@@ -1,9 +1,9 @@
 {
   "affiliateTag": "render-sites-20",
   "indexNowKey": "d0d7459d522cb7137ce2f9513ec0b6072076e3732352c802",
-  "lastUpdated": "2026-06-12",
+  "lastUpdated": "2026-06-13",
   "baseDomain": "onrender.com",
-  "siteCount": 25,
+  "siteCount": 30,
   "sites": [
     {
       "slug": "compact-calm-home",
@@ -178,6 +178,41 @@
       "brand": "Maison Vale",
       "projectName": "maisonvale",
       "baseUrl": "https://maisonvale.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "vellumvolt",
+      "brand": "Vellum & Volt",
+      "projectName": "vellumvolt",
+      "baseUrl": "https://vellumvolt.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "hearthhalo",
+      "brand": "Hearth & Halo",
+      "projectName": "hearthhalo",
+      "baseUrl": "https://hearthhalo.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "marlowkin",
+      "brand": "Marlow Kin",
+      "projectName": "marlowkin",
+      "baseUrl": "https://marlowkin.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "wilderrue",
+      "brand": "Wilder Rue",
+      "projectName": "wilderrue",
+      "baseUrl": "https://wilderrue.onrender.com",
+      "productCount": 60
+    },
+    {
+      "slug": "figrally",
+      "brand": "Fig & Rally",
+      "projectName": "figrally",
+      "baseUrl": "https://figrally.onrender.com",
       "productCount": 60
     }
   ]

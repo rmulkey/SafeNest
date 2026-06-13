@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vellumvolt.onrender.com/sitemap.xml
