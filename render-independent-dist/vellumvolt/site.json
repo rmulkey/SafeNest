@@ -1,10 +1,10 @@
 {
   "slug": "vellumvolt",
   "brand": "Vellum & Volt",
-  "baseUrl": "https://vellum-volt-mk14n.kinsta.page",
+  "baseUrl": "https://vellumvolt.onrender.com",
   "platform": "Render Static Site Hosting",
   "affiliateTag": "render-sites-20",
-  "lastUpdated": "2026-06-13",
+  "lastUpdated": "2026-06-23",
   "productCount": 60,
   "monetizationSurface": [
     {
@@ -27,82 +27,215 @@
     "bright-nest-tech"
   ],
   "urls": [
-    "https://vellum-volt-mk14n.kinsta.page/",
-    "https://vellum-volt-mk14n.kinsta.page/products/",
-    "https://vellum-volt-mk14n.kinsta.page/top-50/",
-    "https://vellum-volt-mk14n.kinsta.page/best/vellumvolt-paper/",
-    "https://vellum-volt-mk14n.kinsta.page/best/vellumvolt-light/",
-    "https://vellum-volt-mk14n.kinsta.page/best/vellumvolt-powered-desk/",
-    "https://vellum-volt-mk14n.kinsta.page/affiliate-disclosure/",
-    "https://vellum-volt-mk14n.kinsta.page/editorial-policy/",
-    "https://vellum-volt-mk14n.kinsta.page/contact/"
+    "https://vellumvolt.onrender.com/",
+    "https://vellumvolt.onrender.com/products/",
+    "https://vellumvolt.onrender.com/top-50/",
+    "https://vellumvolt.onrender.com/best/vellumvolt-paper/",
+    "https://vellumvolt.onrender.com/best/vellumvolt-light/",
+    "https://vellumvolt.onrender.com/best/vellumvolt-powered-desk/",
+    "https://vellumvolt.onrender.com/affiliate-disclosure/",
+    "https://vellumvolt.onrender.com/editorial-policy/",
+    "https://vellumvolt.onrender.com/contact/",
+    "https://vellumvolt.onrender.com/prime-day/"
   ],
   "products": [
     {
-      "asin": "B0D5HFPCF1",
-      "source": "paper-ritual",
-      "name": "RETTACY Dotted Journal Notebook, 256 Pages, A5 Medium Size (5.7'' × 8.3''), Leather Hardcover",
-      "category": "Journals",
-      "description": "A fresh notebook makes starting the ritual feel easier before the first page even happens.",
-      "bestFor": "Bullet journaling, daily pages, and habit tracking",
-      "image": "/images/paper-ritual/rettacy-dotted-journal-notebook-256-pages-a5-medium-size-leather-hardcov.jpg",
-      "imageAlt": "RETTACY Dotted Journal Notebook, 256 Pages, A5 Medium Size (5.7'' × 8.3''), Leather Hardcover",
-      "url": "https://www.amazon.com/dp/B0D5HFPCF1?tag=render-sites-20"
+      "asin": "B08923SXXP",
+      "source": "study-glow",
+      "name": "LED Desk Lamp with USB Ports,Touch Desk Lamps for Home Office with 5 Color Modes,3 Brightness Desk Light with Small Night Light,Reading Lam...",
+      "category": "Lighting",
+      "description": "A practical first-click pick for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61po0IyEmOL._AC_SL1500_.jpg",
+      "imageAlt": "LED Desk Lamp with USB Ports,Touch Desk Lamps for Home Office with 5 Color Modes,3 Brightness Desk Light with Small Night Light,Reading Lam...",
+      "url": "https://www.amazon.com/dp/B08923SXXP?tag=render-sites-20"
     },
     {
-      "asin": "B083J6XQCL",
-      "source": "paper-ritual",
-      "name": "RETTACY Dotted Journal Notebook, 2-Pack, 160 Numbered Pages per Pack",
-      "category": "Journals",
-      "description": "A fresh notebook makes starting the ritual feel easier before the first page even happens.",
-      "bestFor": "Bullet journaling, daily pages, and habit tracking",
-      "image": "/images/paper-ritual/rettacy-dotted-journal-notebook-2-pack-160-numbered-pages-per-pack-a5-me.jpg",
-      "imageAlt": "RETTACY Dotted Journal Notebook, 2-Pack, 160 Numbered Pages per Pack",
-      "url": "https://www.amazon.com/dp/B083J6XQCL?tag=render-sites-20"
+      "asin": "B0CNZS9RRB",
+      "source": "study-glow",
+      "name": "R RUCKERCO Led Desk Lamp Dimmable Desk Light Reading Lamp 3 Lighting Modes, Eye Protection Accessories, Study Desk Lamp Equipped USB Charge...",
+      "category": "Lighting",
+      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71fJyc-FZ3L._AC_SL1500_.jpg",
+      "imageAlt": "R RUCKERCO Led Desk Lamp Dimmable Desk Light Reading Lamp 3 Lighting Modes, Eye Protection Accessories, Study Desk Lamp Equipped USB Charge...",
+      "url": "https://www.amazon.com/dp/B0CNZS9RRB?tag=render-sites-20"
     },
     {
-      "asin": "B0BKMY6G53",
-      "source": "paper-ritual",
-      "name": "LEUCHTTURM1917 - 120G Special Edition - Medium A5 Dotted Hardcover Notebook (Rising Sun)",
-      "category": "Journals",
-      "description": "A fresh notebook makes starting the ritual feel easier before the first page even happens.",
-      "bestFor": "Bullet journaling, daily pages, and habit tracking",
-      "image": "/images/paper-ritual/leuchtturm1917-120g-special-edition-medium-a5-dotted-hardcover-notebook-.jpg",
-      "imageAlt": "LEUCHTTURM1917 - 120G Special Edition - Medium A5 Dotted Hardcover Notebook (Rising Sun)",
-      "url": "https://www.amazon.com/dp/B0BKMY6G53?tag=render-sites-20"
+      "asin": "B0DXDTF512",
+      "source": "desk-combo",
+      "name": "Ledagic Led Light Bar with Music Sync, Color Changing TV Backlight App & Remote Control, IC+RGB & W Smart RGB Light Bar, USB Powered Led Li...",
+      "category": "Lighting",
+      "description": "A solid shortlist item for gaming desk shoppers who want cleaner cables, better ergonomics, more useful lighting, or a setup that feels less thrown together.",
+      "bestFor": "Gaming Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/51iuieCuxSL._AC_SL1500_.jpg",
+      "imageAlt": "Ledagic Led Light Bar with Music Sync, Color Changing TV Backlight App & Remote Control, IC+RGB & W Smart RGB Light Bar, USB Powered Led Li...",
+      "url": "https://www.amazon.com/dp/B0DXDTF512?tag=render-sites-20"
     },
     {
-      "asin": "B003EVHV6S",
-      "source": "paper-ritual",
-      "name": "LEUCHTTURM1917 - Notebook Softcover Medium A5-123 Numbered Pages",
-      "category": "Journals",
-      "description": "A fresh notebook makes starting the ritual feel easier before the first page even happens.",
-      "bestFor": "Bullet journaling, daily pages, and habit tracking",
-      "image": "/images/paper-ritual/leuchtturm1917-notebook-softcover-medium-a5-123-numbered-pages-for-writi.jpg",
-      "imageAlt": "LEUCHTTURM1917 - Notebook Softcover Medium A5-123 Numbered Pages",
-      "url": "https://www.amazon.com/dp/B003EVHV6S?tag=render-sites-20"
+      "asin": "B0CRY97FPB",
+      "source": "study-glow",
+      "name": "One Beat Small LED Desk Lamp Power Strip 5ft Extension Cord with 3 Outlets 4 USB Ports(2 USB C), 4 Modes, 5 Level Touch Lamp Study Reading...",
+      "category": "Lighting",
+      "description": "A strong add-to-cart candidate for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61ndeyWcaHL._AC_SL1500_.jpg",
+      "imageAlt": "One Beat Small LED Desk Lamp Power Strip 5ft Extension Cord with 3 Outlets 4 USB Ports(2 USB C), 4 Modes, 5 Level Touch Lamp Study Reading...",
+      "url": "https://www.amazon.com/dp/B0CRY97FPB?tag=render-sites-20"
     },
     {
-      "asin": "B002CVAU1Y",
-      "source": "paper-ritual",
-      "name": "LEUCHTTURM1917 - Notebook Hardcover Medium A5-251 Numbered Pages",
-      "category": "Journals",
-      "description": "A fresh notebook makes starting the ritual feel easier before the first page even happens.",
-      "bestFor": "Bullet journaling, daily pages, and habit tracking",
-      "image": "/images/paper-ritual/leuchtturm1917-notebook-hardcover-medium-a5-251-numbered-pages-for-writi.jpg",
-      "imageAlt": "LEUCHTTURM1917 - Notebook Hardcover Medium A5-251 Numbered Pages",
-      "url": "https://www.amazon.com/dp/B002CVAU1Y?tag=render-sites-20"
+      "asin": "B0D1QY8PL6",
+      "source": "study-glow",
+      "name": "SUPERDANNY Eye-Caring LED Desk Lamp 360° Flexible Gooseneck Work Lamp with Desk Side Clamp Touch Control 3 Light Colors Smooth Dimming Task...",
+      "category": "Lighting",
+      "description": "A solid shortlist item for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71YudVkqw1L._AC_SL1500_.jpg",
+      "imageAlt": "SUPERDANNY Eye-Caring LED Desk Lamp 360° Flexible Gooseneck Work Lamp with Desk Side Clamp Touch Control 3 Light Colors Smooth Dimming Task...",
+      "url": "https://www.amazon.com/dp/B0D1QY8PL6?tag=render-sites-20"
     },
     {
-      "asin": "B0BZVFXQYV",
-      "source": "paper-ritual",
-      "name": "Amazon Basics Retractable Gel Pens, Fine Point 0.7mm, Smooth Writing, Assorted Colors, 12-Pack",
-      "category": "Pens",
-      "description": "Adds color and momentum without making the desk feel like a school-supply explosion.",
-      "bestFor": "Lists, headers, journal spreads, and notes",
-      "image": "/images/paper-ritual/amazon-basics-retractable-gel-pens-fine-point-0-7mm-smooth-writing-assor.jpg",
-      "imageAlt": "Amazon Basics Retractable Gel Pens, Fine Point 0.7mm, Smooth Writing, Assorted Colors, 12-Pack",
-      "url": "https://www.amazon.com/dp/B0BZVFXQYV?tag=render-sites-20"
+      "asin": "B0DB8F7GDN",
+      "source": "study-glow",
+      "name": "OPNICE Desk Organizer and Accessories, 2-Tier Computer Monitor Stand Riser with Drawer and 2 Pen Holders, Laptop Stand, Office Desk Accesso...",
+      "category": "Storage",
+      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81MeUftFm8L._AC_SL1500_.jpg",
+      "imageAlt": "OPNICE Desk Organizer and Accessories, 2-Tier Computer Monitor Stand Riser with Drawer and 2 Pen Holders, Laptop Stand, Office Desk Accesso...",
+      "url": "https://www.amazon.com/dp/B0DB8F7GDN?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BRMX3SWH",
+      "source": "study-glow",
+      "name": "MDOZQ Office Desk Accessories 2pcs Computer Monitor Memo Board Message Board Supplies for Women Men Sticky Note Holder Home Desktop Decor",
+      "category": "Starter Kit",
+      "description": "A strong add-to-cart candidate for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61yjorGIhAL._AC_SL1500_.jpg",
+      "imageAlt": "MDOZQ Office Desk Accessories 2pcs Computer Monitor Memo Board Message Board Supplies for Women Men Sticky Note Holder Home Desktop Decor",
+      "url": "https://www.amazon.com/dp/B0BRMX3SWH?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BYDGF8DT",
+      "source": "study-glow",
+      "name": "OPNICE Desk Organizer, 4-Tier Desktop File Organizer with Drawer and 2 Pen Holders, Office Desk Accessories, File Sorters, Workspace Organi...",
+      "category": "Storage",
+      "description": "A clean routine helper for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81CYxEUhq-L._AC_SL1500_.jpg",
+      "imageAlt": "OPNICE Desk Organizer, 4-Tier Desktop File Organizer with Drawer and 2 Pen Holders, Office Desk Accessories, File Sorters, Workspace Organi...",
+      "url": "https://www.amazon.com/dp/B0BYDGF8DT?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BXP2ZTWB",
+      "source": "desk-combo",
+      "name": "Jgstkcity Desk Clamp Power Strip USB C,40W Total Fast Charging Station,4 PD 20W USB C Ports,Desk Edge Mount Surge Protector,5 Outlets,Fit 1...",
+      "category": "Lighting",
+      "description": "A practical first-click pick for gaming desk shoppers who want cleaner cables, better ergonomics, more useful lighting, or a setup that feels less thrown together.",
+      "bestFor": "Gaming Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/51LfO2+Kn9L._AC_SL1500_.jpg",
+      "imageAlt": "Jgstkcity Desk Clamp Power Strip USB C,40W Total Fast Charging Station,4 PD 20W USB C Ports,Desk Edge Mount Surge Protector,5 Outlets,Fit 1...",
+      "url": "https://www.amazon.com/dp/B0BXP2ZTWB?tag=render-sites-20"
+    },
+    {
+      "asin": "B07L4BGL3D",
+      "source": "desk-combo",
+      "name": "BladeHawks Extra Large RGB Gaming Mouse Pad-14 Light Modes, Extended Soft LED Mouse Pad, Anti-Slip Rubber Base, Computer Keyboard Mousepad...",
+      "category": "Lighting",
+      "description": "A clean routine helper for gaming desk shoppers who want cleaner cables, better ergonomics, more useful lighting, or a setup that feels less thrown together.",
+      "bestFor": "Gaming Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/51UsbIj9HAL._AC_SL1500_.jpg",
+      "imageAlt": "BladeHawks Extra Large RGB Gaming Mouse Pad-14 Light Modes, Extended Soft LED Mouse Pad, Anti-Slip Rubber Base, Computer Keyboard Mousepad...",
+      "url": "https://www.amazon.com/dp/B07L4BGL3D?tag=render-sites-20"
+    },
+    {
+      "asin": "B0FFGZH2S2",
+      "source": "desk-combo",
+      "name": "Anker Nano Power Strip, Desk Clamp with 1500J Surge Protector, 5ft Extension Cord, 70W Max Gaming Desk Accessories, 6 AC, 2 USB A, 2 USB C,...",
+      "category": "Lighting",
+      "description": "A useful little upgrade for gaming desk shoppers who want cleaner cables, better ergonomics, more useful lighting, or a setup that feels less thrown together.",
+      "bestFor": "Gaming Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71cQC41LIfL._AC_SL1500_.jpg",
+      "imageAlt": "Anker Nano Power Strip, Desk Clamp with 1500J Surge Protector, 5ft Extension Cord, 70W Max Gaming Desk Accessories, 6 AC, 2 USB A, 2 USB C,...",
+      "url": "https://www.amazon.com/dp/B0FFGZH2S2?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CCP3X135",
+      "source": "desk-combo",
+      "name": "Digital Alarm Clock, Large LED Digital Clock for Bedrooms with 10 Color Changing Night Light, Adjustable Brightness, USB Charging Port, Bed...",
+      "category": "Lighting",
+      "description": "A solid shortlist item for gaming desk shoppers who want cleaner cables, better ergonomics, more useful lighting, or a setup that feels less thrown together.",
+      "bestFor": "Gaming Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71kpwUbmSNL._AC_SL1500_.jpg",
+      "imageAlt": "Digital Alarm Clock, Large LED Digital Clock for Bedrooms with 10 Color Changing Night Light, Adjustable Brightness, USB Charging Port, Bed...",
+      "url": "https://www.amazon.com/dp/B0CCP3X135?tag=render-sites-20"
+    },
+    {
+      "asin": "B09T92F9Z8",
+      "source": "desk-combo",
+      "name": "MATICOD LED Lights for TV Led Backlight, 9.84ft RGB Led Strip Lights USB TV Lights Behind 32-43in, APP Remote Control Music Sync TV Led Lig...",
+      "category": "Lighting",
+      "description": "A strong add-to-cart candidate for gaming desk shoppers who want cleaner cables, better ergonomics, more useful lighting, or a setup that feels less thrown together.",
+      "bestFor": "Gaming Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71T14VfXezL._AC_SL1500_.jpg",
+      "imageAlt": "MATICOD LED Lights for TV Led Backlight, 9.84ft RGB Led Strip Lights USB TV Lights Behind 32-43in, APP Remote Control Music Sync TV Led Lig...",
+      "url": "https://www.amazon.com/dp/B09T92F9Z8?tag=render-sites-20"
+    },
+    {
+      "asin": "B071ZG9GXH",
+      "source": "desk-combo",
+      "name": "cozoo RGB Headphone Stand with Charger 3 USB Ports and 2 AC Outlets,2 USB-A 1 Type C,Desk Gaming Headset Holder with 9 Light Modes,PC Gamin...",
+      "category": "Lighting",
+      "description": "A strong add-to-cart candidate for gaming desk shoppers who want cleaner cables, better ergonomics, more useful lighting, or a setup that feels less thrown together.",
+      "bestFor": "Gaming Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71FZgj8CRfL._AC_SL1500_.jpg",
+      "imageAlt": "cozoo RGB Headphone Stand with Charger 3 USB Ports and 2 AC Outlets,2 USB-A 1 Type C,Desk Gaming Headset Holder with 9 Light Modes,PC Gamin...",
+      "url": "https://www.amazon.com/dp/B071ZG9GXH?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CYLL8Y89",
+      "source": "desk-combo",
+      "name": "Anker Prime Charging Station, 250W 6-Port GaN USB C Charger, 2.26\" LCD Smart Display Control, Compatible with iPhone, Galaxy, MacBook, Dell...",
+      "category": "Gaming Desk",
+      "description": "A solid shortlist item for gaming desk shoppers who want cleaner cables, better ergonomics, more useful lighting, or a setup that feels less thrown together.",
+      "bestFor": "Gaming Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71RntM707hL._AC_SL1500_.jpg",
+      "imageAlt": "Anker Prime Charging Station, 250W 6-Port GaN USB C Charger, 2.26\" LCD Smart Display Control, Compatible with iPhone, Galaxy, MacBook, Dell...",
+      "url": "https://www.amazon.com/dp/B0CYLL8Y89?tag=render-sites-20"
+    },
+    {
+      "asin": "B0FMGP1P6W",
+      "source": "bright-nest-tech",
+      "name": "Philips Hue Essential Smart LED A19 Bulb, White and Color Ambiance, 4-Pack",
+      "category": "Smart Lighting",
+      "description": "A polished lighting pick for shoppers who want a more established smart lighting ecosystem.",
+      "bestFor": "Practical smart-home upgrades",
+      "image": "/images/bright-nest-tech/philips-hue-essential-a19-4-pack.jpg",
+      "imageAlt": "Philips Hue Essential Smart LED A19 Bulb, White and Color Ambiance, 4-Pack",
+      "url": "https://www.amazon.com/dp/B0FMGP1P6W?tag=render-sites-20"
+    },
+    {
+      "asin": "B099WTN2TR",
+      "source": "bright-nest-tech",
+      "name": "Govee RGBIC Floor Lamp Basic, Matter-Compatible",
+      "category": "Smart Lighting",
+      "description": "A clean statement lamp for renters who want big ambience without installing anything.",
+      "bestFor": "Practical smart-home upgrades",
+      "image": "/images/bright-nest-tech/govee-rgbic-floor-lamp.jpg",
+      "imageAlt": "Govee RGBIC Floor Lamp Basic, Matter-Compatible",
+      "url": "https://www.amazon.com/dp/B099WTN2TR?tag=render-sites-20"
+    },
+    {
+      "asin": "B08YMBQJ49",
+      "source": "bright-nest-tech",
+      "name": "Ring Alarm 14-Piece Kit, Wireless Smart Home Security System",
+      "category": "Sensors and Systems",
+      "description": "A broader Ring starter kit for households that want sensors and app alerts in one ecosystem.",
+      "bestFor": "Practical smart-home upgrades",
+      "image": "/images/bright-nest-tech/ring-alarm-14-piece-kit.jpg",
+      "imageAlt": "Ring Alarm 14-Piece Kit, Wireless Smart Home Security System",
+      "url": "https://www.amazon.com/dp/B08YMBQJ49?tag=render-sites-20"
     },
     {
       "asin": "B0CXDJMCYK",
@@ -147,6 +280,259 @@
       "image": "/images/paper-ritual/colored-gel-ink-pens-0-7mm-8-colors-retractable-quick-dry-colorful-ink-p.jpg",
       "imageAlt": "Colored Gel Ink Pens 0.7mm 8 Colors Retractable Quick Dry Colorful Ink Pen Medium Point Smooth W",
       "url": "https://www.amazon.com/dp/B0GJYHL7FN?tag=render-sites-20"
+    },
+    {
+      "asin": "B0FR9VF38V",
+      "source": "paper-ritual",
+      "name": "Beautiful Stationery Set with Envelopes - Premium-Quality",
+      "category": "Letters",
+      "description": "Makes sending a note feel charming instead of like hunting for random paper in a drawer.",
+      "bestFor": "Pen-pal mail, thank-you notes, and small gifts",
+      "image": "/images/paper-ritual/beautiful-stationery-set-with-envelopes-premium-quality-no-bleed-lined-l.jpg",
+      "imageAlt": "Beautiful Stationery Set with Envelopes - Premium-Quality",
+      "url": "https://www.amazon.com/dp/B0FR9VF38V?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CT94BJSV",
+      "source": "paper-ritual",
+      "name": "Mr. Pen- Stationery Writing Paper Set with Envelopes, 8.18\" x 5.5\"",
+      "category": "Letters",
+      "description": "Makes sending a note feel charming instead of like hunting for random paper in a drawer.",
+      "bestFor": "Pen-pal mail, thank-you notes, and small gifts",
+      "image": "/images/paper-ritual/mr-pen-stationery-writing-paper-set-with-envelopes-8-18-x-5-5-30-letter-.jpg",
+      "imageAlt": "Mr. Pen- Stationery Writing Paper Set with Envelopes, 8.18\" x 5.5\"",
+      "url": "https://www.amazon.com/dp/B0CT94BJSV?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DZGTPY2N",
+      "source": "paper-ritual",
+      "name": "Mr. Pen- Stationery Writing Paper Set with Envelopes, 5.2\" x 7.3\"",
+      "category": "Letters",
+      "description": "Makes sending a note feel charming instead of like hunting for random paper in a drawer.",
+      "bestFor": "Pen-pal mail, thank-you notes, and small gifts",
+      "image": "/images/paper-ritual/mr-pen-stationery-writing-paper-set-with-envelopes-5-2-x-7-3-60-letter-s.jpg",
+      "imageAlt": "Mr. Pen- Stationery Writing Paper Set with Envelopes, 5.2\" x 7.3\"",
+      "url": "https://www.amazon.com/dp/B0DZGTPY2N?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BWTT3WK1",
+      "source": "study-glow",
+      "name": "gianotter Desk Organizers and Accessories with File Holder, 4-Tier Desk Accessories & Workspace Organizers with Drawer and 2 Pen Holder, Pa...",
+      "category": "Storage",
+      "description": "A practical first-click pick for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81iE5xG2+pL._AC_SL1500_.jpg",
+      "imageAlt": "gianotter Desk Organizers and Accessories with File Holder, 4-Tier Desk Accessories & Workspace Organizers with Drawer and 2 Pen Holder, Pa...",
+      "url": "https://www.amazon.com/dp/B0BWTT3WK1?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CSFH1R36",
+      "source": "study-glow",
+      "name": "gianotter Desk Organizers and Accessories, Monitor Stand with Drawer and 2 Pen Holder, Desktop Organizer Suitable for Offices and Dormitori...",
+      "category": "Storage",
+      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/711rO4WnvOL._AC_SL1500_.jpg",
+      "imageAlt": "gianotter Desk Organizers and Accessories, Monitor Stand with Drawer and 2 Pen Holder, Desktop Organizer Suitable for Offices and Dormitori...",
+      "url": "https://www.amazon.com/dp/B0CSFH1R36?tag=render-sites-20"
+    },
+    {
+      "asin": "B0C9ZHWC9K",
+      "source": "study-glow",
+      "name": "SKYDUE 360 Rotating Plastic Desk Pen Organizer with 5 Slots, Dual-Purpose Art Supply Pencil Cup for Office, School, Home",
+      "category": "Storage",
+      "description": "A solid shortlist item for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61yhHuVQp4L._AC_SL1500_.jpg",
+      "imageAlt": "SKYDUE 360 Rotating Plastic Desk Pen Organizer with 5 Slots, Dual-Purpose Art Supply Pencil Cup for Office, School, Home",
+      "url": "https://www.amazon.com/dp/B0C9ZHWC9K?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CGT9MQGP",
+      "source": "study-glow",
+      "name": "YSAGi Leather Desk Protector, Office Mat, Large Mouse Mat, Non-Slip PU Leather Blotter, Laptop Pad, Waterproof Writing Pad for Office and H...",
+      "category": "Study Desk",
+      "description": "A practical first-click pick for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61jQecz8NpL._AC_SL1500_.jpg",
+      "imageAlt": "YSAGi Leather Desk Protector, Office Mat, Large Mouse Mat, Non-Slip PU Leather Blotter, Laptop Pad, Waterproof Writing Pad for Office and H...",
+      "url": "https://www.amazon.com/dp/B0CGT9MQGP?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DCVVZ6CT",
+      "source": "study-glow",
+      "name": "MOSISO Wrist Rest Support for Mouse Pad&Keyboard Set, Circle Curved Ergonomic Mousepad&Coaster Non-Slip Base Home/Office Pain Relief&Easy T...",
+      "category": "Starter Kit",
+      "description": "A clean routine helper for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/515G2Wi323L._AC_SL1500_.jpg",
+      "imageAlt": "MOSISO Wrist Rest Support for Mouse Pad&Keyboard Set, Circle Curved Ergonomic Mousepad&Coaster Non-Slip Base Home/Office Pain Relief&Easy T...",
+      "url": "https://www.amazon.com/dp/B0DCVVZ6CT?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DCK9ZCDF",
+      "source": "study-glow",
+      "name": "TROND Desk Clamp Power Strip USB C PD 20W- Surge Protector with 4 AC Outlets 4 USB Ports, Flat Plug 6ft Extension Cord, 1700J, ETL Listed,...",
+      "category": "Lighting",
+      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61FSg-yMU2L._AC_SL1500_.jpg",
+      "imageAlt": "TROND Desk Clamp Power Strip USB C PD 20W- Surge Protector with 4 AC Outlets 4 USB Ports, Flat Plug 6ft Extension Cord, 1700J, ETL Listed,...",
+      "url": "https://www.amazon.com/dp/B0DCK9ZCDF?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DHXDDQK3",
+      "source": "study-glow",
+      "name": "SKYDUE Pink Desk Accessories 10Pcs, Rotating Pen Holder for Desk, Stapler, Staple Remover, Tape Dispenser,2pcs Tape Refills, Binder Paper C...",
+      "category": "Starter Kit",
+      "description": "A clean routine helper for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71lRLSlvgOL._AC_SL1500_.jpg",
+      "imageAlt": "SKYDUE Pink Desk Accessories 10Pcs, Rotating Pen Holder for Desk, Stapler, Staple Remover, Tape Dispenser,2pcs Tape Refills, Binder Paper C...",
+      "url": "https://www.amazon.com/dp/B0DHXDDQK3?tag=render-sites-20"
+    },
+    {
+      "asin": "B0F228XCZD",
+      "source": "study-glow",
+      "name": "LXEVIHK 21Pcs Pink Desk Organizers and Accessories With Mesh Desk Organizer and 360°Rotating Pen Holder and a Lot of Office Pink Office Sup...",
+      "category": "Storage",
+      "description": "A strong add-to-cart candidate for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81oRpDVr3zL._AC_SL1500_.jpg",
+      "imageAlt": "LXEVIHK 21Pcs Pink Desk Organizers and Accessories With Mesh Desk Organizer and 360°Rotating Pen Holder and a Lot of Office Pink Office Sup...",
+      "url": "https://www.amazon.com/dp/B0F228XCZD?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DD7BF3XG",
+      "source": "study-glow",
+      "name": "Magnetic Cable Clips, Adjustable Cord Holder Management, Adhesive Wire Keeper Organizer for Home Office Desk Phone PC Car Wall Desktop Nigh...",
+      "category": "Storage",
+      "description": "A solid shortlist item for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71J9ySQH7UL._AC_SL1500_.jpg",
+      "imageAlt": "Magnetic Cable Clips, Adjustable Cord Holder Management, Adhesive Wire Keeper Organizer for Home Office Desk Phone PC Car Wall Desktop Nigh...",
+      "url": "https://www.amazon.com/dp/B0DD7BF3XG?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BZP1F6J5",
+      "source": "study-glow",
+      "name": "Der Rose Set of 2 Succulents Plants Artificial Mini Fake Succulents Plants Graduation Gifts Office Desk Accessories for Women Pink Home Van...",
+      "category": "Starter Kit",
+      "description": "A practical first-click pick for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81RwHqGeIEL._AC_SL1500_.jpg",
+      "imageAlt": "Der Rose Set of 2 Succulents Plants Artificial Mini Fake Succulents Plants Graduation Gifts Office Desk Accessories for Women Pink Home Van...",
+      "url": "https://www.amazon.com/dp/B0BZP1F6J5?tag=render-sites-20"
+    },
+    {
+      "asin": "B0GTRLDQ9G",
+      "source": "desk-combo",
+      "name": "Gel Keyboard and Mouse Wrist Rest Set, Ergonomic Computer Keyboard Wrist Pain Relief Wrist Support Pad for Office School Home Laptop（White）",
+      "category": "Starter Kit",
+      "description": "A strong add-to-cart candidate for gaming desk shoppers who want cleaner cables, better ergonomics, more useful lighting, or a setup that feels less thrown together.",
+      "bestFor": "Gaming Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61Of4eV384L._AC_SL1500_.jpg",
+      "imageAlt": "Gel Keyboard and Mouse Wrist Rest Set, Ergonomic Computer Keyboard Wrist Pain Relief Wrist Support Pad for Office School Home Laptop（White）",
+      "url": "https://www.amazon.com/dp/B0GTRLDQ9G?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BYZG2YBY",
+      "source": "desk-combo",
+      "name": "Upgraded Large Desk Cup Holder Clamp, OOKUU Anti-Spill Table Cup Holder, Metal Office & PC Gaming Desk Accessories, Compatible with Univers...",
+      "category": "Lighting",
+      "description": "A solid shortlist item for gaming desk shoppers who want cleaner cables, better ergonomics, more useful lighting, or a setup that feels less thrown together.",
+      "bestFor": "Gaming Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61JPPHfGaVL._AC_SL1500_.jpg",
+      "imageAlt": "Upgraded Large Desk Cup Holder Clamp, OOKUU Anti-Spill Table Cup Holder, Metal Office & PC Gaming Desk Accessories, Compatible with Univers...",
+      "url": "https://www.amazon.com/dp/B0BYZG2YBY?tag=render-sites-20"
+    },
+    {
+      "asin": "B096WZXKZP",
+      "source": "desk-combo",
+      "name": "Govee Smart LED Light Bars, Work with Alexa and Google Assistant, RGBICWW WiFi TV Backlights with Scene and Music Modes for Gaming, PC, Liv...",
+      "category": "Lighting",
+      "description": "A useful little upgrade for gaming desk shoppers who want cleaner cables, better ergonomics, more useful lighting, or a setup that feels less thrown together.",
+      "bestFor": "Gaming Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71gYPiuGlJL._AC_SL1500_.jpg",
+      "imageAlt": "Govee Smart LED Light Bars, Work with Alexa and Google Assistant, RGBICWW WiFi TV Backlights with Scene and Music Modes for Gaming, PC, Liv...",
+      "url": "https://www.amazon.com/dp/B096WZXKZP?tag=render-sites-20"
+    },
+    {
+      "asin": "B0B6CQ2LQ2",
+      "source": "desk-combo",
+      "name": "Govee RGBIC Gaming Light Bars H6047 with Smart Controller, Wi-Fi Smart LED Gaming Lights with Music Modes and 60+ Scene Modes Built, Works...",
+      "category": "Lighting",
+      "description": "A practical first-click pick for gaming desk shoppers who want cleaner cables, better ergonomics, more useful lighting, or a setup that feels less thrown together.",
+      "bestFor": "Gaming Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61PZawwCWwL._AC_SL1500_.jpg",
+      "imageAlt": "Govee RGBIC Gaming Light Bars H6047 with Smart Controller, Wi-Fi Smart LED Gaming Lights with Music Modes and 60+ Scene Modes Built, Works...",
+      "url": "https://www.amazon.com/dp/B0B6CQ2LQ2?tag=render-sites-20"
+    },
+    {
+      "asin": "B08731J1L4",
+      "source": "bright-nest-tech",
+      "name": "Govee Smart Plug, Wi-Fi Outlet, 4 Pack",
+      "category": "Plugs",
+      "description": "A smart plug set that pairs nicely with Govee lighting if you want one app family.",
+      "bestFor": "Practical smart-home upgrades",
+      "image": "/images/bright-nest-tech/govee-smart-plug-4-pack.jpg",
+      "imageAlt": "Govee Smart Plug, Wi-Fi Outlet, 4 Pack",
+      "url": "https://www.amazon.com/dp/B08731J1L4?tag=render-sites-20"
+    },
+    {
+      "asin": "B09B7NQT2K",
+      "source": "bright-nest-tech",
+      "name": "Govee Smart Light Bulbs, Color Changing, A19, 4 Pack",
+      "category": "Smart Lighting",
+      "description": "A fun upgrade for color scenes, evening routines, and rooms that need more personality.",
+      "bestFor": "Practical smart-home upgrades",
+      "image": "/images/bright-nest-tech/govee-smart-light-bulbs-4-pack.jpg",
+      "imageAlt": "Govee Smart Light Bulbs, Color Changing, A19, 4 Pack",
+      "url": "https://www.amazon.com/dp/B09B7NQT2K?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CG5VDC8P",
+      "source": "bright-nest-tech",
+      "name": "Amazon Basics Smart A19 LED Light Bulb, Color Changing",
+      "category": "Smart Lighting",
+      "description": "A low-friction single bulb for trying smart lighting before committing to a full system.",
+      "bestFor": "Practical smart-home upgrades",
+      "image": "/images/bright-nest-tech/amazon-basics-smart-a19-bulb.jpg",
+      "imageAlt": "Amazon Basics Smart A19 LED Light Bulb, Color Changing",
+      "url": "https://www.amazon.com/dp/B0CG5VDC8P?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BC8N7QXN",
+      "source": "bright-nest-tech",
+      "name": "Linkind Smart Light Bulbs, Color Changing, A19 E26, 4 Pack",
+      "category": "Smart Lighting",
+      "description": "A value-focused bulb pack for bedrooms, kids' rooms, or a quick apartment lighting refresh.",
+      "bestFor": "Practical smart-home upgrades",
+      "image": "/images/bright-nest-tech/linkind-smart-light-bulbs-4-pack.jpg",
+      "imageAlt": "Linkind Smart Light Bulbs, Color Changing, A19 E26, 4 Pack",
+      "url": "https://www.amazon.com/dp/B0BC8N7QXN?tag=render-sites-20"
+    },
+    {
+      "asin": "B0C7C69FPS",
+      "source": "bright-nest-tech",
+      "name": "eufy Security Smart Lock C220, Fingerprint Keyless Entry Door Lock",
+      "category": "Locks",
+      "description": "A balanced smart-lock pick for people who like eufy's app ecosystem and fingerprint entry.",
+      "bestFor": "Practical smart-home upgrades",
+      "image": "/images/bright-nest-tech/eufy-smart-lock-c220.jpg",
+      "imageAlt": "eufy Security Smart Lock C220, Fingerprint Keyless Entry Door Lock",
+      "url": "https://www.amazon.com/dp/B0C7C69FPS?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BZVFXQYV",
+      "source": "paper-ritual",
+      "name": "Amazon Basics Retractable Gel Pens, Fine Point 0.7mm, Smooth Writing, Assorted Colors, 12-Pack",
+      "category": "Pens",
+      "description": "Adds color and momentum without making the desk feel like a school-supply explosion.",
+      "bestFor": "Lists, headers, journal spreads, and notes",
+      "image": "/images/paper-ritual/amazon-basics-retractable-gel-pens-fine-point-0-7mm-smooth-writing-assor.jpg",
+      "imageAlt": "Amazon Basics Retractable Gel Pens, Fine Point 0.7mm, Smooth Writing, Assorted Colors, 12-Pack",
+      "url": "https://www.amazon.com/dp/B0BZVFXQYV?tag=render-sites-20"
     },
     {
       "asin": "B00IOOOBU4",
@@ -215,28 +601,6 @@
       "url": "https://www.amazon.com/dp/B0GHPDTRJZ?tag=render-sites-20"
     },
     {
-      "asin": "B0FR9VF38V",
-      "source": "paper-ritual",
-      "name": "Beautiful Stationery Set with Envelopes - Premium-Quality",
-      "category": "Letters",
-      "description": "Makes sending a note feel charming instead of like hunting for random paper in a drawer.",
-      "bestFor": "Pen-pal mail, thank-you notes, and small gifts",
-      "image": "/images/paper-ritual/beautiful-stationery-set-with-envelopes-premium-quality-no-bleed-lined-l.jpg",
-      "imageAlt": "Beautiful Stationery Set with Envelopes - Premium-Quality",
-      "url": "https://www.amazon.com/dp/B0FR9VF38V?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CT94BJSV",
-      "source": "paper-ritual",
-      "name": "Mr. Pen- Stationery Writing Paper Set with Envelopes, 8.18\" x 5.5\"",
-      "category": "Letters",
-      "description": "Makes sending a note feel charming instead of like hunting for random paper in a drawer.",
-      "bestFor": "Pen-pal mail, thank-you notes, and small gifts",
-      "image": "/images/paper-ritual/mr-pen-stationery-writing-paper-set-with-envelopes-8-18-x-5-5-30-letter-.jpg",
-      "imageAlt": "Mr. Pen- Stationery Writing Paper Set with Envelopes, 8.18\" x 5.5\"",
-      "url": "https://www.amazon.com/dp/B0CT94BJSV?tag=render-sites-20"
-    },
-    {
       "asin": "1441315314",
       "source": "paper-ritual",
       "name": "Blue Dragonfly Stationery Set (Boxed Stationery) by Peter Pauper Press",
@@ -246,94 +610,6 @@
       "image": "/images/paper-ritual/blue-dragonfly-stationery-set-by-peter-pauper-press-4-84-8-out-of-5-star.jpg",
       "imageAlt": "Blue Dragonfly Stationery Set (Boxed Stationery) by Peter Pauper Press",
       "url": "https://www.amazon.com/dp/1441315314?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DZGTPY2N",
-      "source": "paper-ritual",
-      "name": "Mr. Pen- Stationery Writing Paper Set with Envelopes, 5.2\" x 7.3\"",
-      "category": "Letters",
-      "description": "Makes sending a note feel charming instead of like hunting for random paper in a drawer.",
-      "bestFor": "Pen-pal mail, thank-you notes, and small gifts",
-      "image": "/images/paper-ritual/mr-pen-stationery-writing-paper-set-with-envelopes-5-2-x-7-3-60-letter-s.jpg",
-      "imageAlt": "Mr. Pen- Stationery Writing Paper Set with Envelopes, 5.2\" x 7.3\"",
-      "url": "https://www.amazon.com/dp/B0DZGTPY2N?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DD7MF17D",
-      "source": "paper-ritual",
-      "name": "Vintage Botanical Scrapbooking Supplies Kit, Aesthetic Flower Scrapbook Kit",
-      "category": "Scrapbooking",
-      "description": "Adds texture, layering, and personality for memory keeping without needing a giant craft closet.",
-      "bestFor": "Creative pages, photos, and weekend hobby time",
-      "image": "/images/paper-ritual/vintage-botanical-scrapbooking-supplies-kit-aesthetic-flower-scrapbook-k.jpg",
-      "imageAlt": "Vintage Botanical Scrapbooking Supplies Kit, Aesthetic Flower Scrapbook Kit",
-      "url": "https://www.amazon.com/dp/B0DD7MF17D?tag=render-sites-20"
-    },
-    {
-      "asin": "B0F293W9VK",
-      "source": "paper-ritual",
-      "name": "565 Pcs Vintage Scrapbook Paper Kit, Scrapbook Paper Supplies with Flowers Stickers",
-      "category": "Scrapbooking",
-      "description": "Adds texture, layering, and personality for memory keeping without needing a giant craft closet.",
-      "bestFor": "Creative pages, photos, and weekend hobby time",
-      "image": "/images/paper-ritual/565-pcs-vintage-scrapbook-paper-kit-scrapbook-paper-supplies-with-flower.jpg",
-      "imageAlt": "565 Pcs Vintage Scrapbook Paper Kit, Scrapbook Paper Supplies with Flowers Stickers",
-      "url": "https://www.amazon.com/dp/B0F293W9VK?tag=render-sites-20"
-    },
-    {
-      "asin": "B0G1LQZSY6",
-      "source": "paper-ritual",
-      "name": "100 Pcs Vintage Film Theme Scrapbook Paper Washi Stickers Kit for Journaling Supplies",
-      "category": "Scrapbooking",
-      "description": "Adds texture, layering, and personality for memory keeping without needing a giant craft closet.",
-      "bestFor": "Creative pages, photos, and weekend hobby time",
-      "image": "/images/paper-ritual/100-pcs-vintage-film-theme-scrapbook-paper-washi-stickers-kit-for-journa.jpg",
-      "imageAlt": "100 Pcs Vintage Film Theme Scrapbook Paper Washi Stickers Kit for Journaling Supplies",
-      "url": "https://www.amazon.com/dp/B0G1LQZSY6?tag=render-sites-20"
-    },
-    {
-      "asin": "B09C8HLMY5",
-      "source": "paper-ritual",
-      "name": "Knaid Vintage Scrapbook Supplies Pack (200 Pieces)",
-      "category": "Scrapbooking",
-      "description": "Adds texture, layering, and personality for memory keeping without needing a giant craft closet.",
-      "bestFor": "Creative pages, photos, and weekend hobby time",
-      "image": "/images/paper-ritual/knaid-vintage-scrapbook-supplies-pack-for-witchy-junk-journal-bullet-jou.jpg",
-      "imageAlt": "Knaid Vintage Scrapbook Supplies Pack (200 Pieces)",
-      "url": "https://www.amazon.com/dp/B09C8HLMY5?tag=render-sites-20"
-    },
-    {
-      "asin": "B0D9MNGSSX",
-      "source": "paper-ritual",
-      "name": "Fayware 300+ Travel Stickers for Scrapbooking & 20 A5 Papers - Pre-Cut Washi Stickers",
-      "category": "Scrapbooking",
-      "description": "Adds texture, layering, and personality for memory keeping without needing a giant craft closet.",
-      "bestFor": "Creative pages, photos, and weekend hobby time",
-      "image": "/images/paper-ritual/fayware-300-travel-stickers-for-scrapbooking-20-a5-papers-pre-cut-washi-.jpg",
-      "imageAlt": "Fayware 300+ Travel Stickers for Scrapbooking & 20 A5 Papers - Pre-Cut Washi Stickers",
-      "url": "https://www.amazon.com/dp/B0D9MNGSSX?tag=render-sites-20"
-    },
-    {
-      "asin": "B07VZNMNH9",
-      "source": "paper-ritual",
-      "name": "Metal Mesh Desk Organizer with 6 Compartments, Anti-Slip Pen Holder Storage Tray",
-      "category": "Desk Tools",
-      "description": "Keeps the writing tools visible enough to use and tidy enough to leave out.",
-      "bestFor": "Small desks and creative corners",
-      "image": "/images/paper-ritual/metal-mesh-desk-organizer-with-6-compartments-anti-slip-pen-holder-stora.jpg",
-      "imageAlt": "Metal Mesh Desk Organizer with 6 Compartments, Anti-Slip Pen Holder Storage Tray",
-      "url": "https://www.amazon.com/dp/B07VZNMNH9?tag=render-sites-20"
-    },
-    {
-      "asin": "B07RWK43MD",
-      "source": "paper-ritual",
-      "name": "Plastic Desk Organizer - Pen Cup, 3.9\" x 3.4\" x 3.4\", Black",
-      "category": "Desk Tools",
-      "description": "Keeps the writing tools visible enough to use and tidy enough to leave out.",
-      "bestFor": "Small desks and creative corners",
-      "image": "/images/paper-ritual/plastic-desk-organizer-pen-cup-3-9-x-3-4-x-3-4-black-4-64-6-out-of-5-sta.jpg",
-      "imageAlt": "Plastic Desk Organizer - Pen Cup, 3.9\" x 3.4\" x 3.4\", Black",
-      "url": "https://www.amazon.com/dp/B07RWK43MD?tag=render-sites-20"
     },
     {
       "asin": "B0H24WD4LY",
@@ -347,39 +623,6 @@
       "url": "https://www.amazon.com/dp/B0H24WD4LY?tag=render-sites-20"
     },
     {
-      "asin": "B0BWTT3WK1",
-      "source": "study-glow",
-      "name": "gianotter Desk Organizers and Accessories with File Holder, 4-Tier Desk Accessories & Workspace Organizers with Drawer and 2 Pen Holder, Pa...",
-      "category": "Storage",
-      "description": "A practical first-click pick for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81iE5xG2+pL._AC_SL1500_.jpg",
-      "imageAlt": "gianotter Desk Organizers and Accessories with File Holder, 4-Tier Desk Accessories & Workspace Organizers with Drawer and 2 Pen Holder, Pa...",
-      "url": "https://www.amazon.com/dp/B0BWTT3WK1?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CSFH1R36",
-      "source": "study-glow",
-      "name": "gianotter Desk Organizers and Accessories, Monitor Stand with Drawer and 2 Pen Holder, Desktop Organizer Suitable for Offices and Dormitori...",
-      "category": "Storage",
-      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/711rO4WnvOL._AC_SL1500_.jpg",
-      "imageAlt": "gianotter Desk Organizers and Accessories, Monitor Stand with Drawer and 2 Pen Holder, Desktop Organizer Suitable for Offices and Dormitori...",
-      "url": "https://www.amazon.com/dp/B0CSFH1R36?tag=render-sites-20"
-    },
-    {
-      "asin": "B0949DWJCV",
-      "source": "study-glow",
-      "name": "Crpich Acrylic Cell Phone Stand, Portable Clear Phone Stand for Desk, Compatible with Phone16 15 14 13 Pro Max Mini 12 11 Plus SE, Switch,...",
-      "category": "Study Desk",
-      "description": "A strong add-to-cart candidate for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61xq34OCYUL._AC_SL1500_.jpg",
-      "imageAlt": "Crpich Acrylic Cell Phone Stand, Portable Clear Phone Stand for Desk, Compatible with Phone16 15 14 13 Pro Max Mini 12 11 Plus SE, Switch,...",
-      "url": "https://www.amazon.com/dp/B0949DWJCV?tag=render-sites-20"
-    },
-    {
       "asin": "B0BYMRJD7R",
       "source": "study-glow",
       "name": "Marbrasse Pen Organizer with 2 Drawer, Multi-Functional Pencil Holder for Desk, Desk Organizers and Accessories with 5 Compartments + Drawe...",
@@ -389,61 +632,6 @@
       "image": "https://m.media-amazon.com/images/I/71B4FwZxCAL._AC_SL1500_.jpg",
       "imageAlt": "Marbrasse Pen Organizer with 2 Drawer, Multi-Functional Pencil Holder for Desk, Desk Organizers and Accessories with 5 Compartments + Drawe...",
       "url": "https://www.amazon.com/dp/B0BYMRJD7R?tag=render-sites-20"
-    },
-    {
-      "asin": "B0C9ZHWC9K",
-      "source": "study-glow",
-      "name": "SKYDUE 360 Rotating Plastic Desk Pen Organizer with 5 Slots, Dual-Purpose Art Supply Pencil Cup for Office, School, Home",
-      "category": "Storage",
-      "description": "A solid shortlist item for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61yhHuVQp4L._AC_SL1500_.jpg",
-      "imageAlt": "SKYDUE 360 Rotating Plastic Desk Pen Organizer with 5 Slots, Dual-Purpose Art Supply Pencil Cup for Office, School, Home",
-      "url": "https://www.amazon.com/dp/B0C9ZHWC9K?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CGT9MQGP",
-      "source": "study-glow",
-      "name": "YSAGi Leather Desk Protector, Office Mat, Large Mouse Mat, Non-Slip PU Leather Blotter, Laptop Pad, Waterproof Writing Pad for Office and H...",
-      "category": "Study Desk",
-      "description": "A practical first-click pick for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61jQecz8NpL._AC_SL1500_.jpg",
-      "imageAlt": "YSAGi Leather Desk Protector, Office Mat, Large Mouse Mat, Non-Slip PU Leather Blotter, Laptop Pad, Waterproof Writing Pad for Office and H...",
-      "url": "https://www.amazon.com/dp/B0CGT9MQGP?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DB8F7GDN",
-      "source": "study-glow",
-      "name": "OPNICE Desk Organizer and Accessories, 2-Tier Computer Monitor Stand Riser with Drawer and 2 Pen Holders, Laptop Stand, Office Desk Accesso...",
-      "category": "Storage",
-      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81MeUftFm8L._AC_SL1500_.jpg",
-      "imageAlt": "OPNICE Desk Organizer and Accessories, 2-Tier Computer Monitor Stand Riser with Drawer and 2 Pen Holders, Laptop Stand, Office Desk Accesso...",
-      "url": "https://www.amazon.com/dp/B0DB8F7GDN?tag=render-sites-20"
-    },
-    {
-      "asin": "B0BRMX3SWH",
-      "source": "study-glow",
-      "name": "MDOZQ Office Desk Accessories 2pcs Computer Monitor Memo Board Message Board Supplies for Women Men Sticky Note Holder Home Desktop Decor",
-      "category": "Starter Kit",
-      "description": "A strong add-to-cart candidate for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61yjorGIhAL._AC_SL1500_.jpg",
-      "imageAlt": "MDOZQ Office Desk Accessories 2pcs Computer Monitor Memo Board Message Board Supplies for Women Men Sticky Note Holder Home Desktop Decor",
-      "url": "https://www.amazon.com/dp/B0BRMX3SWH?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DCVVZ6CT",
-      "source": "study-glow",
-      "name": "MOSISO Wrist Rest Support for Mouse Pad&Keyboard Set, Circle Curved Ergonomic Mousepad&Coaster Non-Slip Base Home/Office Pain Relief&Easy T...",
-      "category": "Starter Kit",
-      "description": "A clean routine helper for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/515G2Wi323L._AC_SL1500_.jpg",
-      "imageAlt": "MOSISO Wrist Rest Support for Mouse Pad&Keyboard Set, Circle Curved Ergonomic Mousepad&Coaster Non-Slip Base Home/Office Pain Relief&Easy T...",
-      "url": "https://www.amazon.com/dp/B0DCVVZ6CT?tag=render-sites-20"
     },
     {
       "asin": "B0B2J1QNBX",
@@ -468,28 +656,6 @@
       "url": "https://www.amazon.com/dp/B089NL8QMN?tag=render-sites-20"
     },
     {
-      "asin": "B0C2ZBBPY9",
-      "source": "study-glow",
-      "name": "COMFYROOM Desk Organizer with 6 Compartments and 2 Drawers, Plastic Makeup Organizer, Pen Holder for Desktop Storage, Desk Organization for...",
-      "category": "Storage",
-      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71ii+XVBJ8L._AC_SL1500_.jpg",
-      "imageAlt": "COMFYROOM Desk Organizer with 6 Compartments and 2 Drawers, Plastic Makeup Organizer, Pen Holder for Desktop Storage, Desk Organization for...",
-      "url": "https://www.amazon.com/dp/B0C2ZBBPY9?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CRY97FPB",
-      "source": "study-glow",
-      "name": "One Beat Small LED Desk Lamp Power Strip 5ft Extension Cord with 3 Outlets 4 USB Ports(2 USB C), 4 Modes, 5 Level Touch Lamp Study Reading...",
-      "category": "Lighting",
-      "description": "A strong add-to-cart candidate for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61ndeyWcaHL._AC_SL1500_.jpg",
-      "imageAlt": "One Beat Small LED Desk Lamp Power Strip 5ft Extension Cord with 3 Outlets 4 USB Ports(2 USB C), 4 Modes, 5 Level Touch Lamp Study Reading...",
-      "url": "https://www.amazon.com/dp/B0CRY97FPB?tag=render-sites-20"
-    },
-    {
       "asin": "B0DBVCL44N",
       "source": "study-glow",
       "name": "Lamicall 8 Pack Cord Organizer, [1s Lock] Spring Cable Management Clips - Adhesive Phone Cord Holder Clips for Nightstand Desk Car Office H...",
@@ -512,28 +678,6 @@
       "url": "https://www.amazon.com/dp/B0F4R8MPQP?tag=render-sites-20"
     },
     {
-      "asin": "B08923SXXP",
-      "source": "study-glow",
-      "name": "LED Desk Lamp with USB Ports,Touch Desk Lamps for Home Office with 5 Color Modes,3 Brightness Desk Light with Small Night Light,Reading Lam...",
-      "category": "Lighting",
-      "description": "A practical first-click pick for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61po0IyEmOL._AC_SL1500_.jpg",
-      "imageAlt": "LED Desk Lamp with USB Ports,Touch Desk Lamps for Home Office with 5 Color Modes,3 Brightness Desk Light with Small Night Light,Reading Lam...",
-      "url": "https://www.amazon.com/dp/B08923SXXP?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DCK9ZCDF",
-      "source": "study-glow",
-      "name": "TROND Desk Clamp Power Strip USB C PD 20W- Surge Protector with 4 AC Outlets 4 USB Ports, Flat Plug 6ft Extension Cord, 1700J, ETL Listed,...",
-      "category": "Lighting",
-      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61FSg-yMU2L._AC_SL1500_.jpg",
-      "imageAlt": "TROND Desk Clamp Power Strip USB C PD 20W- Surge Protector with 4 AC Outlets 4 USB Ports, Flat Plug 6ft Extension Cord, 1700J, ETL Listed,...",
-      "url": "https://www.amazon.com/dp/B0DCK9ZCDF?tag=render-sites-20"
-    },
-    {
       "asin": "B0BFWL7TKP",
       "source": "study-glow",
       "name": "Lamicall Cell Phone Stand, Desk Accessories - Clear Office Cell Phone Holder, Acrylic Phone Stand, Desktop, Acrylic Office Desk Decor Acces...",
@@ -545,28 +689,6 @@
       "url": "https://www.amazon.com/dp/B0BFWL7TKP?tag=render-sites-20"
     },
     {
-      "asin": "B0DHXDDQK3",
-      "source": "study-glow",
-      "name": "SKYDUE Pink Desk Accessories 10Pcs, Rotating Pen Holder for Desk, Stapler, Staple Remover, Tape Dispenser,2pcs Tape Refills, Binder Paper C...",
-      "category": "Starter Kit",
-      "description": "A clean routine helper for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71lRLSlvgOL._AC_SL1500_.jpg",
-      "imageAlt": "SKYDUE Pink Desk Accessories 10Pcs, Rotating Pen Holder for Desk, Stapler, Staple Remover, Tape Dispenser,2pcs Tape Refills, Binder Paper C...",
-      "url": "https://www.amazon.com/dp/B0DHXDDQK3?tag=render-sites-20"
-    },
-    {
-      "asin": "B0D1QY8PL6",
-      "source": "study-glow",
-      "name": "SUPERDANNY Eye-Caring LED Desk Lamp 360° Flexible Gooseneck Work Lamp with Desk Side Clamp Touch Control 3 Light Colors Smooth Dimming Task...",
-      "category": "Lighting",
-      "description": "A solid shortlist item for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71YudVkqw1L._AC_SL1500_.jpg",
-      "imageAlt": "SUPERDANNY Eye-Caring LED Desk Lamp 360° Flexible Gooseneck Work Lamp with Desk Side Clamp Touch Control 3 Light Colors Smooth Dimming Task...",
-      "url": "https://www.amazon.com/dp/B0D1QY8PL6?tag=render-sites-20"
-    },
-    {
       "asin": "B0CST4CYVH",
       "source": "study-glow",
       "name": "LISEN for iPad Stand Holder Adjustable Tablet Stand for Desk, 2026 Kids for iPad Accessories Rotating Display Stand PC Office Accessories f...",
@@ -576,127 +698,48 @@
       "image": "https://m.media-amazon.com/images/I/718d7IFXzBL._AC_SL1500_.jpg",
       "imageAlt": "LISEN for iPad Stand Holder Adjustable Tablet Stand for Desk, 2026 Kids for iPad Accessories Rotating Display Stand PC Office Accessories f...",
       "url": "https://www.amazon.com/dp/B0CST4CYVH?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CNZS9RRB",
-      "source": "study-glow",
-      "name": "R RUCKERCO Led Desk Lamp Dimmable Desk Light Reading Lamp 3 Lighting Modes, Eye Protection Accessories, Study Desk Lamp Equipped USB Charge...",
-      "category": "Lighting",
-      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71fJyc-FZ3L._AC_SL1500_.jpg",
-      "imageAlt": "R RUCKERCO Led Desk Lamp Dimmable Desk Light Reading Lamp 3 Lighting Modes, Eye Protection Accessories, Study Desk Lamp Equipped USB Charge...",
-      "url": "https://www.amazon.com/dp/B0CNZS9RRB?tag=render-sites-20"
-    },
-    {
-      "asin": "B0F228XCZD",
-      "source": "study-glow",
-      "name": "LXEVIHK 21Pcs Pink Desk Organizers and Accessories With Mesh Desk Organizer and 360°Rotating Pen Holder and a Lot of Office Pink Office Sup...",
-      "category": "Storage",
-      "description": "A strong add-to-cart candidate for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81oRpDVr3zL._AC_SL1500_.jpg",
-      "imageAlt": "LXEVIHK 21Pcs Pink Desk Organizers and Accessories With Mesh Desk Organizer and 360°Rotating Pen Holder and a Lot of Office Pink Office Sup...",
-      "url": "https://www.amazon.com/dp/B0F228XCZD?tag=render-sites-20"
-    },
+    }
+  ],
+  "primeDayTrendProducts": [
     {
       "asin": "B0BYDGF8DT",
-      "source": "study-glow",
-      "name": "OPNICE Desk Organizer, 4-Tier Desktop File Organizer with Drawer and 2 Pen Holders, Office Desk Accessories, File Sorters, Workspace Organi...",
-      "category": "Storage",
-      "description": "A clean routine helper for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "title": "OPNICE Desk Organizer, 4-Tier Desktop File Organizer with Drawer and 2 Pen Holders, Office Desk Accessories, File S...",
       "image": "https://m.media-amazon.com/images/I/81CYxEUhq-L._AC_SL1500_.jpg",
-      "imageAlt": "OPNICE Desk Organizer, 4-Tier Desktop File Organizer with Drawer and 2 Pen Holders, Office Desk Accessories, File Sorters, Workspace Organi...",
-      "url": "https://www.amazon.com/dp/B0BYDGF8DT?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DD7BF3XG",
-      "source": "study-glow",
-      "name": "Magnetic Cable Clips, Adjustable Cord Holder Management, Adhesive Wire Keeper Organizer for Home Office Desk Phone PC Car Wall Desktop Nigh...",
-      "category": "Storage",
-      "description": "A solid shortlist item for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71J9ySQH7UL._AC_SL1500_.jpg",
-      "imageAlt": "Magnetic Cable Clips, Adjustable Cord Holder Management, Adhesive Wire Keeper Organizer for Home Office Desk Phone PC Car Wall Desktop Nigh...",
-      "url": "https://www.amazon.com/dp/B0DD7BF3XG?tag=render-sites-20"
-    },
-    {
-      "asin": "B0BZP1F6J5",
-      "source": "study-glow",
-      "name": "Der Rose Set of 2 Succulents Plants Artificial Mini Fake Succulents Plants Graduation Gifts Office Desk Accessories for Women Pink Home Van...",
-      "category": "Starter Kit",
-      "description": "A practical first-click pick for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81RwHqGeIEL._AC_SL1500_.jpg",
-      "imageAlt": "Der Rose Set of 2 Succulents Plants Artificial Mini Fake Succulents Plants Graduation Gifts Office Desk Accessories for Women Pink Home Van...",
-      "url": "https://www.amazon.com/dp/B0BZP1F6J5?tag=render-sites-20"
-    },
-    {
-      "asin": "B0BFQX3YFY",
-      "source": "study-glow",
-      "name": "BlissTrends Foot Rest for Under Desk at Work-Versatile Foot Stool with Washable Cover-Comfortable Footrest with 2 Adjustable Heights for Ca...",
-      "category": "Study Desk",
-      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81x+otHOTeL._AC_SL1500_.jpg",
-      "imageAlt": "BlissTrends Foot Rest for Under Desk at Work-Versatile Foot Stool with Washable Cover-Comfortable Footrest with 2 Adjustable Heights for Ca...",
-      "url": "https://www.amazon.com/dp/B0BFQX3YFY?tag=render-sites-20"
-    },
-    {
-      "asin": "B08LYSTZV9",
-      "source": "study-glow",
-      "name": "OMOTON Adjustable Tablet Stand for Desk, Upgraded Longer Arms for Greater Stability, T2 Tablet Holder with Hollow Design for Bigger Sized P...",
-      "category": "Study Desk",
-      "description": "A strong add-to-cart candidate for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61kPTwv71QL._AC_SL1500_.jpg",
-      "imageAlt": "OMOTON Adjustable Tablet Stand for Desk, Upgraded Longer Arms for Greater Stability, T2 Tablet Holder with Hollow Design for Bigger Sized P...",
-      "url": "https://www.amazon.com/dp/B08LYSTZV9?tag=render-sites-20"
+      "url": "https://www.amazon.com/dp/B0BYDGF8DT?tag=render-sites-20",
+      "trend": "summer routine upgrade",
+      "addedFor": "Prime Day 2026 trend watch"
     },
     {
       "asin": "B0BXP2ZTWB",
-      "source": "desk-combo",
-      "name": "Jgstkcity Desk Clamp Power Strip USB C,40W Total Fast Charging Station,4 PD 20W USB C Ports,Desk Edge Mount Surge Protector,5 Outlets,Fit 1...",
-      "category": "Lighting",
-      "description": "A practical first-click pick for gaming desk shoppers who want cleaner cables, better ergonomics, more useful lighting, or a setup that feels less thrown together.",
-      "bestFor": "Gaming Desk shoppers who want a cleaner first shortlist",
+      "title": "Jgstkcity Desk Clamp Power Strip USB C,40W Total Fast Charging Station,4 PD 20W USB C Ports,Desk Edge Mount Surge P...",
       "image": "https://m.media-amazon.com/images/I/51LfO2+Kn9L._AC_SL1500_.jpg",
-      "imageAlt": "Jgstkcity Desk Clamp Power Strip USB C,40W Total Fast Charging Station,4 PD 20W USB C Ports,Desk Edge Mount Surge Protector,5 Outlets,Fit 1...",
-      "url": "https://www.amazon.com/dp/B0BXP2ZTWB?tag=render-sites-20"
-    },
-    {
-      "asin": "B0B687J37D",
-      "source": "desk-combo",
-      "name": "N NOROCME 192 PCS Cable Management Kit 4 Wire Organizer Sleeve,11 Cable Holder,35Cord Clips 10+2 Roll Cable Organizer Straps and 100 Fasten...",
-      "category": "Storage",
-      "description": "A useful little upgrade for gaming desk shoppers who want cleaner cables, better ergonomics, more useful lighting, or a setup that feels less thrown together.",
-      "bestFor": "Gaming Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81F7bTfj+4L._AC_SL1500_.jpg",
-      "imageAlt": "N NOROCME 192 PCS Cable Management Kit 4 Wire Organizer Sleeve,11 Cable Holder,35Cord Clips 10+2 Roll Cable Organizer Straps and 100 Fasten...",
-      "url": "https://www.amazon.com/dp/B0B687J37D?tag=render-sites-20"
-    },
-    {
-      "asin": "B0GTRLDQ9G",
-      "source": "desk-combo",
-      "name": "Gel Keyboard and Mouse Wrist Rest Set, Ergonomic Computer Keyboard Wrist Pain Relief Wrist Support Pad for Office School Home Laptop（White）",
-      "category": "Starter Kit",
-      "description": "A strong add-to-cart candidate for gaming desk shoppers who want cleaner cables, better ergonomics, more useful lighting, or a setup that feels less thrown together.",
-      "bestFor": "Gaming Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61Of4eV384L._AC_SL1500_.jpg",
-      "imageAlt": "Gel Keyboard and Mouse Wrist Rest Set, Ergonomic Computer Keyboard Wrist Pain Relief Wrist Support Pad for Office School Home Laptop（White）",
-      "url": "https://www.amazon.com/dp/B0GTRLDQ9G?tag=render-sites-20"
+      "url": "https://www.amazon.com/dp/B0BXP2ZTWB?tag=render-sites-20",
+      "trend": "cleaner storage",
+      "addedFor": "Prime Day 2026 trend watch"
     },
     {
       "asin": "B07L4BGL3D",
-      "source": "desk-combo",
-      "name": "BladeHawks Extra Large RGB Gaming Mouse Pad-14 Light Modes, Extended Soft LED Mouse Pad, Anti-Slip Rubber Base, Computer Keyboard Mousepad...",
-      "category": "Lighting",
-      "description": "A clean routine helper for gaming desk shoppers who want cleaner cables, better ergonomics, more useful lighting, or a setup that feels less thrown together.",
-      "bestFor": "Gaming Desk shoppers who want a cleaner first shortlist",
+      "title": "BladeHawks Extra Large RGB Gaming Mouse Pad-14 Light Modes, Extended Soft LED Mouse Pad, Anti-Slip Rubber Base, Com...",
       "image": "https://m.media-amazon.com/images/I/51UsbIj9HAL._AC_SL1500_.jpg",
-      "imageAlt": "BladeHawks Extra Large RGB Gaming Mouse Pad-14 Light Modes, Extended Soft LED Mouse Pad, Anti-Slip Rubber Base, Computer Keyboard Mousepad...",
-      "url": "https://www.amazon.com/dp/B07L4BGL3D?tag=render-sites-20"
+      "url": "https://www.amazon.com/dp/B07L4BGL3D?tag=render-sites-20",
+      "trend": "grab-and-go setup",
+      "addedFor": "Prime Day 2026 trend watch"
+    },
+    {
+      "asin": "B0FFGZH2S2",
+      "title": "Anker Nano Power Strip, Desk Clamp with 1500J Surge Protector, 5ft Extension Cord, 70W Max Gaming Desk Accessories,...",
+      "image": "https://m.media-amazon.com/images/I/71cQC41LIfL._AC_SL1500_.jpg",
+      "url": "https://www.amazon.com/dp/B0FFGZH2S2?tag=render-sites-20",
+      "trend": "portable utility",
+      "addedFor": "Prime Day 2026 trend watch"
+    },
+    {
+      "asin": "B0CCP3X135",
+      "title": "Digital Alarm Clock, Large LED Digital Clock for Bedrooms with 10 Color Changing Night Light, Adjustable Brightness...",
+      "image": "https://m.media-amazon.com/images/I/71kpwUbmSNL._AC_SL1500_.jpg",
+      "url": "https://www.amazon.com/dp/B0CCP3X135?tag=render-sites-20",
+      "trend": "small-space reset",
+      "addedFor": "Prime Day 2026 trend watch"
     }
   ]
 }

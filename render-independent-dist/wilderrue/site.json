@@ -1,10 +1,10 @@
 {
   "slug": "wilderrue",
   "brand": "Wilder Rue",
-  "baseUrl": "https://wilder-rue-wj48w.kinsta.page",
+  "baseUrl": "https://wilderrue.onrender.com",
   "platform": "Render Static Site Hosting",
   "affiliateTag": "render-sites-20",
-  "lastUpdated": "2026-06-13",
+  "lastUpdated": "2026-06-23",
   "productCount": 60,
   "monetizationSurface": [
     {
@@ -23,38 +23,61 @@
     "poolside-stack"
   ],
   "urls": [
-    "https://wilder-rue-wj48w.kinsta.page/",
-    "https://wilder-rue-wj48w.kinsta.page/products/",
-    "https://wilder-rue-wj48w.kinsta.page/top-50/",
-    "https://wilder-rue-wj48w.kinsta.page/best/wilderrue-patio/",
-    "https://wilder-rue-wj48w.kinsta.page/best/wilderrue-garden/",
-    "https://wilder-rue-wj48w.kinsta.page/best/wilderrue-poolside/",
-    "https://wilder-rue-wj48w.kinsta.page/affiliate-disclosure/",
-    "https://wilder-rue-wj48w.kinsta.page/editorial-policy/",
-    "https://wilder-rue-wj48w.kinsta.page/contact/"
+    "https://wilderrue.onrender.com/",
+    "https://wilderrue.onrender.com/products/",
+    "https://wilderrue.onrender.com/top-50/",
+    "https://wilderrue.onrender.com/best/wilderrue-patio/",
+    "https://wilderrue.onrender.com/best/wilderrue-garden/",
+    "https://wilderrue.onrender.com/best/wilderrue-poolside/",
+    "https://wilderrue.onrender.com/affiliate-disclosure/",
+    "https://wilderrue.onrender.com/editorial-policy/",
+    "https://wilderrue.onrender.com/contact/",
+    "https://wilderrue.onrender.com/prime-day/"
   ],
   "products": [
     {
-      "asin": "B075NS8YXG",
-      "source": "outpost-patio",
-      "name": "Brightech Ambience Pro Solar Powered Outdoor String Lights, 27 ft",
-      "category": "Lighting",
-      "description": "A quick bistro-light upgrade for balconies, fences, pergolas, and tiny patios that need a softer evening glow.",
-      "bestFor": "Warm patio lighting without hardwiring",
-      "image": "/images/outpost-patio/brightech-string-lights.jpg",
-      "imageAlt": "Brightech Ambience Pro Solar Powered Outdoor String Lights, 27 ft",
-      "url": "https://www.amazon.com/dp/B075NS8YXG?tag=render-sites-20"
+      "asin": "B09234GQXV",
+      "source": "plant-studio",
+      "name": "Bamworld Plant Stand Indoor Plant Shelf Outdoor Wood Plant Rack for Multiple Plants 3 Tiers Ladder Plant Holder for Living Room Patio Boho...",
+      "category": "Indoor Plants",
+      "description": "A solid shortlist item for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/91uZi7zRBuL._AC_SL1500_.jpg",
+      "imageAlt": "Bamworld Plant Stand Indoor Plant Shelf Outdoor Wood Plant Rack for Multiple Plants 3 Tiers Ladder Plant Holder for Living Room Patio Boho...",
+      "url": "https://www.amazon.com/dp/B09234GQXV?tag=render-sites-20"
     },
     {
-      "asin": "B09F9C3KFS",
+      "asin": "B0CH36DTRL",
       "source": "outpost-patio",
-      "name": "Grenebo Gardening Tools 9-Piece Heavy Duty Garden Hand Tools with Organizer Handbag",
-      "category": "Garden Comfort",
-      "description": "A tidy starter kit for container gardeners, balcony planters, and anyone who wants the basics in one grab-and-go bag.",
-      "bestFor": "First patio garden toolkit",
-      "image": "/images/outpost-patio/grenebo-garden-tools.jpg",
-      "imageAlt": "Grenebo Gardening Tools 9-Piece Heavy Duty Garden Hand Tools with Organizer Handbag",
-      "url": "https://www.amazon.com/dp/B09F9C3KFS?tag=render-sites-20"
+      "name": "Flamaker Patio Furniture Set 3 Pieces All-Weather Rattan Outdoor Chairs and Table",
+      "category": "Furniture",
+      "description": "A compact conversation set that gives a balcony or porch an instant coffee-corner feeling without needing a huge footprint.",
+      "bestFor": "Small-space seating",
+      "image": "/images/outpost-patio/flamaker-rattan-set.jpg",
+      "imageAlt": "Flamaker Patio Furniture Set 3 Pieces All-Weather Rattan Outdoor Chairs and Table",
+      "url": "https://www.amazon.com/dp/B0CH36DTRL?tag=render-sites-20"
+    },
+    {
+      "asin": "B000BZ8HNG",
+      "source": "outpost-patio",
+      "name": "Miracle-Gro Water Soluble All Purpose Plant Food, 3 lbs.",
+      "category": "Planters",
+      "description": "A practical patio-garden staple for keeping container plants, flowers, and small outdoor greenery on a regular feeding routine.",
+      "bestFor": "Container plant care",
+      "image": "/images/outpost-patio/miracle-gro-plant-food.jpg",
+      "imageAlt": "Miracle-Gro Water Soluble All Purpose Plant Food, 3 lbs.",
+      "url": "https://www.amazon.com/dp/B000BZ8HNG?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DTXL2QMD",
+      "source": "plant-studio",
+      "name": "SuperMoss (01710) Microfiber Dusting Gloves for Plants – Gentle Leaf Shine & Cleaner for Houseplants, Reusable Indoor Plant Care Accessorie...",
+      "category": "Indoor Plants",
+      "description": "A practical first-click pick for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81BRTSGoy8L._AC_SL1500_.jpg",
+      "imageAlt": "SuperMoss (01710) Microfiber Dusting Gloves for Plants – Gentle Leaf Shine & Cleaner for Houseplants, Reusable Indoor Plant Care Accessorie...",
+      "url": "https://www.amazon.com/dp/B0DTXL2QMD?tag=render-sites-20"
     },
     {
       "asin": "B0BWH7788Y",
@@ -79,61 +102,6 @@
       "url": "https://www.amazon.com/dp/B0CSFJFZPB?tag=render-sites-20"
     },
     {
-      "asin": "B007O1CAZQ",
-      "source": "outpost-patio",
-      "name": "Keter Pacific Cool Bar Outdoor Patio Furniture and Hot Tub Side Table",
-      "category": "Hosting",
-      "description": "A side table that quietly doubles as a drink cooler, which is exactly the kind of trick small outdoor spaces need.",
-      "bestFor": "Patio drinks and compact hosting",
-      "image": "/images/outpost-patio/keter-pacific-cool-bar.jpg",
-      "imageAlt": "Keter Pacific Cool Bar Outdoor Patio Furniture and Hot Tub Side Table",
-      "url": "https://www.amazon.com/dp/B007O1CAZQ?tag=render-sites-20"
-    },
-    {
-      "asin": "B09PVHFYQS",
-      "source": "outpost-patio",
-      "name": "GENIMO Outdoor Rug for Patio, 9 x 12 Waterproof Reversible Plastic Camping Rug",
-      "category": "Outdoor Rugs",
-      "description": "A big visual reset for patios and RV setups when the floor needs texture, pattern, and an easier-to-clean surface.",
-      "bestFor": "Large patio zones",
-      "image": "/images/outpost-patio/genimo-outdoor-rug.jpg",
-      "imageAlt": "GENIMO Outdoor Rug for Patio, 9 x 12 Waterproof Reversible Plastic Camping Rug",
-      "url": "https://www.amazon.com/dp/B09PVHFYQS?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CH36DTRL",
-      "source": "outpost-patio",
-      "name": "Flamaker Patio Furniture Set 3 Pieces All-Weather Rattan Outdoor Chairs and Table",
-      "category": "Furniture",
-      "description": "A compact conversation set that gives a balcony or porch an instant coffee-corner feeling without needing a huge footprint.",
-      "bestFor": "Small-space seating",
-      "image": "/images/outpost-patio/flamaker-rattan-set.jpg",
-      "imageAlt": "Flamaker Patio Furniture Set 3 Pieces All-Weather Rattan Outdoor Chairs and Table",
-      "url": "https://www.amazon.com/dp/B0CH36DTRL?tag=render-sites-20"
-    },
-    {
-      "asin": "B086JFWSXN",
-      "source": "outpost-patio",
-      "name": "Best Choice Products Set of 2 Adjustable Steel Mesh Zero Gravity Lounge Chair Recliners",
-      "category": "Furniture",
-      "description": "Easy reclining chairs for lazy afternoons, poolside hangs, and extra guest seating that can fold away when the party is done.",
-      "bestFor": "Flexible lounge seating",
-      "image": "/images/outpost-patio/best-choice-zero-gravity-chairs.jpg",
-      "imageAlt": "Best Choice Products Set of 2 Adjustable Steel Mesh Zero Gravity Lounge Chair Recliners",
-      "url": "https://www.amazon.com/dp/B086JFWSXN?tag=render-sites-20"
-    },
-    {
-      "asin": "B0045E7A64",
-      "source": "outpost-patio",
-      "name": "Best Choice Products 80-Quart Outdoor Steel Rolling Cooler Cart",
-      "category": "Hosting",
-      "description": "A party-ready cooler cart for backyard dinners, game days, and keeping drinks outside instead of sending everyone into the kitchen.",
-      "bestFor": "Outdoor entertaining",
-      "image": "/images/outpost-patio/best-choice-cooler-cart.jpg",
-      "imageAlt": "Best Choice Products 80-Quart Outdoor Steel Rolling Cooler Cart",
-      "url": "https://www.amazon.com/dp/B0045E7A64?tag=render-sites-20"
-    },
-    {
       "asin": "B0CXD5NY2S",
       "source": "outpost-patio",
       "name": "Shintenchi 2 PCS Outdoor Chaise Lounges Chair with Wheels",
@@ -145,15 +113,125 @@
       "url": "https://www.amazon.com/dp/B0CXD5NY2S?tag=render-sites-20"
     },
     {
-      "asin": "B0B2RGS7NP",
+      "asin": "B0CT1ZCGLV",
       "source": "outpost-patio",
-      "name": "GREENVINES Outdoor Rocking Chairs, Set of 2 HDPE Oversized Porch Rockers",
-      "category": "Furniture",
-      "description": "Porch rockers with a clean, sturdy look for slow mornings, iced coffee, and front-yard people-watching.",
-      "bestFor": "Front porch comfort",
-      "image": "/images/outpost-patio/greenvines-rocking-chairs.jpg",
-      "imageAlt": "GREENVINES Outdoor Rocking Chairs, Set of 2 HDPE Oversized Porch Rockers",
-      "url": "https://www.amazon.com/dp/B0B2RGS7NP?tag=render-sites-20"
+      "name": "WdtPro Solar Lanterns Outdoor Waterproof Hanging Solar Lights, 2 Pack",
+      "category": "Lighting",
+      "description": "A soft-glow decor pick for hanging near steps, planters, fences, or porch hooks when string lights feel like too much.",
+      "bestFor": "Decorative solar glow",
+      "image": "/images/outpost-patio/wdtpro-solar-lanterns.jpg",
+      "imageAlt": "WdtPro Solar Lanterns Outdoor Waterproof Hanging Solar Lights, 2 Pack",
+      "url": "https://www.amazon.com/dp/B0CT1ZCGLV?tag=render-sites-20"
+    },
+    {
+      "asin": "B01H683DIO",
+      "source": "outpost-patio",
+      "name": "Best Choice Products Dual-Wheel Home Utility Yard Wheelbarrow",
+      "category": "Storage",
+      "description": "A practical garden helper for moving soil, mulch, plants, and patio cleanup loads without turning every project into a workout.",
+      "bestFor": "Backyard project days",
+      "image": "/images/outpost-patio/best-choice-yard-wheelbarrow.jpg",
+      "imageAlt": "Best Choice Products Dual-Wheel Home Utility Yard Wheelbarrow",
+      "url": "https://www.amazon.com/dp/B01H683DIO?tag=render-sites-20"
+    },
+    {
+      "asin": "B07L4J1P9P",
+      "source": "plant-studio",
+      "name": "Mkono Macrame Plant Hanger Indoor Hanging Planter Basket with Wood Beads Decorative Flower Pot Holder No Tassels for Indoor Outdoor Boho Ho...",
+      "category": "Decor",
+      "description": "A strong add-to-cart candidate for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61dWZkgeJ0L._AC_SL1500_.jpg",
+      "imageAlt": "Mkono Macrame Plant Hanger Indoor Hanging Planter Basket with Wood Beads Decorative Flower Pot Holder No Tassels for Indoor Outdoor Boho Ho...",
+      "url": "https://www.amazon.com/dp/B07L4J1P9P?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CVVP4KLY",
+      "source": "plant-studio",
+      "name": "Bamworld Tall Plant Stand Indoor Outdoor, Corner Metal Flower Pot Stands for Multiple Plants, 4 Tier Heavy Duty Plant Shelf for Patio Garde...",
+      "category": "Indoor Plants",
+      "description": "A solid shortlist item for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/7119xqE3x4L._AC_SL1500_.jpg",
+      "imageAlt": "Bamworld Tall Plant Stand Indoor Outdoor, Corner Metal Flower Pot Stands for Multiple Plants, 4 Tier Heavy Duty Plant Shelf for Patio Garde...",
+      "url": "https://www.amazon.com/dp/B0CVVP4KLY?tag=render-sites-20"
+    },
+    {
+      "asin": "B0B9WFTG1H",
+      "source": "plant-studio",
+      "name": "iDavosic.ly Plant Stand Indoor Outdoor, 5 Tier Corner Metal Flower Display Holder Shelf, Folding Tall Orchid Rack for Patio Balcony Porch G...",
+      "category": "Indoor Plants",
+      "description": "A practical first-click pick for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/7152aHBpceL._AC_SL1500_.jpg",
+      "imageAlt": "iDavosic.ly Plant Stand Indoor Outdoor, 5 Tier Corner Metal Flower Display Holder Shelf, Folding Tall Orchid Rack for Patio Balcony Porch G...",
+      "url": "https://www.amazon.com/dp/B0B9WFTG1H?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BTSQRWH3",
+      "source": "plant-studio",
+      "name": "Bamworld Plant Stand Indoor Outdoor Tall Plant Shelf for Multiple Plants Pots Wood Flower Stand Large Flower Holder for Living Room, Patio,...",
+      "category": "Indoor Plants",
+      "description": "A practical first-click pick for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81NGHI9crTL._AC_SL1500_.jpg",
+      "imageAlt": "Bamworld Plant Stand Indoor Outdoor Tall Plant Shelf for Multiple Plants Pots Wood Flower Stand Large Flower Holder for Living Room, Patio,...",
+      "url": "https://www.amazon.com/dp/B0BTSQRWH3?tag=render-sites-20"
+    },
+    {
+      "asin": "B09GY113GL",
+      "source": "plant-studio",
+      "name": "GEEBOBO 5 Tiered Tall Plant Stand for Indoor, Wood Plant Shelf Corner Display Rack, Multi-tier Planter Pot Holder Flower Stand for Living R...",
+      "category": "Indoor Plants",
+      "description": "A useful little upgrade for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/7129Yjz-mjL._AC_SL1500_.jpg",
+      "imageAlt": "GEEBOBO 5 Tiered Tall Plant Stand for Indoor, Wood Plant Shelf Corner Display Rack, Multi-tier Planter Pot Holder Flower Stand for Living R...",
+      "url": "https://www.amazon.com/dp/B09GY113GL?tag=render-sites-20"
+    },
+    {
+      "asin": "B09CTS9F59",
+      "source": "plant-studio",
+      "name": "MOONSOUND Self Watering Globes for Plants - 10pcs Automatic Watering Bulbs for Indoor & Outdoor Potted Plants, Vacation Plant Care, Water C...",
+      "category": "Indoor Plants",
+      "description": "A strong add-to-cart candidate for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71epyy1kndL._AC_SL1500_.jpg",
+      "imageAlt": "MOONSOUND Self Watering Globes for Plants - 10pcs Automatic Watering Bulbs for Indoor & Outdoor Potted Plants, Vacation Plant Care, Water C...",
+      "url": "https://www.amazon.com/dp/B09CTS9F59?tag=render-sites-20"
+    },
+    {
+      "asin": "B0B4D5NKFT",
+      "source": "plant-studio",
+      "name": "AZERPIAN Plant Stand 5 Tier Indoor Metal Flower Shelf for Multiple Plants Corner Tall Flower Holders for Patio Garden Living Room Balcony B...",
+      "category": "Indoor Plants",
+      "description": "A solid shortlist item for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71k05b5mmXL._AC_SL1500_.jpg",
+      "imageAlt": "AZERPIAN Plant Stand 5 Tier Indoor Metal Flower Shelf for Multiple Plants Corner Tall Flower Holders for Patio Garden Living Room Balcony B...",
+      "url": "https://www.amazon.com/dp/B0B4D5NKFT?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DDXXBRMH",
+      "source": "plant-studio",
+      "name": "BACEKOLL Plant Stand Indoor with Grow Lights, 7 Tiered Indoor Plant Shelf, 49\" Corner Plant Stands for Indoor Plants, Metal Plant Flower Di...",
+      "category": "Lighting",
+      "description": "A useful little upgrade for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71a+FMczcwL._AC_SL1500_.jpg",
+      "imageAlt": "BACEKOLL Plant Stand Indoor with Grow Lights, 7 Tiered Indoor Plant Shelf, 49\" Corner Plant Stands for Indoor Plants, Metal Plant Flower Di...",
+      "url": "https://www.amazon.com/dp/B0DDXXBRMH?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BMDWHVWY",
+      "source": "plant-studio",
+      "name": "Repotting Mat for Indoor Plant Transplanting Control Mess, 26.8\"X26.8\" Waterproof Succulent Potting Mat Square Planting Tray Soil Change Ma...",
+      "category": "Indoor Plants",
+      "description": "A practical first-click pick for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71pTlzIo4XL._AC_SL1500_.jpg",
+      "imageAlt": "Repotting Mat for Indoor Plant Transplanting Control Mess, 26.8\"X26.8\" Waterproof Succulent Potting Mat Square Planting Tray Soil Change Ma...",
+      "url": "https://www.amazon.com/dp/B0BMDWHVWY?tag=render-sites-20"
     },
     {
       "asin": "B0GC66L6X7",
@@ -178,50 +256,6 @@
       "url": "https://www.amazon.com/dp/B09YMK6PVM?tag=render-sites-20"
     },
     {
-      "asin": "B077X9Q9WR",
-      "source": "outpost-patio",
-      "name": "Burpee Wildflower 25,000 Bulk Seeds, 18 Varieties of Non-GMO Flower Seeds",
-      "category": "Planters",
-      "description": "A low-cost way to bring color to planters, borders, and pollinator-friendly corners without overthinking the whole garden plan.",
-      "bestFor": "Easy flower color",
-      "image": "/images/outpost-patio/burpee-wildflower-seeds.jpg",
-      "imageAlt": "Burpee Wildflower 25,000 Bulk Seeds, 18 Varieties of Non-GMO Flower Seeds",
-      "url": "https://www.amazon.com/dp/B077X9Q9WR?tag=render-sites-20"
-    },
-    {
-      "asin": "B000BZ8HNG",
-      "source": "outpost-patio",
-      "name": "Miracle-Gro Water Soluble All Purpose Plant Food, 3 lbs.",
-      "category": "Planters",
-      "description": "A practical patio-garden staple for keeping container plants, flowers, and small outdoor greenery on a regular feeding routine.",
-      "bestFor": "Container plant care",
-      "image": "/images/outpost-patio/miracle-gro-plant-food.jpg",
-      "imageAlt": "Miracle-Gro Water Soluble All Purpose Plant Food, 3 lbs.",
-      "url": "https://www.amazon.com/dp/B000BZ8HNG?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CQX8B5K9",
-      "source": "outpost-patio",
-      "name": "FEED GARDEN Glass Hummingbird Feeder, 16 oz Outdoor Hanging Bird Feeder",
-      "category": "Garden Decor",
-      "description": "A small charm upgrade for patios and gardens where you want movement, color, and a little wildlife moment outside the window.",
-      "bestFor": "Bird-friendly patios",
-      "image": "/images/outpost-patio/feed-garden-hummingbird-feeder.jpg",
-      "imageAlt": "FEED GARDEN Glass Hummingbird Feeder, 16 oz Outdoor Hanging Bird Feeder",
-      "url": "https://www.amazon.com/dp/B0CQX8B5K9?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CT1ZCGLV",
-      "source": "outpost-patio",
-      "name": "WdtPro Solar Lanterns Outdoor Waterproof Hanging Solar Lights, 2 Pack",
-      "category": "Lighting",
-      "description": "A soft-glow decor pick for hanging near steps, planters, fences, or porch hooks when string lights feel like too much.",
-      "bestFor": "Decorative solar glow",
-      "image": "/images/outpost-patio/wdtpro-solar-lanterns.jpg",
-      "imageAlt": "WdtPro Solar Lanterns Outdoor Waterproof Hanging Solar Lights, 2 Pack",
-      "url": "https://www.amazon.com/dp/B0CT1ZCGLV?tag=render-sites-20"
-    },
-    {
       "asin": "B000FGZS2E",
       "source": "outpost-patio",
       "name": "Corona Tools ClassicCUT Forged Bypass Hand Pruner",
@@ -231,28 +265,6 @@
       "image": "/images/outpost-patio/corona-hand-pruner.jpg",
       "imageAlt": "Corona Tools ClassicCUT Forged Bypass Hand Pruner",
       "url": "https://www.amazon.com/dp/B000FGZS2E?tag=render-sites-20"
-    },
-    {
-      "asin": "B07597XGSN",
-      "source": "outpost-patio",
-      "name": "VIVOHOME Bird Bath for Outside, 28 Inch Weather-Resistant Polyresin Pedestal",
-      "category": "Garden Decor",
-      "description": "A decorative garden anchor that adds height and an old-school backyard feel without needing a built-in landscape plan.",
-      "bestFor": "Garden focal point",
-      "image": "/images/outpost-patio/vivohome-bird-bath.jpg",
-      "imageAlt": "VIVOHOME Bird Bath for Outside, 28 Inch Weather-Resistant Polyresin Pedestal",
-      "url": "https://www.amazon.com/dp/B07597XGSN?tag=render-sites-20"
-    },
-    {
-      "asin": "B0GF1PRX8L",
-      "source": "outpost-patio",
-      "name": "LIFFY Mosaic Outdoor Side Table, 14 Inch Round Flower Patio Table",
-      "category": "Furniture",
-      "description": "A small accent table for coffee, books, candles, or snacks when a full patio table would crowd the space.",
-      "bestFor": "Tiny patio surfaces",
-      "image": "/images/outpost-patio/liffy-mosaic-side-table.jpg",
-      "imageAlt": "LIFFY Mosaic Outdoor Side Table, 14 Inch Round Flower Patio Table",
-      "url": "https://www.amazon.com/dp/B0GF1PRX8L?tag=render-sites-20"
     },
     {
       "asin": "B08NJ9X3FJ",
@@ -277,28 +289,6 @@
       "url": "https://www.amazon.com/dp/B0CVCC8VYL?tag=render-sites-20"
     },
     {
-      "asin": "B0CSFK4W44",
-      "source": "outpost-patio",
-      "name": "Abba Patio Outdoor Market Umbrella with Crank and Tilt",
-      "category": "Shade",
-      "description": "A second shade option for shoppers who want the same practical umbrella idea in a different Amazon listing or color path.",
-      "bestFor": "Flexible shade styling",
-      "image": "/images/outpost-patio/abba-patio-umbrella-market.jpg",
-      "imageAlt": "Abba Patio Outdoor Market Umbrella with Crank and Tilt",
-      "url": "https://www.amazon.com/dp/B0CSFK4W44?tag=render-sites-20"
-    },
-    {
-      "asin": "B08K9769NY",
-      "source": "outpost-patio",
-      "name": "Unique Loom Outdoor Collection Area Rug",
-      "category": "Outdoor Rugs",
-      "description": "A softer patterned rug pick for smaller patios, balconies, and seating corners that need one visual layer to feel intentional.",
-      "bestFor": "Small outdoor room styling",
-      "image": "/images/outpost-patio/unique-loom-outdoor-rug.jpg",
-      "imageAlt": "Unique Loom Outdoor Collection Area Rug",
-      "url": "https://www.amazon.com/dp/B08K9769NY?tag=render-sites-20"
-    },
-    {
       "asin": "B082BR6BVT",
       "source": "outpost-patio",
       "name": "Keter Pacific Cool Bar Outdoor Patio Side Table",
@@ -310,323 +300,70 @@
       "url": "https://www.amazon.com/dp/B082BR6BVT?tag=render-sites-20"
     },
     {
-      "asin": "B01H683DIO",
-      "source": "outpost-patio",
-      "name": "Best Choice Products Dual-Wheel Home Utility Yard Wheelbarrow",
-      "category": "Storage",
-      "description": "A practical garden helper for moving soil, mulch, plants, and patio cleanup loads without turning every project into a workout.",
-      "bestFor": "Backyard project days",
-      "image": "/images/outpost-patio/best-choice-yard-wheelbarrow.jpg",
-      "imageAlt": "Best Choice Products Dual-Wheel Home Utility Yard Wheelbarrow",
-      "url": "https://www.amazon.com/dp/B01H683DIO?tag=render-sites-20"
-    },
-    {
-      "asin": "B0BW8X2XND",
-      "source": "sunny-garden",
-      "name": "Heavy Duty Gardening Tools - Gardening Gifts for Women, Men, Mom, Dad - Durable, Ergonomic Garden Tools Set (Green)",
-      "category": "Starter Kit",
-      "description": "A practical first-click pick for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81fFCeay55L._AC_SL1500_.jpg",
-      "imageAlt": "Heavy Duty Gardening Tools - Gardening Gifts for Women, Men, Mom, Dad - Durable, Ergonomic Garden Tools Set (Green)",
-      "url": "https://www.amazon.com/dp/B0BW8X2XND?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DY1FLC1R",
-      "source": "sunny-garden",
-      "name": "Garden Tools Set, 8 Piece Gardening Tools Set with Non Slip Ergonomic Handle, Heavy Duty Garden Tool Set with Storage Bag, Gardening Kit fo...",
-      "category": "Storage",
-      "description": "A useful little upgrade for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71OQZ-AkZYL._AC_SL1500_.jpg",
-      "imageAlt": "Garden Tools Set, 8 Piece Gardening Tools Set with Non Slip Ergonomic Handle, Heavy Duty Garden Tool Set with Storage Bag, Gardening Kit fo...",
-      "url": "https://www.amazon.com/dp/B0DY1FLC1R?tag=render-sites-20"
-    },
-    {
-      "asin": "B0GVJHR966",
-      "source": "sunny-garden",
-      "name": "9-Piece Stainless Steel Garden Tools Set, HaSteeL Outdoors Gardening Hand Utensils Kit with Storage Bag, Rust Resistant, Heavy Duty, Gift f...",
-      "category": "Storage",
-      "description": "A strong add-to-cart candidate for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81AKMF3t+gL._AC_SL1500_.jpg",
-      "imageAlt": "9-Piece Stainless Steel Garden Tools Set, HaSteeL Outdoors Gardening Hand Utensils Kit with Storage Bag, Rust Resistant, Heavy Duty, Gift f...",
-      "url": "https://www.amazon.com/dp/B0GVJHR966?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CGHGQ96X",
-      "source": "sunny-garden",
-      "name": "Garden Tools Set, 3 Pack Heavy Duty Gardening Tools Set Include Garden Shovel, Transplant Trowel and Hand Rake with Ergonomic Handle, Alumi...",
-      "category": "Starter Kit",
-      "description": "A clean routine helper for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/618WM4MT8gL._AC_SL1500_.jpg",
-      "imageAlt": "Garden Tools Set, 3 Pack Heavy Duty Gardening Tools Set Include Garden Shovel, Transplant Trowel and Hand Rake with Ergonomic Handle, Alumi...",
-      "url": "https://www.amazon.com/dp/B0CGHGQ96X?tag=render-sites-20"
-    },
-    {
-      "asin": "B0D4DX9KXW",
-      "source": "sunny-garden",
-      "name": "Kynup 7-Piece Gardening Tools Set, Heavy Duty Garden Tools Kit with Garden Trowel, Garden Hand Shovel, Repotting Mat, Rust Resistant, Garde...",
-      "category": "Starter Kit",
-      "description": "A solid shortlist item for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71P3Pke7ubL._AC_SL1500_.jpg",
-      "imageAlt": "Kynup 7-Piece Gardening Tools Set, Heavy Duty Garden Tools Kit with Garden Trowel, Garden Hand Shovel, Repotting Mat, Rust Resistant, Garde...",
-      "url": "https://www.amazon.com/dp/B0D4DX9KXW?tag=render-sites-20"
-    },
-    {
-      "asin": "B0GQH3KNBD",
-      "source": "sunny-garden",
-      "name": "GIAMZONP Long Gardening Gloves for Women Men - Leather Rose Pruning Gloves Thorn Proof",
-      "category": "Gardening",
-      "description": "A useful little upgrade for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71tNkHfZJBL._AC_SL1500_.jpg",
-      "imageAlt": "GIAMZONP Long Gardening Gloves for Women Men - Leather Rose Pruning Gloves Thorn Proof",
-      "url": "https://www.amazon.com/dp/B0GQH3KNBD?tag=render-sites-20"
-    },
-    {
-      "asin": "B00002N66H",
-      "source": "sunny-garden",
-      "name": "Fiskars Bypass Pruning Shears, 5/8\" Cut Capacity Gardening Scissors, Self-Cleaning Sap Groove Prevents Sticking, Non-Slip Grip for Cutting...",
-      "category": "Court Gear",
-      "description": "A strong add-to-cart candidate for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/712oOsznuxL._AC_SL1500_.jpg",
-      "imageAlt": "Fiskars Bypass Pruning Shears, 5/8\" Cut Capacity Gardening Scissors, Self-Cleaning Sap Groove Prevents Sticking, Non-Slip Grip for Cutting...",
-      "url": "https://www.amazon.com/dp/B00002N66H?tag=render-sites-20"
-    },
-    {
-      "asin": "B01MUXL5V8",
-      "source": "sunny-garden",
-      "name": "Fiskars 3-in-1 Garden Tool Set, Polished Cast-Aluminum Heads for Rust Resistance, Heavy-Duty Trowel, Transplanter & Cultivator for Digging...",
-      "category": "Starter Kit",
-      "description": "A clean routine helper for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71PleuJ7lyL._AC_SL1500_.jpg",
-      "imageAlt": "Fiskars 3-in-1 Garden Tool Set, Polished Cast-Aluminum Heads for Rust Resistance, Heavy-Duty Trowel, Transplanter & Cultivator for Digging...",
-      "url": "https://www.amazon.com/dp/B01MUXL5V8?tag=render-sites-20"
-    },
-    {
-      "asin": "B001D1FFZA",
-      "source": "sunny-garden",
-      "name": "Grampa&#x27;s Weeder - The Original Stand Up Weed Puller Tool with Long Handle - Made with Real Bamboo & 4-Claw Steel Head Design - Easily...",
-      "category": "Gardening",
-      "description": "A solid shortlist item for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/718DYJIqv4L._AC_SL1500_.jpg",
-      "imageAlt": "Grampa&#x27;s Weeder - The Original Stand Up Weed Puller Tool with Long Handle - Made with Real Bamboo & 4-Claw Steel Head Design - Easily...",
-      "url": "https://www.amazon.com/dp/B001D1FFZA?tag=render-sites-20"
-    },
-    {
-      "asin": "B0D41TPDL9",
-      "source": "sunny-garden",
-      "name": "MelonArt Garden Tool Set,10 Pcs Heavy Duty Gardening Hand Tool Kit for Women Aluminum with Non Slip Ergonomic Handle, Storage Tote Bag and...",
-      "category": "Storage",
-      "description": "A practical first-click pick for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71-FnrK+YLL._AC_SL1500_.jpg",
-      "imageAlt": "MelonArt Garden Tool Set,10 Pcs Heavy Duty Gardening Hand Tool Kit for Women Aluminum with Non Slip Ergonomic Handle, Storage Tote Bag and...",
-      "url": "https://www.amazon.com/dp/B0D41TPDL9?tag=render-sites-20"
-    },
-    {
-      "asin": "B0FL7MKZ4V",
-      "source": "sunny-garden",
-      "name": "2-in-1 Garden Hoe and Weed Puller Rake, 60 Inch Adjustable Long Handle Weeding Tool Heavy Duty Spring Steel Head with Sand Texture Finish,...",
-      "category": "Gardening",
-      "description": "A useful little upgrade for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61rSVYQH6yL._AC_SL1500_.jpg",
-      "imageAlt": "2-in-1 Garden Hoe and Weed Puller Rake, 60 Inch Adjustable Long Handle Weeding Tool Heavy Duty Spring Steel Head with Sand Texture Finish,...",
-      "url": "https://www.amazon.com/dp/B0FL7MKZ4V?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CXXQVVFP",
-      "source": "sunny-garden",
-      "name": "SIXCAR Weed Remover Tool,Portable Garden Weeder Tool,New Gardening Weeding Tools,for Garden Hand Tools for Vegetable Gardening Backyard Far...",
-      "category": "Gardening",
-      "description": "A strong add-to-cart candidate for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61Cpg9ixg5L._AC_SL1500_.jpg",
-      "imageAlt": "SIXCAR Weed Remover Tool,Portable Garden Weeder Tool,New Gardening Weeding Tools,for Garden Hand Tools for Vegetable Gardening Backyard Far...",
-      "url": "https://www.amazon.com/dp/B0CXXQVVFP?tag=render-sites-20"
-    },
-    {
-      "asin": "B0B1SCKMBV",
-      "source": "sunny-garden",
-      "name": "Gardening Tools Set of 10 - Complete Heavy Duty Garden Tools Set with Fashion Handbag - Durable Gardening Supplies Kit Ideal Garden Gifts f...",
-      "category": "Storage",
-      "description": "A clean routine helper for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/91qFY3-tD9L._AC_SL1500_.jpg",
-      "imageAlt": "Gardening Tools Set of 10 - Complete Heavy Duty Garden Tools Set with Fashion Handbag - Durable Gardening Supplies Kit Ideal Garden Gifts f...",
-      "url": "https://www.amazon.com/dp/B0B1SCKMBV?tag=render-sites-20"
-    },
-    {
-      "asin": "B000E28UQU",
-      "source": "sunny-garden",
-      "name": "Chapin 20004 Pump Sprayer, 1-Gallon SureSpray Translucent Tank with an Easy Fill Funnel-Top Opening, Adjustable Cone Nozzle & 34\" Long Reac...",
-      "category": "Gardening",
-      "description": "A solid shortlist item for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71oqfMsZf6L._AC_SL1500_.jpg",
-      "imageAlt": "Chapin 20004 Pump Sprayer, 1-Gallon SureSpray Translucent Tank with an Easy Fill Funnel-Top Opening, Adjustable Cone Nozzle & 34\" Long Reac...",
-      "url": "https://www.amazon.com/dp/B000E28UQU?tag=render-sites-20"
-    },
-    {
-      "asin": "B0D88VCMJD",
-      "source": "sunny-garden",
-      "name": "Fiskars Vegetable Gardening Essentials 6-Piece Tool Set for Cultivating, Serrated Stainless Steel Shears & 4-in-1 Seed Sower for Planting,...",
-      "category": "Starter Kit",
-      "description": "A practical first-click pick for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71E82Ufr3ZL._AC_SL1500_.jpg",
-      "imageAlt": "Fiskars Vegetable Gardening Essentials 6-Piece Tool Set for Cultivating, Serrated Stainless Steel Shears & 4-in-1 Seed Sower for Planting,...",
-      "url": "https://www.amazon.com/dp/B0D88VCMJD?tag=render-sites-20"
-    },
-    {
-      "asin": "B004S0PGPM",
-      "source": "sunny-garden",
-      "name": "Fiskars Trowel, Heavy Duty Gardening Hand Tool with Hang Hole, For Digging and Planting, Rust Resistant Cast Aluminum, Ergonomic Handle and...",
-      "category": "Gardening",
-      "description": "A useful little upgrade for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71t68gVD+KL._AC_SL1500_.jpg",
-      "imageAlt": "Fiskars Trowel, Heavy Duty Gardening Hand Tool with Hang Hole, For Digging and Planting, Rust Resistant Cast Aluminum, Ergonomic Handle and...",
-      "url": "https://www.amazon.com/dp/B004S0PGPM?tag=render-sites-20"
-    },
-    {
-      "asin": "B000BX1IB6",
-      "source": "sunny-garden",
-      "name": "Fiskars 28\" Loppers for Tree Trimming, Heavy Duty, Rust-Resistant Sharp Bypass Steel Blade Loppers, Branch Cutter up to 1.5\" Diameter Cut C...",
-      "category": "Gardening",
-      "description": "A strong add-to-cart candidate for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61pFXu5ytLL._AC_SL1500_.jpg",
-      "imageAlt": "Fiskars 28\" Loppers for Tree Trimming, Heavy Duty, Rust-Resistant Sharp Bypass Steel Blade Loppers, Branch Cutter up to 1.5\" Diameter Cut C...",
-      "url": "https://www.amazon.com/dp/B000BX1IB6?tag=render-sites-20"
-    },
-    {
-      "asin": "B0G8JQJ9L4",
-      "source": "sunny-garden",
-      "name": "WOWBOX Garden Tools Set - 10 PCS, Heavy Duty Gardening Hand Tools Kit with Storage Tote, Rust-Resistant Gardening Supplies for Planting wit...",
-      "category": "Storage",
-      "description": "A clean routine helper for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71P3coPZvuL._AC_SL1500_.jpg",
-      "imageAlt": "WOWBOX Garden Tools Set - 10 PCS, Heavy Duty Gardening Hand Tools Kit with Storage Tote, Rust-Resistant Gardening Supplies for Planting wit...",
-      "url": "https://www.amazon.com/dp/B0G8JQJ9L4?tag=render-sites-20"
-    },
-    {
-      "asin": "B081W9LGL2",
-      "source": "sunny-garden",
-      "name": "Giraffe Tools Retractable Garden Hose Reel 1/2 Inch x 130 ft, Super Heavy Duty, Any Length Lock, Slow Return System, Wall Mounted and 180 D...",
-      "category": "Decor",
-      "description": "A solid shortlist item for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71qngyqEVHL._AC_SL1500_.jpg",
-      "imageAlt": "Giraffe Tools Retractable Garden Hose Reel 1/2 Inch x 130 ft, Super Heavy Duty, Any Length Lock, Slow Return System, Wall Mounted and 180 D...",
-      "url": "https://www.amazon.com/dp/B081W9LGL2?tag=render-sites-20"
-    },
-    {
-      "asin": "B0C61PF3CQ",
-      "source": "sunny-garden",
-      "name": "Garden Tools Set, 3 Pack Heavy Duty Gardening Tools Set Include Garden Shovel, Transplant Trowel and Hand Rake with Ergonomic Non-Slip Hand...",
-      "category": "Starter Kit",
-      "description": "A practical first-click pick for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61knesYdOYL._AC_SL1500_.jpg",
-      "imageAlt": "Garden Tools Set, 3 Pack Heavy Duty Gardening Tools Set Include Garden Shovel, Transplant Trowel and Hand Rake with Ergonomic Non-Slip Hand...",
-      "url": "https://www.amazon.com/dp/B0C61PF3CQ?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DS62FVKJ",
-      "source": "sunny-garden",
-      "name": "Gardening Tools 9-Piece Heavy-Duty Garden Tools Set, Stainless Steel Garden Hand Tools with Purple Floral Tote Bag and Repotting Mat Garden...",
-      "category": "Storage",
-      "description": "A useful little upgrade for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81e6qv1voHL._AC_SL1500_.jpg",
-      "imageAlt": "Gardening Tools 9-Piece Heavy-Duty Garden Tools Set, Stainless Steel Garden Hand Tools with Purple Floral Tote Bag and Repotting Mat Garden...",
-      "url": "https://www.amazon.com/dp/B0DS62FVKJ?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DWHSCGRL",
-      "source": "sunny-garden",
-      "name": "Grenebo 12-Piece Gardening Tools Set, Floral Print Garden Tool Set Gift, Rust-Proof & Heavy-Duty Trowel, Rake, Weeder, Pruner with Hard Cas...",
-      "category": "Starter Kit",
-      "description": "A strong add-to-cart candidate for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71kiDGnt8hL._AC_SL1500_.jpg",
-      "imageAlt": "Grenebo 12-Piece Gardening Tools Set, Floral Print Garden Tool Set Gift, Rust-Proof & Heavy-Duty Trowel, Rake, Weeder, Pruner with Hard Cas...",
-      "url": "https://www.amazon.com/dp/B0DWHSCGRL?tag=render-sites-20"
-    },
-    {
-      "asin": "B0BCK7NRBH",
-      "source": "sunny-garden",
-      "name": "PERWIN Hori Hori Garden Knife, Garden Tools with Sheath for Weeding, Planting, Digging, 7\" Stainless Steel Blade with Cutting Edge, Full-Ta...",
-      "category": "Gardening",
-      "description": "A clean routine helper for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71rS+m9pqHL._AC_SL1500_.jpg",
-      "imageAlt": "PERWIN Hori Hori Garden Knife, Garden Tools with Sheath for Weeding, Planting, Digging, 7\" Stainless Steel Blade with Cutting Edge, Full-Ta...",
-      "url": "https://www.amazon.com/dp/B0BCK7NRBH?tag=render-sites-20"
-    },
-    {
-      "asin": "B0030MIHAU",
-      "source": "sunny-garden",
-      "name": "Fiskars Stand-Up Weed Puller Tool, 4 Serrated Stainless Steel Claws Grip Roots for Permanent Removal, Reinforced Foot Platform Penetrates T...",
-      "category": "Court Gear",
-      "description": "A solid shortlist item for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61zif1JQAwL._AC_SL1500_.jpg",
-      "imageAlt": "Fiskars Stand-Up Weed Puller Tool, 4 Serrated Stainless Steel Claws Grip Roots for Permanent Removal, Reinforced Foot Platform Penetrates T...",
-      "url": "https://www.amazon.com/dp/B0030MIHAU?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CNK8VRWR",
-      "source": "sunny-garden",
-      "name": "EWPJDK 3 Pack Garden Pruning Shears, Stainless Steel Shears, Gardening Shears, Scissors, Garden Clippers, Pruning Snips, Pruning Shears for...",
-      "category": "Tools",
-      "description": "A practical first-click pick for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71GIW2QhX2L._AC_SL1500_.jpg",
-      "imageAlt": "EWPJDK 3 Pack Garden Pruning Shears, Stainless Steel Shears, Gardening Shears, Scissors, Garden Clippers, Pruning Snips, Pruning Shears for...",
-      "url": "https://www.amazon.com/dp/B0CNK8VRWR?tag=render-sites-20"
-    },
-    {
-      "asin": "B083QJYTKX",
-      "source": "sunny-garden",
-      "name": "Garden Tool Set, 3 Pack Aluminum Heavy Duty Gardening Kit Includes Hand Trowel, Transplant Trowel and Cultivator Hand Rake with Soft Rubber...",
-      "category": "Starter Kit",
-      "description": "A useful little upgrade for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/51u3FBumeCL._AC_SL1500_.jpg",
-      "imageAlt": "Garden Tool Set, 3 Pack Aluminum Heavy Duty Gardening Kit Includes Hand Trowel, Transplant Trowel and Cultivator Hand Rake with Soft Rubber...",
-      "url": "https://www.amazon.com/dp/B083QJYTKX?tag=render-sites-20"
-    },
-    {
-      "asin": "B0D76K43LR",
-      "source": "sunny-garden",
-      "name": "NICOFPHY Weed Puller Tool with Long Handle - 60\" Manual Weeder Remover Tool, 2 in 1 Hand Weed Rake and Garden Hoe for Gardening, Heavy Duty...",
-      "category": "Gardening",
-      "description": "A strong add-to-cart candidate for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
-      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61zvrwN9mML._AC_SL1500_.jpg",
-      "imageAlt": "NICOFPHY Weed Puller Tool with Long Handle - 60\" Manual Weeder Remover Tool, 2 in 1 Hand Weed Rake and Garden Hoe for Gardening, Heavy Duty...",
-      "url": "https://www.amazon.com/dp/B0D76K43LR?tag=render-sites-20"
-    },
-    {
-      "asin": "B01EWH83FU",
+      "asin": "B08Z7L3N1X",
       "source": "plant-studio",
-      "name": "VIVOSUN 6.5 Inch Gardening Scissors Hand Pruner Pruning Shear with Straight Stainless Steel Blades Orange 1-Pack",
-      "category": "Indoor Plants",
-      "description": "A practical first-click pick for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "name": "Geiserailie 60 Pieces Plant Climbing Wall Fixture Clips with 72 Pieces Acrylic Adhesive Sticker Leaf Fixer Invisible Wall Vines Fixing Clip...",
+      "category": "Tools",
+      "description": "A clean routine helper for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
       "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61IoQS+EgTL._AC_SL1500_.jpg",
-      "imageAlt": "VIVOSUN 6.5 Inch Gardening Scissors Hand Pruner Pruning Shear with Straight Stainless Steel Blades Orange 1-Pack",
-      "url": "https://www.amazon.com/dp/B01EWH83FU?tag=render-sites-20"
+      "image": "https://m.media-amazon.com/images/I/71sjSGGR18L._AC_SL1500_.jpg",
+      "imageAlt": "Geiserailie 60 Pieces Plant Climbing Wall Fixture Clips with 72 Pieces Acrylic Adhesive Sticker Leaf Fixer Invisible Wall Vines Fixing Clip...",
+      "url": "https://www.amazon.com/dp/B08Z7L3N1X?tag=render-sites-20"
+    },
+    {
+      "asin": "B0D6PG686X",
+      "source": "plant-studio",
+      "name": "Iridescent Self Watering Globes, Glass Rainbow Plant Watering Globes, Self Watering Planter Insert, Automatic Plant Waterer Indoor (Medium-...",
+      "category": "Indoor Plants",
+      "description": "A solid shortlist item for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81d1B1dqKhL._AC_SL1500_.jpg",
+      "imageAlt": "Iridescent Self Watering Globes, Glass Rainbow Plant Watering Globes, Self Watering Planter Insert, Automatic Plant Waterer Indoor (Medium-...",
+      "url": "https://www.amazon.com/dp/B0D6PG686X?tag=render-sites-20"
+    },
+    {
+      "asin": "B07D29P5Z1",
+      "source": "plant-studio",
+      "name": "XXXFLOWER Plant Terrarium with Wooden Stand, Air Planter Bulb Glass Vase Metal Swivel Holder Retro Tabletop for Hydroponics Home Garden Off...",
+      "category": "Indoor Plants",
+      "description": "A clean routine helper for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71GrAWYYDyL._AC_SL1500_.jpg",
+      "imageAlt": "XXXFLOWER Plant Terrarium with Wooden Stand, Air Planter Bulb Glass Vase Metal Swivel Holder Retro Tabletop for Hydroponics Home Garden Off...",
+      "url": "https://www.amazon.com/dp/B07D29P5Z1?tag=render-sites-20"
+    },
+    {
+      "asin": "B0F1MY82C3",
+      "source": "plant-studio",
+      "name": "Extendable Plant Stakes, Length Scalable from 17.9IN to 42.3IN Plant Support Stake, Orchid Sticks with Clips for Indoor Outdoor,Garden Stak...",
+      "category": "Tools",
+      "description": "A clean routine helper for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61VctrE2f4L._AC_SL1500_.jpg",
+      "imageAlt": "Extendable Plant Stakes, Length Scalable from 17.9IN to 42.3IN Plant Support Stake, Orchid Sticks with Clips for Indoor Outdoor,Garden Stak...",
+      "url": "https://www.amazon.com/dp/B0F1MY82C3?tag=render-sites-20"
+    },
+    {
+      "asin": "B0G3WQBMLL",
+      "source": "poolside-stack",
+      "name": "BITIWEND Solar Pool Lights for Framed Above Ground Pools, Waterproof Swimming Pool Accessories Lights, for Outdoor Pool Yard Garden Decorat...",
+      "category": "Lighting",
+      "description": "A strong add-to-cart candidate for pool and beach shoppers who want better shade, easier carrying, cleaner drying, or more fun without a trunk full of chaos.",
+      "bestFor": "Pool And Beach shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71pfZRFtsAL._AC_SL1500_.jpg",
+      "imageAlt": "BITIWEND Solar Pool Lights for Framed Above Ground Pools, Waterproof Swimming Pool Accessories Lights, for Outdoor Pool Yard Garden Decorat...",
+      "url": "https://www.amazon.com/dp/B0G3WQBMLL?tag=render-sites-20"
+    },
+    {
+      "asin": "B000J3Z7TC",
+      "source": "poolside-stack",
+      "name": "Hoyle Waterproof Playing Cards, Clear Plastic Deck of Cards for Outdoor Card Games, Camping, Beach, Pool & Travel Games (1 Deck)",
+      "category": "Pool And Beach",
+      "description": "A useful little upgrade for pool and beach shoppers who want better shade, easier carrying, cleaner drying, or more fun without a trunk full of chaos.",
+      "bestFor": "Pool And Beach shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81JkEmp-ZCL._AC_SL1500_.jpg",
+      "imageAlt": "Hoyle Waterproof Playing Cards, Clear Plastic Deck of Cards for Outdoor Card Games, Camping, Beach, Pool & Travel Games (1 Deck)",
+      "url": "https://www.amazon.com/dp/B000J3Z7TC?tag=render-sites-20"
     },
     {
       "asin": "B0G21YBN37",
@@ -640,15 +377,169 @@
       "url": "https://www.amazon.com/dp/B0G21YBN37?tag=render-sites-20"
     },
     {
-      "asin": "B09X3NMTK9",
+      "asin": "B0BC9LRD4L",
       "source": "plant-studio",
-      "name": "40 Pcs 5 Shapes Yellow Extremely Sticky Traps for Fungus Gnat, Fruit Fly, Fly, Whitefly, Flying Insect Catcher Traps for Houseplants, Kitch...",
-      "category": "Starter Kit",
+      "name": "HNXTYAOB Repotting Mat for Indoor Plant Transplanting and Mess Control 27\"x 27\" Thickened Waterproof Potting Tray Foldable Succulent Pottin...",
+      "category": "Indoor Plants",
+      "description": "A useful little upgrade for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/712S+JWmYuL._AC_SL1500_.jpg",
+      "imageAlt": "HNXTYAOB Repotting Mat for Indoor Plant Transplanting and Mess Control 27\"x 27\" Thickened Waterproof Potting Tray Foldable Succulent Pottin...",
+      "url": "https://www.amazon.com/dp/B0BC9LRD4L?tag=render-sites-20"
+    },
+    {
+      "asin": "B082BPQH6Z",
+      "source": "plant-studio",
+      "name": "Miracle-Gro Indoor Plant Food, Liquid Plant Food for Houseplants, Snake Plants, Peace Lilies, Flowers, Vegetables, Herbs and More, 8 oz., 2...",
+      "category": "Indoor Plants",
       "description": "A strong add-to-cart candidate for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
       "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/7105XWXobxL._AC_SL1500_.jpg",
-      "imageAlt": "40 Pcs 5 Shapes Yellow Extremely Sticky Traps for Fungus Gnat, Fruit Fly, Fly, Whitefly, Flying Insect Catcher Traps for Houseplants, Kitch...",
-      "url": "https://www.amazon.com/dp/B09X3NMTK9?tag=render-sites-20"
+      "image": "https://m.media-amazon.com/images/I/71cTl+fiDmL._AC_SL1500_.jpg",
+      "imageAlt": "Miracle-Gro Indoor Plant Food, Liquid Plant Food for Houseplants, Snake Plants, Peace Lilies, Flowers, Vegetables, Herbs and More, 8 oz., 2...",
+      "url": "https://www.amazon.com/dp/B082BPQH6Z?tag=render-sites-20"
+    },
+    {
+      "asin": "B075NS8YXG",
+      "source": "outpost-patio",
+      "name": "Brightech Ambience Pro Solar Powered Outdoor String Lights, 27 ft",
+      "category": "Lighting",
+      "description": "A quick bistro-light upgrade for balconies, fences, pergolas, and tiny patios that need a softer evening glow.",
+      "bestFor": "Warm patio lighting without hardwiring",
+      "image": "/images/outpost-patio/brightech-string-lights.jpg",
+      "imageAlt": "Brightech Ambience Pro Solar Powered Outdoor String Lights, 27 ft",
+      "url": "https://www.amazon.com/dp/B075NS8YXG?tag=render-sites-20"
+    },
+    {
+      "asin": "B09F9C3KFS",
+      "source": "outpost-patio",
+      "name": "Grenebo Gardening Tools 9-Piece Heavy Duty Garden Hand Tools with Organizer Handbag",
+      "category": "Garden Comfort",
+      "description": "A tidy starter kit for container gardeners, balcony planters, and anyone who wants the basics in one grab-and-go bag.",
+      "bestFor": "First patio garden toolkit",
+      "image": "/images/outpost-patio/grenebo-garden-tools.jpg",
+      "imageAlt": "Grenebo Gardening Tools 9-Piece Heavy Duty Garden Hand Tools with Organizer Handbag",
+      "url": "https://www.amazon.com/dp/B09F9C3KFS?tag=render-sites-20"
+    },
+    {
+      "asin": "B007O1CAZQ",
+      "source": "outpost-patio",
+      "name": "Keter Pacific Cool Bar Outdoor Patio Furniture and Hot Tub Side Table",
+      "category": "Hosting",
+      "description": "A side table that quietly doubles as a drink cooler, which is exactly the kind of trick small outdoor spaces need.",
+      "bestFor": "Patio drinks and compact hosting",
+      "image": "/images/outpost-patio/keter-pacific-cool-bar.jpg",
+      "imageAlt": "Keter Pacific Cool Bar Outdoor Patio Furniture and Hot Tub Side Table",
+      "url": "https://www.amazon.com/dp/B007O1CAZQ?tag=render-sites-20"
+    },
+    {
+      "asin": "B09PVHFYQS",
+      "source": "outpost-patio",
+      "name": "GENIMO Outdoor Rug for Patio, 9 x 12 Waterproof Reversible Plastic Camping Rug",
+      "category": "Outdoor Rugs",
+      "description": "A big visual reset for patios and RV setups when the floor needs texture, pattern, and an easier-to-clean surface.",
+      "bestFor": "Large patio zones",
+      "image": "/images/outpost-patio/genimo-outdoor-rug.jpg",
+      "imageAlt": "GENIMO Outdoor Rug for Patio, 9 x 12 Waterproof Reversible Plastic Camping Rug",
+      "url": "https://www.amazon.com/dp/B09PVHFYQS?tag=render-sites-20"
+    },
+    {
+      "asin": "B086JFWSXN",
+      "source": "outpost-patio",
+      "name": "Best Choice Products Set of 2 Adjustable Steel Mesh Zero Gravity Lounge Chair Recliners",
+      "category": "Furniture",
+      "description": "Easy reclining chairs for lazy afternoons, poolside hangs, and extra guest seating that can fold away when the party is done.",
+      "bestFor": "Flexible lounge seating",
+      "image": "/images/outpost-patio/best-choice-zero-gravity-chairs.jpg",
+      "imageAlt": "Best Choice Products Set of 2 Adjustable Steel Mesh Zero Gravity Lounge Chair Recliners",
+      "url": "https://www.amazon.com/dp/B086JFWSXN?tag=render-sites-20"
+    },
+    {
+      "asin": "B0045E7A64",
+      "source": "outpost-patio",
+      "name": "Best Choice Products 80-Quart Outdoor Steel Rolling Cooler Cart",
+      "category": "Hosting",
+      "description": "A party-ready cooler cart for backyard dinners, game days, and keeping drinks outside instead of sending everyone into the kitchen.",
+      "bestFor": "Outdoor entertaining",
+      "image": "/images/outpost-patio/best-choice-cooler-cart.jpg",
+      "imageAlt": "Best Choice Products 80-Quart Outdoor Steel Rolling Cooler Cart",
+      "url": "https://www.amazon.com/dp/B0045E7A64?tag=render-sites-20"
+    },
+    {
+      "asin": "B0B2RGS7NP",
+      "source": "outpost-patio",
+      "name": "GREENVINES Outdoor Rocking Chairs, Set of 2 HDPE Oversized Porch Rockers",
+      "category": "Furniture",
+      "description": "Porch rockers with a clean, sturdy look for slow mornings, iced coffee, and front-yard people-watching.",
+      "bestFor": "Front porch comfort",
+      "image": "/images/outpost-patio/greenvines-rocking-chairs.jpg",
+      "imageAlt": "GREENVINES Outdoor Rocking Chairs, Set of 2 HDPE Oversized Porch Rockers",
+      "url": "https://www.amazon.com/dp/B0B2RGS7NP?tag=render-sites-20"
+    },
+    {
+      "asin": "B077X9Q9WR",
+      "source": "outpost-patio",
+      "name": "Burpee Wildflower 25,000 Bulk Seeds, 18 Varieties of Non-GMO Flower Seeds",
+      "category": "Planters",
+      "description": "A low-cost way to bring color to planters, borders, and pollinator-friendly corners without overthinking the whole garden plan.",
+      "bestFor": "Easy flower color",
+      "image": "/images/outpost-patio/burpee-wildflower-seeds.jpg",
+      "imageAlt": "Burpee Wildflower 25,000 Bulk Seeds, 18 Varieties of Non-GMO Flower Seeds",
+      "url": "https://www.amazon.com/dp/B077X9Q9WR?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CQX8B5K9",
+      "source": "outpost-patio",
+      "name": "FEED GARDEN Glass Hummingbird Feeder, 16 oz Outdoor Hanging Bird Feeder",
+      "category": "Garden Decor",
+      "description": "A small charm upgrade for patios and gardens where you want movement, color, and a little wildlife moment outside the window.",
+      "bestFor": "Bird-friendly patios",
+      "image": "/images/outpost-patio/feed-garden-hummingbird-feeder.jpg",
+      "imageAlt": "FEED GARDEN Glass Hummingbird Feeder, 16 oz Outdoor Hanging Bird Feeder",
+      "url": "https://www.amazon.com/dp/B0CQX8B5K9?tag=render-sites-20"
+    },
+    {
+      "asin": "B0GF1PRX8L",
+      "source": "outpost-patio",
+      "name": "LIFFY Mosaic Outdoor Side Table, 14 Inch Round Flower Patio Table",
+      "category": "Furniture",
+      "description": "A small accent table for coffee, books, candles, or snacks when a full patio table would crowd the space.",
+      "bestFor": "Tiny patio surfaces",
+      "image": "/images/outpost-patio/liffy-mosaic-side-table.jpg",
+      "imageAlt": "LIFFY Mosaic Outdoor Side Table, 14 Inch Round Flower Patio Table",
+      "url": "https://www.amazon.com/dp/B0GF1PRX8L?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CSFK4W44",
+      "source": "outpost-patio",
+      "name": "Abba Patio Outdoor Market Umbrella with Crank and Tilt",
+      "category": "Shade",
+      "description": "A second shade option for shoppers who want the same practical umbrella idea in a different Amazon listing or color path.",
+      "bestFor": "Flexible shade styling",
+      "image": "/images/outpost-patio/abba-patio-umbrella-market.jpg",
+      "imageAlt": "Abba Patio Outdoor Market Umbrella with Crank and Tilt",
+      "url": "https://www.amazon.com/dp/B0CSFK4W44?tag=render-sites-20"
+    },
+    {
+      "asin": "B081W9LGL2",
+      "source": "sunny-garden",
+      "name": "Giraffe Tools Retractable Garden Hose Reel 1/2 Inch x 130 ft, Super Heavy Duty, Any Length Lock, Slow Return System, Wall Mounted and 180 D...",
+      "category": "Decor",
+      "description": "A solid shortlist item for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
+      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71qngyqEVHL._AC_SL1500_.jpg",
+      "imageAlt": "Giraffe Tools Retractable Garden Hose Reel 1/2 Inch x 130 ft, Super Heavy Duty, Any Length Lock, Slow Return System, Wall Mounted and 180 D...",
+      "url": "https://www.amazon.com/dp/B081W9LGL2?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DWHSCGRL",
+      "source": "sunny-garden",
+      "name": "Grenebo 12-Piece Gardening Tools Set, Floral Print Garden Tool Set Gift, Rust-Proof & Heavy-Duty Trowel, Rake, Weeder, Pruner with Hard Cas...",
+      "category": "Starter Kit",
+      "description": "A strong add-to-cart candidate for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
+      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71kiDGnt8hL._AC_SL1500_.jpg",
+      "imageAlt": "Grenebo 12-Piece Gardening Tools Set, Floral Print Garden Tool Set Gift, Rust-Proof & Heavy-Duty Trowel, Rake, Weeder, Pruner with Hard Cas...",
+      "url": "https://www.amazon.com/dp/B0DWHSCGRL?tag=render-sites-20"
     },
     {
       "asin": "B005755YSQ",
@@ -662,37 +553,189 @@
       "url": "https://www.amazon.com/dp/B005755YSQ?tag=render-sites-20"
     },
     {
-      "asin": "B09234GQXV",
+      "asin": "B0042YYVYG",
       "source": "plant-studio",
-      "name": "Bamworld Plant Stand Indoor Plant Shelf Outdoor Wood Plant Rack for Multiple Plants 3 Tiers Ladder Plant Holder for Living Room Patio Boho...",
+      "name": "Miracle-Gro Water Storing Crystals - Soil Moisture Retention Crystals for Indoor and Outdoor Plants - 12 oz.",
       "category": "Indoor Plants",
+      "description": "A clean routine helper for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71qjLamqfML._AC_SL1500_.jpg",
+      "imageAlt": "Miracle-Gro Water Storing Crystals - Soil Moisture Retention Crystals for Indoor and Outdoor Plants - 12 oz.",
+      "url": "https://www.amazon.com/dp/B0042YYVYG?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BRPVLWZK",
+      "source": "plant-studio",
+      "name": "Linpla 5-Pack Decent Metal Plant Stands, Heavy Duty Flower Pot Stands for Multiple Plant, Anti-Rust Iron Plant Pot Shelf, Decoration Racks...",
+      "category": "Decor",
       "description": "A solid shortlist item for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
       "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/91uZi7zRBuL._AC_SL1500_.jpg",
-      "imageAlt": "Bamworld Plant Stand Indoor Plant Shelf Outdoor Wood Plant Rack for Multiple Plants 3 Tiers Ladder Plant Holder for Living Room Patio Boho...",
-      "url": "https://www.amazon.com/dp/B09234GQXV?tag=render-sites-20"
+      "image": "https://m.media-amazon.com/images/I/81c6QAI9oDL._AC_SL1500_.jpg",
+      "imageAlt": "Linpla 5-Pack Decent Metal Plant Stands, Heavy Duty Flower Pot Stands for Multiple Plant, Anti-Rust Iron Plant Pot Shelf, Decoration Racks...",
+      "url": "https://www.amazon.com/dp/B0BRPVLWZK?tag=render-sites-20"
     },
     {
-      "asin": "B0DTXL2QMD",
+      "asin": "B09M2K9F34",
       "source": "plant-studio",
-      "name": "SuperMoss (01710) Microfiber Dusting Gloves for Plants – Gentle Leaf Shine & Cleaner for Houseplants, Reusable Indoor Plant Care Accessorie...",
-      "category": "Indoor Plants",
-      "description": "A practical first-click pick for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
-      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81BRTSGoy8L._AC_SL1500_.jpg",
-      "imageAlt": "SuperMoss (01710) Microfiber Dusting Gloves for Plants – Gentle Leaf Shine & Cleaner for Houseplants, Reusable Indoor Plant Care Accessorie...",
-      "url": "https://www.amazon.com/dp/B0DTXL2QMD?tag=render-sites-20"
-    },
-    {
-      "asin": "B0F4CNR7WF",
-      "source": "plant-studio",
-      "name": "GLCSC 8pcs Plant Stem Support, Plant Support for Indoor Plants, Plastic Reusable Plant Stabilizer, Indoor Plants Accessories",
-      "category": "Starter Kit",
+      "name": "XXXFLOWER Wall Hanging Propagation Station with Wooden Stand 5 Glass Test Tubes 3 Tiered Planters Wall Terrarium for Home Office Plant Hang...",
+      "category": "Decor",
       "description": "A useful little upgrade for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
       "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71EM1zHHzSL._AC_SL1500_.jpg",
-      "imageAlt": "GLCSC 8pcs Plant Stem Support, Plant Support for Indoor Plants, Plastic Reusable Plant Stabilizer, Indoor Plants Accessories",
-      "url": "https://www.amazon.com/dp/B0F4CNR7WF?tag=render-sites-20"
+      "image": "https://m.media-amazon.com/images/I/71AjSXyijdL._AC_SL1500_.jpg",
+      "imageAlt": "XXXFLOWER Wall Hanging Propagation Station with Wooden Stand 5 Glass Test Tubes 3 Tiered Planters Wall Terrarium for Home Office Plant Hang...",
+      "url": "https://www.amazon.com/dp/B09M2K9F34?tag=render-sites-20"
+    },
+    {
+      "asin": "B0F6LHWJZY",
+      "source": "plant-studio",
+      "name": "5pack Adjustable Plant Support Pole – Stackable Indoor/Outdoor Support Pole with Clamps, Suitable for Supporting Monstera and Climbing Plan...",
+      "category": "Lighting",
+      "description": "A strong add-to-cart candidate for indoor plants shoppers who want less guesswork, cleaner watering, better light, or a nicer place for plants to live.",
+      "bestFor": "Indoor Plants shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71MuCTN2SpL._AC_SL1500_.jpg",
+      "imageAlt": "5pack Adjustable Plant Support Pole – Stackable Indoor/Outdoor Support Pole with Clamps, Suitable for Supporting Monstera and Climbing Plan...",
+      "url": "https://www.amazon.com/dp/B0F6LHWJZY?tag=render-sites-20"
+    },
+    {
+      "asin": "B09P4WD862",
+      "source": "poolside-stack",
+      "name": "Mowend Swimming Pool Skimmer Net Total Length 57 inches, Leaf Rake Net with 4 Section Telescopic Aluminum Pole for Fast Cleaning Ponds, Hot...",
+      "category": "Pool And Beach",
+      "description": "A practical first-click pick for pool and beach shoppers who want better shade, easier carrying, cleaner drying, or more fun without a trunk full of chaos.",
+      "bestFor": "Pool And Beach shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/6114z-OPqpL._AC_SL1500_.jpg",
+      "imageAlt": "Mowend Swimming Pool Skimmer Net Total Length 57 inches, Leaf Rake Net with 4 Section Telescopic Aluminum Pole for Fast Cleaning Ponds, Hot...",
+      "url": "https://www.amazon.com/dp/B09P4WD862?tag=render-sites-20"
+    },
+    {
+      "asin": "B0GRGH75N3",
+      "source": "poolside-stack",
+      "name": "VICHTOP 2026 Upgrade 2 Sets Poolside Storage Basket, Above Ground Pool Accessories, Swimming Pool Storage Basket with Cup Holder, Mesh Bag...",
+      "category": "Storage",
+      "description": "A solid shortlist item for pool and beach shoppers who want better shade, easier carrying, cleaner drying, or more fun without a trunk full of chaos.",
+      "bestFor": "Pool And Beach shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81OSYUgRzhL._AC_SL1500_.jpg",
+      "imageAlt": "VICHTOP 2026 Upgrade 2 Sets Poolside Storage Basket, Above Ground Pool Accessories, Swimming Pool Storage Basket with Cup Holder, Mesh Bag...",
+      "url": "https://www.amazon.com/dp/B0GRGH75N3?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CYCHN8VN",
+      "source": "poolside-stack",
+      "name": "AquaJoyer 2 Sets of Poolside Storage Baskets with Cup Holders - Perfect for 3-Inch or Smaller Top Rails - Above Ground Pool Accessories - F...",
+      "category": "Storage",
+      "description": "A clean routine helper for pool and beach shoppers who want better shade, easier carrying, cleaner drying, or more fun without a trunk full of chaos.",
+      "bestFor": "Pool And Beach shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81OjvQPoaiL._AC_SL1500_.jpg",
+      "imageAlt": "AquaJoyer 2 Sets of Poolside Storage Baskets with Cup Holders - Perfect for 3-Inch or Smaller Top Rails - Above Ground Pool Accessories - F...",
+      "url": "https://www.amazon.com/dp/B0CYCHN8VN?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CKRS5PG2",
+      "source": "poolside-stack",
+      "name": "Yozoluck Pool Towel Rack Outdoor, 6 Bars Metal Heavy Duty Never Tilt Pool Accessories with Heavy Metal Base, Hot Tub Accessories Towel Dyin...",
+      "category": "Comfort",
+      "description": "A practical first-click pick for pool and beach shoppers who want better shade, easier carrying, cleaner drying, or more fun without a trunk full of chaos.",
+      "bestFor": "Pool And Beach shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71bXuCEq2KL._AC_SL1500_.jpg",
+      "imageAlt": "Yozoluck Pool Towel Rack Outdoor, 6 Bars Metal Heavy Duty Never Tilt Pool Accessories with Heavy Metal Base, Hot Tub Accessories Towel Dyin...",
+      "url": "https://www.amazon.com/dp/B0CKRS5PG2?tag=render-sites-20"
+    },
+    {
+      "asin": "B08NPRYKH4",
+      "source": "poolside-stack",
+      "name": "POOLWHALE Professional Pool Skimmer Net, Heavy Duty Swimming Leaf Rake Cleaning Tool with Deep Fine Nylon Mesh Net Bag - Fast Cleaning,Easy...",
+      "category": "Storage",
+      "description": "A strong add-to-cart candidate for pool and beach shoppers who want better shade, easier carrying, cleaner drying, or more fun without a trunk full of chaos.",
+      "bestFor": "Pool And Beach shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/51g1TifevML._AC_SL1500_.jpg",
+      "imageAlt": "POOLWHALE Professional Pool Skimmer Net, Heavy Duty Swimming Leaf Rake Cleaning Tool with Deep Fine Nylon Mesh Net Bag - Fast Cleaning,Easy...",
+      "url": "https://www.amazon.com/dp/B08NPRYKH4?tag=render-sites-20"
+    },
+    {
+      "asin": "B0812LQ8GW",
+      "source": "poolside-stack",
+      "name": "GoSports Splash Hoop PRO - Choose Your Color - Swimming Pool Basketball Game, Includes Poolside Water Basketball Hoop, 2 Balls and Pump",
+      "category": "Court Gear",
+      "description": "A practical first-click pick for pool and beach shoppers who want better shade, easier carrying, cleaner drying, or more fun without a trunk full of chaos.",
+      "bestFor": "Pool And Beach shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81ssFqrVptL._AC_SL1500_.jpg",
+      "imageAlt": "GoSports Splash Hoop PRO - Choose Your Color - Swimming Pool Basketball Game, Includes Poolside Water Basketball Hoop, 2 Balls and Pump",
+      "url": "https://www.amazon.com/dp/B0812LQ8GW?tag=render-sites-20"
+    },
+    {
+      "asin": "B07597XGSN",
+      "source": "outpost-patio",
+      "name": "VIVOHOME Bird Bath for Outside, 28 Inch Weather-Resistant Polyresin Pedestal",
+      "category": "Garden Decor",
+      "description": "A decorative garden anchor that adds height and an old-school backyard feel without needing a built-in landscape plan.",
+      "bestFor": "Garden focal point",
+      "image": "/images/outpost-patio/vivohome-bird-bath.jpg",
+      "imageAlt": "VIVOHOME Bird Bath for Outside, 28 Inch Weather-Resistant Polyresin Pedestal",
+      "url": "https://www.amazon.com/dp/B07597XGSN?tag=render-sites-20"
+    },
+    {
+      "asin": "B08K9769NY",
+      "source": "outpost-patio",
+      "name": "Unique Loom Outdoor Collection Area Rug",
+      "category": "Outdoor Rugs",
+      "description": "A softer patterned rug pick for smaller patios, balconies, and seating corners that need one visual layer to feel intentional.",
+      "bestFor": "Small outdoor room styling",
+      "image": "/images/outpost-patio/unique-loom-outdoor-rug.jpg",
+      "imageAlt": "Unique Loom Outdoor Collection Area Rug",
+      "url": "https://www.amazon.com/dp/B08K9769NY?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BW8X2XND",
+      "source": "sunny-garden",
+      "name": "Heavy Duty Gardening Tools - Gardening Gifts for Women, Men, Mom, Dad - Durable, Ergonomic Garden Tools Set (Green)",
+      "category": "Starter Kit",
+      "description": "A practical first-click pick for gardening shoppers who want easier planting, cleaner watering, better patio setups, or beginner gardening gear that feels approachable.",
+      "bestFor": "Gardening shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81fFCeay55L._AC_SL1500_.jpg",
+      "imageAlt": "Heavy Duty Gardening Tools - Gardening Gifts for Women, Men, Mom, Dad - Durable, Ergonomic Garden Tools Set (Green)",
+      "url": "https://www.amazon.com/dp/B0BW8X2XND?tag=render-sites-20"
+    }
+  ],
+  "primeDayTrendProducts": [
+    {
+      "asin": "B0CT1ZCGLV",
+      "title": "WdtPro Solar Lanterns Outdoor Waterproof Hanging Solar Lights, 2 Pack",
+      "image": "/images/outpost-patio/wdtpro-solar-lanterns.jpg",
+      "url": "https://www.amazon.com/dp/B0CT1ZCGLV?tag=render-sites-20",
+      "trend": "summer routine upgrade",
+      "addedFor": "Prime Day 2026 trend watch"
+    },
+    {
+      "asin": "B01H683DIO",
+      "title": "Best Choice Products Dual-Wheel Home Utility Yard Wheelbarrow",
+      "image": "/images/outpost-patio/best-choice-yard-wheelbarrow.jpg",
+      "url": "https://www.amazon.com/dp/B01H683DIO?tag=render-sites-20",
+      "trend": "cleaner storage",
+      "addedFor": "Prime Day 2026 trend watch"
+    },
+    {
+      "asin": "B07L4J1P9P",
+      "title": "Mkono Macrame Plant Hanger Indoor Hanging Planter Basket with Wood Beads Decorative Flower Pot Holder No Tassels fo...",
+      "image": "https://m.media-amazon.com/images/I/61dWZkgeJ0L._AC_SL1500_.jpg",
+      "url": "https://www.amazon.com/dp/B07L4J1P9P?tag=render-sites-20",
+      "trend": "grab-and-go setup",
+      "addedFor": "Prime Day 2026 trend watch"
+    },
+    {
+      "asin": "B0CVVP4KLY",
+      "title": "Bamworld Tall Plant Stand Indoor Outdoor, Corner Metal Flower Pot Stands for Multiple Plants, 4 Tier Heavy Duty Pla...",
+      "image": "https://m.media-amazon.com/images/I/7119xqE3x4L._AC_SL1500_.jpg",
+      "url": "https://www.amazon.com/dp/B0CVVP4KLY?tag=render-sites-20",
+      "trend": "portable utility",
+      "addedFor": "Prime Day 2026 trend watch"
+    },
+    {
+      "asin": "B0B9WFTG1H",
+      "title": "iDavosic.ly Plant Stand Indoor Outdoor, 5 Tier Corner Metal Flower Display Holder Shelf, Folding Tall Orchid Rack f...",
+      "image": "https://m.media-amazon.com/images/I/7152aHBpceL._AC_SL1500_.jpg",
+      "url": "https://www.amazon.com/dp/B0B9WFTG1H?tag=render-sites-20",
+      "trend": "small-space reset",
+      "addedFor": "Prime Day 2026 trend watch"
     }
   ]
 }

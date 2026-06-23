@@ -4,7 +4,7 @@
   "baseUrl": "https://nestoriacampus.onrender.com",
   "platform": "Render Static Site Hosting",
   "affiliateTag": "render-sites-20",
-  "lastUpdated": "2026-06-13",
+  "lastUpdated": "2026-06-23",
   "productCount": 60,
   "monetizationSurface": [
     {
@@ -34,108 +34,10 @@
     "https://nestoriacampus.onrender.com/best/nestoria-teacher-cart/",
     "https://nestoriacampus.onrender.com/affiliate-disclosure/",
     "https://nestoriacampus.onrender.com/editorial-policy/",
-    "https://nestoriacampus.onrender.com/contact/"
+    "https://nestoriacampus.onrender.com/contact/",
+    "https://nestoriacampus.onrender.com/prime-day/"
   ],
   "products": [
-    {
-      "asin": "B0DZ254SSR",
-      "source": "dorm-proof",
-      "name": "10Ft Extension Cord with Multiple Outlets, Flat Plug Surge Protector Power Strip 10 Ft Long Cord, 8 Outlets & 4 USB Ports (2 USB C), Desk C...",
-      "category": "Dorm",
-      "description": "A practical first-click pick for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/612NrGLfOqL._AC_SL1500_.jpg",
-      "imageAlt": "10Ft Extension Cord with Multiple Outlets, Flat Plug Surge Protector Power Strip 10 Ft Long Cord, 8 Outlets & 4 USB Ports (2 USB C), Desk C...",
-      "url": "https://www.amazon.com/dp/B0DZ254SSR?tag=render-sites-20"
-    },
-    {
-      "asin": "B0B41MYSGP",
-      "source": "dorm-proof",
-      "name": "BAND-AID Brand Travel Ready Portable Emergency First Aid Kit, Minor Wound Care, Perfect for Home, Car, Camping, Travel & Outdoor Essentials...",
-      "category": "Starter Kit",
-      "description": "A useful little upgrade for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81vQmvJOqyL._AC_SL1500_.jpg",
-      "imageAlt": "BAND-AID Brand Travel Ready Portable Emergency First Aid Kit, Minor Wound Care, Perfect for Home, Car, Camping, Travel & Outdoor Essentials...",
-      "url": "https://www.amazon.com/dp/B0B41MYSGP?tag=render-sites-20"
-    },
-    {
-      "asin": "B09GTRVJQM",
-      "source": "dorm-proof",
-      "name": "LEVOIT Air Purifiers for Bedroom Home Dorm, AHAM VERIFIDE, 3-in-1 Filter Cleaner With Aroma Pad, Filters Smoke, Allergens, Pet Dander, Odor...",
-      "category": "Dorm",
-      "description": "A strong add-to-cart candidate for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71wGv7Fh2AL._AC_SL1500_.jpg",
-      "imageAlt": "LEVOIT Air Purifiers for Bedroom Home Dorm, AHAM VERIFIDE, 3-in-1 Filter Cleaner With Aroma Pad, Filters Smoke, Allergens, Pet Dander, Odor...",
-      "url": "https://www.amazon.com/dp/B09GTRVJQM?tag=render-sites-20"
-    },
-    {
-      "asin": "B0D2LGK82V",
-      "source": "dorm-proof",
-      "name": "Addtam LED Desk Lamp, Power Strip with 3 Outlets 4 USB Charging Ports(2 USBC), 4 Modes 5 Level Brightness Touch Lamp, Small Desk Lamp for H...",
-      "category": "Lighting",
-      "description": "A clean routine helper for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61RTVGWbTzL._AC_SL1500_.jpg",
-      "imageAlt": "Addtam LED Desk Lamp, Power Strip with 3 Outlets 4 USB Charging Ports(2 USBC), 4 Modes 5 Level Brightness Touch Lamp, Small Desk Lamp for H...",
-      "url": "https://www.amazon.com/dp/B0D2LGK82V?tag=render-sites-20"
-    },
-    {
-      "asin": "B07712H557",
-      "source": "dorm-proof",
-      "name": "Command Variety Pack, Including 10 Pairs of Picture Hanging Strips, 6 Wire Hooks and 8 Utility Hooks for Hanging Christmas Decorations, Dam...",
-      "category": "Decor",
-      "description": "A solid shortlist item for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71Livypa6vL._AC_SL1500_.jpg",
-      "imageAlt": "Command Variety Pack, Including 10 Pairs of Picture Hanging Strips, 6 Wire Hooks and 8 Utility Hooks for Hanging Christmas Decorations, Dam...",
-      "url": "https://www.amazon.com/dp/B07712H557?tag=render-sites-20"
-    },
-    {
-      "asin": "B08R7FP1HT",
-      "source": "dorm-proof",
-      "name": "Dalykate Backpack Laundry Bag, Laundry Backpack with Shoulder Straps and Mesh Pocket Durable Nylon Clothes Hamper Bag with Drawstring Closu...",
-      "category": "Storage",
-      "description": "A practical first-click pick for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61p4SubT6CS._AC_SL1500_.jpg",
-      "imageAlt": "Dalykate Backpack Laundry Bag, Laundry Backpack with Shoulder Straps and Mesh Pocket Durable Nylon Clothes Hamper Bag with Drawstring Closu...",
-      "url": "https://www.amazon.com/dp/B08R7FP1HT?tag=render-sites-20"
-    },
-    {
-      "asin": "B09SZ9T4MV",
-      "source": "dorm-proof",
-      "name": "EUDELE Mesh Shower Caddy Portable for College Dorm Room Essentials, Shower Caddy Dorm with 8-Pocket Large Capacity for Beach, Swimming, Gym...",
-      "category": "Dorm",
-      "description": "A useful little upgrade for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/810iTm77M7L._AC_SL1500_.jpg",
-      "imageAlt": "EUDELE Mesh Shower Caddy Portable for College Dorm Room Essentials, Shower Caddy Dorm with 8-Pocket Large Capacity for Beach, Swimming, Gym...",
-      "url": "https://www.amazon.com/dp/B09SZ9T4MV?tag=render-sites-20"
-    },
-    {
-      "asin": "B00HSC9F2C",
-      "source": "dorm-proof",
-      "name": "Clorox Disinfecting Wipes for Allergy Season, Bleach-Free, Multi-Surface Cleaner, Antibacterial, Fresh Scent & Crisp Lemon, 75 Count Each,...",
-      "category": "Dorm",
-      "description": "A strong add-to-cart candidate for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81ViEehuSvL._AC_SL1500_.jpg",
-      "imageAlt": "Clorox Disinfecting Wipes for Allergy Season, Bleach-Free, Multi-Surface Cleaner, Antibacterial, Fresh Scent & Crisp Lemon, 75 Count Each,...",
-      "url": "https://www.amazon.com/dp/B00HSC9F2C?tag=render-sites-20"
-    },
-    {
-      "asin": "B0738B8SQS",
-      "source": "dorm-proof",
-      "name": "Bedsure Twin XL Mattress Pad - Soft Mattress Topper for College Dorm Room Essentials, Extra Long Twin Quilted Fitted Bed Cover Protector wi...",
-      "category": "Dorm",
-      "description": "A clean routine helper for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81dTkiWb-WL._AC_SL1500_.jpg",
-      "imageAlt": "Bedsure Twin XL Mattress Pad - Soft Mattress Topper for College Dorm Room Essentials, Extra Long Twin Quilted Fitted Bed Cover Protector wi...",
-      "url": "https://www.amazon.com/dp/B0738B8SQS?tag=render-sites-20"
-    },
     {
       "asin": "B08RJC5B74",
       "source": "dorm-proof",
@@ -146,281 +48,6 @@
       "image": "https://m.media-amazon.com/images/I/71FBThbhYAL._AC_SL1500_.jpg",
       "imageAlt": "Closet Organizers and Storage,College Dorm Room Essentials,Pack of 6 Multifunctional Organizer Magic Space Saving Hangers with 9 Holes Stor...",
       "url": "https://www.amazon.com/dp/B08RJC5B74?tag=render-sites-20"
-    },
-    {
-      "asin": "B0B99VKV8P",
-      "source": "dorm-proof",
-      "name": "FYY Over the Door Hooks, 4 Pack Hangers Hooks with Rubber Prevent Scratches Heavy Duty Organizer for Living Room, Bathroom, Bedroom, Kitche...",
-      "category": "Storage",
-      "description": "A practical first-click pick for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/51+oY1kC8kL._AC_SL1500_.jpg",
-      "imageAlt": "FYY Over the Door Hooks, 4 Pack Hangers Hooks with Rubber Prevent Scratches Heavy Duty Organizer for Living Room, Bathroom, Bedroom, Kitche...",
-      "url": "https://www.amazon.com/dp/B0B99VKV8P?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DGF616XN",
-      "source": "dorm-proof",
-      "name": "6 Pack Extra Heavy Duty Large Moving Bags with Strong Zipper & Comfortable Handles, Sturdy & Durable Clothes Storage Bags Totes Bins, Blue...",
-      "category": "Storage",
-      "description": "A useful little upgrade for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71izg8Ai-KL._AC_SL1500_.jpg",
-      "imageAlt": "6 Pack Extra Heavy Duty Large Moving Bags with Strong Zipper & Comfortable Handles, Sturdy & Durable Clothes Storage Bags Totes Bins, Blue...",
-      "url": "https://www.amazon.com/dp/B0DGF616XN?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CR3R6XHM",
-      "source": "dorm-proof",
-      "name": "Pipishell 3 Tier Rolling Cart Organizer, Plastic Rolling Cart with Lockable Wheels & Reinforced Handle, Lightweight Utility Cart Storage Ca...",
-      "category": "Storage",
-      "description": "A strong add-to-cart candidate for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/613bbYJQ2uL._AC_SL1500_.jpg",
-      "imageAlt": "Pipishell 3 Tier Rolling Cart Organizer, Plastic Rolling Cart with Lockable Wheels & Reinforced Handle, Lightweight Utility Cart Storage Ca...",
-      "url": "https://www.amazon.com/dp/B0CR3R6XHM?tag=render-sites-20"
-    },
-    {
-      "asin": "B0BSH75KZ3",
-      "source": "dorm-proof",
-      "name": "DREO Fan for Bedroom, 12 Inches, 70ft Powerful Airflow, 25db Quiet Table Air Circulator Fans for Whole Room, 120° Adjustable Tilt, 3 Speeds...",
-      "category": "Dorm",
-      "description": "A clean routine helper for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71qYVE1hZmL._AC_SL1500_.jpg",
-      "imageAlt": "DREO Fan for Bedroom, 12 Inches, 70ft Powerful Airflow, 25db Quiet Table Air Circulator Fans for Whole Room, 120° Adjustable Tilt, 3 Speeds...",
-      "url": "https://www.amazon.com/dp/B0BSH75KZ3?tag=render-sites-20"
-    },
-    {
-      "asin": "B09KT67BL1",
-      "source": "dorm-proof",
-      "name": "HomeHacks 2 Pack Large Laundry Baskets, Waterproof, Freestanding Laundry Hampers, Collapsible Clothes Hamper with Reinforced Handles in Lau...",
-      "category": "Dorm",
-      "description": "A solid shortlist item for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81rYQCVHPlL._AC_SL1500_.jpg",
-      "imageAlt": "HomeHacks 2 Pack Large Laundry Baskets, Waterproof, Freestanding Laundry Hampers, Collapsible Clothes Hamper with Reinforced Handles in Lau...",
-      "url": "https://www.amazon.com/dp/B09KT67BL1?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CRY97FPB",
-      "source": "dorm-proof",
-      "name": "One Beat Small LED Desk Lamp Power Strip 5ft Extension Cord with 3 Outlets 4 USB Ports(2 USB C), 4 Modes, 5 Level Touch Lamp Study Reading...",
-      "category": "Lighting",
-      "description": "A practical first-click pick for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61ndeyWcaHL._AC_SL1500_.jpg",
-      "imageAlt": "One Beat Small LED Desk Lamp Power Strip 5ft Extension Cord with 3 Outlets 4 USB Ports(2 USB C), 4 Modes, 5 Level Touch Lamp Study Reading...",
-      "url": "https://www.amazon.com/dp/B0CRY97FPB?tag=render-sites-20"
-    },
-    {
-      "asin": "B0BMPNQ5PJ",
-      "source": "dorm-proof",
-      "name": "SUNLONG Dorm Room Essential Clip on Light Wall-Mounted, 3 Color Portable Desk Light Mini Clip Lamp, Battery Operation Small Desk Lamp with...",
-      "category": "Lighting",
-      "description": "A useful little upgrade for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/41WS9sc0b5L._AC_SL1500_.jpg",
-      "imageAlt": "SUNLONG Dorm Room Essential Clip on Light Wall-Mounted, 3 Color Portable Desk Light Mini Clip Lamp, Battery Operation Small Desk Lamp with...",
-      "url": "https://www.amazon.com/dp/B0BMPNQ5PJ?tag=render-sites-20"
-    },
-    {
-      "asin": "B0GXV4S23L",
-      "source": "dorm-proof",
-      "name": "LED Desk Lamp with Power Strip, 3 AC Outlets & 4 USB Ports (2 USB-C), Stepless Dimming & 2800K-6500K Eye-Caring Desk Light, Foldable Table...",
-      "category": "Lighting",
-      "description": "A strong add-to-cart candidate for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71dau9RTrSL._AC_SL1500_.jpg",
-      "imageAlt": "LED Desk Lamp with Power Strip, 3 AC Outlets & 4 USB Ports (2 USB-C), Stepless Dimming & 2800K-6500K Eye-Caring Desk Light, Foldable Table...",
-      "url": "https://www.amazon.com/dp/B0GXV4S23L?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CKKLDZM8",
-      "source": "dorm-proof",
-      "name": "One Beat 10Ft Extension Cord with Multiple Outlets,Flat Plug Power Strip Surge Protector with 10 Ft Long Cord,6 Outlet 4 USB Ports (2USB C)...",
-      "category": "Dorm",
-      "description": "A clean routine helper for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/618I9hPCIjL._AC_SL1500_.jpg",
-      "imageAlt": "One Beat 10Ft Extension Cord with Multiple Outlets,Flat Plug Power Strip Surge Protector with 10 Ft Long Cord,6 Outlet 4 USB Ports (2USB C)...",
-      "url": "https://www.amazon.com/dp/B0CKKLDZM8?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CB8B1M41",
-      "source": "dorm-proof",
-      "name": "Pants Hangers with Clips,Space Saving Hanging Closet Organizer-6 Tiers Skirt Hangers with 360° Swivel Hook,Closet Organizer-Clothes Hangers...",
-      "category": "Storage",
-      "description": "A solid shortlist item for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71-3UVrsGhL._AC_SL1500_.jpg",
-      "imageAlt": "Pants Hangers with Clips,Space Saving Hanging Closet Organizer-6 Tiers Skirt Hangers with 360° Swivel Hook,Closet Organizer-Clothes Hangers...",
-      "url": "https://www.amazon.com/dp/B0CB8B1M41?tag=render-sites-20"
-    },
-    {
-      "asin": "B0BNNVT2VH",
-      "source": "dorm-proof",
-      "name": "Lysol Disinfecting Wipes Bundle, Home Apartment Dorm Room Essentials and Cleaning Supplies, All Purpose Cleaner, Multi-surface Cleaning Wip...",
-      "category": "Dorm",
-      "description": "A practical first-click pick for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81KwmKND15L._AC_SL1500_.jpg",
-      "imageAlt": "Lysol Disinfecting Wipes Bundle, Home Apartment Dorm Room Essentials and Cleaning Supplies, All Purpose Cleaner, Multi-surface Cleaning Wip...",
-      "url": "https://www.amazon.com/dp/B0BNNVT2VH?tag=render-sites-20"
-    },
-    {
-      "asin": "B0BWDHZP8J",
-      "source": "dorm-proof",
-      "name": "Gaiatop USB Desk Fan, 3 Speeds Strong Airflow, 5.5 Inch Portable 90° Rotate Quiet Cooling, Small Personal Table Fans for Bedroom Home Offic...",
-      "category": "Dorm",
-      "description": "A useful little upgrade for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71qu3USX5+L._AC_SL1500_.jpg",
-      "imageAlt": "Gaiatop USB Desk Fan, 3 Speeds Strong Airflow, 5.5 Inch Portable 90° Rotate Quiet Cooling, Small Personal Table Fans for Bedroom Home Offic...",
-      "url": "https://www.amazon.com/dp/B0BWDHZP8J?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CW6353D1",
-      "source": "dorm-proof",
-      "name": "Hantinstom 39-Piece Household Tools Kit Essential Home Repair Set with Plastic Toolbox Ideal for College Students, Home Use & More",
-      "category": "Starter Kit",
-      "description": "A strong add-to-cart candidate for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61hIw9NUz5L._AC_SL1500_.jpg",
-      "imageAlt": "Hantinstom 39-Piece Household Tools Kit Essential Home Repair Set with Plastic Toolbox Ideal for College Students, Home Use & More",
-      "url": "https://www.amazon.com/dp/B0CW6353D1?tag=render-sites-20"
-    },
-    {
-      "asin": "B0B968L1W4",
-      "source": "dorm-proof",
-      "name": "Lingerie Bags for Washing Delicates,Small Fine Mesh Laundry Bags,3Pcs(1 Large,1 Medium,1 Small)",
-      "category": "Storage",
-      "description": "A clean routine helper for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81bZxB9d3ML._AC_SL1500_.jpg",
-      "imageAlt": "Lingerie Bags for Washing Delicates,Small Fine Mesh Laundry Bags,3Pcs(1 Large,1 Medium,1 Small)",
-      "url": "https://www.amazon.com/dp/B0B968L1W4?tag=render-sites-20"
-    },
-    {
-      "asin": "B01LYC1XSM",
-      "source": "dorm-proof",
-      "name": "Beckham Hotel Collection Bed Pillows King Size Set of 2 - Down Alternative Pillow for Back, Stomach or Side Sleepers",
-      "category": "Comfort",
-      "description": "A solid shortlist item for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/617W9ccRr-L._AC_SL1500_.jpg",
-      "imageAlt": "Beckham Hotel Collection Bed Pillows King Size Set of 2 - Down Alternative Pillow for Back, Stomach or Side Sleepers",
-      "url": "https://www.amazon.com/dp/B01LYC1XSM?tag=render-sites-20"
-    },
-    {
-      "asin": "B086WNKLTM",
-      "source": "dorm-proof",
-      "name": "TICONN 6 Pack Extra Large Moving Bags Heavy Duty with Zippers & Carrying Handles, Durable Storage Bags Moving Boxes for Closet Organizers a...",
-      "category": "Storage",
-      "description": "A practical first-click pick for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/91ZpAfw57OL._AC_SL1500_.jpg",
-      "imageAlt": "TICONN 6 Pack Extra Large Moving Bags Heavy Duty with Zippers & Carrying Handles, Durable Storage Bags Moving Boxes for Closet Organizers a...",
-      "url": "https://www.amazon.com/dp/B086WNKLTM?tag=render-sites-20"
-    },
-    {
-      "asin": "B0F92JPR7C",
-      "source": "dorm-proof",
-      "name": "6 Pack Moving Bags Heavy Duty 210GSM with Full-Open Side Zipper, 93L 65lbs Waterproof Foldable Storage Totes for College Dorm Move-In, Movi...",
-      "category": "Storage",
-      "description": "A useful little upgrade for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61iOoMW91ZL._AC_SL1500_.jpg",
-      "imageAlt": "6 Pack Moving Bags Heavy Duty 210GSM with Full-Open Side Zipper, 93L 65lbs Waterproof Foldable Storage Totes for College Dorm Move-In, Movi...",
-      "url": "https://www.amazon.com/dp/B0F92JPR7C?tag=render-sites-20"
-    },
-    {
-      "asin": "B06X421WJ6",
-      "source": "dorm-proof",
-      "name": "Utopia Home - Plastic Hangers 50 Pack - Space Saving Clothes Hanger - Durable and Strong Closet Organizers and Storage Makes It Ideal Stock...",
-      "category": "Storage",
-      "description": "A strong add-to-cart candidate for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
-      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61q0fe5zizL._AC_SL1500_.jpg",
-      "imageAlt": "Utopia Home - Plastic Hangers 50 Pack - Space Saving Clothes Hanger - Durable and Strong Closet Organizers and Storage Makes It Ideal Stock...",
-      "url": "https://www.amazon.com/dp/B06X421WJ6?tag=render-sites-20"
-    },
-    {
-      "asin": "B0BWTT3WK1",
-      "source": "study-glow",
-      "name": "gianotter Desk Organizers and Accessories with File Holder, 4-Tier Desk Accessories & Workspace Organizers with Drawer and 2 Pen Holder, Pa...",
-      "category": "Storage",
-      "description": "A practical first-click pick for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81iE5xG2+pL._AC_SL1500_.jpg",
-      "imageAlt": "gianotter Desk Organizers and Accessories with File Holder, 4-Tier Desk Accessories & Workspace Organizers with Drawer and 2 Pen Holder, Pa...",
-      "url": "https://www.amazon.com/dp/B0BWTT3WK1?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CSFH1R36",
-      "source": "study-glow",
-      "name": "gianotter Desk Organizers and Accessories, Monitor Stand with Drawer and 2 Pen Holder, Desktop Organizer Suitable for Offices and Dormitori...",
-      "category": "Storage",
-      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/711rO4WnvOL._AC_SL1500_.jpg",
-      "imageAlt": "gianotter Desk Organizers and Accessories, Monitor Stand with Drawer and 2 Pen Holder, Desktop Organizer Suitable for Offices and Dormitori...",
-      "url": "https://www.amazon.com/dp/B0CSFH1R36?tag=render-sites-20"
-    },
-    {
-      "asin": "B0949DWJCV",
-      "source": "study-glow",
-      "name": "Crpich Acrylic Cell Phone Stand, Portable Clear Phone Stand for Desk, Compatible with Phone16 15 14 13 Pro Max Mini 12 11 Plus SE, Switch,...",
-      "category": "Study Desk",
-      "description": "A strong add-to-cart candidate for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61xq34OCYUL._AC_SL1500_.jpg",
-      "imageAlt": "Crpich Acrylic Cell Phone Stand, Portable Clear Phone Stand for Desk, Compatible with Phone16 15 14 13 Pro Max Mini 12 11 Plus SE, Switch,...",
-      "url": "https://www.amazon.com/dp/B0949DWJCV?tag=render-sites-20"
-    },
-    {
-      "asin": "B0BYMRJD7R",
-      "source": "study-glow",
-      "name": "Marbrasse Pen Organizer with 2 Drawer, Multi-Functional Pencil Holder for Desk, Desk Organizers and Accessories with 5 Compartments + Drawe...",
-      "category": "Storage",
-      "description": "A clean routine helper for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71B4FwZxCAL._AC_SL1500_.jpg",
-      "imageAlt": "Marbrasse Pen Organizer with 2 Drawer, Multi-Functional Pencil Holder for Desk, Desk Organizers and Accessories with 5 Compartments + Drawe...",
-      "url": "https://www.amazon.com/dp/B0BYMRJD7R?tag=render-sites-20"
-    },
-    {
-      "asin": "B0C9ZHWC9K",
-      "source": "study-glow",
-      "name": "SKYDUE 360 Rotating Plastic Desk Pen Organizer with 5 Slots, Dual-Purpose Art Supply Pencil Cup for Office, School, Home",
-      "category": "Storage",
-      "description": "A solid shortlist item for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61yhHuVQp4L._AC_SL1500_.jpg",
-      "imageAlt": "SKYDUE 360 Rotating Plastic Desk Pen Organizer with 5 Slots, Dual-Purpose Art Supply Pencil Cup for Office, School, Home",
-      "url": "https://www.amazon.com/dp/B0C9ZHWC9K?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CGT9MQGP",
-      "source": "study-glow",
-      "name": "YSAGi Leather Desk Protector, Office Mat, Large Mouse Mat, Non-Slip PU Leather Blotter, Laptop Pad, Waterproof Writing Pad for Office and H...",
-      "category": "Study Desk",
-      "description": "A practical first-click pick for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61jQecz8NpL._AC_SL1500_.jpg",
-      "imageAlt": "YSAGi Leather Desk Protector, Office Mat, Large Mouse Mat, Non-Slip PU Leather Blotter, Laptop Pad, Waterproof Writing Pad for Office and H...",
-      "url": "https://www.amazon.com/dp/B0CGT9MQGP?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DB8F7GDN",
-      "source": "study-glow",
-      "name": "OPNICE Desk Organizer and Accessories, 2-Tier Computer Monitor Stand Riser with Drawer and 2 Pen Holders, Laptop Stand, Office Desk Accesso...",
-      "category": "Storage",
-      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81MeUftFm8L._AC_SL1500_.jpg",
-      "imageAlt": "OPNICE Desk Organizer and Accessories, 2-Tier Computer Monitor Stand Riser with Drawer and 2 Pen Holders, Laptop Stand, Office Desk Accesso...",
-      "url": "https://www.amazon.com/dp/B0DB8F7GDN?tag=render-sites-20"
     },
     {
       "asin": "B0BRMX3SWH",
@@ -434,26 +61,26 @@
       "url": "https://www.amazon.com/dp/B0BRMX3SWH?tag=render-sites-20"
     },
     {
-      "asin": "B0DCVVZ6CT",
+      "asin": "B0CSFH1R36",
       "source": "study-glow",
-      "name": "MOSISO Wrist Rest Support for Mouse Pad&Keyboard Set, Circle Curved Ergonomic Mousepad&Coaster Non-Slip Base Home/Office Pain Relief&Easy T...",
-      "category": "Starter Kit",
-      "description": "A clean routine helper for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "name": "gianotter Desk Organizers and Accessories, Monitor Stand with Drawer and 2 Pen Holder, Desktop Organizer Suitable for Offices and Dormitori...",
+      "category": "Storage",
+      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
       "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/515G2Wi323L._AC_SL1500_.jpg",
-      "imageAlt": "MOSISO Wrist Rest Support for Mouse Pad&Keyboard Set, Circle Curved Ergonomic Mousepad&Coaster Non-Slip Base Home/Office Pain Relief&Easy T...",
-      "url": "https://www.amazon.com/dp/B0DCVVZ6CT?tag=render-sites-20"
+      "image": "https://m.media-amazon.com/images/I/711rO4WnvOL._AC_SL1500_.jpg",
+      "imageAlt": "gianotter Desk Organizers and Accessories, Monitor Stand with Drawer and 2 Pen Holder, Desktop Organizer Suitable for Offices and Dormitori...",
+      "url": "https://www.amazon.com/dp/B0CSFH1R36?tag=render-sites-20"
     },
     {
-      "asin": "B0B2J1QNBX",
+      "asin": "B0DB8F7GDN",
       "source": "study-glow",
-      "name": "Lamicall Pink Phone Holder, Desk Accessories - Rose Gold Pink Office Cell Phone Holder, Desktop, Office Desks Accessories, Desk Decor Gifts...",
-      "category": "Starter Kit",
-      "description": "A solid shortlist item for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "name": "OPNICE Desk Organizer and Accessories, 2-Tier Computer Monitor Stand Riser with Drawer and 2 Pen Holders, Laptop Stand, Office Desk Accesso...",
+      "category": "Storage",
+      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
       "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61ONJnu3D9L._AC_SL1500_.jpg",
-      "imageAlt": "Lamicall Pink Phone Holder, Desk Accessories - Rose Gold Pink Office Cell Phone Holder, Desktop, Office Desks Accessories, Desk Decor Gifts...",
-      "url": "https://www.amazon.com/dp/B0B2J1QNBX?tag=render-sites-20"
+      "image": "https://m.media-amazon.com/images/I/81MeUftFm8L._AC_SL1500_.jpg",
+      "imageAlt": "OPNICE Desk Organizer and Accessories, 2-Tier Computer Monitor Stand Riser with Drawer and 2 Pen Holders, Laptop Stand, Office Desk Accesso...",
+      "url": "https://www.amazon.com/dp/B0DB8F7GDN?tag=render-sites-20"
     },
     {
       "asin": "B089NL8QMN",
@@ -467,17 +94,6 @@
       "url": "https://www.amazon.com/dp/B089NL8QMN?tag=render-sites-20"
     },
     {
-      "asin": "B0C2ZBBPY9",
-      "source": "study-glow",
-      "name": "COMFYROOM Desk Organizer with 6 Compartments and 2 Drawers, Plastic Makeup Organizer, Pen Holder for Desktop Storage, Desk Organization for...",
-      "category": "Storage",
-      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71ii+XVBJ8L._AC_SL1500_.jpg",
-      "imageAlt": "COMFYROOM Desk Organizer with 6 Compartments and 2 Drawers, Plastic Makeup Organizer, Pen Holder for Desktop Storage, Desk Organization for...",
-      "url": "https://www.amazon.com/dp/B0C2ZBBPY9?tag=render-sites-20"
-    },
-    {
       "asin": "B0DBVCL44N",
       "source": "study-glow",
       "name": "Lamicall 8 Pack Cord Organizer, [1s Lock] Spring Cable Management Clips - Adhesive Phone Cord Holder Clips for Nightstand Desk Car Office H...",
@@ -489,17 +105,6 @@
       "url": "https://www.amazon.com/dp/B0DBVCL44N?tag=render-sites-20"
     },
     {
-      "asin": "B0F4R8MPQP",
-      "source": "study-glow",
-      "name": "2-Tier Desk Shelf, Expandable Under Desk Storage, Clamp on Desk Shelf, Desktop Accessories for Offices, Study Rooms, and Game Rooms (Wood)",
-      "category": "Storage",
-      "description": "A solid shortlist item for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71rR83kwsEL._AC_SL1500_.jpg",
-      "imageAlt": "2-Tier Desk Shelf, Expandable Under Desk Storage, Clamp on Desk Shelf, Desktop Accessories for Offices, Study Rooms, and Game Rooms (Wood)",
-      "url": "https://www.amazon.com/dp/B0F4R8MPQP?tag=render-sites-20"
-    },
-    {
       "asin": "B08923SXXP",
       "source": "study-glow",
       "name": "LED Desk Lamp with USB Ports,Touch Desk Lamps for Home Office with 5 Color Modes,3 Brightness Desk Light with Small Night Light,Reading Lam...",
@@ -509,72 +114,6 @@
       "image": "https://m.media-amazon.com/images/I/61po0IyEmOL._AC_SL1500_.jpg",
       "imageAlt": "LED Desk Lamp with USB Ports,Touch Desk Lamps for Home Office with 5 Color Modes,3 Brightness Desk Light with Small Night Light,Reading Lam...",
       "url": "https://www.amazon.com/dp/B08923SXXP?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DCK9ZCDF",
-      "source": "study-glow",
-      "name": "TROND Desk Clamp Power Strip USB C PD 20W- Surge Protector with 4 AC Outlets 4 USB Ports, Flat Plug 6ft Extension Cord, 1700J, ETL Listed,...",
-      "category": "Lighting",
-      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61FSg-yMU2L._AC_SL1500_.jpg",
-      "imageAlt": "TROND Desk Clamp Power Strip USB C PD 20W- Surge Protector with 4 AC Outlets 4 USB Ports, Flat Plug 6ft Extension Cord, 1700J, ETL Listed,...",
-      "url": "https://www.amazon.com/dp/B0DCK9ZCDF?tag=render-sites-20"
-    },
-    {
-      "asin": "B0BFWL7TKP",
-      "source": "study-glow",
-      "name": "Lamicall Cell Phone Stand, Desk Accessories - Clear Office Cell Phone Holder, Acrylic Phone Stand, Desktop, Acrylic Office Desk Decor Acces...",
-      "category": "Starter Kit",
-      "description": "A strong add-to-cart candidate for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61cqKUkBTKL._AC_SL1500_.jpg",
-      "imageAlt": "Lamicall Cell Phone Stand, Desk Accessories - Clear Office Cell Phone Holder, Acrylic Phone Stand, Desktop, Acrylic Office Desk Decor Acces...",
-      "url": "https://www.amazon.com/dp/B0BFWL7TKP?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DHXDDQK3",
-      "source": "study-glow",
-      "name": "SKYDUE Pink Desk Accessories 10Pcs, Rotating Pen Holder for Desk, Stapler, Staple Remover, Tape Dispenser,2pcs Tape Refills, Binder Paper C...",
-      "category": "Starter Kit",
-      "description": "A clean routine helper for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71lRLSlvgOL._AC_SL1500_.jpg",
-      "imageAlt": "SKYDUE Pink Desk Accessories 10Pcs, Rotating Pen Holder for Desk, Stapler, Staple Remover, Tape Dispenser,2pcs Tape Refills, Binder Paper C...",
-      "url": "https://www.amazon.com/dp/B0DHXDDQK3?tag=render-sites-20"
-    },
-    {
-      "asin": "B0D1QY8PL6",
-      "source": "study-glow",
-      "name": "SUPERDANNY Eye-Caring LED Desk Lamp 360° Flexible Gooseneck Work Lamp with Desk Side Clamp Touch Control 3 Light Colors Smooth Dimming Task...",
-      "category": "Lighting",
-      "description": "A solid shortlist item for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71YudVkqw1L._AC_SL1500_.jpg",
-      "imageAlt": "SUPERDANNY Eye-Caring LED Desk Lamp 360° Flexible Gooseneck Work Lamp with Desk Side Clamp Touch Control 3 Light Colors Smooth Dimming Task...",
-      "url": "https://www.amazon.com/dp/B0D1QY8PL6?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CST4CYVH",
-      "source": "study-glow",
-      "name": "LISEN for iPad Stand Holder Adjustable Tablet Stand for Desk, 2026 Kids for iPad Accessories Rotating Display Stand PC Office Accessories f...",
-      "category": "Starter Kit",
-      "description": "A practical first-click pick for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/718d7IFXzBL._AC_SL1500_.jpg",
-      "imageAlt": "LISEN for iPad Stand Holder Adjustable Tablet Stand for Desk, 2026 Kids for iPad Accessories Rotating Display Stand PC Office Accessories f...",
-      "url": "https://www.amazon.com/dp/B0CST4CYVH?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CNZS9RRB",
-      "source": "study-glow",
-      "name": "R RUCKERCO Led Desk Lamp Dimmable Desk Light Reading Lamp 3 Lighting Modes, Eye Protection Accessories, Study Desk Lamp Equipped USB Charge...",
-      "category": "Lighting",
-      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
-      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71fJyc-FZ3L._AC_SL1500_.jpg",
-      "imageAlt": "R RUCKERCO Led Desk Lamp Dimmable Desk Light Reading Lamp 3 Lighting Modes, Eye Protection Accessories, Study Desk Lamp Equipped USB Charge...",
-      "url": "https://www.amazon.com/dp/B0CNZS9RRB?tag=render-sites-20"
     },
     {
       "asin": "B0F228XCZD",
@@ -610,26 +149,279 @@
       "url": "https://www.amazon.com/dp/B0DD7BF3XG?tag=render-sites-20"
     },
     {
-      "asin": "B0BZP1F6J5",
+      "asin": "B07YNHMVRT",
+      "source": "teacher-cart",
+      "name": "Post-it Super Sticky Notes, 15 Sticky Note Pads, 3 x 3 in, School Supplies, Office Products, Notes for Vertical Surfaces, Monitors, Walls a...",
+      "category": "Decor",
+      "description": "A strong add-to-cart candidate for classroom shoppers who want cleaner classroom systems, easier cart setup, faster transitions, or fewer things disappearing by lunch.",
+      "bestFor": "Classroom shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71ZPLH+SAhL._AC_SL1500_.jpg",
+      "imageAlt": "Post-it Super Sticky Notes, 15 Sticky Note Pads, 3 x 3 in, School Supplies, Office Products, Notes for Vertical Surfaces, Monitors, Walls a...",
+      "url": "https://www.amazon.com/dp/B07YNHMVRT?tag=render-sites-20"
+    },
+    {
+      "asin": "B0D4YX9DW3",
+      "source": "teacher-cart",
+      "name": "5pcs Small Note Pads 5x8 Notebook College Ruled Legal Pads Color Notepads 5 Pack Study Back Writing Pads 5 x 8 Perforated Narrow Ruled Pads...",
+      "category": "Classroom",
+      "description": "A strong add-to-cart candidate for classroom shoppers who want cleaner classroom systems, easier cart setup, faster transitions, or fewer things disappearing by lunch.",
+      "bestFor": "Classroom shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/715fftu8QrL._AC_SL1500_.jpg",
+      "imageAlt": "5pcs Small Note Pads 5x8 Notebook College Ruled Legal Pads Color Notepads 5 Pack Study Back Writing Pads 5 x 8 Perforated Narrow Ruled Pads...",
+      "url": "https://www.amazon.com/dp/B0D4YX9DW3?tag=render-sites-20"
+    },
+    {
+      "asin": "B09SZ9T4MV",
+      "source": "dorm-proof",
+      "name": "EUDELE Mesh Shower Caddy Portable for College Dorm Room Essentials, Shower Caddy Dorm with 8-Pocket Large Capacity for Beach, Swimming, Gym...",
+      "category": "Dorm",
+      "description": "A useful little upgrade for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
+      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/810iTm77M7L._AC_SL1500_.jpg",
+      "imageAlt": "EUDELE Mesh Shower Caddy Portable for College Dorm Room Essentials, Shower Caddy Dorm with 8-Pocket Large Capacity for Beach, Swimming, Gym...",
+      "url": "https://www.amazon.com/dp/B09SZ9T4MV?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CRY97FPB",
+      "source": "dorm-proof",
+      "name": "One Beat Small LED Desk Lamp Power Strip 5ft Extension Cord with 3 Outlets 4 USB Ports(2 USB C), 4 Modes, 5 Level Touch Lamp Study Reading...",
+      "category": "Lighting",
+      "description": "A practical first-click pick for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
+      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61ndeyWcaHL._AC_SL1500_.jpg",
+      "imageAlt": "One Beat Small LED Desk Lamp Power Strip 5ft Extension Cord with 3 Outlets 4 USB Ports(2 USB C), 4 Modes, 5 Level Touch Lamp Study Reading...",
+      "url": "https://www.amazon.com/dp/B0CRY97FPB?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BMPNQ5PJ",
+      "source": "dorm-proof",
+      "name": "SUNLONG Dorm Room Essential Clip on Light Wall-Mounted, 3 Color Portable Desk Light Mini Clip Lamp, Battery Operation Small Desk Lamp with...",
+      "category": "Lighting",
+      "description": "A useful little upgrade for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
+      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/41WS9sc0b5L._AC_SL1500_.jpg",
+      "imageAlt": "SUNLONG Dorm Room Essential Clip on Light Wall-Mounted, 3 Color Portable Desk Light Mini Clip Lamp, Battery Operation Small Desk Lamp with...",
+      "url": "https://www.amazon.com/dp/B0BMPNQ5PJ?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BWTT3WK1",
       "source": "study-glow",
-      "name": "Der Rose Set of 2 Succulents Plants Artificial Mini Fake Succulents Plants Graduation Gifts Office Desk Accessories for Women Pink Home Van...",
+      "name": "gianotter Desk Organizers and Accessories with File Holder, 4-Tier Desk Accessories & Workspace Organizers with Drawer and 2 Pen Holder, Pa...",
+      "category": "Storage",
+      "description": "A practical first-click pick for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81iE5xG2+pL._AC_SL1500_.jpg",
+      "imageAlt": "gianotter Desk Organizers and Accessories with File Holder, 4-Tier Desk Accessories & Workspace Organizers with Drawer and 2 Pen Holder, Pa...",
+      "url": "https://www.amazon.com/dp/B0BWTT3WK1?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BYMRJD7R",
+      "source": "study-glow",
+      "name": "Marbrasse Pen Organizer with 2 Drawer, Multi-Functional Pencil Holder for Desk, Desk Organizers and Accessories with 5 Compartments + Drawe...",
+      "category": "Storage",
+      "description": "A clean routine helper for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71B4FwZxCAL._AC_SL1500_.jpg",
+      "imageAlt": "Marbrasse Pen Organizer with 2 Drawer, Multi-Functional Pencil Holder for Desk, Desk Organizers and Accessories with 5 Compartments + Drawe...",
+      "url": "https://www.amazon.com/dp/B0BYMRJD7R?tag=render-sites-20"
+    },
+    {
+      "asin": "B0C9ZHWC9K",
+      "source": "study-glow",
+      "name": "SKYDUE 360 Rotating Plastic Desk Pen Organizer with 5 Slots, Dual-Purpose Art Supply Pencil Cup for Office, School, Home",
+      "category": "Storage",
+      "description": "A solid shortlist item for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61yhHuVQp4L._AC_SL1500_.jpg",
+      "imageAlt": "SKYDUE 360 Rotating Plastic Desk Pen Organizer with 5 Slots, Dual-Purpose Art Supply Pencil Cup for Office, School, Home",
+      "url": "https://www.amazon.com/dp/B0C9ZHWC9K?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CGT9MQGP",
+      "source": "study-glow",
+      "name": "YSAGi Leather Desk Protector, Office Mat, Large Mouse Mat, Non-Slip PU Leather Blotter, Laptop Pad, Waterproof Writing Pad for Office and H...",
+      "category": "Study Desk",
+      "description": "A practical first-click pick for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61jQecz8NpL._AC_SL1500_.jpg",
+      "imageAlt": "YSAGi Leather Desk Protector, Office Mat, Large Mouse Mat, Non-Slip PU Leather Blotter, Laptop Pad, Waterproof Writing Pad for Office and H...",
+      "url": "https://www.amazon.com/dp/B0CGT9MQGP?tag=render-sites-20"
+    },
+    {
+      "asin": "B0C2ZBBPY9",
+      "source": "study-glow",
+      "name": "COMFYROOM Desk Organizer with 6 Compartments and 2 Drawers, Plastic Makeup Organizer, Pen Holder for Desktop Storage, Desk Organization for...",
+      "category": "Storage",
+      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71ii+XVBJ8L._AC_SL1500_.jpg",
+      "imageAlt": "COMFYROOM Desk Organizer with 6 Compartments and 2 Drawers, Plastic Makeup Organizer, Pen Holder for Desktop Storage, Desk Organization for...",
+      "url": "https://www.amazon.com/dp/B0C2ZBBPY9?tag=render-sites-20"
+    },
+    {
+      "asin": "B0F4R8MPQP",
+      "source": "study-glow",
+      "name": "2-Tier Desk Shelf, Expandable Under Desk Storage, Clamp on Desk Shelf, Desktop Accessories for Offices, Study Rooms, and Game Rooms (Wood)",
+      "category": "Storage",
+      "description": "A solid shortlist item for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71rR83kwsEL._AC_SL1500_.jpg",
+      "imageAlt": "2-Tier Desk Shelf, Expandable Under Desk Storage, Clamp on Desk Shelf, Desktop Accessories for Offices, Study Rooms, and Game Rooms (Wood)",
+      "url": "https://www.amazon.com/dp/B0F4R8MPQP?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BPJW13CM",
+      "source": "teacher-cart",
+      "name": "Post-it 100% Recycled Paper Super Sticky Notes, 3 in. x 3 in., 5 Pads, 70 Sheets per Pad, Wanderlust Pastels, School Supplies and Office Pr...",
+      "category": "Classroom",
+      "description": "A solid shortlist item for classroom shoppers who want cleaner classroom systems, easier cart setup, faster transitions, or fewer things disappearing by lunch.",
+      "bestFor": "Classroom shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71PTwv6584L._AC_SL1500_.jpg",
+      "imageAlt": "Post-it 100% Recycled Paper Super Sticky Notes, 3 in. x 3 in., 5 Pads, 70 Sheets per Pad, Wanderlust Pastels, School Supplies and Office Pr...",
+      "url": "https://www.amazon.com/dp/B0BPJW13CM?tag=render-sites-20"
+    },
+    {
+      "asin": "B0FJTJG44G",
+      "source": "teacher-cart",
+      "name": "Sharpie S-Gel Gel Pens, Medium Point (0.7mm), Assorted Fashion Barrels, Black Ink, 12 Count - Office, Teacher, School Supplies",
+      "category": "Classroom",
+      "description": "A practical first-click pick for classroom shoppers who want cleaner classroom systems, easier cart setup, faster transitions, or fewer things disappearing by lunch.",
+      "bestFor": "Classroom shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81D7u-Z-k2L._AC_SL1500_.jpg",
+      "imageAlt": "Sharpie S-Gel Gel Pens, Medium Point (0.7mm), Assorted Fashion Barrels, Black Ink, 12 Count - Office, Teacher, School Supplies",
+      "url": "https://www.amazon.com/dp/B0FJTJG44G?tag=render-sites-20"
+    },
+    {
+      "asin": "B0D2LGK82V",
+      "source": "dorm-proof",
+      "name": "Addtam LED Desk Lamp, Power Strip with 3 Outlets 4 USB Charging Ports(2 USBC), 4 Modes 5 Level Brightness Touch Lamp, Small Desk Lamp for H...",
+      "category": "Lighting",
+      "description": "A clean routine helper for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
+      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61RTVGWbTzL._AC_SL1500_.jpg",
+      "imageAlt": "Addtam LED Desk Lamp, Power Strip with 3 Outlets 4 USB Charging Ports(2 USBC), 4 Modes 5 Level Brightness Touch Lamp, Small Desk Lamp for H...",
+      "url": "https://www.amazon.com/dp/B0D2LGK82V?tag=render-sites-20"
+    },
+    {
+      "asin": "B0738B8SQS",
+      "source": "dorm-proof",
+      "name": "Bedsure Twin XL Mattress Pad - Soft Mattress Topper for College Dorm Room Essentials, Extra Long Twin Quilted Fitted Bed Cover Protector wi...",
+      "category": "Dorm",
+      "description": "A clean routine helper for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
+      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81dTkiWb-WL._AC_SL1500_.jpg",
+      "imageAlt": "Bedsure Twin XL Mattress Pad - Soft Mattress Topper for College Dorm Room Essentials, Extra Long Twin Quilted Fitted Bed Cover Protector wi...",
+      "url": "https://www.amazon.com/dp/B0738B8SQS?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CR3R6XHM",
+      "source": "dorm-proof",
+      "name": "Pipishell 3 Tier Rolling Cart Organizer, Plastic Rolling Cart with Lockable Wheels & Reinforced Handle, Lightweight Utility Cart Storage Ca...",
+      "category": "Storage",
+      "description": "A strong add-to-cart candidate for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
+      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/613bbYJQ2uL._AC_SL1500_.jpg",
+      "imageAlt": "Pipishell 3 Tier Rolling Cart Organizer, Plastic Rolling Cart with Lockable Wheels & Reinforced Handle, Lightweight Utility Cart Storage Ca...",
+      "url": "https://www.amazon.com/dp/B0CR3R6XHM?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CB8B1M41",
+      "source": "dorm-proof",
+      "name": "Pants Hangers with Clips,Space Saving Hanging Closet Organizer-6 Tiers Skirt Hangers with 360° Swivel Hook,Closet Organizer-Clothes Hangers...",
+      "category": "Storage",
+      "description": "A solid shortlist item for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
+      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71-3UVrsGhL._AC_SL1500_.jpg",
+      "imageAlt": "Pants Hangers with Clips,Space Saving Hanging Closet Organizer-6 Tiers Skirt Hangers with 360° Swivel Hook,Closet Organizer-Clothes Hangers...",
+      "url": "https://www.amazon.com/dp/B0CB8B1M41?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BNNVT2VH",
+      "source": "dorm-proof",
+      "name": "Lysol Disinfecting Wipes Bundle, Home Apartment Dorm Room Essentials and Cleaning Supplies, All Purpose Cleaner, Multi-surface Cleaning Wip...",
+      "category": "Dorm",
+      "description": "A practical first-click pick for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
+      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81KwmKND15L._AC_SL1500_.jpg",
+      "imageAlt": "Lysol Disinfecting Wipes Bundle, Home Apartment Dorm Room Essentials and Cleaning Supplies, All Purpose Cleaner, Multi-surface Cleaning Wip...",
+      "url": "https://www.amazon.com/dp/B0BNNVT2VH?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BWDHZP8J",
+      "source": "dorm-proof",
+      "name": "Gaiatop USB Desk Fan, 3 Speeds Strong Airflow, 5.5 Inch Portable 90° Rotate Quiet Cooling, Small Personal Table Fans for Bedroom Home Offic...",
+      "category": "Dorm",
+      "description": "A useful little upgrade for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
+      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71qu3USX5+L._AC_SL1500_.jpg",
+      "imageAlt": "Gaiatop USB Desk Fan, 3 Speeds Strong Airflow, 5.5 Inch Portable 90° Rotate Quiet Cooling, Small Personal Table Fans for Bedroom Home Offic...",
+      "url": "https://www.amazon.com/dp/B0BWDHZP8J?tag=render-sites-20"
+    },
+    {
+      "asin": "B0F92JPR7C",
+      "source": "dorm-proof",
+      "name": "6 Pack Moving Bags Heavy Duty 210GSM with Full-Open Side Zipper, 93L 65lbs Waterproof Foldable Storage Totes for College Dorm Move-In, Movi...",
+      "category": "Storage",
+      "description": "A useful little upgrade for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
+      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61iOoMW91ZL._AC_SL1500_.jpg",
+      "imageAlt": "6 Pack Moving Bags Heavy Duty 210GSM with Full-Open Side Zipper, 93L 65lbs Waterproof Foldable Storage Totes for College Dorm Move-In, Movi...",
+      "url": "https://www.amazon.com/dp/B0F92JPR7C?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DCVVZ6CT",
+      "source": "study-glow",
+      "name": "MOSISO Wrist Rest Support for Mouse Pad&Keyboard Set, Circle Curved Ergonomic Mousepad&Coaster Non-Slip Base Home/Office Pain Relief&Easy T...",
+      "category": "Starter Kit",
+      "description": "A clean routine helper for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/515G2Wi323L._AC_SL1500_.jpg",
+      "imageAlt": "MOSISO Wrist Rest Support for Mouse Pad&Keyboard Set, Circle Curved Ergonomic Mousepad&Coaster Non-Slip Base Home/Office Pain Relief&Easy T...",
+      "url": "https://www.amazon.com/dp/B0DCVVZ6CT?tag=render-sites-20"
+    },
+    {
+      "asin": "B0B2J1QNBX",
+      "source": "study-glow",
+      "name": "Lamicall Pink Phone Holder, Desk Accessories - Rose Gold Pink Office Cell Phone Holder, Desktop, Office Desks Accessories, Desk Decor Gifts...",
+      "category": "Starter Kit",
+      "description": "A solid shortlist item for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61ONJnu3D9L._AC_SL1500_.jpg",
+      "imageAlt": "Lamicall Pink Phone Holder, Desk Accessories - Rose Gold Pink Office Cell Phone Holder, Desktop, Office Desks Accessories, Desk Decor Gifts...",
+      "url": "https://www.amazon.com/dp/B0B2J1QNBX?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BFWL7TKP",
+      "source": "study-glow",
+      "name": "Lamicall Cell Phone Stand, Desk Accessories - Clear Office Cell Phone Holder, Acrylic Phone Stand, Desktop, Acrylic Office Desk Decor Acces...",
+      "category": "Starter Kit",
+      "description": "A strong add-to-cart candidate for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61cqKUkBTKL._AC_SL1500_.jpg",
+      "imageAlt": "Lamicall Cell Phone Stand, Desk Accessories - Clear Office Cell Phone Holder, Acrylic Phone Stand, Desktop, Acrylic Office Desk Decor Acces...",
+      "url": "https://www.amazon.com/dp/B0BFWL7TKP?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CST4CYVH",
+      "source": "study-glow",
+      "name": "LISEN for iPad Stand Holder Adjustable Tablet Stand for Desk, 2026 Kids for iPad Accessories Rotating Display Stand PC Office Accessories f...",
       "category": "Starter Kit",
       "description": "A practical first-click pick for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
       "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81RwHqGeIEL._AC_SL1500_.jpg",
-      "imageAlt": "Der Rose Set of 2 Succulents Plants Artificial Mini Fake Succulents Plants Graduation Gifts Office Desk Accessories for Women Pink Home Van...",
-      "url": "https://www.amazon.com/dp/B0BZP1F6J5?tag=render-sites-20"
+      "image": "https://m.media-amazon.com/images/I/718d7IFXzBL._AC_SL1500_.jpg",
+      "imageAlt": "LISEN for iPad Stand Holder Adjustable Tablet Stand for Desk, 2026 Kids for iPad Accessories Rotating Display Stand PC Office Accessories f...",
+      "url": "https://www.amazon.com/dp/B0CST4CYVH?tag=render-sites-20"
     },
     {
-      "asin": "B0BFQX3YFY",
+      "asin": "B0CNZS9RRB",
       "source": "study-glow",
-      "name": "BlissTrends Foot Rest for Under Desk at Work-Versatile Foot Stool with Washable Cover-Comfortable Footrest with 2 Adjustable Heights for Ca...",
-      "category": "Study Desk",
+      "name": "R RUCKERCO Led Desk Lamp Dimmable Desk Light Reading Lamp 3 Lighting Modes, Eye Protection Accessories, Study Desk Lamp Equipped USB Charge...",
+      "category": "Lighting",
       "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
       "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81x+otHOTeL._AC_SL1500_.jpg",
-      "imageAlt": "BlissTrends Foot Rest for Under Desk at Work-Versatile Foot Stool with Washable Cover-Comfortable Footrest with 2 Adjustable Heights for Ca...",
-      "url": "https://www.amazon.com/dp/B0BFQX3YFY?tag=render-sites-20"
+      "image": "https://m.media-amazon.com/images/I/71fJyc-FZ3L._AC_SL1500_.jpg",
+      "imageAlt": "R RUCKERCO Led Desk Lamp Dimmable Desk Light Reading Lamp 3 Lighting Modes, Eye Protection Accessories, Study Desk Lamp Equipped USB Charge...",
+      "url": "https://www.amazon.com/dp/B0CNZS9RRB?tag=render-sites-20"
     },
     {
       "asin": "B08LYSTZV9",
@@ -643,17 +435,6 @@
       "url": "https://www.amazon.com/dp/B08LYSTZV9?tag=render-sites-20"
     },
     {
-      "asin": "B0004F7GUI",
-      "source": "teacher-cart",
-      "name": "EXPO Dry Erase Markers, Low Odor Ink, Assorted Colors, Chisel Tip, 12 Count",
-      "category": "Classroom",
-      "description": "A practical first-click pick for classroom shoppers who want cleaner classroom systems, easier cart setup, faster transitions, or fewer things disappearing by lunch.",
-      "bestFor": "Classroom shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81aCfepq3+L._AC_SL1500_.jpg",
-      "imageAlt": "EXPO Dry Erase Markers, Low Odor Ink, Assorted Colors, Chisel Tip, 12 Count",
-      "url": "https://www.amazon.com/dp/B0004F7GUI?tag=render-sites-20"
-    },
-    {
       "asin": "B000J09CO6",
       "source": "teacher-cart",
       "name": "Paper Mate Flair Felt Tip Pens, Medium Point (0.7mm), 12 Count - For Arts & Crafts, Note-Taking, Journaling, School Supplies for Teachers &...",
@@ -663,17 +444,6 @@
       "image": "https://m.media-amazon.com/images/I/81X1SjEnOyL._AC_SL1500_.jpg",
       "imageAlt": "Paper Mate Flair Felt Tip Pens, Medium Point (0.7mm), 12 Count - For Arts & Crafts, Note-Taking, Journaling, School Supplies for Teachers &...",
       "url": "https://www.amazon.com/dp/B000J09CO6?tag=render-sites-20"
-    },
-    {
-      "asin": "B07YNHMVRT",
-      "source": "teacher-cart",
-      "name": "Post-it Super Sticky Notes, 15 Sticky Note Pads, 3 x 3 in, School Supplies, Office Products, Notes for Vertical Surfaces, Monitors, Walls a...",
-      "category": "Decor",
-      "description": "A strong add-to-cart candidate for classroom shoppers who want cleaner classroom systems, easier cart setup, faster transitions, or fewer things disappearing by lunch.",
-      "bestFor": "Classroom shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71ZPLH+SAhL._AC_SL1500_.jpg",
-      "imageAlt": "Post-it Super Sticky Notes, 15 Sticky Note Pads, 3 x 3 in, School Supplies, Office Products, Notes for Vertical Surfaces, Monitors, Walls a...",
-      "url": "https://www.amazon.com/dp/B07YNHMVRT?tag=render-sites-20"
     },
     {
       "asin": "B0C2PT7QJR",
@@ -696,6 +466,279 @@
       "image": "https://m.media-amazon.com/images/I/81xJsr1M0IL._AC_SL1500_.jpg",
       "imageAlt": "BIC Wite-Out EZ Correct Correction Tape, School Supplies for Students and Teachers, Applies Dry, No Dry Time, Tear Resistant, 4-Count Pack...",
       "url": "https://www.amazon.com/dp/B0007L1W0E?tag=render-sites-20"
+    },
+    {
+      "asin": "B086P836K4",
+      "source": "teacher-cart",
+      "name": "X-ACTO Pencil Sharpener, School Pro Electric Sharpener, Black, With Six Size Dial, XL Shavings Bin - Heavy Duty, Classroom Supplies",
+      "category": "Classroom",
+      "description": "A practical first-click pick for classroom shoppers who want cleaner classroom systems, easier cart setup, faster transitions, or fewer things disappearing by lunch.",
+      "bestFor": "Classroom shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71AYCot5mgL._AC_SL1500_.jpg",
+      "imageAlt": "X-ACTO Pencil Sharpener, School Pro Electric Sharpener, Black, With Six Size Dial, XL Shavings Bin - Heavy Duty, Classroom Supplies",
+      "url": "https://www.amazon.com/dp/B086P836K4?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BSLJM3PW",
+      "source": "teacher-cart",
+      "name": "Xqumoi Teaching is A Work of Heart Sticky Notes Set Blackboard Self-Stick Note Pads Teacher Appreciation Gift Writing Memo Pads School Offi...",
+      "category": "Starter Kit",
+      "description": "A useful little upgrade for classroom shoppers who want cleaner classroom systems, easier cart setup, faster transitions, or fewer things disappearing by lunch.",
+      "bestFor": "Classroom shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81QWC5O0llL._AC_SL1500_.jpg",
+      "imageAlt": "Xqumoi Teaching is A Work of Heart Sticky Notes Set Blackboard Self-Stick Note Pads Teacher Appreciation Gift Writing Memo Pads School Offi...",
+      "url": "https://www.amazon.com/dp/B0BSLJM3PW?tag=render-sites-20"
+    },
+    {
+      "asin": "B07RPT4LFN",
+      "source": "teacher-cart",
+      "name": "Classroom Timers for Teachers Kids Large Magnetic Digital Timer Teacher Supplies 2 Pack-Blue Green",
+      "category": "Classroom",
+      "description": "A strong add-to-cart candidate for classroom shoppers who want cleaner classroom systems, easier cart setup, faster transitions, or fewer things disappearing by lunch.",
+      "bestFor": "Classroom shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61XQzTl8kuL._AC_SL1500_.jpg",
+      "imageAlt": "Classroom Timers for Teachers Kids Large Magnetic Digital Timer Teacher Supplies 2 Pack-Blue Green",
+      "url": "https://www.amazon.com/dp/B07RPT4LFN?tag=render-sites-20"
+    },
+    {
+      "asin": "B071JM699P",
+      "source": "teacher-cart",
+      "name": "Amazon Basics Wood-Cased #2 Pencils for Writing, Drawing and Sketching, Pre-sharpened, HB Soft Lead with Erasers, Teacher Supplies, 150 Cou...",
+      "category": "Classroom",
+      "description": "A solid shortlist item for classroom shoppers who want cleaner classroom systems, easier cart setup, faster transitions, or fewer things disappearing by lunch.",
+      "bestFor": "Classroom shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81qxJ-PgGLL._AC_SL1500_.jpg",
+      "imageAlt": "Amazon Basics Wood-Cased #2 Pencils for Writing, Drawing and Sketching, Pre-sharpened, HB Soft Lead with Erasers, Teacher Supplies, 150 Cou...",
+      "url": "https://www.amazon.com/dp/B071JM699P?tag=render-sites-20"
+    },
+    {
+      "asin": "B09Y2KJ2KX",
+      "source": "teacher-cart",
+      "name": "Sharpie Pocket Highlighters, Mild Pastel Colors, Assorted, Chisel Tip, 12 Count - School, Home, and Office Use, Teacher Supplies",
+      "category": "Lighting",
+      "description": "A strong add-to-cart candidate for classroom shoppers who want cleaner classroom systems, easier cart setup, faster transitions, or fewer things disappearing by lunch.",
+      "bestFor": "Classroom shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71+d+4qgVZL._AC_SL1500_.jpg",
+      "imageAlt": "Sharpie Pocket Highlighters, Mild Pastel Colors, Assorted, Chisel Tip, 12 Count - School, Home, and Office Use, Teacher Supplies",
+      "url": "https://www.amazon.com/dp/B09Y2KJ2KX?tag=render-sites-20"
+    },
+    {
+      "asin": "B00MJ8JSFE",
+      "source": "teacher-cart",
+      "name": "Crayola Construction Paper Bulk Pack (480 Sheets) – 10 Assorted Colors, 9x12, Teacher School Supplies & Classroom Must Haves, Card Making C...",
+      "category": "Classroom",
+      "description": "A practical first-click pick for classroom shoppers who want cleaner classroom systems, easier cart setup, faster transitions, or fewer things disappearing by lunch.",
+      "bestFor": "Classroom shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61TbDzO158L._AC_SL1500_.jpg",
+      "imageAlt": "Crayola Construction Paper Bulk Pack (480 Sheets) – 10 Assorted Colors, 9x12, Teacher School Supplies & Classroom Must Haves, Card Making C...",
+      "url": "https://www.amazon.com/dp/B00MJ8JSFE?tag=render-sites-20"
+    },
+    {
+      "asin": "B082PN4X5J",
+      "source": "teacher-cart",
+      "name": "Sharpie S-Gel Gel Pens, Black Barrel, Medium Point (0.7mm), Black Gel Ink, 12 Count - Home, Office, School, Journaling, Writing, Note-Takin...",
+      "category": "Classroom",
+      "description": "A strong add-to-cart candidate for classroom shoppers who want cleaner classroom systems, easier cart setup, faster transitions, or fewer things disappearing by lunch.",
+      "bestFor": "Classroom shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81Z0eKG8vaL._AC_SL1500_.jpg",
+      "imageAlt": "Sharpie S-Gel Gel Pens, Black Barrel, Medium Point (0.7mm), Black Gel Ink, 12 Count - Home, Office, School, Journaling, Writing, Note-Takin...",
+      "url": "https://www.amazon.com/dp/B082PN4X5J?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DZ254SSR",
+      "source": "dorm-proof",
+      "name": "10Ft Extension Cord with Multiple Outlets, Flat Plug Surge Protector Power Strip 10 Ft Long Cord, 8 Outlets & 4 USB Ports (2 USB C), Desk C...",
+      "category": "Dorm",
+      "description": "A practical first-click pick for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
+      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/612NrGLfOqL._AC_SL1500_.jpg",
+      "imageAlt": "10Ft Extension Cord with Multiple Outlets, Flat Plug Surge Protector Power Strip 10 Ft Long Cord, 8 Outlets & 4 USB Ports (2 USB C), Desk C...",
+      "url": "https://www.amazon.com/dp/B0DZ254SSR?tag=render-sites-20"
+    },
+    {
+      "asin": "B0B99VKV8P",
+      "source": "dorm-proof",
+      "name": "FYY Over the Door Hooks, 4 Pack Hangers Hooks with Rubber Prevent Scratches Heavy Duty Organizer for Living Room, Bathroom, Bedroom, Kitche...",
+      "category": "Storage",
+      "description": "A practical first-click pick for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
+      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/51+oY1kC8kL._AC_SL1500_.jpg",
+      "imageAlt": "FYY Over the Door Hooks, 4 Pack Hangers Hooks with Rubber Prevent Scratches Heavy Duty Organizer for Living Room, Bathroom, Bedroom, Kitche...",
+      "url": "https://www.amazon.com/dp/B0B99VKV8P?tag=render-sites-20"
+    },
+    {
+      "asin": "B0GXV4S23L",
+      "source": "dorm-proof",
+      "name": "LED Desk Lamp with Power Strip, 3 AC Outlets & 4 USB Ports (2 USB-C), Stepless Dimming & 2800K-6500K Eye-Caring Desk Light, Foldable Table...",
+      "category": "Lighting",
+      "description": "A strong add-to-cart candidate for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
+      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71dau9RTrSL._AC_SL1500_.jpg",
+      "imageAlt": "LED Desk Lamp with Power Strip, 3 AC Outlets & 4 USB Ports (2 USB-C), Stepless Dimming & 2800K-6500K Eye-Caring Desk Light, Foldable Table...",
+      "url": "https://www.amazon.com/dp/B0GXV4S23L?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CW6353D1",
+      "source": "dorm-proof",
+      "name": "Hantinstom 39-Piece Household Tools Kit Essential Home Repair Set with Plastic Toolbox Ideal for College Students, Home Use & More",
+      "category": "Starter Kit",
+      "description": "A strong add-to-cart candidate for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
+      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61hIw9NUz5L._AC_SL1500_.jpg",
+      "imageAlt": "Hantinstom 39-Piece Household Tools Kit Essential Home Repair Set with Plastic Toolbox Ideal for College Students, Home Use & More",
+      "url": "https://www.amazon.com/dp/B0CW6353D1?tag=render-sites-20"
+    },
+    {
+      "asin": "B0B968L1W4",
+      "source": "dorm-proof",
+      "name": "Lingerie Bags for Washing Delicates,Small Fine Mesh Laundry Bags,3Pcs(1 Large,1 Medium,1 Small)",
+      "category": "Storage",
+      "description": "A clean routine helper for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
+      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81bZxB9d3ML._AC_SL1500_.jpg",
+      "imageAlt": "Lingerie Bags for Washing Delicates,Small Fine Mesh Laundry Bags,3Pcs(1 Large,1 Medium,1 Small)",
+      "url": "https://www.amazon.com/dp/B0B968L1W4?tag=render-sites-20"
+    },
+    {
+      "asin": "B06X421WJ6",
+      "source": "dorm-proof",
+      "name": "Utopia Home - Plastic Hangers 50 Pack - Space Saving Clothes Hanger - Durable and Strong Closet Organizers and Storage Makes It Ideal Stock...",
+      "category": "Storage",
+      "description": "A strong add-to-cart candidate for dorm shoppers who want more storage, easier move-in, cleaner shared routines, or a tiny room that works harder.",
+      "bestFor": "Dorm shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61q0fe5zizL._AC_SL1500_.jpg",
+      "imageAlt": "Utopia Home - Plastic Hangers 50 Pack - Space Saving Clothes Hanger - Durable and Strong Closet Organizers and Storage Makes It Ideal Stock...",
+      "url": "https://www.amazon.com/dp/B06X421WJ6?tag=render-sites-20"
+    },
+    {
+      "asin": "B0949DWJCV",
+      "source": "study-glow",
+      "name": "Crpich Acrylic Cell Phone Stand, Portable Clear Phone Stand for Desk, Compatible with Phone16 15 14 13 Pro Max Mini 12 11 Plus SE, Switch,...",
+      "category": "Study Desk",
+      "description": "A strong add-to-cart candidate for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61xq34OCYUL._AC_SL1500_.jpg",
+      "imageAlt": "Crpich Acrylic Cell Phone Stand, Portable Clear Phone Stand for Desk, Compatible with Phone16 15 14 13 Pro Max Mini 12 11 Plus SE, Switch,...",
+      "url": "https://www.amazon.com/dp/B0949DWJCV?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DHXDDQK3",
+      "source": "study-glow",
+      "name": "SKYDUE Pink Desk Accessories 10Pcs, Rotating Pen Holder for Desk, Stapler, Staple Remover, Tape Dispenser,2pcs Tape Refills, Binder Paper C...",
+      "category": "Starter Kit",
+      "description": "A clean routine helper for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71lRLSlvgOL._AC_SL1500_.jpg",
+      "imageAlt": "SKYDUE Pink Desk Accessories 10Pcs, Rotating Pen Holder for Desk, Stapler, Staple Remover, Tape Dispenser,2pcs Tape Refills, Binder Paper C...",
+      "url": "https://www.amazon.com/dp/B0DHXDDQK3?tag=render-sites-20"
+    },
+    {
+      "asin": "B0D1QY8PL6",
+      "source": "study-glow",
+      "name": "SUPERDANNY Eye-Caring LED Desk Lamp 360° Flexible Gooseneck Work Lamp with Desk Side Clamp Touch Control 3 Light Colors Smooth Dimming Task...",
+      "category": "Lighting",
+      "description": "A solid shortlist item for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71YudVkqw1L._AC_SL1500_.jpg",
+      "imageAlt": "SUPERDANNY Eye-Caring LED Desk Lamp 360° Flexible Gooseneck Work Lamp with Desk Side Clamp Touch Control 3 Light Colors Smooth Dimming Task...",
+      "url": "https://www.amazon.com/dp/B0D1QY8PL6?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BZP1F6J5",
+      "source": "study-glow",
+      "name": "Der Rose Set of 2 Succulents Plants Artificial Mini Fake Succulents Plants Graduation Gifts Office Desk Accessories for Women Pink Home Van...",
+      "category": "Starter Kit",
+      "description": "A practical first-click pick for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81RwHqGeIEL._AC_SL1500_.jpg",
+      "imageAlt": "Der Rose Set of 2 Succulents Plants Artificial Mini Fake Succulents Plants Graduation Gifts Office Desk Accessories for Women Pink Home Van...",
+      "url": "https://www.amazon.com/dp/B0BZP1F6J5?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BFQX3YFY",
+      "source": "study-glow",
+      "name": "BlissTrends Foot Rest for Under Desk at Work-Versatile Foot Stool with Washable Cover-Comfortable Footrest with 2 Adjustable Heights for Ca...",
+      "category": "Study Desk",
+      "description": "A useful little upgrade for study desk shoppers who want better lighting, cleaner notes, tidier cables, or a desk that makes starting easier.",
+      "bestFor": "Study Desk shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81x+otHOTeL._AC_SL1500_.jpg",
+      "imageAlt": "BlissTrends Foot Rest for Under Desk at Work-Versatile Foot Stool with Washable Cover-Comfortable Footrest with 2 Adjustable Heights for Ca...",
+      "url": "https://www.amazon.com/dp/B0BFQX3YFY?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DFVH5688",
+      "source": "teacher-cart",
+      "name": "5PCS Pointer Stick For Classroom – Multipurpose Teacher Pointer Stick, Extendable Classroom Pointer And Finger Pointer Stick, Engaging Colo...",
+      "category": "Classroom",
+      "description": "A useful little upgrade for classroom shoppers who want cleaner classroom systems, easier cart setup, faster transitions, or fewer things disappearing by lunch.",
+      "bestFor": "Classroom shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61Gu0PQ+9rL._AC_SL1500_.jpg",
+      "imageAlt": "5PCS Pointer Stick For Classroom – Multipurpose Teacher Pointer Stick, Extendable Classroom Pointer And Finger Pointer Stick, Engaging Colo...",
+      "url": "https://www.amazon.com/dp/B0DFVH5688?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DXZQYJWZ",
+      "source": "teacher-cart",
+      "name": "Teacher To Do List Notepad, 8.3x5.8 Inch Teacher Notepad, Spiral Checklist Notebook for Class Schedules, Daily Planner, School Tasks and Go...",
+      "category": "Classroom",
+      "description": "A clean routine helper for classroom shoppers who want cleaner classroom systems, easier cart setup, faster transitions, or fewer things disappearing by lunch.",
+      "bestFor": "Classroom shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61Di9MVz6QL._AC_SL1500_.jpg",
+      "imageAlt": "Teacher To Do List Notepad, 8.3x5.8 Inch Teacher Notepad, Spiral Checklist Notebook for Class Schedules, Daily Planner, School Tasks and Go...",
+      "url": "https://www.amazon.com/dp/B0DXZQYJWZ?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BWT9LM1F",
+      "source": "teacher-cart",
+      "name": "800pcsTeacher Classroom Motivational Stickers for Kids Students",
+      "category": "Classroom",
+      "description": "A clean routine helper for classroom shoppers who want cleaner classroom systems, easier cart setup, faster transitions, or fewer things disappearing by lunch.",
+      "bestFor": "Classroom shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/812v-JZBTpL._AC_SL1500_.jpg",
+      "imageAlt": "800pcsTeacher Classroom Motivational Stickers for Kids Students",
+      "url": "https://www.amazon.com/dp/B0BWT9LM1F?tag=render-sites-20"
+    }
+  ],
+  "primeDayTrendProducts": [
+    {
+      "asin": "B0F228XCZD",
+      "title": "LXEVIHK 21Pcs Pink Desk Organizers and Accessories With Mesh Desk Organizer and 360°Rotating Pen Holder and a Lot o...",
+      "image": "https://m.media-amazon.com/images/I/81oRpDVr3zL._AC_SL1500_.jpg",
+      "url": "https://www.amazon.com/dp/B0F228XCZD?tag=render-sites-20",
+      "trend": "summer routine upgrade",
+      "addedFor": "Prime Day 2026 trend watch"
+    },
+    {
+      "asin": "B0BYDGF8DT",
+      "title": "OPNICE Desk Organizer, 4-Tier Desktop File Organizer with Drawer and 2 Pen Holders, Office Desk Accessories, File S...",
+      "image": "https://m.media-amazon.com/images/I/81CYxEUhq-L._AC_SL1500_.jpg",
+      "url": "https://www.amazon.com/dp/B0BYDGF8DT?tag=render-sites-20",
+      "trend": "cleaner storage",
+      "addedFor": "Prime Day 2026 trend watch"
+    },
+    {
+      "asin": "B0DD7BF3XG",
+      "title": "Magnetic Cable Clips, Adjustable Cord Holder Management, Adhesive Wire Keeper Organizer for Home Office Desk Phone...",
+      "image": "https://m.media-amazon.com/images/I/71J9ySQH7UL._AC_SL1500_.jpg",
+      "url": "https://www.amazon.com/dp/B0DD7BF3XG?tag=render-sites-20",
+      "trend": "grab-and-go setup",
+      "addedFor": "Prime Day 2026 trend watch"
+    },
+    {
+      "asin": "B07YNHMVRT",
+      "title": "Post-it Super Sticky Notes, 15 Sticky Note Pads, 3 x 3 in, School Supplies, Office Products, Notes for Vertical Sur...",
+      "image": "https://m.media-amazon.com/images/I/71ZPLH+SAhL._AC_SL1500_.jpg",
+      "url": "https://www.amazon.com/dp/B07YNHMVRT?tag=render-sites-20",
+      "trend": "portable utility",
+      "addedFor": "Prime Day 2026 trend watch"
+    },
+    {
+      "asin": "B0D4YX9DW3",
+      "title": "5pcs Small Note Pads 5x8 Notebook College Ruled Legal Pads Color Notepads 5 Pack Study Back Writing Pads 5 x 8 Perf...",
+      "image": "https://m.media-amazon.com/images/I/715fftu8QrL._AC_SL1500_.jpg",
+      "url": "https://www.amazon.com/dp/B0D4YX9DW3?tag=render-sites-20",
+      "trend": "small-space reset",
+      "addedFor": "Prime Day 2026 trend watch"
     }
   ]
 }

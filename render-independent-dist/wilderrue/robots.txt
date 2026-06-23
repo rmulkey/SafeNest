@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://wilder-rue-wj48w.kinsta.page/sitemap.xml
+Sitemap: https://wilderrue.onrender.com/sitemap.xml

@@ -4,7 +4,7 @@
   "baseUrl": "https://maker-table.onrender.com",
   "platform": "Render Static Site Hosting",
   "affiliateTag": "render-sites-20",
-  "lastUpdated": "2026-06-13",
+  "lastUpdated": "2026-06-23",
   "productCount": 60,
   "monetizationSurface": [
     {
@@ -35,9 +35,87 @@
     "https://maker-table.onrender.com/best/baking-and-coffee-tools/",
     "https://maker-table.onrender.com/affiliate-disclosure/",
     "https://maker-table.onrender.com/editorial-policy/",
-    "https://maker-table.onrender.com/contact/"
+    "https://maker-table.onrender.com/contact/",
+    "https://maker-table.onrender.com/prime-day/"
   ],
   "products": [
+    {
+      "asin": "B0BY3SXZ56",
+      "source": "brew-counter",
+      "name": "STANLEY Perfect Brew Pour Over Set | 12 oz Camp Mug with Lid Included | Drip Coffee Maker with Reusable Filter | Insulated Stainless Steel...",
+      "category": "Starter Kit",
+      "description": "A clean routine helper for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/51NWe6e1hsL._AC_SL1500_.jpg",
+      "imageAlt": "STANLEY Perfect Brew Pour Over Set | 12 oz Camp Mug with Lid Included | Drip Coffee Maker with Reusable Filter | Insulated Stainless Steel...",
+      "url": "https://www.amazon.com/dp/B0BY3SXZ56?tag=render-sites-20"
+    },
+    {
+      "asin": "B0FCLWN2PC",
+      "source": "craft-current",
+      "name": "Zefy 3200+ Pcs Arts and Crafts Supplies for Kids, All in One Craft Kits with 12 Crafts Design, DIY School Supplies Kit Craft Box Easter Gif...",
+      "category": "Starter Kit",
+      "description": "A practical first-click pick for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
+      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81mF7TRRTNL._AC_SL1500_.jpg",
+      "imageAlt": "Zefy 3200+ Pcs Arts and Crafts Supplies for Kids, All in One Craft Kits with 12 Crafts Design, DIY School Supplies Kit Craft Box Easter Gif...",
+      "url": "https://www.amazon.com/dp/B0FCLWN2PC?tag=render-sites-20"
+    },
+    {
+      "asin": "B0013CDGT6",
+      "source": "craft-current",
+      "name": "Elmer&#x27;s All Purpose School Glue Sticks, Acid-Free and Washable, Clear, 7 Grams, 30 Count - Craft Projects, Poster, Classroom Supplies,...",
+      "category": "Crafts",
+      "description": "A strong add-to-cart candidate for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
+      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61qmiizujcL._AC_SL1500_.jpg",
+      "imageAlt": "Elmer&#x27;s All Purpose School Glue Sticks, Acid-Free and Washable, Clear, 7 Grams, 30 Count - Craft Projects, Poster, Classroom Supplies,...",
+      "url": "https://www.amazon.com/dp/B0013CDGT6?tag=render-sites-20"
+    },
+    {
+      "asin": "B0047BIWSK",
+      "source": "brew-counter",
+      "name": "AeroPress Original Coffee Press - All-in-One French Press, Pour-Over & Espresso Style Manual Brewer, 2 Min Brew for Less Bitterness, More F...",
+      "category": "Gear",
+      "description": "A useful little upgrade for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61u3sW4Vx4L._AC_SL1500_.jpg",
+      "imageAlt": "AeroPress Original Coffee Press - All-in-One French Press, Pour-Over & Espresso Style Manual Brewer, 2 Min Brew for Less Bitterness, More F...",
+      "url": "https://www.amazon.com/dp/B0047BIWSK?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CGWS1M51",
+      "source": "brew-counter",
+      "name": "Cold Brew Coffee Maker,64 oz Mason Jar Pitcher with Stainless Steel Filter, Pour Spout Handle Lid, Heavy Duty Glass Airtight & Leak-Proof f...",
+      "category": "Gear",
+      "description": "A solid shortlist item for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81pX9Dz162L._AC_SL1500_.jpg",
+      "imageAlt": "Cold Brew Coffee Maker,64 oz Mason Jar Pitcher with Stainless Steel Filter, Pour Spout Handle Lid, Heavy Duty Glass Airtight & Leak-Proof f...",
+      "url": "https://www.amazon.com/dp/B0CGWS1M51?tag=render-sites-20"
+    },
+    {
+      "asin": "B0F5PZQWBD",
+      "source": "brew-counter",
+      "name": "Coffee Bean Dosing Cup & RDT Spray Bottle Set - Walnut Wood Espresso Accessories Kit with Static Reduction Spray, Measuring Tray for Coffee...",
+      "category": "Starter Kit",
+      "description": "A useful little upgrade for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61u8hzE9OYL._AC_SL1500_.jpg",
+      "imageAlt": "Coffee Bean Dosing Cup & RDT Spray Bottle Set - Walnut Wood Espresso Accessories Kit with Static Reduction Spray, Measuring Tray for Coffee...",
+      "url": "https://www.amazon.com/dp/B0F5PZQWBD?tag=render-sites-20"
+    },
+    {
+      "asin": "B0FDQJFRYS",
+      "source": "brew-counter",
+      "name": "Veken French Press Coffee Maker 34oz, No Plastic Touching Cafe,Thickened Glass Stainless Steel Brewer, Cold Brew Cafetera Tea pot for Kitch...",
+      "category": "Starter Kit",
+      "description": "A practical first-click pick for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71tCTtEUMaL._AC_SL1500_.jpg",
+      "imageAlt": "Veken French Press Coffee Maker 34oz, No Plastic Touching Cafe,Thickened Glass Stainless Steel Brewer, Cold Brew Cafetera Tea pot for Kitch...",
+      "url": "https://www.amazon.com/dp/B0FDQJFRYS?tag=render-sites-20"
+    },
     {
       "asin": "B07ZG6JY5J",
       "source": "craft-current",
@@ -61,28 +139,6 @@
       "url": "https://www.amazon.com/dp/B0GV28QYZ5?tag=render-sites-20"
     },
     {
-      "asin": "B00MJ8JSFE",
-      "source": "craft-current",
-      "name": "Crayola Construction Paper Bulk Pack (480 Sheets) – 10 Assorted Colors, 9x12, Teacher School Supplies & Classroom Must Haves, Card Making C...",
-      "category": "Crafts",
-      "description": "A strong add-to-cart candidate for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61TbDzO158L._AC_SL1500_.jpg",
-      "imageAlt": "Crayola Construction Paper Bulk Pack (480 Sheets) – 10 Assorted Colors, 9x12, Teacher School Supplies & Classroom Must Haves, Card Making C...",
-      "url": "https://www.amazon.com/dp/B00MJ8JSFE?tag=render-sites-20"
-    },
-    {
-      "asin": "B0BBMF9XCM",
-      "source": "craft-current",
-      "name": "Itopstar 3000 Kids Arts and Crafts Supplies for Kids Crafting Supply in 3 Layered Plastic Art Box All in One Ages 8 9 10 11 & 12 Year Old G...",
-      "category": "Crafts",
-      "description": "A clean routine helper for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81+kix2uY-L._AC_SL1500_.jpg",
-      "imageAlt": "Itopstar 3000 Kids Arts and Crafts Supplies for Kids Crafting Supply in 3 Layered Plastic Art Box All in One Ages 8 9 10 11 & 12 Year Old G...",
-      "url": "https://www.amazon.com/dp/B0BBMF9XCM?tag=render-sites-20"
-    },
-    {
       "asin": "B09WV4JJRC",
       "source": "craft-current",
       "name": "Caydo 200 PCS Thick Pipe Cleaners Craft Supplies Multi-Color Chenille Stems for Art and Craft Projects Kids Creative Toys DIY Home Decorati...",
@@ -92,50 +148,6 @@
       "image": "https://m.media-amazon.com/images/I/91QRd3kbzEL._AC_SL1500_.jpg",
       "imageAlt": "Caydo 200 PCS Thick Pipe Cleaners Craft Supplies Multi-Color Chenille Stems for Art and Craft Projects Kids Creative Toys DIY Home Decorati...",
       "url": "https://www.amazon.com/dp/B09WV4JJRC?tag=render-sites-20"
-    },
-    {
-      "asin": "B089T7PX27",
-      "source": "craft-current",
-      "name": "Crayola Air Dry Clay (5lbs), Teacher Supplies, Natural White Modeling Clay for Kids, Sculpting Material, Bulk Craft Supplies for Art Classr...",
-      "category": "Crafts",
-      "description": "A practical first-click pick for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61orX92CK8L._AC_SL1500_.jpg",
-      "imageAlt": "Crayola Air Dry Clay (5lbs), Teacher Supplies, Natural White Modeling Clay for Kids, Sculpting Material, Bulk Craft Supplies for Art Classr...",
-      "url": "https://www.amazon.com/dp/B089T7PX27?tag=render-sites-20"
-    },
-    {
-      "asin": "B08F2SPQZR",
-      "source": "craft-current",
-      "name": "Mr. Pen- Craft Scissors Decorative Edge, 6 Pack, Bright, Zig Zag Scissors for Crafting, Scrapbooking, Fancy, Pattern, Design",
-      "category": "Decor",
-      "description": "A useful little upgrade for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71oLNpwGpEL._AC_SL1500_.jpg",
-      "imageAlt": "Mr. Pen- Craft Scissors Decorative Edge, 6 Pack, Bright, Zig Zag Scissors for Crafting, Scrapbooking, Fancy, Pattern, Design",
-      "url": "https://www.amazon.com/dp/B08F2SPQZR?tag=render-sites-20"
-    },
-    {
-      "asin": "B0BS4BVG3M",
-      "source": "craft-current",
-      "name": "MYDBUYSOME 2774pcs Gem Stickers Jewels for Crafts, Self Adhesive Rhinestone Jewel Stick on Gems, Acrylic Bling Heart Stickers, Craft Suppli...",
-      "category": "Crafts",
-      "description": "A strong add-to-cart candidate for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/810pPjR0R5L._AC_SL1500_.jpg",
-      "imageAlt": "MYDBUYSOME 2774pcs Gem Stickers Jewels for Crafts, Self Adhesive Rhinestone Jewel Stick on Gems, Acrylic Bling Heart Stickers, Craft Suppli...",
-      "url": "https://www.amazon.com/dp/B0BS4BVG3M?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CHTZD63Q",
-      "source": "craft-current",
-      "name": "Secopad Scrapbook Tape, 4 Pack Double Sided Tape Roller for Crafts, Adhesive Glue Runner Scrapbooking Supplies Journaling School Office Tea...",
-      "category": "Crafts",
-      "description": "A clean routine helper for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71lfbwPaQXL._AC_SL1500_.jpg",
-      "imageAlt": "Secopad Scrapbook Tape, 4 Pack Double Sided Tape Roller for Crafts, Adhesive Glue Runner Scrapbooking Supplies Journaling School Office Tea...",
-      "url": "https://www.amazon.com/dp/B0CHTZD63Q?tag=render-sites-20"
     },
     {
       "asin": "B08H4SG94J",
@@ -149,17 +161,6 @@
       "url": "https://www.amazon.com/dp/B08H4SG94J?tag=render-sites-20"
     },
     {
-      "asin": "B0FCLWN2PC",
-      "source": "craft-current",
-      "name": "Zefy 3200+ Pcs Arts and Crafts Supplies for Kids, All in One Craft Kits with 12 Crafts Design, DIY School Supplies Kit Craft Box Easter Gif...",
-      "category": "Starter Kit",
-      "description": "A practical first-click pick for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81mF7TRRTNL._AC_SL1500_.jpg",
-      "imageAlt": "Zefy 3200+ Pcs Arts and Crafts Supplies for Kids, All in One Craft Kits with 12 Crafts Design, DIY School Supplies Kit Craft Box Easter Gif...",
-      "url": "https://www.amazon.com/dp/B0FCLWN2PC?tag=render-sites-20"
-    },
-    {
       "asin": "B000HWY6EM",
       "source": "craft-current",
       "name": "Mod Podge Matte Sealer, Glue & Finish: All-in-One Craft Solution- Quick Dry, Easy Clean, for Wood, Paper, Fabric & More. Non-Toxic - Craft...",
@@ -169,50 +170,6 @@
       "image": "https://m.media-amazon.com/images/I/61gNyTc584L._AC_SL1500_.jpg",
       "imageAlt": "Mod Podge Matte Sealer, Glue & Finish: All-in-One Craft Solution- Quick Dry, Easy Clean, for Wood, Paper, Fabric & More. Non-Toxic - Craft...",
       "url": "https://www.amazon.com/dp/B000HWY6EM?tag=render-sites-20"
-    },
-    {
-      "asin": "B07F367TCK",
-      "source": "craft-current",
-      "name": "KTOJOY 200 Pcs Craft Sticks Ice Cream Sticks Natural Wood Popsicle Craft Sticks 4.5 inch Length Treat Sticks Ice Pop Sticks for DIY Crafts",
-      "category": "Crafts",
-      "description": "A strong add-to-cart candidate for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71flWa841dL._AC_SL1500_.jpg",
-      "imageAlt": "KTOJOY 200 Pcs Craft Sticks Ice Cream Sticks Natural Wood Popsicle Craft Sticks 4.5 inch Length Treat Sticks Ice Pop Sticks for DIY Crafts",
-      "url": "https://www.amazon.com/dp/B07F367TCK?tag=render-sites-20"
-    },
-    {
-      "asin": "B072JW6NQT",
-      "source": "craft-current",
-      "name": "260 Pieces Colorful Glitter Foam Stickers Self Adhesive Stars Mini Heart Shapes Glitter Stickers, Arts Craft Supplies for Greeting Cards Ho...",
-      "category": "Crafts",
-      "description": "A clean routine helper for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71X2j24Q3CL._AC_SL1500_.jpg",
-      "imageAlt": "260 Pieces Colorful Glitter Foam Stickers Self Adhesive Stars Mini Heart Shapes Glitter Stickers, Arts Craft Supplies for Greeting Cards Ho...",
-      "url": "https://www.amazon.com/dp/B072JW6NQT?tag=render-sites-20"
-    },
-    {
-      "asin": "B08TWB425H",
-      "source": "craft-current",
-      "name": "KUNMINGER 40 Rolls Washi Tape Set - 15 mm Wide Colored Decorative Tape for DIY Crafts, Junk Journal Supplies, Scrapbooking Supplies, Bullet...",
-      "category": "Starter Kit",
-      "description": "A solid shortlist item for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81iCJfgzTZL._AC_SL1500_.jpg",
-      "imageAlt": "KUNMINGER 40 Rolls Washi Tape Set - 15 mm Wide Colored Decorative Tape for DIY Crafts, Junk Journal Supplies, Scrapbooking Supplies, Bullet...",
-      "url": "https://www.amazon.com/dp/B08TWB425H?tag=render-sites-20"
-    },
-    {
-      "asin": "B0D5TQJXRN",
-      "source": "craft-current",
-      "name": "34000Pcs Resin Jelly Rhinestones for Bedazzling, Multicolor 3mm Flatback Gems for Diamond Art, Bedazzler Kit with 3Pcs 10ml B7000 Jewelry G...",
-      "category": "Starter Kit",
-      "description": "A practical first-click pick for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81XtjfI2MEL._AC_SL1500_.jpg",
-      "imageAlt": "34000Pcs Resin Jelly Rhinestones for Bedazzling, Multicolor 3mm Flatback Gems for Diamond Art, Bedazzler Kit with 3Pcs 10ml B7000 Jewelry G...",
-      "url": "https://www.amazon.com/dp/B0D5TQJXRN?tag=render-sites-20"
     },
     {
       "asin": "B082WJRGCZ",
@@ -226,50 +183,6 @@
       "url": "https://www.amazon.com/dp/B082WJRGCZ?tag=render-sites-20"
     },
     {
-      "asin": "B0DYJ266VC",
-      "source": "craft-current",
-      "name": "38000Pcs Jelly Rhinestones Bedazzling Kit, Multicolor 3mm Flatback Resin Bedazzler Gems with 3Pcs 10ml B7000 Jewelry Glue for Bedazzled Thi...",
-      "category": "Starter Kit",
-      "description": "A strong add-to-cart candidate for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/91rPC79KQgL._AC_SL1500_.jpg",
-      "imageAlt": "38000Pcs Jelly Rhinestones Bedazzling Kit, Multicolor 3mm Flatback Resin Bedazzler Gems with 3Pcs 10ml B7000 Jewelry Glue for Bedazzled Thi...",
-      "url": "https://www.amazon.com/dp/B0DYJ266VC?tag=render-sites-20"
-    },
-    {
-      "asin": "B0B1ZYCJPG",
-      "source": "craft-current",
-      "name": "Simetufy 5400 Pcs 1 Inch Tissue Paper Squares, 36 Assorted Colors for Crafts, Art Rainbow Bulk for Mother&#x27;s Day, Projects, Collage, Su...",
-      "category": "Crafts",
-      "description": "A clean routine helper for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/715FNfwbODL._AC_SL1500_.jpg",
-      "imageAlt": "Simetufy 5400 Pcs 1 Inch Tissue Paper Squares, 36 Assorted Colors for Crafts, Art Rainbow Bulk for Mother&#x27;s Day, Projects, Collage, Su...",
-      "url": "https://www.amazon.com/dp/B0B1ZYCJPG?tag=render-sites-20"
-    },
-    {
-      "asin": "B07XFJ5YKN",
-      "source": "craft-current",
-      "name": "3 Pack Silicone mat Large Silicone Sheets for Crafts, Liquid, Resin Jewelry Casting Molds Mat, Silicone Placemat 15.7” x 11.8” (Blue & Rose...",
-      "category": "Crafts",
-      "description": "A solid shortlist item for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61jdykVuWgL._AC_SL1500_.jpg",
-      "imageAlt": "3 Pack Silicone mat Large Silicone Sheets for Crafts, Liquid, Resin Jewelry Casting Molds Mat, Silicone Placemat 15.7” x 11.8” (Blue & Rose...",
-      "url": "https://www.amazon.com/dp/B07XFJ5YKN?tag=render-sites-20"
-    },
-    {
-      "asin": "B0BCK98LLG",
-      "source": "craft-current",
-      "name": "PerkHomy Natural Jute Twine 600 Feet Long Twine String for Crafts Gift Wrapping Packing Gardening Crochet Knitting Macrame Decor (Brown 2mm...",
-      "category": "Decor",
-      "description": "A practical first-click pick for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71uelAWQVoL._AC_SL1500_.jpg",
-      "imageAlt": "PerkHomy Natural Jute Twine 600 Feet Long Twine String for Crafts Gift Wrapping Packing Gardening Crochet Knitting Macrame Decor (Brown 2mm...",
-      "url": "https://www.amazon.com/dp/B0BCK98LLG?tag=render-sites-20"
-    },
-    {
       "asin": "B00178QQJ8",
       "source": "craft-current",
       "name": "Mod Podge Gloss Sealer, Glue & Finish: All-in-One Craft Solution- Quick Dry, Easy Clean, for Wood, Paper, Fabric & More. Non-Toxic - Craft...",
@@ -281,39 +194,6 @@
       "url": "https://www.amazon.com/dp/B00178QQJ8?tag=render-sites-20"
     },
     {
-      "asin": "B0C8J5QQT4",
-      "source": "craft-current",
-      "name": "Dried Flowers, Resiners 100Pcs Pressed Flowers for Craft Purple Real Natural Dried Flowers Dry Leaves Kit for DIY Making Crafts Resin Soap...",
-      "category": "Starter Kit",
-      "description": "A strong add-to-cart candidate for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81kS-zJhUaL._AC_SL1500_.jpg",
-      "imageAlt": "Dried Flowers, Resiners 100Pcs Pressed Flowers for Craft Purple Real Natural Dried Flowers Dry Leaves Kit for DIY Making Crafts Resin Soap...",
-      "url": "https://www.amazon.com/dp/B0C8J5QQT4?tag=render-sites-20"
-    },
-    {
-      "asin": "B000VXO4L2",
-      "source": "craft-current",
-      "name": "Elmer&#x27;s Disappearing Purple School Glue Sticks, Washable, 7 Grams, 30 Count - Posters, Back to School, Bulk Pack for Classrooms, #1 Te...",
-      "category": "Crafts",
-      "description": "A clean routine helper for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/610GhfDymuL._AC_SL1500_.jpg",
-      "imageAlt": "Elmer&#x27;s Disappearing Purple School Glue Sticks, Washable, 7 Grams, 30 Count - Posters, Back to School, Bulk Pack for Classrooms, #1 Te...",
-      "url": "https://www.amazon.com/dp/B000VXO4L2?tag=render-sites-20"
-    },
-    {
-      "asin": "B07YDDX4JL",
-      "source": "craft-current",
-      "name": "iBayam 3-Pack 8\" Heavy Duty Scissors with Ultra Sharp Blades and Comfort Grip Handles - For Office, Home, School, Sewing, and Crafts",
-      "category": "Court Gear",
-      "description": "A solid shortlist item for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61iVyRt2AfL._AC_SL1500_.jpg",
-      "imageAlt": "iBayam 3-Pack 8\" Heavy Duty Scissors with Ultra Sharp Blades and Comfort Grip Handles - For Office, Home, School, Sewing, and Crafts",
-      "url": "https://www.amazon.com/dp/B07YDDX4JL?tag=render-sites-20"
-    },
-    {
       "asin": "B0953XMJZ5",
       "source": "craft-current",
       "name": "A&R CO. 3000+ Pcs Arts and Crafts Supplies & Materials for Kids - Ultimate Bulk Craft Kit for Boys & Girls with 99 Activities Book for Ages...",
@@ -323,259 +203,6 @@
       "image": "https://m.media-amazon.com/images/I/91VbBwjvd4L._AC_SL1500_.jpg",
       "imageAlt": "A&R CO. 3000+ Pcs Arts and Crafts Supplies & Materials for Kids - Ultimate Bulk Craft Kit for Boys & Girls with 99 Activities Book for Ages...",
       "url": "https://www.amazon.com/dp/B0953XMJZ5?tag=render-sites-20"
-    },
-    {
-      "asin": "B01GCLS32M",
-      "source": "craft-current",
-      "name": "42pcs Felt Fabric Sheet 4\"x4\" Assorted Color DIY Craft Squares Nonwoven 1mm Thick",
-      "category": "Crafts",
-      "description": "A useful little upgrade for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/71XL8mnP3NL._AC_SL1500_.jpg",
-      "imageAlt": "42pcs Felt Fabric Sheet 4\"x4\" Assorted Color DIY Craft Squares Nonwoven 1mm Thick",
-      "url": "https://www.amazon.com/dp/B01GCLS32M?tag=render-sites-20"
-    },
-    {
-      "asin": "B0013CDGT6",
-      "source": "craft-current",
-      "name": "Elmer&#x27;s All Purpose School Glue Sticks, Acid-Free and Washable, Clear, 7 Grams, 30 Count - Craft Projects, Poster, Classroom Supplies,...",
-      "category": "Crafts",
-      "description": "A strong add-to-cart candidate for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
-      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/61qmiizujcL._AC_SL1500_.jpg",
-      "imageAlt": "Elmer&#x27;s All Purpose School Glue Sticks, Acid-Free and Washable, Clear, 7 Grams, 30 Count - Craft Projects, Poster, Classroom Supplies,...",
-      "url": "https://www.amazon.com/dp/B0013CDGT6?tag=render-sites-20"
-    },
-    {
-      "asin": "B0D5HFPCF1",
-      "source": "paper-ritual",
-      "name": "RETTACY Dotted Journal Notebook, 256 Pages, A5 Medium Size (5.7'' × 8.3''), Leather Hardcover",
-      "category": "Journals",
-      "description": "A fresh notebook makes starting the ritual feel easier before the first page even happens.",
-      "bestFor": "Bullet journaling, daily pages, and habit tracking",
-      "image": "/images/paper-ritual/rettacy-dotted-journal-notebook-256-pages-a5-medium-size-leather-hardcov.jpg",
-      "imageAlt": "RETTACY Dotted Journal Notebook, 256 Pages, A5 Medium Size (5.7'' × 8.3''), Leather Hardcover",
-      "url": "https://www.amazon.com/dp/B0D5HFPCF1?tag=render-sites-20"
-    },
-    {
-      "asin": "B083J6XQCL",
-      "source": "paper-ritual",
-      "name": "RETTACY Dotted Journal Notebook, 2-Pack, 160 Numbered Pages per Pack",
-      "category": "Journals",
-      "description": "A fresh notebook makes starting the ritual feel easier before the first page even happens.",
-      "bestFor": "Bullet journaling, daily pages, and habit tracking",
-      "image": "/images/paper-ritual/rettacy-dotted-journal-notebook-2-pack-160-numbered-pages-per-pack-a5-me.jpg",
-      "imageAlt": "RETTACY Dotted Journal Notebook, 2-Pack, 160 Numbered Pages per Pack",
-      "url": "https://www.amazon.com/dp/B083J6XQCL?tag=render-sites-20"
-    },
-    {
-      "asin": "B0BKMY6G53",
-      "source": "paper-ritual",
-      "name": "LEUCHTTURM1917 - 120G Special Edition - Medium A5 Dotted Hardcover Notebook (Rising Sun)",
-      "category": "Journals",
-      "description": "A fresh notebook makes starting the ritual feel easier before the first page even happens.",
-      "bestFor": "Bullet journaling, daily pages, and habit tracking",
-      "image": "/images/paper-ritual/leuchtturm1917-120g-special-edition-medium-a5-dotted-hardcover-notebook-.jpg",
-      "imageAlt": "LEUCHTTURM1917 - 120G Special Edition - Medium A5 Dotted Hardcover Notebook (Rising Sun)",
-      "url": "https://www.amazon.com/dp/B0BKMY6G53?tag=render-sites-20"
-    },
-    {
-      "asin": "B003EVHV6S",
-      "source": "paper-ritual",
-      "name": "LEUCHTTURM1917 - Notebook Softcover Medium A5-123 Numbered Pages",
-      "category": "Journals",
-      "description": "A fresh notebook makes starting the ritual feel easier before the first page even happens.",
-      "bestFor": "Bullet journaling, daily pages, and habit tracking",
-      "image": "/images/paper-ritual/leuchtturm1917-notebook-softcover-medium-a5-123-numbered-pages-for-writi.jpg",
-      "imageAlt": "LEUCHTTURM1917 - Notebook Softcover Medium A5-123 Numbered Pages",
-      "url": "https://www.amazon.com/dp/B003EVHV6S?tag=render-sites-20"
-    },
-    {
-      "asin": "B002CVAU1Y",
-      "source": "paper-ritual",
-      "name": "LEUCHTTURM1917 - Notebook Hardcover Medium A5-251 Numbered Pages",
-      "category": "Journals",
-      "description": "A fresh notebook makes starting the ritual feel easier before the first page even happens.",
-      "bestFor": "Bullet journaling, daily pages, and habit tracking",
-      "image": "/images/paper-ritual/leuchtturm1917-notebook-hardcover-medium-a5-251-numbered-pages-for-writi.jpg",
-      "imageAlt": "LEUCHTTURM1917 - Notebook Hardcover Medium A5-251 Numbered Pages",
-      "url": "https://www.amazon.com/dp/B002CVAU1Y?tag=render-sites-20"
-    },
-    {
-      "asin": "B0BZVFXQYV",
-      "source": "paper-ritual",
-      "name": "Amazon Basics Retractable Gel Pens, Fine Point 0.7mm, Smooth Writing, Assorted Colors, 12-Pack",
-      "category": "Pens",
-      "description": "Adds color and momentum without making the desk feel like a school-supply explosion.",
-      "bestFor": "Lists, headers, journal spreads, and notes",
-      "image": "/images/paper-ritual/amazon-basics-retractable-gel-pens-fine-point-0-7mm-smooth-writing-assor.jpg",
-      "imageAlt": "Amazon Basics Retractable Gel Pens, Fine Point 0.7mm, Smooth Writing, Assorted Colors, 12-Pack",
-      "url": "https://www.amazon.com/dp/B0BZVFXQYV?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CXDJMCYK",
-      "source": "paper-ritual",
-      "name": "Mr. Pen- Retractable Gel Pens, 11 Pack, Dark Vintage Color Ink, Fine Point 0.7 mm, Fast Dry",
-      "category": "Pens",
-      "description": "Adds color and momentum without making the desk feel like a school-supply explosion.",
-      "bestFor": "Lists, headers, journal spreads, and notes",
-      "image": "/images/paper-ritual/mr-pen-retractable-gel-pens-11-pack-dark-vintage-color-ink-fine-point-0-.jpg",
-      "imageAlt": "Mr. Pen- Retractable Gel Pens, 11 Pack, Dark Vintage Color Ink, Fine Point 0.7 mm, Fast Dry",
-      "url": "https://www.amazon.com/dp/B0CXDJMCYK?tag=render-sites-20"
-    },
-    {
-      "asin": "B0FSRXNV21",
-      "source": "paper-ritual",
-      "name": "Colored Gel Ink Pens 0.5mm 8 Colors Retractable Quick Dry Colorful Ink Pen Fine Point Smooth Wri",
-      "category": "Pens",
-      "description": "Adds color and momentum without making the desk feel like a school-supply explosion.",
-      "bestFor": "Lists, headers, journal spreads, and notes",
-      "image": "/images/paper-ritual/colored-gel-ink-pens-0-5mm-8-colors-retractable-quick-dry-colorful-ink-p.jpg",
-      "imageAlt": "Colored Gel Ink Pens 0.5mm 8 Colors Retractable Quick Dry Colorful Ink Pen Fine Point Smooth Wri",
-      "url": "https://www.amazon.com/dp/B0FSRXNV21?tag=render-sites-20"
-    },
-    {
-      "asin": "B07T9HCRZR",
-      "source": "paper-ritual",
-      "name": "Zebra Sarasa Clip 0.5 Retractable Gel Ink Pen, Rubber Grip, 0.5 mm, Vintage Colors",
-      "category": "Pens",
-      "description": "Adds color and momentum without making the desk feel like a school-supply explosion.",
-      "bestFor": "Lists, headers, journal spreads, and notes",
-      "image": "/images/paper-ritual/zebra-sarasa-clip-0-5-retractable-gel-ink-pen-rubber-grip-0-5-mm-vintage.jpg",
-      "imageAlt": "Zebra Sarasa Clip 0.5 Retractable Gel Ink Pen, Rubber Grip, 0.5 mm, Vintage Colors",
-      "url": "https://www.amazon.com/dp/B07T9HCRZR?tag=render-sites-20"
-    },
-    {
-      "asin": "B0GJYHL7FN",
-      "source": "paper-ritual",
-      "name": "Colored Gel Ink Pens 0.7mm 8 Colors Retractable Quick Dry Colorful Ink Pen Medium Point Smooth W",
-      "category": "Pens",
-      "description": "Adds color and momentum without making the desk feel like a school-supply explosion.",
-      "bestFor": "Lists, headers, journal spreads, and notes",
-      "image": "/images/paper-ritual/colored-gel-ink-pens-0-7mm-8-colors-retractable-quick-dry-colorful-ink-p.jpg",
-      "imageAlt": "Colored Gel Ink Pens 0.7mm 8 Colors Retractable Quick Dry Colorful Ink Pen Medium Point Smooth W",
-      "url": "https://www.amazon.com/dp/B0GJYHL7FN?tag=render-sites-20"
-    },
-    {
-      "asin": "B00IOOOBU4",
-      "source": "paper-ritual",
-      "name": "Wordsworth and Black Fountain Pen Set - Black - Includes 2 Pens, 18 ML Ink Bottle",
-      "category": "Fountain Pens",
-      "description": "Turns ordinary writing into something slower, smoother, and a little more satisfying.",
-      "bestFor": "People who want writing to feel less disposable",
-      "image": "/images/paper-ritual/wordsworth-and-black-fountain-pen-set-black-includes-2-pens-18-ml-ink-bo.jpg",
-      "imageAlt": "Wordsworth and Black Fountain Pen Set - Black - Includes 2 Pens, 18 ML Ink Bottle",
-      "url": "https://www.amazon.com/dp/B00IOOOBU4?tag=render-sites-20"
-    },
-    {
-      "asin": "B07KBVCTR3",
-      "source": "paper-ritual",
-      "name": "Pilot Kakuno Fountain Pen, Clear Barrel, Medium Nib, 0.5mm, Pilot Kakuno Fountain Pen Extra Fine",
-      "category": "Fountain Pens",
-      "description": "Turns ordinary writing into something slower, smoother, and a little more satisfying.",
-      "bestFor": "People who want writing to feel less disposable",
-      "image": "/images/paper-ritual/pilot-kakuno-fountain-pen-clear-barrel-medium-nib-0-5mm-pilot-kakuno-fou.jpg",
-      "imageAlt": "Pilot Kakuno Fountain Pen, Clear Barrel, Medium Nib, 0.5mm, Pilot Kakuno Fountain Pen Extra Fine",
-      "url": "https://www.amazon.com/dp/B07KBVCTR3?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DT4ZN58L",
-      "source": "paper-ritual",
-      "name": "PILOT Kakuno Fountain Pen, Pink Barrel, Fine Nib",
-      "category": "Fountain Pens",
-      "description": "Turns ordinary writing into something slower, smoother, and a little more satisfying.",
-      "bestFor": "People who want writing to feel less disposable",
-      "image": "/images/paper-ritual/pilot-kakuno-fountain-pen-pink-barrel-fine-nib-4-74-7-out-of-5-stars-600.jpg",
-      "imageAlt": "PILOT Kakuno Fountain Pen, Pink Barrel, Fine Nib",
-      "url": "https://www.amazon.com/dp/B0DT4ZN58L?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DP68C6Y1",
-      "source": "paper-ritual",
-      "name": "Pilot Kakuno Fountain Pen Madoromi Color Series, Gold (Smiley Face) Medium Nib, Perfect",
-      "category": "Fountain Pens",
-      "description": "Turns ordinary writing into something slower, smoother, and a little more satisfying.",
-      "bestFor": "People who want writing to feel less disposable",
-      "image": "/images/paper-ritual/pilot-kakuno-fountain-pen-madoromi-color-series-gold-medium-nib-perfect-.jpg",
-      "imageAlt": "Pilot Kakuno Fountain Pen Madoromi Color Series, Gold (Smiley Face) Medium Nib, Perfect",
-      "url": "https://www.amazon.com/dp/B0DP68C6Y1?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DP67LBLX",
-      "source": "paper-ritual",
-      "name": "Pilot Kakuno Fountain Pen Madoromi Color Series, Gold (Smiley Face) Fine Nib, Perfect",
-      "category": "Fountain Pens",
-      "description": "Turns ordinary writing into something slower, smoother, and a little more satisfying.",
-      "bestFor": "People who want writing to feel less disposable",
-      "image": "/images/paper-ritual/pilot-kakuno-fountain-pen-madoromi-color-series-gold-fine-nib-perfect-fo.jpg",
-      "imageAlt": "Pilot Kakuno Fountain Pen Madoromi Color Series, Gold (Smiley Face) Fine Nib, Perfect",
-      "url": "https://www.amazon.com/dp/B0DP67LBLX?tag=render-sites-20"
-    },
-    {
-      "asin": "B0GHPDTRJZ",
-      "source": "paper-ritual",
-      "name": "90 Pack Airmail Stationery Paper Set, Vintage Letter Writing Paper and Envelopes Set",
-      "category": "Letters",
-      "description": "Makes sending a note feel charming instead of like hunting for random paper in a drawer.",
-      "bestFor": "Pen-pal mail, thank-you notes, and small gifts",
-      "image": "/images/paper-ritual/90-pack-airmail-stationery-paper-set-vintage-letter-writing-paper-and-en.jpg",
-      "imageAlt": "90 Pack Airmail Stationery Paper Set, Vintage Letter Writing Paper and Envelopes Set",
-      "url": "https://www.amazon.com/dp/B0GHPDTRJZ?tag=render-sites-20"
-    },
-    {
-      "asin": "B0FR9VF38V",
-      "source": "paper-ritual",
-      "name": "Beautiful Stationery Set with Envelopes - Premium-Quality",
-      "category": "Letters",
-      "description": "Makes sending a note feel charming instead of like hunting for random paper in a drawer.",
-      "bestFor": "Pen-pal mail, thank-you notes, and small gifts",
-      "image": "/images/paper-ritual/beautiful-stationery-set-with-envelopes-premium-quality-no-bleed-lined-l.jpg",
-      "imageAlt": "Beautiful Stationery Set with Envelopes - Premium-Quality",
-      "url": "https://www.amazon.com/dp/B0FR9VF38V?tag=render-sites-20"
-    },
-    {
-      "asin": "B0CT94BJSV",
-      "source": "paper-ritual",
-      "name": "Mr. Pen- Stationery Writing Paper Set with Envelopes, 8.18\" x 5.5\"",
-      "category": "Letters",
-      "description": "Makes sending a note feel charming instead of like hunting for random paper in a drawer.",
-      "bestFor": "Pen-pal mail, thank-you notes, and small gifts",
-      "image": "/images/paper-ritual/mr-pen-stationery-writing-paper-set-with-envelopes-8-18-x-5-5-30-letter-.jpg",
-      "imageAlt": "Mr. Pen- Stationery Writing Paper Set with Envelopes, 8.18\" x 5.5\"",
-      "url": "https://www.amazon.com/dp/B0CT94BJSV?tag=render-sites-20"
-    },
-    {
-      "asin": "1441315314",
-      "source": "paper-ritual",
-      "name": "Blue Dragonfly Stationery Set (Boxed Stationery) by Peter Pauper Press",
-      "category": "Letters",
-      "description": "Makes sending a note feel charming instead of like hunting for random paper in a drawer.",
-      "bestFor": "Pen-pal mail, thank-you notes, and small gifts",
-      "image": "/images/paper-ritual/blue-dragonfly-stationery-set-by-peter-pauper-press-4-84-8-out-of-5-star.jpg",
-      "imageAlt": "Blue Dragonfly Stationery Set (Boxed Stationery) by Peter Pauper Press",
-      "url": "https://www.amazon.com/dp/1441315314?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DZGTPY2N",
-      "source": "paper-ritual",
-      "name": "Mr. Pen- Stationery Writing Paper Set with Envelopes, 5.2\" x 7.3\"",
-      "category": "Letters",
-      "description": "Makes sending a note feel charming instead of like hunting for random paper in a drawer.",
-      "bestFor": "Pen-pal mail, thank-you notes, and small gifts",
-      "image": "/images/paper-ritual/mr-pen-stationery-writing-paper-set-with-envelopes-5-2-x-7-3-60-letter-s.jpg",
-      "imageAlt": "Mr. Pen- Stationery Writing Paper Set with Envelopes, 5.2\" x 7.3\"",
-      "url": "https://www.amazon.com/dp/B0DZGTPY2N?tag=render-sites-20"
-    },
-    {
-      "asin": "B0DD7MF17D",
-      "source": "paper-ritual",
-      "name": "Vintage Botanical Scrapbooking Supplies Kit, Aesthetic Flower Scrapbook Kit",
-      "category": "Scrapbooking",
-      "description": "Adds texture, layering, and personality for memory keeping without needing a giant craft closet.",
-      "bestFor": "Creative pages, photos, and weekend hobby time",
-      "image": "/images/paper-ritual/vintage-botanical-scrapbooking-supplies-kit-aesthetic-flower-scrapbook-k.jpg",
-      "imageAlt": "Vintage Botanical Scrapbooking Supplies Kit, Aesthetic Flower Scrapbook Kit",
-      "url": "https://www.amazon.com/dp/B0DD7MF17D?tag=render-sites-20"
     },
     {
       "asin": "B0F293W9VK",
@@ -600,28 +227,6 @@
       "url": "https://www.amazon.com/dp/B0G1LQZSY6?tag=render-sites-20"
     },
     {
-      "asin": "B09C8HLMY5",
-      "source": "paper-ritual",
-      "name": "Knaid Vintage Scrapbook Supplies Pack (200 Pieces)",
-      "category": "Scrapbooking",
-      "description": "Adds texture, layering, and personality for memory keeping without needing a giant craft closet.",
-      "bestFor": "Creative pages, photos, and weekend hobby time",
-      "image": "/images/paper-ritual/knaid-vintage-scrapbook-supplies-pack-for-witchy-junk-journal-bullet-jou.jpg",
-      "imageAlt": "Knaid Vintage Scrapbook Supplies Pack (200 Pieces)",
-      "url": "https://www.amazon.com/dp/B09C8HLMY5?tag=render-sites-20"
-    },
-    {
-      "asin": "B0D9MNGSSX",
-      "source": "paper-ritual",
-      "name": "Fayware 300+ Travel Stickers for Scrapbooking & 20 A5 Papers - Pre-Cut Washi Stickers",
-      "category": "Scrapbooking",
-      "description": "Adds texture, layering, and personality for memory keeping without needing a giant craft closet.",
-      "bestFor": "Creative pages, photos, and weekend hobby time",
-      "image": "/images/paper-ritual/fayware-300-travel-stickers-for-scrapbooking-20-a5-papers-pre-cut-washi-.jpg",
-      "imageAlt": "Fayware 300+ Travel Stickers for Scrapbooking & 20 A5 Papers - Pre-Cut Washi Stickers",
-      "url": "https://www.amazon.com/dp/B0D9MNGSSX?tag=render-sites-20"
-    },
-    {
       "asin": "B07VZNMNH9",
       "source": "paper-ritual",
       "name": "Metal Mesh Desk Organizer with 6 Compartments, Anti-Slip Pen Holder Storage Tray",
@@ -631,17 +236,6 @@
       "image": "/images/paper-ritual/metal-mesh-desk-organizer-with-6-compartments-anti-slip-pen-holder-stora.jpg",
       "imageAlt": "Metal Mesh Desk Organizer with 6 Compartments, Anti-Slip Pen Holder Storage Tray",
       "url": "https://www.amazon.com/dp/B07VZNMNH9?tag=render-sites-20"
-    },
-    {
-      "asin": "B07RWK43MD",
-      "source": "paper-ritual",
-      "name": "Plastic Desk Organizer - Pen Cup, 3.9\" x 3.4\" x 3.4\", Black",
-      "category": "Desk Tools",
-      "description": "Keeps the writing tools visible enough to use and tidy enough to leave out.",
-      "bestFor": "Small desks and creative corners",
-      "image": "/images/paper-ritual/plastic-desk-organizer-pen-cup-3-9-x-3-4-x-3-4-black-4-64-6-out-of-5-sta.jpg",
-      "imageAlt": "Plastic Desk Organizer - Pen Cup, 3.9\" x 3.4\" x 3.4\", Black",
-      "url": "https://www.amazon.com/dp/B07RWK43MD?tag=render-sites-20"
     },
     {
       "asin": "B0H24WD4LY",
@@ -666,26 +260,268 @@
       "url": "https://www.amazon.com/dp/B0FHKNX6TF?tag=render-sites-20"
     },
     {
-      "asin": "B0CHGFG64S",
+      "asin": "B07M7M898T",
       "source": "bake-bench",
-      "name": "ChefAide 5 Pieces Silicone Spatula Set, Food Grade Rubber Spatula, Upgrade Strong Handle with Ergonomic Grip, Heat Resistant Up to 600°F fo...",
+      "name": "Kootek 71PCs Cake Decorating Kit, Baking Supplies Tools - Includes Cake Stand Turntable, 12 Icing Piping Tips Set, 2 Frosting Spatulas, 3 S...",
       "category": "Starter Kit",
-      "description": "A useful little upgrade for baking shoppers who want more accurate measuring, cleaner prep, easier decorating, or a baking drawer that feels less chaotic.",
+      "description": "A solid shortlist item for baking shoppers who want more accurate measuring, cleaner prep, easier decorating, or a baking drawer that feels less chaotic.",
       "bestFor": "Baking shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/51hm8-fJJkL._AC_SL1500_.jpg",
-      "imageAlt": "ChefAide 5 Pieces Silicone Spatula Set, Food Grade Rubber Spatula, Upgrade Strong Handle with Ergonomic Grip, Heat Resistant Up to 600°F fo...",
-      "url": "https://www.amazon.com/dp/B0CHGFG64S?tag=render-sites-20"
+      "image": "https://m.media-amazon.com/images/I/71Yf3k4nBeL._AC_SL1500_.jpg",
+      "imageAlt": "Kootek 71PCs Cake Decorating Kit, Baking Supplies Tools - Includes Cake Stand Turntable, 12 Icing Piping Tips Set, 2 Frosting Spatulas, 3 S...",
+      "url": "https://www.amazon.com/dp/B07M7M898T?tag=render-sites-20"
     },
     {
-      "asin": "B0999594RR",
+      "asin": "B00M2J7PCI",
       "source": "bake-bench",
-      "name": "26x16 Inch Extra Thick Silicone Baking Mat with Measurements, Non-slip and Reusable - For Cookies, Bread, Pastry",
-      "category": "Baking",
-      "description": "A strong add-to-cart candidate for baking shoppers who want more accurate measuring, cleaner prep, easier decorating, or a baking drawer that feels less chaotic.",
+      "name": "Pyrex Essentials (3-Pack) Glass Measuring Cups Set, (1, 2 & 4 Cup) Measuring Cups For Prepping, Baking and Cooking, Preheated Oven, Dishwas...",
+      "category": "Starter Kit",
+      "description": "A clean routine helper for baking shoppers who want more accurate measuring, cleaner prep, easier decorating, or a baking drawer that feels less chaotic.",
       "bestFor": "Baking shoppers who want a cleaner first shortlist",
-      "image": "https://m.media-amazon.com/images/I/81rE3PP6OEL._AC_SL1500_.jpg",
-      "imageAlt": "26x16 Inch Extra Thick Silicone Baking Mat with Measurements, Non-slip and Reusable - For Cookies, Bread, Pastry",
-      "url": "https://www.amazon.com/dp/B0999594RR?tag=render-sites-20"
+      "image": "https://m.media-amazon.com/images/I/71ygLu2o0OL._AC_SL1500_.jpg",
+      "imageAlt": "Pyrex Essentials (3-Pack) Glass Measuring Cups Set, (1, 2 & 4 Cup) Measuring Cups For Prepping, Baking and Cooking, Preheated Oven, Dishwas...",
+      "url": "https://www.amazon.com/dp/B00M2J7PCI?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BNSYKZSN",
+      "source": "bake-bench",
+      "name": "Bake Choice 200pcs Natural Tulip Cupcake Liners for Baking Cups Unbleached European Parchment paper Tulip Muffin Liners, Cupcake Wrapper fo...",
+      "category": "Baking",
+      "description": "A practical first-click pick for baking shoppers who want more accurate measuring, cleaner prep, easier decorating, or a baking drawer that feels less chaotic.",
+      "bestFor": "Baking shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71IFPmReenL._AC_SL1500_.jpg",
+      "imageAlt": "Bake Choice 200pcs Natural Tulip Cupcake Liners for Baking Cups Unbleached European Parchment paper Tulip Muffin Liners, Cupcake Wrapper fo...",
+      "url": "https://www.amazon.com/dp/B0BNSYKZSN?tag=render-sites-20"
+    },
+    {
+      "asin": "B091JXDLDX",
+      "source": "bake-bench",
+      "name": "TILUCK Stainless Steel Measuring Cups & Spoons Set, Cups and Spoons,Kitchen Gadgets for Cooking & Baking (10)",
+      "category": "Starter Kit",
+      "description": "A clean routine helper for baking shoppers who want more accurate measuring, cleaner prep, easier decorating, or a baking drawer that feels less chaotic.",
+      "bestFor": "Baking shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/713cp4XSG7L._AC_SL1500_.jpg",
+      "imageAlt": "TILUCK Stainless Steel Measuring Cups & Spoons Set, Cups and Spoons,Kitchen Gadgets for Cooking & Baking (10)",
+      "url": "https://www.amazon.com/dp/B091JXDLDX?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DBLKMPCG",
+      "source": "bake-bench",
+      "name": "Kootek 700pcs Cake Decorating Kit, Baking Supplies with Springform Pans, Cake Turntable for Decorating, Piping Tips Set, Pastry Bags, and M...",
+      "category": "Storage",
+      "description": "A useful little upgrade for baking shoppers who want more accurate measuring, cleaner prep, easier decorating, or a baking drawer that feels less chaotic.",
+      "bestFor": "Baking shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81zznvbQhgL._AC_SL1500_.jpg",
+      "imageAlt": "Kootek 700pcs Cake Decorating Kit, Baking Supplies with Springform Pans, Cake Turntable for Decorating, Piping Tips Set, Pastry Bags, and M...",
+      "url": "https://www.amazon.com/dp/B0DBLKMPCG?tag=render-sites-20"
+    },
+    {
+      "asin": "B07KQVW6RR",
+      "source": "brew-counter",
+      "name": "Bodum 34oz Pour Over Coffee Maker, High-Heat Borosilicate Glass with Reusable Stainless Steel Filter and Cork Grip - Made in Portugal",
+      "category": "Gear",
+      "description": "A strong add-to-cart candidate for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61ShLwhRkML._AC_SL1500_.jpg",
+      "imageAlt": "Bodum 34oz Pour Over Coffee Maker, High-Heat Borosilicate Glass with Reusable Stainless Steel Filter and Cork Grip - Made in Portugal",
+      "url": "https://www.amazon.com/dp/B07KQVW6RR?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CWH57Q9F",
+      "source": "brew-counter",
+      "name": "Veken Coffee Canister with Window,Airtight Stainless Steel Pantry Container,Kitchen Food Storage Organizers for Beans,Ground,Espresso,Rice,...",
+      "category": "Storage",
+      "description": "A solid shortlist item for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71JsCC8nqaL._AC_SL1500_.jpg",
+      "imageAlt": "Veken Coffee Canister with Window,Airtight Stainless Steel Pantry Container,Kitchen Food Storage Organizers for Beans,Ground,Espresso,Rice,...",
+      "url": "https://www.amazon.com/dp/B0CWH57Q9F?tag=render-sites-20"
+    },
+    {
+      "asin": "B0FHFLQCP6",
+      "source": "brew-counter",
+      "name": "Ceramic Coffee Bean Dosing Cup + Sprayer Gift Set, Spoon Rest, Mini Coffee Spoon Holder for Tea Spoons Stirrers, Coffee Station Decor, Espr...",
+      "category": "Starter Kit",
+      "description": "A practical first-click pick for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61jL7XEXObL._AC_SL1500_.jpg",
+      "imageAlt": "Ceramic Coffee Bean Dosing Cup + Sprayer Gift Set, Spoon Rest, Mini Coffee Spoon Holder for Tea Spoons Stirrers, Coffee Station Decor, Espr...",
+      "url": "https://www.amazon.com/dp/B0FHFLQCP6?tag=render-sites-20"
+    },
+    {
+      "asin": "B09B4CB7C1",
+      "source": "brew-counter",
+      "name": "Greater Goods Coffee Scale with Timer – 0.1g Precision Digital Coffee & Espresso Scale for Pour-Over, Coffee Bean Weighing, Barista Brewing...",
+      "category": "Coffee",
+      "description": "A strong add-to-cart candidate for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71-L+FLDJYL._AC_SL1500_.jpg",
+      "imageAlt": "Greater Goods Coffee Scale with Timer – 0.1g Precision Digital Coffee & Espresso Scale for Pour-Over, Coffee Bean Weighing, Barista Brewing...",
+      "url": "https://www.amazon.com/dp/B09B4CB7C1?tag=render-sites-20"
+    },
+    {
+      "asin": "B01G2CCWGY",
+      "source": "brew-counter",
+      "name": "Utopia Kitchen 304 Grade Stainless Steel French Press Coffee Maker 34 Oz, Double Wall Insulated Coffee Press with 4-Level Filtration System...",
+      "category": "Starter Kit",
+      "description": "A clean routine helper for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/817MkkxdLoL._AC_SL1500_.jpg",
+      "imageAlt": "Utopia Kitchen 304 Grade Stainless Steel French Press Coffee Maker 34 Oz, Double Wall Insulated Coffee Press with 4-Level Filtration System...",
+      "url": "https://www.amazon.com/dp/B01G2CCWGY?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DS6LPYBK",
+      "source": "brew-counter",
+      "name": "YETI Pour Over Coffee Maker Accessory Ramblers, Designed for Perfect Coffee Extraction Anywhere, Stainless Steel, fits any V60 Filter, Navy",
+      "category": "Gear",
+      "description": "A solid shortlist item for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/41KDsn-es4L._AC_SL1500_.jpg",
+      "imageAlt": "YETI Pour Over Coffee Maker Accessory Ramblers, Designed for Perfect Coffee Extraction Anywhere, Stainless Steel, fits any V60 Filter, Navy",
+      "url": "https://www.amazon.com/dp/B0DS6LPYBK?tag=render-sites-20"
+    },
+    {
+      "asin": "B09FHPRCDW",
+      "source": "brew-counter",
+      "name": "Attsky Collapsible Pour Over Coffee Dripper for Camp Coffee, Reusable Silicone Coffee Filter Holder for Camping Red",
+      "category": "Coffee",
+      "description": "A useful little upgrade for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61tFprph7uL._AC_SL1500_.jpg",
+      "imageAlt": "Attsky Collapsible Pour Over Coffee Dripper for Camp Coffee, Reusable Silicone Coffee Filter Holder for Camping Red",
+      "url": "https://www.amazon.com/dp/B09FHPRCDW?tag=render-sites-20"
+    },
+    {
+      "asin": "B0G437ZF7W",
+      "source": "brew-counter",
+      "name": "Pour Over Coffee Dripper, Stainless Steel Coffee Filter, Paperless Reusable Coffee Filter, Double Micromesh 600 Mesh Strainer Coffee Maker...",
+      "category": "Gear",
+      "description": "A strong add-to-cart candidate for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71EdOtD1QfL._AC_SL1500_.jpg",
+      "imageAlt": "Pour Over Coffee Dripper, Stainless Steel Coffee Filter, Paperless Reusable Coffee Filter, Double Micromesh 600 Mesh Strainer Coffee Maker...",
+      "url": "https://www.amazon.com/dp/B0G437ZF7W?tag=render-sites-20"
+    },
+    {
+      "asin": "B00MJ8JSFE",
+      "source": "craft-current",
+      "name": "Crayola Construction Paper Bulk Pack (480 Sheets) – 10 Assorted Colors, 9x12, Teacher School Supplies & Classroom Must Haves, Card Making C...",
+      "category": "Crafts",
+      "description": "A strong add-to-cart candidate for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
+      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61TbDzO158L._AC_SL1500_.jpg",
+      "imageAlt": "Crayola Construction Paper Bulk Pack (480 Sheets) – 10 Assorted Colors, 9x12, Teacher School Supplies & Classroom Must Haves, Card Making C...",
+      "url": "https://www.amazon.com/dp/B00MJ8JSFE?tag=render-sites-20"
+    },
+    {
+      "asin": "B089T7PX27",
+      "source": "craft-current",
+      "name": "Crayola Air Dry Clay (5lbs), Teacher Supplies, Natural White Modeling Clay for Kids, Sculpting Material, Bulk Craft Supplies for Art Classr...",
+      "category": "Crafts",
+      "description": "A practical first-click pick for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
+      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61orX92CK8L._AC_SL1500_.jpg",
+      "imageAlt": "Crayola Air Dry Clay (5lbs), Teacher Supplies, Natural White Modeling Clay for Kids, Sculpting Material, Bulk Craft Supplies for Art Classr...",
+      "url": "https://www.amazon.com/dp/B089T7PX27?tag=render-sites-20"
+    },
+    {
+      "asin": "B08F2SPQZR",
+      "source": "craft-current",
+      "name": "Mr. Pen- Craft Scissors Decorative Edge, 6 Pack, Bright, Zig Zag Scissors for Crafting, Scrapbooking, Fancy, Pattern, Design",
+      "category": "Decor",
+      "description": "A useful little upgrade for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
+      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71oLNpwGpEL._AC_SL1500_.jpg",
+      "imageAlt": "Mr. Pen- Craft Scissors Decorative Edge, 6 Pack, Bright, Zig Zag Scissors for Crafting, Scrapbooking, Fancy, Pattern, Design",
+      "url": "https://www.amazon.com/dp/B08F2SPQZR?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CHTZD63Q",
+      "source": "craft-current",
+      "name": "Secopad Scrapbook Tape, 4 Pack Double Sided Tape Roller for Crafts, Adhesive Glue Runner Scrapbooking Supplies Journaling School Office Tea...",
+      "category": "Crafts",
+      "description": "A clean routine helper for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
+      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71lfbwPaQXL._AC_SL1500_.jpg",
+      "imageAlt": "Secopad Scrapbook Tape, 4 Pack Double Sided Tape Roller for Crafts, Adhesive Glue Runner Scrapbooking Supplies Journaling School Office Tea...",
+      "url": "https://www.amazon.com/dp/B0CHTZD63Q?tag=render-sites-20"
+    },
+    {
+      "asin": "B072JW6NQT",
+      "source": "craft-current",
+      "name": "260 Pieces Colorful Glitter Foam Stickers Self Adhesive Stars Mini Heart Shapes Glitter Stickers, Arts Craft Supplies for Greeting Cards Ho...",
+      "category": "Crafts",
+      "description": "A clean routine helper for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
+      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71X2j24Q3CL._AC_SL1500_.jpg",
+      "imageAlt": "260 Pieces Colorful Glitter Foam Stickers Self Adhesive Stars Mini Heart Shapes Glitter Stickers, Arts Craft Supplies for Greeting Cards Ho...",
+      "url": "https://www.amazon.com/dp/B072JW6NQT?tag=render-sites-20"
+    },
+    {
+      "asin": "B08TWB425H",
+      "source": "craft-current",
+      "name": "KUNMINGER 40 Rolls Washi Tape Set - 15 mm Wide Colored Decorative Tape for DIY Crafts, Junk Journal Supplies, Scrapbooking Supplies, Bullet...",
+      "category": "Starter Kit",
+      "description": "A solid shortlist item for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
+      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81iCJfgzTZL._AC_SL1500_.jpg",
+      "imageAlt": "KUNMINGER 40 Rolls Washi Tape Set - 15 mm Wide Colored Decorative Tape for DIY Crafts, Junk Journal Supplies, Scrapbooking Supplies, Bullet...",
+      "url": "https://www.amazon.com/dp/B08TWB425H?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DYJ266VC",
+      "source": "craft-current",
+      "name": "38000Pcs Jelly Rhinestones Bedazzling Kit, Multicolor 3mm Flatback Resin Bedazzler Gems with 3Pcs 10ml B7000 Jewelry Glue for Bedazzled Thi...",
+      "category": "Starter Kit",
+      "description": "A strong add-to-cart candidate for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
+      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/91rPC79KQgL._AC_SL1500_.jpg",
+      "imageAlt": "38000Pcs Jelly Rhinestones Bedazzling Kit, Multicolor 3mm Flatback Resin Bedazzler Gems with 3Pcs 10ml B7000 Jewelry Glue for Bedazzled Thi...",
+      "url": "https://www.amazon.com/dp/B0DYJ266VC?tag=render-sites-20"
+    },
+    {
+      "asin": "B0B1ZYCJPG",
+      "source": "craft-current",
+      "name": "Simetufy 5400 Pcs 1 Inch Tissue Paper Squares, 36 Assorted Colors for Crafts, Art Rainbow Bulk for Mother&#x27;s Day, Projects, Collage, Su...",
+      "category": "Crafts",
+      "description": "A clean routine helper for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
+      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/715FNfwbODL._AC_SL1500_.jpg",
+      "imageAlt": "Simetufy 5400 Pcs 1 Inch Tissue Paper Squares, 36 Assorted Colors for Crafts, Art Rainbow Bulk for Mother&#x27;s Day, Projects, Collage, Su...",
+      "url": "https://www.amazon.com/dp/B0B1ZYCJPG?tag=render-sites-20"
+    },
+    {
+      "asin": "B0C8J5QQT4",
+      "source": "craft-current",
+      "name": "Dried Flowers, Resiners 100Pcs Pressed Flowers for Craft Purple Real Natural Dried Flowers Dry Leaves Kit for DIY Making Crafts Resin Soap...",
+      "category": "Starter Kit",
+      "description": "A strong add-to-cart candidate for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
+      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81kS-zJhUaL._AC_SL1500_.jpg",
+      "imageAlt": "Dried Flowers, Resiners 100Pcs Pressed Flowers for Craft Purple Real Natural Dried Flowers Dry Leaves Kit for DIY Making Crafts Resin Soap...",
+      "url": "https://www.amazon.com/dp/B0C8J5QQT4?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DD7MF17D",
+      "source": "paper-ritual",
+      "name": "Vintage Botanical Scrapbooking Supplies Kit, Aesthetic Flower Scrapbook Kit",
+      "category": "Scrapbooking",
+      "description": "Adds texture, layering, and personality for memory keeping without needing a giant craft closet.",
+      "bestFor": "Creative pages, photos, and weekend hobby time",
+      "image": "/images/paper-ritual/vintage-botanical-scrapbooking-supplies-kit-aesthetic-flower-scrapbook-k.jpg",
+      "imageAlt": "Vintage Botanical Scrapbooking Supplies Kit, Aesthetic Flower Scrapbook Kit",
+      "url": "https://www.amazon.com/dp/B0DD7MF17D?tag=render-sites-20"
+    },
+    {
+      "asin": "B09C8HLMY5",
+      "source": "paper-ritual",
+      "name": "Knaid Vintage Scrapbook Supplies Pack (200 Pieces)",
+      "category": "Scrapbooking",
+      "description": "Adds texture, layering, and personality for memory keeping without needing a giant craft closet.",
+      "bestFor": "Creative pages, photos, and weekend hobby time",
+      "image": "/images/paper-ritual/knaid-vintage-scrapbook-supplies-pack-for-witchy-junk-journal-bullet-jou.jpg",
+      "imageAlt": "Knaid Vintage Scrapbook Supplies Pack (200 Pieces)",
+      "url": "https://www.amazon.com/dp/B09C8HLMY5?tag=render-sites-20"
     },
     {
       "asin": "B0D96JFFXF",
@@ -697,6 +533,213 @@
       "image": "https://m.media-amazon.com/images/I/71TFFG4KGiL._AC_SL1500_.jpg",
       "imageAlt": "Ecavria Bench Scraper, Premium Stainless Steel Dough Scraper with 2 PCS Flexible Bowl Scraper, Dough Cutter with Measuring Scale, Versatile...",
       "url": "https://www.amazon.com/dp/B0D96JFFXF?tag=render-sites-20"
+    },
+    {
+      "asin": "B0113UZJE2",
+      "source": "bake-bench",
+      "name": "Etekcity Food Kitchen Scale, Digital Grams and Ounces for Weight Loss, Baking, Cooking, Keto and Meal Prep, LCD Display, Medium, 304 Stainl...",
+      "category": "Starter Kit",
+      "description": "A strong add-to-cart candidate for baking shoppers who want more accurate measuring, cleaner prep, easier decorating, or a baking drawer that feels less chaotic.",
+      "bestFor": "Baking shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/91YrLTBnMcL._AC_SL1500_.jpg",
+      "imageAlt": "Etekcity Food Kitchen Scale, Digital Grams and Ounces for Weight Loss, Baking, Cooking, Keto and Meal Prep, LCD Display, Medium, 304 Stainl...",
+      "url": "https://www.amazon.com/dp/B0113UZJE2?tag=render-sites-20"
+    },
+    {
+      "asin": "B0D4LX9Z3Q",
+      "source": "bake-bench",
+      "name": "2PCS Cooling Racks for Cooking and Baking - 10\" x 15\"Heavy Duty Stainless Steel Wire Rack for Baking, Grilling, Roasting - Oven & Dishwashe...",
+      "category": "Baking",
+      "description": "A strong add-to-cart candidate for baking shoppers who want more accurate measuring, cleaner prep, easier decorating, or a baking drawer that feels less chaotic.",
+      "bestFor": "Baking shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81U2PrCeEaL._AC_SL1500_.jpg",
+      "imageAlt": "2PCS Cooling Racks for Cooking and Baking - 10\" x 15\"Heavy Duty Stainless Steel Wire Rack for Baking, Grilling, Roasting - Oven & Dishwashe...",
+      "url": "https://www.amazon.com/dp/B0D4LX9Z3Q?tag=render-sites-20"
+    },
+    {
+      "asin": "B0924MKRJ7",
+      "source": "bake-bench",
+      "name": "Piping Bags and Tips Set, Reusable Cake Decorating Supplies with 2 Reusable Bags, 12 Icing Tips, 2 Silicone Rings, 2 Couplers and 3 Scraper...",
+      "category": "Storage",
+      "description": "A clean routine helper for baking shoppers who want more accurate measuring, cleaner prep, easier decorating, or a baking drawer that feels less chaotic.",
+      "bestFor": "Baking shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61gniTof-YL._AC_SL1500_.jpg",
+      "imageAlt": "Piping Bags and Tips Set, Reusable Cake Decorating Supplies with 2 Reusable Bags, 12 Icing Tips, 2 Silicone Rings, 2 Couplers and 3 Scraper...",
+      "url": "https://www.amazon.com/dp/B0924MKRJ7?tag=render-sites-20"
+    },
+    {
+      "asin": "B005D6GFFA",
+      "source": "bake-bench",
+      "name": "FARBERWARE Classic Wood Rolling Pin, 18-Inch Hardwood Dough Roller for Baking Pizza, Pies, Pastry and Cookies, Ergonomic Handles, Kitchen E...",
+      "category": "Starter Kit",
+      "description": "A strong add-to-cart candidate for baking shoppers who want more accurate measuring, cleaner prep, easier decorating, or a baking drawer that feels less chaotic.",
+      "bestFor": "Baking shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/51MBKGGJu+L._AC_SL1500_.jpg",
+      "imageAlt": "FARBERWARE Classic Wood Rolling Pin, 18-Inch Hardwood Dough Roller for Baking Pizza, Pies, Pastry and Cookies, Ergonomic Handles, Kitchen E...",
+      "url": "https://www.amazon.com/dp/B005D6GFFA?tag=render-sites-20"
+    },
+    {
+      "asin": "B08LVY3F83",
+      "source": "bake-bench",
+      "name": "HOMURE H Cookie Scoop Set, Include 1 Tbsp/2 Tbsp/3 Tbsp, Cookie Dough Scoop, Cookie Scoops for Baking Set of 3, 18/8 Stainless Steel, Good...",
+      "category": "Starter Kit",
+      "description": "A useful little upgrade for baking shoppers who want more accurate measuring, cleaner prep, easier decorating, or a baking drawer that feels less chaotic.",
+      "bestFor": "Baking shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61066xs6uGL._AC_SL1500_.jpg",
+      "imageAlt": "HOMURE H Cookie Scoop Set, Include 1 Tbsp/2 Tbsp/3 Tbsp, Cookie Dough Scoop, Cookie Scoops for Baking Set of 3, 18/8 Stainless Steel, Good...",
+      "url": "https://www.amazon.com/dp/B08LVY3F83?tag=render-sites-20"
+    },
+    {
+      "asin": "B0D3PWHQD9",
+      "source": "bake-bench",
+      "name": "Parchment Paper Sheets 9x13 Inch – 70Pcs Precut Unbleached Baking Paper, Plant-Based Silicone Coating, Non-Stick Quarter Sheet Liner for Ai...",
+      "category": "Baking",
+      "description": "A solid shortlist item for baking shoppers who want more accurate measuring, cleaner prep, easier decorating, or a baking drawer that feels less chaotic.",
+      "bestFor": "Baking shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71lCn+5mdZL._AC_SL1500_.jpg",
+      "imageAlt": "Parchment Paper Sheets 9x13 Inch – 70Pcs Precut Unbleached Baking Paper, Plant-Based Silicone Coating, Non-Stick Quarter Sheet Liner for Ai...",
+      "url": "https://www.amazon.com/dp/B0D3PWHQD9?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CM3ML9TZ",
+      "source": "bake-bench",
+      "name": "Adjustable Rolling Pin with Thickness Rings for Baking, Stainless Steel Designs Dough Roller Pins for Cookie Decorating Baking Supplies Fon...",
+      "category": "Decor",
+      "description": "A strong add-to-cart candidate for baking shoppers who want more accurate measuring, cleaner prep, easier decorating, or a baking drawer that feels less chaotic.",
+      "bestFor": "Baking shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61K02VJ1KIL._AC_SL1500_.jpg",
+      "imageAlt": "Adjustable Rolling Pin with Thickness Rings for Baking, Stainless Steel Designs Dough Roller Pins for Cookie Decorating Baking Supplies Fon...",
+      "url": "https://www.amazon.com/dp/B0CM3ML9TZ?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DMZL1K3G",
+      "source": "brew-counter",
+      "name": "Mini Manual Coffee Grinder with 40 Adjustable Settings, Portable Hand Coffee Bean Mill with 30g Capacity, Conical Burr Coffee Grinder with...",
+      "category": "Starter Kit",
+      "description": "A practical first-click pick for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71sC269K6YL._AC_SL1500_.jpg",
+      "imageAlt": "Mini Manual Coffee Grinder with 40 Adjustable Settings, Portable Hand Coffee Bean Mill with 30g Capacity, Conical Burr Coffee Grinder with...",
+      "url": "https://www.amazon.com/dp/B0DMZL1K3G?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CJM76VFY",
+      "source": "brew-counter",
+      "name": "Amrules Milk Frothing Pitcher, 12oz Milk Frother Cup with Clear Scale, 304 Stainless Steel Cappuccino Espresso Machine Accessories for Bari...",
+      "category": "Starter Kit",
+      "description": "A strong add-to-cart candidate for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61OZRRKTdcL._AC_SL1500_.jpg",
+      "imageAlt": "Amrules Milk Frothing Pitcher, 12oz Milk Frother Cup with Clear Scale, 304 Stainless Steel Cappuccino Espresso Machine Accessories for Bari...",
+      "url": "https://www.amazon.com/dp/B0CJM76VFY?tag=render-sites-20"
+    },
+    {
+      "asin": "B07CSKGLMM",
+      "source": "brew-counter",
+      "name": "OXO Brew Conical Burr Coffee Grinder - Silver, Stainless Steel Burrs, One-Touch Automatic Smart Grind",
+      "category": "Coffee",
+      "description": "A clean routine helper for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71DeUg8G7kS._AC_SL1500_.jpg",
+      "imageAlt": "OXO Brew Conical Burr Coffee Grinder - Silver, Stainless Steel Burrs, One-Touch Automatic Smart Grind",
+      "url": "https://www.amazon.com/dp/B07CSKGLMM?tag=render-sites-20"
+    },
+    {
+      "asin": "B0FDXYKKCN",
+      "source": "brew-counter",
+      "name": "YETI Rambler 14 oz Ceramic Lined Stackable Mug, Vacuum Insulated, Stainless Steel with MagSlider Lid, Navy",
+      "category": "Coffee",
+      "description": "A practical first-click pick for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/51mIEuCCs2L._AC_SL1500_.jpg",
+      "imageAlt": "YETI Rambler 14 oz Ceramic Lined Stackable Mug, Vacuum Insulated, Stainless Steel with MagSlider Lid, Navy",
+      "url": "https://www.amazon.com/dp/B0FDXYKKCN?tag=render-sites-20"
+    },
+    {
+      "asin": "B0DGLWFX7Q",
+      "source": "brew-counter",
+      "name": "Subminimal Subscale Digital Dosing Cup with LED Display – Sleek & Precise Scale - Dosing & Brewing Accessories, Measures Coffee Grounds for...",
+      "category": "Starter Kit",
+      "description": "A solid shortlist item for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71UPFUovYkL._AC_SL1500_.jpg",
+      "imageAlt": "Subminimal Subscale Digital Dosing Cup with LED Display – Sleek & Precise Scale - Dosing & Brewing Accessories, Measures Coffee Grounds for...",
+      "url": "https://www.amazon.com/dp/B0DGLWFX7Q?tag=render-sites-20"
+    },
+    {
+      "asin": "B0CZC6M49S",
+      "source": "brew-counter",
+      "name": "STANLEY Stay-Hot Stacking Camp Cup | Press In Drink Through Lid | Cup for Coffee, Tea and Drinks | Insulated Stainless Steel Coffee Mug | B...",
+      "category": "Coffee",
+      "description": "A useful little upgrade for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/61mMo6A-d0L._AC_SL1500_.jpg",
+      "imageAlt": "STANLEY Stay-Hot Stacking Camp Cup | Press In Drink Through Lid | Cup for Coffee, Tea and Drinks | Insulated Stainless Steel Coffee Mug | B...",
+      "url": "https://www.amazon.com/dp/B0CZC6M49S?tag=render-sites-20"
+    },
+    {
+      "asin": "B0FKG2N7G8",
+      "source": "brew-counter",
+      "name": "Roogaluckeep Pour over Coffee Dripper, Stainless Steel Paperless Reusable Coffee Filter, Metal 600 Mesh Strainer Coffee Ma...",
+      "category": "Coffee",
+      "description": "A strong add-to-cart candidate for coffee shoppers who want better coffee flow, easier prep, cleaner storage, or a nicer counter ritual.",
+      "bestFor": "Coffee shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/71qsb4DCsEL._AC_SL1500_.jpg",
+      "imageAlt": "Roogaluckeep Pour over Coffee Dripper, Stainless Steel Paperless Reusable Coffee Filter, Metal 600 Mesh Strainer Coffee Ma...",
+      "url": "https://www.amazon.com/dp/B0FKG2N7G8?tag=render-sites-20"
+    },
+    {
+      "asin": "B0BBMF9XCM",
+      "source": "craft-current",
+      "name": "Itopstar 3000 Kids Arts and Crafts Supplies for Kids Crafting Supply in 3 Layered Plastic Art Box All in One Ages 8 9 10 11 & 12 Year Old G...",
+      "category": "Crafts",
+      "description": "A clean routine helper for crafts shoppers who want easier starting, cleaner storage, better cutting, or a project kit that does not require a second cart.",
+      "bestFor": "Crafts shoppers who want a cleaner first shortlist",
+      "image": "https://m.media-amazon.com/images/I/81+kix2uY-L._AC_SL1500_.jpg",
+      "imageAlt": "Itopstar 3000 Kids Arts and Crafts Supplies for Kids Crafting Supply in 3 Layered Plastic Art Box All in One Ages 8 9 10 11 & 12 Year Old G...",
+      "url": "https://www.amazon.com/dp/B0BBMF9XCM?tag=render-sites-20"
+    }
+  ],
+  "primeDayTrendProducts": [
+    {
+      "asin": "B07ZG6JY5J",
+      "title": "Arts & Crafts Supplies Kits & Materials Set for Kids, Toddler - Carl & Kay",
+      "image": "https://m.media-amazon.com/images/I/A1zjgYZSxsL._AC_SL1500_.jpg",
+      "url": "https://www.amazon.com/dp/B07ZG6JY5J?tag=render-sites-20",
+      "trend": "summer routine upgrade",
+      "addedFor": "Prime Day 2026 trend watch"
+    },
+    {
+      "asin": "B0GV28QYZ5",
+      "title": "Sundaymot Kids Arts and Crafts Set 2000+ Piece DIY Craft Supplies Kit with Assorted Accessories for Boys & Girls Ag...",
+      "image": "https://m.media-amazon.com/images/I/91f43JmnAUL._AC_SL1500_.jpg",
+      "url": "https://www.amazon.com/dp/B0GV28QYZ5?tag=render-sites-20",
+      "trend": "cleaner storage",
+      "addedFor": "Prime Day 2026 trend watch"
+    },
+    {
+      "asin": "B09WV4JJRC",
+      "title": "Caydo 200 PCS Thick Pipe Cleaners Craft Supplies Multi-Color Chenille Stems for Art and Craft Projects Kids Creativ...",
+      "image": "https://m.media-amazon.com/images/I/91QRd3kbzEL._AC_SL1500_.jpg",
+      "url": "https://www.amazon.com/dp/B09WV4JJRC?tag=render-sites-20",
+      "trend": "grab-and-go setup",
+      "addedFor": "Prime Day 2026 trend watch"
+    },
+    {
+      "asin": "B08H4SG94J",
+      "title": "Dan&Darci Arts and Crafts Vault - Craft Supplies Kit in a Box - Birthday Gift for Kids Ages 4 5 6 7 8 9 10 11 & 12...",
+      "image": "https://m.media-amazon.com/images/I/81Y86A3IpkL._AC_SL1500_.jpg",
+      "url": "https://www.amazon.com/dp/B08H4SG94J?tag=render-sites-20",
+      "trend": "portable utility",
+      "addedFor": "Prime Day 2026 trend watch"
+    },
+    {
+      "asin": "B000HWY6EM",
+      "title": "Mod Podge Matte Sealer, Glue & Finish: All-in-One Craft Solution- Quick Dry, Easy Clean, for Wood, Paper, Fabric &...",
+      "image": "https://m.media-amazon.com/images/I/61gNyTc584L._AC_SL1500_.jpg",
+      "url": "https://www.amazon.com/dp/B000HWY6EM?tag=render-sites-20",
+      "trend": "small-space reset",
+      "addedFor": "Prime Day 2026 trend watch"
     }
   ]
 }
