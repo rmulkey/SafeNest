@@ -221,36 +221,9 @@ export function createStaticPageEntries(baseUrl: string): MetadataRoute.Sitemap 
       changeFrequency: "monthly",
       priority: 0.6,
     },
-    {
-      url: `${baseUrl}/gift-guides`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/gift-guides/first-birthday-gifts`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/gift-guides/baby-shower-gifts`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/gift-guides/stocking-stuffers-toddlers`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/gift-guides/gifts-for-2-year-olds`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
+    // Note: individual /gift-guides/{slug} pages are generated from GIFT_GUIDES
+    // in sitemap.ts (giftGuideEntries), so they are intentionally omitted here
+    // to avoid duplicate sitemap entries.
     {
       url: `${baseUrl}/about`,
       lastModified: new Date(),
