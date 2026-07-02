@@ -156,6 +156,12 @@ export function createStaticPageEntries(baseUrl: string): MetadataRoute.Sitemap 
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/categories`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/recalls`,
       lastModified: new Date(),
       changeFrequency: "daily",
