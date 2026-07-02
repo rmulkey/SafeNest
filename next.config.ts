@@ -4,13 +4,17 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   compress: true,
   images: {
+    // Serve images directly from Sanity's CDN via a custom loader instead of
+    // Vercel's Image Optimization (which returns HTTP 402 once its quota is hit).
+    // Sanity handles resize/quality/format (incl. HEIF -> WebP/AVIF) itself.
+    loader: 'custom',
+    loaderFile: './src/lib/sanity/image-loader.ts',
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'cdn.sanity.io',
       },
     ],
-    formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
   },
   async headers() {
