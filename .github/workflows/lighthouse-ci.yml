@@ -1,10 +1,17 @@
 name: Lighthouse CI
 
+# Runs Lighthouse against the LIVE production site rather than a local build.
+# Rationale: the app statically generates pages from Sanity at build time, so a
+# CI build requires Sanity credentials. Auditing the deployed URL avoids putting
+# those secrets in CI and tests exactly what real users get. Vercel already
+# gates deploys, so this acts as a post-deploy quality check.
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+  # Allow manual runs from the Actions tab.
+  workflow_dispatch:
 
 jobs:
   lighthouse:
@@ -16,18 +23,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Next.js app
-        run: npm run build
-        env:
-          # Provide minimal env vars needed for build
-          NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}
-          CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
+          node-version: '22'
 
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@v12

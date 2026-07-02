@@ -2,11 +2,13 @@
 module.exports = {
   ci: {
     collect: {
-      // Run against a local production build
-      startServerCommand: 'npm run start',
-      startServerReadyPattern: 'Ready',
-      startServerReadyTimeout: 30000,
-      url: ['http://localhost:3000'],
+      // Audit the live production site. No local server/build is started, so
+      // no Sanity/Clerk build-time secrets are required in CI.
+      url: [
+        'https://safenesttoys.com',
+        'https://safenesttoys.com/reviews',
+        'https://safenesttoys.com/best-toys',
+      ],
       numberOfRuns: 3,
       settings: {
         // Simulated 3G throttling to verify FCP < 3s
