@@ -23,16 +23,16 @@ const sitemapContentQuery = groq`{
   "guides": *[_type == "buyingGuide"] | order(_updatedAt desc) { slug, _updatedAt },
   "blogPosts": *[_type == "blogPost"] | order(_updatedAt desc) { slug, _updatedAt },
   "categories": *[_type == "category"] | order(_updatedAt desc) { slug, _updatedAt },
-  "safetyArticles": *[_type == "safetyArticle"] | order(_updatedAt desc) { slug, _updatedAt },
   "ageBasedGuides": *[_type == "ageBasedGuide"] | order(_updatedAt desc) { slug, _updatedAt }
 }`;
+// Note: safetyArticle documents are intentionally NOT included — there is no
+// /articles route, so those URLs 404. Their content is surfaced under /blog.
 
 interface SitemapContent {
   reviews: Array<{ slug: { current: string }; _updatedAt?: string }>;
   guides: Array<{ slug: { current: string }; _updatedAt?: string }>;
   blogPosts: Array<{ slug: { current: string }; _updatedAt?: string }>;
   categories: Array<{ slug: { current: string }; _updatedAt?: string }>;
-  safetyArticles: Array<{ slug: { current: string }; _updatedAt?: string }>;
   ageBasedGuides: Array<{ slug: { current: string }; _updatedAt?: string }>;
 }
 
@@ -44,7 +44,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     guides: [],
     blogPosts: [],
     categories: [],
-    safetyArticles: [],
     ageBasedGuides: [],
   };
 
@@ -66,8 +65,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const guideEntries = createSitemapEntries(content.guides, "/guides", "weekly", 0.8);
   const blogEntries = createSitemapEntries(content.blogPosts, "/blog", "weekly", 0.7);
   const categoryEntries = createSitemapEntries(content.categories, "/categories", "monthly", 0.6);
-  const articleEntries = createSitemapEntries(content.safetyArticles, "/articles", "weekly", 0.7);
-  const ageGuideEntries = createSitemapEntries(content.ageBasedGuides, "/guides/age", "monthly", 0.7);
+  // Age-based guides are served at /best-toys/{slug} (not /guides/age).
+  const ageGuideEntries = createSitemapEntries(content.ageBasedGuides, "/best-toys", "monthly", 0.7);
 
   return [
     ...staticPages,
@@ -76,7 +75,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...guideEntries,
     ...blogEntries,
     ...categoryEntries,
-    ...articleEntries,
     ...ageGuideEntries,
   ];
 }
