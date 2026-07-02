@@ -9,7 +9,10 @@
 
 import Link from "next/link";
 import { sanityClient } from "@/lib/sanity/client";
-import { relatedContentQuery } from "@/lib/sanity/queries";
+import {
+  relatedContentQuery,
+  fallbackRelatedReviewsQuery,
+} from "@/lib/sanity/queries";
 
 interface RelatedItem {
   _id: string;
@@ -66,12 +69,31 @@ export async function InternalLinks({
     maxMonths: ageRange?.maxMonths ?? 120,
   });
 
-  // Require minimum 3 links; cap at 6
-  if (!items || items.length < 3) {
+  const combined: RelatedItem[] = [...(items ?? [])];
+
+  // If the category/age match is thin, top up with the highest-scoring reviews
+  // so the page still offers real internal links (better crawl depth + UX).
+  if (combined.length < 6) {
+    const seen = new Set(combined.map((i) => i._id));
+    const fallback = await sanityClient.fetch<RelatedItem[]>(
+      fallbackRelatedReviewsQuery,
+      { currentDocId }
+    );
+    for (const item of fallback ?? []) {
+      if (combined.length >= 6) break;
+      if (!seen.has(item._id)) {
+        seen.add(item._id);
+        combined.push(item);
+      }
+    }
+  }
+
+  // Render only when there are at least 2 links to show (avoids a lone link).
+  if (combined.length < 2) {
     return null;
   }
 
-  const links = items.slice(0, 6);
+  const links = combined.slice(0, 6);
 
   return (
     <aside aria-label="Related content" className="mt-12 border-t pt-8">

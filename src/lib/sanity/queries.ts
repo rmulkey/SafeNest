@@ -282,6 +282,19 @@ export const relatedContentQuery = groq`
   }
 `;
 
+// Fallback used by InternalLinks when the category/age match yields too few
+// results. Returns the highest-scoring reviews (excluding the current doc) so
+// every review/guide page still surfaces useful internal links for crawlers
+// and readers. Never fabricates content — only re-surfaces real reviews.
+export const fallbackRelatedReviewsQuery = groq`
+  *[_type == "toyReview" && _id != $currentDocId] | order(safetyScore desc) [0...6] {
+    _id,
+    _type,
+    "title": coalesce(productName, title),
+    slug
+  }
+`;
+
 // ─── Trust: Testimonials & Expert Endorsements ──────────────────────────────────
 // Only approved + consent-verified entries are ever returned. If none exist,
 // the homepage simply omits those sections (no fabricated social proof).

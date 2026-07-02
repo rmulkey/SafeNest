@@ -4,6 +4,7 @@ import { Logo } from "@/components/brand/Logo";
 import { SearchTrigger } from "@/components/search/SearchTrigger";
 
 const categoryLinks = [
+  { href: "/categories", label: "All Categories" },
   { href: "/categories/building-toys", label: "Building" },
   { href: "/categories/sensory-toys", label: "Sensory" },
   { href: "/categories/outdoor-toys", label: "Outdoor" },

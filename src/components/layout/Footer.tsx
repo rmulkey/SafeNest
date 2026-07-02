@@ -4,6 +4,7 @@ import { Shield, FileCheck, Ban } from "lucide-react";
 
 const quickLinks = [
   { href: "/reviews", label: "Reviews" },
+  { href: "/categories", label: "Categories" },
   { href: "/guides", label: "Guides" },
   { href: "/recalls", label: "Recalls" },
   { href: "/blog", label: "Blog" },
