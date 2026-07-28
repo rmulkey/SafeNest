@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { sanityClient } from "@/lib/sanity/client";
-import { allBlogPostsQuery, blogPostCountQuery } from "@/lib/sanity/queries";
+import {
+  allBlogPostsQuery,
+  blogPostCountQuery,
+  seasonalBlogPostsQuery,
+} from "@/lib/sanity/queries";
+import { selectInSeason, type SeasonalWindow } from "@/lib/content/seasonal";
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
 import { NewsletterForm } from "@/components/newsletter/NewsletterForm";
@@ -30,6 +35,7 @@ interface BlogPost {
   publishedAt: string;
   excerpt: string;
   author: string;
+  seasonal?: Partial<SeasonalWindow>;
 }
 
 interface BlogPageProps {
@@ -42,12 +48,19 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const start = (currentPage - 1) * POSTS_PER_PAGE;
   const end = start + POSTS_PER_PAGE;
 
-  const [posts, totalCount] = await Promise.all([
+  const [posts, totalCount, seasonalCandidates] = await Promise.all([
     sanityClient.fetch<BlogPost[]>(allBlogPostsQuery, { start, end }),
     sanityClient.fetch<number>(blogPostCountQuery),
+    sanityClient.fetch<BlogPost[]>(seasonalBlogPostsQuery),
   ]);
 
   const totalPages = Math.ceil(totalCount / POSTS_PER_PAGE);
+
+  // Feature seasonal posts only while their annually recurring window is open.
+  // Out-of-season posts are NOT removed — they stay in the chronological archive
+  // below (and in the sitemap), they just aren't promoted. Only shown on page 1.
+  const inSeason = currentPage === 1 ? selectInSeason(seasonalCandidates) : [];
+  const featuredIds = new Set(inSeason.map((p) => p._id));
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-12">
@@ -55,13 +68,47 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         Blog
       </h1>
 
+      {inSeason.length > 0 && (
+        <section aria-labelledby="in-season-heading" className="mb-12">
+          <h2
+            id="in-season-heading"
+            className="mb-4 text-sm font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-400"
+          >
+            In season now
+          </h2>
+          <ul className="space-y-4">
+            {inSeason.map((post) => (
+              <li key={post._id}>
+                <article className="group rounded-lg border border-emerald-200 bg-emerald-50/60 p-5 dark:border-emerald-900 dark:bg-emerald-950/30">
+                  <Link
+                    href={`/blog/${post.slug.current}`}
+                    className="block space-y-2"
+                  >
+                    <h3 className="text-lg font-semibold text-zinc-900 group-hover:text-emerald-700 dark:text-zinc-50 dark:group-hover:text-emerald-400">
+                      {post.title}
+                    </h3>
+                    {post.excerpt && (
+                      <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                        {post.excerpt}
+                      </p>
+                    )}
+                  </Link>
+                </article>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {posts.length === 0 ? (
         <p className="text-zinc-600 dark:text-zinc-400">
           No blog posts yet. Check back soon!
         </p>
       ) : (
         <ul className="space-y-8">
-          {posts.map((post) => (
+          {posts
+            .filter((post) => !featuredIds.has(post._id))
+            .map((post) => (
             <li key={post._id}>
               <article className="group">
                 <Link

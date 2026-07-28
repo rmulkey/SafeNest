@@ -235,7 +235,27 @@ export const allBlogPostsQuery = groq`
     slug,
     publishedAt,
     excerpt,
-    author
+    author,
+    seasonal
+  }
+`;
+
+// Seasonal posts whose annually recurring window is currently open are featured
+// at the top of the blog. Filtering happens in app code (see lib/content/seasonal)
+// because the window is month/day based and recurs yearly, which GROQ cannot
+// express cleanly. Fetches a small pool of seasonal candidates only.
+export const seasonalBlogPostsQuery = groq`
+  *[_type == "blogPost"
+      && defined(seasonal.startMonthDay)
+      && defined(seasonal.endMonthDay)
+      && (!defined(publishedAt) || publishedAt <= now())]
+    | order(publishedAt desc) [0...20] {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    excerpt,
+    seasonal
   }
 `;
 
