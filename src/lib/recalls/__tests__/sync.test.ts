@@ -140,7 +140,21 @@ describe("syncRecalls", () => {
     const recall = created.find((d) => d._type === "recallAlert")!;
     expect(JSON.stringify(recall.affectedReviews)).toContain("review-sili");
     expect(JSON.stringify(recall.affectedReviews)).not.toContain("review-unrelated");
-    expect(patched.map((p) => p.id)).toEqual(["review-sili"]);
+
+    // Every product records that it was checked, but only the true match is
+    // flagged as recalled.
+    const flagged = patched.filter(
+      (p) => (p.data as { hasActiveRecall?: boolean }).hasActiveRecall
+    );
+    expect(flagged.map((p) => p.id)).toEqual(["review-sili"]);
+    expect(patched.map((p) => p.id).sort()).toEqual(
+      ["review-sili", "review-unrelated"].sort()
+    );
+    for (const p of patched) {
+      expect((p.data as { recallCheckedAt?: string }).recallCheckedAt).toBe(
+        NOW.toISOString()
+      );
+    }
   });
 
   it("queues uncertain matches for human review instead of publishing them", async () => {
@@ -163,8 +177,12 @@ describe("syncRecalls", () => {
     expect(candidate.officialNoticeUrl).toContain("cpsc.gov");
     expect(Array.isArray(candidate.matchEvidence)).toBe(true);
 
-    // Crucially: no review is flagged and no recall claims the product.
-    expect(patched).toEqual([]);
+    // Crucially: the product records that it was checked, but is NOT flagged as
+    // recalled and the recall does not claim it.
+    const flagged = patched.filter(
+      (p) => (p.data as { hasActiveRecall?: boolean }).hasActiveRecall
+    );
+    expect(flagged).toEqual([]);
     const recall = created.find((d) => d._type === "recallAlert")!;
     expect(recall.affectedReviews).toBeUndefined();
   });
@@ -239,5 +257,50 @@ describe("syncRecalls", () => {
     });
     expect(outcome.duplicatesCollapsed).toBe(1);
     expect(created.filter((d) => d._type === "recallAlert")).toHaveLength(1);
+  });
+});
+
+describe("syncRecalls — recall-check provenance", () => {
+  it("does NOT claim a completed check when a window failed", async () => {
+    // A partial fetch means we cannot honestly say a product was checked against
+    // the full recall set, so recallCheckedAt must not be written.
+    const fetchImpl = vi
+      .fn()
+      .mockResolvedValue(new Response("{}", { status: 500 })) as unknown as typeof fetch;
+    const { client, patched } = makeClient([
+      { _id: "review-a", productName: "Some Toy", brand: "Brand" },
+    ]);
+
+    const outcome = await syncRecalls(client, {
+      now: NOW,
+      lookbackDays: 10,
+      fetchImpl,
+      sleepImpl: async () => {},
+    });
+
+    expect(outcome.ok).toBe(false);
+    expect(
+      patched.some((p) => (p.data as { recallCheckedAt?: string }).recallCheckedAt)
+    ).toBe(false);
+  });
+
+  it("records the check date for products with no match at all", async () => {
+    const { client, patched } = makeClient([
+      { _id: "review-unrelated", productName: "Green Toys Dump Truck", brand: "Green Toys" },
+    ]);
+
+    const outcome = await syncRecalls(client, {
+      now: NOW,
+      lookbackDays: 10,
+      fetchImpl: okFetch([TEETHING_TOY_RECALL]),
+    });
+
+    expect(outcome.confirmedMatches).toBe(0);
+    expect(patched).toHaveLength(1);
+    expect((patched[0].data as { recallCheckedAt?: string }).recallCheckedAt).toBe(
+      NOW.toISOString()
+    );
+    // Not flagged as recalled just because it was checked.
+    expect((patched[0].data as { hasActiveRecall?: boolean }).hasActiveRecall).toBeUndefined();
   });
 });

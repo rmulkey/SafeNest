@@ -174,10 +174,28 @@ export async function syncRecalls(
       base.persisted++;
     }
 
-    // Flag reviews with a confirmed match; clear stale flags elsewhere.
+    // Record that every product in the catalog was compared against this recall
+    // set, and when. This is what lets a review page state "No matching CPSC
+    // recall was located as of <date>" truthfully instead of staying silent —
+    // silence reads as reassurance. Only written on a clean fetch, so a partial
+    // run cannot imply a complete check.
     const confirmedIds = new Set(confirmed.map((m) => m.productId));
-    for (const id of confirmedIds) {
-      await client.patch(id).set({ hasActiveRecall: true }).commit();
+    if (fetchRes.failedWindows.length === 0) {
+      for (const p of products) {
+        await client
+          .patch(p._id)
+          .set({
+            recallCheckedAt: syncedAt,
+            ...(confirmedIds.has(p._id) ? { hasActiveRecall: true } : {}),
+          })
+          .commit();
+      }
+    } else {
+      // Still flag confirmed hits from the partial data, but do not claim a
+      // complete check for anything.
+      for (const id of confirmedIds) {
+        await client.patch(id).set({ hasActiveRecall: true }).commit();
+      }
     }
 
     // Queue uncertain matches for human adjudication (idempotent by key).
