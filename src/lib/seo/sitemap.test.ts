@@ -1,16 +1,15 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import {
   getBaseUrl,
   generateSitemapXml,
   createSitemapEntry,
   createSitemapEntries,
   createStaticPageEntries,
-  pingSearchEngines,
 } from "./sitemap";
 
 /**
- * Unit tests for the pure sitemap helpers. No real network calls are made:
- * pingSearchEngines is exercised with a mocked global fetch.
+ * Unit tests for the pure sitemap helpers. Nothing here touches the network —
+ * search-engine submission lives in indexnow.ts and is tested there.
  */
 
 describe("getBaseUrl", () => {
@@ -286,57 +285,5 @@ describe("createStaticPageEntries", () => {
   it("emits each URL only once", () => {
     const urls = createStaticPageEntries(baseUrl).map((e) => e.url);
     expect(new Set(urls).size).toBe(urls.length);
-  });
-});
-
-describe("pingSearchEngines", () => {
-  beforeEach(() => {
-    vi.restoreAllMocks();
-  });
-
-  afterEach(() => {
-    vi.restoreAllMocks();
-  });
-
-  it("calls fetch with the encoded sitemap URL and does not throw on success", async () => {
-    const fetchMock = vi
-      .fn()
-      .mockResolvedValue({ ok: true, status: 200 } as Response);
-    vi.stubGlobal("fetch", fetchMock);
-
-    await expect(
-      pingSearchEngines("https://safenest.toys/sitemap.xml")
-    ).resolves.toBeUndefined();
-
-    expect(fetchMock).toHaveBeenCalledTimes(1);
-    const calledWith = fetchMock.mock.calls[0][0] as string;
-    expect(calledWith).toContain(
-      encodeURIComponent("https://safenest.toys/sitemap.xml")
-    );
-
-    vi.unstubAllGlobals();
-  });
-
-  it("swallows fetch rejections (best-effort) without throwing", async () => {
-    const fetchMock = vi.fn().mockRejectedValue(new Error("network down"));
-    vi.stubGlobal("fetch", fetchMock);
-
-    await expect(pingSearchEngines("https://safenest.toys/sitemap.xml"))
-      .resolves.toBeUndefined();
-    expect(fetchMock).toHaveBeenCalled();
-
-    vi.unstubAllGlobals();
-  });
-
-  it("does not throw when the ping returns a non-OK status", async () => {
-    const fetchMock = vi
-      .fn()
-      .mockResolvedValue({ ok: false, status: 503 } as Response);
-    vi.stubGlobal("fetch", fetchMock);
-
-    await expect(pingSearchEngines("https://safenest.toys/sitemap.xml"))
-      .resolves.toBeUndefined();
-
-    vi.unstubAllGlobals();
   });
 });

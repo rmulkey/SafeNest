@@ -4,7 +4,7 @@
  * Accepts POST requests from Sanity webhooks when content is created, updated,
  * or deleted. Verifies webhook signature, triggers ISR revalidation for the
  * affected page, recalculates safety/development scores for toy review mutations,
- * and pings search engines to notify of sitemap changes.
+ * and submits the changed URLs to the IndexNow search engines.
  *
  * Requirements: 2.3, 3.3, 4.5
  */
@@ -15,7 +15,8 @@ import { NextResponse } from "next/server";
 import { sanityClient, sanityWriteClient } from "@/lib/sanity/client";
 import { computeSafetyScore } from "@/lib/scoring/safety-score";
 import { computeDevelopmentScore } from "@/lib/scoring/development-score";
-import { pingSearchEngines } from "@/lib/seo/sitemap";
+import { getBaseUrl } from "@/lib/seo/sitemap";
+import { submitToIndexNow } from "@/lib/seo/indexnow";
 import { groq } from "next-sanity";
 
 /**
@@ -166,6 +167,38 @@ function revalidateForContentChange(type: string, slug?: string): void {
   revalidatePath("/sitemap.xml");
 }
 
+/**
+ * The public URLs worth pushing to IndexNow for a content change.
+ *
+ * Only pages that exist are submitted: `safetyArticle` and `ageBasedGuide` map
+ * to path prefixes that are not real routes (their content surfaces under /blog
+ * and /best-toys), so submitting them would just report 404s to the engines.
+ */
+export function indexNowUrlsFor(type: string, slug?: string): string[] {
+  const ROUTED_TYPES = new Set([
+    "toyReview",
+    "buyingGuide",
+    "blogPost",
+    "category",
+    "recallAlert",
+  ]);
+
+  if (!ROUTED_TYPES.has(type)) {
+    return [];
+  }
+
+  const pathPrefix = typeToPathMap[type];
+  const baseUrl = getBaseUrl();
+  const urls = [baseUrl, `${baseUrl}${pathPrefix}`];
+
+  // recallAlert has no per-document page — /recalls lists them all.
+  if (slug && type !== "recallAlert") {
+    urls.push(`${baseUrl}${pathPrefix}/${slug}`);
+  }
+
+  return urls;
+}
+
 export async function POST(request: Request): Promise<NextResponse> {
   try {
     // Read raw body for signature verification
@@ -221,11 +254,32 @@ export async function POST(request: Request): Promise<NextResponse> {
     // Trigger ISR revalidation for affected pages
     revalidateForContentChange(_type, slug);
 
-    // Ping search engines to notify of sitemap update (fire-and-forget)
-    // This ensures sitemap changes are picked up within 5 minutes
-    pingSearchEngines().catch((error) => {
-      console.warn("[Webhook] Search engine ping failed:", error);
-    });
+    // Push the changed page to the IndexNow participants (Bing, Yandex and the
+    // other engines listed at indexnow.org) so they refetch it sooner than their
+    // own crawl schedule would. Fire-and-forget: a third-party outage must not
+    // fail the webhook, and the content is already revalidated above.
+    //
+    // NOTE: this does not reach Google. Google has no comparable API for pages
+    // like these, so it picks the change up on its next crawl, guided by the
+    // sitemap declared in robots.txt.
+    const changedUrls = indexNowUrlsFor(_type, slug);
+    if (changedUrls.length > 0) {
+      submitToIndexNow(changedUrls)
+        .then((result) => {
+          if (result.outcome === "submitted") {
+            console.log(
+              `[Webhook] IndexNow: submitted ${result.submitted} URL(s) (HTTP ${result.status})`
+            );
+          } else {
+            console.warn(
+              `[Webhook] IndexNow: ${result.outcome}${result.detail ? ` — ${result.detail}` : ""}`
+            );
+          }
+        })
+        .catch((error) => {
+          console.warn("[Webhook] IndexNow submission threw:", error);
+        });
+    }
 
     return NextResponse.json({ message: "OK", revalidated: true });
   } catch (error) {

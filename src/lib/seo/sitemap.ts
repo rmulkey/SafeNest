@@ -49,49 +49,18 @@ export function generateSitemapXml(entries: MetadataRoute.Sitemap): string {
 }
 
 /**
- * Search engine ping URLs for sitemap submission.
- * Google no longer supports the ping endpoint (deprecated 2023),
- * but IndexNow and Bing still accept pings.
- */
-const SEARCH_ENGINE_PING_URLS = [
-  "https://www.bing.com/indexnow",
-] as const;
-
-/**
- * Pings search engines to notify them of sitemap updates.
- * Sends the sitemap URL to each engine's ping endpoint.
- * Failures are logged but do not throw — search engine pinging is best-effort.
+ * Search-engine notification lives in ./indexnow.ts.
  *
- * @param sitemapUrl - The full URL to the sitemap (e.g., https://safenesttoys.com/sitemap.xml)
+ * The previous implementation here GET-ed `bing.com/indexnow?url=<sitemap>` with
+ * no key, which the protocol rejects with HTTP 400 — so it never notified
+ * anything. It also could not have worked as written: IndexNow submits changed
+ * page URLs, not a sitemap URL.
+ *
+ * There is no equivalent call for Google. Its Indexing API accepts only
+ * JobPosting and BroadcastEvent pages, and the sitemap ping endpoint was retired
+ * in 2024. Google discovers this site through the `Sitemap:` line in robots.txt
+ * and through Search Console.
  */
-export async function pingSearchEngines(sitemapUrl?: string): Promise<void> {
-  const resolvedUrl = sitemapUrl ?? `${getBaseUrl()}/sitemap.xml`;
-
-  const results = await Promise.allSettled(
-    SEARCH_ENGINE_PING_URLS.map(async (pingUrl) => {
-      try {
-        const response = await fetch(`${pingUrl}?url=${encodeURIComponent(resolvedUrl)}`, {
-          method: "GET",
-          signal: AbortSignal.timeout(5000),
-        });
-        if (!response.ok) {
-          console.warn(
-            `[Sitemap] Ping to ${pingUrl} returned status ${response.status}`
-          );
-        } else {
-          console.log(`[Sitemap] Successfully pinged ${pingUrl}`);
-        }
-      } catch (error) {
-        console.warn(`[Sitemap] Failed to ping ${pingUrl}:`, error);
-      }
-    })
-  );
-
-  const failures = results.filter((r) => r.status === "rejected");
-  if (failures.length > 0) {
-    console.warn(`[Sitemap] ${failures.length} search engine ping(s) failed`);
-  }
-}
 
 export type SitemapChangeFrequency = MetadataRoute.Sitemap[number]["changeFrequency"];
 
