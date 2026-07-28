@@ -76,6 +76,37 @@ describe("findProhibitedClaims", () => {
     }
   });
 
+  it("flags the physical-testing and verification claims that slipped past the first pass", () => {
+    // All three were live homepage copy in TrustSection ("Built on evidence, not
+    // marketing") while review pages simultaneously disclosed that no testing
+    // occurs. The pattern set now covers them.
+    const cases = [
+      "We examine materials and run the small-parts test against the 1.75-inch choking-hazard standard.",
+      "We confirm which recognized standards a toy meets — ASTM F963, CPSIA, and EN 71.",
+      "We track CPSC recall feeds daily and flag any affected product on its review within 24 hours.",
+      "Safety standards we evaluate against",
+      "We test every toy before recommending it.",
+      "We verify certifications for each product.",
+    ];
+    for (const c of cases) {
+      const found = findProhibitedClaims(c);
+      expect(found.length, `expected a violation in: ${c}`).toBeGreaterThan(0);
+    }
+  });
+
+  it("permits the accurate replacements for those claims", () => {
+    const cases = [
+      "We review published materials, dimensions, construction details, warnings, and the manufacturer's own age guidance when it is available.",
+      "We record which certifications a manufacturer or retailer reports, and label each one by how well it is supported.",
+      "We check products against publicly available CPSC recall information and show the date of the latest recorded check.",
+      "Safety standards manufacturers commonly cite",
+      "We do not physically or laboratory test toys.",
+    ];
+    for (const c of cases) {
+      expect(findProhibitedClaims(c), `false positive on: ${c}`).toEqual([]);
+    }
+  });
+
   it("permits accurate, restrained alternatives", () => {
     const cases = [
       "Parent-researched reviews scored for safety.",

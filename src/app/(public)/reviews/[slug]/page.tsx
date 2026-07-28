@@ -19,6 +19,8 @@ import { SITE_URL } from "@/lib/seo/site-config";
 import { toyReviewBySlugQuery } from "@/lib/sanity/queries";
 import { SafetyScoreDisplay } from "@/components/reviews/SafetyScoreDisplay";
 import { EvidenceDisclosure } from "@/components/reviews/EvidenceDisclosure";
+import { EvidenceConfidence } from "@/components/reviews/EvidenceConfidence";
+import { assessSafety } from "@/lib/scoring/assess-safety";
 import { DevelopmentScoreDisplay } from "@/components/reviews/DevelopmentScoreDisplay";
 import { InternalLinks } from "@/components/seo/InternalLinks";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
@@ -57,6 +59,8 @@ interface ToyReview {
   affiliateLinks: { partnerId: string; url: string; tag: string }[] | null;
   body: unknown;
   hasActiveRecall: boolean;
+  factorEvidence?: Record<string, string> | null;
+  certificationEvidence?: Array<{ certification?: string; status?: string; sourceUrl?: string }> | null;
   reviewedBy?: string | null;
   lastReviewedAt?: string | null;
   recallCheckedAt?: string | null;
@@ -364,6 +368,21 @@ export default async function ToyReviewPage({ params }: PageProps) {
           </div>
         </section>
       )}
+
+      {/* Evidence confidence: separates the editorial score from how well the
+          underlying claims are actually supported, with per-factor provenance. */}
+      <EvidenceConfidence
+        assessment={assessSafety(
+          {
+            materialSafety: review.materialSafety,
+            chokingRisk: review.chokingRisk,
+            recallHistory: review.recallHistory,
+            certificationPresence: review.certificationPresence,
+          },
+          review.factorEvidence ?? {}
+        )}
+        storedScore={review.safetyScore}
+      />
 
       {/* Evidence-quality disclosure: testing status, manufacturer claims,
           recall-check date, score caveat, accountability, corrections. */}

@@ -71,6 +71,39 @@ export const PROHIBITED_CLAIMS: ReadonlyArray<{
     pattern: /\bclinically\s+proven\b/i,
     reason: "No clinical evidence is held.",
   },
+  // ─── Added after these slipped past the first pass ─────────────────────────
+  // The initial pattern set missed live homepage copy claiming SafeNest runs the
+  // small-parts test, confirms standards compliance, and flags recalls within 24
+  // hours. Physical-test and verification verbs are now covered explicitly.
+  {
+    pattern: /\b(run|runs|perform|performs|conduct|conducts|we do)\s+(the\s+)?small[\s-]*parts?\s+test\b/i,
+    reason:
+      "SafeNest performs no physical small-parts testing. It reviews published dimensions, construction details, and warnings.",
+  },
+  {
+    pattern: /\bwe\s+(confirm|verify|validate)\s+(which\s+)?(recognized\s+)?(standards?|certifications?|compliance)\b/i,
+    reason:
+      "SafeNest does not verify certification compliance; it records and attributes manufacturer or retailer claims.",
+  },
+  {
+    pattern: /\b(track|monitor|check)(s|ing)?\s+(CPSC\s+)?recall\s+feeds?\s+daily\b/i,
+    reason:
+      "Recall coverage is only as current as the last successful sync, which is published on the recalls page.",
+  },
+  {
+    pattern: /\bwithin\s+24\s+hours\b/i,
+    reason:
+      "No mechanism guarantees a 24-hour response window, so the promise is unverifiable.",
+  },
+  {
+    pattern: /\bstandards?\s+we\s+evaluate\s+against\b/i,
+    reason:
+      "SafeNest does not evaluate products against safety standards; it records claims made about them.",
+  },
+  {
+    pattern: /\bwe\s+(physically\s+)?test(ed|s)?\s+(every|each|all|the)\b/i,
+    reason: "SafeNest performs no physical product testing.",
+  },
 ];
 
 /**

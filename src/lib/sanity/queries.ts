@@ -50,7 +50,10 @@ export const toyReviewBySlugQuery = groq`
     reviewedBy,
     lastReviewedAt,
     recallCheckedAt,
-    publishedAt
+    publishedAt,
+    // Evidence provenance per factor; absent on legacy rows and defaulted in code.
+    factorEvidence,
+    certificationEvidence[]{certification, status, sourceUrl}
   }
 `;
 

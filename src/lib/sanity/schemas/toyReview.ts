@@ -1,5 +1,19 @@
 import { defineType, defineField } from "sanity";
 
+/**
+ * Human-readable evidence statuses for Studio dropdowns. Values must stay in sync
+ * with EvidenceStatus in src/lib/scoring/evidence-status.ts.
+ */
+const EVIDENCE_STATUS_OPTIONS = [
+  { title: "Supported by accessible documentation", value: "verified_documentation" },
+  { title: "Manufacturer-reported (unverified)", value: "manufacturer_reported" },
+  { title: "Retailer-reported (unverified)", value: "retailer_reported" },
+  { title: "Secondary source", value: "secondary_source" },
+  { title: "Not found", value: "no_evidence_found" },
+  { title: "Unclear \u2014 sources conflict", value: "conflicting_information" },
+  { title: "Not applicable", value: "not_applicable" },
+];
+
 export const toyReview = defineType({
   name: "toyReview",
   title: "Toy Review",
@@ -198,6 +212,54 @@ export const toyReview = defineType({
       type: "boolean",
       description: "Flagged for admin review",
       initialValue: false,
+    }),
+    // ─── Evidence provenance per safety factor ──────────────────────────────
+    // Records HOW WELL each factor is supported. Without this, a factor could
+    // score highly on an unverified marketing claim. See
+    // src/lib/scoring/evidence-status.ts for the caps and confidence weights.
+    // Legacy reviews with no value fall back to "manufacturer_reported", which
+    // honestly describes where the existing catalog data came from.
+    defineField({
+      name: "factorEvidence",
+      title: "Evidence Status per Safety Factor",
+      type: "object",
+      description:
+        "How well each safety factor is supported. Leave blank to inherit the legacy default (manufacturer-reported, unverified).",
+      options: { collapsible: true, collapsed: true },
+      fields: [
+        defineField({ name: "materialSafety", title: "Material safety", type: "string", options: { list: EVIDENCE_STATUS_OPTIONS } }),
+        defineField({ name: "chokingRisk", title: "Choking risk", type: "string", options: { list: EVIDENCE_STATUS_OPTIONS } }),
+        defineField({ name: "recallHistory", title: "Recall history", type: "string", options: { list: EVIDENCE_STATUS_OPTIONS } }),
+        defineField({ name: "certificationPresence", title: "Certification claims", type: "string", options: { list: EVIDENCE_STATUS_OPTIONS } }),
+      ],
+    }),
+    defineField({
+      name: "certificationEvidence",
+      title: "Certification Claim Sources",
+      type: "array",
+      description:
+        "Per-certification provenance. Use this instead of asserting compliance.",
+      of: [
+        {
+          type: "object",
+          fields: [
+            { name: "certification", title: "Certification", type: "string" },
+            {
+              name: "status",
+              title: "Claim Status",
+              type: "string",
+              options: { list: EVIDENCE_STATUS_OPTIONS },
+            },
+            {
+              name: "sourceUrl",
+              title: "Supporting Document URL",
+              type: "url",
+              description:
+                "Only fill this in if a real accessible document exists. Never invent one.",
+            },
+          ],
+        },
+      ],
     }),
     defineField({
       name: "reviewedBy",

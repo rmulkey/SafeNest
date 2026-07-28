@@ -109,6 +109,135 @@ export default function TransparencyPage() {
         </p>
       </section>
 
+      {/* Evidence status + confidence. Added because a score built on
+          unverified marketing copy previously looked identical to one backed by
+          documentation. */}
+      <section className="mb-12" aria-labelledby="evidence-heading">
+        <h2
+          id="evidence-heading"
+          className="text-2xl font-semibold text-foreground mb-4"
+        >
+          Evidence status and evidence confidence
+        </h2>
+        <p className="text-base text-muted-foreground leading-relaxed mb-4">
+          A score on its own cannot tell you how much is actually known about a
+          toy. So alongside every score we record how well each safety factor is
+          supported, and publish an overall evidence confidence rating.
+        </p>
+        <p className="text-base text-muted-foreground leading-relaxed mb-6">
+          SafeNest reviews publicly available manufacturer information,
+          certification claims, product specifications, age guidance, and CPSC
+          recall records. We do not physically or laboratory test products,
+          independently verify every manufacturer claim, or certify products.
+        </p>
+
+        <h3 className="text-lg font-semibold text-foreground mb-2">
+          What each evidence status means
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <caption className="sr-only">
+              Evidence statuses and the maximum factor score each permits
+            </caption>
+            <thead>
+              <tr className="border-b border-border text-left">
+                <th scope="col" className="py-2 pr-4 font-semibold">Status</th>
+                <th scope="col" className="py-2 pr-4 font-semibold">Meaning</th>
+                <th scope="col" className="py-2 font-semibold">Max factor score</th>
+              </tr>
+            </thead>
+            <tbody className="text-muted-foreground">
+              <tr className="border-b border-border/60">
+                <td className="py-2 pr-4">Supported by accessible documentation</td>
+                <td className="py-2 pr-4">We located a published specification or public regulatory record.</td>
+                <td className="py-2">100</td>
+              </tr>
+              <tr className="border-b border-border/60">
+                <td className="py-2 pr-4">Manufacturer-reported</td>
+                <td className="py-2 pr-4">The manufacturer states it. We have not verified it.</td>
+                <td className="py-2">85</td>
+              </tr>
+              <tr className="border-b border-border/60">
+                <td className="py-2 pr-4">Retailer-reported</td>
+                <td className="py-2 pr-4">Taken from a retailer listing, which is often less reliable.</td>
+                <td className="py-2">75</td>
+              </tr>
+              <tr className="border-b border-border/60">
+                <td className="py-2 pr-4">Secondary source</td>
+                <td className="py-2 pr-4">Reported by a third party, not the manufacturer or a regulator.</td>
+                <td className="py-2">70</td>
+              </tr>
+              <tr className="border-b border-border/60">
+                <td className="py-2 pr-4">Unclear — sources conflict</td>
+                <td className="py-2 pr-4">Sources disagree. Treat as unresolved and check current packaging.</td>
+                <td className="py-2">60</td>
+              </tr>
+              <tr className="border-b border-border/60">
+                <td className="py-2 pr-4">Not found</td>
+                <td className="py-2 pr-4">We could not find information. This is not evidence of safety.</td>
+                <td className="py-2">50</td>
+              </tr>
+              <tr>
+                <td className="py-2 pr-4">Not applicable</td>
+                <td className="py-2 pr-4">The factor does not apply; it is excluded and the remaining weights are renormalised.</td>
+                <td className="py-2">excluded</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 className="mt-6 text-lg font-semibold text-foreground mb-2">
+          How missing and conflicting evidence affect a score
+        </h3>
+        <ul className="list-disc space-y-2 pl-5 text-muted-foreground">
+          <li>
+            Missing information never improves a score. Where a claim cannot be
+            supported, the maximum score available for that factor is capped, so
+            absence of evidence can never read as evidence of safety.
+          </li>
+          <li>
+            Conflicting information is surfaced as “unclear” rather than averaged
+            into a confident-looking number, and its factor is capped.
+          </li>
+          <li>
+            When the supporting information is too thin overall, we show
+            “Insufficient evidence” instead of inventing a precise score.
+          </li>
+          <li>
+            Evidence confidence is reported separately from the score as High,
+            Medium, Low, or Insufficient, so a well-supported assessment is
+            distinguishable from a thin one.
+          </li>
+        </ul>
+
+        <h3 className="mt-6 text-lg font-semibold text-foreground mb-2">
+          Certification claims
+        </h3>
+        <p className="text-muted-foreground leading-relaxed">
+          We do not confirm that a toy complies with a standard. We record which
+          certifications are reported and label each claim as supported by
+          accessible documentation, manufacturer-reported, retailer-reported, not
+          found, or unclear.
+        </p>
+
+        <h3 className="mt-6 text-lg font-semibold text-foreground mb-2">
+          Recall checks
+        </h3>
+        <p className="text-muted-foreground leading-relaxed">
+          We check products against publicly available CPSC recall information
+          and display the date of the latest recorded check. Always confirm with
+          the official CPSC database. A recall is only attached to a review when
+          the match is unambiguous; uncertain matches are held for human review
+          rather than published.
+        </p>
+
+        <p className="mt-6 rounded-lg border border-border bg-muted/40 p-4 text-sm text-muted-foreground">
+          Scores are editorial assessments. They are not certifications,
+          guarantees, or approvals, and they are not a substitute for the
+          manufacturer&apos;s instructions or an official recall notice.
+        </p>
+      </section>
+
       {/* Development Score */}
       <section className="mb-12" aria-labelledby="development-score-heading">
         <h2

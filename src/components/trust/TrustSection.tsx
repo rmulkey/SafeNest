@@ -38,30 +38,37 @@ interface TrustSectionProps {
 
 /* ── Truthful, evergreen content (describes things that actually exist) ────── */
 
+// What SafeNest actually does. Previous copy here claimed we "run the
+// small-parts test", "confirm which recognized standards a toy meets", and
+// "track CPSC recall feeds daily and flag any affected product within 24 hours".
+// None of that is true: SafeNest is run by parents, performs no physical or
+// laboratory testing, verifies no certifications, and its recall coverage is only
+// as current as its last successful sync. See src/lib/content/evidence.ts.
 const methodologySteps = [
   {
     icon: FlaskConical,
-    title: "Material & hazard review",
-    body: "We examine materials, finishes, and construction, and run the small-parts test against the 1.75-inch choking-hazard standard.",
+    title: "Public-information research",
+    body: "We review published materials, dimensions, construction details, warnings, and the manufacturer's own age guidance when it is available. We do not physically or laboratory test toys.",
   },
   {
     icon: ClipboardCheck,
-    title: "Certification check",
-    body: "We confirm which recognized standards a toy meets — ASTM F963, CPSIA, and EN 71 — rather than relying on marketing claims.",
+    title: "Certification claim status",
+    body: "We record which certifications a manufacturer or retailer reports, and label each one by how well it is supported: documented, manufacturer-reported, retailer-reported, not found, or unclear.",
   },
   {
     icon: AlertTriangle,
-    title: "Recall monitoring",
-    body: "We track CPSC recall feeds daily and flag any affected product on its review within 24 hours.",
+    title: "CPSC recall checks",
+    body: "We check products against publicly available CPSC recall information and show the date of the latest recorded check. Always confirm with the official CPSC database.",
   },
   {
     icon: BadgeCheck,
-    title: "Transparent scoring",
-    body: "Every toy gets a published Safety and Development score with the exact factor weights shown — no black box.",
+    title: "Editorial scoring, with limits",
+    body: "Each toy gets a Safety and Development score with the factor weights published, plus an evidence-confidence rating. Scores are editorial assessments — not certifications or guarantees.",
   },
 ];
 
-// Real, public safety standards we evaluate against.
+// Public safety standards that manufacturers commonly cite. We record and
+// attribute these claims; we do not test against the standards ourselves.
 const standards = [
   { code: "ASTM F963", desc: "U.S. toy safety standard" },
   { code: "CPSIA", desc: "Federal lead & phthalate limits" },
@@ -90,8 +97,10 @@ export function TrustSection({
         </h2>
         <p className="mt-3 text-muted-foreground">
           Every SafeNest rating comes from the same transparent process, applied
-          the same way to {reviewCount > 0 ? `all ${reviewCount}+ ` : "every "}
-          toys we review — with no sponsorships or paid placements.
+          the same way to{" "}
+          {reviewCount > 0 ? `all ${reviewCount} toys` : "every toy"} we
+          review — with no sponsorships or paid placements. The count comes from
+          the live catalog, so it never drifts out of date.
         </p>
       </div>
 
@@ -135,7 +144,7 @@ export function TrustSection({
         <div className="flex items-center justify-center gap-2 mb-5">
           <ShieldCheck className="size-5 text-primary-600" aria-hidden="true" />
           <h3 className="text-base font-semibold text-foreground">
-            Safety standards we evaluate against
+            Safety standards manufacturers commonly cite
           </h3>
         </div>
         <ul className="grid grid-cols-2 lg:grid-cols-4 gap-3">
@@ -150,8 +159,10 @@ export function TrustSection({
           ))}
         </ul>
         <p className="mt-4 text-center text-xs text-muted-foreground">
-          We report which standards each toy meets. We are not affiliated with
-          these standards bodies.
+          We record which of these standards a manufacturer or retailer reports
+          for each toy, and label how well that claim is supported. SafeNest does
+          not test against these standards, does not verify compliance, and is not
+          affiliated with these standards bodies.
         </p>
       </div>
 
@@ -159,7 +170,7 @@ export function TrustSection({
       {endorsements.length > 0 && (
         <div className="mt-16">
           <h3 className="text-xl font-semibold text-foreground text-center mb-8">
-            Reviewed by child-health professionals
+            Comments from child-health professionals
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {endorsements.map((e) => (
