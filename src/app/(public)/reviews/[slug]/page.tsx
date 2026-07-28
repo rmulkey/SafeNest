@@ -21,6 +21,11 @@ import { SafetyScoreDisplay } from "@/components/reviews/SafetyScoreDisplay";
 import { EvidenceDisclosure } from "@/components/reviews/EvidenceDisclosure";
 import { EvidenceConfidence } from "@/components/reviews/EvidenceConfidence";
 import { assessSafety } from "@/lib/scoring/assess-safety";
+import {
+  qualifyClaimText,
+  qualifyClaimList,
+  QUALIFIED_CLAIM_NOTE,
+} from "@/lib/content/qualify-claims";
 import { DevelopmentScoreDisplay } from "@/components/reviews/DevelopmentScoreDisplay";
 import { InternalLinks } from "@/components/seo/InternalLinks";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
@@ -256,19 +261,31 @@ export default async function ToyReviewPage({ params }: PageProps) {
       <section className="mb-6">
         <h2 className="text-xl font-semibold mb-2">Materials</h2>
         <ul className="list-disc list-inside text-sm space-y-1">
-          {review.materials.map((material, i) => (
+          {qualifyClaimList(review.materials).map((material, i) => (
             <li key={i}>{material}</li>
           ))}
         </ul>
+        <p className="mt-2 text-xs text-muted-foreground">
+          Material descriptions are as reported by the manufacturer or retailer.
+          SafeNest has not independently verified them.
+        </p>
       </section>
 
       {/* Choking Hazard Assessment */}
       <section className="mb-6">
         <h2 className="text-xl font-semibold mb-2">
-          Choking Hazard Assessment
+          Choking Hazard Research
         </h2>
+        {/* Seeded text contained absolute verdicts such as "No choking hazard.
+            Safe for 6m+." which SafeNest cannot support. qualifyClaimText
+            attributes and hedges them at render time; the stored content is not
+            mutated, so an editor can still revise the original. */}
         <p className="text-sm text-muted-foreground">
-          {review.chokingHazardAssessment}
+          {qualifyClaimText(review.chokingHazardAssessment).text}
+        </p>
+        <p className="mt-2 text-xs text-muted-foreground">
+          {QUALIFIED_CLAIM_NOTE} Follow the current packaging, warnings and
+          supervision guidance.
         </p>
       </section>
 
@@ -379,7 +396,8 @@ export default async function ToyReviewPage({ params }: PageProps) {
             recallHistory: review.recallHistory,
             certificationPresence: review.certificationPresence,
           },
-          review.factorEvidence ?? {}
+          review.factorEvidence ?? {},
+          { recallCheckedAt: review.recallCheckedAt ?? null }
         )}
         storedScore={review.safetyScore}
       />

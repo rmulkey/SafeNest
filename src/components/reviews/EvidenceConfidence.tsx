@@ -46,9 +46,11 @@ export function EvidenceConfidence({
         {assessment.confidenceExplanation}
       </p>
 
-      {/* The score and its evidence backing are deliberately shown as two
-          different things, so a confident-looking number cannot stand in for
-          well-supported information. */}
+      {/* Two separate outputs. The editorial assessment is SafeNest's judgement
+          on a 0-100 scale. Evidence confidence describes how well that judgement
+          is supported. They are reported side by side so a confident-looking
+          number cannot stand in for well-supported information. Evidence status
+          affects the confidence rating, not the editorial number. */}
       {assessment.insufficientEvidence ? (
         <p className="mt-3 rounded-md bg-background/60 p-3 text-sm text-foreground">
           SafeNest is not displaying a precise safety score for this toy, because
@@ -58,7 +60,7 @@ export function EvidenceConfidence({
         <dl className="mt-3 grid gap-3 sm:grid-cols-2">
           <div className="rounded-md bg-background/60 p-3">
             <dt className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-              Editorial safety score
+              Editorial assessment
             </dt>
             <dd className="text-xl font-semibold text-foreground">
               {storedScore ?? assessment.score}
@@ -67,7 +69,7 @@ export function EvidenceConfidence({
           </div>
           <div className="rounded-md bg-background/60 p-3">
             <dt className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-              Evidence behind it
+              Evidence confidence
             </dt>
             <dd className="text-xl font-semibold text-foreground">
               {assessment.confidenceLabel.replace(/ evidence confidence$/i, "")}
@@ -97,20 +99,27 @@ export function EvidenceConfidence({
             <p className="mt-1 text-xs text-muted-foreground">
               {f.description}
             </p>
-            {f.wasCapped && (
-              <p className="mt-1 text-xs text-muted-foreground">
-                Because this claim is not supported by accessible documentation,
-                the highest score available for this factor is limited.
-              </p>
-            )}
+            {/* Deliberately NOT claiming the factor score is capped. Evidence
+                status drives the confidence rating shown above, not the legacy
+                editorial number, so saying otherwise would be false. */}
+            {f.evidenceStatus !== "official_documentation" &&
+              f.evidenceStatus !== "verified_documentation" && (
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Not supported by documentation SafeNest could access, so this
+                  factor lowers the evidence confidence above.
+                </p>
+              )}
           </li>
         ))}
       </ul>
 
       <p className="mt-4 border-t border-border/60 pt-3 text-xs text-muted-foreground">
-        Scores are SafeNest&apos;s editorial assessment of publicly available
-        information. They are not certifications, guarantees, or a substitute for
-        the manufacturer&apos;s instructions or an official recall notice.{" "}
+        The editorial assessment is SafeNest&apos;s own judgement of publicly
+        available information; evidence confidence describes how well that
+        judgement is supported. Evidence quality affects the confidence rating
+        above, not the editorial number. Neither is a certification, a guarantee,
+        or a substitute for the manufacturer&apos;s instructions or an official
+        recall notice.{" "}
         <a href="/transparency" className="text-primary-600 underline">
           Read the full methodology
         </a>

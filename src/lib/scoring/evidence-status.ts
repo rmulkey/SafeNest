@@ -23,6 +23,7 @@
  */
 
 export type EvidenceStatus =
+  | "official_documentation"
   | "verified_documentation"
   | "manufacturer_reported"
   | "retailer_reported"
@@ -33,6 +34,7 @@ export type EvidenceStatus =
 
 /** Human-readable labels. Internal identifiers are never shown to readers. */
 export const EVIDENCE_STATUS_LABELS: Record<EvidenceStatus, string> = {
+  official_documentation: "Official government source",
   verified_documentation: "Supported by accessible documentation",
   manufacturer_reported: "Manufacturer-reported",
   retailer_reported: "Retailer-reported",
@@ -43,6 +45,8 @@ export const EVIDENCE_STATUS_LABELS: Record<EvidenceStatus, string> = {
 };
 
 export const EVIDENCE_STATUS_EXPLANATIONS: Record<EvidenceStatus, string> = {
+  official_documentation:
+    "Sourced from an official government record, such as the CPSC public recall database. This is the strongest evidence SafeNest works with.",
   verified_documentation:
     "SafeNest located published documentation supporting this, such as a manufacturer specification sheet or a public regulatory record.",
   manufacturer_reported:
@@ -67,6 +71,7 @@ export const EVIDENCE_STATUS_EXPLANATIONS: Record<EvidenceStatus, string> = {
  * than by penalising it.
  */
 export const EVIDENCE_SCORE_CAP: Record<EvidenceStatus, number> = {
+  official_documentation: 100,
   verified_documentation: 100,
   manufacturer_reported: 85,
   retailer_reported: 75,
@@ -81,6 +86,7 @@ export const EVIDENCE_SCORE_CAP: Record<EvidenceStatus, number> = {
  * `not_applicable` contributes nothing and is excluded from the average.
  */
 export const EVIDENCE_CONFIDENCE_WEIGHT: Record<EvidenceStatus, number> = {
+  official_documentation: 1,
   verified_documentation: 1,
   manufacturer_reported: 0.6,
   retailer_reported: 0.45,
@@ -161,6 +167,22 @@ export function computeEvidenceConfidence(
  */
 export const LEGACY_DEFAULT_STATUS: EvidenceStatus = "manufacturer_reported";
 
+/**
+ * Per-factor defaults when a review has no recorded evidence status.
+ *
+ * Recall history is the exception: it is produced by our own CPSC sync against
+ * the official public recall database, so labelling it "manufacturer-reported"
+ * was simply wrong — it understated the strongest evidence on the page. It
+ * defaults to `official_documentation` when a recall check has actually been
+ * recorded, and to `no_evidence_found` when none has (see resolveFactorStatus).
+ */
+export const FACTOR_DEFAULT_STATUS: Record<string, EvidenceStatus> = {
+  materialSafety: "manufacturer_reported",
+  chokingRisk: "manufacturer_reported",
+  certificationPresence: "manufacturer_reported",
+  recallHistory: "official_documentation",
+};
+
 export function parseEvidenceStatus(value: unknown): EvidenceStatus {
   if (
     typeof value === "string" &&
@@ -169,6 +191,30 @@ export function parseEvidenceStatus(value: unknown): EvidenceStatus {
     return value as EvidenceStatus;
   }
   return LEGACY_DEFAULT_STATUS;
+}
+
+/**
+ * Resolve the evidence status for a specific factor.
+ *
+ * Priority: an explicitly recorded status wins; otherwise the factor default
+ * applies. Recall history additionally depends on whether a check was actually
+ * run — without a recorded check date there is no evidence at all, and claiming
+ * an official source would be false.
+ */
+export function resolveFactorStatus(
+  factorKey: string,
+  recorded: unknown,
+  context: { recallCheckedAt?: string | null } = {}
+): EvidenceStatus {
+  if (typeof recorded === "string" && recorded in EVIDENCE_STATUS_LABELS) {
+    return recorded as EvidenceStatus;
+  }
+  if (factorKey === "recallHistory") {
+    return context.recallCheckedAt
+      ? "official_documentation"
+      : "no_evidence_found";
+  }
+  return FACTOR_DEFAULT_STATUS[factorKey] ?? LEGACY_DEFAULT_STATUS;
 }
 
 export function evidenceStatusLabel(value: unknown): string {

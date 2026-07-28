@@ -212,13 +212,101 @@ describe("assessSafety", () => {
     );
   });
 
-  it("defaults legacy reviews with no evidence data to manufacturer-reported", () => {
-    const a = assessSafety(HIGH_FACTORS);
-    expect(a.factors.every((f) => f.evidenceStatus === LEGACY_DEFAULT_STATUS)).toBe(
+  it("defaults legacy non-recall factors to manufacturer-reported", () => {
+    const a = assessSafety(HIGH_FACTORS, {}, { recallCheckedAt: "2026-07-28" });
+    const nonRecall = a.factors.filter((f) => f.key !== "recallHistory");
+    expect(nonRecall.every((f) => f.evidenceStatus === LEGACY_DEFAULT_STATUS)).toBe(
       true
     );
-    expect(a.confidence).toBe("medium");
-    expect(a.score).toBe(85);
+  });
+
+  it("classifies a completed CPSC check as an official government source, never manufacturer-reported", () => {
+    // Recall history comes from our own sync against the official CPSC public
+    // database. Labelling it "manufacturer-reported" understated the strongest
+    // evidence on the page.
+    const a = assessSafety(HIGH_FACTORS, {}, { recallCheckedAt: "2026-07-28" });
+    const recall = a.factors.find((f) => f.key === "recallHistory")!;
+    expect(recall.evidenceStatus).toBe("official_documentation");
+    expect(recall.evidenceLabel).toBe("Official government source");
+    expect(recall.evidenceLabel).not.toMatch(/manufacturer/i);
+    expect(recall.evidenceExplanation).toMatch(/CPSC/);
+  });
+
+  it("treats a missing recall-check date as no evidence rather than an official source", () => {
+    const a = assessSafety(HIGH_FACTORS, {}, { recallCheckedAt: null });
+    const recall = a.factors.find((f) => f.key === "recallHistory")!;
+    expect(recall.evidenceStatus).toBe("no_evidence_found");
+    expect(recall.evidenceLabel).toBe("Not found");
+  });
+
+  it("lets an explicitly recorded status override the factor default", () => {
+    const a = assessSafety(
+      HIGH_FACTORS,
+      { recallHistory: "conflicting_information" },
+      { recallCheckedAt: "2026-07-28" }
+    );
+    expect(
+      a.factors.find((f) => f.key === "recallHistory")!.evidenceStatus
+    ).toBe("conflicting_information");
+  });
+
+  it("rates official documentation as full confidence weight", () => {
+    const a = assessSafety(
+      HIGH_FACTORS,
+      {
+        materialSafety: "official_documentation",
+        chokingRisk: "official_documentation",
+        recallHistory: "official_documentation",
+        certificationPresence: "official_documentation",
+      },
+      { recallCheckedAt: "2026-07-28" }
+    );
+    expect(a.confidence).toBe("high");
+  });
+
+  it("rates retailer-reported evidence below manufacturer documentation", () => {
+    const ctx = { recallCheckedAt: "2026-07-28" };
+    const mfr = assessSafety(HIGH_FACTORS, {
+      materialSafety: "manufacturer_reported",
+      chokingRisk: "manufacturer_reported",
+      certificationPresence: "manufacturer_reported",
+    }, ctx);
+    const retail = assessSafety(HIGH_FACTORS, {
+      materialSafety: "retailer_reported",
+      chokingRisk: "retailer_reported",
+      certificationPresence: "retailer_reported",
+    }, ctx);
+    expect(retail.confidenceRatio).toBeLessThan(mfr.confidenceRatio);
+  });
+
+  it("cannot reach High confidence when evidence is missing", () => {
+    const a = assessSafety(HIGH_FACTORS, {
+      materialSafety: "no_evidence_found",
+      chokingRisk: "no_evidence_found",
+      recallHistory: "no_evidence_found",
+      certificationPresence: "no_evidence_found",
+    });
+    expect(a.confidence).not.toBe("high");
+    expect(a.confidence).not.toBe("medium");
+  });
+
+  it("does not let not-applicable behave like missing evidence", () => {
+    const missing = assessSafety(HIGH_FACTORS, {
+      materialSafety: "no_evidence_found",
+      chokingRisk: "verified_documentation",
+      recallHistory: "verified_documentation",
+      certificationPresence: "verified_documentation",
+    });
+    const na = assessSafety(HIGH_FACTORS, {
+      materialSafety: "not_applicable",
+      chokingRisk: "verified_documentation",
+      recallHistory: "verified_documentation",
+      certificationPresence: "verified_documentation",
+    });
+    // Excluding an inapplicable factor must not be penalised the way an
+    // unanswered one is.
+    expect(na.confidenceRatio).toBeGreaterThan(missing.confidenceRatio);
+    expect(na.confidence).toBe("high");
   });
 
   it("is deterministic", () => {

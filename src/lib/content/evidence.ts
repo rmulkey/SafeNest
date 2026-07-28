@@ -104,6 +104,56 @@ export const PROHIBITED_CLAIMS: ReadonlyArray<{
     pattern: /\bwe\s+(physically\s+)?test(ed|s)?\s+(every|each|all|the)\b/i,
     reason: "SafeNest performs no physical product testing.",
   },
+  // ─── Third pass: found live on /guides and /transparency ───────────────────
+  {
+    pattern: /\bexpert[\s-]*curat(ed|ion)\b/i,
+    reason:
+      "No credentialed expert curates the guides; they are parent-researched.",
+  },
+  {
+    pattern: /\bsafety experts?\b/i,
+    reason: "SafeNest employs no product-safety experts.",
+  },
+  {
+    pattern: /\bindependently tested\b/i,
+    reason: "SafeNest performs and commissions no independent testing.",
+  },
+  {
+    pattern: /\bprofessionally assessed\b/i,
+    reason: "Assessments are made by parents, not professionals.",
+  },
+  {
+    pattern: /\bhigher scores? indicate safer\b/i,
+    reason:
+      "Scores are editorial assessments of available information, not measurements of absolute safety.",
+  },
+  // ─── Absolute safety verdicts in content ──────────────────────────────────
+  // Legacy review text is qualified at render time by
+  // src/lib/content/qualify-claims.ts; these patterns stop the raw phrasing from
+  // being written into components or templates.
+  {
+    pattern: /\bno choking hazard\b/i,
+    reason:
+      "A no-choking-hazard verdict requires physical testing SafeNest does not perform.",
+  },
+  {
+    pattern: /\bsafe from birth\b/i,
+    reason:
+      "Age suitability must be attributed to the manufacturer's labelling, not asserted.",
+  },
+  {
+    pattern: /\bsafe for\s+\d+\s*(m\b|mo\b|months?\b|years?\b)/i,
+    reason:
+      "Age suitability must be attributed to the manufacturer's labelling, not asserted.",
+  },
+  {
+    pattern: /\b(completely|totally|100%|entirely)\s+safe\b/i,
+    reason: "No available evidence can support an absolute safety claim.",
+  },
+  {
+    pattern: /\bcertified by SafeNest\b/i,
+    reason: "SafeNest certifies nothing.",
+  },
 ];
 
 /**

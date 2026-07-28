@@ -31,7 +31,7 @@ import {
 import {
   capFactorScore,
   computeEvidenceConfidence,
-  parseEvidenceStatus,
+  resolveFactorStatus,
   EVIDENCE_STATUS_LABELS,
   EVIDENCE_STATUS_EXPLANATIONS,
   EVIDENCE_CONFIDENCE_LABELS,
@@ -124,12 +124,21 @@ function clamp(n: number): number {
  * Deterministic: identical inputs always produce identical output, which is what
  * makes the result testable and safe to recompute in a migration.
  */
+export interface AssessContext {
+  /**
+   * When the CPSC recall check for this product last ran. Drives whether the
+   * recall factor counts as an official-government source or as no evidence.
+   */
+  recallCheckedAt?: string | null;
+}
+
 export function assessSafety(
   factors: SafetyScoreFactors,
-  evidence: FactorEvidence = {}
+  evidence: FactorEvidence = {},
+  context: AssessContext = {}
 ): SafetyAssessment {
   const assessments: FactorAssessment[] = SAFETY_FACTORS.map((f) => {
-    const status = parseEvidenceStatus(evidence[f.key]);
+    const status = resolveFactorStatus(f.key, evidence[f.key], context);
     const rawScore = clamp(factors[f.key]);
     const score = capFactorScore(rawScore, status);
     return {

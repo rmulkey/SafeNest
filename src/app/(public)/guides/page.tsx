@@ -7,6 +7,9 @@ import { sanityClient } from '@/lib/sanity/client'
 import { allBuyingGuidesQuery } from '@/lib/sanity/queries'
 import { generateOpenGraphMeta } from '@/components/seo/OpenGraphMeta'
 import { SITE_URL } from '@/lib/seo/site-config'
+// Shared formatter. The local implementation removed here produced
+// ungrammatical output such as "1 years" and "0 months – 1 years".
+import { formatAgeRange } from '@/lib/content/format-age'
 
 export const metadata: Metadata = {
   title: 'Buying Guides | SafeNest Toys',
@@ -31,17 +34,6 @@ interface BuyingGuideSummary {
   _createdAt: string
 }
 
-function formatAgeRange(minMonths: number, maxMonths: number): string {
-  if (minMonths < 12 && maxMonths < 12) {
-    return `${minMonths}–${maxMonths} months`
-  }
-  const minYears = Math.floor(minMonths / 12)
-  const maxYears = Math.floor(maxMonths / 12)
-  if (minMonths < 12) {
-    return `${minMonths} months – ${maxYears} years`
-  }
-  return `${minYears}–${maxYears} years`
-}
 
 export default async function BuyingGuidesPage() {
   cacheLife('days')
@@ -58,7 +50,8 @@ export default async function BuyingGuidesPage() {
           Buying Guides
         </h1>
         <p className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
-          Expert-curated guides to help you find the safest toys for your child.
+          Parent-researched buying guides to help families compare toys using
+          publicly available product and recall information.
         </p>
       </header>
 

@@ -2,6 +2,15 @@ import type { Metadata } from "next";
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
 
+/**
+ * Date this methodology text was last substantively revised.
+ *
+ * A literal constant on purpose: it must reflect a real content change, not the
+ * request time. Rendering `new Date()` here would claim the methodology was
+ * updated on every page view. Bump this when the methodology actually changes.
+ */
+export const METHODOLOGY_LAST_UPDATED = "2026-07-28";
+
 export const metadata: Metadata = {
   title: "Transparency - Scoring Methodology | SafeNest Toys",
   description:
@@ -59,8 +68,16 @@ export default function TransparencyPage() {
         </h2>
         <p className="text-base text-muted-foreground leading-relaxed mb-6">
           Every toy receives a Safety Score from 0 to 100, computed as a
-          weighted sum of four independently assessed factors. Higher scores
-          indicate safer products.
+          weighted sum of four factors we assess from publicly available
+          information. Higher scores indicate a more favorable SafeNest editorial
+          assessment based on the information available at the time. Scores are
+          not measurements of absolute safety.
+        </p>
+        <p className="text-base text-muted-foreground leading-relaxed mb-6">
+          SafeNest does not perform physical or laboratory testing, does not
+          certify, guarantee, approve, or endorse products, and does not
+          independently verify every manufacturer claim. Scores never replace the
+          manufacturer&apos;s instructions or an official recall notice.
         </p>
 
         <div className="overflow-x-auto rounded-lg border border-border">
@@ -355,8 +372,15 @@ export default function TransparencyPage() {
       {/* Last Updated */}
       <footer className="border-t border-border pt-6">
         <p className="text-sm text-muted-foreground">
-          <strong className="text-foreground">Last updated:</strong> June 1,
-          2025
+          <strong className="text-foreground">Last updated:</strong>{" "}
+          <time dateTime={METHODOLOGY_LAST_UPDATED}>
+            {new Date(METHODOLOGY_LAST_UPDATED).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+              timeZone: "UTC",
+            })}
+          </time>
         </p>
         <p className="text-sm text-muted-foreground mt-1">
           We review and update this methodology as new safety standards emerge or
