@@ -58,11 +58,24 @@ export function isoWeek(date: Date): { year: number; week: number } {
   return { year: d.getUTCFullYear(), week };
 }
 
-/** Pick the topic for a given date by rotating through TOPICS. */
+/**
+ * Pick the topic for a given date by rotating through TOPICS.
+ *
+ * Rotation is keyed to the FORTNIGHT index, not the raw week number. The cron
+ * only runs on even ISO weeks, so indexing by `week % TOPICS.length` could only
+ * ever land on even indices (Building and Educational) — Sensory and Outdoor
+ * would never be published, and the two live topics would repeat forever with
+ * identical titles. Dividing by two first makes every topic reachable.
+ */
 export function pickTopic(date: Date): TopicConfig {
   const { week } = isoWeek(date);
-  return TOPICS[week % TOPICS.length];
+  return TOPICS[Math.floor(week / 2) % TOPICS.length];
 }
+
+const MONTHS = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
 
 function ageLabel(minMonths: number, maxMonths: number): string {
   const fmt = (m: number) =>
@@ -164,7 +177,10 @@ export function buildRoundupPost(
   const { year, week } = isoWeek(date);
   const count = top.length;
   const label = topic.categoryLabel.toLowerCase();
-  const title = `Top ${count} Child-Safe ${topic.categoryLabel} in ${year}`;
+  // Include the month so recurring roundups of the same category don't publish
+  // under an identical title (which cannibalizes its own predecessor in search).
+  const period = `${MONTHS[date.getMonth()]} ${year}`;
+  const title = `Top ${count} Child-Safe ${topic.categoryLabel} (${period})`;
   const slug = `${topic.slugBase}-${year}-w${week}`;
 
   keyCounter = 0;
@@ -231,7 +247,7 @@ export function buildRoundupPost(
     _type: "blogPost",
     title,
     slug: { _type: "slug", current: slug },
-    excerpt: `Our ${count} highest-scoring ${label} in ${year}, ranked by independent safety score and checked against recall data — vetted by parents.`,
+    excerpt: `Our ${count} highest-scoring ${label} as of ${period}, ranked by independent safety score and checked against recall data — vetted by parents.`,
     body,
     category: { _type: "reference", _ref: topic.categoryRef },
     relatedReviews: top.map((p, i) => ({

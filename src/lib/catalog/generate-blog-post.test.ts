@@ -56,9 +56,18 @@ describe("buildRoundupPost", () => {
     expect(post).toBeNull();
   });
 
-  it("uses a hooked 'Top N Child-Safe' title with the year", () => {
-    const post = buildRoundupPost(TOPIC, makeProducts(12), new Date("2026-06-03"));
-    expect(post!.title).toBe("Top 7 Child-Safe Building Toys in 2026");
+  it("uses a hooked 'Top N Child-Safe' title stamped with month and year", () => {
+    // The month is included deliberately: the same category recurs every few
+    // weeks, and a bare year produced byte-identical titles that competed with
+    // each other in search.
+    const post = buildRoundupPost(TOPIC, makeProducts(12), new Date(2026, 5, 3));
+    expect(post!.title).toBe("Top 7 Child-Safe Building Toys (June 2026)");
+  });
+
+  it("gives two runs of the same category in different months distinct titles", () => {
+    const june = buildRoundupPost(TOPIC, makeProducts(8), new Date(2026, 5, 8));
+    const july = buildRoundupPost(TOPIC, makeProducts(8), new Date(2026, 6, 6));
+    expect(june!.title).not.toBe(july!.title);
   });
 
   it("caps picks at MAX_PICKS and ranks by safety score", () => {
@@ -112,5 +121,65 @@ describe("buildRoundupPost", () => {
     for (const ref of post!.relatedReviews) {
       expect(validIds.has(ref._ref)).toBe(true);
     }
+  });
+});
+
+/**
+ * Regression tests for the topic-rotation bug.
+ *
+ * The cron driving this generator only runs on EVEN ISO weeks (bi-weekly
+ * cadence). The original implementation selected the topic with
+ * `TOPICS[week % TOPICS.length]`, which on even weeks could only ever yield
+ * even indices — so only Building and Educational roundups were ever published
+ * (repeating forever under identical titles) while Sensory and Outdoor never
+ * ran at all. Rotation is now keyed to the fortnight index instead.
+ */
+describe("pickTopic rotation across the bi-weekly cadence", () => {
+  /**
+   * Build a date in a given ISO week of 2026.
+   *
+   * Uses LOCAL date construction on purpose: isoWeek() reads local date parts,
+   * which is how it is called in production via `new Date()`. Constructing with
+   * Date.UTC would shift to the previous day in negative-offset timezones and
+   * land on the wrong week.
+   */
+  function dateInWeek(week: number): Date {
+    const d = new Date(2026, 0, 5); // Mon Jan 5 2026 is in ISO week 2
+    d.setDate(d.getDate() + (week - 2) * 7);
+    return d;
+  }
+
+  it("builds test dates that land on the expected ISO week", () => {
+    for (let w = 2; w <= 40; w += 2) {
+      expect(isoWeek(dateInWeek(w)).week).toBe(w);
+    }
+  });
+
+  it("reaches every configured topic across consecutive even weeks", () => {
+    const seen = new Set<string>();
+    for (let w = 2; w <= 40; w += 2) seen.add(pickTopic(dateInWeek(w)).slugBase);
+    expect(seen).toEqual(
+      new Set([
+        "top-child-safe-building-toys",
+        "top-child-safe-sensory-toys",
+        "top-child-safe-educational-toys",
+        "top-child-safe-outdoor-toys",
+      ])
+    );
+  });
+
+  it("never repeats the same topic on back-to-back runs", () => {
+    let prev: string | null = null;
+    for (let w = 2; w <= 40; w += 2) {
+      const current = pickTopic(dateInWeek(w)).slugBase;
+      expect(current).not.toBe(prev);
+      prev = current;
+    }
+  });
+
+  it("cycles all four topics before repeating one", () => {
+    const order: string[] = [];
+    for (let w = 2; w <= 8; w += 2) order.push(pickTopic(dateInWeek(w)).slugBase);
+    expect(new Set(order).size).toBe(4);
   });
 });

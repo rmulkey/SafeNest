@@ -224,8 +224,12 @@ export const categoryBySlugQuery = groq`
 
 // ─── Blog Posts ─────────────────────────────────────────────────────────────────
 
+// Scheduled posts (publishedAt in the future) are excluded from the listing so
+// they stay hidden until their publish date. Posts with no publishedAt are kept
+// rather than silently dropped.
 export const allBlogPostsQuery = groq`
-  *[_type == "blogPost"] | order(publishedAt desc) [$start...$end] {
+  *[_type == "blogPost" && (!defined(publishedAt) || publishedAt <= now())]
+    | order(publishedAt desc) [$start...$end] {
     _id,
     title,
     slug,
@@ -260,8 +264,10 @@ export const recallAlertCountQuery = groq`
   count(*[_type == "recallAlert" && !isResolved])
 `;
 
+// Must mirror allBlogPostsQuery's filter or pagination counts will disagree
+// with the number of posts actually rendered.
 export const blogPostCountQuery = groq`
-  count(*[_type == "blogPost"])
+  count(*[_type == "blogPost" && (!defined(publishedAt) || publishedAt <= now())])
 `;
 
 // ─── Internal Links (Related Content) ───────────────────────────────────────────

@@ -21,7 +21,7 @@ import { GIFT_GUIDES } from "@/lib/seo/gift-guides";
 const sitemapContentQuery = groq`{
   "reviews": *[_type == "toyReview"] | order(_updatedAt desc) { slug, _updatedAt },
   "guides": *[_type == "buyingGuide"] | order(_updatedAt desc) { slug, _updatedAt },
-  "blogPosts": *[_type == "blogPost"] | order(_updatedAt desc) { slug, _updatedAt },
+  "blogPosts": *[_type == "blogPost" && (!defined(publishedAt) || publishedAt <= now())] | order(_updatedAt desc) { slug, _updatedAt },
   "categories": *[_type == "category"] | order(_updatedAt desc) { slug, _updatedAt },
   "ageBasedGuides": *[_type == "ageBasedGuide"] | order(_updatedAt desc) { slug, _updatedAt }
 }`;
