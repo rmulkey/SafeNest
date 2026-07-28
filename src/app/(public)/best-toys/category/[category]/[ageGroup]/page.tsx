@@ -16,6 +16,17 @@ export async function generateStaticParams() {
   return getValidCategoryAgeParams();
 }
 
+/**
+ * Category titles already read as "Sensory Toys", "Building Toys", and so on,
+ * so appending "Toys" unconditionally produced "Best Sensory Toys Toys for …".
+ * Only add the noun when the title does not already carry it.
+ */
+function withToysSuffix(categoryTitle: string): string {
+  return /\btoys$/i.test(categoryTitle.trim())
+    ? categoryTitle
+    : `${categoryTitle} Toys`;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -29,7 +40,7 @@ export async function generateMetadata({
     return { title: "Not Found" };
   }
 
-  const title = `Best ${categoryData.title} Toys for ${ageGroupData.label} | SafeNest Toys`;
+  const title = `Best ${withToysSuffix(categoryData.title)} for ${ageGroupData.label} | SafeNest Toys`;
   const description = `Parent-researched reviews of ${categoryData.title.toLowerCase()} for babies and toddlers aged ${ageGroupData.label}, with SafeNest's editorial safety and development scores.`;
 
   return {
@@ -69,11 +80,13 @@ export default async function BestCategoryToysForAgeGroupPage({
   return (
     <main className="mx-auto max-w-4xl px-4 py-8">
       <h1 className="text-3xl font-bold mb-2">
-        Best {categoryData.title} Toys for {ageGroupData.label}
+        Best {withToysSuffix(categoryData.title)} for {ageGroupData.label}
       </h1>
       <p className="text-muted-foreground mb-8">
-        {reviews.length} parent-researched {categoryData.title.toLowerCase()} toys
-        suitable for {ageGroupData.label} old, sorted by safety score.
+        {reviews.length} parent-researched{" "}
+        {categoryData.title.toLowerCase()} suitable for ages{" "}
+        {ageGroupData.label.toLowerCase()}, sorted by SafeNest&apos;s editorial
+        safety score.
       </p>
 
       <div className="grid gap-6">
