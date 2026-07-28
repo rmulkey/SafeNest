@@ -259,12 +259,17 @@ export const seasonalBlogPostsQuery = groq`
   }
 `;
 
+// `excerpt` is required here: the detail page uses it as the meta description
+// and falls back to the body's first paragraph without it. Auto-generated
+// roundups share an identical opening paragraph per category, so omitting
+// excerpt produced duplicate meta descriptions across posts.
 export const blogPostBySlugQuery = groq`
   *[_type == "blogPost" && slug.current == $slug][0] {
     _id,
     title,
     slug,
     publishedAt,
+    excerpt,
     body,
     author
   }

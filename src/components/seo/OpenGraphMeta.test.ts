@@ -59,14 +59,16 @@ describe("generateOpenGraphMeta social tags", () => {
   });
 
   it("uses summary_large_image for Twitter in both branches", () => {
-    expect(generateOpenGraphMeta(base).twitter?.card).toBe("summary_large_image");
-    expect(
-      generateOpenGraphMeta({ ...base, useRouteImage: true }).twitter?.card
-    ).toBe("summary_large_image");
+    // `card` lives on a discriminated union member, so read it structurally.
+    const card = (m: object) => (m as { twitter?: { card?: string } }).twitter?.card;
+    expect(card(generateOpenGraphMeta(base))).toBe("summary_large_image");
+    expect(card(generateOpenGraphMeta({ ...base, useRouteImage: true }))).toBe(
+      "summary_large_image"
+    );
   });
 
   it("passes through the article type for editorial pages", () => {
     const meta = generateOpenGraphMeta({ ...base, type: "article" });
-    expect(meta.openGraph?.type).toBe("article");
+    expect((meta.openGraph as { type?: string } | undefined)?.type).toBe("article");
   });
 });

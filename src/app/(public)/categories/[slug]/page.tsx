@@ -12,6 +12,7 @@ import {
 } from "@/lib/sanity/queries";
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
+import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { BuyButton } from "@/components/affiliate/BuyButton";
 import { AwardBadge, computeAwards } from "@/components/reviews/AwardBadge";
 import type { ToyReviewSummary } from "@/lib/seo/programmatic-pages";
@@ -97,6 +98,13 @@ export default async function CategoryPage({
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-8">
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: SITE_URL },
+          { name: "Categories", url: `${SITE_URL}/categories` },
+          { name: category.title, url: `${SITE_URL}/categories/${slug}` },
+        ]}
+      />
       <header className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight text-foreground">
           {category.title}

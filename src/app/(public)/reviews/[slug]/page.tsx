@@ -78,8 +78,22 @@ export async function generateMetadata({
     return { title: "Review Not Found" };
   }
 
-  const title = `${review.productName} Safety Review - Score ${review.safetyScore}/100 | SafeNest Toys`;
-  const description = `Is ${review.productName} safe? Our expert review scores it ${review.safetyScore}/100 for safety. Read our detailed analysis of materials, choking hazards, and age-appropriateness.`;
+  // Only append the brand suffix when the result still fits in what Google
+  // displays (~60 chars); otherwise the product name gets truncated away.
+  const baseTitle = `${review.productName} Safety Review - Score ${review.safetyScore}/100`;
+  const TITLE_SUFFIX = " | SafeNest Toys";
+  const title =
+    baseTitle.length + TITLE_SUFFIX.length <= 60
+      ? `${baseTitle}${TITLE_SUFFIX}`
+      : baseTitle;
+  // Kept under ~160 chars so search results are not truncated. Uses only real
+  // fields from the review (name, score, age range) - nothing inferred.
+  const ageLabel = review.ageRange
+    ? formatAgeRange(review.ageRange.minMonths, review.ageRange.maxMonths)
+    : null;
+  const description = ageLabel
+    ? `Is ${review.productName} safe? We score it ${review.safetyScore}/100 on materials, choking risk, recalls, and certifications. Ages ${ageLabel}.`
+    : `Is ${review.productName} safe? We score it ${review.safetyScore}/100 on materials, choking risk, recalls, and certifications.`;
   const url = `${SITE_URL}/reviews/${slug}`;
 
   return {

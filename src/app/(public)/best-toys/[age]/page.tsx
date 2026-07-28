@@ -10,6 +10,7 @@ import {
 } from "@/lib/seo/programmatic-pages";
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
+import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { InternalLinks } from "@/components/seo/InternalLinks";
 import { ComparisonTable } from "@/components/reviews/ComparisonTable";
 import { computeAwards } from "@/components/reviews/AwardBadge";
@@ -83,6 +84,13 @@ export default async function BestToysForAgePage({
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-8">
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: SITE_URL },
+          { name: "Best Toys by Age", url: `${SITE_URL}/best-toys` },
+          { name: label, url: `${SITE_URL}/best-toys/${age}` },
+        ]}
+      />
       <h1 className="text-3xl font-bold mb-2">Best Toys for {label}</h1>
       <p className="text-muted-foreground mb-8">
         {reviews.length} expert-reviewed toys suitable for {label}, sorted
