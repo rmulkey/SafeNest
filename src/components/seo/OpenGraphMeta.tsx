@@ -52,7 +52,7 @@ const DEFAULT_IMAGE_ALT = "SafeNest Toys — Toy safety reviews built by parents
  */
 export function generateOpenGraphMeta(
   options: OpenGraphMetaOptions
-): Pick<Metadata, "openGraph" | "twitter"> {
+): Pick<Metadata, "openGraph" | "twitter" | "alternates"> {
   const {
     title,
     description,
@@ -68,12 +68,18 @@ export function generateOpenGraphMeta(
   // explicit images so Next.js auto-wires og:image/twitter:image from it.
   if (useRouteImage) {
     return {
+      // `url` is the page's canonical address, so emit it as the canonical link
+      // too. Because metadataBase is set, Next.js does not infer canonicals
+      // automatically — without this, pages that only called this helper shipped
+      // no <link rel="canonical">. Pages may still override `alternates`.
+      alternates: { canonical: url },
       openGraph: { title, description, url, type, siteName },
       twitter: { card: "summary_large_image", title, description },
     };
   }
 
   return {
+    alternates: { canonical: url },
     openGraph: {
       title,
       description,

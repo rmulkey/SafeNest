@@ -7,6 +7,10 @@ import { sanityClient, urlForImage } from "@/lib/sanity/client";
 import { blogPostBySlugQuery } from "@/lib/sanity/queries";
 import { SITE_URL } from "@/lib/seo/site-config";
 import { NewsletterForm } from "@/components/newsletter/NewsletterForm";
+import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
+import { generateBlogPostingJsonLd } from "@/lib/seo/structured-data";
 
 interface PortableMarkDef {
   _type: string;
@@ -220,24 +224,37 @@ export async function generateMetadata({
     return { title: "Post Not Found" };
   }
 
-  const title = `${post.title} | SafeNest Toys Blog`;
+  // Only append the brand suffix when there's room for it. Long editorial titles
+  // already exceed what Google displays (~60 chars); adding a suffix guarantees
+  // the distinctive part of the headline gets truncated away.
+  const SUFFIX = " | SafeNest Toys";
+  const title =
+    post.title.length + SUFFIX.length <= 60 ? `${post.title}${SUFFIX}` : post.title;
   const description =
     post.excerpt ||
     post.body?.[0]?.children?.map((c) => c.text).join("").slice(0, 155) ||
     `Read "${post.title}" on the SafeNest Toys blog.`;
   const url = `${SITE_URL}/blog/${slug}`;
+  const og = generateOpenGraphMeta({ title, description, url, type: "article" });
+  const ogImages = Array.isArray(og.openGraph?.images)
+    ? og.openGraph.images
+    : undefined;
 
   return {
     title,
     description,
-    alternates: {
-      canonical: url,
-    },
+    // Reuse the shared helper for canonical + twitter + og:image, then declare
+    // openGraph explicitly. Spreading the helper's openGraph would widen the
+    // discriminated union and lose the required `type: "article"` literal.
+    alternates: og.alternates,
+    twitter: og.twitter,
     openGraph: {
       title,
       description,
       url,
       type: "article",
+      siteName: "SafeNest Toys",
+      images: ogImages,
       ...(post.publishedAt ? { publishedTime: post.publishedAt } : {}),
       ...(post.author ? { authors: [post.author] } : {}),
     },
@@ -259,8 +276,27 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
+  const postUrl = `${SITE_URL}/blog/${slug}`;
+
   return (
     <main className="mx-auto max-w-3xl px-4 py-12">
+      <JsonLd
+        data={generateBlogPostingJsonLd({
+          title: post.title,
+          description: post.excerpt,
+          url: postUrl,
+          datePublished: post.publishedAt,
+          author: post.author,
+          publisherUrl: SITE_URL,
+        })}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: SITE_URL },
+          { name: "Blog", url: `${SITE_URL}/blog` },
+          { name: post.title, url: postUrl },
+        ]}
+      />
       <article>
         <header className="mb-10 border-b border-border pb-8">
           <Link

@@ -24,8 +24,9 @@ import { WebSiteSchema } from "@/components/seo/WebSiteSchema";
 
 export const metadata: Metadata = {
   title: "SafeNest Toys — Safer Toys, Smarter Play, Built by Parents",
+  // Kept under ~160 chars so it isn't truncated in search results.
   description:
-    "Independent toy safety reviews scored out of 100 for babies & toddlers — built by Rodrigo and Vanessa, homeschooling parents of three, to help families choose safer, smarter toys with confidence.",
+    "Independent toy safety reviews scored out of 100 for babies & toddlers — built by parents to help families choose safer, smarter toys with confidence.",
   keywords: [
     "toy safety reviews",
     "safe toys for babies",

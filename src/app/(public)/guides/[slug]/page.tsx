@@ -8,6 +8,7 @@ import { sanityClient } from '@/lib/sanity/client'
 import { buyingGuideBySlugQuery } from '@/lib/sanity/queries'
 import { InternalLinks } from '@/components/seo/InternalLinks'
 import { generateOpenGraphMeta } from '@/components/seo/OpenGraphMeta'
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema'
 import { SITE_URL } from '@/lib/seo/site-config'
 
 interface ToyReviewRef {
@@ -98,6 +99,13 @@ export default async function BuyingGuidePage({
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-12">
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: SITE_URL },
+          { name: 'Buying Guides', url: `${SITE_URL}/guides` },
+          { name: guide.title, url: `${SITE_URL}/guides/${slug}` },
+        ]}
+      />
       <nav className="mb-6 text-sm text-zinc-500" aria-label="Breadcrumb">
         <Link href="/guides" className="hover:text-zinc-700">
           Buying Guides

@@ -90,3 +90,52 @@ export function generateFaqPageJsonLd(faqItems: FaqItem[]): object {
     })),
   };
 }
+
+export interface BlogPostingInput {
+  title: string;
+  description?: string;
+  url: string;
+  datePublished?: string;
+  author?: string;
+  /** Absolute image URL, when the post has one. */
+  image?: string;
+  publisherName?: string;
+  publisherUrl?: string;
+}
+
+/**
+ * Builds schema.org BlogPosting JSON-LD for an editorial article.
+ *
+ * Only fields we actually have are emitted — no placeholder authors, dates, or
+ * images are invented, since structured data that disagrees with the page is
+ * both a quality signal problem and a rich-result violation.
+ */
+export function generateBlogPostingJsonLd(input: BlogPostingInput): object {
+  const {
+    title,
+    description,
+    url,
+    datePublished,
+    author,
+    image,
+    publisherName = "SafeNest Toys",
+    publisherUrl,
+  } = input;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: title,
+    ...(description ? { description } : {}),
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    url,
+    ...(datePublished ? { datePublished } : {}),
+    ...(author ? { author: { "@type": "Person", name: author } } : {}),
+    ...(image ? { image } : {}),
+    publisher: {
+      "@type": "Organization",
+      name: publisherName,
+      ...(publisherUrl ? { url: publisherUrl } : {}),
+    },
+  };
+}
