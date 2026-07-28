@@ -64,7 +64,7 @@ export default function OpengraphImage() {
 
         {/* Footer chips */}
         <div style={{ display: "flex", gap: "16px", marginTop: "44px" }}>
-          {["50+ expert reviews", "Independent scoring", "Daily recall checks"].map((t) => (
+          {["Parent-researched reviews", "Independent scoring", "CPSC recall data"].map((t) => (
             <div
               key={t}
               style={{

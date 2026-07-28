@@ -18,6 +18,10 @@
     {
       "path": "/api/cron/audit-affiliate-links",
       "schedule": "0 8 * * 1"
+    },
+    {
+      "path": "/api/cron/sync-recalls",
+      "schedule": "0 5 * * *"
     }
   ],
   "headers": [

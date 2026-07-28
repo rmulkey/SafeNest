@@ -46,7 +46,7 @@ export default async function BestToysLandingPage() {
       <h1 className="text-3xl font-bold mb-2">Best Toys by Age</h1>
       <p className="text-muted-foreground mb-8">
         Find the safest, most developmentally appropriate toys for your
-        child&apos;s age. Our expert reviews evaluate safety scores, choking
+        child&apos;s age. Our parent-researched reviews evaluate safety scores, choking
         hazards, materials, and developmental benefits.
       </p>
 

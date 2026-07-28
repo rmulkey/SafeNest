@@ -66,7 +66,9 @@ const standards = [
   { code: "ASTM F963", desc: "U.S. toy safety standard" },
   { code: "CPSIA", desc: "Federal lead & phthalate limits" },
   { code: "EN 71", desc: "European toy safety standard" },
-  { code: "CPSC", desc: "Recall data, monitored daily" },
+  // Frequency claims belong on the recalls page, where the real last-successful
+  // sync timestamp is displayed and staleness is visible.
+  { code: "CPSC", desc: "Public recall database" },
 ];
 
 export function TrustSection({

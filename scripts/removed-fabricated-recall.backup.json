@@ -1,0 +1,15 @@
+{
+  "_createdAt": "2026-06-02T15:37:04Z",
+  "_id": "recall-example-magnetic-tiles",
+  "_rev": "hVoWPVwtvV4ERgm26cIA7g",
+  "_type": "recallAlert",
+  "_updatedAt": "2026-06-02T15:37:04Z",
+  "affectedProduct": "MagicTiles Magnetic Building Set (Model MT-200)",
+  "isResolved": false,
+  "issuingAuthority": "U.S. Consumer Product Safety Commission (CPSC)",
+  "officialNoticeUrl": "https://www.cpsc.gov/Recalls",
+  "publishedAt": "2025-01-06T12:00:00Z",
+  "recallDate": "2025-01-05",
+  "recallReason": "Magnets can detach from tiles, posing ingestion and internal injury hazard to young children.",
+  "recommendedAction": "Stop using immediately. Contact manufacturer for full refund. Do not attempt to repair."
+}

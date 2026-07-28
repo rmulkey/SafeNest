@@ -18,6 +18,7 @@ import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
 import { toyReviewBySlugQuery } from "@/lib/sanity/queries";
 import { SafetyScoreDisplay } from "@/components/reviews/SafetyScoreDisplay";
+import { EvidenceDisclosure } from "@/components/reviews/EvidenceDisclosure";
 import { DevelopmentScoreDisplay } from "@/components/reviews/DevelopmentScoreDisplay";
 import { InternalLinks } from "@/components/seo/InternalLinks";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
@@ -56,6 +57,10 @@ interface ToyReview {
   affiliateLinks: { partnerId: string; url: string; tag: string }[] | null;
   body: unknown;
   hasActiveRecall: boolean;
+  reviewedBy?: string | null;
+  lastReviewedAt?: string | null;
+  recallCheckedAt?: string | null;
+  publishedAt?: string | null;
   needsReview: boolean;
   mainImage?: { asset: { _ref: string }; alt?: string };
 }
@@ -267,6 +272,11 @@ export default async function ToyReviewPage({ params }: PageProps) {
       {review.certifications && review.certifications.length > 0 && (
         <section className="mb-6">
           <h2 className="text-xl font-semibold mb-2">Certifications</h2>
+          {/* Attribution matters: these are claims made by the manufacturer or
+              retailer, not findings verified by SafeNest. */}
+          <p className="mb-2 text-sm text-muted-foreground">
+            Manufacturer-reported. Not independently verified by SafeNest.
+          </p>
           <div className="flex flex-wrap gap-2">
             {review.certifications.map((cert, i) => (
               <span
@@ -354,6 +364,17 @@ export default async function ToyReviewPage({ params }: PageProps) {
           </div>
         </section>
       )}
+
+      {/* Evidence-quality disclosure: testing status, manufacturer claims,
+          recall-check date, score caveat, accountability, corrections. */}
+      <EvidenceDisclosure
+        certifications={review.certifications}
+        recallCheckedAt={review.recallCheckedAt}
+        hasActiveRecall={review.hasActiveRecall}
+        reviewedBy={review.reviewedBy}
+        publishedAt={review.publishedAt}
+        lastReviewedAt={review.lastReviewedAt}
+      />
 
       {/* Internal Links - Related Content (Requirement 4.3) */}
       <InternalLinks

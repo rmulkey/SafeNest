@@ -93,7 +93,7 @@ export default async function BestToysForAgePage({
       />
       <h1 className="text-3xl font-bold mb-2">Best Toys for {label}</h1>
       <p className="text-muted-foreground mb-8">
-        {reviews.length} expert-reviewed toys suitable for {label}, sorted
+        {reviews.length} parent-researched toys suitable for {label}, sorted
         by safety score.
       </p>
 

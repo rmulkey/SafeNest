@@ -72,7 +72,7 @@ export default async function BestCategoryToysForAgeGroupPage({
         Best {categoryData.title} Toys for {ageGroupData.label}
       </h1>
       <p className="text-muted-foreground mb-8">
-        {reviews.length} expert-reviewed {categoryData.title.toLowerCase()} toys
+        {reviews.length} parent-researched {categoryData.title.toLowerCase()} toys
         suitable for {ageGroupData.label} old, sorted by safety score.
       </p>
 

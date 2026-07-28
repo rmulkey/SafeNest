@@ -63,7 +63,7 @@ export default async function SafeToyTypePage({
     <main className="mx-auto max-w-4xl px-4 py-8">
       <h1 className="text-3xl font-bold mb-2">Safe {toyType} Toys</h1>
       <p className="text-muted-foreground mb-8">
-        {reviews.length} expert-reviewed {toyType.toLowerCase()} toys, sorted by
+        {reviews.length} parent-researched {toyType.toLowerCase()} toys, sorted by
         safety score. Every toy is assessed for choking hazards, material safety,
         and certifications.
       </p>

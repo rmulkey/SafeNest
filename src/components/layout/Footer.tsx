@@ -22,9 +22,12 @@ const legal = [
   { href: "/transparency#affiliate", label: "Affiliate Disclosure" },
 ];
 
+// Wording is constrained by src/lib/content/evidence.ts: SafeNest performs no
+// laboratory testing and employs no credentialed product-safety experts, so
+// "Expert Reviewed" was replaced with an accurate description of the work.
 const trustBadges = [
-  { icon: FileCheck, label: "CPSC Data" },
-  { icon: Shield, label: "Expert Reviewed" },
+  { icon: FileCheck, label: "CPSC Recall Data" },
+  { icon: Shield, label: "Parent-Researched" },
   { icon: Ban, label: "No Sponsored Content" },
 ];
 
@@ -134,7 +137,10 @@ export function Footer() {
         {/* Copyright */}
         <div className="mt-10 border-t border-border pt-6">
           <p className="text-xs text-muted-foreground text-center">
-            &copy; {currentYear} SafeNest Toys. All rights reserved. Safety data sourced from CPSC and independent lab testing.
+            &copy; {currentYear} SafeNest Toys. All rights reserved. Recall data
+            sourced from the U.S. Consumer Product Safety Commission. Safety
+            scores are SafeNest&apos;s own editorial assessment based on publicly
+            available information — not laboratory testing or certification.
           </p>
         </div>
       </div>

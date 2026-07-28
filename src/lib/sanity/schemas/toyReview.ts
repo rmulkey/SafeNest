@@ -200,6 +200,27 @@ export const toyReview = defineType({
       initialValue: false,
     }),
     defineField({
+      name: "reviewedBy",
+      title: "Assessed By",
+      type: "string",
+      description:
+        "Named person accountable for this editorial assessment. Leave blank rather than inventing a credentialed reviewer — the page renders an honest fallback.",
+    }),
+    defineField({
+      name: "lastReviewedAt",
+      title: "Last Reviewed At",
+      type: "datetime",
+      description:
+        "When this assessment was last re-checked. Shown to readers; if blank the page says the details may be out of date.",
+    }),
+    defineField({
+      name: "recallCheckedAt",
+      title: "Recall Last Checked At",
+      type: "datetime",
+      description:
+        "When a CPSC recall lookup last ran for this product. A recall search is only true as of the date it ran.",
+    }),
+    defineField({
       name: "publishedAt",
       title: "Published At",
       type: "datetime",

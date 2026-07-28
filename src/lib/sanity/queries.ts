@@ -44,7 +44,13 @@ export const toyReviewBySlugQuery = groq`
     body,
     hasActiveRecall,
     needsReview,
-    mainImage
+    mainImage,
+    brand,
+    // Evidence-quality fields surfaced by EvidenceDisclosure.
+    reviewedBy,
+    lastReviewedAt,
+    recallCheckedAt,
+    publishedAt
   }
 `;
 
@@ -175,8 +181,11 @@ export const ageBasedGuideBySlugQuery = groq`
 
 // ─── Recall Alerts ──────────────────────────────────────────────────────────────
 
+// Provenance fields (cpscRecallNumber, hazards, affectedModels, manufacturers,
+// sourceAttribution) are selected so the page can show WHERE each fact came from
+// rather than presenting CPSC data as SafeNest's own determination.
 export const activeRecallAlertsQuery = groq`
-  *[_type == "recallAlert" && !isResolved] | order(publishedAt desc) [$start...$end] {
+  *[_type == "recallAlert" && !isResolved] | order(recallDate desc) [$start...$end] {
     _id,
     affectedProduct,
     recallDate,
@@ -185,8 +194,50 @@ export const activeRecallAlertsQuery = groq`
     recommendedAction,
     officialNoticeUrl,
     affectedReviews[]->{_id, productName, slug},
-    publishedAt
+    publishedAt,
+    cpscRecallNumber,
+    hazards,
+    affectedModels,
+    manufacturers,
+    sourceAttribution
   }
+`;
+
+/** Recalls matching a free-text query, for the on-page search. */
+export const searchRecallAlertsQuery = groq`
+  *[_type == "recallAlert" && !isResolved && (
+      affectedProduct match $q ||
+      recallReason match $q ||
+      cpscRecallNumber match $q ||
+      $q in manufacturers ||
+      count(manufacturers[@ match $q]) > 0 ||
+      count(hazards[@ match $q]) > 0
+    )] | order(recallDate desc) [$start...$end] {
+    _id,
+    affectedProduct,
+    recallDate,
+    recallReason,
+    issuingAuthority,
+    recommendedAction,
+    officialNoticeUrl,
+    affectedReviews[]->{_id, productName, slug},
+    publishedAt,
+    cpscRecallNumber,
+    hazards,
+    affectedModels,
+    manufacturers,
+    sourceAttribution
+  }
+`;
+
+export const searchRecallAlertCountQuery = groq`
+  count(*[_type == "recallAlert" && !isResolved && (
+      affectedProduct match $q ||
+      recallReason match $q ||
+      cpscRecallNumber match $q ||
+      count(manufacturers[@ match $q]) > 0 ||
+      count(hazards[@ match $q]) > 0
+    )])
 `;
 
 export const recallAlertsByReviewQuery = groq`

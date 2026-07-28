@@ -18,6 +18,7 @@ import { FounderStrip } from "@/components/trust/FounderStrip";
 import { NewsletterForm } from "@/components/newsletter/NewsletterForm";
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
+import { getReviewCount, reviewCountLabel } from "@/lib/content/site-stats";
 import { FAQSchema } from "@/components/seo/FAQSchema";
 import { OrganizationSchema } from "@/components/seo/OrganizationSchema";
 import { WebSiteSchema } from "@/components/seo/WebSiteSchema";
@@ -125,7 +126,7 @@ const homepageFaqs = [
   {
     question: "How often is toy recall information updated?",
     answer:
-      "We monitor CPSC recall feeds daily and update affected reviews within 24 hours. Active recalls are prominently flagged on review pages.",
+      "We synchronise the U.S. CPSC public recall database on a scheduled daily job and publish the last successful sync time on our recalls page, so you can see exactly how current the data is. Recalls we match to a reviewed toy are flagged on that review. Always follow the official CPSC notice for final instructions.",
   },
   {
     question: "Are your reviews independent?",
@@ -142,12 +143,16 @@ const homepageFaqs = [
 export default async function HomePage() {
   'use cache'
   cacheLife('minutes')
-  const [featuredReviews, latestArticles, testimonials, endorsements] = await Promise.all([
-    sanityClient.fetch<ToyReview[]>(featuredToyReviewsQuery),
-    sanityClient.fetch<SafetyArticle[]>(latestSafetyArticlesQuery),
-    sanityClient.fetch<Testimonial[]>(approvedTestimonialsQuery),
-    sanityClient.fetch<Endorsement[]>(approvedEndorsementsQuery),
-  ]);
+  const [featuredReviews, latestArticles, testimonials, endorsements, reviewCount] =
+    await Promise.all([
+      sanityClient.fetch<ToyReview[]>(featuredToyReviewsQuery),
+      sanityClient.fetch<SafetyArticle[]>(latestSafetyArticlesQuery),
+      sanityClient.fetch<Testimonial[]>(approvedTestimonialsQuery),
+      sanityClient.fetch<Endorsement[]>(approvedEndorsementsQuery),
+      // Single source of truth for the review-count claim. Renders nothing when
+      // unavailable rather than showing a stale or invented figure.
+      getReviewCount(),
+    ]);
 
   return (
     <div className="flex flex-col pb-16">
@@ -164,8 +169,8 @@ export default async function HomePage() {
             <span className="text-primary-600"> informed choices</span>
           </h1>
           <p className="mt-4 text-lg md:text-xl text-primary-700/80 max-w-2xl mx-auto">
-            Tell us about your child and we&apos;ll match them with expert-reviewed
-            toys scored for safety and development.
+            Tell us about your child and we&apos;ll match them with
+            parent-researched toys scored for safety and development.
           </p>
 
           {/* Interactive Toy Finder — fills the hero, captures intent */}
@@ -191,17 +196,19 @@ export default async function HomePage() {
 
           {/* Trust badges */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
-            <span className="flex items-center gap-1.5">
-              <span className="inline-block size-2 rounded-full bg-secondary-400" aria-hidden="true" />
-              50+ expert reviews
-            </span>
+            {reviewCount !== null && (
+              <span className="flex items-center gap-1.5">
+                <span className="inline-block size-2 rounded-full bg-secondary-400" aria-hidden="true" />
+                {reviewCountLabel(reviewCount)}
+              </span>
+            )}
             <span className="flex items-center gap-1.5">
               <span className="inline-block size-2 rounded-full bg-secondary-400" aria-hidden="true" />
               Independent safety scoring
             </span>
             <span className="flex items-center gap-1.5">
               <span className="inline-block size-2 rounded-full bg-secondary-400" aria-hidden="true" />
-              Daily recall monitoring
+              Recall data from CPSC
             </span>
           </div>
         </div>

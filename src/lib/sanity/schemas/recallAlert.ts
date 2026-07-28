@@ -66,6 +66,52 @@ export const recallAlert = defineType({
       type: "datetime",
       validation: (Rule) => Rule.required(),
     }),
+    // ─── Provenance (populated by the CPSC sync job) ─────────────────────────
+    // These make it explicit on-page that a recall came from the official CPSC
+    // database rather than SafeNest's own determination.
+    defineField({
+      name: "cpscRecallNumber",
+      title: "CPSC Recall Number",
+      type: "string",
+      description:
+        "Official CPSC recall number. Used as the idempotency key by the sync job.",
+    }),
+    defineField({
+      name: "hazards",
+      title: "Hazards (as published by CPSC)",
+      type: "array",
+      of: [{ type: "string" }],
+    }),
+    defineField({
+      name: "affectedModels",
+      title: "Affected Models (as published by CPSC)",
+      type: "array",
+      of: [{ type: "string" }],
+    }),
+    defineField({
+      name: "manufacturers",
+      title: "Manufacturers (as published by CPSC)",
+      type: "array",
+      of: [{ type: "string" }],
+    }),
+    defineField({
+      name: "isLikelyChildProduct",
+      title: "Likely Child/Juvenile Product",
+      type: "boolean",
+      description:
+        "Heuristic used only for surfacing priority. Never asserts a match with a reviewed toy.",
+    }),
+    defineField({
+      name: "syncedAt",
+      title: "Last Synced From CPSC",
+      type: "datetime",
+    }),
+    defineField({
+      name: "sourceAttribution",
+      title: "Data Source",
+      type: "string",
+      description: "Where this record came from, shown to users.",
+    }),
   ],
   preview: {
     select: {
