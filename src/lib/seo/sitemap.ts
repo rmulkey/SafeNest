@@ -112,7 +112,9 @@ export function createSitemapEntry(options: SitemapEntryOptions): MetadataRoute.
 
   return {
     url: `${baseUrl}${prefix}/${slug}`,
-    lastModified: lastModified ? new Date(lastModified) : new Date(),
+    // Omitted rather than defaulted to "now": an inaccurate <lastmod> teaches
+    // search engines to ignore the field across the whole sitemap.
+    ...(lastModified ? { lastModified: new Date(lastModified) } : {}),
     changeFrequency,
     priority,
   };
@@ -139,108 +141,87 @@ export function createSitemapEntries(
 }
 
 /**
- * Creates static page sitemap entries for pages that rarely change.
+ * Real "last modified" timestamps for the hand-maintained sitemap entries.
+ *
+ * These pages are listings rather than documents, so their freshness comes from
+ * the content they render. Anything we cannot date honestly is left undated —
+ * `<lastmod>` that simply reports "now" on every crawl is inaccurate, and search
+ * engines discount the signal for the whole sitemap when they detect that.
  */
-export function createStaticPageEntries(baseUrl: string): MetadataRoute.Sitemap {
+export interface StaticPageDates {
+  /** Newest `_updatedAt` across the toy reviews. */
+  reviews?: Date;
+  /** Newest `_updatedAt` across the buying guides. */
+  guides?: Date;
+  /** Newest `_updatedAt` across the blog posts. */
+  blogPosts?: Date;
+  /** Newest `_updatedAt` across the categories. */
+  categories?: Date;
+  /** Timestamp of the last successful CPSC recall sync. */
+  recalls?: Date;
+}
+
+/** Most recent of the supplied dates, or undefined when none are known. */
+function newestOf(...dates: Array<Date | undefined>): Date | undefined {
+  const known = dates.filter((d): d is Date => d instanceof Date && !Number.isNaN(d.getTime()));
+  if (known.length === 0) {
+    return undefined;
+  }
+  return known.reduce((latest, d) => (d > latest ? d : latest));
+}
+
+/**
+ * Creates sitemap entries for the site's hand-maintained (non-slug) pages.
+ *
+ * `dates` is optional so existing callers and tests keep working; when it is
+ * omitted the entries carry no `<lastmod>` at all rather than a fabricated one.
+ */
+export function createStaticPageEntries(
+  baseUrl: string,
+  dates: StaticPageDates = {}
+): MetadataRoute.Sitemap {
+  const { reviews, guides, blogPosts, categories, recalls } = dates;
+  // The homepage surfaces reviews, guides and posts, so it is as fresh as the
+  // newest of them.
+  const anyContent = newestOf(reviews, guides, blogPosts, categories);
+  const ageListings = reviews;
+
+  const entry = (
+    path: string,
+    changeFrequency: SitemapChangeFrequency,
+    priority: number,
+    lastModified?: Date
+  ): MetadataRoute.Sitemap[number] => ({
+    url: path ? `${baseUrl}${path}` : baseUrl,
+    ...(lastModified ? { lastModified } : {}),
+    changeFrequency,
+    priority,
+  });
+
   return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/reviews`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/categories`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/recalls`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/best-toys`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/gift-guides`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/best-toys/0-6-months`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/best-toys/6-12-months`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/best-toys/1-2-years`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/best-toys/2-3-years`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/best-toys/3-plus-years`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/transparency`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
+    entry("", "daily", 1.0, anyContent),
+    entry("/reviews", "daily", 0.9, reviews),
+    entry("/categories", "weekly", 0.7, categories),
+    entry("/recalls", "daily", 0.8, recalls),
+    entry("/guides", "weekly", 0.8, guides),
+    entry("/blog", "daily", 0.7, blogPosts),
+    entry("/best-toys", "weekly", 0.8, ageListings),
+    entry("/gift-guides", "weekly", 0.8, anyContent),
+    // Only the canonical age slugs are listed. `/best-toys/[age]` also answers
+    // raw month counts and alias slugs, but those canonicalise to these URLs
+    // (see CANONICAL_AGE_SLUG_BY_MONTHS) and must not compete in the sitemap.
+    entry("/best-toys/0-6-months", "weekly", 0.7, ageListings),
+    entry("/best-toys/6-12-months", "weekly", 0.7, ageListings),
+    entry("/best-toys/1-2-years", "weekly", 0.7, ageListings),
+    entry("/best-toys/2-3-years", "weekly", 0.7, ageListings),
+    entry("/best-toys/3-plus-years", "weekly", 0.7, ageListings),
+    // /transparency, /about and /contact are edited by hand; we hold no reliable
+    // modification date for them, so they ship without <lastmod>.
+    entry("/transparency", "monthly", 0.6),
     // Note: individual /gift-guides/{slug} pages are generated from GIFT_GUIDES
     // in sitemap.ts (giftGuideEntries), so they are intentionally omitted here
     // to avoid duplicate sitemap entries.
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.4,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.4,
-    },
+    entry("/about", "monthly", 0.4),
+    entry("/contact", "monthly", 0.4),
   ];
 }

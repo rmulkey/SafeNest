@@ -18,7 +18,10 @@ vi.mock("@/lib/sanity/client", () => ({
 import {
   resolveAgeParam,
   formatAgeParamLabel,
+  canonicalAgeSlug,
+  AGE_MONTHS,
   AGE_SLUG_TO_MONTHS,
+  CANONICAL_AGE_SLUG_BY_MONTHS,
 } from "./programmatic-pages";
 
 // Every age slug that appears as a public link somewhere in the app.
@@ -59,6 +62,65 @@ describe("resolveAgeParam", () => {
     expect(resolveAgeParam("-5")).toBeNull();
     expect(resolveAgeParam("0")).toBeNull();
     expect(resolveAgeParam("3.5")).toBeNull();
+  });
+});
+
+describe("canonicalAgeSlug", () => {
+  it("maps every param that resolves to the same age onto one canonical slug", () => {
+    // /best-toys/18, /best-toys/12-24-months and /best-toys/1-2-years all render
+    // the identical list of toys, so exactly one of them may be canonical.
+    expect(canonicalAgeSlug("18")).toBe("1-2-years");
+    expect(canonicalAgeSlug("12-24-months")).toBe("1-2-years");
+    expect(canonicalAgeSlug("1-2-years")).toBe("1-2-years");
+
+    expect(canonicalAgeSlug("9")).toBe("6-12-months");
+    expect(canonicalAgeSlug("0-12-months")).toBe("6-12-months");
+    expect(canonicalAgeSlug("6-12-months")).toBe("6-12-months");
+
+    expect(canonicalAgeSlug("3")).toBe("0-6-months");
+    expect(canonicalAgeSlug("24-36-months")).toBe("2-3-years");
+    expect(canonicalAgeSlug("3-4-years")).toBe("3-plus-years");
+  });
+
+  it("is idempotent — a canonical slug maps to itself", () => {
+    for (const slug of Object.values(CANONICAL_AGE_SLUG_BY_MONTHS)) {
+      expect(canonicalAgeSlug(slug)).toBe(slug);
+    }
+  });
+
+  it("groups every known param so that one age never has two canonical URLs", () => {
+    const canonicalByAge = new Map<number, Set<string>>();
+    const allParams = [
+      ...AGE_MONTHS.map(String),
+      ...Object.keys(AGE_SLUG_TO_MONTHS),
+    ];
+
+    for (const param of allParams) {
+      const months = resolveAgeParam(param);
+      expect(months).not.toBeNull();
+      const set = canonicalByAge.get(months as number) ?? new Set<string>();
+      set.add(canonicalAgeSlug(param));
+      canonicalByAge.set(months as number, set);
+    }
+
+    for (const [months, canonicals] of canonicalByAge) {
+      expect(
+        canonicals.size,
+        `age ${months} resolved to multiple canonical slugs: ${[...canonicals].join(", ")}`
+      ).toBe(1);
+    }
+  });
+
+  it("leaves ages that have no named slug on their numeric URL", () => {
+    expect(canonicalAgeSlug("6")).toBe("6");
+    expect(canonicalAgeSlug("12")).toBe("12");
+    expect(canonicalAgeSlug("24")).toBe("24");
+    expect(canonicalAgeSlug("36")).toBe("36");
+  });
+
+  it("returns the param untouched when it does not resolve to an age", () => {
+    expect(canonicalAgeSlug("banana")).toBe("banana");
+    expect(canonicalAgeSlug("")).toBe("");
   });
 });
 

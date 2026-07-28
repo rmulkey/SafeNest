@@ -277,7 +277,7 @@ export function ToyFinder() {
                   </p>
                   {relaxed && results.length > 0 && (
                     <p className="text-sm text-muted-foreground">
-                      We broadened your interests to show the safest options for this age.
+                      We broadened your interests to show the highest-scoring options for this age.
                     </p>
                   )}
                 </div>

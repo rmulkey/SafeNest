@@ -68,7 +68,7 @@ export default async function BestToysAgeOgImage({
         {/* Title block */}
         <div style={{ display: "flex", flexDirection: "column" }}>
           <span style={{ display: "flex", fontSize: "30px", color: "#4a6357", fontWeight: 600 }}>
-            The safest, most developmental picks for
+            Parent-researched picks for
           </span>
           <div
             style={{

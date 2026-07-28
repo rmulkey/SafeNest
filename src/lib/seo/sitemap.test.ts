@@ -138,6 +138,11 @@ describe("createSitemapEntry", () => {
     });
     expect(entry.lastModified).toEqual(new Date("2023-06-01T12:00:00.000Z"));
   });
+
+  it("omits lastModified when the item has no known modification date", () => {
+    const entry = createSitemapEntry({ slug: "abc", prefix: "/reviews" });
+    expect(entry.lastModified).toBeUndefined();
+  });
 });
 
 describe("createSitemapEntries", () => {
@@ -210,6 +215,77 @@ describe("createStaticPageEntries", () => {
       expect(entry.priority).toBeGreaterThanOrEqual(0);
       expect(entry.priority).toBeLessThanOrEqual(1);
     }
+  });
+
+  it("omits lastmod entirely when no real dates are known", () => {
+    // A <lastmod> of "now" on every crawl is inaccurate, and search engines
+    // discount the field for the whole sitemap once they notice.
+    for (const entry of createStaticPageEntries(baseUrl)) {
+      expect(entry.lastModified).toBeUndefined();
+    }
+  });
+
+  it("dates content listings from the newest content they render", () => {
+    const reviews = new Date("2026-07-20T00:00:00.000Z");
+    const guides = new Date("2026-07-22T00:00:00.000Z");
+    const blogPosts = new Date("2026-07-25T00:00:00.000Z");
+    const categories = new Date("2026-06-01T00:00:00.000Z");
+    const recalls = new Date("2026-07-28T17:42:00.000Z");
+
+    const entries = createStaticPageEntries(baseUrl, {
+      reviews,
+      guides,
+      blogPosts,
+      categories,
+      recalls,
+    });
+    const byUrl = new Map(entries.map((e) => [e.url, e]));
+
+    expect(byUrl.get(`${baseUrl}/reviews`)?.lastModified).toEqual(reviews);
+    expect(byUrl.get(`${baseUrl}/guides`)?.lastModified).toEqual(guides);
+    expect(byUrl.get(`${baseUrl}/blog`)?.lastModified).toEqual(blogPosts);
+    expect(byUrl.get(`${baseUrl}/categories`)?.lastModified).toEqual(categories);
+    // /recalls is dated by the CPSC sync, not by CMS edits.
+    expect(byUrl.get(`${baseUrl}/recalls`)?.lastModified).toEqual(recalls);
+    // The homepage surfaces all of them, so it takes the newest.
+    expect(byUrl.get(baseUrl)?.lastModified).toEqual(blogPosts);
+  });
+
+  it("leaves hand-edited pages undated even when content dates are known", () => {
+    const entries = createStaticPageEntries(baseUrl, {
+      reviews: new Date("2026-07-20T00:00:00.000Z"),
+    });
+    const byUrl = new Map(entries.map((e) => [e.url, e]));
+
+    for (const path of ["/transparency", "/about", "/contact"]) {
+      expect(byUrl.get(`${baseUrl}${path}`)?.lastModified).toBeUndefined();
+    }
+  });
+
+  it("lists only the canonical age slugs, never raw month counts", () => {
+    // /best-toys/18 and /best-toys/1-2-years render the same toys; only the
+    // canonical spelling belongs in the sitemap.
+    const urls = createStaticPageEntries(baseUrl).map((e) => e.url);
+    expect(urls).toContain(`${baseUrl}/best-toys/1-2-years`);
+    expect(urls).toContain(`${baseUrl}/best-toys/0-6-months`);
+    expect(urls).toContain(`${baseUrl}/best-toys/6-12-months`);
+    expect(urls).toContain(`${baseUrl}/best-toys/2-3-years`);
+    expect(urls).toContain(`${baseUrl}/best-toys/3-plus-years`);
+
+    const numericAgeUrls = urls.filter((u) =>
+      /\/best-toys\/\d+$/.test(u)
+    );
+    expect(numericAgeUrls).toEqual([]);
+
+    // Alias slugs that resolve to an age already covered above.
+    for (const alias of ["0-12-months", "12-24-months", "24-36-months", "3-4-years"]) {
+      expect(urls).not.toContain(`${baseUrl}/best-toys/${alias}`);
+    }
+  });
+
+  it("emits each URL only once", () => {
+    const urls = createStaticPageEntries(baseUrl).map((e) => e.url);
+    expect(new Set(urls).size).toBe(urls.length);
   });
 });
 

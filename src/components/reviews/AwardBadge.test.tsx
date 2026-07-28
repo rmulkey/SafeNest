@@ -162,7 +162,7 @@ describe("AwardBadge component", () => {
   const cases: Array<{ variant: AwardVariant; label: string }> = [
     { variant: "top-pick", label: "🏆 Top Pick" },
     { variant: "best-value", label: "💰 Best Value" },
-    { variant: "safest", label: "🛡️ Safest Choice" },
+    { variant: "safest", label: "🛡️ Highest Safety Score" },
   ];
 
   for (const { variant, label } of cases) {

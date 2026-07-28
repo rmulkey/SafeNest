@@ -15,6 +15,17 @@ export async function generateStaticParams() {
   return getValidToyTypeParams();
 }
 
+/**
+ * Sentence-cases a material name for headings and <title>.
+ *
+ * Material values are stored lowercase ("wood") except where they start with an
+ * acronym ("BPA-free plastic"), so only the first character is touched — upper-
+ * casing the whole string would mangle those.
+ */
+function toDisplayType(toyType: string): string {
+  return toyType.charAt(0).toUpperCase() + toyType.slice(1);
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -27,8 +38,8 @@ export async function generateMetadata({
     return { title: "Not Found" };
   }
 
-  const title = `Safe ${toyType} Toys | SafeNest Toys`;
-  const description = `Find the safest ${toyType.toLowerCase()} toys for babies and toddlers. Expert safety reviews with detailed scoring and choking hazard assessments.`;
+  const title = `${toDisplayType(toyType)} Toys: Safety Reviews | SafeNest Toys`;
+  const description = `Parent-researched reviews of ${toyType.toLowerCase()} toys for babies and toddlers, with SafeNest's editorial safety assessment, choking-risk notes and recall checks.`;
 
   return {
     title,
@@ -61,11 +72,13 @@ export default async function SafeToyTypePage({
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-8">
-      <h1 className="text-3xl font-bold mb-2">Safe {toyType} Toys</h1>
+      <h1 className="text-3xl font-bold mb-2">
+        {toDisplayType(toyType)} Toys: Safety Reviews
+      </h1>
       <p className="text-muted-foreground mb-8">
         {reviews.length} parent-researched {toyType.toLowerCase()} toys, sorted by
-        safety score. Every toy is assessed for choking hazards, material safety,
-        and certifications.
+        SafeNest&apos;s editorial safety score. Each entry records what we found on
+        choking risk, material information and recall history.
       </p>
 
       <div className="grid gap-6">

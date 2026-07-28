@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   AGE_MONTHS,
+  canonicalAgeSlug,
   getReviewsByAge,
   hasEnoughReviews,
   formatAgeLabel,
@@ -9,14 +10,15 @@ import {
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
 
+const BEST_TOYS_DESCRIPTION =
+  "Compare developmentally appropriate toys by age, from 3 to 36 months, using parent-researched reviews built on publicly available product and recall information.";
+
 export const metadata: Metadata = {
   title: "Best Toys by Age | SafeNest Toys",
-  description:
-    "Find the safest, most developmentally appropriate toys for your child's age. Expert safety reviews for babies and toddlers from 3 to 36 months.",
+  description: BEST_TOYS_DESCRIPTION,
   ...generateOpenGraphMeta({
     title: "Best Toys by Age | SafeNest Toys",
-    description:
-      "Find the safest, most developmentally appropriate toys for your child's age. Expert safety reviews for babies and toddlers from 3 to 36 months.",
+    description: BEST_TOYS_DESCRIPTION,
     url: `${SITE_URL}/best-toys`,
   }),
 };
@@ -45,9 +47,10 @@ export default async function BestToysLandingPage() {
     <main className="mx-auto max-w-4xl px-4 py-8">
       <h1 className="text-3xl font-bold mb-2">Best Toys by Age</h1>
       <p className="text-muted-foreground mb-8">
-        Find the safest, most developmentally appropriate toys for your
-        child&apos;s age. Our parent-researched reviews evaluate safety scores, choking
-        hazards, materials, and developmental benefits.
+        Compare developmentally appropriate toys for your child&apos;s age. Our
+        parent-researched reviews record SafeNest&apos;s editorial safety score
+        alongside what we found on choking risk, materials, recall history and
+        developmental value.
       </p>
 
       {agePages.length === 0 ? (
@@ -59,7 +62,9 @@ export default async function BestToysLandingPage() {
           {agePages.map((page) => (
             <Link
               key={page.age}
-              href={`/best-toys/${page.age}`}
+              // Link at the canonical spelling for this age so internal links
+              // and <link rel="canonical"> agree.
+              href={`/best-toys/${canonicalAgeSlug(String(page.age))}`}
               className="block rounded-lg border p-6 hover:shadow-md transition-shadow text-center"
             >
               <div className="text-4xl font-bold text-primary mb-2">

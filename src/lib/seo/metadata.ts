@@ -45,13 +45,14 @@ export function generateReviewMetadata(review: ReviewMetadataInput): Metadata {
   const title = `${review.productName} Safety Review | ${SITE_NAME}`;
   const description =
     review.description ||
-    `Read our in-depth safety review of ${review.productName}, including safety score, development score, and expert analysis.`;
+    `Read SafeNest's parent-researched safety review of ${review.productName}, including its editorial safety score, development score and recall check.`;
   const url = `${SITE_URL}/reviews/${review.slug}`;
   const image = review.imageUrl || DEFAULT_IMAGE;
 
   return {
     title,
     description,
+    alternates: { canonical: url },
     openGraph: {
       title,
       description,
@@ -78,13 +79,14 @@ export function generateGuideMetadata(guide: GuideMetadataInput): Metadata {
   const title = `${guide.title} | ${SITE_NAME}`;
   const description =
     guide.description ||
-    `Expert buying guide: ${guide.title}. Find the safest and most developmentally appropriate toys.`;
+    `Parent-researched buying guide: ${guide.title}. Compare toys using publicly available product and recall information.`;
   const url = `${SITE_URL}/guides/${guide.slug}`;
   const image = guide.imageUrl || DEFAULT_IMAGE;
 
   return {
     title,
     description,
+    alternates: { canonical: url },
     openGraph: {
       title,
       description,
@@ -111,13 +113,14 @@ export function generateArticleMetadata(article: ArticleMetadataInput): Metadata
   const title = `${article.title} | ${SITE_NAME}`;
   const description =
     article.description ||
-    `${article.title} - Safety tips and expert advice from ${SITE_NAME}.`;
+    `${article.title} — toy safety research and practical guidance from ${SITE_NAME}.`;
   const url = `${SITE_URL}/blog/${article.slug}`;
   const image = article.imageUrl || DEFAULT_IMAGE;
 
   return {
     title,
     description,
+    alternates: { canonical: url },
     openGraph: {
       title,
       description,
@@ -157,6 +160,7 @@ export function generatePageMetadata(
   return {
     title: fullTitle,
     description,
+    alternates: { canonical: url },
     openGraph: {
       title: fullTitle,
       description,

@@ -4,6 +4,7 @@ import {
   AGE_MONTHS,
   AGE_SLUG_TO_MONTHS,
   resolveAgeParam,
+  canonicalAgeSlug,
   formatAgeParamLabel,
   getReviewsByAge,
   hasEnoughReviews,
@@ -47,7 +48,7 @@ export async function generateMetadata({
   const label = formatAgeParamLabel(age);
 
   const title = `Best Toys for ${label} | SafeNest Toys`;
-  const description = `Discover the safest and most developmentally appropriate toys for babies and toddlers at ${label}. Expert safety reviews and scores.`;
+  const description = `Parent-researched toy reviews for babies and toddlers at ${label}, compared using publicly available product and recall information.`;
 
   return {
     title,
@@ -55,7 +56,10 @@ export async function generateMetadata({
     ...generateOpenGraphMeta({
       title,
       description,
-      url: `${SITE_URL}/best-toys/${age}`,
+      // Several params resolve to the same age and render the same toys, so the
+      // canonical points at one preferred slug per age instead of self-
+      // referencing every spelling.
+      url: `${SITE_URL}/best-toys/${canonicalAgeSlug(age)}`,
       useRouteImage: true,
     }),
   };

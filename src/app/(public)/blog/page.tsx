@@ -12,14 +12,14 @@ import { SITE_URL } from "@/lib/seo/site-config";
 import { NewsletterForm } from "@/components/newsletter/NewsletterForm";
 
 export const metadata: Metadata = {
-  title: "Toy Safety Blog - Expert Guides & Tips | SafeNest Toys",
+  title: "Toy Safety Blog — Guides & Research | SafeNest Toys",
   description:
     "Read the latest articles on toy safety, developmental play, and parenting tips from the SafeNest Toys editorial team.",
   alternates: {
     canonical: `${SITE_URL}/blog`,
   },
   ...generateOpenGraphMeta({
-    title: "Toy Safety Blog - Expert Guides & Tips | SafeNest Toys",
+    title: "Toy Safety Blog — Guides & Research | SafeNest Toys",
     description:
       "Read the latest articles on toy safety, developmental play, and parenting tips from the SafeNest Toys editorial team.",
     url: `${SITE_URL}/blog`,

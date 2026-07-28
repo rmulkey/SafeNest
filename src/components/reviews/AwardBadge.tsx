@@ -22,7 +22,7 @@ const variantConfig: Record<
     classes: "bg-secondary-100 text-secondary-800 ring-1 ring-secondary-300/70",
   },
   safest: {
-    label: "🛡️ Safest Choice",
+    label: "🛡️ Highest Safety Score",
     classes: "bg-primary-100 text-primary-800 ring-1 ring-primary-300/70",
   },
 };

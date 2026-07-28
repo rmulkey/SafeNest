@@ -49,7 +49,7 @@ export async function generateMetadata({
   const title = `${category.title} - Toy Reviews | SafeNest Toys`;
   const description =
     category.description ||
-    `Browse safety-reviewed ${category.title.toLowerCase()} toys. Expert safety scores and developmental assessments.`;
+    `Browse parent-researched ${category.title.toLowerCase()} toy reviews, with SafeNest's editorial safety and development scores.`;
 
   return {
     title,

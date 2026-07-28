@@ -60,7 +60,7 @@ export async function generateMetadata({
   }
 
   const title = `${guide.title} | SafeNest Toys`
-  const description = `Buying guide for ages ${formatAgeRange(guide.targetAgeRange.minMonths, guide.targetAgeRange.maxMonths)}. Expert safety recommendations from SafeNest Toys.`
+  const description = `Buying guide for ages ${formatAgeRange(guide.targetAgeRange.minMonths, guide.targetAgeRange.maxMonths)}. Parent-researched toy comparisons from SafeNest Toys, based on publicly available product and recall information.`
 
   return {
     title,

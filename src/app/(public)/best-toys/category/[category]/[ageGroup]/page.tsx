@@ -30,7 +30,7 @@ export async function generateMetadata({
   }
 
   const title = `Best ${categoryData.title} Toys for ${ageGroupData.label} | SafeNest Toys`;
-  const description = `Discover the safest ${categoryData.title.toLowerCase()} toys for babies and toddlers aged ${ageGroupData.label}. Expert safety reviews and developmental scores.`;
+  const description = `Parent-researched reviews of ${categoryData.title.toLowerCase()} for babies and toddlers aged ${ageGroupData.label}, with SafeNest's editorial safety and development scores.`;
 
   return {
     title,

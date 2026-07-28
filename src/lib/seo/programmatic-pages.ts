@@ -52,6 +52,43 @@ export function resolveAgeParam(param: string): number | null {
 }
 
 /**
+ * The single URL form we want indexed for each age in months.
+ *
+ * `/best-toys/[age]` accepts both raw month counts and several named slugs, and
+ * more than one of those can resolve to the same age — so `/best-toys/18`,
+ * `/best-toys/12-24-months` and `/best-toys/1-2-years` all render the identical
+ * list of toys. Left self-canonicalising, that reads to a search engine as
+ * three competing duplicates. Each age therefore declares one preferred slug
+ * (the one used by the nav, the homepage age cards and the sitemap) and the
+ * other spellings canonicalise to it.
+ *
+ * Ages with no named slug (6, 12, 24, 36) have only one URL form, so the
+ * numeric URL is its own canonical.
+ */
+export const CANONICAL_AGE_SLUG_BY_MONTHS: Record<number, string> = {
+  3: "0-6-months",
+  9: "6-12-months",
+  18: "1-2-years",
+  30: "2-3-years",
+  42: "3-plus-years",
+};
+
+/**
+ * Resolve a best-toys age route param to the slug that should be canonical.
+ *
+ * Returns the param unchanged when it is already canonical, when the age has no
+ * preferred named slug, or when it does not resolve to a valid age at all (the
+ * page renders notFound() in that case, so the value is never used).
+ */
+export function canonicalAgeSlug(param: string): string {
+  const months = resolveAgeParam(param);
+  if (months === null) {
+    return param;
+  }
+  return CANONICAL_AGE_SLUG_BY_MONTHS[months] ?? param;
+}
+
+/**
  * Human-readable label for a best-toys age route param. Named slugs use their
  * range label (e.g. "1–2 years"); numeric values fall back to formatAgeLabel.
  */
