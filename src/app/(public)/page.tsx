@@ -298,10 +298,15 @@ export default async function HomePage() {
       </section>
 
       {/* Trust Section — methodology, standards, verified endorsements & testimonials */}
+      {/* reviewCount was hard-coded to 50 here, which is what produced the
+          "all 50 toys" claim that contradicted the dynamic "132
+          parent-researched reviews" figure in the hero. Both now read from the
+          same source: getReviewCount(). Passing 0 makes TrustSection fall back
+          to "every toy" rather than printing a wrong number. */}
       <TrustSection
         testimonials={testimonials}
         endorsements={endorsements}
-        reviewCount={50}
+        reviewCount={reviewCount ?? 0}
       />
 
       {/* Latest Safety Articles */}

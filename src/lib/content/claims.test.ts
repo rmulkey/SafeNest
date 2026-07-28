@@ -154,6 +154,26 @@ describe("no unsupported safety claims in app or component source", () => {
   });
 });
 
+describe("review count has a single source of truth", () => {
+  it("does not pass a hard-coded reviewCount to any component", () => {
+    // `reviewCount={50}` on the homepage rendered "all 50 toys" in the trust
+    // section while the hero showed the real 132, contradicting itself. Counts
+    // must come from lib/content/site-stats.ts.
+    const offenders: string[] = [];
+    for (const file of sourceFiles()) {
+      const text = stripComments(readFileSync(file, "utf-8"));
+      const m = text.match(/reviewCount=\{\s*\d+\s*\}/);
+      if (m) offenders.push(`${file}: ${m[0]}`);
+    }
+    expect(offenders, offenders.join("\n")).toEqual([]);
+  });
+
+  it("routes homepage counts through getReviewCount", () => {
+    const home = readFileSync("src/app/(public)/page.tsx", "utf-8");
+    expect(home).toMatch(/getReviewCount/);
+  });
+});
+
 describe("no hard-coded review-count claims", () => {
   it("does not advertise a stale numeric review count", () => {
     // "50+ expert reviews" was live while the catalog held 132 reviews. Counts
