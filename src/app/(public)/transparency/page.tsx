@@ -67,11 +67,11 @@ export default function TransparencyPage() {
           Safety Score Methodology
         </h2>
         <p className="text-base text-muted-foreground leading-relaxed mb-6">
-          Every toy receives a Safety Score from 0 to 100, computed as a
-          weighted sum of four factors we assess from publicly available
-          information. Higher scores indicate a more favorable SafeNest editorial
-          assessment based on the information available at the time. Scores are
-          not measurements of absolute safety.
+          Every toy receives a SafeNest editorial Safety Score from 0 to 100
+          based on four weighted factors. A higher score represents a more
+          favorable SafeNest editorial assessment of the information available at
+          the time. It does not measure absolute safety, certify a product, or
+          guarantee that a product is hazard-free.
         </p>
         <p className="text-base text-muted-foreground leading-relaxed mb-6">
           SafeNest does not perform physical or laboratory testing, does not
@@ -97,24 +97,24 @@ export default function TransparencyPage() {
             </thead>
             <tbody>
               <ScoreFactorRow
-                label="Material Safety"
+                label="Material information"
                 weight="30%"
-                description="Toxicity testing results, material certifications (OEKO-TEX, CPSIA), presence of harmful substances like lead, phthalates, or BPA."
+                description="Published information about materials, finishes, warnings and manufacturer or retailer claims. SafeNest does not perform toxicity or laboratory testing."
               />
               <ScoreFactorRow
-                label="Choking Risk"
+                label="Choking-risk research"
                 weight="30%"
-                description="Small parts assessment per ASTM F963, age-appropriateness of components, detachability of parts under stress."
+                description="Published dimensions, construction details, small-parts warnings and manufacturer age guidance. SafeNest does not physically measure products or perform ASTM small-parts testing."
               />
               <ScoreFactorRow
-                label="Recall History"
+                label="Recall history"
                 weight="20%"
-                description="Whether the product or manufacturer has active or historical recalls from CPSC or international equivalents."
+                description="Checks against publicly available CPSC recall information. No match means that SafeNest did not locate an unambiguous match as of the recorded check date — not that a recall can never exist."
               />
               <ScoreFactorRow
-                label="Certification Presence"
+                label="Certification claims"
                 weight="20%"
-                description="Third-party safety certifications including ASTM, EN-71, ISO 8124, and voluntary programs."
+                description="Standards or certifications reported by manufacturers or retailers, together with the source and evidence status. SafeNest does not verify compliance or certify products."
               />
             </tbody>
           </table>
@@ -151,79 +151,137 @@ export default function TransparencyPage() {
         <h3 className="text-lg font-semibold text-foreground mb-2">
           What each evidence status means
         </h3>
+        {/* Deliberately no "maximum factor score" column. Publishing numerical
+            caps while the application does not recalculate stored editorial
+            scores created a contradiction between this page and every review.
+            Evidence status drives evidence confidence only. */}
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <caption className="sr-only">
-              Evidence statuses and the maximum factor score each permits
+              Evidence statuses and what each one means
             </caption>
             <thead>
               <tr className="border-b border-border text-left">
                 <th scope="col" className="py-2 pr-4 font-semibold">Status</th>
-                <th scope="col" className="py-2 pr-4 font-semibold">Meaning</th>
-                <th scope="col" className="py-2 font-semibold">Max factor score</th>
+                <th scope="col" className="py-2 font-semibold">Meaning</th>
               </tr>
             </thead>
             <tbody className="text-muted-foreground">
               <tr className="border-b border-border/60">
                 <td className="py-2 pr-4">Supported by accessible documentation</td>
-                <td className="py-2 pr-4">We located a published specification or public regulatory record.</td>
-                <td className="py-2">100</td>
+                <td className="py-2">We located a published specification or similar document supporting the claim.</td>
+              </tr>
+              <tr className="border-b border-border/60">
+                <td className="py-2 pr-4">Official government source</td>
+                <td className="py-2">Taken from an official public record, such as the CPSC recall database.</td>
               </tr>
               <tr className="border-b border-border/60">
                 <td className="py-2 pr-4">Manufacturer-reported</td>
-                <td className="py-2 pr-4">The manufacturer states it. We have not verified it.</td>
-                <td className="py-2">85</td>
+                <td className="py-2">The manufacturer states it. SafeNest has not verified it.</td>
               </tr>
               <tr className="border-b border-border/60">
                 <td className="py-2 pr-4">Retailer-reported</td>
-                <td className="py-2 pr-4">Taken from a retailer listing, which is often less reliable.</td>
-                <td className="py-2">75</td>
+                <td className="py-2">Taken from a retailer listing, which is often less reliable than the manufacturer&apos;s own documentation.</td>
               </tr>
               <tr className="border-b border-border/60">
                 <td className="py-2 pr-4">Secondary source</td>
-                <td className="py-2 pr-4">Reported by a third party, not the manufacturer or a regulator.</td>
-                <td className="py-2">70</td>
+                <td className="py-2">Reported by a third party rather than the manufacturer or a regulator.</td>
               </tr>
               <tr className="border-b border-border/60">
-                <td className="py-2 pr-4">Unclear — sources conflict</td>
-                <td className="py-2 pr-4">Sources disagree. Treat as unresolved and check current packaging.</td>
-                <td className="py-2">60</td>
+                <td className="py-2 pr-4">Sources conflict</td>
+                <td className="py-2">Sources disagree. We surface the disagreement rather than reconciling it silently.</td>
               </tr>
               <tr className="border-b border-border/60">
-                <td className="py-2 pr-4">Not found</td>
-                <td className="py-2 pr-4">We could not find information. This is not evidence of safety.</td>
-                <td className="py-2">50</td>
+                <td className="py-2 pr-4">Information not found</td>
+                <td className="py-2">We could not find information about this. That is not proof of safety.</td>
               </tr>
               <tr>
                 <td className="py-2 pr-4">Not applicable</td>
-                <td className="py-2 pr-4">The factor does not apply; it is excluded and the remaining weights are renormalised.</td>
-                <td className="py-2">excluded</td>
+                <td className="py-2">The factor does not apply to this product, so it is excluded rather than penalised.</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <h3 className="mt-6 text-lg font-semibold text-foreground mb-2">
-          How missing and conflicting evidence affect a score
+          How editorial scores and evidence confidence relate
+        </h3>
+        <p className="text-muted-foreground leading-relaxed mb-3">
+          Editorial scores reflect SafeNest&apos;s assessment of publicly
+          available product information. Evidence confidence separately describes
+          how well that information is supported. Evidence confidence does not
+          currently modify the editorial score.
+        </p>
+        <p className="text-muted-foreground leading-relaxed mb-3">
+          This means a high editorial score can appear alongside Medium or Low
+          evidence confidence. A high editorial score with Low or Medium evidence
+          confidence should be interpreted cautiously, and a high score is never
+          proof that a product is objectively safer.
+        </p>
+
+        <h3 className="mt-6 text-lg font-semibold text-foreground mb-2">
+          How evidence confidence is derived
         </h3>
         <ul className="list-disc space-y-2 pl-5 text-muted-foreground">
           <li>
-            Missing information never improves a score. Where a claim cannot be
-            supported, the maximum score available for that factor is capped, so
-            absence of evidence can never read as evidence of safety.
+            <strong className="text-foreground">High</strong> — important claims
+            are predominantly supported by accessible documentation or official
+            sources.
           </li>
           <li>
-            Conflicting information is surfaced as “unclear” rather than averaged
-            into a confident-looking number, and its factor is capped.
+            <strong className="text-foreground">Medium</strong> — important claims
+            are mostly manufacturer-reported.
+          </li>
+          <li>
+            <strong className="text-foreground">Low</strong> — important claims
+            rely heavily on retailers, secondary sources or missing information.
+          </li>
+          <li>
+            <strong className="text-foreground">Insufficient</strong> — the
+            available information cannot support a meaningful assessment, so we
+            show no precise score.
+          </li>
+        </ul>
+
+        <h3 className="mt-6 text-lg font-semibold text-foreground mb-2">
+          How missing and conflicting evidence are handled
+        </h3>
+        <ul className="list-disc space-y-2 pl-5 text-muted-foreground">
+          <li>
+            Missing information is never treated as proof of safety. It lowers
+            evidence confidence for that factor.
+          </li>
+          <li>
+            Conflicting information is surfaced as &ldquo;sources
+            conflict&rdquo; rather than silently reconciled, and it lowers
+            confidence. Conflicting or missing evidence cannot produce High
+            confidence.
+          </li>
+          <li>
+            A certification claim is not a certification document. We record who
+            reported it and whether supporting documentation was located.
           </li>
           <li>
             When the supporting information is too thin overall, we show
-            “Insufficient evidence” instead of inventing a precise score.
+            &ldquo;Insufficient evidence&rdquo; rather than inventing a precise
+            score.
           </li>
           <li>
-            Evidence confidence is reported separately from the score as High,
-            Medium, Low, or Insufficient, so a well-supported assessment is
-            distinguishable from a thin one.
+            SafeNest does not perform physical or laboratory testing, and these
+            scores are not professional product-safety opinions. Rodrigo and
+            Vanessa are parents, not credentialed product-safety professionals.
+          </li>
+          <li>
+            Affiliate relationships never influence scores. Corrections can be
+            submitted through our{" "}
+            <a href="/contact" className="text-primary-600 underline">
+              contact form
+            </a>
+            .
+          </li>
+          <li>
+            The manufacturer&apos;s instructions and official recall notices
+            always take precedence over anything on this site.
           </li>
         </ul>
 

@@ -14,11 +14,11 @@ import { formatAgeRange } from '@/lib/content/format-age'
 export const metadata: Metadata = {
   title: 'Buying Guides | SafeNest Toys',
   description:
-    'Expert toy buying guides organized by age and category. Find the safest toys for your child with our comprehensive guides.',
+    'Parent-researched toy buying guides organized by age and category. Compare toys using publicly available product and recall information.',
   ...generateOpenGraphMeta({
     title: 'Buying Guides | SafeNest Toys',
     description:
-      'Expert toy buying guides organized by age and category. Find the safest toys for your child with our comprehensive guides.',
+      'Parent-researched toy buying guides organized by age and category. Compare toys using publicly available product and recall information.',
     url: `${SITE_URL}/guides`,
   }),
 }

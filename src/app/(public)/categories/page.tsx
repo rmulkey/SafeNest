@@ -10,12 +10,12 @@ import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 export const metadata: Metadata = {
   title: "Toy Categories | SafeNest Toys",
   description:
-    "Browse safety-reviewed toys by category — building, sensory, outdoor, educational, and more. Every toy is independently safety-scored by SafeNest Toys.",
+    "Browse toys by category — building, sensory, outdoor, educational, and more. Every toy has a SafeNest editorial safety assessment.",
   alternates: { canonical: `${SITE_URL}/categories` },
   ...generateOpenGraphMeta({
     title: "Toy Categories | SafeNest Toys",
     description:
-      "Browse safety-reviewed toys by category — building, sensory, outdoor, educational, and more. Every toy is independently safety-scored by SafeNest Toys.",
+      "Browse toys by category — building, sensory, outdoor, educational, and more. Every toy has a SafeNest editorial safety assessment.",
     url: `${SITE_URL}/categories`,
   }),
 };
@@ -45,7 +45,7 @@ export default async function CategoriesIndexPage() {
           Toy Categories
         </h1>
         <p className="mt-3 max-w-2xl text-muted-foreground">
-          Explore our independently safety-scored reviews grouped by category.
+          Explore our editorially assessed reviews grouped by category.
           Pick a category to see every toy we&apos;ve tested in it.
         </p>
       </header>

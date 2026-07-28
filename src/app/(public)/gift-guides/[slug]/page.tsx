@@ -104,7 +104,7 @@ export default async function GiftGuideDetailPage({
         <div className="mt-4 flex items-center gap-2 text-sm text-primary-700">
           <ShieldCheck className="size-4" aria-hidden="true" />
           <span>
-            Every pick is independently safety-scored and recall-checked.
+            Every pick has a SafeNest editorial safety assessment and has been checked against publicly available recall information.
           </span>
         </div>
         <p className="mt-2 text-xs text-muted-foreground">

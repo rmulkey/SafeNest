@@ -47,26 +47,26 @@ export const QUALIFICATION_RULES: QualificationRule[] = [
   {
     pattern: /\bno choking hazard(?:\s+for\s+[\w+\s]+?)?\b\.?/gi,
     replacement:
-      "SafeNest did not identify a small-part concern in the published product information, though it has not performed physical small-parts testing",
+      "SafeNest did not identify a small-parts concern in the published product information. SafeNest has not physically measured the product or performed small-parts testing.",
     reason:
       "'No choking hazard' is a test conclusion SafeNest cannot make. Reworded as the limit of what public information supports.",
   },
   {
     pattern: /\bsafe from birth\b\.?/gi,
     replacement:
-      "the manufacturer labels this product for use from birth",
+      "The manufacturer labels this product for use from birth.",
     reason: "Age suitability is the manufacturer's labelling, not a SafeNest finding.",
   },
   {
     pattern: /\bsafe for\s+(\d+)\s*m(?:o|os|onths?)?\s*\+?\.?/gi,
     replacement:
-      "the manufacturer labels this product for ages $1 months and older",
+      "The manufacturer labels this product for ages $1 months and older.",
     reason: "Attributes age guidance to the manufacturer rather than asserting safety.",
   },
   {
     pattern: /\bsafe for\s+(\d+)\s*(?:years?|yrs?)\s*\+?\.?/gi,
     replacement:
-      "the manufacturer labels this product for ages $1 years and older",
+      "The manufacturer labels this product for ages $1 years and older.",
     reason: "Attributes age guidance to the manufacturer rather than asserting safety.",
   },
   // ─── Unsupportable absolutes: remove, since no attribution rescues them ────
@@ -83,8 +83,23 @@ export const QUALIFICATION_RULES: QualificationRule[] = [
   {
     pattern: /\bpasses the small[\s-]*parts test\b\.?/gi,
     replacement:
-      "published dimensions suggest the parts are larger than the small-parts cylinder, which SafeNest has not verified by testing",
+      "Published dimensions suggest the parts are larger than the small-parts cylinder. SafeNest has not verified this by testing.",
     reason: "SafeNest runs no small-parts test, so it cannot report a pass.",
+  },
+  // ─── Dimensions: attribute, never present as independently measured ───────
+  {
+    pattern: /\ball\s+(\w+)\s+are\s+large diameter\s*\(([\d.]+)\s*inches\+?\)/gi,
+    replacement:
+      "The manufacturer or retailer reports dimensions of approximately $2 inches or larger.",
+    reason:
+      "Dimensions come from published product information, not from SafeNest measuring the product.",
+  },
+  {
+    pattern: /\ball\s+(\w+)\s+are\s+([\d.]+)\+?\s*inches(?:\s+(?:in\s+)?diameter)?/gi,
+    replacement:
+      "The manufacturer or retailer reports dimensions of approximately $2 inches or larger.",
+    reason:
+      "Dimensions come from published product information, not from SafeNest measuring the product.",
   },
   // ─── Property claims: mark as manufacturer-reported ───────────────────────
   {
@@ -101,7 +116,7 @@ export const QUALIFICATION_RULES: QualificationRule[] = [
   {
     pattern: /\bno small parts\b(?!\s+are described)/gi,
     replacement:
-      "no small parts are described in the published product information",
+      "No small parts are described in the published product information.",
     reason:
       "Restated as the limit of what the public information shows rather than an inspection finding.",
   },
@@ -140,31 +155,89 @@ export interface QualifyResult {
  * Deterministic and non-destructive: the input is never mutated, and unmatched
  * text passes through unchanged.
  */
+/**
+ * Split text into sentences, keeping their terminal punctuation.
+ *
+ * Rules are applied per sentence rather than across the whole string. Operating
+ * on the whole string produced run-on output in production: replacing
+ * "No choking hazard." consumed its full stop, so the following sentence was
+ * glued on ("...has not performed physical small-parts testing the manufacturer
+ * labels this product for ages 6 months and older"). Sentence boundaries are
+ * therefore preserved explicitly.
+ */
+function splitSentences(text: string): string[] {
+  // Split only where terminal punctuation is followed by whitespace and the
+  // start of a new sentence. A naive /[^.!?]+/ split broke decimals: "2.5
+  // inches" became "2." + "5 inches", silently destroying the measurement.
+  return text
+    .split(/(?<=[.!?])\s+(?=[A-Z0-9"'(])/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+}
+
+/** Ensure a fragment reads as a sentence: capitalised, single terminal stop. */
+function asSentence(fragment: string): string {
+  let out = tidy(fragment);
+  if (!out) return "";
+  out = out.charAt(0).toUpperCase() + out.slice(1);
+  if (!/[.!?]$/.test(out)) out += ".";
+  return out;
+}
+
 export function qualifyClaimText(input: string | null | undefined): QualifyResult {
   if (typeof input !== "string" || !input.trim()) {
     return { text: input ?? "", changed: false, appliedReasons: [] };
   }
 
-  let text = input;
   const reasons: string[] = [];
+  const outSentences: string[] = [];
 
-  for (const rule of QUALIFICATION_RULES) {
-    // Reset lastIndex: these are module-level global regexes reused across calls.
-    rule.pattern.lastIndex = 0;
-    if (!rule.pattern.test(text)) continue;
-    rule.pattern.lastIndex = 0;
-    text = text.replace(rule.pattern, rule.replacement ?? " ");
-    reasons.push(rule.reason);
+  for (const sentence of splitSentences(input)) {
+    let current = sentence;
+    let dropped = false;
+
+    for (const rule of QUALIFICATION_RULES) {
+      // Reset lastIndex: module-level global regexes are reused across calls.
+      rule.pattern.lastIndex = 0;
+      if (!rule.pattern.test(current)) continue;
+      rule.pattern.lastIndex = 0;
+
+      if (rule.replacement === null) {
+        // Removing the claim empties the sentence unless other content remains.
+        const remainder = tidy(current.replace(rule.pattern, " "));
+        reasons.push(rule.reason);
+        if (!/[a-z0-9]/i.test(remainder)) {
+          dropped = true;
+          break;
+        }
+        current = remainder;
+        continue;
+      }
+
+      current = current.replace(rule.pattern, rule.replacement);
+      reasons.push(rule.reason);
+    }
+
+    if (dropped) continue;
+    // Replacements may themselves contain multiple sentences; normalise each.
+    for (const piece of splitSentences(current)) {
+      const s = asSentence(piece);
+      if (s) outSentences.push(s);
+    }
   }
 
   if (reasons.length === 0) {
     return { text: input, changed: false, appliedReasons: [] };
   }
 
-  let out = recapitalize(tidy(text));
-  if (out && !/[.!?]$/.test(out)) out += ".";
+  // De-duplicate identical consecutive sentences produced by overlapping rules.
+  const deduped = outSentences.filter((s, i) => i === 0 || s !== outSentences[i - 1]);
 
-  return { text: out, changed: true, appliedReasons: reasons };
+  return {
+    text: deduped.join(" ").trim(),
+    changed: true,
+    appliedReasons: [...new Set(reasons)],
+  };
 }
 
 /** Convenience for arrays such as `materials`, `pros`, and `cons`. */

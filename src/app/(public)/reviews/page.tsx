@@ -11,12 +11,12 @@ import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 export const metadata: Metadata = {
   title: "All Toy Safety Reviews | SafeNest Toys",
   description:
-    "Browse every toy we've independently safety-scored out of 100 — material safety, choking risk, recalls, and developmental value, reviewed by parents.",
+    "Browse every toy with a SafeNest editorial safety assessment — material information, choking-risk research, recall checks, and developmental value, researched by parents.",
   alternates: { canonical: `${SITE_URL}/reviews` },
   ...generateOpenGraphMeta({
     title: "All Toy Safety Reviews | SafeNest Toys",
     description:
-      "Browse every toy we've independently safety-scored out of 100 — material safety, choking risk, recalls, and developmental value, reviewed by parents.",
+      "Browse every toy with a SafeNest editorial safety assessment — material information, choking-risk research, recall checks, and developmental value, researched by parents.",
     url: `${SITE_URL}/reviews`,
   }),
 };
@@ -70,8 +70,9 @@ export default async function ReviewsIndexPage() {
           All Toy Safety Reviews
         </h1>
         <p className="mt-3 max-w-2xl text-muted-foreground">
-          Every toy below has been independently safety-scored out of 100 and
-          checked against recall data. Sorted by safety score, highest first.
+          Every toy below has received a SafeNest editorial safety assessment and has been
+          checked against publicly available recall information. Scores are editorial
+          research tools, not certifications or guarantees. Sorted by safety score, highest first.
         </p>
         <div className="mt-4 flex items-center gap-2 text-sm text-primary-700">
           <ShieldCheck className="size-4" aria-hidden="true" />

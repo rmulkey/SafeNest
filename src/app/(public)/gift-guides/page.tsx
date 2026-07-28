@@ -7,12 +7,12 @@ import { SITE_URL } from "@/lib/seo/site-config";
 export const metadata: Metadata = {
   title: "Toy Gift Guides — Safe Gift Ideas by Occasion | SafeNest Toys",
   description:
-    "Safe, developmental toy gift ideas for first birthdays, baby showers, holidays, and more — every pick independently safety-scored and recall-checked.",
+    "Developmental toy gift ideas for first birthdays, baby showers, holidays, and more — every pick has a SafeNest editorial safety assessment and a recall check.",
   alternates: { canonical: `${SITE_URL}/gift-guides` },
   ...generateOpenGraphMeta({
     title: "Toy Gift Guides — Safe Gift Ideas by Occasion | SafeNest Toys",
     description:
-      "Safe, developmental toy gift ideas for first birthdays, baby showers, holidays, and more — every pick independently safety-scored and recall-checked.",
+      "Developmental toy gift ideas for first birthdays, baby showers, holidays, and more — every pick has a SafeNest editorial safety assessment and a recall check.",
     url: `${SITE_URL}/gift-guides`,
   }),
 };
@@ -26,7 +26,7 @@ export default function GiftGuidesHubPage() {
         </h1>
         <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
           Shopping for a little one? Every gift in these guides has been
-          independently safety-scored, recall-checked, and reviewed for
+          given a SafeNest editorial safety assessment, checked against publicly available recall information, and reviewed for
           developmental value — so you can give something both delightful and
           genuinely safe.
         </p>

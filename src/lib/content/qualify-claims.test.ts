@@ -29,17 +29,78 @@ describe("qualifyClaimText — the exact live Green Toys string", () => {
 
   it("discloses that SafeNest has not performed small-parts testing", () => {
     const { text } = qualifyClaimText(LIVE);
-    expect(text.toLowerCase()).toMatch(/not performed physical small-parts testing/);
+    expect(text.toLowerCase()).toMatch(
+      /has not physically measured the product or performed small-parts testing/
+    );
   });
 
-  it("preserves the published measurement rather than deleting information", () => {
+  it("retains the published measurement but attributes it", () => {
     const { text } = qualifyClaimText(LIVE);
     expect(text).toContain("2.5 inches");
+    expect(text.toLowerCase()).toContain("manufacturer or retailer reports");
+    // Never presented as something SafeNest measured.
+    expect(text.toLowerCase()).not.toMatch(/we measured|safenest measured/);
   });
 
   it("produces text containing no prohibited claims", () => {
     const { text } = qualifyClaimText(LIVE);
     expect(findProhibitedClaims(text)).toEqual([]);
+  });
+});
+
+describe("qualifyClaimText — grammar (regression for the run-on shipped to production)", () => {
+  const LIVE =
+    "All cups are large diameter (2.5 inches+). No choking hazard. Safe for 6m+.";
+
+  it("does not glue two clauses together without punctuation", () => {
+    // Production rendered: "...has not performed physical small-parts testing
+    // the manufacturer labels this product for ages 6 months and older."
+    const { text } = qualifyClaimText(LIVE);
+    expect(text).not.toMatch(/testing the manufacturer/i);
+    expect(text).not.toMatch(/\btesting\s+the\b/i);
+  });
+
+  it("produces only well-formed sentences", () => {
+    const { text } = qualifyClaimText(LIVE);
+    const sentences = text.split(/(?<=[.!?])\s+/).filter(Boolean);
+    for (const s of sentences) {
+      // Each sentence starts with a capital (or digit) and ends with a stop.
+      expect(s, `bad sentence: ${s}`).toMatch(/^[A-Z0-9"'(]/);
+      expect(s, `bad sentence: ${s}`).toMatch(/[.!?]$/);
+      // No lowercase sentence starts, which is the run-on signature.
+      expect(s).not.toMatch(/^[a-z]/);
+    }
+  });
+
+  it("keeps each qualification as its own sentence", () => {
+    const { text } = qualifyClaimText(LIVE);
+    expect(text).toContain("The manufacturer labels this product for ages 6 months and older.");
+    expect(text).toContain("SafeNest has not physically measured the product or performed small-parts testing.");
+  });
+
+  it("never emits a doubled or orphaned full stop", () => {
+    for (const input of [
+      LIVE,
+      "Completely safe. Non-toxic.",
+      "No small parts. Safe from birth.",
+      "Guaranteed safe.",
+    ]) {
+      const { text } = qualifyClaimText(input);
+      expect(text).not.toMatch(/\.\s*\./);
+      expect(text).not.toMatch(/^\s*\./);
+    }
+  });
+
+  it("drops a sentence entirely when its only content was an unsupportable absolute", () => {
+    const { text } = qualifyClaimText("Guaranteed safe.");
+    expect(text).toBe("");
+  });
+
+  it("keeps surrounding content when a removal leaves real information", () => {
+    const { text } = qualifyClaimText("Solid maple construction, completely safe.");
+    expect(text.toLowerCase()).toContain("solid maple construction");
+    expect(text.toLowerCase()).not.toContain("completely safe");
+    expect(text).toMatch(/[.!?]$/);
   });
 });
 
@@ -75,7 +136,7 @@ describe("qualifyClaimText — absolute safety verdicts", () => {
   it("never reports passing a small-parts test", () => {
     const { text } = qualifyClaimText("Passes the small-parts test.");
     expect(text.toLowerCase()).not.toContain("passes the small-parts test");
-    expect(text.toLowerCase()).toContain("has not verified by testing");
+    expect(text.toLowerCase()).toContain("has not verified this by testing");
   });
 });
 
