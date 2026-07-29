@@ -4,6 +4,12 @@ import { useEffect, useState } from "react";
 import { BuyButton } from "./BuyButton";
 
 interface StickyBuyBarProps {
+  /**
+   * Evidence confidence for this product. When it is "insufficient" the bar
+   * shows no number at all, matching the review body — a persistent CTA must not
+   * become a back door to a score the page deliberately withheld.
+   */
+  confidence?: "high" | "medium" | "low" | "insufficient";
   productName: string;
   url: string;
   tag: string;
@@ -16,7 +22,7 @@ interface StickyBuyBarProps {
  *
  * Hidden on desktop (lg+) where the inline CTAs are always reachable.
  */
-export function StickyBuyBar({ productName, url, tag, safetyScore }: StickyBuyBarProps) {
+export function StickyBuyBar({ productName, url, tag, safetyScore, confidence }: StickyBuyBarProps) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -41,10 +47,12 @@ export function StickyBuyBar({ productName, url, tag, safetyScore }: StickyBuyBa
         <div className="flex-1 min-w-0">
           <p className="truncate text-sm font-medium text-foreground">{productName}</p>
           <p className="text-xs text-secondary-600 font-medium">
-            Safety Score {safetyScore}/100
+            {confidence === "insufficient"
+              ? "Evidence insufficient for a score"
+              : `Editorial score ${safetyScore}/100`}
           </p>
         </div>
-        <BuyButton url={url} tag={tag} size="md" label="Buy" className="shrink-0" />
+        <BuyButton url={url} tag={tag} size="md" label="Check current price at Amazon" className="shrink-0" />
       </div>
     </div>
   );

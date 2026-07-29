@@ -16,6 +16,7 @@ import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { BuyButton } from "@/components/affiliate/BuyButton";
 import { AwardBadge, computeAwards } from "@/components/reviews/AwardBadge";
 import type { ToyReviewSummary } from "@/lib/seo/programmatic-pages";
+import { formatAgeRange } from "@/lib/content/format-age";
 
 const AMAZON_TAG = "safeneststore-20";
 
@@ -194,8 +195,10 @@ export default async function CategoryPage({
                       <div className="flex justify-between">
                         <dt>Age Range</dt>
                         <dd className="font-medium text-foreground">
-                          {review.ageRange.minMonths}–
-                          {review.ageRange.maxMonths} months
+                          {formatAgeRange(
+                            review.ageRange.minMonths,
+                            review.ageRange.maxMonths
+                          )}
                         </dd>
                       </div>
                     </dl>

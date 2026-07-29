@@ -18,8 +18,11 @@ import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
 import { toyReviewBySlugQuery } from "@/lib/sanity/queries";
 import { SafetyScoreDisplay } from "@/components/reviews/SafetyScoreDisplay";
-import { EvidenceDisclosure } from "@/components/reviews/EvidenceDisclosure";
-import { EvidenceConfidence } from "@/components/reviews/EvidenceConfidence";
+import { EvidenceSection } from "@/components/reviews/EvidenceSection";
+import {
+  PurchaseDecisionPanel,
+  type MerchantOption,
+} from "@/components/reviews/PurchaseDecisionPanel";
 import { assessSafety } from "@/lib/scoring/assess-safety";
 import {
   qualifyClaimText,
@@ -31,6 +34,7 @@ import { InternalLinks } from "@/components/seo/InternalLinks";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { BuyButton } from "@/components/affiliate/BuyButton";
 import { StickyBuyBar } from "@/components/affiliate/StickyBuyBar";
+import { formatAgeRange } from "@/lib/content/format-age";
 
 interface ToyReview {
   _id: string;
@@ -132,25 +136,76 @@ export async function generateMetadata({
   };
 }
 
-function formatAgeRange(minMonths: number, maxMonths: number): string {
-  if (maxMonths < 12) {
-    return `${minMonths}–${maxMonths} months`;
-  }
-  const minYears = Math.floor(minMonths / 12);
-  const maxYears = Math.floor(maxMonths / 12);
-  if (minMonths < 12) {
-    return `${minMonths}mo–${maxYears}yr`;
-  }
-  return `${minYears}–${maxYears} years`;
+
+
+/** First non-blank entry of a list, or null. Never invents a value. */
+function firstNonEmpty(list: string[] | null | undefined): string | null {
+  return list?.find((v) => typeof v === "string" && v.trim().length > 0) ?? null;
+}
+
+/**
+ * Second distinct non-blank entry, used for "Main limitation" so it does not
+ * simply repeat "Not ideal for". Falls back to null, and the caller then reuses
+ * the first con rather than fabricating a different limitation.
+ */
+function secondNonEmpty(list: string[] | null | undefined): string | null {
+  const found = (list ?? []).filter(
+    (v) => typeof v === "string" && v.trim().length > 0
+  );
+  return found.length > 1 ? found[1] : null;
+}
+
+/**
+ * Display name for an affiliate partner id. Unknown partners fall back to the
+ * raw id rather than being labelled "Amazon", which would misattribute the link.
+ */
+function merchantNameFor(partnerId: string): string {
+  const known: Record<string, string> = {
+    amazon: "Amazon",
+    target: "Target",
+    walmart: "Walmart",
+  };
+  return known[partnerId?.toLowerCase()] ?? partnerId ?? "the merchant";
 }
 
 export default async function ToyReviewPage({ params }: PageProps) {
   const { slug } = await params;
+
   const review = await getReview(slug);
 
   if (!review) {
     notFound();
   }
+
+  // Computed once and shared by the evidence section, the purchase panel and the
+  // sticky bar, so all three report the same confidence and cannot disagree.
+  const assessment = assessSafety(
+    {
+      materialSafety: review.materialSafety,
+      chokingRisk: review.chokingRisk,
+      recallHistory: review.recallHistory,
+      certificationPresence: review.certificationPresence,
+    },
+    review.factorEvidence ?? {},
+    { recallCheckedAt: review.recallCheckedAt ?? null }
+  );
+
+  const merchants: MerchantOption[] = (review.affiliateLinks ?? []).map(
+    (link) => ({
+      merchant: merchantNameFor(link.partnerId),
+      url: link.url,
+      affiliate: Boolean(link.tag),
+      tag: link.tag,
+      // No priceCheckedAt in the data model, so none is passed. The panel
+      // renders no date rather than inventing one.
+    })
+  );
+
+  // Conservative fallbacks. Each is an existing editorial field, used verbatim;
+  // when the field is absent the row is dropped instead of being generated.
+  const bestFor = firstNonEmpty(review.pros);
+  const notIdealFor = firstNonEmpty(review.cons);
+  const mainLimitation = secondNonEmpty(review.cons) ?? notIdealFor;
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 pb-24 lg:pb-12">
@@ -217,10 +272,11 @@ export default async function ToyReviewPage({ params }: PageProps) {
         <div className="mb-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 rounded-xl border border-border bg-accent-50/50">
           <div className="flex-1">
             <p className="text-sm font-medium text-foreground">
-              Buy {review.productName}
+              {review.productName}
             </p>
             <p className="text-xs text-muted-foreground mt-0.5">
-              SafeNest Toys earns a commission from qualifying purchases.
+              SafeNest may earn a commission from qualifying purchases at no
+              additional cost to you.
             </p>
           </div>
           {review.affiliateLinks.map((link, i) => (
@@ -229,7 +285,7 @@ export default async function ToyReviewPage({ params }: PageProps) {
               url={link.url}
               tag={link.tag}
               size="lg"
-              label="Check Price on Amazon"
+              label="Check current price at Amazon"
               productId={review.slug?.current ?? review.productName}
             />
           ))}
@@ -311,58 +367,48 @@ export default async function ToyReviewPage({ params }: PageProps) {
         </section>
       )}
 
-      {/* Pros & Cons */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <div>
-          <h2 className="text-xl font-semibold mb-2 text-safety-high">Pros</h2>
-          <ul className="space-y-1 text-sm">
-            {review.pros.map((pro, i) => (
-              <li key={i} className="flex items-start gap-2">
-                <span className="text-safety-high mt-0.5">✓</span>
-                <span>{pro}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h2 className="text-xl font-semibold mb-2 text-safety-low">Cons</h2>
-          <ul className="space-y-1 text-sm">
-            {review.cons.map((con, i) => (
-              <li key={i} className="flex items-start gap-2">
-                <span className="text-safety-low mt-0.5">✗</span>
-                <span>{con}</span>
-              </li>
-            ))}
-          </ul>
+      {/* Pros & Cons — labelled as editorial opinion.
+          Entries such as "Premium materials" and "Beautiful design" are
+          judgements, not verified safety facts, so the section states whose
+          judgement it is rather than letting them read as findings. */}
+      <section aria-labelledby="opinion-heading" className="mb-6">
+        <h2 id="opinion-heading" className="text-xl font-semibold mb-1">
+          What we liked, and what we didn&apos;t
+        </h2>
+        <p className="mb-3 text-xs text-muted-foreground">
+          SafeNest&apos;s editorial opinion, based on publicly available product
+          information. These are preferences and observations, not verified
+          safety findings.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <h3 className="text-lg font-semibold mb-2 text-safety-high">Pros</h3>
+            <ul className="space-y-1 text-sm">
+              {review.pros.map((pro, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span className="text-safety-high mt-0.5" aria-hidden="true">
+                    &#10003;
+                  </span>
+                  <span>{pro}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-2 text-safety-low">Cons</h3>
+            <ul className="space-y-1 text-sm">
+              {review.cons.map((con, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span className="text-safety-low mt-0.5" aria-hidden="true">
+                    &#10007;
+                  </span>
+                  <span>{con}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
-
-      {/* Mid-content Buy CTA — captures readers who decided after pros/cons */}
-      {review.affiliateLinks && review.affiliateLinks.length > 0 && (
-        <section className="mb-8 rounded-xl border border-secondary-200 bg-secondary-50/60 p-5 text-center">
-          <p className="text-base font-semibold text-foreground">
-            Our verdict: a {review.safetyScore}/100 safety pick
-          </p>
-          <p className="mt-1 mb-4 text-sm text-muted-foreground">
-            {review.pros[0] ? `${review.pros[0]}.` : "A solid, well-tested choice for your child."} See the latest price and availability.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            {review.affiliateLinks.map((link, i) => (
-              <BuyButton
-                key={i}
-                url={link.url}
-                tag={link.tag}
-                size="lg"
-                label={`Check Price on Amazon`}
-                productId={review.slug?.current ?? review.productName}
-              />
-            ))}
-          </div>
-          <p className="mt-3 text-xs text-muted-foreground">
-            As an Amazon Associate, SafeNest Toys earns from qualifying purchases.
-          </p>
-        </section>
-      )}
 
       {/* Alternatives */}
       {review.alternatives && review.alternatives.length > 0 && (
@@ -386,25 +432,13 @@ export default async function ToyReviewPage({ params }: PageProps) {
         </section>
       )}
 
-      {/* Evidence confidence: separates the editorial score from how well the
-          underlying claims are actually supported, with per-factor provenance. */}
-      <EvidenceConfidence
-        assessment={assessSafety(
-          {
-            materialSafety: review.materialSafety,
-            chokingRisk: review.chokingRisk,
-            recallHistory: review.recallHistory,
-            certificationPresence: review.certificationPresence,
-          },
-          review.factorEvidence ?? {},
-          { recallCheckedAt: review.recallCheckedAt ?? null }
-        )}
+      {/* Evidence area. One component, so the four factors and the
+          "how we assessed" disclosure cannot be separated by a component
+          boundary — which is how "Certification claims" previously ended up
+          rendering after the disclosure in the streamed HTML. */}
+      <EvidenceSection
+        assessment={assessment}
         storedScore={review.safetyScore}
-      />
-
-      {/* Evidence-quality disclosure: testing status, manufacturer claims,
-          recall-check date, score caveat, accountability, corrections. */}
-      <EvidenceDisclosure
         certifications={review.certifications}
         recallCheckedAt={review.recallCheckedAt}
         hasActiveRecall={review.hasActiveRecall}
@@ -412,6 +446,24 @@ export default async function ToyReviewPage({ params }: PageProps) {
         publishedAt={review.publishedAt}
         lastReviewedAt={review.lastReviewedAt}
       />
+
+      {/* Purchase decision panel. Every row is derived from data that already
+          exists on the review; a row with no trustworthy source is omitted
+          rather than filled in. */}
+      {merchants.length > 0 && (
+        <PurchaseDecisionPanel
+          productName={review.productName}
+          productId={review.slug?.current ?? review.productName}
+          merchants={merchants}
+          ageMinMonths={review.ageRange?.minMonths}
+          ageMaxMonths={review.ageRange?.maxMonths}
+          confidence={assessment.confidence}
+          bestFor={bestFor}
+          notIdealFor={notIdealFor}
+          mainLimitation={mainLimitation}
+          safetyScore={review.safetyScore}
+        />
+      )}
 
       {/* Internal Links - Related Content (Requirement 4.3) */}
       <InternalLinks
@@ -427,6 +479,7 @@ export default async function ToyReviewPage({ params }: PageProps) {
           url={review.affiliateLinks[0].url}
           tag={review.affiliateLinks[0].tag}
           safetyScore={review.safetyScore}
+          confidence={assessment.confidence}
         />
       )}
     </div>

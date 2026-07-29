@@ -10,6 +10,7 @@ import {
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
 import { InternalLinks } from "@/components/seo/InternalLinks";
+import { formatAgeRange } from "@/lib/content/format-age";
 
 export async function generateStaticParams() {
   return getValidToyTypeParams();
@@ -97,8 +98,11 @@ export default async function SafeToyTypePage({
                   </p>
                 )}
                 <p className="text-sm text-muted-foreground mt-1">
-                  Ages: {review.ageRange.minMonths}–{review.ageRange.maxMonths}{" "}
-                  months
+                  Ages:{" "}
+                  {formatAgeRange(
+                    review.ageRange.minMonths,
+                    review.ageRange.maxMonths
+                  )}
                 </p>
               </div>
               <div className="flex gap-4 shrink-0">

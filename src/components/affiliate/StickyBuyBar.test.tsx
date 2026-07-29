@@ -18,9 +18,24 @@ describe("StickyBuyBar component", () => {
     expect(html).toContain("Melissa &amp; Doug Wooden Blocks");
   });
 
-  it("renders the safety score", () => {
+  it("labels the score as editorial rather than as a safety verdict", () => {
+    // "Safety Score 92/100" read as a measured safety result. The bar now names
+    // it for what it is: SafeNest's editorial score.
     const html = renderToStaticMarkup(<StickyBuyBar {...props} />);
-    expect(html).toContain("Safety Score 92/100");
+    expect(html).toContain("Editorial score 92/100");
+    expect(html).not.toContain("Safety Score");
+  });
+
+  it("shows no score at all when the evidence is insufficient", () => {
+    // A persistent CTA must not surface a number the review body withheld.
+    const html = renderToStaticMarkup(
+      <StickyBuyBar {...props} confidence="insufficient" />
+    );
+    expect(html).toContain("Evidence insufficient for a score");
+    // Matched as "N/100" so SVG path coordinates containing the digits are not
+    // mistaken for a rendered score.
+    expect(html).not.toMatch(/\d+\/100/);
+    expect(html).not.toContain("Editorial score");
   });
 
   it("contains a buy link whose href includes the affiliate tag exactly once", () => {
@@ -39,8 +54,10 @@ describe("StickyBuyBar component", () => {
     expect(html).toContain('target="_blank"');
   });
 
-  it("uses the 'Buy' label for the compact sticky button", () => {
+  it("uses the specified merchant CTA, not a generic 'Buy'", () => {
+    // A standalone "Buy" is a generic CTA with no merchant or action named.
     const html = renderToStaticMarkup(<StickyBuyBar {...props} />);
-    expect(html).toContain("Buy");
+    expect(html).toContain("Check current price at Amazon");
+    expect(html).not.toMatch(/>Buy</);
   });
 });

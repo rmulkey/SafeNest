@@ -10,6 +10,7 @@ import { InternalLinks } from '@/components/seo/InternalLinks'
 import { generateOpenGraphMeta } from '@/components/seo/OpenGraphMeta'
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema'
 import { SITE_URL } from '@/lib/seo/site-config'
+import { formatAgeRange } from '@/lib/content/format-age'
 
 interface ToyReviewRef {
   _id: string
@@ -32,17 +33,7 @@ interface BuyingGuide {
   _createdAt: string
 }
 
-function formatAgeRange(minMonths: number, maxMonths: number): string {
-  if (minMonths < 12 && maxMonths < 12) {
-    return `${minMonths}–${maxMonths} months`
-  }
-  const minYears = Math.floor(minMonths / 12)
-  const maxYears = Math.floor(maxMonths / 12)
-  if (minMonths < 12) {
-    return `${minMonths} months – ${maxYears} years`
-  }
-  return `${minYears}–${maxYears} years`
-}
+
 
 export async function generateMetadata({
   params,

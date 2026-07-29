@@ -6,15 +6,18 @@ import Link from "next/link";
 import { Baby, Sparkles, Wallet, Loader2, RotateCcw, ShieldCheck } from "lucide-react";
 import { urlForImage } from "@/lib/sanity/client";
 import { BuyButton } from "@/components/affiliate/BuyButton";
+import { formatAgeRange } from "@/lib/content/format-age";
 
 /* ── Static option data (matches real Sanity category slugs) ──────────────── */
 
+// `months` is the representative age used to query; the label is formatted from
+// the range it stands for so the finder matches the rest of the site.
 const AGE_OPTIONS = [
-  { label: "0–6 mo", months: 4 },
-  { label: "6–12 mo", months: 9 },
-  { label: "1–2 yr", months: 18 },
-  { label: "2–3 yr", months: 30 },
-  { label: "3+ yr", months: 42 },
+  { label: formatAgeRange(0, 6), months: 4 },
+  { label: formatAgeRange(6, 12), months: 9 },
+  { label: formatAgeRange(12, 24), months: 18 },
+  { label: formatAgeRange(24, 36), months: 30 },
+  { label: "3 years and up", months: 42 },
 ] as const;
 
 const INTEREST_OPTIONS = [

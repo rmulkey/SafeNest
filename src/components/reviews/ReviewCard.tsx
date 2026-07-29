@@ -8,6 +8,7 @@
  */
 
 import Link from "next/link";
+import { formatAgeRange } from "@/lib/content/format-age";
 
 interface ReviewCardProps {
   productName: string;
@@ -25,17 +26,7 @@ function getScoreColor(score: number): string {
   return "text-safety-low";
 }
 
-function formatAgeRange(minMonths: number, maxMonths: number): string {
-  if (maxMonths < 12) {
-    return `${minMonths}–${maxMonths} months`;
-  }
-  const minYears = Math.floor(minMonths / 12);
-  const maxYears = Math.floor(maxMonths / 12);
-  if (minMonths < 12) {
-    return `${minMonths}mo–${maxYears}yr`;
-  }
-  return `${minYears}–${maxYears} years`;
-}
+
 
 export function ReviewCard({
   productName,

@@ -22,6 +22,7 @@ import { getReviewCount, reviewCountLabel } from "@/lib/content/site-stats";
 import { FAQSchema } from "@/components/seo/FAQSchema";
 import { OrganizationSchema } from "@/components/seo/OrganizationSchema";
 import { WebSiteSchema } from "@/components/seo/WebSiteSchema";
+import { formatAgeRange as formatAgeRangeMonths } from "@/lib/content/format-age";
 
 export const metadata: Metadata = {
   title: "SafeNest Toys — Safer Toys, Smarter Play, Built by Parents",
@@ -87,13 +88,12 @@ interface Endorsement {
   profileUrl?: string;
 }
 
+/**
+ * Thin adapter over the centralised formatter. The local implementation this
+ * replaced emitted "6mo – 3yr" and "1 – 5 years".
+ */
 function formatAgeRange(ageRange: { minMonths: number; maxMonths: number }) {
-  const minYears = Math.floor(ageRange.minMonths / 12);
-  const maxYears = Math.floor(ageRange.maxMonths / 12);
-  if (ageRange.minMonths < 12) {
-    return `${ageRange.minMonths}mo – ${maxYears}yr`;
-  }
-  return `${minYears} – ${maxYears} years`;
+  return formatAgeRangeMonths(ageRange.minMonths, ageRange.maxMonths);
 }
 
 function formatDate(dateString: string) {
@@ -104,12 +104,15 @@ function formatDate(dateString: string) {
   });
 }
 
+// Age labels come from the centralised formatter so the cards read the same as
+// every review, card and guide. The abbreviated "0–6 mo" / "1–2 yr" forms these
+// replaced were the last hand-written age strings on the site.
 const ageCards = [
-  { href: "/best-toys/0-6-months", label: "Newborn", age: "0–6 mo", icon: Baby },
-  { href: "/best-toys/6-12-months", label: "Explorer", age: "6–12 mo", icon: Baby },
-  { href: "/best-toys/1-2-years", label: "Toddler", age: "1–2 yr", icon: Blocks },
-  { href: "/best-toys/2-3-years", label: "Builder", age: "2–3 yr", icon: TreePine },
-  { href: "/best-toys/3-plus-years", label: "Preschool", age: "3+ yr", icon: BookOpen },
+  { href: "/best-toys/0-6-months", label: "Newborn", age: formatAgeRangeMonths(0, 6), icon: Baby },
+  { href: "/best-toys/6-12-months", label: "Explorer", age: formatAgeRangeMonths(6, 12), icon: Baby },
+  { href: "/best-toys/1-2-years", label: "Toddler", age: formatAgeRangeMonths(12, 24), icon: Blocks },
+  { href: "/best-toys/2-3-years", label: "Builder", age: formatAgeRangeMonths(24, 36), icon: TreePine },
+  { href: "/best-toys/3-plus-years", label: "Preschool", age: "3 years and up", icon: BookOpen },
 ];
 
 const homepageFaqs = [

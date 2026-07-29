@@ -10,7 +10,7 @@
  */
 
 import { createHmac, timingSafeEqual } from "crypto";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 import { sanityClient, sanityWriteClient } from "@/lib/sanity/client";
 import { computeSafetyScore } from "@/lib/scoring/safety-score";
@@ -153,6 +153,23 @@ function revalidateForContentChange(type: string, slug?: string): void {
   if (pathPrefix && slug) {
     // Revalidate the specific page
     revalidatePath(`${pathPrefix}/${slug}`);
+  }
+
+  // Routes rendered with `use cache` are keyed by cacheTag, so the tag has to be
+  // invalidated as well as the path or the cached render survives the publish.
+  if (slug) {
+    // Only the routes that actually call cacheTag(): guides/[slug] and
+    // blog/[slug] render with `use cache`, so revalidatePath alone left their
+    // cached render in place after a publish. Review pages are not tagged.
+    const tagPrefix: Record<string, string> = {
+      buyingGuide: "buying-guide",
+      blogPost: "blog-post",
+    };
+    const prefix = tagPrefix[type];
+    // "max" gives stale-while-revalidate semantics: readers keep getting the
+    // cached page while the new render warms, so a publish never shows a blank.
+    // The single-argument form of revalidateTag is deprecated in Next 16.
+    if (prefix) revalidateTag(`${prefix}-${slug}`, "max");
   }
 
   // Revalidate the listing page / homepage as content lists may have changed

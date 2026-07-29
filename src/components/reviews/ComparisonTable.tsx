@@ -4,6 +4,7 @@ import { urlForImage } from "@/lib/sanity/client";
 import { BuyButton } from "@/components/affiliate/BuyButton";
 import { AwardBadge, type AwardVariant } from "@/components/reviews/AwardBadge";
 import type { ToyReviewSummary } from "@/lib/seo/programmatic-pages";
+import { formatAgeRange } from "@/lib/content/format-age";
 
 const AMAZON_TAG = "safeneststore-20";
 
@@ -111,7 +112,10 @@ export function ComparisonTable({ reviews, awards }: ComparisonTableProps) {
                     </Link>
                   </td>
                   <td className="px-4 py-4 text-muted-foreground whitespace-nowrap">
-                    {review.ageRange.minMonths}–{review.ageRange.maxMonths} mo
+                    {formatAgeRange(
+                      review.ageRange.minMonths,
+                      review.ageRange.maxMonths
+                    )}
                   </td>
                   <td className="px-4 py-4 text-center">
                     <span className="font-semibold text-secondary-700">
@@ -173,8 +177,11 @@ export function ComparisonTable({ reviews, awards }: ComparisonTableProps) {
                     {review.productName}
                   </h3>
                   <p className="mt-0.5 text-xs text-muted-foreground">
-                    Ages {review.ageRange.minMonths}–{review.ageRange.maxMonths}{" "}
-                    months
+                    Ages{" "}
+                    {formatAgeRange(
+                      review.ageRange.minMonths,
+                      review.ageRange.maxMonths
+                    )}
                   </p>
                   {award && (
                     <span className="mt-2 inline-block">

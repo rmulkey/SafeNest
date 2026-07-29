@@ -7,6 +7,7 @@ import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
 import { ScoreBadge } from "@/components/reviews/ScoreBadge";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
+import { formatAgeRange } from "@/lib/content/format-age";
 
 export const metadata: Metadata = {
   title: "All Toy Safety Reviews | SafeNest Toys",
@@ -47,11 +48,7 @@ const reviewsIndexQuery = `*[_type == "toyReview"] | order(safetyScore desc) {
   mainImage
 }`;
 
-function formatAgeRange(minMonths: number, maxMonths: number): string {
-  const fmt = (m: number) =>
-    m < 12 ? `${m}mo` : Number.isInteger(m / 12) ? `${m / 12}yr` : `${m}mo`;
-  return `${fmt(minMonths)} – ${fmt(maxMonths)}`;
-}
+
 
 export default async function ReviewsIndexPage() {
   const reviews = await sanityClient.fetch<ReviewListItem[]>(reviewsIndexQuery);

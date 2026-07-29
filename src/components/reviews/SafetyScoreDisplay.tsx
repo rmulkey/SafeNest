@@ -54,7 +54,10 @@ export function SafetyScoreDisplay({
   return (
     <div className="rounded-lg border border-border p-4 md:p-6">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold">Safety Score</h3>
+        {/* h2, not h3: these are top-level sections of the review, siblings
+            of "Materials" and "How we assessed this toy". As h3 they skipped
+            a level straight from the page h1. */}
+        <h2 className="text-lg font-semibold">Safety Score</h2>
         <span
           className={`text-2xl font-bold ${getScoreTextColor(score)}`}
           aria-label={`Overall safety score: ${score} out of 100`}

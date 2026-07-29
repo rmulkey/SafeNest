@@ -61,6 +61,40 @@ const FORBIDDEN = [
   "completely safe",
   "certified by safenest",
   "all 50 toys",
+  // ─── Final production cleanup ─────────────────────────────────────────────
+  // Unsupported price language. SafeNest does not track prices, so it cannot
+  // claim to show the latest or best one. "current price" is permitted only
+  // inside the merchant CTA, which is checked separately below.
+  "see the latest price and availability",
+  "latest price",
+  "best price",
+  "buy now",
+  // Endorsement language: a score is not a pick, and SafeNest approves nothing.
+  "safety pick",
+  "safenest approved",
+  "recommended as safe",
+  // The removed numerical-cap model.
+  "editorial scoring, with limits",
+  "with limits",
+  // Unattributed manufacturer expert claims.
+  "developmentally staged by experts",
+  "expert-designed",
+  "expert designed",
+  "expert-approved",
+  "professionally reviewed",
+  // Age-formatter regressions.
+  "2 years\u20133 years",
+  "1 years",
+  "years\u2013 ",
+];
+
+/**
+ * Phrases that are allowed, but only inside a specific context. The merchant CTA
+ * legitimately says "Check current price at Amazon" — that describes what the
+ * reader will do at the merchant, and claims nothing about SafeNest checking it.
+ */
+const CONTEXTUAL_ALLOWANCES = [
+  { phrase: "current price", allowedWithin: "check current price at" },
 ];
 
 /** Allowed when explicitly negated, e.g. "not laboratory tested". */
@@ -105,7 +139,11 @@ for (const path of PATHS) {
       const idx = lower.indexOf(phrase, from);
       if (idx === -1) break;
       const preceding = lower.slice(Math.max(0, idx - 60), idx);
-      if (!NEGATION.test(preceding)) hits.push(phrase);
+      const window = lower.slice(Math.max(0, idx - 40), idx + phrase.length + 40);
+      const allowed = CONTEXTUAL_ALLOWANCES.some(
+        (a) => a.phrase === phrase && window.includes(a.allowedWithin)
+      );
+      if (!allowed && !NEGATION.test(preceding)) hits.push(phrase);
       from = idx + phrase.length;
     }
   }

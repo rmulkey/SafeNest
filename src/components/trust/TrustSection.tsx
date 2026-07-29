@@ -62,7 +62,10 @@ const methodologySteps = [
   },
   {
     icon: BadgeCheck,
-    title: "Editorial scoring, with limits",
+    // "Editorial scoring, with limits" read as a reference to the numerical
+    // score caps that were removed from the methodology. The heading now names
+    // the two things actually published side by side.
+    title: "Editorial scores and evidence confidence",
     body: "Each toy gets a Safety and Development score with the factor weights published, plus an evidence-confidence rating. Scores are editorial assessments — not certifications or guarantees.",
   },
 ];

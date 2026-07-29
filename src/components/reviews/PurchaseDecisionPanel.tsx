@@ -24,16 +24,21 @@ import { EVIDENCE_CONFIDENCE_LABELS } from "@/lib/scoring/evidence-status";
  *    one option and no comparison UI, since a one-row "comparison" is misleading.
  */
 
-export interface PurchaseMerchant {
+export interface MerchantOption {
   /** Display name, e.g. "Amazon". */
-  name: string;
+  merchant: string;
   url: string;
+  /** Whether the link carries affiliate attribution. */
+  affiliate: boolean;
   /**
-   * Affiliate tag, appended by BuyButton. Required, matching the shape of
-   * `toyReview.affiliateLinks` — a link without a tag would drop attribution.
+   * Affiliate tag appended by BuyButton. Required when `affiliate` is true —
+   * a link without a tag silently drops attribution.
    */
   tag: string;
-  /** Only set when a real price check was recorded. */
+  /**
+   * Set ONLY when a real price check was recorded. There is no default and no
+   * inferred value: an absent timestamp renders no date at all.
+   */
   priceCheckedAt?: string | null;
 }
 
@@ -41,7 +46,7 @@ export interface PurchaseDecisionPanelProps {
   productName: string;
   /** Review slug or document id, used for affiliate click attribution. */
   productId?: string;
-  merchants: PurchaseMerchant[];
+  merchants: MerchantOption[];
   ageMinMonths?: number;
   ageMaxMonths?: number;
   confidence: Confidence;
@@ -101,8 +106,15 @@ export function PurchaseDecisionPanel({
           <Row label="Main limitation">{mainLimitation}</Row>
         )}
         <Row label="Evidence confidence">
-          {EVIDENCE_CONFIDENCE_LABELS[confidence]}
-          {typeof safetyScore === "number" && (
+          {/* The row is already labelled "Evidence confidence", so the value is
+              just the level — "Medium", not "Medium evidence confidence". */}
+          {EVIDENCE_CONFIDENCE_LABELS[confidence].replace(
+            / evidence confidence$/i,
+            ""
+          )}
+          {/* Insufficient evidence suppresses the number here too, so the panel
+              cannot become a back door to a score the page withheld. */}
+          {confidence !== "insufficient" && typeof safetyScore === "number" && (
             <>
               {" "}
               alongside an editorial assessment of {safetyScore}/100.
@@ -111,19 +123,25 @@ export function PurchaseDecisionPanel({
             </>
           )}
         </Row>
-        <Row label="Where to buy">
-          {merchants.length === 1
-            ? `${primary.name} is the only merchant we link for this product.`
-            : `${merchants.length} merchants linked: ${merchants
-                .map((m) => m.name)
-                .join(", ")}.`}
-          {/* No price shown unless a real check timestamp exists. */}
-          {primary?.priceCheckedAt ? (
-            <> Price last checked {primary.priceCheckedAt.slice(0, 10)}.</>
-          ) : (
-            <> Check the merchant for current price and availability.</>
-          )}
-        </Row>
+        {/* A single merchant is shown as one truthful option. No comparison
+            table is rendered for one row, because a one-row "comparison"
+            implies alternatives we do not have. */}
+        {primary && (
+          <Row label="Merchant options">
+            {merchants.length === 1
+              ? `${primary.merchant} is the only merchant SafeNest links for this product.`
+              : `${merchants.length} merchants linked: ${merchants
+                  .map((m) => m.merchant)
+                  .join(", ")}.`}
+            {/* A price-check date appears only when the data actually carries
+                one. We do not track prices, so there is nothing to imply. */}
+            {primary.priceCheckedAt ? (
+              <> Price last checked {primary.priceCheckedAt.slice(0, 10)}.</>
+            ) : (
+              <> Check the merchant for current price and availability.</>
+            )}
+          </Row>
+        )}
       </dl>
 
       {/* CTA with the affiliate disclosure immediately adjacent. */}
@@ -133,13 +151,16 @@ export function PurchaseDecisionPanel({
             url={primary.url}
             tag={primary.tag}
             productId={productId}
-            label={`Check current price at ${primary.name}`}
+            label={`Check current price at ${primary.merchant}`}
           />
-          <p className="mt-2 text-xs text-muted-foreground">
-            Affiliate link. SafeNest may earn a commission if you buy through it,
-            at no extra cost to you. Commissions never influence our editorial
-            assessment or rankings.
-          </p>
+          {/* Disclosure sits immediately below the CTA, not in a distant
+              footnote. No urgency, scarcity, discount or availability claim. */}
+          {primary.affiliate && (
+            <p className="mt-2 text-xs text-muted-foreground">
+              SafeNest may earn a commission from qualifying purchases at no
+              additional cost to you.
+            </p>
+          )}
         </div>
       )}
     </section>

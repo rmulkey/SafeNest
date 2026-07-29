@@ -67,25 +67,51 @@ describe("formatAgeRange", () => {
     expect(formatAgeRange(3, 9)).toBe("3\u20139 months");
   });
 
-  it("crosses the one-year boundary using the natural unit on each side", () => {
-    // "6 months–1 year" is the intended reading, not "6–12 months".
-    expect(formatAgeRange(6, 12)).toBe("6 months\u20131 year");
+  it("states the unit once when both bounds are months, including up to 12", () => {
+    // A 6-to-12-month toy is labelled "6–12 months" on its own packaging;
+    // "6 months–12 months" is redundant and "6 months–1 year" reads as a
+    // different range to a parent scanning cards.
+    expect(formatAgeRange(6, 12)).toBe("6\u201312 months");
+    expect(formatAgeRange(9, 12)).toBe("9\u201312 months");
   });
 
   it("reads a range starting at birth as Birth", () => {
     expect(formatAgeRange(0, 12)).toBe("Birth\u201312 months");
     expect(formatAgeRange(0, 6)).toBe("Birth\u20136 months");
+    expect(formatAgeRange(0, 24)).toBe("Birth\u201324 months");
   });
 
   it("shares the unit for whole-year ranges", () => {
     expect(formatAgeRange(12, 24)).toBe("1\u20132 years");
     expect(formatAgeRange(24, 36)).toBe("2\u20133 years");
     expect(formatAgeRange(36, 96)).toBe("3\u20138 years");
+    expect(formatAgeRange(12, 36)).toBe("1\u20133 years");
+  });
+
+  it("shares the unit for sub-two-year month ranges", () => {
+    expect(formatAgeRange(15, 18)).toBe("15\u201318 months");
+    expect(formatAgeRange(12, 18)).toBe("12\u201318 months");
   });
 
   it("spells out both sides for mixed units", () => {
     expect(formatAgeRange(6, 24)).toBe("6 months\u20132 years");
     expect(formatAgeRange(18, 48)).toBe("18 months\u20134 years");
+    expect(formatAgeRange(18, 36)).toBe("18 months\u20133 years");
+  });
+
+  it("never repeats the unit on both sides of a shared-unit range", () => {
+    // Regression: the guides page rendered "2 years–3 years".
+    for (let lo = 0; lo <= 120; lo++) {
+      for (const hi of [lo + 1, lo + 3, lo + 6, lo + 12, lo + 24, lo + 60]) {
+        const out = formatAgeRange(lo, hi);
+        expect(out, `lo=${lo} hi=${hi} -> ${out}`).not.toMatch(
+          /\byears?\u2013\d+\s+years?\b/
+        );
+        expect(out, `lo=${lo} hi=${hi} -> ${out}`).not.toMatch(
+          /\bmonths?\u2013\d+\s+months?\b/
+        );
+      }
+    }
   });
 
   it("collapses equal bounds instead of '2–2 years'", () => {

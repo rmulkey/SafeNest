@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, BookOpen, Shield, AlertTriangle, FileText, Baby, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { formatAgeRange } from "@/lib/content/format-age";
 
 const navLinks = [
   { href: "/reviews", label: "Reviews", icon: BookOpen },
@@ -14,11 +15,13 @@ const navLinks = [
   { href: "/blog", label: "Blog", icon: Shield },
 ];
 
+// Labels derived from the shared formatter, so the nav agrees with the pages it
+// links to instead of using its own abbreviations.
 const ageGroups = [
-  { href: "/best-toys/0-12-months", label: "0–1 yr" },
-  { href: "/best-toys/1-2-years", label: "1–2 yr" },
-  { href: "/best-toys/2-3-years", label: "2–3 yr" },
-  { href: "/best-toys/3-plus-years", label: "3+ yr" },
+  { href: "/best-toys/0-12-months", label: formatAgeRange(0, 12) },
+  { href: "/best-toys/1-2-years", label: formatAgeRange(12, 24) },
+  { href: "/best-toys/2-3-years", label: formatAgeRange(24, 36) },
+  { href: "/best-toys/3-plus-years", label: "3 years and up" },
 ];
 
 const mobileCategories = [

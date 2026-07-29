@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { Search, Loader2, ArrowRight } from "lucide-react";
 import { urlForImage } from "@/lib/sanity/client";
 import type { SearchableReview } from "@/lib/search/filter";
+import { formatAgeRange as formatAgeRangeMonths } from "@/lib/content/format-age";
 
 const DEBOUNCE_MS = 200;
 
@@ -31,14 +32,13 @@ interface SearchDialogProps {
   onClose: () => void;
 }
 
+/**
+ * Search results share the site-wide formatter so a toy reads the same in the
+ * result list as it does on its own page.
+ */
 function formatAgeRange(range: SearchableReview["ageRange"]): string | null {
   if (!range) return null;
-  const { minMonths, maxMonths } = range;
-  if (maxMonths < 12) return `${minMonths}–${maxMonths} mo`;
-  const minYears = Math.floor(minMonths / 12);
-  const maxYears = Math.floor(maxMonths / 12);
-  if (minMonths < 12) return `${minMonths}mo–${maxYears}yr`;
-  return `${minYears}–${maxYears} yr`;
+  return formatAgeRangeMonths(range.minMonths, range.maxMonths);
 }
 
 /**
