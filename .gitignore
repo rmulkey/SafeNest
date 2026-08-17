@@ -42,3 +42,6 @@ next-env.d.ts
 
 # clerk configuration (can include secrets)
 /.clerk/
+
+# ASIN lookup worksheet (working file, filled in by hand)
+scripts/asin-candidates.json
