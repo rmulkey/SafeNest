@@ -11,14 +11,32 @@ export default async function AdminLinksPage() {
     orderBy: { flaggedAt: "desc" },
   });
 
+  // Coverage, so an empty result can be distinguished from an unchecked one.
+  const checkedCount = await prisma.affiliateLinkStatus.count();
+  const mostRecent = await prisma.affiliateLinkStatus.findFirst({
+    orderBy: { lastChecked: "desc" },
+    select: { lastChecked: true },
+  });
+  const lastCheckedLabel = mostRecent
+    ? mostRecent.lastChecked.toISOString().slice(0, 16).replace("T", " ") + " UTC"
+    : "never";
+
   return (
     <main className="mx-auto max-w-6xl px-4 py-8">
       <h1 className="text-2xl font-bold mb-6">Affiliate Link Health Dashboard</h1>
 
       {unhealthyLinks.length === 0 ? (
-        <p className="text-muted-foreground">
-          All affiliate links are healthy. No flagged links found.
-        </p>
+        /* This used to read "All affiliate links are healthy" even though the
+           table it queries was never populated, so the message was arithmetic
+           rather than evidence. It now reports what was actually checked. */
+        <div className="text-muted-foreground">
+          <p>No links are currently flagged as broken.</p>
+          <p className="mt-2 text-sm">
+            {checkedCount === 0
+              ? "No link has been checked yet. The daily check-links job populates this from the live catalogue."
+              : `${checkedCount} link${checkedCount === 1 ? "" : "s"} checked, most recently ${lastCheckedLabel}. Amazon search links are recorded healthy without a request, because a search URL cannot 404.`}
+          </p>
+        </div>
       ) : (
         <div className="overflow-x-auto rounded-lg border">
           <table className="w-full text-sm">

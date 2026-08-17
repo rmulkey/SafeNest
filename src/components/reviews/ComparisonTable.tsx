@@ -173,9 +173,12 @@ export function ComparisonTable({ reviews, awards }: ComparisonTableProps) {
               >
                 <ProductThumb review={review} size={64} />
                 <div className="min-w-0 flex-1">
-                  <h3 className="font-medium text-foreground group-hover:text-primary-600 transition-colors">
+                  {/* h2, not h3: on /best-toys/[age] and the category+age pages
+                      these cards are the only content headings under the page h1,
+                      so h3 skipped a level. */}
+                  <h2 className="font-medium text-foreground group-hover:text-primary-600 transition-colors">
                     {review.productName}
-                  </h3>
+                  </h2>
                   <p className="mt-0.5 text-xs text-muted-foreground">
                     Ages{" "}
                     {formatAgeRange(

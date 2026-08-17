@@ -57,9 +57,12 @@ export function RecallList({ recalls }: RecallListProps) {
         return (
           <li key={recall._id} className="py-6">
             <article className="flex flex-col gap-2">
-              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+              {/* h2, not h3: each recall is a top-level item of the recalls
+                  page, whose only other heading is the page h1. As h3 these
+                  skipped a level, which breaks screen-reader outline navigation. */}
+              <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
                 {recall.affectedProduct}
-              </h3>
+              </h2>
 
               <dl className="grid gap-1.5 text-sm">
                 {displayDate && (

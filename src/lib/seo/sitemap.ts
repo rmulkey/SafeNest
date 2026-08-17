@@ -184,9 +184,12 @@ export function createStaticPageEntries(
     entry("/best-toys/1-2-years", "weekly", 0.7, ageListings),
     entry("/best-toys/2-3-years", "weekly", 0.7, ageListings),
     entry("/best-toys/3-plus-years", "weekly", 0.7, ageListings),
-    // /transparency, /about and /contact are edited by hand; we hold no reliable
-    // modification date for them, so they ship without <lastmod>.
+    // /transparency, /about, /contact, /privacy and /terms are edited by hand;
+    // we hold no reliable modification date for them, so they ship without
+    // <lastmod>.
     entry("/transparency", "monthly", 0.6),
+    entry("/privacy", "yearly", 0.3),
+    entry("/terms", "yearly", 0.3),
     // Note: individual /gift-guides/{slug} pages are generated from GIFT_GUIDES
     // in sitemap.ts (giftGuideEntries), so they are intentionally omitted here
     // to avoid duplicate sitemap entries.
