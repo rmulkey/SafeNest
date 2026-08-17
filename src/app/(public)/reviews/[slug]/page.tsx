@@ -32,6 +32,8 @@ import {
 import { DevelopmentScoreDisplay } from "@/components/reviews/DevelopmentScoreDisplay";
 import { InternalLinks } from "@/components/seo/InternalLinks";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { generateReviewJsonLd } from "@/lib/seo/structured-data";
 import { BuyButton } from "@/components/affiliate/BuyButton";
 import { StickyBuyBar } from "@/components/affiliate/StickyBuyBar";
 import { formatAgeRange } from "@/lib/content/format-age";
@@ -39,6 +41,8 @@ import { formatAgeRange } from "@/lib/content/format-age";
 interface ToyReview {
   _id: string;
   productName: string;
+  /** Manufacturer, used for the Product brand in Review structured data. */
+  brand?: string | null;
   slug: { current: string };
   ageRange: { minMonths: number; maxMonths: number };
   category: { _id: string; title: string; slug: { current: string } } | null;
@@ -216,6 +220,32 @@ export default async function ToyReviewPage({ params }: PageProps) {
           { name: review.productName, url: `${SITE_URL}/reviews/${slug}` },
         ]}
       />
+
+      {/* Review markup, so the editorial assessment is eligible for a rating in
+          search results. Emitted as a critic Review with itemReviewed rather
+          than a Product carrying aggregateRating: an aggregate of one, authored
+          by the publisher, is self-serving markup and against Google's policy.
+
+          The score is suppressed here exactly as it is in the page body when the
+          evidence is insufficient — structured data must not assert a precision
+          the visible page withholds. */}
+      {assessment.confidence !== "insufficient" && (
+        <JsonLd
+          data={generateReviewJsonLd({
+            productName: review.productName,
+            brand: review.brand ?? undefined,
+            safetyScore: review.safetyScore,
+            reviewBody: qualifyClaimText(review.chokingHazardAssessment).text,
+            url: `${SITE_URL}/reviews/${slug}`,
+            image: review.mainImage
+              ? urlForImage(review.mainImage).width(1200).url()
+              : undefined,
+            datePublished: review.publishedAt ?? undefined,
+            authorName: review.reviewedBy ?? undefined,
+            publisherUrl: SITE_URL,
+          })}
+        />
+      )}
       {/* Recall Banner */}
       {review.hasActiveRecall && (
         <div

@@ -131,7 +131,7 @@ const doc = {
   title: "Top 7 Child-Safe Toys in 2026",
   slug: { _type: "slug", current: NEW_SLUG },
   excerpt:
-    "The toy aisle won't tell you what matters most: is it safe, and will it help your child grow? These seven earned the highest safety scores in our 2026 catalog — vetted by parents, scored out of 100, and checked against recall data.",
+    "The toy aisle won't tell you what matters most: is it safe, and will it help your child grow? These seven earned the highest safety scores in our 2026 catalog — researched by parents, scored out of 100, and checked against recall data.",
   author: "Rodrigo & Vanessa Mulkey",
   publishedAt: new Date().toISOString(),
   body,

@@ -32,12 +32,70 @@ export function mapSafetyScoreToRating(safetyScore: number): number {
 }
 
 /**
- * Generates schema.org Product + Review JSON-LD markup for a Toy Review.
+ * Generates schema.org Review JSON-LD for a toy review.
  *
- * Includes product name, aggregate rating derived from Safety Score (mapped 0-100 to 1-5),
- * and review body.
+ * WHY `Review` AND NOT `Product` WITH `aggregateRating`
+ * This function previously emitted a Product carrying an `aggregateRating` with
+ * `ratingCount: 1`, derived from SafeNest's own editorial score. That is
+ * self-serving rating markup — an aggregate of one, authored by the publisher —
+ * and Google's structured-data policy disallows it. It was never wired into a
+ * page, which is the only reason it did no harm.
+ *
+ * The honest and eligible shape for a publisher reviewing someone else's product
+ * is a `Review` whose `itemReviewed` is the Product, with a single
+ * `reviewRating`. That is a critic review, which is exactly what this is.
  *
  * Requirements: 4.1
+ */
+export interface ReviewJsonLdInput extends ProductReviewInput {
+  brand?: string;
+  image?: string;
+  datePublished?: string;
+  /** Named person accountable for the assessment, when one is recorded. */
+  authorName?: string;
+  publisherUrl?: string;
+}
+
+export function generateReviewJsonLd(review: ReviewJsonLdInput): object {
+  const ratingValue = mapSafetyScoreToRating(review.safetyScore);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    itemReviewed: {
+      "@type": "Product",
+      name: review.productName,
+      ...(review.brand
+        ? { brand: { "@type": "Brand", name: review.brand } }
+        : {}),
+      ...(review.image ? { image: review.image } : {}),
+    },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    // The organisation is the author of record. A named individual is used when
+    // the review records one, rather than inventing a byline.
+    author: review.authorName
+      ? { "@type": "Person", name: review.authorName }
+      : { "@type": "Organization", name: "SafeNest Toys" },
+    publisher: {
+      "@type": "Organization",
+      name: "SafeNest Toys",
+      ...(review.publisherUrl ? { url: review.publisherUrl } : {}),
+    },
+    ...(review.reviewBody ? { reviewBody: review.reviewBody } : {}),
+    ...(review.datePublished ? { datePublished: review.datePublished } : {}),
+    ...(review.url ? { url: review.url } : {}),
+  };
+}
+
+/**
+ * @deprecated Emits a self-serving `aggregateRating` of one, which Google's
+ * structured-data policy disallows. Use {@link generateReviewJsonLd}. Retained
+ * only so the existing unit test can assert it is no longer used on any page.
  */
 export function generateProductReviewJsonLd(review: ProductReviewInput): object {
   const ratingValue = mapSafetyScoreToRating(review.safetyScore);

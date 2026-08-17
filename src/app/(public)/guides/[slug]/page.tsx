@@ -11,6 +11,10 @@ import { generateOpenGraphMeta } from '@/components/seo/OpenGraphMeta'
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema'
 import { SITE_URL } from '@/lib/seo/site-config'
 import { formatAgeRange } from '@/lib/content/format-age'
+import { BuyButton } from '@/components/affiliate/BuyButton'
+
+/** Fallback tag for legacy links stored without one. */
+const AMAZON_TAG = 'safeneststore-20'
 
 interface ToyReviewRef {
   _id: string
@@ -18,6 +22,9 @@ interface ToyReviewRef {
   slug: { current: string }
   safetyScore: number
   developmentScore: number
+  brand?: string
+  hasActiveRecall?: boolean
+  affiliateLinks?: { partnerId?: string; url: string; tag?: string }[] | null
 }
 
 interface BuyingGuide {
@@ -139,32 +146,65 @@ export default async function BuyingGuidePage({
             Referenced Toy Reviews
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {guide.reviews.map((review) => (
-              <Link
-                key={review._id}
-                href={`/reviews/${review.slug.current}`}
-                className="rounded-lg border border-zinc-200 p-4 transition-shadow hover:shadow-md dark:border-zinc-700"
-              >
-                <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
-                  {review.productName}
-                </h3>
-                <div className="mt-3 flex gap-4 text-sm">
-                  <div>
-                    <span className="text-zinc-500">Safety</span>
-                    <p className="font-semibold text-green-700 dark:text-green-400">
-                      {review.safetyScore ?? '—'}/100
-                    </p>
-                  </div>
-                  <div>
-                    <span className="text-zinc-500">Development</span>
-                    <p className="font-semibold text-blue-700 dark:text-blue-400">
-                      {review.developmentScore ?? '—'}/100
-                    </p>
-                  </div>
+            {guide.reviews.map((review) => {
+              const link = review.affiliateLinks?.[0]
+              return (
+                <div
+                  key={review._id}
+                  className="flex flex-col rounded-lg border border-zinc-200 transition-shadow hover:shadow-md dark:border-zinc-700"
+                >
+                  {/* The card body links to the review. The buy button is a
+                      sibling, not a child: an interactive control cannot nest
+                      inside an anchor. */}
+                  <Link
+                    href={`/reviews/${review.slug.current}`}
+                    className="flex-1 p-4"
+                  >
+                    <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
+                      {review.productName}
+                    </h3>
+                    <div className="mt-3 flex gap-4 text-sm">
+                      <div>
+                        <span className="text-zinc-500">Safety</span>
+                        <p className="font-semibold text-green-700 dark:text-green-400">
+                          {review.safetyScore ?? '—'}/100
+                        </p>
+                      </div>
+                      <div>
+                        <span className="text-zinc-500">Development</span>
+                        <p className="font-semibold text-blue-700 dark:text-blue-400">
+                          {review.developmentScore ?? '—'}/100
+                        </p>
+                      </div>
+                    </div>
+                    {review.hasActiveRecall && (
+                      <p className="mt-2 text-xs font-medium text-safety-low">
+                        ⚠ Active recall — see the review
+                      </p>
+                    )}
+                  </Link>
+                  {link && (
+                    <div className="px-4 pb-4">
+                      <BuyButton
+                        url={link.url}
+                        tag={link.tag || AMAZON_TAG}
+                        size="sm"
+                        label="Check current price at Amazon"
+                        className="w-full"
+                        productId={review.slug.current}
+                      />
+                    </div>
+                  )}
                 </div>
-              </Link>
-            ))}
+              )
+            })}
           </div>
+          {/* One disclosure for the page, adjacent to the buy buttons above. */}
+          <p className="mt-4 text-xs text-zinc-500 dark:text-zinc-400">
+            Buy links are affiliate links. SafeNest may earn a commission from
+            qualifying purchases at no additional cost to you, and commissions
+            never influence our scores or which toys we include.
+          </p>
         </section>
       )}
 

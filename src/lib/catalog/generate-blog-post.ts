@@ -247,7 +247,7 @@ export function buildRoundupPost(
     _type: "blogPost",
     title,
     slug: { _type: "slug", current: slug },
-    excerpt: `Our ${count} highest-scoring ${label} as of ${period}, ranked by independent safety score and checked against recall data — vetted by parents.`,
+    excerpt: `Our ${count} highest-scoring ${label} as of ${period}, ranked by SafeNest's editorial safety score and checked against recall data — researched by parents.`,
     body,
     category: { _type: "reference", _ref: topic.categoryRef },
     relatedReviews: top.map((p, i) => ({

@@ -56,7 +56,7 @@ function paraWithReviewLink(lead, linkText, slug) {
 }
 
 const body = [];
-body.push(para("The Fourth of July is the unofficial kickoff of backyard season — cookouts, kiddie pools, sprinklers, and driveway parades. It's also a day when little ones need things to do that keep them cool, busy, and safely away from grills and fireworks. These seven outdoor and water toys are all independently safety-scored, recall-checked, and genuinely fun in the summer heat."));
+body.push(para("The Fourth of July is the unofficial kickoff of backyard season — cookouts, kiddie pools, sprinklers, and driveway parades. It's also a day when little ones need things to do that keep them cool, busy, and safely away from grills and fireworks. These seven outdoor and water toys are all safety-scored, recall-checked, and genuinely fun in the summer heat."));
 body.push(para("We've ordered them best-first by safety score. Every pick is a real toy we've reviewed, and each links to its full safety breakdown so you can dig into the details before you buy."));
 
 body.push(heading("h2", "How we scored these"));
@@ -80,7 +80,7 @@ const doc = {
   title: "Top 7 Toys for a Safe & Playful Fourth of July",
   slug: { _type: "slug", current: SLUG },
   excerpt:
-    "Cookouts, kiddie pools, and driveway parades — here are seven outdoor and water toys to keep little ones cool, busy, and safe this Fourth of July. Every pick is independently safety-scored, recall-checked, and parent-tested.",
+    "Cookouts, kiddie pools, and driveway parades — here are seven outdoor and water toys to keep little ones cool, busy, and safe this Fourth of July. Every pick is safety-scored, recall-checked, and parent-researched.",
   author: "Rodrigo & Vanessa Mulkey",
   publishedAt: new Date().toISOString(),
   body,

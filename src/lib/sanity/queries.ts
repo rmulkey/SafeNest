@@ -126,13 +126,37 @@ export const allBuyingGuidesQuery = groq`
   }
 `;
 
+/**
+ * A buying guide plus the reviews it recommends.
+ *
+ * TWO FIELD NAMES, DELIBERATELY
+ * The schema declares `reviewReferences`, but the seed scripts wrote `reviews`
+ * and this query only ever read `reviews`. Documents therefore exist in both
+ * shapes, and a guide authored against the schema rendered an empty product list
+ * — silently, because a missing field is null rather than an error. `coalesce`
+ * accepts either, so both old and new documents work.
+ *
+ * `affiliateLinks` is projected because guides carry buy buttons: they are the
+ * highest commercial-intent pages on the site, and previously every one of them
+ * sent readers to a review before they could buy anything.
+ */
 export const buyingGuideBySlugQuery = groq`
   *[_type == "buyingGuide" && slug.current == $slug][0] {
     _id,
     title,
     slug,
     targetAgeRange,
-    reviews[]->{_id, productName, slug, safetyScore, developmentScore},
+    "reviews": coalesce(
+      reviews[]->{
+        _id, productName, slug, safetyScore, developmentScore, brand,
+        ageRange, mainImage, hasActiveRecall, affiliateLinks
+      },
+      reviewReferences[]->{
+        _id, productName, slug, safetyScore, developmentScore, brand,
+        ageRange, mainImage, hasActiveRecall, affiliateLinks
+      },
+      []
+    ),
     body,
     _createdAt
   }

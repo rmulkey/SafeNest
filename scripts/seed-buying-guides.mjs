@@ -40,9 +40,9 @@ const GUIDES = [
     category: "cat-sensory",
     min: 0, max: 12,
     excerpt:
-      "The safest, most engaging sensory toys for newborns and infants — rattles, teethers, and high-contrast textures, each independently safety-scored by SafeNest Toys.",
+      "Parent-researched, engaging sensory toys for newborns and infants — rattles, teethers, and high-contrast textures, each safety-scored by SafeNest Toys.",
     intro:
-      "In the first year, play is sensory: babies learn by grasping, mouthing, listening, and looking. The best infant toys are simple, safe to chew, and free of small parts — and they earn their keep by engaging more than one sense at a time. Every pick below is independently safety-scored and recall-checked, and chosen for babies from newborn through their first birthday.",
+      "In the first year, play is sensory: babies learn by grasping, mouthing, listening, and looking. The best infant toys are simple, safe to chew, and free of small parts — and they earn their keep by engaging more than one sense at a time. Every pick below is safety-scored and recall-checked, and chosen for babies from newborn through their first birthday.",
   },
   {
     _id: "guide-best-educational-toys-2-3",
@@ -51,9 +51,9 @@ const GUIDES = [
     category: "cat-educational",
     min: 24, max: 42,
     excerpt:
-      "Independently safety-scored educational toys for 2- and 3-year-olds — shape sorters, puzzles, and early-STEM picks that teach without feeling like homework.",
+      "Safety-scored educational toys for 2- and 3-year-olds — shape sorters, puzzles, and early-STEM picks that teach without feeling like homework.",
     intro:
-      "Two- and three-year-olds are busy building language, problem-solving, and fine-motor skills. The best educational toys at this age turn those milestones into play — sorting, matching, counting, and pretending. These picks are chosen for genuine developmental value and are independently safety-scored and recall-checked.",
+      "Two- and three-year-olds are busy building language, problem-solving, and fine-motor skills. The best educational toys at this age turn those milestones into play — sorting, matching, counting, and pretending. These picks are chosen for genuine developmental value and are safety-scored and recall-checked.",
   },
   {
     _id: "guide-best-outdoor-water-toys-toddlers",
@@ -64,7 +64,7 @@ const GUIDES = [
     excerpt:
       "Safety-scored outdoor and water toys for toddlers — water tables, ride-ons, sandbox trucks, and pool play that hold up to real backyard use.",
     intro:
-      "Outdoor play builds gross-motor strength, balance, and confidence — and toddlers will happily spend hours at it. The toys below are chosen for durable, weather-friendly materials and stable, age-appropriate designs. Every pick is independently safety-scored and recall-checked. A reminder that bears repeating: water play, even a shallow water table, always needs eyes-on adult supervision.",
+      "Outdoor play builds gross-motor strength, balance, and confidence — and toddlers will happily spend hours at it. The toys below are chosen for durable, weather-friendly materials and stable, age-appropriate designs. Every pick is safety-scored and recall-checked. A reminder that bears repeating: water play, even a shallow water table, always needs eyes-on adult supervision.",
   },
   {
     _id: "guide-best-building-toys-preschoolers",
@@ -75,7 +75,7 @@ const GUIDES = [
     excerpt:
       "The best open-ended building and construction toys for preschoolers — blocks, magnetic tiles, and sets that grow STEM and creativity, all safety-scored.",
     intro:
-      "Few toys deliver more open-ended play per dollar than a great building set. For preschoolers, construction toys build spatial reasoning, planning, fine-motor control, and endless imaginative scenarios. These picks range from classic wooden blocks to magnetic tiles, each independently safety-scored and recall-checked.",
+      "Few toys deliver more open-ended play per dollar than a great building set. For preschoolers, construction toys build spatial reasoning, planning, fine-motor control, and endless imaginative scenarios. These picks range from classic wooden blocks to magnetic tiles, each safety-scored and recall-checked.",
   },
   {
     _id: "guide-best-toys-6-12-months",
@@ -84,9 +84,9 @@ const GUIDES = [
     category: null,
     min: 6, max: 12,
     excerpt:
-      "Independently safety-scored toys for 6–12 month olds — the sit-up, crawl, and cruise stage — chosen to match fast-developing motor and sensory skills.",
+      "Safety-scored toys for 6–12 month olds — the sit-up, crawl, and cruise stage — chosen to match fast-developing motor and sensory skills.",
     intro:
-      "Between six and twelve months, babies are sitting, crawling, and pulling up — and they want toys that move and respond. The best picks for this stage reward cause-and-effect, encourage crawling and reaching, and are safe to mouth. These toys are drawn from across our catalog, each independently safety-scored and recall-checked.",
+      "Between six and twelve months, babies are sitting, crawling, and pulling up — and they want toys that move and respond. The best picks for this stage reward cause-and-effect, encourage crawling and reaching, and are safe to mouth. These toys are drawn from across our catalog, each safety-scored and recall-checked.",
   },
 ];
 

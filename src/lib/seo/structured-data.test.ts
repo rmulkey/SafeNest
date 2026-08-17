@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   generateProductReviewJsonLd,
+  generateReviewJsonLd,
   generateFaqPageJsonLd,
   mapSafetyScoreToRating,
 } from "./structured-data";
@@ -116,5 +117,84 @@ describe("generateFaqPageJsonLd", () => {
       "@type": "FAQPage",
       mainEntity: [],
     });
+  });
+});
+
+describe("generateReviewJsonLd", () => {
+  const base = {
+    productName: "Green Toys Stacking Cups",
+    safetyScore: 95,
+    reviewBody: "No small-parts concern identified for the labeled age range.",
+    url: "https://safenesttoys.com/reviews/green-toys-stacking-cups",
+  };
+
+  it("emits a Review whose itemReviewed is the Product", () => {
+    const r = generateReviewJsonLd(base) as Record<string, unknown>;
+    expect(r["@type"]).toBe("Review");
+    expect((r.itemReviewed as Record<string, unknown>)["@type"]).toBe("Product");
+    expect((r.itemReviewed as Record<string, unknown>).name).toBe(
+      "Green Toys Stacking Cups"
+    );
+  });
+
+  it("never emits aggregateRating", () => {
+    // An aggregate of one, authored by the publisher, is self-serving rating
+    // markup and against Google's structured-data policy. That is the whole
+    // reason this function exists alongside the deprecated one.
+    const r = generateReviewJsonLd(base) as Record<string, unknown>;
+    expect(r.aggregateRating).toBeUndefined();
+    expect(JSON.stringify(r)).not.toContain("aggregateRating");
+    expect(JSON.stringify(r)).not.toContain("ratingCount");
+  });
+
+  it("carries a single reviewRating mapped from the safety score", () => {
+    const r = generateReviewJsonLd({ ...base, safetyScore: 95 }) as Record<
+      string,
+      unknown
+    >;
+    const rating = r.reviewRating as Record<string, unknown>;
+    expect(rating["@type"]).toBe("Rating");
+    expect(rating.ratingValue).toBe(mapSafetyScoreToRating(95));
+    expect(rating.bestRating).toBe(5);
+    expect(rating.worstRating).toBe(1);
+  });
+
+  it("attributes to the organisation unless a named reviewer exists", () => {
+    const anon = generateReviewJsonLd(base) as Record<string, unknown>;
+    expect(anon.author).toEqual({
+      "@type": "Organization",
+      name: "SafeNest Toys",
+    });
+
+    const named = generateReviewJsonLd({
+      ...base,
+      authorName: "Vanessa Mulkey",
+    }) as Record<string, unknown>;
+    expect(named.author).toEqual({ "@type": "Person", name: "Vanessa Mulkey" });
+  });
+
+  it("omits optional fields rather than emitting empty ones", () => {
+    const r = generateReviewJsonLd({
+      productName: "Toy",
+      safetyScore: 80,
+      reviewBody: "",
+    }) as Record<string, unknown>;
+    expect(r.url).toBeUndefined();
+    expect(r.datePublished).toBeUndefined();
+    expect(r.reviewBody).toBeUndefined();
+    const item = r.itemReviewed as Record<string, unknown>;
+    expect(item.brand).toBeUndefined();
+    expect(item.image).toBeUndefined();
+  });
+
+  it("includes brand and image when supplied", () => {
+    const r = generateReviewJsonLd({
+      ...base,
+      brand: "Green Toys",
+      image: "https://cdn.example/img.jpg",
+    }) as Record<string, unknown>;
+    const item = r.itemReviewed as Record<string, unknown>;
+    expect(item.brand).toEqual({ "@type": "Brand", name: "Green Toys" });
+    expect(item.image).toBe("https://cdn.example/img.jpg");
   });
 });

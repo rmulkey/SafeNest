@@ -12,6 +12,10 @@ import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
 import { InternalLinks } from "@/components/seo/InternalLinks";
 import { formatAgeRange } from "@/lib/content/format-age";
+import { BuyButton } from "@/components/affiliate/BuyButton";
+
+/** Fallback tag for legacy links stored without one. */
+const AMAZON_TAG = "safeneststore-20";
 
 export async function generateStaticParams() {
   return getValidCategoryAgeParams();
@@ -91,11 +95,18 @@ export default async function BestCategoryToysForAgeGroupPage({
       </p>
 
       <div className="grid gap-6">
-        {reviews.map((review) => (
-          <Link
+        {reviews.map((review) => {
+          const link = review.affiliateLinks?.[0];
+          return (
+          <div
             key={review._id}
+            className="rounded-lg border hover:shadow-md transition-shadow"
+          >
+          {/* Card body links to the review; the buy button is a sibling, because
+              an interactive control cannot nest inside an anchor. */}
+          <Link
             href={`/reviews/${review.slug.current}`}
-            className="block rounded-lg border p-6 hover:shadow-md transition-shadow"
+            className="block p-6"
           >
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -131,8 +142,27 @@ export default async function BestCategoryToysForAgeGroupPage({
               </div>
             )}
           </Link>
-        ))}
+          {link && (
+            <div className="border-t px-6 py-4">
+              <BuyButton
+                url={link.url}
+                tag={link.tag || AMAZON_TAG}
+                size="sm"
+                label="Check current price at Amazon"
+                productId={review.slug.current}
+              />
+            </div>
+          )}
+          </div>
+          );
+        })}
       </div>
+      {/* One disclosure for the page, adjacent to the buy buttons above. */}
+      <p className="mt-4 text-xs text-muted-foreground">
+        Buy links are affiliate links. SafeNest may earn a commission from
+        qualifying purchases at no additional cost to you, and commissions never
+        influence our scores or rankings.
+      </p>
 
       <InternalLinks
         currentDocId={`programmatic-category-${category}-${ageGroup}`}

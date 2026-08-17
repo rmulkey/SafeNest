@@ -48,7 +48,7 @@ const GUIDES = [
     intro:
       "The first year of preschool or daycare asks a lot of a small person: sitting for a story, managing a snack, holding a crayon, taking turns, and separating from you at the door. None of that is learned from a worksheet. It is learned through play, at home, in the weeks before and during the transition.",
     intro2:
-      "The toys below are chosen for the specific skills that show up on day one — pincer grip and hand strength for pre-writing, sorting and sequencing for early math and pattern recognition, and self-correcting puzzles that build the persistence teachers notice. Every pick is independently safety-scored and recall-checked.",
+      "The toys below are chosen for the specific skills that show up on day one — pincer grip and hand strength for pre-writing, sorting and sequencing for early math and pattern recognition, and self-correcting puzzles that build the persistence teachers notice. Every pick is safety-scored and recall-checked.",
     sections: [
       {
         h2: "The skills that actually matter on day one",
@@ -96,11 +96,11 @@ const GUIDES = [
     slug: "best-wooden-nontoxic-toys",
     min: 0, max: 96,
     excerpt:
-      "Solid-wood toys with water-based finishes, ranked by our independent safety score — what to look for in materials, finishes, and certifications.",
+      "Solid-wood toys with water-based finishes, ranked by SafeNest's editorial safety score — what to look for in materials, finishes, and certifications.",
     intro:
       "Wooden toys earn their reputation honestly: they are durable, quiet, open-ended, and free of the battery compartments and electronics that create their own set of hazards. They also tend to last long enough to hand down.",
     intro2:
-      "That said, wood is not automatically safe. Finish, joinery, and piece size all matter. The picks below are solid-wood or wood-primary toys with non-toxic finishes, each independently safety-scored and recall-checked.",
+      "That said, wood is not automatically safe. Finish, joinery, and piece size all matter. The picks below are solid-wood or wood-primary toys with non-toxic finishes, each safety-scored and recall-checked.",
     sections: [
       {
         h2: "What to look for in a wooden toy",
@@ -186,7 +186,7 @@ const GUIDES = [
     intro:
       "Water play is one of the best sensory experiences you can offer a small child, and one of the few where the safety rules are non-negotiable. The toys matter. The supervision matters more.",
     intro2:
-      "Every pick below is independently safety-scored and recall-checked, with a bias toward designs that drain and dry rather than trap water.",
+      "Every pick below is safety-scored and recall-checked, with a bias toward designs that drain and dry rather than trap water.",
     sections: [
       {
         h2: "Water safety comes first, always",
@@ -228,7 +228,7 @@ const GUIDES = [
     intro:
       "Between one and two, children are walking, climbing, dumping, filling, and testing every physical limit they can find. They are also still mouthing almost everything, which makes this the age where small parts matter most and where a toy's durability gets a real workout.",
     intro2:
-      "These picks are ranked with an eye toward developmental value at this specific stage — cause and effect, early problem solving, and gross-motor practice — and every one is independently safety-scored and recall-checked.",
+      "These picks are ranked with an eye toward developmental value at this specific stage — cause and effect, early problem solving, and gross-motor practice — and every one is safety-scored and recall-checked.",
     sections: [
       {
         h2: "What one-year-olds are working on",

@@ -35,9 +35,9 @@ const REWRITES = {
   "how-to-read-toy-safety-labels":
     "Which toy-box symbols actually keep your child safe? A plain-English guide to certifications, age grading, choking hazards, materials, and recalls.",
   "top-7-child-safe-toys-2026":
-    "The seven toys with the highest safety scores in our 2026 catalog — vetted by parents, scored out of 100, and checked against current recall data.",
+    "The seven toys with the highest safety scores in our 2026 catalog — researched by parents, scored out of 100, and checked against current recall data.",
   "top-7-toys-safe-fourth-of-july":
-    "Seven outdoor and water toys to keep little ones cool, busy, and safe this Fourth of July — every pick independently safety-scored and recall-checked.",
+    "Seven outdoor and water toys to keep little ones cool, busy, and safe this Fourth of July — every pick safety-scored and recall-checked.",
 };
 
 async function main() {

@@ -203,7 +203,7 @@ export function ExitIntentModal() {
             Get our free Toy Safety Checklist
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            A simple, parent-tested checklist to help you choose safe,
+            A simple, parent-researched checklist to help you choose safe,
             age-appropriate toys with confidence. We&apos;ll send it straight to
             your inbox.
           </p>

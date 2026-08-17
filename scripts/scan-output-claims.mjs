@@ -13,25 +13,43 @@
  */
 const BASE = process.argv[2] || "https://safenesttoys.com";
 
-const PATHS = [
-  "/",
-  "/about",
-  "/transparency",
-  "/guides",
-  "/reviews",
-  "/recalls",
-  "/reviews/green-toys-stacking-cups",
-  "/reviews/hape-rainbow-bead-abacus",
-  "/reviews/step2-waterpark-wonders-two-tier-water-table",
-  "/best-toys",
-  "/best-toys/1-2-years",
-  "/categories/sensory-toys",
-  "/guides/back-to-school-preschool-readiness",
-];
+/**
+ * Pages to scan.
+ *
+ * Previously a hand-maintained list of 13 paths. That is how
+ * "independently safety-scored" survived on 14 live pages and "parent-tested" on
+ * /gift-guides: none of them were on the list. The scanner now reads the sitemap,
+ * so any page the site asks Google to index is also a page this checks.
+ *
+ * SAMPLE=<n> limits the crawl while iterating; the default is everything.
+ */
+async function resolvePaths() {
+  const res = await fetch(`${BASE}/sitemap.xml`);
+  if (!res.ok) {
+    throw new Error(`sitemap.xml -> HTTP ${res.status}; cannot determine pages to scan`);
+  }
+  const xml = await res.text();
+  const paths = [
+    ...new Set(
+      [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname)
+    ),
+  ].sort();
+  const limit = Number(process.env.SAMPLE || 0);
+  if (limit > 0 && paths.length > limit) {
+    const step = Math.ceil(paths.length / limit);
+    return paths.filter((_, i) => i % step === 0);
+  }
+  return paths;
+}
+
+const PATHS = await resolvePaths();
 
 /** Phrases that must not appear in rendered output. */
 const FORBIDDEN = [
-  "50+",
+  "50+ review",
+  "50+ expert",
+  "50+ toys",
+  "50+ safety",
   "run the small-parts test",
   "runs the small-parts test",
   "within 24 hours",
@@ -78,6 +96,16 @@ const FORBIDDEN = [
   "with limits",
   // Unattributed manufacturer expert claims.
   "developmentally staged by experts",
+  // Verification claims: the scoring and recall checks are real, but SafeNest is
+  // not a third party to itself and does not physically test anything.
+  "independently safety-scored",
+  "independently tested",
+  "independent safety score",
+  "parent-tested",
+  "parent tested",
+  "vetted by parents",
+  "safety-tested",
+  "we tested",
   "expert-designed",
   "expert designed",
   "expert-approved",
@@ -95,6 +123,13 @@ const FORBIDDEN = [
  */
 const CONTEXTUAL_ALLOWANCES = [
   { phrase: "current price", allowedWithin: "check current price at" },
+  // Attributing a claim to the manufacturer is the required fix, not a
+  // violation: "The manufacturer describes the activities as expert-designed".
+  { phrase: "expert-designed", allowedWithin: "manufacturer describes" },
+  { phrase: "expert-designed", allowedWithin: "manufacturer states" },
+  { phrase: "expert designed", allowedWithin: "manufacturer describes" },
+  { phrase: "expert", allowedWithin: "manufacturer describes" },
+  { phrase: "expert", allowedWithin: "manufacturer states" },
 ];
 
 /** Allowed when explicitly negated, e.g. "not laboratory tested". */
@@ -139,7 +174,7 @@ for (const path of PATHS) {
       const idx = lower.indexOf(phrase, from);
       if (idx === -1) break;
       const preceding = lower.slice(Math.max(0, idx - 60), idx);
-      const window = lower.slice(Math.max(0, idx - 40), idx + phrase.length + 40);
+      const window = lower.slice(Math.max(0, idx - 90), idx + phrase.length + 40);
       const allowed = CONTEXTUAL_ALLOWANCES.some(
         (a) => a.phrase === phrase && window.includes(a.allowedWithin)
       );

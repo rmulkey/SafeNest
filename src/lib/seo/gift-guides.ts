@@ -36,9 +36,9 @@ export const GIFT_GUIDES: GiftGuide[] = [
     slug: "first-birthday-gifts",
     title: "Best First Birthday Gifts",
     description:
-      "Safe, developmental first birthday gift ideas for 1-year-olds — independently safety-scored and parent-tested by SafeNest Toys.",
+      "Safe, developmental first birthday gift ideas for 1-year-olds — safety-scored and recall-checked by SafeNest Toys.",
     intro:
-      "Turning one is a big milestone, and the best gifts at this age support a new walker's curiosity and motor skills. Every toy below has been independently safety-scored and checked for recalls — so you can give something both delightful and genuinely safe.",
+      "Turning one is a big milestone, and the best gifts at this age support a new walker's curiosity and motor skills. Every toy below has been safety-scored and checked for recalls — so you can give something both delightful and genuinely safe.",
     minMonths: 9,
     maxMonths: 18,
     emoji: "🎂",
@@ -58,9 +58,9 @@ export const GIFT_GUIDES: GiftGuide[] = [
     slug: "stocking-stuffers-toddlers",
     title: "Best Stocking Stuffers for Toddlers",
     description:
-      "Small, safe, affordable stocking stuffer ideas for toddlers — independently safety-scored by SafeNest Toys.",
+      "Small, safe, affordable stocking stuffer ideas for toddlers — safety-scored by SafeNest Toys.",
     intro:
-      "The best stocking stuffers are small, engaging, and safe for little hands. These toddler-friendly picks are independently safety-scored and recall-checked, so every stocking surprise is one you can feel good about.",
+      "The best stocking stuffers are small, engaging, and safe for little hands. These toddler-friendly picks are safety-scored and recall-checked, so every stocking surprise is one you can feel good about.",
     minMonths: 12,
     maxMonths: 36,
     emoji: "🧦",
@@ -69,9 +69,9 @@ export const GIFT_GUIDES: GiftGuide[] = [
     slug: "gifts-for-2-year-olds",
     title: "Best Gifts for 2-Year-Olds",
     description:
-      "Safe, developmental gift ideas for 2-year-olds — independently safety-scored and parent-tested by SafeNest Toys.",
+      "Safe, developmental gift ideas for 2-year-olds — safety-scored and recall-checked by SafeNest Toys.",
     intro:
-      "Two-year-olds are busy explorers building language, imagination, and coordination. These gifts are chosen to match that stage and are independently safety-scored and recall-checked for peace of mind.",
+      "Two-year-olds are busy explorers building language, imagination, and coordination. These gifts are chosen to match that stage and are safety-scored and recall-checked for peace of mind.",
     minMonths: 24,
     maxMonths: 36,
     emoji: "🎁",
