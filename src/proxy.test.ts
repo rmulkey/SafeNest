@@ -1,4 +1,4 @@
-import { describe, it, expect, afterEach } from "vitest";
+import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { NextRequest } from "next/server";
 import { proxy, config } from "./proxy";
 
@@ -19,8 +19,18 @@ function req(authHeader?: string) {
 const basic = (user: string, pass: string) =>
   `Basic ${Buffer.from(`${user}:${pass}`).toString("base64")}`;
 
-afterEach(() => {
+// Control the variable explicitly rather than assuming it is absent. A developer
+// (or CI) with ADMIN_DASHBOARD_TOKEN exported in their shell would otherwise
+// make the fail-closed test pass for the wrong reason, or fail spuriously.
+const original = process.env.ADMIN_DASHBOARD_TOKEN;
+
+beforeEach(() => {
   delete process.env.ADMIN_DASHBOARD_TOKEN;
+});
+
+afterEach(() => {
+  if (original === undefined) delete process.env.ADMIN_DASHBOARD_TOKEN;
+  else process.env.ADMIN_DASHBOARD_TOKEN = original;
 });
 
 describe("dashboard access control", () => {

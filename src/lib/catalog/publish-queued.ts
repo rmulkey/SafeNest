@@ -16,6 +16,7 @@
  */
 import type { SanityClient } from "@sanity/client";
 import { isValidAffiliateUrl } from "@/lib/affiliate/link-builder";
+import { submitToIndexNow } from "@/lib/seo/indexnow";
 import { computeSafetyScore } from "@/lib/scoring/safety-score";
 import { computeDevelopmentScore } from "@/lib/scoring/development-score";
 
@@ -215,6 +216,15 @@ export async function publishOneQueued(
 
 /**
  * Drains up to `limit` queued products. Returns per-item outcomes.
+ *
+ * Newly published reviews are pushed to the IndexNow participants at the end of
+ * the batch. This closes a real gap: the Sanity webhook submits URLs when an
+ * editor publishes in the Studio, but the daily publisher writes documents with
+ * the API client and never triggers that webhook — so products added by the
+ * automation were invisible to IndexNow until the next full sitemap submission.
+ *
+ * Submitted once per batch rather than once per product, and never allowed to
+ * fail the publish: the catalogue write is the job, notification is a courtesy.
  */
 export async function publishQueuedBatch(
   client: SanityClient,
@@ -235,5 +245,32 @@ export async function publishQueuedBatch(
   for (const q of queued) {
     outcomes.push(await publishOneQueued(client, q));
   }
+
+  const publishedSlugs = outcomes
+    .filter((o) => o.status === "published")
+    .map((o) => slugifyProductName(o.productName));
+
+  if (publishedSlugs.length > 0) {
+    const urls = [
+      "/reviews",
+      "/",
+      ...publishedSlugs.map((s) => `/reviews/${s}`),
+    ];
+    try {
+      const result = await submitToIndexNow(urls);
+      console.log(
+        `[publish-queued] IndexNow: ${result.outcome}` +
+          (result.outcome === "submitted"
+            ? ` (${result.submitted} URL(s), HTTP ${result.status})`
+            : result.detail
+              ? ` — ${result.detail}`
+              : "")
+      );
+    } catch (error) {
+      // Never let notification failure mask a successful publish.
+      console.warn("[publish-queued] IndexNow submission threw:", error);
+    }
+  }
+
   return outcomes;
 }

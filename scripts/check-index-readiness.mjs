@@ -401,17 +401,34 @@ if (dupeFailures === 0) {
 console.log("\nsearch console");
 
 const home = await request(`${BASE}/`, { redirect: "follow" });
-const gsc = firstMatch(
-  home.body,
-  /<meta[^>]+name="google-site-verification"[^>]+content="([^"]+)"/i
-);
-if (gsc) {
-  info("google-site-verification meta tag", `present (${gsc.slice(0, 8)}…)`);
-} else {
-  info(
-    "google-site-verification meta tag",
-    "absent — fine if the property is verified by DNS TXT or the Vercel integration, otherwise set GOOGLE_SITE_VERIFICATION"
+
+// Verification tags are informational: DNS TXT, a file upload, or Bing importing
+// an existing Google Search Console property all verify without a meta tag.
+for (const [engine, metaName, envVar] of [
+  ["Google", "google-site-verification", "GOOGLE_SITE_VERIFICATION"],
+  ["Bing", "msvalidate.01", "BING_SITE_VERIFICATION"],
+  ["Yandex", "yandex-verification", "YANDEX_SITE_VERIFICATION"],
+]) {
+  const token = firstMatch(
+    home.body,
+    new RegExp(`<meta[^>]+name="${metaName}"[^>]+content="([^"]+)"`, "i")
   );
+  info(
+    `${engine} verification tag`,
+    token
+      ? `present (${token.slice(0, 8)}…)`
+      : `absent — fine if verified another way, otherwise set ${envVar}`
+  );
+}
+
+// IndexNow: the key file must be reachable or submissions are rejected 403.
+const keyFile = await request(`${BASE}/indexnow-key.txt`, { redirect: "follow" });
+if (keyFile.status !== 200) {
+  fail("IndexNow key file reachable", `/indexnow-key.txt -> HTTP ${keyFile.status}`);
+} else if (!/^[a-zA-Z0-9-]{8,128}$/.test(keyFile.body.trim())) {
+  fail("IndexNow key file valid", "does not contain a usable key");
+} else {
+  pass("IndexNow key file reachable", `${keyFile.body.trim().slice(0, 8)}…`);
 }
 
 // Googlebot must see the same page a browser does.

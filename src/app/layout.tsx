@@ -7,6 +7,7 @@ import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
 import { ExitIntentModal } from "@/components/marketing/ExitIntentModal";
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
+import { buildVerification } from "@/lib/seo/verification";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -26,13 +27,18 @@ export const metadata: Metadata = {
   description:
     "Independent toy safety reviews, transparent safety scores, and developmental play guides — built by Rodrigo and Vanessa, homeschooling parents of three in Kennesaw, Georgia, to help families choose safer, smarter toys with confidence.",
   metadataBase: new URL(SITE_URL),
-  // Google Search Console HTML-tag verification. Set GOOGLE_SITE_VERIFICATION
-  // to the token from the "HTML tag" method and redeploy; Next.js renders it as
-  // <meta name="google-site-verification" content="..."/>. Optional — DNS TXT
-  // verification via Vercel works without this.
-  ...(process.env.GOOGLE_SITE_VERIFICATION
-    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
-    : {}),
+  // Search-engine webmaster verification, one env var per engine. Each is
+  // optional and only emitted when set, so an unconfigured engine adds no tag.
+  //
+  //   GOOGLE_SITE_VERIFICATION -> <meta name="google-site-verification">
+  //   BING_SITE_VERIFICATION   -> <meta name="msvalidate.01">
+  //   YANDEX_SITE_VERIFICATION -> <meta name="yandex-verification">
+  //
+  // The HTML-tag method is only one option: Google is already verified here by
+  // DNS/Vercel, and Bing can import an existing Google Search Console property
+  // instead of verifying separately. These exist for the cases where the tag is
+  // the easiest route.
+  ...buildVerification(),
   ...generateOpenGraphMeta({
     title: "SafeNest Toys — Safer Toys, Smarter Play, Built by Parents",
     description:
