@@ -46,7 +46,7 @@ export default async function CategoriesIndexPage() {
         </h1>
         <p className="mt-3 max-w-2xl text-muted-foreground">
           Explore our editorially assessed reviews grouped by category.
-          Pick a category to see every toy we&apos;ve tested in it.
+          Pick a category to see everything we&apos;ve written up in it.
         </p>
       </header>
 

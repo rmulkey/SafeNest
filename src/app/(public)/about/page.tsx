@@ -136,10 +136,9 @@ export default function AboutPage() {
           Our mission
         </h2>
         <p className="text-base text-foreground/80 leading-relaxed">
-          To take the guesswork out of choosing toys — so any parent can pick
-          something safe and developmentally meaningful in minutes, with
-          confidence. We&apos;ve already done the hard part; we just want to share
-          it.
+          We wanted one place to check before buying a toy, instead of six tabs
+          and a lot of guessing. That&apos;s what this is. We were going to do
+          the reading anyway — it may as well be useful to someone else.
         </p>
       </section>
 

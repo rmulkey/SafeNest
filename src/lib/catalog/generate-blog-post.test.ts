@@ -15,6 +15,7 @@ const TOPIC = {
   categoryLabel: "Building Toys",
   categoryNoun: "building toy",
   slugBase: "top-child-safe-building-toys",
+  opener: "Test opener sentence for the building category.",
 };
 
 function makeProducts(n: number, withImages = true) {
@@ -26,9 +27,25 @@ function makeProducts(n: number, withImages = true) {
     safetyScore: 80 + i,
     developmentScore: 70 + i,
     ageRange: { minMonths: 12, maxMonths: 36 },
+    materials: ["Solid wood", "Water-based paint"],
+    hasActiveRecall: false,
+    // A deliberately uneven factor profile, so weakestFactor() has something to
+    // report in the tests that exercise it.
+    materialSafety: 90,
+    chokingRisk: 70,
+    recallHistory: 95,
+    certificationPresence: 88,
     imageRef: withImages ? `image-asset-${i}` : null,
     imageAlt: withImages ? `Product ${i} photo` : null,
   }));
+}
+
+/** All body text of a post, joined. */
+function bodyText(post: { body: PostBlock[] }): string {
+  return post.body
+    .filter((b): b is TextBlock => b._type === "block")
+    .map((b) => b.children.map((c) => c.text).join(""))
+    .join("\n");
 }
 
 const isText = (b: PostBlock): b is TextBlock => b._type === "block";
@@ -121,6 +138,107 @@ describe("buildRoundupPost", () => {
     for (const ref of post!.relatedReviews) {
       expect(validIds.has(ref._ref)).toBe(true);
     }
+  });
+});
+
+/**
+ * Voice and honesty guards.
+ *
+ * Six posts shipped claiming experience nobody had — "a toy we'd happily hand
+ * our own kids", "a toy we'd trust without a second thought", "in our own kids'
+ * hands" — about products SafeNest has never physically handled, on a site whose
+ * methodology page states it performs no testing. The same six shared 19
+ * paragraphs verbatim because the template was five fixed paragraphs plus one
+ * sentence per product with the brand swapped.
+ *
+ * These tests exist so neither can come back quietly.
+ */
+describe("generated copy does not claim first-hand experience", () => {
+  const FORBIDDEN = [
+    /we'?d (happily |gladly )?(hand|give|put|buy)/i,
+    /we'?d trust/i,
+    /in our own kids'? hands/i,
+    /we'?d feel good about/i,
+    /our (kids|children) (love|loved)/i,
+    /\bwe (tested|test|lab-tested)\b/i,
+    /safety[- ]tested\b/i,
+    /\bno guesswork\b/i,
+    /\bworry[- ]free\b/i,
+    /\bpeace of mind\b/i,
+  ];
+
+  it("emits none of the phrases that shipped in the first six posts", () => {
+    const post = buildRoundupPost(TOPIC, makeProducts(MAX_PICKS), new Date());
+    const text = bodyText(post!);
+    for (const re of FORBIDDEN) {
+      expect(text, `matched ${re}`).not.toMatch(re);
+    }
+    expect(post!.excerpt).not.toMatch(/researched by parents/i);
+  });
+
+  it("does not repeat a paragraph verbatim within one post", () => {
+    const post = buildRoundupPost(TOPIC, makeProducts(MAX_PICKS), new Date());
+    const paragraphs = post!.body
+      .filter((b): b is TextBlock => b._type === "block" && b.style === "normal")
+      .map((b) => b.children.map((c) => c.text).join("").trim())
+      // Link lead-ins are a deliberate two-form rotation, not prose.
+      .filter((t) => t.length > 80 && !t.startsWith("Full breakdown"));
+
+    const seen = new Set<string>();
+    for (const p of paragraphs) {
+      expect(seen.has(p), `duplicate paragraph: ${p.slice(0, 60)}`).toBe(false);
+      seen.add(p);
+    }
+  });
+
+  it("varies the sentence shape between consecutive product entries", () => {
+    const post = buildRoundupPost(TOPIC, makeProducts(4), new Date());
+    // The products are identical apart from their scores, so any variety here
+    // comes from the shape rotation rather than from differing data. Compare the
+    // first six words of each entry.
+    const opens = post!.body
+      .filter((b): b is TextBlock => b._type === "block" && b.style === "normal")
+      .map((b) => b.children.map((c) => c.text).join(""))
+      .filter((t) => !t.startsWith("Full breakdown") && !t.startsWith("What we"))
+      .map((t) => t.split(/\s+/).slice(0, 6).join(" "));
+
+    // Drop the two intro paragraphs; what remains is one per product.
+    const entryOpens = opens.slice(2);
+    expect(new Set(entryOpens).size).toBeGreaterThan(1);
+  });
+
+  it("states plainly that the score is not a test result", () => {
+    const post = buildRoundupPost(TOPIC, makeProducts(5), new Date());
+    expect(bodyText(post!)).toMatch(/not a test result/i);
+  });
+
+  it("names a product's weakest safety factor when one stands out", () => {
+    // makeProducts gives chokingRisk 70 against a 95 high — a 25-point spread.
+    const post = buildRoundupPost(TOPIC, makeProducts(5), new Date());
+    expect(bodyText(post!)).toMatch(/choking-risk research/i);
+  });
+
+  it("stays silent about the weakest factor when the profile is flat", () => {
+    const flat = makeProducts(5).map((p) => ({
+      ...p,
+      materialSafety: 88,
+      chokingRisk: 90,
+      recallHistory: 89,
+      certificationPresence: 91,
+    }));
+    const post = buildRoundupPost(TOPIC, flat, new Date());
+    expect(bodyText(post!)).not.toMatch(/weakest|pulling it down/i);
+  });
+
+  it("keeps stored material casing rather than lower-casing it", () => {
+    const products = makeProducts(4).map((p) => ({
+      ...p,
+      materials: ["ABS plastic", "BPA-free"],
+    }));
+    const post = buildRoundupPost(TOPIC, products, new Date());
+    const text = bodyText(post!);
+    expect(text).toMatch(/ABS plastic/);
+    expect(text).not.toMatch(/abs plastic/);
   });
 });
 

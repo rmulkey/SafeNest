@@ -127,8 +127,8 @@ export default async function CategoryPage({
           </h2>
           <p className="mt-2 max-w-md text-sm text-muted-foreground">
             We haven&apos;t published any {category.title.toLowerCase()} reviews
-            so far. Our team is hard at work testing toys in this category —
-            check back soon, or explore everything we&apos;ve reviewed.
+            so far. It&apos;s on our list — in the meantime, here&apos;s
+            everything else we&apos;ve written up.
           </p>
           <Link
             href="/reviews"

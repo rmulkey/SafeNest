@@ -38,7 +38,7 @@ export const GIFT_GUIDES: GiftGuide[] = [
     description:
       "Safe, developmental first birthday gift ideas for 1-year-olds — safety-scored and recall-checked by SafeNest Toys.",
     intro:
-      "Turning one is a big milestone, and the best gifts at this age support a new walker's curiosity and motor skills. Every toy below has been safety-scored and checked for recalls — so you can give something both delightful and genuinely safe.",
+      "A one-year-old is usually a brand-new walker, which changes what a good gift looks like: things to push, stack and empty out, rather than things to sit and watch. Everything here is safety-scored and checked against recall data, and the age ranges below are the manufacturers' own.",
     minMonths: 9,
     maxMonths: 18,
     emoji: "🎂",
@@ -49,7 +49,7 @@ export const GIFT_GUIDES: GiftGuide[] = [
     description:
       "Thoughtful, safe baby shower gift ideas for newborns and infants — safety-scored and developmentally reviewed by SafeNest Toys.",
     intro:
-      "Looking for a baby shower gift that stands out and is genuinely safe for a newborn? These infant-appropriate picks score high on material safety and have no small-parts choking risk, making them worry-free presents for new parents.",
+      "Buying for a newborn is mostly about materials and mouthing, because that is what a baby will do with anything you hand them. These picks score high on material information and none of them reported small parts. Check the age label on the box regardless — the manufacturer's guidance beats ours.",
     minMonths: 0,
     maxMonths: 9,
     emoji: "🍼",
@@ -60,7 +60,7 @@ export const GIFT_GUIDES: GiftGuide[] = [
     description:
       "Small, safe, affordable stocking stuffer ideas for toddlers — safety-scored by SafeNest Toys.",
     intro:
-      "The best stocking stuffers are small, engaging, and safe for little hands. These toddler-friendly picks are safety-scored and recall-checked, so every stocking surprise is one you can feel good about.",
+      "Stocking stuffers pull in the wrong direction for a toddler: small enough for a stocking is often small enough to be a choking risk. These are picks that are compact without being made of tiny parts. Ages below are the manufacturers' — check them, especially if there's a younger sibling in the house.",
     minMonths: 12,
     maxMonths: 36,
     emoji: "🧦",
@@ -71,7 +71,7 @@ export const GIFT_GUIDES: GiftGuide[] = [
     description:
       "Safe, developmental gift ideas for 2-year-olds — safety-scored and recall-checked by SafeNest Toys.",
     intro:
-      "Two-year-olds are busy explorers building language, imagination, and coordination. These gifts are chosen to match that stage and are safety-scored and recall-checked for peace of mind.",
+      "Two is the age where a toy either gets played with daily or ignored entirely, and it is hard to predict which from the box. These are picks whose age range genuinely covers two rather than starting there, safety-scored and checked against recall data.",
     minMonths: 24,
     maxMonths: 36,
     emoji: "🎁",

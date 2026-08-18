@@ -118,7 +118,7 @@ export default async function GiftGuideDetailPage({
             Picks coming soon
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            We&apos;re finalizing our safety-tested picks for this guide. In the
+            We&apos;re still working through the picks for this guide. In the
             meantime, browse all our reviews.
           </p>
           <Link
