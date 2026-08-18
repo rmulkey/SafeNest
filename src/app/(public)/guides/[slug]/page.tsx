@@ -12,9 +12,14 @@ import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema'
 import { SITE_URL } from '@/lib/seo/site-config'
 import { formatAgeRange } from '@/lib/content/format-age'
 import { BuyButton } from '@/components/affiliate/BuyButton'
+import { ProductThumb } from '@/components/reviews/ProductThumb'
+import { ArticleBody, type PortableBlock } from '@/components/content/ArticleBody'
 
 /** Fallback tag for legacy links stored without one. */
 const AMAZON_TAG = 'safeneststore-20'
+
+/** Product photos shown in the header strip. */
+const HEADER_THUMB_COUNT = 6
 
 interface ToyReviewRef {
   _id: string
@@ -24,6 +29,7 @@ interface ToyReviewRef {
   developmentScore: number
   brand?: string
   hasActiveRecall?: boolean
+  mainImage?: { asset: { _ref: string }; alt?: string } | null
   affiliateLinks?: { partnerId?: string; url: string; tag?: string }[] | null
 }
 
@@ -36,7 +42,7 @@ interface BuyingGuide {
     maxMonths: number
   }
   reviews: ToyReviewRef[] | null
-  body: unknown[]
+  body: PortableBlock[]
   _createdAt: string
 }
 
@@ -95,6 +101,15 @@ export default async function BuyingGuidePage({
     ? formatAgeRange(guide.targetAgeRange.minMonths, guide.targetAgeRange.maxMonths)
     : null
 
+  const products = guide.reviews ?? []
+  // Header imagery comes from the guide's own products. The buyingGuide schema
+  // has a mainImage field but no guide has one populated, and inventing or
+  // substituting a stock photo is not an option — these are the real product
+  // photos already stored for the items the guide compares.
+  const headerThumbs = products
+    .filter((r) => r.mainImage)
+    .slice(0, HEADER_THUMB_COUNT)
+
   return (
     <main className="mx-auto max-w-4xl px-4 py-12">
       <BreadcrumbSchema
@@ -104,45 +119,76 @@ export default async function BuyingGuidePage({
           { name: guide.title, url: `${SITE_URL}/guides/${slug}` },
         ]}
       />
-      <nav className="mb-6 text-sm text-zinc-500" aria-label="Breadcrumb">
-        <Link href="/guides" className="hover:text-zinc-700">
+      <nav className="mb-6 text-sm text-muted-foreground" aria-label="Breadcrumb">
+        <Link href="/guides" className="hover:text-foreground">
           Buying Guides
         </Link>
-        <span className="mx-2">/</span>
-        <span className="text-zinc-900 dark:text-zinc-100">{guide.title}</span>
+        <span className="mx-2" aria-hidden="true">
+          /
+        </span>
+        <span className="text-foreground">{guide.title}</span>
       </nav>
 
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-          {guide.title}
-        </h1>
-        {ageRangeLabel && (
-          <p className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
-            Age range: {ageRangeLabel}
+      <header className="mb-10 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-primary-50 via-background to-secondary-50">
+        <div className="px-6 py-8 md:px-8 md:py-10">
+          <p className="text-xs font-semibold uppercase tracking-wider text-primary-600">
+            Buying guide
           </p>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-primary-900 md:text-4xl">
+            {guide.title}
+          </h1>
+          <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-primary-700/80">
+            {ageRangeLabel && <span>Ages {ageRangeLabel}</span>}
+            {products.length > 0 && (
+              <>
+                {ageRangeLabel && <span aria-hidden="true">·</span>}
+                <span>
+                  {products.length} {products.length === 1 ? 'toy' : 'toys'} compared
+                </span>
+              </>
+            )}
+            <span aria-hidden="true">·</span>
+            <Link
+              href="/transparency"
+              className="font-medium underline underline-offset-4 hover:text-primary-900"
+            >
+              How we score
+            </Link>
+          </div>
+        </div>
+
+        {/* Product strip. aria-hidden because every one of these products is
+            listed below with its name, scores and a link — announcing the same
+            set twice adds nothing for a screen reader. */}
+        {headerThumbs.length > 0 && (
+          <div
+            className="flex items-center gap-3 border-t border-border/60 bg-background/50 px-6 py-4 md:px-8"
+            aria-hidden="true"
+          >
+            {headerThumbs.map((review, i) => (
+              <ProductThumb
+                key={review._id}
+                mainImage={review.mainImage}
+                productName={review.productName}
+                size={56}
+                className={
+                  // Keep the strip on one line at every width rather than
+                  // wrapping into a ragged second row.
+                  i >= 3 ? 'hidden sm:block' : ''
+                }
+              />
+            ))}
+          </div>
         )}
       </header>
 
       {guide.body && guide.body.length > 0 && (
-        <section className="prose prose-zinc dark:prose-invert mb-12">
-          {/* Render block content - a portable text renderer would be used here */}
-          {(guide.body as Record<string, unknown>[]).map((block, index) => {
-            if ((block as { _type: string })._type === 'block') {
-              const children = (block as { children?: Array<{ text: string }> }).children
-              const text = children?.map((child) => child.text).join('') ?? ''
-              const style = (block as { style?: string }).style || 'normal'
-              if (style === 'h2') return <h2 key={index}>{text}</h2>
-              if (style === 'h3') return <h3 key={index}>{text}</h3>
-              return <p key={index}>{text}</p>
-            }
-            return null
-          })}
-        </section>
+        <ArticleBody body={guide.body} className="mb-12" />
       )}
 
       {guide.reviews && guide.reviews.length > 0 && (
         <section>
-          <h2 className="mb-6 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+          <h2 className="mb-6 text-2xl font-semibold tracking-tight text-foreground">
             Referenced Toy Reviews
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -151,28 +197,45 @@ export default async function BuyingGuidePage({
               return (
                 <div
                   key={review._id}
-                  className="flex flex-col rounded-lg border border-zinc-200 transition-shadow hover:shadow-md dark:border-zinc-700"
+                  className="flex flex-col rounded-xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md"
                 >
                   {/* The card body links to the review. The buy button is a
                       sibling, not a child: an interactive control cannot nest
                       inside an anchor. */}
+                  {/* aria-label, not just the inner heading: this page is
+                      partially prerendered, and the heading text sits behind a
+                      streaming boundary while the thumbnail lands in the shell.
+                      The name resolves for real users, but an explicit label
+                      means the link's accessible name never depends on stream
+                      timing — and a link wrapping an image plus a heading reads
+                      better with one anyway. */}
                   <Link
                     href={`/reviews/${review.slug.current}`}
-                    className="flex-1 p-4"
+                    className="group flex-1 p-4"
+                    aria-label={review.productName}
                   >
-                    <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
-                      {review.productName}
-                    </h3>
+                    <div className="flex items-start gap-3">
+                      <ProductThumb
+                        mainImage={review.mainImage}
+                        productName={review.productName}
+                        size={56}
+                      />
+                      <h3 className="min-w-0 font-medium text-foreground transition-colors group-hover:text-primary-600">
+                        {review.productName}
+                      </h3>
+                    </div>
+                    {/* Score colours match ComparisonTable rather than
+                        introducing a third pairing for the same two numbers. */}
                     <div className="mt-3 flex gap-4 text-sm">
                       <div>
-                        <span className="text-zinc-500">Safety</span>
-                        <p className="font-semibold text-green-700 dark:text-green-400">
+                        <span className="text-muted-foreground">Safety</span>
+                        <p className="font-semibold text-secondary-700">
                           {review.safetyScore ?? '—'}/100
                         </p>
                       </div>
                       <div>
-                        <span className="text-zinc-500">Development</span>
-                        <p className="font-semibold text-blue-700 dark:text-blue-400">
+                        <span className="text-muted-foreground">Development</span>
+                        <p className="font-semibold text-primary-700">
                           {review.developmentScore ?? '—'}/100
                         </p>
                       </div>
@@ -184,7 +247,7 @@ export default async function BuyingGuidePage({
                     )}
                   </Link>
                   {link && (
-                    <div className="px-4 pb-4">
+                    <div className="border-t border-border px-4 py-4">
                       <BuyButton
                         url={link.url}
                         tag={link.tag || AMAZON_TAG}
@@ -200,7 +263,7 @@ export default async function BuyingGuidePage({
             })}
           </div>
           {/* One disclosure for the page, adjacent to the buy buttons above. */}
-          <p className="mt-4 text-xs text-zinc-500 dark:text-zinc-400">
+          <p className="mt-4 text-xs text-muted-foreground">
             Buy links are affiliate links. SafeNest may earn a commission from
             qualifying purchases at no additional cost to you, and commissions
             never influence our scores or which toys we include.
