@@ -45,3 +45,6 @@ next-env.d.ts
 
 # ASIN lookup worksheet (working file, filled in by hand)
 scripts/asin-candidates.json
+
+# Local backups written before destructive CMS operations
+backups/
