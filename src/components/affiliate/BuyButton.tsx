@@ -35,9 +35,12 @@ function AmazonGlyph({ className = "" }: { className?: string }) {
 }
 
 const sizeClasses: Record<NonNullable<BuyButtonProps["size"]>, string> = {
-  sm: "px-4 py-2 text-sm gap-1.5",
-  md: "px-5 py-2.5 text-sm gap-2",
-  lg: "px-6 py-3 text-base gap-2",
+  // min-h values keep the smallest variant at a 44px tap target. `sm` is used on
+  // every listing card, so it is the size that actually matters on mobile; its
+  // padding alone produced a ~36px control.
+  sm: "min-h-11 px-4 py-2 text-sm gap-1.5",
+  md: "min-h-11 px-5 py-2.5 text-sm gap-2",
+  lg: "min-h-12 px-6 py-3 text-base gap-2",
 };
 
 const glyphSize: Record<NonNullable<BuyButtonProps["size"]>, string> = {
@@ -48,6 +51,15 @@ const glyphSize: Record<NonNullable<BuyButtonProps["size"]>, string> = {
 
 /**
  * A consistent, FTC-compliant Amazon buy button used across review pages.
+ *
+ * Colour note: the label is Amazon's ink (#0F1111) on Amazon's orange
+ * (#FF9900), not white. White on that orange measures 2.14:1, which fails WCAG
+ * AA for text (4.5:1) and also fails the 3:1 floor for large text and non-text
+ * contrast — on the site's primary conversion control. Dark on orange measures
+ * 8.85:1, and 7.33:1 against the hover shade. It is also what Amazon itself
+ * does: their own buy buttons pair dark text with orange/yellow and never use
+ * white, so the accessible pairing is the brand-faithful one too. The orange is
+ * kept because the recognition is the conversion asset; only the label changed.
  */
 export function BuyButton({
   url,
@@ -74,7 +86,7 @@ export function BuyButton({
       target="_blank"
       rel="nofollow sponsored noopener"
       onClick={handleClick}
-      className={`inline-flex items-center justify-center rounded-lg bg-[#FF9900] font-semibold text-white hover:bg-[#E88B00] transition-colors shadow-sm ${sizeClasses[size]} ${className}`}
+      className={`inline-flex items-center justify-center rounded-lg bg-[#FF9900] font-semibold text-[#0F1111] hover:bg-[#E88B00] transition-colors shadow-sm ${sizeClasses[size]} ${className}`}
     >
       <AmazonGlyph className={glyphSize[size]} />
       {label}

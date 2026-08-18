@@ -11,6 +11,7 @@ import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
 import { InternalLinks } from "@/components/seo/InternalLinks";
 import { formatAgeRange } from "@/lib/content/format-age";
+import { ProductThumb } from "@/components/reviews/ProductThumb";
 
 export async function generateStaticParams() {
   return getValidToyTypeParams();
@@ -90,20 +91,27 @@ export default async function SafeToyTypePage({
             className="block rounded-lg border p-6 hover:shadow-md transition-shadow"
           >
             <div className="flex items-start justify-between gap-4">
-              <div>
-                <h2 className="text-xl font-semibold">{review.productName}</h2>
-                {review.category && (
-                  <p className="text-sm text-muted-foreground mt-1">
-                    {review.category.title}
-                  </p>
-                )}
-                <p className="text-sm text-muted-foreground mt-1">
-                  Ages:{" "}
-                  {formatAgeRange(
-                    review.ageRange.minMonths,
-                    review.ageRange.maxMonths
+              <div className="flex min-w-0 items-start gap-4">
+                <ProductThumb
+                  mainImage={review.mainImage}
+                  productName={review.productName}
+                  size={72}
+                />
+                <div className="min-w-0">
+                  <h2 className="text-xl font-semibold">{review.productName}</h2>
+                  {review.category && (
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {review.category.title}
+                    </p>
                   )}
-                </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Ages:{" "}
+                    {formatAgeRange(
+                      review.ageRange.minMonths,
+                      review.ageRange.maxMonths
+                    )}
+                  </p>
+                </div>
               </div>
               <div className="flex gap-4 shrink-0">
                 <div className="text-center">

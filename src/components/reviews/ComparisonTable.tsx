@@ -1,8 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
-import { urlForImage } from "@/lib/sanity/client";
 import { BuyButton } from "@/components/affiliate/BuyButton";
 import { AwardBadge, type AwardVariant } from "@/components/reviews/AwardBadge";
+import { ProductThumb } from "@/components/reviews/ProductThumb";
 import type { ToyReviewSummary } from "@/lib/seo/programmatic-pages";
 import { formatAgeRange } from "@/lib/content/format-age";
 
@@ -11,59 +10,47 @@ const AMAZON_TAG = "safeneststore-20";
 interface ComparisonTableProps {
   reviews: ToyReviewSummary[];
   awards: Record<string, AwardVariant>;
+  /**
+   * What the table is comparing, e.g. "toys for 1–2 years". Used for the
+   * caption and the scroll region's accessible name, so screen-reader users get
+   * an identifiable table rather than an unnamed one.
+   */
+  caption: string;
 }
 
 function primaryAffiliateLink(review: ToyReviewSummary) {
   return review.affiliateLinks?.[0] ?? null;
 }
 
-function ProductThumb({
-  review,
-  size,
-}: {
-  review: ToyReviewSummary;
-  size: number;
-}) {
-  if (!review.mainImage) {
-    return (
-      <div
-        className="flex shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground"
-        style={{ width: size, height: size }}
-        aria-hidden="true"
-      >
-        <span className="text-lg">🧸</span>
-      </div>
-    );
-  }
-
-  return (
-    <div
-      className="relative shrink-0 overflow-hidden rounded-lg bg-muted"
-      style={{ width: size, height: size }}
-    >
-      <Image
-        src={urlForImage(review.mainImage).width(size * 2).height(size * 2).url()}
-        alt={review.mainImage.alt || review.productName}
-        fill
-        className="object-cover"
-        sizes={`${size}px`}
-      />
-    </div>
-  );
-}
-
 /**
  * Responsive comparison table for best-of pages. Renders a real table on sm+
  * screens and a stacked card list on small screens. Sorted by safetyScore desc.
  */
-export function ComparisonTable({ reviews, awards }: ComparisonTableProps) {
+export function ComparisonTable({ reviews, awards, caption }: ComparisonTableProps) {
   const sorted = [...reviews].sort((a, b) => b.safetyScore - a.safetyScore);
 
   return (
     <div className="rounded-xl border border-border bg-card shadow-sm">
-      {/* Table view — sm screens and up */}
-      <div className="hidden sm:block overflow-x-auto">
+      {/*
+        Table view — sm screens and up.
+
+        The scroll container is focusable and labelled. Six columns including a
+        thumbnail and a button overflow on small tablets, and an `overflow-x-auto`
+        div with no tabindex leaves keyboard-only users unable to reach the
+        off-screen columns at all (WCAG 2.1.1). `tabIndex={0}` makes the region
+        scrollable with arrow keys; role + label make it an identifiable landmark
+        rather than an anonymous scroll box.
+      */}
+      <div
+        className="hidden sm:block overflow-x-auto"
+        tabIndex={0}
+        role="region"
+        aria-label={`Comparison of ${caption}, scrollable`}
+      >
         <table className="w-full text-sm">
+          <caption className="sr-only">
+            {`Comparison of ${caption}. Columns: product, age range, safety score, development score, award, price. Sorted by safety score, highest first.`}
+          </caption>
           <thead>
             <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-muted-foreground">
               <th scope="col" className="px-4 py-3 font-medium">
@@ -72,7 +59,13 @@ export function ComparisonTable({ reviews, awards }: ComparisonTableProps) {
               <th scope="col" className="px-4 py-3 font-medium">
                 Age Range
               </th>
-              <th scope="col" className="px-4 py-3 text-center font-medium">
+              {/* aria-sort: the table is always ordered by safety score, and
+                  without this the reader has no way to know that. */}
+              <th
+                scope="col"
+                className="px-4 py-3 text-center font-medium"
+                aria-sort="descending"
+              >
                 Safety
               </th>
               <th scope="col" className="px-4 py-3 text-center font-medium">
@@ -95,12 +88,19 @@ export function ComparisonTable({ reviews, awards }: ComparisonTableProps) {
                   key={review._id}
                   className="border-b border-border/60 last:border-0 hover:bg-muted/40 transition-colors"
                 >
-                  <td className="px-4 py-4">
+                  {/* th scope="row", not td: in a six-column table the product
+                      name is the label every other cell is read against. As a
+                      td, cell announcements lost that context entirely. */}
+                  <th scope="row" className="px-4 py-4 text-left font-normal">
                     <Link
                       href={`/reviews/${review.slug.current}`}
                       className="group flex items-center gap-3"
                     >
-                      <ProductThumb review={review} size={56} />
+                      <ProductThumb
+                        mainImage={review.mainImage}
+                        productName={review.productName}
+                        size={56}
+                      />
                       <span className="font-medium text-foreground group-hover:text-primary-600 transition-colors">
                         {review.productName}
                         {review.hasActiveRecall && (
@@ -110,7 +110,7 @@ export function ComparisonTable({ reviews, awards }: ComparisonTableProps) {
                         )}
                       </span>
                     </Link>
-                  </td>
+                  </th>
                   <td className="px-4 py-4 text-muted-foreground whitespace-nowrap">
                     {formatAgeRange(
                       review.ageRange.minMonths,
@@ -171,7 +171,11 @@ export function ComparisonTable({ reviews, awards }: ComparisonTableProps) {
                 href={`/reviews/${review.slug.current}`}
                 className="group flex items-start gap-3"
               >
-                <ProductThumb review={review} size={64} />
+                <ProductThumb
+                  mainImage={review.mainImage}
+                  productName={review.productName}
+                  size={64}
+                />
                 <div className="min-w-0 flex-1">
                   {/* h2, not h3: on /best-toys/[age] and the category+age pages
                       these cards are the only content headings under the page h1,

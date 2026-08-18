@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 
 const CONSENT_COOKIE_KEY = "safenest_cookie_consent";
 const CONSENT_EXPIRY_DAYS = 365;
@@ -68,12 +68,50 @@ export function CookieConsentBanner() {
   const { consent, grant, decline } = useConsentState();
 
   const [mounted] = useState(() => typeof window !== "undefined");
+  const bannerRef = useRef<HTMLDivElement>(null);
+
+  /*
+   * Publish the banner's height as a custom property on <html>.
+   *
+   * This banner and StickyBuyBar both occupy `fixed bottom-0 left-0 right-0`.
+   * The banner is z-50 and the bar z-40, so on a first mobile visit the banner
+   * completely covered the primary affiliate CTA — a visitor who had not yet
+   * answered the consent prompt could not see or tap it. Raising the bar instead
+   * would bury the consent prompt, which is worse. Publishing the height lets
+   * the bar sit directly on top of the banner so both stay usable, and the
+   * height is measured rather than hard-coded because the copy wraps to a
+   * different number of lines at every width.
+   */
+  useEffect(() => {
+    const el = bannerRef.current;
+    const root = document.documentElement;
+    if (!el) {
+      root.style.removeProperty("--consent-banner-height");
+      return;
+    }
+
+    const publish = () =>
+      root.style.setProperty(
+        "--consent-banner-height",
+        `${el.getBoundingClientRect().height}px`
+      );
+
+    publish();
+    const observer = new ResizeObserver(publish);
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+      root.style.removeProperty("--consent-banner-height");
+    };
+  }, [mounted, consent]);
 
   // Don't render on server or if consent already given
   if (!mounted || consent !== null) return null;
 
   return (
     <div
+      ref={bannerRef}
       role="dialog"
       aria-label="Cookie consent"
       aria-describedby="cookie-consent-description"

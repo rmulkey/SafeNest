@@ -149,11 +149,20 @@ body {
 }
 
 /* Focus styles for accessibility (WCAG AA) */
-/* High-contrast, consistent focus ring across links, buttons, inputs, etc. */
+/* High-contrast, consistent focus ring across links, buttons, inputs, etc.
+ *
+ * Deliberately no `border-radius` here. This rule is unlayered, while Tailwind's
+ * utilities compile inside `@layer utilities`, and unlayered declarations win
+ * over layered ones regardless of specificity. A `border-radius` in this block
+ * therefore overrode every `rounded-full` / `rounded-lg` / `rounded-xl` for as
+ * long as the element was keyboard-focused: header category pills and the modal
+ * close button snapped from circles to rounded rectangles, and buy buttons lost
+ * their corners. Mouse users never saw it; keyboard users saw it on every tab
+ * stop. `outline` already follows the element's own radius, so nothing is lost.
+ */
 :focus-visible {
   outline: 2px solid var(--color-primary-600);
   outline-offset: 2px;
-  border-radius: 4px;
 }
 
 a:focus-visible,
@@ -210,29 +219,33 @@ textarea:focus-visible,
   }
 }
 
-/* Ensure minimum touch targets on mobile (44x44px) */
-@media (max-width: 767px) {
+/*
+ * Minimum touch targets (44x44px), keyed on the input device rather than the
+ * viewport width.
+ *
+ * This was previously two width-based queries: max-width 767px set 44px and
+ * min-width 1024px set 36px. That left 768-1023px — iPad portrait and most
+ * Android tablets, every one of them touch-primary — with no floor at all,
+ * which is the worst place to have a gap. It also forced a floor onto
+ * mouse-driven desktops that did not need one, and *lowered* the floor to 36px
+ * on touch laptops and iPads in landscape. `pointer: coarse` covers every touch
+ * device at every width and leaves precise pointers alone.
+ *
+ * `a` is deliberately excluded. min-height/min-width do not apply to
+ * non-replaced inline elements, so an unqualified `a` selector silently did
+ * nothing for the prose links that most need enlarging, while forcing
+ * deliberately-compact inline-flex links and pills to 44px. Undersized anchors
+ * are sized at the component instead — see the min-h values in BuyButton, whose
+ * `sm` variant is the one that appears on every listing card.
+ */
+@media (pointer: coarse) {
   button,
-  a,
   [role="button"],
   input,
   select,
   textarea {
     min-height: 44px;
     min-width: 44px;
-  }
-}
-
-/* Desktop touch targets (36x36px) */
-@media (min-width: 1024px) {
-  button,
-  a,
-  [role="button"],
-  input,
-  select,
-  textarea {
-    min-height: 36px;
-    min-width: 36px;
   }
 }
 

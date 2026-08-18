@@ -101,7 +101,11 @@ export default async function BestToysForAgePage({
         by safety score.
       </p>
 
-      <ComparisonTable reviews={reviews} awards={awards} />
+      <ComparisonTable
+        reviews={reviews}
+        awards={awards}
+        caption={`toys for ${label}`}
+      />
 
       {/* Internal Links - Related Content (Requirement 4.3) */}
       <InternalLinks

@@ -13,6 +13,7 @@ import { SITE_URL } from "@/lib/seo/site-config";
 import { InternalLinks } from "@/components/seo/InternalLinks";
 import { formatAgeRange } from "@/lib/content/format-age";
 import { BuyButton } from "@/components/affiliate/BuyButton";
+import { ProductThumb } from "@/components/reviews/ProductThumb";
 
 /** Fallback tag for legacy links stored without one. */
 const AMAZON_TAG = "safeneststore-20";
@@ -109,15 +110,22 @@ export default async function BestCategoryToysForAgeGroupPage({
             className="block p-6"
           >
             <div className="flex items-start justify-between gap-4">
-              <div>
-                <h2 className="text-xl font-semibold">{review.productName}</h2>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Ages:{" "}
-                  {formatAgeRange(
-                    review.ageRange.minMonths,
-                    review.ageRange.maxMonths
-                  )}
-                </p>
+              <div className="flex min-w-0 items-start gap-4">
+                <ProductThumb
+                  mainImage={review.mainImage}
+                  productName={review.productName}
+                  size={72}
+                />
+                <div className="min-w-0">
+                  <h2 className="text-xl font-semibold">{review.productName}</h2>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Ages:{" "}
+                    {formatAgeRange(
+                      review.ageRange.minMonths,
+                      review.ageRange.maxMonths
+                    )}
+                  </p>
+                </div>
               </div>
               <div className="flex gap-4 shrink-0">
                 <div className="text-center">

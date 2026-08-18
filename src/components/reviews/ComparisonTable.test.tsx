@@ -65,7 +65,7 @@ describe("ComparisonTable", () => {
       makeReview({ _id: "b", productName: "Beta Stacker", safetyScore: 70 }),
     ];
 
-    render(<ComparisonTable reviews={reviews} awards={{}} />);
+    render(<ComparisonTable reviews={reviews} awards={{}} caption="test toys" />);
 
     // The component renders both layouts in the DOM (toggled by CSS), so each
     // product name appears exactly twice — once per layout.
@@ -81,7 +81,7 @@ describe("ComparisonTable", () => {
     ];
 
     const { container } = render(
-      <ComparisonTable reviews={reviews} awards={{}} />
+      <ComparisonTable reviews={reviews} awards={{}} caption="test toys" />
     );
 
     const table = container.querySelector("table") as HTMLTableElement;
@@ -114,7 +114,7 @@ describe("ComparisonTable", () => {
     ];
 
     const { container } = render(
-      <ComparisonTable reviews={reviews} awards={{}} />
+      <ComparisonTable reviews={reviews} awards={{}} caption="test toys" />
     );
 
     const buyLinks = Array.from(
@@ -146,7 +146,7 @@ describe("ComparisonTable", () => {
     ];
 
     const { container } = render(
-      <ComparisonTable reviews={reviews} awards={{}} />
+      <ComparisonTable reviews={reviews} awards={{}} caption="test toys" />
     );
 
     const buyLinks = Array.from(
@@ -166,7 +166,7 @@ describe("ComparisonTable", () => {
     ];
     const awards: Record<string, AwardVariant> = { winner: "top-pick" };
 
-    render(<ComparisonTable reviews={reviews} awards={awards} />);
+    render(<ComparisonTable reviews={reviews} awards={awards} caption="test toys" />);
 
     // The award badge label is rendered (in both layouts) for the winning review.
     const badges = screen.getAllByText(/Top Pick/);
@@ -184,7 +184,7 @@ describe("ComparisonTable", () => {
     ];
 
     const { container } = render(
-      <ComparisonTable reviews={reviews} awards={{}} />
+      <ComparisonTable reviews={reviews} awards={{}} caption="test toys" />
     );
 
     // No amazon BuyButton should be rendered for this review.
@@ -197,7 +197,7 @@ describe("ComparisonTable", () => {
 
   it("renders an empty table body when there are no reviews", () => {
     const { container } = render(
-      <ComparisonTable reviews={[]} awards={{}} />
+      <ComparisonTable reviews={[]} awards={{}} caption="test toys" />
     );
     const table = container.querySelector("table") as HTMLTableElement;
     expect(table).toBeTruthy();
