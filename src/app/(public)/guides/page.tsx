@@ -10,6 +10,7 @@ import { SITE_URL } from '@/lib/seo/site-config'
 // Shared formatter. The local implementation removed here produced
 // ungrammatical output such as "1 years" and "0 months – 1 years".
 import { formatAgeRange } from '@/lib/content/format-age'
+import { EmptyState } from '@/components/ui/EmptyState'
 
 export const metadata: Metadata = {
   title: 'Buying Guides | SafeNest Toys',
@@ -56,7 +57,11 @@ export default async function BuyingGuidesPage() {
       </header>
 
       {guides.length === 0 ? (
-        <p className="text-zinc-500">No buying guides available yet. Check back soon!</p>
+        <EmptyState
+          title="No guides published yet"
+          body="Each one takes a while — we would rather publish four we stand behind than forty we do not."
+          action={{ href: "/reviews", label: "Browse the reviews" }}
+        />
       ) : (
         <div className="grid gap-4 sm:grid-cols-2">
           {guides.map((guide) => (

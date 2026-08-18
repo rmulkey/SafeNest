@@ -14,6 +14,8 @@ import { InternalLinks } from "@/components/seo/InternalLinks";
 import { formatAgeRange } from "@/lib/content/format-age";
 import { BuyButton } from "@/components/affiliate/BuyButton";
 import { ProductThumb } from "@/components/reviews/ProductThumb";
+import { RecallFlag } from "@/components/recalls/RecallFlag";
+import { AffiliateDisclosure } from "@/components/affiliate/AffiliateDisclosure";
 
 /** Fallback tag for legacy links stored without one. */
 const AMAZON_TAG = "safeneststore-20";
@@ -145,8 +147,8 @@ export default async function BestCategoryToysForAgeGroupPage({
               </div>
             </div>
             {review.hasActiveRecall && (
-              <div className="mt-3 rounded bg-red-50 px-3 py-2 text-sm text-red-800">
-                ⚠️ Active recall alert
+              <div className="mt-3">
+                <RecallFlag detail="see the review before buying" />
               </div>
             )}
           </Link>
@@ -166,11 +168,7 @@ export default async function BestCategoryToysForAgeGroupPage({
         })}
       </div>
       {/* One disclosure for the page, adjacent to the buy buttons above. */}
-      <p className="mt-4 text-xs text-muted-foreground">
-        Buy links are affiliate links. SafeNest may earn a commission from
-        qualifying purchases at no additional cost to you, and commissions never
-        influence our scores or rankings.
-      </p>
+      <AffiliateDisclosure className="mt-4" />
 
       <InternalLinks
         currentDocId={`programmatic-category-${category}-${ageGroup}`}

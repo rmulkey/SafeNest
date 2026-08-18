@@ -2,6 +2,7 @@ import { BuyButton } from "@/components/affiliate/BuyButton";
 import { formatAgeRange } from "@/lib/content/format-age";
 import type { EvidenceConfidence as Confidence } from "@/lib/scoring/evidence-status";
 import { EVIDENCE_CONFIDENCE_LABELS } from "@/lib/scoring/evidence-status";
+import { AffiliateDisclosure } from "@/components/affiliate/AffiliateDisclosure";
 
 /**
  * Concise decision-support panel placed near the end of a review.
@@ -156,10 +157,7 @@ export function PurchaseDecisionPanel({
           {/* Disclosure sits immediately below the CTA, not in a distant
               footnote. No urgency, scarcity, discount or availability claim. */}
           {primary.affiliate && (
-            <p className="mt-2 text-xs text-muted-foreground">
-              SafeNest may earn a commission from qualifying purchases at no
-              additional cost to you.
-            </p>
+            <AffiliateDisclosure className="mt-2" />
           )}
         </div>
       )}

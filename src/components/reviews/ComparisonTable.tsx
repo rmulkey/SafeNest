@@ -4,6 +4,7 @@ import { AwardBadge, type AwardVariant } from "@/components/reviews/AwardBadge";
 import { ProductThumb } from "@/components/reviews/ProductThumb";
 import type { ToyReviewSummary } from "@/lib/seo/programmatic-pages";
 import { formatAgeRange } from "@/lib/content/format-age";
+import { RecallFlag } from "@/components/recalls/RecallFlag";
 
 const AMAZON_TAG = "safeneststore-20";
 
@@ -104,8 +105,8 @@ export function ComparisonTable({ reviews, awards, caption }: ComparisonTablePro
                       <span className="font-medium text-foreground group-hover:text-primary-600 transition-colors">
                         {review.productName}
                         {review.hasActiveRecall && (
-                          <span className="mt-1 block text-xs font-medium text-red-600">
-                            ⚠ Active recall
+                          <span className="mt-1 block">
+                            <RecallFlag />
                           </span>
                         )}
                       </span>
@@ -196,8 +197,8 @@ export function ComparisonTable({ reviews, awards, caption }: ComparisonTablePro
                     </span>
                   )}
                   {review.hasActiveRecall && (
-                    <span className="mt-1 block text-xs font-medium text-red-600">
-                      ⚠ Active recall
+                    <span className="mt-1 block">
+                      <RecallFlag />
                     </span>
                   )}
                 </div>

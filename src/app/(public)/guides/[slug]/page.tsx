@@ -14,6 +14,8 @@ import { formatAgeRange } from '@/lib/content/format-age'
 import { BuyButton } from '@/components/affiliate/BuyButton'
 import { ProductThumb } from '@/components/reviews/ProductThumb'
 import { ArticleBody, type PortableBlock } from '@/components/content/ArticleBody'
+import { RecallFlag } from '@/components/recalls/RecallFlag'
+import { AffiliateDisclosure } from '@/components/affiliate/AffiliateDisclosure'
 
 /** Fallback tag for legacy links stored without one. */
 const AMAZON_TAG = 'safeneststore-20'
@@ -241,8 +243,8 @@ export default async function BuyingGuidePage({
                       </div>
                     </div>
                     {review.hasActiveRecall && (
-                      <p className="mt-2 text-xs font-medium text-safety-low">
-                        ⚠ Active recall — see the review
+                      <p className="mt-2">
+                        <RecallFlag detail="see the review" />
                       </p>
                     )}
                   </Link>
@@ -263,11 +265,7 @@ export default async function BuyingGuidePage({
             })}
           </div>
           {/* One disclosure for the page, adjacent to the buy buttons above. */}
-          <p className="mt-4 text-xs text-muted-foreground">
-            Buy links are affiliate links. SafeNest may earn a commission from
-            qualifying purchases at no additional cost to you, and commissions
-            never influence our scores or which toys we include.
-          </p>
+          <AffiliateDisclosure className="mt-4" />
         </section>
       )}
 

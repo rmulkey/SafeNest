@@ -9,6 +9,7 @@ import {
 } from "@/lib/seo/programmatic-pages";
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
+import { EmptyState } from "@/components/ui/EmptyState";
 
 const BEST_TOYS_DESCRIPTION =
   "Compare developmentally appropriate toys by age, from 3 to 36 months, using parent-researched reviews built on publicly available product and recall information.";
@@ -54,9 +55,11 @@ export default async function BestToysLandingPage() {
       </p>
 
       {agePages.length === 0 ? (
-        <p className="text-muted-foreground">
-          No age-based toy guides are available yet. Check back soon!
-        </p>
+        <EmptyState
+          title="No age pages yet"
+          body="These build themselves once there are enough reviews in an age band to compare fairly."
+          action={{ href: "/reviews", label: "Browse the reviews" }}
+        />
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {agePages.map((page) => (

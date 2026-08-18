@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ShieldCheck, ArrowRight } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import { urlForImage } from "@/lib/sanity/client";
 import {
   GIFT_GUIDES,
@@ -14,6 +14,9 @@ import { SITE_URL } from "@/lib/seo/site-config";
 import { BuyButton } from "@/components/affiliate/BuyButton";
 import { AwardBadge, computeAwards } from "@/components/reviews/AwardBadge";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { RecallFlag } from "@/components/recalls/RecallFlag";
+import { AffiliateDisclosure } from "@/components/affiliate/AffiliateDisclosure";
+import { EmptyState } from "@/components/ui/EmptyState";
 
 const AMAZON_TAG = "safeneststore-20";
 
@@ -107,28 +110,15 @@ export default async function GiftGuideDetailPage({
             Every pick has a SafeNest editorial safety assessment and has been checked against publicly available recall information.
           </span>
         </div>
-        <p className="mt-2 text-xs text-muted-foreground">
-          As an Amazon Associate, SafeNest Toys earns from qualifying purchases.
-        </p>
+        <AffiliateDisclosure className="mt-2" />
       </header>
 
       {products.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-border bg-muted/30 px-6 py-16 text-center">
-          <h2 className="text-xl font-semibold text-foreground">
-            Picks coming soon
-          </h2>
-          <p className="mt-2 text-sm text-muted-foreground">
-            We&apos;re still working through the picks for this guide. In the
-            meantime, browse all our reviews.
-          </p>
-          <Link
-            href="/reviews"
-            className="mt-6 inline-flex items-center gap-1.5 rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary-700"
-          >
-            Browse all reviews
-            <ArrowRight className="size-4" aria-hidden="true" />
-          </Link>
-        </div>
+        <EmptyState
+          title="No picks in this guide yet"
+          body="We're still working through this one. Everything we have written up is on the reviews page."
+          action={{ href: "/reviews", label: "Browse the reviews" }}
+        />
       ) : (
         <ol className="space-y-5">
           {products.map((product, index) => {
@@ -197,8 +187,8 @@ export default async function GiftGuideDetailPage({
                     </div>
                   </dl>
                   {product.hasActiveRecall && (
-                    <p className="mt-2 text-xs font-medium text-red-600">
-                      ⚠ Active recall — see review before buying
+                    <p className="mt-2">
+                      <RecallFlag detail="see the review before buying" />
                     </p>
                   )}
 

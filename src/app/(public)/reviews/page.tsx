@@ -8,6 +8,8 @@ import { SITE_URL } from "@/lib/seo/site-config";
 import { ScoreBadge } from "@/components/reviews/ScoreBadge";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { formatAgeRange } from "@/lib/content/format-age";
+import { RecallFlag } from "@/components/recalls/RecallFlag";
+import { EmptyState } from "@/components/ui/EmptyState";
 
 export const metadata: Metadata = {
   title: "All Toy Safety Reviews | SafeNest Toys",
@@ -81,15 +83,11 @@ export default async function ReviewsIndexPage() {
       </header>
 
       {reviews.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-border bg-muted/30 px-6 py-16 text-center">
-          <h2 className="text-xl font-semibold text-foreground">
-            Reviews coming soon
-          </h2>
-          <p className="mt-2 text-sm text-muted-foreground">
-            We&apos;re publishing safety-scored toy reviews now — check back
-            shortly.
-          </p>
-        </div>
+        <EmptyState
+          title="No reviews published yet"
+          body="We're working through the first batch now. The guides have our reasoning in the meantime."
+          action={{ href: "/guides", label: "Read the buying guides" }}
+        />
       ) : (
         <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {reviews.map((review) => (
@@ -136,8 +134,8 @@ export default async function ReviewsIndexPage() {
                 </div>
 
                 {review.hasActiveRecall && (
-                  <span className="mt-3 inline-block rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-700">
-                    Active Recall
+                  <span className="mt-3 inline-block">
+                    <RecallFlag />
                   </span>
                 )}
               </Link>

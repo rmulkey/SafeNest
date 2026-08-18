@@ -12,6 +12,7 @@ import { SITE_URL } from "@/lib/seo/site-config";
 import { InternalLinks } from "@/components/seo/InternalLinks";
 import { formatAgeRange } from "@/lib/content/format-age";
 import { ProductThumb } from "@/components/reviews/ProductThumb";
+import { RecallFlag } from "@/components/recalls/RecallFlag";
 
 export async function generateStaticParams() {
   return getValidToyTypeParams();
@@ -131,8 +132,8 @@ export default async function SafeToyTypePage({
               </div>
             </div>
             {review.hasActiveRecall && (
-              <div className="mt-3 rounded bg-red-50 px-3 py-2 text-sm text-red-800">
-                ⚠️ Active recall alert
+              <div className="mt-3">
+                <RecallFlag detail="see the review before buying" />
               </div>
             )}
           </Link>

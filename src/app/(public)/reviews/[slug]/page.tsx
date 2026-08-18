@@ -37,6 +37,7 @@ import { generateReviewJsonLd } from "@/lib/seo/structured-data";
 import { BuyButton } from "@/components/affiliate/BuyButton";
 import { StickyBuyBar } from "@/components/affiliate/StickyBuyBar";
 import { formatAgeRange } from "@/lib/content/format-age";
+import { AffiliateDisclosure } from "@/components/affiliate/AffiliateDisclosure";
 
 interface ToyReview {
   _id: string;
@@ -304,10 +305,7 @@ export default async function ToyReviewPage({ params }: PageProps) {
             <p className="text-sm font-medium text-foreground">
               {review.productName}
             </p>
-            <p className="text-xs text-muted-foreground mt-0.5">
-              SafeNest may earn a commission from qualifying purchases at no
-              additional cost to you.
-            </p>
+            <AffiliateDisclosure className="mt-0.5" />
           </div>
           {review.affiliateLinks.map((link, i) => (
             <BuyButton

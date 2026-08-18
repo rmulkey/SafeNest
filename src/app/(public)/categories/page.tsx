@@ -6,6 +6,7 @@ import { allCategoriesQuery } from "@/lib/sanity/queries";
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
+import { EmptyState } from "@/components/ui/EmptyState";
 
 export const metadata: Metadata = {
   title: "Toy Categories | SafeNest Toys",
@@ -51,19 +52,11 @@ export default async function CategoriesIndexPage() {
       </header>
 
       {categories.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-border bg-muted/30 px-6 py-16 text-center">
-          <h2 className="text-xl font-semibold text-foreground">
-            Categories coming soon
-          </h2>
-          <p className="mt-2 text-sm text-muted-foreground">
-            We&apos;re organizing our reviews into categories now — check back
-            shortly, or{" "}
-            <Link href="/reviews" className="text-primary-600 underline">
-              browse all reviews
-            </Link>
-            .
-          </p>
-        </div>
+        <EmptyState
+          title="No categories yet"
+          body="Categories appear once there are enough reviews to group. Everything we've written is on one page for now."
+          action={{ href: "/reviews", label: "Browse the reviews" }}
+        />
       ) : (
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((category) => (

@@ -80,10 +80,20 @@ const EXACTLY_ONCE = [
   "SafeNest editorial safety assessment",
 ];
 
-/** Must be present. */
+/**
+ * Must be present.
+ *
+ * The disclosure sentence is the canonical wording from
+ * src/components/affiliate/AffiliateDisclosure.tsx (AFFILIATE_DISCLOSURE_TEXT).
+ * It is duplicated here rather than imported because this script runs under plain
+ * node with no TypeScript loader. AffiliateDisclosure.test.tsx pins the same
+ * string, so changing the wording is a deliberate edit in two known places rather
+ * than something that can drift silently — which is what happened when twelve
+ * different phrasings of it accumulated across the codebase.
+ */
 const REQUIRED = [
   "Check current price at Amazon",
-  "SafeNest may earn a commission from qualifying purchases at no additional cost to you.",
+  "Some links here are affiliate links. If you buy through one we may earn a commission, at no extra cost to you — it never changes our scores or which toys we include.",
 ];
 
 let failures = 0;

@@ -9,6 +9,7 @@
 
 import Link from "next/link";
 import { formatAgeRange } from "@/lib/content/format-age";
+import { RecallFlag } from "@/components/recalls/RecallFlag";
 
 interface ReviewCardProps {
   productName: string;
@@ -44,8 +45,8 @@ export function ReviewCard({
     >
       <article>
         {hasActiveRecall && (
-          <div className="text-xs font-medium text-safety-low mb-2">
-            ⚠️ Active Recall
+          <div className="mb-2">
+            <RecallFlag />
           </div>
         )}
 

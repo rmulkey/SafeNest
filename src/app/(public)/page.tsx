@@ -23,6 +23,7 @@ import { FAQSchema } from "@/components/seo/FAQSchema";
 import { OrganizationSchema } from "@/components/seo/OrganizationSchema";
 import { WebSiteSchema } from "@/components/seo/WebSiteSchema";
 import { formatAgeRange as formatAgeRangeMonths } from "@/lib/content/format-age";
+import { RecallFlag } from "@/components/recalls/RecallFlag";
 
 export const metadata: Metadata = {
   title: "SafeNest Toys — Safer Toys, Smarter Play, Built by Parents",
@@ -264,8 +265,8 @@ export default async function HomePage() {
                 <ScoreBadge score={review.developmentScore} label="Development" size="sm" />
               </div>
               {review.hasActiveRecall && (
-                <span className="mt-3 inline-block rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-700">
-                  Active Recall
+                <span className="mt-3 inline-block">
+                  <RecallFlag />
                 </span>
               )}
             </Link>

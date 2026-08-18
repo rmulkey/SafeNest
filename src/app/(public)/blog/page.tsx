@@ -10,6 +10,7 @@ import { selectInSeason, type SeasonalWindow } from "@/lib/content/seasonal";
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
 import { NewsletterForm } from "@/components/newsletter/NewsletterForm";
+import { EmptyState } from "@/components/ui/EmptyState";
 
 export const metadata: Metadata = {
   title: "Toy Safety Blog — Guides & Research | SafeNest Toys",
@@ -101,9 +102,11 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       )}
 
       {posts.length === 0 ? (
-        <p className="text-zinc-600 dark:text-zinc-400">
-          No blog posts yet. Check back soon!
-        </p>
+        <EmptyState
+          title="Nothing posted yet"
+          body="We write these as questions come up in our own house, so they arrive in bursts."
+          action={{ href: "/reviews", label: "Browse the reviews" }}
+        />
       ) : (
         <ul className="space-y-8">
           {posts

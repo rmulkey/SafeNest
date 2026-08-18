@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/brand/Logo";
 import { Shield, FileCheck, Ban } from "lucide-react";
+import { AffiliateDisclosure } from "@/components/affiliate/AffiliateDisclosure";
 
 const quickLinks = [
   { href: "/reviews", label: "Reviews" },
@@ -128,9 +129,7 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-            <p className="mt-4 text-xs text-muted-foreground leading-relaxed">
-              SafeNest Toys earns a commission from qualifying purchases made through affiliate links.
-            </p>
+            <AffiliateDisclosure className="mt-4" />
           </div>
         </div>
 

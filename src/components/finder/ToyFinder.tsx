@@ -7,6 +7,8 @@ import { Baby, Sparkles, Wallet, Loader2, RotateCcw, ShieldCheck } from "lucide-
 import { urlForImage } from "@/lib/sanity/client";
 import { BuyButton } from "@/components/affiliate/BuyButton";
 import { formatAgeRange } from "@/lib/content/format-age";
+import { RecallFlag } from "@/components/recalls/RecallFlag";
+import { AffiliateDisclosure } from "@/components/affiliate/AffiliateDisclosure";
 
 /* ── Static option data (matches real Sanity category slugs) ──────────────── */
 
@@ -347,7 +349,7 @@ export function ToyFinder() {
                               </span>
                             </p>
                             {r.hasActiveRecall && (
-                              <p className="mt-0.5 text-xs font-medium text-red-600">⚠ Active recall</p>
+                              <p className="mt-0.5"><RecallFlag /></p>
                             )}
                           </div>
                         </Link>
@@ -366,10 +368,7 @@ export function ToyFinder() {
                 </ul>
               )}
 
-              <p className="mt-4 text-center text-xs text-muted-foreground">
-                As an Amazon Associate, SafeNest earns from qualifying purchases. Scores are
-                independent of affiliate partnerships.
-              </p>
+              <AffiliateDisclosure className="mt-4" align="center" />
             </div>
           )}
         </div>
