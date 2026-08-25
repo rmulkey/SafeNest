@@ -32,6 +32,10 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# ...except the template, which is the only record of what a working
+# environment needs. It carries variable names and non-secret defaults only;
+# every credential in it is empty and DATABASE_URL points at localhost.
+!.env.example
 
 # vercel
 .vercel
