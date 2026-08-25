@@ -1,0 +1,6 @@
+# Semrush report: domain_ranks
+# params: {"target":"safenesttoys.com","database":"us","export_columns":["database","domain","rank","organic_keywords","organic_traffic","organic_traffic_cost","paid_keywords","paid_traffic"]}
+# fetched: 2026-08-25T21:28:00.442Z
+# via: mcp.semrush.com/v2/mcp (Authorization: Apikey)
+Database;Domain;Rank;Organic Keywords;Organic Traffic;Organic Cost;Adwords Keywords;Adwords Traffic
+us;safenesttoys.com;15306701;30;0;0;0;0

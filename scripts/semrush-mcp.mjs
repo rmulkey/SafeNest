@@ -86,14 +86,19 @@ export async function callTool(name, args = {}) {
   }
 }
 
-const [cmd, ...rest] = process.argv.slice(2);
+// Only act as a CLI when run directly. Without this guard, importing rpc/callTool
+// from another script triggers the usage message and exits.
+const isMain = process.argv[1] && import.meta.url === `file://${process.argv[1]}`;
+const [cmd, ...rest] = isMain ? process.argv.slice(2) : [];
 
-if (!cmd) {
+if (isMain && !cmd) {
   console.error("usage: semrush-mcp.mjs tools | call <tool> '<json>' | schema <report>");
   process.exit(1);
 }
 
-if (cmd === "tools") {
+if (!isMain) {
+  // Imported for its rpc/callTool exports; no CLI work to do.
+} else if (cmd === "tools") {
   const { tools } = await rpc("tools/list");
   for (const t of tools) {
     console.log(`${t.name}\n  ${(t.description ?? "").split("\n")[0]}\n`);

@@ -1,0 +1,688 @@
+[
+  {
+    "id": 1,
+    "title": "5xx errors",
+    "title_page": "##count## pages returned 5XX status code upon request",
+    "url_column": "",
+    "info_column": "HTTP Code"
+  },
+  {
+    "id": 2,
+    "title": "4xx errors",
+    "title_page": "##count## pages returned 4XX status code upon request",
+    "url_column": "",
+    "info_column": "HTTP Code"
+  },
+  {
+    "id": 3,
+    "title": "Title tag is missing or empty",
+    "title_page": "##count## pages have no page title",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 6,
+    "title": "Duplicate title tag",
+    "title_page": "##count## pages don`t have a unique title",
+    "url_column": "",
+    "info_column": "Page Title"
+  },
+  {
+    "id": 7,
+    "title": "Duplicate content",
+    "title_page": "##count## pages have duplicate content issues",
+    "url_column": "",
+    "info_column": "Similar pages"
+  },
+  {
+    "id": 8,
+    "title": "Broken internal links",
+    "title_page": "##count## internal links are broken",
+    "url_column": "Broken Link URL",
+    "info_column": "HTTP Code"
+  },
+  {
+    "id": 9,
+    "title": "Pages not crawled",
+    "title_page": "##count## page couldn`t be crawled",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 10,
+    "title": "DNS resolution issue",
+    "title_page": "##count## DNS couldn`t be resolved",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 11,
+    "title": "We couldn't open the page?s URL",
+    "title_page": "We couldn`t open the page`s URL",
+    "url_column": "We couldn`t open the page`s URL due to an incorrect URL format.",
+    "info_column": ""
+  },
+  {
+    "id": 12,
+    "title": "Broken external links",
+    "title_page": "##count## external links are broken",
+    "url_column": "Link URL",
+    "info_column": "HTTP Code"
+  },
+  {
+    "id": 13,
+    "title": "Broken internal images",
+    "title_page": "##count## internal images are broken",
+    "url_column": "Image URL",
+    "info_column": "HTTP Code"
+  },
+  {
+    "id": 14,
+    "title": "Broken external images",
+    "title_page": "##count## external images are broken",
+    "url_column": "Image URL",
+    "info_column": "HTTP Code"
+  },
+  {
+    "id": 15,
+    "title": "Duplicate meta descriptions",
+    "title_page": "##count## pages don`t have a unique meta description",
+    "url_column": "",
+    "info_column": "Pages with same meta description"
+  },
+  {
+    "id": 16,
+    "title": "Invalid robots.txt format",
+    "title_page": "Malformed robots.txt",
+    "url_column": "",
+    "info_column": "Invalid line"
+  },
+  {
+    "id": 17,
+    "title": "Invalid sitemap.xml format",
+    "title_page": "Sitemap files have format errors",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 18,
+    "title": "Incorrect pages found in sitemap.xml",
+    "title_page": "Wrong pages found in sitemap",
+    "url_column": "Link URL",
+    "info_column": ""
+  },
+  {
+    "id": 19,
+    "title": "www resolve issues",
+    "title_page": "WWW domain configured incorrectly",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 20,
+    "title": "Viewport not configured",
+    "title_page": "Pages have no viewport tag",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 21,
+    "title": "Large HTML page size",
+    "title_page": "##count## pages have too large HTML size",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 22,
+    "title": "Missing canonical tags in AMP pages",
+    "title_page": "##count## pages have no canonical tags",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 23,
+    "title": "Issues with hreflang values",
+    "title_page": "##count## hreflang implementation issues",
+    "url_column": "",
+    "info_column": "Hreflang"
+  },
+  {
+    "id": 24,
+    "title": "Hreflang conflicts within page source code",
+    "title_page": "##count## hreflang conflicts within page source code",
+    "url_column": "",
+    "info_column": "Hreflang"
+  },
+  {
+    "id": 25,
+    "title": "Issues with incorrect hreflang links",
+    "title_page": "##count## bad hreflang links within page source code",
+    "url_column": "Link URL",
+    "info_column": "Hreflang"
+  },
+  {
+    "id": 26,
+    "title": "Non-secure pages",
+    "title_page": "##count## non-secure pages",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 27,
+    "title": "Certificate Expiration",
+    "title_page": "##count## issues with expiring or expired certificate",
+    "url_column": "",
+    "info_column": "Expiration"
+  },
+  {
+    "id": 28,
+    "title": "Old security protocol version",
+    "title_page": "Old security protocol version",
+    "url_column": "",
+    "info_column": "Protocol version"
+  },
+  {
+    "id": 29,
+    "title": "Certificate registered to incorrect name",
+    "title_page": "Certificate registered to incorrect name",
+    "url_column": "",
+    "info_column": "Subject Alt Names"
+  },
+  {
+    "id": 30,
+    "title": "Issues with mixed content",
+    "title_page": "##count## pages contain links to HTTP pages",
+    "url_column": "Resource URL",
+    "info_column": "Resource Type"
+  },
+  {
+    "id": 31,
+    "title": "Links lead to HTTP pages for HTTPS site",
+    "title_page": "##count## links to HTTP pages",
+    "url_column": "HTTP Link URL",
+    "info_column": ""
+  },
+  {
+    "id": 32,
+    "title": "Neither canonical URL nor 301 redirect from HTTP homepage",
+    "title_page": "Neither canonical URL nor 301 redirect from HTTP homepage to HTTPS version",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 33,
+    "title": "Redirect chains and loops",
+    "title_page": "##count## redirect chains and loops",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 38,
+    "title": "Broken canonical URLs",
+    "title_page": "##count## broken canonical URLs",
+    "url_column": "Canonical link URL",
+    "info_column": "HTTP Status code"
+  },
+  {
+    "id": 39,
+    "title": "Multiple canonical URLs",
+    "title_page": "##count## pages have multiple canonical URLs",
+    "url_column": "First Canonical Link URL",
+    "info_column": ""
+  },
+  {
+    "id": 40,
+    "title": "Meta refresh redirects",
+    "title_page": "##count## pages have a meta refresh tag",
+    "url_column": "Meta refresh URL",
+    "info_column": ""
+  },
+  {
+    "id": 41,
+    "title": "Broken internal JavaScript and CSS files",
+    "title_page": "##count## broken internal JavaScript and CSS files",
+    "url_column": "Resource URL",
+    "info_column": ""
+  },
+  {
+    "id": 42,
+    "title": "Insecure encryption algorithms",
+    "title_page": "##count## subdomains don't support secure encryption algorithms",
+    "url_column": "",
+    "info_column": "Insecure Encryption Algorithms"
+  },
+  {
+    "id": 43,
+    "title": "Sitemap file too large",
+    "title_page": "Sitemap file too large",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 44,
+    "title": "Malformed links",
+    "title_page": "##count## pages couldn't be crawled (incorrect URL formats)",
+    "url_column": "Malformed URL",
+    "info_column": ""
+  },
+  {
+    "id": 45,
+    "title": "Structured data that contains markup errors",
+    "title_page": "##count## of items with markup errors",
+    "url_column": "Resource URL",
+    "info_column": "Markup errors"
+  },
+  {
+    "id": 46,
+    "title": "Viewport width not set",
+    "title_page": "##count## pages are missing the viewport width value",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 101,
+    "title": "Title element is too short",
+    "title_page": "##count## pages have a too short title",
+    "url_column": "",
+    "info_column": "Title"
+  },
+  {
+    "id": 102,
+    "title": "Title element is too long",
+    "title_page": "##count## pages have a too long title",
+    "url_column": "",
+    "info_column": "Title"
+  },
+  {
+    "id": 103,
+    "title": "Missing h1",
+    "title_page": "##count## pages have no H1 heading on them",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 104,
+    "title": "Multiple h1 tags",
+    "title_page": "##count## pages have more than one H1 heading",
+    "url_column": "",
+    "info_column": "H1 count"
+  },
+  {
+    "id": 105,
+    "title": "Duplicate content in h1 and title",
+    "title_page": "##count## pages have H1 content that duplicates page title content",
+    "url_column": "",
+    "info_column": "Title"
+  },
+  {
+    "id": 106,
+    "title": "Missing meta description",
+    "title_page": "##count## pages have no meta description tag",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 108,
+    "title": "Too many on-page links",
+    "title_page": "##count## pages have too many on-page links",
+    "url_column": "",
+    "info_column": "Links number"
+  },
+  {
+    "id": 109,
+    "title": "Temporary redirects",
+    "title_page": "##count## URLs with a temporary redirect",
+    "url_column": "Initial Redirect URL",
+    "info_column": "Status code"
+  },
+  {
+    "id": 110,
+    "title": "Missing ALT attributes",
+    "title_page": "##count## images have no ALT text",
+    "url_column": "Image URL",
+    "info_column": ""
+  },
+  {
+    "id": 111,
+    "title": "Slow page load speed",
+    "title_page": "##count## pages are considered slow",
+    "url_column": "",
+    "info_column": "Load Time, s"
+  },
+  {
+    "id": 112,
+    "title": "Low text to HTML ratio",
+    "title_page": "##count## pages have a low text/HTML ratio",
+    "url_column": "",
+    "info_column": "Ratio"
+  },
+  {
+    "id": 113,
+    "title": "Too many URL parameters",
+    "title_page": "##count## pages have an URL with more than two query parameters",
+    "url_column": "",
+    "info_column": "Params number"
+  },
+  {
+    "id": 114,
+    "title": "Missing hreflang and lang attributes",
+    "title_page": "##count## pages are missing correct language declaration",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 115,
+    "title": "Encoding not declared",
+    "title_page": "##count## pages are missing character encoding declaration",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 116,
+    "title": "Doctype not declared",
+    "title_page": "##count## pages are missing correct doctype declaration",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 117,
+    "title": "Low word count",
+    "title_page": "##count## pages have small amount of content (word count)",
+    "url_column": "",
+    "info_column": "Words number"
+  },
+  {
+    "id": 120,
+    "title": "Incompatible plugins used",
+    "title_page": "##count## pages have incompatible plugin content",
+    "url_column": "",
+    "info_column": "Type of plugins"
+  },
+  {
+    "id": 121,
+    "title": "Frames used",
+    "title_page": "##count## pages use frames",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 122,
+    "title": "Underscores in URL",
+    "title_page": "##count## pages have underscore(s) in URL",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 123,
+    "title": "Nofollow attributes in internal links",
+    "title_page": "##count## internal links have nofollow attribute",
+    "url_column": "Link URL",
+    "info_column": ""
+  },
+  {
+    "id": 124,
+    "title": "Sitemap.xml not specified in robots.txt",
+    "title_page": "Sitemap exist but not found in robots",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 125,
+    "title": "Sitemap.xml not found",
+    "title_page": "Sitemap file not found",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 126,
+    "title": "HTTPS encryption not used",
+    "title_page": "Homepage does not use HTTPS encryption",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 127,
+    "title": "No SNI support",
+    "title_page": "No SNI support",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 128,
+    "title": "HTTP URLs in sitemap.xml for HTTPS site",
+    "title_page": "HTTP link in HTTPS sitemap",
+    "url_column": "HTTP URL",
+    "info_column": ""
+  },
+  {
+    "id": 129,
+    "title": "Uncompressed pages",
+    "title_page": "##count## uncompressed pages",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 130,
+    "title": "Disallowed internal resources",
+    "title_page": "##count## disallowed internal resources",
+    "url_column": "Resource URL",
+    "info_column": "Resource Type"
+  },
+  {
+    "id": 131,
+    "title": "Uncompressed JavaScript and CSS files",
+    "title_page": "##count## uncompressed JavaScript and CSS files",
+    "url_column": "Resource URL",
+    "info_column": "Resource Type"
+  },
+  {
+    "id": 132,
+    "title": "Uncached JavaScript and CSS files",
+    "title_page": "##count## uncached JavaScript and CSS files",
+    "url_column": "Resource URL",
+    "info_column": "Resource Type"
+  },
+  {
+    "id": 133,
+    "title": "Too large JavaScript and CSS total size",
+    "title_page": "##count## pages have a JavaScript and CSS total size that is too large",
+    "url_column": "",
+    "info_column": "CSS and JavaScript Size"
+  },
+  {
+    "id": 134,
+    "title": "Too many JavaScript and CSS files",
+    "title_page": "##count## pages use too many JavaScript and CSS files",
+    "url_column": "",
+    "info_column": "CSS and JavaScript Amount"
+  },
+  {
+    "id": 135,
+    "title": "Unminified JavaScript and CSS files",
+    "title_page": "##count## issues with unminified JavaScript and CSS files",
+    "url_column": "Resource URL",
+    "info_column": "Resource Type"
+  },
+  {
+    "id": 136,
+    "title": "Warning - Too long URLs",
+    "title_page": "##count## pages have an URL too long",
+    "url_column": "Link URL",
+    "info_column": "URL Length"
+  },
+  {
+    "id": 137,
+    "title": "Llms.txt not found",
+    "title_page": "Llms.txt not found",
+    "url_column": "",
+    "info_column": "Status code"
+  },
+  {
+    "id": 4,
+    "title": "Blocked from crawling",
+    "title_page": "##count## pages have been blocked from crawling",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 201,
+    "title": "Too long URLs",
+    "title_page": "##count## pages have an URL too long",
+    "url_column": "",
+    "info_column": "URL length"
+  },
+  {
+    "id": 202,
+    "title": "Nofollow attributes in external links",
+    "title_page": "##count## external links have nofollow attribute",
+    "url_column": "Link URL",
+    "info_column": ""
+  },
+  {
+    "id": 203,
+    "title": "Robots.txt not found",
+    "title_page": "No robots txt",
+    "url_column": "",
+    "info_column": "Status code"
+  },
+  {
+    "id": 204,
+    "title": "Hreflang language mismatch issues",
+    "title_page": "##count## pages have hreflang language mismatch issues",
+    "url_column": "Hreflang code",
+    "info_column": "Detected Language"
+  },
+  {
+    "id": 205,
+    "title": "No HSTS support",
+    "title_page": "No HSTS support",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 206,
+    "title": "Orphaned pages (Google Analytics)",
+    "title_page": "Orphaned google analytics pages",
+    "url_column": "Page URL",
+    "info_column": ""
+  },
+  {
+    "id": 207,
+    "title": "Orphaned sitemap pages",
+    "title_page": "Orphaned sitemap pages",
+    "url_column": "Page URL",
+    "info_column": ""
+  },
+  {
+    "id": 208,
+    "title": "Pages have high Document Interactive Time",
+    "title_page": "###count### pages have high Document Interactive Time",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 209,
+    "title": "Blocked by X-Robots-Tag: noindex HTTP header",
+    "title_page": "##count## pages blocked by X-Robots-Tag: noindex HTTP header",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 210,
+    "title": "Disallowed external resources",
+    "title_page": "##count## disallowed external resources",
+    "url_column": "Resource URL",
+    "info_column": "Resource Type"
+  },
+  {
+    "id": 211,
+    "title": "Broken external JavaScript and CSS files",
+    "title_page": "##count## broken external JavaScript and CSS files",
+    "url_column": "Resource URL",
+    "info_column": ""
+  },
+  {
+    "id": 212,
+    "title": "Page crawl depth",
+    "title_page": "##count## pages need more than 3 clicks to be reached",
+    "url_column": "",
+    "info_column": "Depth"
+  },
+  {
+    "id": 213,
+    "title": "Pages with only one internal link",
+    "title_page": "##count## pages with only one internal link",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 214,
+    "title": "Permanent redirects",
+    "title_page": "##count## URLs with a permanent redirect",
+    "url_column": "Initial Redirect URL",
+    "info_column": "Status code"
+  },
+  {
+    "id": 215,
+    "title": "Resources formatted as page links",
+    "title_page": "##count## resources are formatted as a page link",
+    "url_column": "Resource URL",
+    "info_column": "Resource Type"
+  },
+  {
+    "id": 216,
+    "title": "Links with no anchor text",
+    "title_page": "##count## links on this page have no anchor",
+    "url_column": "Link URL",
+    "info_column": ""
+  },
+  {
+    "id": 217,
+    "title": "Links with non-descriptive anchor text",
+    "title_page": "##count## links on this page have non-descriptive anchor text",
+    "url_column": "Link URL",
+    "info_column": "Anchor Text"
+  },
+  {
+    "id": 218,
+    "title": "External pages or resources with 403 HTTP status code",
+    "title_page": "##count## links to external pages or resources returned a 403 HTTP status code",
+    "url_column": "Resource URL",
+    "info_column": "Type of resource"
+  },
+  {
+    "id": 219,
+    "title": "Llms.txt has formatting issues",
+    "title_page": "Llms.txt has formatting issues",
+    "url_column": "",
+    "info_column": "Issues"
+  },
+  {
+    "id": 220,
+    "title": "Too much content",
+    "title_page": "\"##count## contain too much content",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 221,
+    "title": "Outdated content",
+    "title_page": "##count## pages have outdated content",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 222,
+    "title": "Low Semantic HTML usage",
+    "title_page": "##count## pages have low Semantic HTML usage",
+    "url_column": "",
+    "info_column": ""
+  },
+  {
+    "id": 223,
+    "title": "Content not optimized",
+    "title_page": "##count## require content optimization",
+    "url_column": "",
+    "info_column": "Errors"
+  }
+]
