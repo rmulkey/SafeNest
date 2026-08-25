@@ -11,6 +11,26 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { generateBlogPostingJsonLd } from "@/lib/seo/structured-data";
 import { ArticleBody, type PortableBlock } from "@/components/content/ArticleBody";
+import { BuyButton } from "@/components/affiliate/BuyButton";
+import { AffiliateDisclosure } from "@/components/affiliate/AffiliateDisclosure";
+import { ProductThumb } from "@/components/reviews/ProductThumb";
+import { RecallFlag } from "@/components/recalls/RecallFlag";
+
+/** Fallback tag for legacy links stored without one. */
+const AMAZON_TAG = "safeneststore-20";
+
+interface RelatedReview {
+  _id: string;
+  productName: string;
+  slug: { current: string };
+  brand?: string;
+  safetyScore?: number;
+  developmentScore?: number;
+  ageRange?: { minMonths: number; maxMonths: number };
+  mainImage?: { asset: { _ref: string }; alt?: string } | null;
+  hasActiveRecall?: boolean;
+  affiliateLinks?: { partnerId?: string; url: string; tag?: string }[] | null;
+}
 
 interface BlogPost {
   _id: string;
@@ -20,6 +40,7 @@ interface BlogPost {
   excerpt?: string;
   body: PortableBlock[];
   author: string;
+  relatedReviews?: RelatedReview[] | null;
 }
 
 interface BlogPostPageProps {
@@ -92,6 +113,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const postUrl = `${SITE_URL}/blog/${slug}`;
 
+  // Products this post covers. Empty for the explainer articles, which is why the
+  // section below is conditional rather than always rendered.
+  const picks = post.relatedReviews ?? [];
+
   return (
     <main className="mx-auto max-w-3xl px-4 py-12">
       <JsonLd
@@ -158,6 +183,82 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Rich text body rendering */}
         <ArticleBody body={post.body} className="text-foreground/80" />
       </article>
+
+      {/* Products covered in this post.
+          
+          A roundup is the highest purchase-intent page type on an affiliate site,
+          and these carried no buy path: each product mention linked to a review,
+          so buying took an extra hop. Rendered from relatedReviews rather than
+          from links in the body, so the CTA inherits BuyButton's
+          rel="nofollow sponsored noopener" instead of the generic external-link
+          treatment. Posts without the field — the explainer articles — render
+          nothing, which is correct: a piece about button batteries should not
+          try to sell anything. */}
+      {picks.length > 0 && (
+        <section aria-labelledby="post-picks-heading" className="mt-12">
+          <h2
+            id="post-picks-heading"
+            className="mb-6 text-2xl font-semibold tracking-tight text-foreground"
+          >
+            Where to find the toys in this post
+          </h2>
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {picks.map((review) => {
+              const link = review.affiliateLinks?.[0];
+              return (
+                <li
+                  key={review._id}
+                  className="flex flex-col rounded-xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md"
+                >
+                  <Link
+                    href={`/reviews/${review.slug.current}`}
+                    className="group flex-1 p-4"
+                    aria-label={review.productName}
+                  >
+                    <div className="flex items-start gap-3">
+                      <ProductThumb
+                        mainImage={review.mainImage}
+                        productName={review.productName}
+                        size={56}
+                      />
+                      <div className="min-w-0">
+                        <h3 className="font-medium text-foreground transition-colors group-hover:text-primary-600">
+                          {review.productName}
+                        </h3>
+                        {typeof review.safetyScore === "number" && (
+                          <p className="mt-1 text-sm">
+                            <span className="font-semibold text-secondary-700">
+                              Safety {review.safetyScore}
+                            </span>
+                            <span className="text-muted-foreground">/100</span>
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                    {review.hasActiveRecall && (
+                      <p className="mt-2">
+                        <RecallFlag detail="see the review" />
+                      </p>
+                    )}
+                  </Link>
+                  {link && (
+                    <div className="border-t border-border px-4 py-4">
+                      <BuyButton
+                        url={link.url}
+                        tag={link.tag || AMAZON_TAG}
+                        size="sm"
+                        className="w-full"
+                        productId={review.slug.current}
+                      />
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+          <AffiliateDisclosure className="mt-4" />
+        </section>
+      )}
 
       {/* Newsletter inline signup */}
       <section

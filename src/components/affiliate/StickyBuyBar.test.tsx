@@ -57,7 +57,7 @@ describe("StickyBuyBar component", () => {
   it("uses the specified merchant CTA, not a generic 'Buy'", () => {
     // A standalone "Buy" is a generic CTA with no merchant or action named.
     const html = renderToStaticMarkup(<StickyBuyBar {...props} />);
-    expect(html).toContain("Check current price at Amazon");
+    expect(html).toContain("Check price at Amazon");
     expect(html).not.toMatch(/>Buy</);
   });
 });

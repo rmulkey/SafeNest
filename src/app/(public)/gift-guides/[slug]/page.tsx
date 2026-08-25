@@ -198,7 +198,6 @@ export default async function GiftGuideDetailPage({
                         url={link.url}
                         tag={link.tag || AMAZON_TAG}
                         size="sm"
-                        label="Check Price"
                         productId={product.slug.current}
                       />
                     )}

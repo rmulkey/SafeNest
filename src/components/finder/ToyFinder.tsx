@@ -358,7 +358,6 @@ export function ToyFinder() {
                             url={link.url}
                             tag={link.tag}
                             size="sm"
-                            label="Check Price"
                             className="shrink-0"
                           />
                         )}

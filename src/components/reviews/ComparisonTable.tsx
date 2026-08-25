@@ -143,7 +143,6 @@ export function ComparisonTable({ reviews, awards, caption }: ComparisonTablePro
                         url={link.url}
                         tag={link.tag || AMAZON_TAG}
                         size="sm"
-                        label="Check Price"
                       />
                     ) : (
                       <Link
@@ -223,7 +222,6 @@ export function ComparisonTable({ reviews, awards, caption }: ComparisonTablePro
                     url={link.url}
                     tag={link.tag || AMAZON_TAG}
                     size="sm"
-                    label="Check Price"
                   />
                 ) : (
                   <Link

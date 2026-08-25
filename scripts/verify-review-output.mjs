@@ -92,7 +92,10 @@ const EXACTLY_ONCE = [
  * different phrasings of it accumulated across the codebase.
  */
 const REQUIRED = [
-  "Check current price at Amazon",
+  // BUY_CTA_LABEL from src/components/affiliate/BuyButton.tsx. Duplicated here
+  // because this script runs under plain node with no TypeScript loader;
+  // BuyButton.test.tsx pins the same string so the two cannot drift silently.
+  "Check price at Amazon",
   "Some links here are affiliate links. If you buy through one we may earn a commission, at no extra cost to you — it never changes our scores or which toys we include.",
 ];
 

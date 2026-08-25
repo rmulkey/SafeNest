@@ -254,7 +254,6 @@ export default async function BuyingGuidePage({
                         url={link.url}
                         tag={link.tag || AMAZON_TAG}
                         size="sm"
-                        label="Check current price at Amazon"
                         className="w-full"
                         productId={review.slug.current}
                       />

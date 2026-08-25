@@ -3,12 +3,28 @@
 import React from "react";
 import { trackAffiliateClick } from "@/lib/analytics/events";
 
+/**
+ * The one buy-CTA label.
+ *
+ * Six variants had accumulated across ten call sites — "Check current price at
+ * Amazon", "Check Price", and an unused "Buy on Amazon" default that only the
+ * component itself knew about. Making the canonical wording the DEFAULT rather
+ * than something each call site passes means they cannot drift apart again.
+ *
+ * "Check price" rather than "Buy": 94 of 138 affiliate links currently resolve to
+ * an Amazon search page rather than a product page, so promising a purchase would
+ * overstate what the click delivers. It also sets the right expectation that no
+ * price is shown here — the site has no Creators API access and does not display
+ * prices it cannot verify.
+ */
+export const BUY_CTA_LABEL = "Check price at Amazon";
+
 interface BuyButtonProps {
   url: string;
   tag: string;
   /** Visual size variant */
   size?: "sm" | "md" | "lg";
-  /** Optional label override; defaults to "Buy on Amazon" */
+  /** Optional override. Prefer the default so the label stays consistent. */
   label?: string;
   className?: string;
   /** Product identifier for conversion tracking (e.g. review slug or _id). */
@@ -65,7 +81,7 @@ export function BuyButton({
   url,
   tag,
   size = "md",
-  label = "Buy on Amazon",
+  label = BUY_CTA_LABEL,
   className = "",
   productId,
   partnerId = "amazon",

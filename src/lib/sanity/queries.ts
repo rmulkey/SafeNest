@@ -341,6 +341,18 @@ export const seasonalBlogPostsQuery = groq`
 // and falls back to the body's first paragraph without it. Auto-generated
 // roundups share an identical opening paragraph per category, so omitting
 // excerpt produced duplicate meta descriptions across posts.
+/**
+ * `relatedReviews` is projected because the roundup posts are the highest
+ * purchase-intent pages on the site and previously carried no buy path at all:
+ * every product mention linked to a review page, so a reader had to make an extra
+ * hop before they could buy anything. The generator has always written this field;
+ * the page simply never read it.
+ *
+ * Affiliate URLs stay out of the article body deliberately. A link mark inside
+ * Portable Text renders through the generic external-link path, which does not
+ * carry rel="nofollow sponsored" — required by the Associates agreement. Keeping
+ * the commerce in a component means it inherits BuyButton's attributes.
+ */
 export const blogPostBySlugQuery = groq`
   *[_type == "blogPost" && slug.current == $slug][0] {
     _id,
@@ -349,7 +361,11 @@ export const blogPostBySlugQuery = groq`
     publishedAt,
     excerpt,
     body,
-    author
+    author,
+    "relatedReviews": relatedReviews[]->{
+      _id, productName, slug, brand, safetyScore, developmentScore,
+      ageRange, mainImage, hasActiveRecall, affiliateLinks
+    }
   }
 `;
 

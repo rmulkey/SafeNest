@@ -68,7 +68,7 @@ export function StickyBuyBar({ productName, url, tag, safetyScore, confidence }:
               : `Editorial score ${safetyScore}/100`}
           </p>
         </div>
-        <BuyButton url={url} tag={tag} size="md" label="Check current price at Amazon" className="shrink-0" />
+        <BuyButton url={url} tag={tag} size="md" className="shrink-0" />
       </div>
     </div>
   );

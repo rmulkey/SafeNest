@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import fc from "fast-check";
-import { BuyButton, buildAmazonUrl } from "./BuyButton";
+import { BuyButton, buildAmazonUrl, BUY_CTA_LABEL } from "./BuyButton";
 
 describe("buildAmazonUrl", () => {
   it("appends ?tag= when the url has no query string", () => {
@@ -81,19 +81,35 @@ describe("BuyButton component", () => {
     );
   });
 
-  it("renders the default label", () => {
+  /**
+   * The label is pinned here on purpose.
+   *
+   * Six wordings had spread across ten call sites, so the canonical one is now
+   * the component default and no call site passes a label at all. This test and
+   * scripts/verify-review-output.mjs assert the same string; the script cannot
+   * import from a .tsx, so this is what stops the two drifting apart.
+   */
+  it("pins the canonical default label", () => {
+    expect(BUY_CTA_LABEL).toBe("Check price at Amazon");
     const html = renderToStaticMarkup(
       <BuyButton url="https://www.amazon.com/dp/B000" tag="t" />
     );
-    expect(html).toContain("Buy on Amazon");
+    expect(html).toContain(BUY_CTA_LABEL);
   });
 
-  it("renders a custom label when provided", () => {
+  it("does not promise a purchase, since most links land on a search page", () => {
+    // 94 of 138 stored links are /s?k= search URLs. "Buy on Amazon" would
+    // overstate what the click delivers.
+    expect(BUY_CTA_LABEL).not.toMatch(/\bbuy\b/i);
+    expect(BUY_CTA_LABEL).toMatch(/check/i);
+  });
+
+  it("renders a custom label when one is explicitly passed", () => {
     const html = renderToStaticMarkup(
-      <BuyButton url="https://www.amazon.com/dp/B000" tag="t" label="Buy" />
+      <BuyButton url="https://www.amazon.com/dp/B000" tag="t" label="Compare" />
     );
-    expect(html).toContain("Buy");
-    expect(html).not.toContain("Buy on Amazon");
+    expect(html).toContain("Compare");
+    expect(html).not.toContain(BUY_CTA_LABEL);
   });
 
   it("href reflects & separator for urls with an existing query", () => {
