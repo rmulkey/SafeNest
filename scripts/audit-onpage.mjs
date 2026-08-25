@@ -106,9 +106,23 @@ for (let i = 0; i < paths.length; i += CONCURRENCY) {
       const imgs = [...body.matchAll(/<img\b[^>]*>/gi)].map((m) => m[0]);
       const imgsNoAlt = imgs.filter((t) => !/\salt=/i.test(t)).length;
 
+      // Affiliate disclosure must accompany affiliate links. The Associates
+      // agreement requires it, so its disappearance is a compliance failure, not
+      // a cosmetic one — and it is exactly the kind of thing a refactor removes
+      // silently because no page looks broken without it.
+      const affiliateLinks = (
+        raw.match(/href="https:\/\/(?:www\.)?amazon\.[a-z.]+\/[^"]*"/gi) || []
+      ).length;
+      const visibleText = strip(raw).replace(/<[^>]+>/g, " ");
+      const hasDisclosure =
+        /affiliate/i.test(visibleText) &&
+        /(commission|earn|paid)/i.test(visibleText);
+
       pages.push({
         path,
         status: res.status,
+        affiliateLinks,
+        hasDisclosure,
         title,
         titleLen: [...title].length,
         description,
@@ -141,6 +155,33 @@ const dupesOf = (key) => {
 
 const dupTitles = dupesOf("title");
 const dupDescs = dupesOf("description");
+
+/**
+ * Two sitemap URLs claiming the same canonical.
+ *
+ * Every URL the sitemap lists should be self-canonical: the sitemap is the set of
+ * pages we are asking Google to index, so a listed URL pointing its canonical
+ * elsewhere is either a mistake or a page that should not be listed.
+ *
+ * The site does have deliberate many-to-one canonicals — eleven alternate age
+ * spellings fold onto five preferred URLs — but none of those eleven is in the
+ * sitemap, which is exactly why "both in the sitemap" is the right test. It flags
+ * the accident without flagging the design.
+ */
+const canonicalGroups = new Map();
+for (const p of pages) {
+  if (p.status !== 200 || !p.canonical) continue;
+  if (!canonicalGroups.has(p.canonical)) canonicalGroups.set(p.canonical, []);
+  canonicalGroups.get(p.canonical).push(p.path);
+}
+const dupCanonicals = [...canonicalGroups.entries()].filter(([, ps]) => ps.length > 1);
+const nonSelfCanonical = pages.filter(
+  (p) => p.status === 200 && p.canonical && p.canonical !== p.path
+);
+
+const missingDisclosure = pages.filter(
+  (p) => p.status === 200 && p.affiliateLinks > 0 && !p.hasDisclosure
+);
 const dupH1s = (() => {
   const seen = new Map();
   for (const p of pages) {
@@ -207,7 +248,30 @@ console.log(`  ${String(dupDescs.length).padStart(4)}  duplicate meta descriptio
 for (const [v, ps] of dupDescs.slice(0, VERBOSE ? 50 : 5)) {
   console.log(`          "${v.slice(0, 70)}…" x${ps.length}: ${ps.slice(0, 3).join(", ")}`);
 }
-errorPages += dupTitles.length + dupDescs.length;
+console.log(
+  `  ${String(dupCanonicals.length).padStart(4)}  sitemap URLs sharing a canonical (unexpected)`
+);
+for (const [canon, ps] of dupCanonicals.slice(0, VERBOSE ? 50 : 8)) {
+  console.log(`          ${canon} <- ${ps.join(", ")}`);
+}
+console.log(
+  `  ${String(nonSelfCanonical.length).padStart(4)}  sitemap URLs not self-canonical (unexpected)`
+);
+for (const p of nonSelfCanonical.slice(0, VERBOSE ? 50 : 8)) {
+  console.log(`          ${p.path} -> ${p.canonical}`);
+}
+console.log(
+  `  ${String(missingDisclosure.length).padStart(4)}  pages with affiliate links but no disclosure`
+);
+for (const p of missingDisclosure.slice(0, VERBOSE ? 50 : 8)) {
+  console.log(`          ${p.path} (${p.affiliateLinks} affiliate link(s))`);
+}
+errorPages +=
+  dupTitles.length +
+  dupDescs.length +
+  dupCanonicals.length +
+  nonSelfCanonical.length +
+  missingDisclosure.length;
 
 console.log("\nWARNINGS");
 for (const [label, hits] of WARNINGS) {
