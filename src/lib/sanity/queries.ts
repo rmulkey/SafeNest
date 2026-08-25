@@ -164,23 +164,32 @@ export const buyingGuideBySlugQuery = groq`
 
 // ─── Safety Articles ────────────────────────────────────────────────────────────
 
-export const latestSafetyArticlesQuery = groq`
-  *[_type == "safetyArticle"] | order(publishedAt desc) [0...5] {
+// No query reads `safetyArticle`, because no route serves one. The type predates
+// /blog and its content was folded in there, which is why app/sitemap.ts and the
+// IndexNow webhook's PATH_BY_TYPE map both skip it.
+//
+// The homepage's "Latest safety articles" list used to read this type and link
+// each item to `/blog/{slug}` — a route that resolves `blogPost` only. One
+// `safetyArticle` document survives, so the homepage, the highest-authority page
+// on the site, carried a link to a page that renders "Post Not Found" under
+// HTTP 200. A soft 404 answers with a success status, so neither a status-code
+// link check nor Semrush's broken-link report would flag it.
+//
+// The schema stays registered so the surviving document is still visible and
+// editable in the Studio.
+
+/**
+ * Latest posts for the homepage list. Mirrors allBlogPostsQuery's filter so a
+ * scheduled post cannot surface on the homepage before it appears on /blog.
+ */
+export const latestBlogPostsQuery = groq`
+  *[_type == "blogPost" && (!defined(publishedAt) || publishedAt <= now())]
+    | order(publishedAt desc) [0...5] {
     _id,
     title,
     slug,
     publishedAt,
     excerpt
-  }
-`;
-
-export const safetyArticleBySlugQuery = groq`
-  *[_type == "safetyArticle" && slug.current == $slug][0] {
-    _id,
-    title,
-    slug,
-    publishedAt,
-    body
   }
 `;
 

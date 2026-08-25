@@ -53,7 +53,10 @@ for (let i = 0; i < sitemapPaths.length; i += CONCURRENCY) {
         unreachable.push({ page, status: res.status });
         return;
       }
-      const html = await res.text();
+      // Strip inline <script> before reading hrefs. The RSC flight payload
+      // repeats every href as a JSON string, so counting it would credit a
+      // page with links a crawler cannot follow without executing JS.
+      const html = (await res.text()).replace(/<script\b[\s\S]*?<\/script>/gi, "");
       for (const m of html.matchAll(/href="(\/[^"]*)"/g)) {
         const target = normalise(m[1].split(/[#?]/)[0]);
         if (target.startsWith("/_next") || target.startsWith("/api")) continue;

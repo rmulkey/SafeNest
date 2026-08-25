@@ -7,7 +7,7 @@ import { sanityClient } from "@/lib/sanity/client";
 import { urlForImage } from "@/lib/sanity/client";
 import {
   featuredToyReviewsQuery,
-  latestSafetyArticlesQuery,
+  latestBlogPostsQuery,
   approvedTestimonialsQuery,
   approvedEndorsementsQuery,
 } from "@/lib/sanity/queries";
@@ -63,7 +63,7 @@ interface ToyReview {
   mainImage?: { asset: { _ref: string }; alt?: string };
 }
 
-interface SafetyArticle {
+interface BlogPostSummary {
   _id: string;
   title: string;
   slug: { current: string };
@@ -150,7 +150,9 @@ export default async function HomePage() {
   const [featuredReviews, latestArticles, testimonials, endorsements, reviewCount] =
     await Promise.all([
       sanityClient.fetch<ToyReview[]>(featuredToyReviewsQuery),
-      sanityClient.fetch<SafetyArticle[]>(latestSafetyArticlesQuery),
+      // blogPost, not safetyArticle: these link to /blog/{slug}, and that route
+      // resolves blogPost only. See latestSafetyArticlesQuery for the history.
+      sanityClient.fetch<BlogPostSummary[]>(latestBlogPostsQuery),
       sanityClient.fetch<Testimonial[]>(approvedTestimonialsQuery),
       sanityClient.fetch<Endorsement[]>(approvedEndorsementsQuery),
       // Single source of truth for the review-count claim. Renders nothing when
@@ -324,7 +326,7 @@ export default async function HomePage() {
               href="/blog"
               className="text-sm font-medium text-primary-600 hover:text-primary-700"
             >
-              Read more →
+              All safety articles →
             </Link>
           </div>
           <ul className="divide-y divide-border bg-card rounded-xl border border-border overflow-hidden">

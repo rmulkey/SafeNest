@@ -46,6 +46,14 @@ const EXPECTED_CANONICALS = [
   ["/best-toys/3", "/best-toys/0-6-months"],
   ["/best-toys/24-36-months", "/best-toys/2-3-years"],
   ["/best-toys/3-4-years", "/best-toys/3-plus-years"],
+  // Boundary ages. These four open a band rather than sitting inside one, so
+  // they used to be self-canonical — leaving /best-toys/6 competing with
+  // /best-toys/6-12-months over a near-identical list of toys, on a URL the
+  // sitemap omits. The /best-toys hub linked all four.
+  ["/best-toys/6", "/best-toys/6-12-months"],
+  ["/best-toys/12", "/best-toys/1-2-years"],
+  ["/best-toys/24", "/best-toys/2-3-years"],
+  ["/best-toys/36", "/best-toys/3-plus-years"],
 ];
 
 /** Sitemap must contain at least one URL matching each of these. */
