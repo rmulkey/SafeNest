@@ -400,15 +400,90 @@ export const blogPostCountQuery = groq`
 
 // ─── Internal Links (Related Content) ───────────────────────────────────────────
 
-export const relatedContentQuery = groq`
+/**
+ * Related buying guides, queried separately from reviews so that 138 reviews
+ * cannot crowd out 12 guides in a single `[0...6]` slice.
+ *
+ * Two things were wrong with matching guides in the combined query:
+ *
+ *   1. It tested `ageRange`, which no buyingGuide has — the field on that type
+ *      is `targetAgeRange`, populated on all 12. So the age clause could never
+ *      match a guide, leaving `category` as the only route in, and only 4 of 12
+ *      guides carry a category reference. The 4 that do ended up with 38, 12, 8
+ *      and 7 inbound internal links; the other 8 got exactly one each, from the
+ *      /guides index. That is measured, not inferred.
+ *   2. Ordering by `_createdAt desc` across both types meant reviews won the
+ *      slice on volume alone.
+ *
+ * This matters more than it looks. Guides are the only pages on the site with
+ * meaningful organic search visibility, and the ones that rank are the ones that
+ * happened to have internal links. `/guides/best-sensory-toys-babies` (38 links)
+ * ranks for 18 keywords; `/guides/best-toys-6-12-months` (1 link, same template,
+ * same length) ranks for none.
+ */
+/**
+ * Returns every matching guide, unsliced, because ranking them needs to happen
+ * in app code. There are only 12 buying guides, so this is cheap.
+ *
+ * Ordering in GROQ is not enough: sorting by `targetAgeRange.minMonths` and
+ * taking the first two handed almost every slot to the three guides that start
+ * at 0 months, which just moved the concentration rather than fixing it. Whether
+ * a guide belongs next to *this* page depends on how tightly its age range fits
+ * and whether its category matches — see pickGuides in InternalLinks.
+ */
+export const relatedGuidesQuery = groq`
   *[
     _id != $currentDocId &&
-    _type in ["toyReview", "buyingGuide", "ageBasedGuide"] &&
+    _type == "buyingGuide" &&
+    (
+      category._ref == $categoryId ||
+      (targetAgeRange.minMonths <= $maxMonths && targetAgeRange.maxMonths >= $minMonths)
+    )
+  ] {
+    _id,
+    _type,
+    title,
+    slug,
+    "categoryId": category._ref,
+    targetAgeRange
+  }
+`;
+
+/**
+ * How many reviews match, so the window below can be rotated without running off
+ * the end of the result set.
+ */
+export const relatedReviewsCountQuery = groq`
+  count(*[
+    _id != $currentDocId &&
+    _type == "toyReview" &&
     (
       category._ref == $categoryId ||
       (ageRange.minMonths <= $maxMonths && ageRange.maxMonths >= $minMonths)
     )
-  ] | order(_createdAt desc) [0...6] {
+  ])
+`;
+
+/**
+ * A rotating window over the matching reviews.
+ *
+ * This used to be `order(_createdAt desc) [0...6]`, which handed the six newest
+ * matching reviews to every page that asked. Measured on the built site, four
+ * reviews from the most recent import were collecting 124–147 inbound internal
+ * links each while the buying guides sat on one. The category/age filter above
+ * already establishes relevance, so ordering inside the matched set is arbitrary
+ * — and any fixed ordering concentrates. `order(_id)` with a per-page offset is
+ * stable per document and spread across the catalog.
+ */
+export const relatedReviewsQuery = groq`
+  *[
+    _id != $currentDocId &&
+    _type == "toyReview" &&
+    (
+      category._ref == $categoryId ||
+      (ageRange.minMonths <= $maxMonths && ageRange.maxMonths >= $minMonths)
+    )
+  ] | order(_id) [$reviewOffset...($reviewOffset + 6)] {
     _id,
     _type,
     "title": coalesce(productName, title),
@@ -417,17 +492,26 @@ export const relatedContentQuery = groq`
 `;
 
 // Fallback used by InternalLinks when the category/age match yields too few
-// results. Returns the highest-scoring reviews (excluding the current doc) so
-// every review/guide page still surfaces useful internal links for crawlers
-// and readers. Never fabricates content — only re-surfaces real reviews.
+// results, so a page still offers real internal links.
+//
+// Ordering by safetyScore made this the single biggest distorter of internal
+// link equity on the site: the same 6 top-scoring reviews were linked from
+// roughly 147 pages, while the guides that actually rank got one link each.
+// Seeding the order from the requesting document's id spreads the fallback
+// across the catalog instead of pointing every page at the same six.
+// `_id` is a stable per-document value, so a given page's fallback set does not
+// churn between builds.
 export const fallbackRelatedReviewsQuery = groq`
-  *[_type == "toyReview" && _id != $currentDocId] | order(safetyScore desc) [0...6] {
+  *[_type == "toyReview" && _id != $currentDocId]
+    | order(_id) [$fallbackOffset...($fallbackOffset + 6)] {
     _id,
     _type,
     "title": coalesce(productName, title),
     slug
   }
 `;
+
+export const toyReviewCountQuery = groq`count(*[_type == "toyReview"])`;
 
 // ─── Trust: Testimonials & Expert Endorsements ──────────────────────────────────
 // Only approved + consent-verified entries are ever returned. If none exist,
