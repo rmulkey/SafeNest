@@ -3,10 +3,14 @@ import { Logo } from "@/components/brand/Logo";
 import { Shield, FileCheck, Ban } from "lucide-react";
 import { AffiliateDisclosure } from "@/components/affiliate/AffiliateDisclosure";
 
+// /best-toys and /gift-guides were in no nav and no footer — reachable only via
+// the sitemap, which means a crawler could find them and a reader could not.
 const quickLinks = [
   { href: "/reviews", label: "Reviews" },
+  { href: "/best-toys", label: "Best Toys by Age" },
   { href: "/categories", label: "Categories" },
   { href: "/guides", label: "Guides" },
+  { href: "/gift-guides", label: "Gift Guides" },
   { href: "/recalls", label: "Recalls" },
   { href: "/blog", label: "Blog" },
 ];

@@ -25,8 +25,11 @@ import {
 } from "@/components/reviews/PurchaseDecisionPanel";
 import { assessSafety } from "@/lib/scoring/assess-safety";
 import {
+  getLinkableToyTypes,
+  slugifyToyType,
+} from "@/lib/seo/programmatic-pages";
+import {
   qualifyClaimText,
-  qualifyClaimList,
   QUALIFIED_CLAIM_NOTE,
 } from "@/lib/content/qualify-claims";
 import { DevelopmentScoreDisplay } from "@/components/reviews/DevelopmentScoreDisplay";
@@ -101,9 +104,33 @@ export async function generateMetadata({
     return { title: "Review Not Found" };
   }
 
-  // Only append the brand suffix when the result still fits in what Google
-  // displays (~60 chars); otherwise the product name gets truncated away.
-  const baseTitle = `${review.productName} Safety Review - Score ${review.safetyScore}/100`;
+  /*
+   * Title budget.
+   *
+   * Google renders roughly 60 characters. The previous frame —
+   * " Safety Review - Score 94/100" — spent 29 of them on boilerplate, which
+   * left only 41 of 138 review titles inside the budget; product names here run
+   * to a median of 37 characters and a maximum of 78. The frame below costs 16,
+   * bringing 110 of 138 inside it.
+   *
+   * Measured alternatives, titles at or under 60 chars out of 138:
+   *   " Safety Review - Score 94/100"  (old)   41
+   *   " Safety Review 94/100"                  91
+   *   " Review: Safety 94/100"                 83
+   *   " — Safety 94/100"              (this)  110
+   *   " Safety Review"                        117
+   *
+   * The last option scores highest only by deleting the score, which is the one
+   * element of this title no competitor can copy and the strongest reason for a
+   * parent to click. Keeping it costs 7 titles and is worth it.
+   *
+   * Product names are deliberately NOT truncated. Trimming "Melissa & Doug
+   * Self-Correcting Alphabet Wooden Puzzles with Storage Box" to fit would drop
+   * real query terms to satisfy a presentational metric, and an over-long title
+   * is truncated for display rather than penalised — Google still reads all of
+   * it. Around 28 titles stay above 60 because the name alone exceeds it.
+   */
+  const baseTitle = `${review.productName} — Safety ${review.safetyScore}/100`;
   const TITLE_SUFFIX = " | SafeNest Toys";
   const title =
     baseTitle.length + TITLE_SUFFIX.length <= 60
@@ -181,6 +208,11 @@ export default async function ToyReviewPage({ params }: PageProps) {
   if (!review) {
     notFound();
   }
+
+  // Which of this toy's materials have a /safe-toys page to link to. Only 20 of
+  // the catalog's 140 materials clear MIN_REVIEWS_FOR_PAGE, so the set is checked
+  // rather than assumed — linking every material would create 120 broken links.
+  const linkableMaterials = await getLinkableToyTypes();
 
   // Computed once and shared by the evidence section, the purchase panel and the
   // sticky bar, so all three report the same confidence and cannot disagree.
@@ -313,7 +345,6 @@ export default async function ToyReviewPage({ params }: PageProps) {
               url={link.url}
               tag={link.tag}
               size="lg"
-              label="Check current price at Amazon"
               productId={review.slug?.current ?? review.productName}
             />
           ))}
@@ -344,10 +375,36 @@ export default async function ToyReviewPage({ params }: PageProps) {
       {/* Materials */}
       <section className="mb-6">
         <h2 className="text-xl font-semibold mb-2">Materials</h2>
+        {/* Materials link to their /safe-toys page where one exists.
+            
+            Those 20 pages previously had no inbound link from anywhere on the
+            site — they existed only in the sitemap, so a crawler could reach them
+            but a reader never could. This is also the natural cross-link: a
+            parent reading that a toy is solid wood is exactly the person who
+            wants every solid-wood toy.
+
+            The raw material carries the link and the qualified text is displayed,
+            because qualifyClaimList rewrites the wording and the slug must be
+            built from the stored value. */}
         <ul className="list-disc list-inside text-sm space-y-1">
-          {qualifyClaimList(review.materials).map((material, i) => (
-            <li key={i}>{material}</li>
-          ))}
+          {(review.materials ?? []).map((raw, i) => {
+            const label = qualifyClaimText(raw).text;
+            if (!label) return null;
+            return (
+              <li key={i}>
+                {linkableMaterials.has(raw) ? (
+                  <Link
+                    href={`/safe-toys/${slugifyToyType(raw)}`}
+                    className="underline decoration-dotted underline-offset-2 hover:text-primary-600"
+                  >
+                    {label}
+                  </Link>
+                ) : (
+                  label
+                )}
+              </li>
+            );
+          })}
         </ul>
         <p className="mt-2 text-xs text-muted-foreground">
           Material descriptions are as reported by the manufacturer or retailer.

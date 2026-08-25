@@ -15,7 +15,10 @@ import { SITE_URL } from "@/lib/seo/site-config";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { BuyButton } from "@/components/affiliate/BuyButton";
 import { AwardBadge, computeAwards } from "@/components/reviews/AwardBadge";
-import type { ToyReviewSummary } from "@/lib/seo/programmatic-pages";
+import {
+  getLinkableAgeGroupsForCategory,
+  type ToyReviewSummary,
+} from "@/lib/seo/programmatic-pages";
 import { formatAgeRange } from "@/lib/content/format-age";
 import { RecallFlag } from "@/components/recalls/RecallFlag";
 import { EmptyState } from "@/components/ui/EmptyState";
@@ -85,7 +88,7 @@ export default async function CategoryPage({
   const start = (currentPage - 1) * REVIEWS_PER_PAGE;
   const end = start + REVIEWS_PER_PAGE;
 
-  const [reviews, totalCount] = await Promise.all([
+  const [reviews, totalCount, linkableAgeGroups] = await Promise.all([
     sanityClient.fetch<ToyReviewSummary[]>(toyReviewsByCategoryQuery, {
       categoryId: category._id,
       start,
@@ -94,6 +97,7 @@ export default async function CategoryPage({
     sanityClient.fetch<number>(toyReviewCountByCategoryQuery, {
       categoryId: category._id,
     }),
+    getLinkableAgeGroupsForCategory(category._id),
   ]);
 
   const totalPages = Math.ceil(totalCount / REVIEWS_PER_PAGE);
@@ -116,6 +120,26 @@ export default async function CategoryPage({
           <p className="mt-2 text-base text-muted-foreground">
             {category.description}
           </p>
+        )}
+
+        {/* Age-filtered versions of this same category. Only rendered for age
+            groups that actually have a page, so we never link a 404. */}
+        {linkableAgeGroups.length > 0 && (
+          <nav
+            aria-label={`${category.title} by age`}
+            className="mt-4 flex flex-wrap items-center gap-2 text-sm"
+          >
+            <span className="text-muted-foreground">Narrow by age:</span>
+            {linkableAgeGroups.map((group) => (
+              <Link
+                key={group.slug}
+                href={`/best-toys/category/${slug}/${group.slug}`}
+                className="rounded-full border border-border px-3 py-1 font-medium text-foreground transition-colors hover:border-primary-300 hover:bg-muted"
+              >
+                {group.label}
+              </Link>
+            ))}
+          </nav>
         )}
       </header>
 
@@ -201,7 +225,6 @@ export default async function CategoryPage({
                         url={link.url}
                         tag={link.tag || AMAZON_TAG}
                         size="sm"
-                        label="Check Price"
                         className="w-full"
                       />
                     </div>

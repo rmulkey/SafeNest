@@ -87,6 +87,25 @@ export default async function BestCategoryToysForAgeGroupPage({
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-8">
+      {/* Visible breadcrumb. This is the deepest route on the site and it
+          previously rendered no upward link at all — no route to the category,
+          none to the age band, none to the hub. */}
+      <nav className="mb-6 text-sm text-muted-foreground" aria-label="Breadcrumb">
+        <Link href="/best-toys" className="hover:text-foreground">
+          Best Toys by Age
+        </Link>
+        <span className="mx-2" aria-hidden="true">
+          /
+        </span>
+        <Link href={`/categories/${category}`} className="hover:text-foreground">
+          {categoryData.title}
+        </Link>
+        <span className="mx-2" aria-hidden="true">
+          /
+        </span>
+        <span className="text-foreground">{ageGroupData.label}</span>
+      </nav>
+
       <h1 className="text-3xl font-bold mb-2">
         Best {withToysSuffix(categoryData.title)} for {ageGroupData.label}
       </h1>
@@ -158,7 +177,6 @@ export default async function BestCategoryToysForAgeGroupPage({
                 url={link.url}
                 tag={link.tag || AMAZON_TAG}
                 size="sm"
-                label="Check current price at Amazon"
                 productId={review.slug.current}
               />
             </div>

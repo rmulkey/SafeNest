@@ -48,3 +48,7 @@ scripts/asin-candidates.json
 
 # Local backups written before destructive CMS operations
 backups/
+
+# Semrush / Search Console exports (account + traffic data)
+semrush/
+!semrush/README.md

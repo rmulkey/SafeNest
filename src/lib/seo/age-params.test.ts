@@ -22,6 +22,7 @@ import {
   AGE_MONTHS,
   AGE_SLUG_TO_MONTHS,
   CANONICAL_AGE_SLUG_BY_MONTHS,
+  CANONICAL_AGE_SLUGS,
 } from "./programmatic-pages";
 
 // Every age slug that appears as a public link somewhere in the app.
@@ -111,11 +112,36 @@ describe("canonicalAgeSlug", () => {
     }
   });
 
-  it("leaves ages that have no named slug on their numeric URL", () => {
-    expect(canonicalAgeSlug("6")).toBe("6");
-    expect(canonicalAgeSlug("12")).toBe("12");
-    expect(canonicalAgeSlug("24")).toBe("24");
-    expect(canonicalAgeSlug("36")).toBe("36");
+  it("folds boundary ages into the band they open", () => {
+    // These four opened a band rather than sitting inside one, so they used to
+    // be self-canonical — leaving `/best-toys/6` competing with
+    // `/best-toys/6-12-months` over a near-identical list of toys, on a URL the
+    // sitemap deliberately omits.
+    expect(canonicalAgeSlug("6")).toBe("6-12-months");
+    expect(canonicalAgeSlug("12")).toBe("1-2-years");
+    expect(canonicalAgeSlug("24")).toBe("2-3-years");
+    expect(canonicalAgeSlug("36")).toBe("3-plus-years");
+  });
+
+  it("canonicalises every age onto a slug the sitemap lists", () => {
+    for (const param of [
+      ...AGE_MONTHS.map(String),
+      ...Object.keys(AGE_SLUG_TO_MONTHS),
+    ]) {
+      expect(CANONICAL_AGE_SLUGS, `param ${param}`).toContain(
+        canonicalAgeSlug(param)
+      );
+    }
+  });
+
+  it("orders the canonical age slugs youngest first", () => {
+    expect(CANONICAL_AGE_SLUGS).toEqual([
+      "0-6-months",
+      "6-12-months",
+      "1-2-years",
+      "2-3-years",
+      "3-plus-years",
+    ]);
   });
 
   it("returns the param untouched when it does not resolve to an age", () => {

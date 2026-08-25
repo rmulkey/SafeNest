@@ -41,7 +41,15 @@ export async function generateMetadata({
     return { title: "Not Found" };
   }
 
-  const title = `${toDisplayType(toyType)} Toys: Safety Reviews | SafeNest Toys`;
+  // Same 60-char budget as the review pages. Long material names such as
+  // "UV-stabilized polyethylene" push the branded form past what Google renders,
+  // so the suffix is dropped rather than letting the material name be cut.
+  const baseTitle = `${toDisplayType(toyType)} Toys: Safety Reviews`;
+  const TITLE_SUFFIX = " | SafeNest Toys";
+  const title =
+    baseTitle.length + TITLE_SUFFIX.length <= 60
+      ? `${baseTitle}${TITLE_SUFFIX}`
+      : baseTitle;
   const description = `Parent-researched reviews of ${toyType.toLowerCase()} toys for babies and toddlers, with SafeNest's editorial safety assessment, choking-risk notes and recall checks.`;
 
   return {

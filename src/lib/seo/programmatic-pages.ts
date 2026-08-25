@@ -62,16 +62,33 @@ export function resolveAgeParam(param: string): number | null {
  * (the one used by the nav, the homepage age cards and the sitemap) and the
  * other spellings canonicalise to it.
  *
- * Ages with no named slug (6, 12, 24, 36) have only one URL form, so the
- * numeric URL is its own canonical.
+ * Every numeric age maps into the named band that contains it, including the
+ * four (6, 12, 24, 36) that have no named slug of their own. Those four opened
+ * a band rather than sitting inside one, so they used to be self-canonical —
+ * which left `/best-toys/6` competing with `/best-toys/6-12-months` over an
+ * almost identical list of toys, on a URL the sitemap deliberately omits. A
+ * boundary age belongs to the band it opens.
  */
 export const CANONICAL_AGE_SLUG_BY_MONTHS: Record<number, string> = {
   3: "0-6-months",
+  6: "6-12-months",
   9: "6-12-months",
+  12: "1-2-years",
   18: "1-2-years",
+  24: "2-3-years",
   30: "2-3-years",
+  36: "3-plus-years",
   42: "3-plus-years",
 };
+
+/**
+ * The age slugs we want indexed, ascending. Exactly the `/best-toys/[age]` URLs
+ * the sitemap lists — the hub, the nav and the homepage age cards all link this
+ * set so that internal links, <link rel="canonical"> and the sitemap agree.
+ */
+export const CANONICAL_AGE_SLUGS: string[] = [
+  ...new Set(Object.values(CANONICAL_AGE_SLUG_BY_MONTHS)),
+];
 
 /**
  * Resolve a best-toys age route param to the slug that should be canonical.
@@ -361,6 +378,77 @@ export function slugifyToyType(toyType: string): string {
     .toLowerCase()
     .replace(/\s+/g, "-")
     .replace(/[^a-z0-9-]/g, "");
+}
+
+/**
+ * The age groups that have a live /best-toys/category/[category]/[ageGroup] page
+ * for a given category.
+ *
+ * Those 14 pages had no inbound link from anywhere either: a reader on
+ * /categories/sensory-toys had no route to the age-filtered version of the same
+ * category, and the age-filtered page had no route back. They were reachable only
+ * via the sitemap.
+ *
+ * The overlap test deliberately mirrors reviewsByCategoryAndAgeGroupQuery
+ * (minMonths <= $maxMonths && maxMonths >= $minMonths). If the two ever drift the
+ * page would either 404 from a link we published or hide a page that exists.
+ */
+export async function getLinkableAgeGroupsForCategory(
+  categoryId: string
+): Promise<AgeGroup[]> {
+  const ranges = await sanityClient.fetch<
+    Array<{ minMonths: number; maxMonths: number } | null>
+  >(groq`*[_type == "toyReview" && category._ref == $categoryId].ageRange`, {
+    categoryId,
+  });
+
+  return AGE_GROUPS.filter((group) => {
+    const matching = (ranges ?? []).filter(
+      (r) =>
+        r &&
+        r.minMonths <= group.maxMonths &&
+        r.maxMonths >= group.minMonths
+    ).length;
+    return matching >= MIN_REVIEWS_FOR_PAGE;
+  });
+}
+
+/**
+ * The materials that actually have a live /safe-toys/[toyType] page.
+ *
+ * WHY THIS EXISTS SEPARATELY FROM getValidToyTypeParams
+ * That function answers the same question but issues one query per material —
+ * 140 of them — which is fine once at build time and far too expensive inside a
+ * page render. This does it in a single fetch, so a review page can decide which
+ * of its materials are safe to link.
+ *
+ * The distinction matters: the catalog reports 140 distinct materials but only 20
+ * clear MIN_REVIEWS_FOR_PAGE, so 120 of them have no page. Linking a material
+ * without checking would manufacture 120 broken internal links — the exact
+ * failure the internal-link audit exists to catch.
+ *
+ * Returns raw material strings (not slugs), because callers hold the raw value
+ * and need to match on it before slugifying.
+ */
+export async function getLinkableToyTypes(): Promise<Set<string>> {
+  const lists = await sanityClient.fetch<(string[] | null)[]>(
+    groq`*[_type == "toyReview"].materials`
+  );
+
+  const counts = new Map<string, number>();
+  for (const list of lists ?? []) {
+    // Dedupe within a single review, so a repeated entry cannot inflate a count
+    // to the threshold on its own.
+    for (const material of new Set((list ?? []).filter(Boolean))) {
+      counts.set(material, (counts.get(material) ?? 0) + 1);
+    }
+  }
+
+  const linkable = new Set<string>();
+  for (const [material, n] of counts) {
+    if (n >= MIN_REVIEWS_FOR_PAGE) linkable.add(material);
+  }
+  return linkable;
 }
 
 /**
