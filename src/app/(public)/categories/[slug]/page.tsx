@@ -104,7 +104,7 @@ export default async function CategoryPage({
   const awards = computeAwards(reviews);
 
   return (
-    <main className="mx-auto max-w-5xl px-4 py-8">
+    <div className="mx-auto max-w-5xl px-4 py-8">
       <BreadcrumbSchema
         items={[
           { name: "Home", url: SITE_URL },
@@ -272,6 +272,6 @@ export default async function CategoryPage({
           )}
         </>
       )}
-    </main>
+    </div>
   );
 }

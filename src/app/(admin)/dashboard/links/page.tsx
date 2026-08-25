@@ -22,7 +22,7 @@ export default async function AdminLinksPage() {
     : "never";
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-8">
+    <div className="mx-auto max-w-6xl px-4 py-8">
       <h1 className="text-2xl font-bold mb-6">Affiliate Link Health Dashboard</h1>
 
       {unhealthyLinks.length === 0 ? (
@@ -100,6 +100,6 @@ export default async function AdminLinksPage() {
       <p className="mt-4 text-sm text-muted-foreground">
         Showing {unhealthyLinks.length} flagged link{unhealthyLinks.length !== 1 ? "s" : ""}
       </p>
-    </main>
+    </div>
   );
 }

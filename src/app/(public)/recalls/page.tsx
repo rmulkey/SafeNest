@@ -71,7 +71,7 @@ export default async function RecallsPage({ searchParams }: RecallsPageProps) {
     })}`;
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-12">
+    <div className="mx-auto max-w-3xl px-4 py-12">
       <BreadcrumbSchema
         items={[
           { name: "Home", url: SITE_URL },
@@ -207,6 +207,6 @@ export default async function RecallsPage({ searchParams }: RecallsPageProps) {
           </li>
         </ul>
       </section>
-    </main>
+    </div>
   );
 }

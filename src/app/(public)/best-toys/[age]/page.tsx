@@ -87,7 +87,7 @@ export default async function BestToysForAgePage({
   const awards = computeAwards(reviews);
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-8">
+    <div className="mx-auto max-w-4xl px-4 py-8">
       <BreadcrumbSchema
         items={[
           { name: "Home", url: SITE_URL },
@@ -112,6 +112,6 @@ export default async function BestToysForAgePage({
         currentDocId={`programmatic-age-${age}`}
         ageRange={{ minMonths: ageMonths, maxMonths: ageMonths }}
       />
-    </main>
+    </div>
   );
 }

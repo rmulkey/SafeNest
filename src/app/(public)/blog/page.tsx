@@ -64,7 +64,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const featuredIds = new Set(inSeason.map((p) => p._id));
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-12">
+    <div className="mx-auto max-w-3xl px-4 py-12">
       <h1 className="mb-8 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
         Blog
       </h1>
@@ -190,6 +190,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           <NewsletterForm variant="inline" />
         </div>
       </section>
-    </main>
+    </div>
   );
 }

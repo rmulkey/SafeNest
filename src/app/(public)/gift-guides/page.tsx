@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function GiftGuidesHubPage() {
   return (
-    <main className="mx-auto max-w-4xl px-4 py-10">
+    <div className="mx-auto max-w-4xl px-4 py-10">
       <header className="mb-8 text-center">
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
           Safe Toy Gift Guides
@@ -54,6 +54,6 @@ export default function GiftGuidesHubPage() {
           </Link>
         ))}
       </div>
-    </main>
+    </div>
   );
 }

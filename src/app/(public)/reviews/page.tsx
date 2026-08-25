@@ -56,7 +56,7 @@ export default async function ReviewsIndexPage() {
   const reviews = await sanityClient.fetch<ReviewListItem[]>(reviewsIndexQuery);
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-10 md:px-6 lg:px-8">
+    <div className="mx-auto max-w-6xl px-4 py-10 md:px-6 lg:px-8">
       <BreadcrumbSchema
         items={[
           { name: "Home", url: SITE_URL },
@@ -143,6 +143,6 @@ export default async function ReviewsIndexPage() {
           ))}
         </ul>
       )}
-    </main>
+    </div>
   );
 }

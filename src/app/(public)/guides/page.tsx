@@ -45,7 +45,7 @@ export default async function BuyingGuidesPage() {
   )
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-12">
+    <div className="mx-auto max-w-4xl px-4 py-12">
       <header className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
           Buying Guides
@@ -82,6 +82,6 @@ export default async function BuyingGuidesPage() {
           ))}
         </div>
       )}
-    </main>
+    </div>
   )
 }

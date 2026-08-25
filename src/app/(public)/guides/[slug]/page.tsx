@@ -113,7 +113,7 @@ export default async function BuyingGuidePage({
     .slice(0, HEADER_THUMB_COUNT)
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-12">
+    <div className="mx-auto max-w-4xl px-4 py-12">
       <BreadcrumbSchema
         items={[
           { name: 'Home', url: SITE_URL },
@@ -273,6 +273,6 @@ export default async function BuyingGuidePage({
         currentDocId={guide._id}
         ageRange={guide.targetAgeRange}
       />
-    </main>
+    </div>
   )
 }

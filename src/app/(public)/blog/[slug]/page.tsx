@@ -118,7 +118,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const picks = post.relatedReviews ?? [];
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-12">
+    <div className="mx-auto max-w-3xl px-4 py-12">
       <JsonLd
         data={generateBlogPostingJsonLd({
           title: post.title,
@@ -279,6 +279,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <NewsletterForm variant="inline" />
         </div>
       </section>
-    </main>
+    </div>
   );
 }

@@ -56,3 +56,7 @@ backups/
 # Semrush / Search Console exports (account + traffic data)
 semrush/
 !semrush/README.md
+
+# Browser profile for vendor dashboards that have no write API. Holds live
+# session cookies for Semrush and Google — must never be committed.
+.playwright-profile/

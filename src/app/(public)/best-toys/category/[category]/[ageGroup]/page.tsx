@@ -86,7 +86,7 @@ export default async function BestCategoryToysForAgeGroupPage({
   }
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-8">
+    <div className="mx-auto max-w-4xl px-4 py-8">
       {/* Visible breadcrumb. This is the deepest route on the site and it
           previously rendered no upward link at all — no route to the category,
           none to the age band, none to the hub. */}
@@ -196,6 +196,6 @@ export default async function BestCategoryToysForAgeGroupPage({
           maxMonths: ageGroupData.maxMonths,
         }}
       />
-    </main>
+    </div>
   );
 }

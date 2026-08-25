@@ -1,12 +1,22 @@
 import { Skeleton } from "@/components/ui/Skeleton";
 
 /**
+ * NOTE: this skeleton must not render <main>.
+ *
+ * Partial Prerendering ships this fallback in the static shell and streams the
+ * real page into the same response, so a <main> here means the served HTML holds
+ * two of them — invalid (one <main> per document), and the first one in document
+ * order is a skeleton whose accessible name is "Loading". Anything reading the
+ * first main landmark, or extracting rendered text, sees a loading state instead
+ * of the page. The route's page.tsx owns the <main> landmark; this is a <div>.
+ */
+/**
  * Route-level loading skeleton for a blog article. Mirrors the article header
  * (title, byline) and paragraphs of body text.
  */
 export default function BlogPostLoading() {
   return (
-    <main
+    <div
       role="status"
       aria-label="Loading"
       className="mx-auto max-w-3xl px-4 py-12"
@@ -38,6 +48,6 @@ export default function BlogPostLoading() {
           ))}
         </div>
       </article>
-    </main>
+    </div>
   );
 }

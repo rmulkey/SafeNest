@@ -2,7 +2,9 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="flex flex-1 flex-col items-center justify-center px-4 py-16 text-center">
+    // A <div>, not <main>: app/layout.tsx wraps this and already provides the
+    // <main id="main-content"> landmark, so a second one here would nest.
+    <div className="flex flex-1 flex-col items-center justify-center px-4 py-16 text-center">
       <div className="max-w-md space-y-6">
         {/* Branding */}
         <p className="text-sm font-medium tracking-wide text-primary-500 uppercase">
@@ -41,6 +43,6 @@ export default function NotFound() {
           </Link>
         </nav>
       </div>
-    </main>
+    </div>
   );
 }

@@ -81,7 +81,7 @@ export default async function GiftGuideDetailPage({
   };
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-10">
+    <div className="mx-auto max-w-4xl px-4 py-10">
       <JsonLd data={itemListJsonLd} />
 
       {/* Breadcrumb */}
@@ -233,6 +233,6 @@ export default async function GiftGuideDetailPage({
           ))}
         </div>
       </section>
-    </main>
+    </div>
   );
 }
