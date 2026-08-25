@@ -182,6 +182,11 @@ function revalidateForContentChange(type: string, slug?: string): void {
 
   // Revalidate sitemap so it regenerates with fresh content
   revalidatePath("/sitemap.xml");
+  // /llms.txt lists guides, articles, categories and material pages, so a
+  // publish changes it for the same reasons it changes the sitemap. It renders
+  // with `use cache` at cacheLife("days"), which would otherwise hold a stale
+  // list for far longer than the sitemap does.
+  revalidatePath("/llms.txt");
 }
 
 /**

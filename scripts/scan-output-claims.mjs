@@ -30,9 +30,14 @@ async function resolvePaths() {
   }
   const xml = await res.text();
   const paths = [
-    ...new Set(
-      [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname)
-    ),
+    ...new Set([
+      ...[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname),
+      // /llms.txt is not in the sitemap — it is addressed to models, not to
+      // Google — but it restates the scoring methodology in prose, which makes
+      // it exactly the kind of page that can drift into claiming testing
+      // SafeNest does not do. Scan it for the same forbidden phrasings.
+      "/llms.txt",
+    ]),
   ].sort();
   const limit = Number(process.env.SAMPLE || 0);
   if (limit > 0 && paths.length > limit) {
