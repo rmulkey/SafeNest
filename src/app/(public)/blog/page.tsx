@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { sanityClient } from "@/lib/sanity/client";
 import {
   allBlogPostsQuery,
   blogPostCountQuery,
   seasonalBlogPostsQuery,
 } from "@/lib/sanity/queries";
+import {
+  parsePageParam,
+  pageBounds,
+  countPages,
+  isPageOutOfRange,
+  buildPageHref,
+} from "@/lib/seo/pagination";
 import { selectInSeason, type SeasonalWindow } from "@/lib/content/seasonal";
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
 import { SITE_URL } from "@/lib/seo/site-config";
@@ -45,9 +53,8 @@ interface BlogPageProps {
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
   const params = await searchParams;
-  const currentPage = Math.max(1, Number(params.page) || 1);
-  const start = (currentPage - 1) * POSTS_PER_PAGE;
-  const end = start + POSTS_PER_PAGE;
+  const currentPage = parsePageParam(params.page);
+  const { start, end } = pageBounds(currentPage, POSTS_PER_PAGE);
 
   const [posts, totalCount, seasonalCandidates] = await Promise.all([
     sanityClient.fetch<BlogPost[]>(allBlogPostsQuery, { start, end }),
@@ -55,7 +62,12 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     sanityClient.fetch<BlogPost[]>(seasonalBlogPostsQuery),
   ]);
 
-  const totalPages = Math.ceil(totalCount / POSTS_PER_PAGE);
+  // Past the last page is a 404, not "Nothing posted yet" at HTTP 200.
+  if (isPageOutOfRange(currentPage, totalCount, POSTS_PER_PAGE)) {
+    notFound();
+  }
+
+  const totalPages = countPages(totalCount, POSTS_PER_PAGE);
 
   // Feature seasonal posts only while their annually recurring window is open.
   // Out-of-season posts are NOT removed — they stay in the chronological archive
@@ -151,7 +163,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         >
           {currentPage > 1 && (
             <Link
-              href={`/blog?page=${currentPage - 1}`}
+              href={buildPageHref("/blog", currentPage - 1)}
               className="rounded-md border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
             >
               Previous
@@ -162,7 +174,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           </span>
           {currentPage < totalPages && (
             <Link
-              href={`/blog?page=${currentPage + 1}`}
+              href={buildPageHref("/blog", currentPage + 1)}
               className="rounded-md border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
             >
               Next

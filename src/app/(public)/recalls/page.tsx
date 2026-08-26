@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { sanityClient } from "@/lib/sanity/client";
 import {
   activeRecallAlertsQuery,
@@ -7,6 +8,13 @@ import {
   searchRecallAlertsQuery,
   searchRecallAlertCountQuery,
 } from "@/lib/sanity/queries";
+import {
+  parsePageParam,
+  pageBounds,
+  countPages,
+  isPageOutOfRange,
+  buildPageHref,
+} from "@/lib/seo/pagination";
 import { RecallList, type RecallEntry } from "@/components/recalls/RecallList";
 import { RecallFreshness } from "@/components/recalls/RecallFreshness";
 import { generateOpenGraphMeta } from "@/components/seo/OpenGraphMeta";
@@ -38,10 +46,9 @@ interface RecallsPageProps {
 
 export default async function RecallsPage({ searchParams }: RecallsPageProps) {
   const params = await searchParams;
-  const currentPage = Math.max(1, Number(params.page) || 1);
+  const currentPage = parsePageParam(params.page);
   const rawQuery = (params.q ?? "").trim();
-  const start = (currentPage - 1) * RECALLS_PER_PAGE;
-  const end = start + RECALLS_PER_PAGE;
+  const { start, end } = pageBounds(currentPage, RECALLS_PER_PAGE);
 
   // GROQ `match` uses glob semantics; wrap the term so partial words match.
   const searching = rawQuery.length >= 2;
@@ -61,14 +68,18 @@ export default async function RecallsPage({ searchParams }: RecallsPageProps) {
     getRecallSyncStatus(sanityClient),
   ]);
 
-  const totalPages = Math.max(1, Math.ceil(totalCount / RECALLS_PER_PAGE));
+  // Past the last page is a 404, not an empty state at HTTP 200. `?page=99999`
+  // used to render "No recalls are currently on file.", which is a soft 404 and
+  // makes `?page=` unbounded crawl space.
+  if (isPageOutOfRange(currentPage, totalCount, RECALLS_PER_PAGE)) {
+    notFound();
+  }
+
+  const totalPages = countPages(totalCount, RECALLS_PER_PAGE);
   const freshness = getFreshnessStatus(syncStatus.lastSuccessfulSyncAt);
 
   const pageHref = (page: number) =>
-    `/recalls?${new URLSearchParams({
-      ...(rawQuery ? { q: rawQuery } : {}),
-      page: String(page),
-    })}`;
+    buildPageHref("/recalls", page, { q: rawQuery });
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">

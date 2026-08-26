@@ -22,6 +22,13 @@ import {
 import { formatAgeRange } from "@/lib/content/format-age";
 import { RecallFlag } from "@/components/recalls/RecallFlag";
 import { EmptyState } from "@/components/ui/EmptyState";
+import {
+  parsePageParam,
+  pageBounds,
+  countPages,
+  isPageOutOfRange,
+  buildPageHref,
+} from "@/lib/seo/pagination";
 
 const AMAZON_TAG = "safeneststore-20";
 
@@ -84,9 +91,8 @@ export default async function CategoryPage({
     notFound();
   }
 
-  const currentPage = Math.max(1, parseInt(page || "1", 10) || 1);
-  const start = (currentPage - 1) * REVIEWS_PER_PAGE;
-  const end = start + REVIEWS_PER_PAGE;
+  const currentPage = parsePageParam(page);
+  const { start, end } = pageBounds(currentPage, REVIEWS_PER_PAGE);
 
   const [reviews, totalCount, linkableAgeGroups] = await Promise.all([
     sanityClient.fetch<ToyReviewSummary[]>(toyReviewsByCategoryQuery, {
@@ -100,7 +106,14 @@ export default async function CategoryPage({
     getLinkableAgeGroupsForCategory(category._id),
   ]);
 
-  const totalPages = Math.ceil(totalCount / REVIEWS_PER_PAGE);
+  // Past the last page is a 404. Rendering the "Nothing in this category yet"
+  // empty state at HTTP 200 both misdescribed the category and made `?page=`
+  // unbounded crawl space.
+  if (isPageOutOfRange(currentPage, totalCount, REVIEWS_PER_PAGE)) {
+    notFound();
+  }
+
+  const totalPages = countPages(totalCount, REVIEWS_PER_PAGE);
   const awards = computeAwards(reviews);
 
   return (
@@ -241,7 +254,7 @@ export default async function CategoryPage({
             >
               {currentPage > 1 ? (
                 <Link
-                  href={`/categories/${slug}?page=${currentPage - 1}`}
+                  href={buildPageHref(`/categories/${slug}`, currentPage - 1)}
                   className="inline-flex items-center rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
                 >
                   Previous
@@ -258,7 +271,7 @@ export default async function CategoryPage({
 
               {currentPage < totalPages ? (
                 <Link
-                  href={`/categories/${slug}?page=${currentPage + 1}`}
+                  href={buildPageHref(`/categories/${slug}`, currentPage + 1)}
                   className="inline-flex items-center rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
                 >
                   Next
