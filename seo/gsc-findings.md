@@ -184,3 +184,118 @@ countries, plus a manifest. Safe to run on a schedule.
 221 sitemap URLs are indexed versus "Discovered – currently not indexed". 80 pages
 have impressions, so at least 80 are indexed. The gap between 80 and 221 is worth
 reading in the UI.
+
+---
+
+# Index coverage — the finding that reframes everything above
+
+**Source:** `gsc/index-coverage.csv`, from `scripts/audit-index-coverage.mjs`
+(URL Inspection API, all 221 sitemap URLs individually inspected, 2026-08-26)
+
+A further correction first: I said no API exposed this and told you to read it in
+the UI. Wrong — `urlInspection/index:inspect` returns it per URL, including
+Google's chosen canonical. I should have checked before sending you clicking.
+
+## 35% of the site is indexed
+
+| Coverage state | URLs |
+| --- | --- |
+| **Submitted and indexed** | **77** |
+| Discovered – currently not indexed | **109** |
+| URL is unknown to Google | **34** |
+| Crawled – currently not indexed | 1 |
+| | **221** |
+
+143 of 221 have **never been crawled**.
+
+## The hub pages are not indexed
+
+This is the damaging part. Every one of these is HTTP 200, in the sitemap, not
+`noindex`, and linked from the homepage — verified. Nothing technical is blocking
+them:
+
+| Page | Coverage state |
+| --- | --- |
+| `/` | **Submitted and indexed** |
+| `/reviews` | **URL is unknown to Google** |
+| `/categories` | **URL is unknown to Google** |
+| `/best-toys` | **URL is unknown to Google** |
+| `/gift-guides` | **URL is unknown to Google** |
+| `/guides` | Discovered – currently not indexed |
+| `/blog` | Discovered – currently not indexed |
+| `/recalls` | Discovered – currently not indexed |
+| `/transparency` | Discovered – currently not indexed |
+| `/about` | Discovered – currently not indexed |
+
+**The homepage is the only indexed entry point on the site.** Four of the main
+navigation hubs are entirely unknown to Google.
+
+## By route family
+
+| Family | Indexed | Discovered, not indexed | Unknown | Total |
+| --- | --- | --- | --- | --- |
+| `/reviews/*` | 55 | 68 | 15 | 139 |
+| `/safe-toys/*` | 6 | 12 | 2 | 20 |
+| `/best-toys/*` | 3 | 14 | 3 | 20 |
+| `/guides/*` | 6 | 5 | 2 | 13 |
+| `/blog/*` | 6 | 3 | 3 | 12 |
+| `/categories/*` | **0** | 0 | 5 | 5 |
+| `/gift-guides/*` | **0** | 3 | 2 | 5 |
+
+Not one category page and not one gift guide is indexed.
+
+## What this means, and how it changes the diagnosis again
+
+My first conclusion was that the constraint was **content depth**. My second, after
+the Performance data, was that it was **the wrong page type being prioritised**.
+Both were downstream of something simpler:
+
+**You cannot rank a page that is not in the index.** 65% of the site isn't.
+
+- `/guides/best-building-toys-preschoolers` sits at position 83.7 — and `/guides`,
+  its hub, is not indexed.
+- Category pages rank for nothing because **none of them are indexed**.
+- ~14 impressions a day is what 77 indexed pages with no authority produces.
+
+"Discovered – currently not indexed" on 109 URLs is Google saying it knows the
+URLs exist and has decided they are not worth indexing yet. On a site with **zero
+legitimate referring domains** (`seo/baseline.md` §3), that is the expected
+outcome. It is a site-authority signal, not a technical fault — which is why every
+technical audit in this directory comes back clean while two thirds of the site
+stays out of the index.
+
+The internal-linking work already shipped (`abea983`, orphans 35 → 0) is the right
+kind of fix for this, since internal links are how Google decides what to
+prioritise crawling. It just cannot substitute for external signals.
+
+## What to do, in order
+
+1. **Request indexing for the ten hub pages** via Search Console → URL Inspection
+   → Request Indexing. Manual, roughly ten minutes, and it is the fastest lever
+   available. Hubs first because they are how Google reaches everything else.
+2. **Resubmit the sitemap.** Google last downloaded it **2026-08-03** — three weeks
+   stale, and it had 212 URLs then versus 221 now. Search Console → Sitemaps →
+   resubmit.
+3. **Then earn a handful of real links.** With 109 URLs sitting in
+   "Discovered – currently not indexed", this is no longer one hypothesis among
+   several. It is the constraint.
+4. **Deprioritise the content-depth work** in `seo/content-roadmap.md` until the
+   hubs are indexed. Deepening a page Google has not indexed changes nothing.
+
+## Re-running
+
+```
+set -a; . ./.env.local; set +a
+node scripts/audit-index-coverage.mjs        # all 221, ~2 min
+LIMIT=25 node scripts/audit-index-coverage.mjs   # sample
+```
+
+Quota is 2,000 inspections per property per day; a full run uses 221. Worth
+re-running weekly to watch the indexed count, which is now the single number that
+matters most.
+
+## One canonical disagreement, and it is harmless
+
+`https://safenesttoys.com` — we declare `https://safenesttoys.com/` (trailing
+slash), Google chose `https://safenesttoys.com`. Same page, and Google resolved it
+to the version it prefers. No action.
