@@ -307,3 +307,38 @@ a definition of "clean".
   queries rather than guessed keywords.
 - Warnings worth real work: `112` low text-to-HTML on 228 pages is the page-weight
   problem (`/best-toys/1-2-years` 1,260 KB, `/reviews` 1,080 KB), not thin content.
+
+## Request Indexing cannot be automated — four routes tested, all closed
+
+Recorded so this is not attempted a fifth time. Every option was tried against the
+live property on 2026-08-26.
+
+| Route | Result |
+|---|---|
+| Search Console UI via Chrome remote debugging | Chrome 136+ refuses remote debugging on the default profile. Verified on 151.0.7922.174, including `--remote-debugging-pipe`. Playwright times out identically at 180s and 600s. |
+| Search Console UI via a **copied** Chrome profile | Chrome's restriction is on the default *directory*, so a copy lifts it — but the session does not survive the copy. All 7 Google session cookies (`SID`, `SSID`, `HSID`, `__Secure-1PSID`, `__Secure-3PSID`, `__Secure-1PSIDTS`, `__Secure-3PSIDTS`) copy intact with valid encrypted payloads, Chrome fully quit, and Google still redirects to `accounts.google.com/v3/signin`. |
+| Web Search Indexing API | `SERVICE_DISABLED` on GCP project 284973495286. Enabling it would not make it legitimate: it accepts only `JobPosting` and `BroadcastEvent`, so ordinary pages are outside documented use. |
+| Sitemap ping (`google.com/ping?sitemap=`) | Retired by Google in 2024, returns 404. |
+
+The copied-profile result is the important one. The cookies transfer; the session
+is still rejected. That is a deliberate anti-session-transfer control, either
+Keychain-scoped cookie encryption or device-bound session credentials. Going
+further would mean defeating a security control protecting the operator's Google
+account, which is not a reasonable thing to do for an SEO task, with or without
+permission. `scripts/gsc-browser.py` was written, proven non-viable, and deleted
+rather than left looking usable — same reason `export-search-console.py`,
+`browser-drive.py` and `browser-session.py` were deleted earlier.
+
+**Request Indexing is a manual action. Plan around it.** What *is* automated:
+
+```
+node scripts/submit-sitemap.mjs            # sitemaps.submit, works, needs Full permission
+node scripts/submit-indexnow.mjs           # Bing/Yandex/Seznam/Naver, not Google
+node scripts/audit-index-coverage.mjs      # per-URL state, 221 of 2,000 daily quota
+node scripts/rank-indexing-requests.mjs    # what to spend the manual quota on
+```
+
+The ranking is what makes the manual work tractable: greedy set cover puts
+`/reviews` first because it alone links to 97 of the 143 uncrawled URLs, and the
+top 12 reach 137 of 143. One day's quota, ~96% of the backlog one hop from
+Googlebot, instead of 143 days of one-at-a-time requests.
