@@ -221,3 +221,81 @@ describe("auditReviewLinks", () => {
     expect(summary.dead).toBe(1);
   });
 });
+
+/**
+ * Regression tests for the unavailable-product blind spot.
+ *
+ * QA on 2026-08-26 found 30 of the 44 direct /dp/{ASIN} links on the site were
+ * dead, while this module's own weekly cron reported them healthy. Amazon serves
+ * an unavailable product with HTTP 200, a complete page, no bot wall and none of
+ * the not-found wording, so probeUrl returned "ok".
+ * scripts/verify-direct-links.mjs had been checking for "currently unavailable"
+ * all along, which is why the two disagreed.
+ */
+describe("probeUrl — unavailable products (200 with no buy affordance)", () => {
+  function res(body: string, status = 200) {
+    return async () =>
+      ({
+        status,
+        text: async () => body,
+      }) as unknown as Response;
+  }
+
+  it("calls a currently-unavailable product dead", async () => {
+    const r = await probeUrl(
+      "https://www.amazon.com/dp/B00FZEURMC",
+      res("<span id=productTitle>Tegu Blocks</span><div>Currently unavailable.</div>")
+    );
+    expect(r.verdict).toBe("dead");
+    expect(r.note).toMatch(/unavailable/i);
+  });
+
+  it("calls 'no longer available for purchase' dead", async () => {
+    const r = await probeUrl(
+      "https://www.amazon.com/dp/B0053X62GK",
+      res("<div>This item is no longer available for purchase.</div>")
+    );
+    expect(r.verdict).toBe("dead");
+  });
+
+  it("does not treat a buy affordance as evidence the item is buyable", async () => {
+    // A guard requiring the absence of "add to cart" was tried and removed:
+    // measured against the real pages, Amazon ships that string on unavailable
+    // listings too (B00FZEURMC and B0053X62GK both carry it), so the guard
+    // suppressed every detection and all 44 links reported ok.
+    const r = await probeUrl(
+      "https://www.amazon.com/dp/B00FZEURMC",
+      res(
+        "<span id=productTitle>Tegu Blocks</span>" +
+          "<div>Currently unavailable.</div>" +
+          "<span>Add to Cart</span><span>Buy Now</span>"
+      )
+    );
+    expect(r.verdict).toBe("dead");
+  });
+
+  it("still treats a real not-found page as dead, with the 404 note", async () => {
+    const r = await probeUrl(
+      "https://www.amazon.com/dp/BADASIN000",
+      res("<h1>Looking for something?</h1>")
+    );
+    expect(r.verdict).toBe("dead");
+    expect(r.note).toMatch(/404/);
+  });
+
+  it("does not mistake a bot wall for an unavailable product", async () => {
+    const r = await probeUrl(
+      "https://www.amazon.com/dp/B000BNCA4K",
+      res("Enter the characters you see below. currently unavailable")
+    );
+    expect(r.verdict).toBe("inconclusive");
+  });
+
+  it("keeps an ordinary healthy page ok", async () => {
+    const r = await probeUrl(
+      "https://www.amazon.com/dp/B000BNCA4K",
+      res("<span id=productTitle>Green Toys Stacking Cups</span><span>Add to Cart</span>")
+    );
+    expect(r.verdict).toBe("ok");
+  });
+});

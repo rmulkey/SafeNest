@@ -205,14 +205,6 @@ function applyRule(sentence: string, rule: QualificationRule): string {
   });
 }
 
-/** Capitalise the first letter of each sentence after rewriting. */
-function recapitalize(text: string): string {
-  return text.replace(
-    /(^|[.!?]\s+)([a-z])/g,
-    (_m, pre, ch) => `${pre}${ch.toUpperCase()}`
-  );
-}
-
 export interface QualifyResult {
   text: string;
   /** True when any rule fired. */

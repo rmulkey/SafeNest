@@ -45,6 +45,46 @@ const NOT_FOUND_MARKERS = [
   "the web address you entered is not a functioning page",
 ];
 
+/**
+ * Phrases meaning the page is a real product page but the item cannot be bought.
+ *
+ * These are NOT covered by NOT_FOUND_MARKERS, and that gap let 30 of the 44
+ * direct `/dp/{ASIN}` links on the site sit dead while this auditor reported them
+ * healthy. Amazon serves an unavailable product with HTTP 200 and a complete,
+ * valid-looking page: no 404, no bot wall, and none of the not-found wording. So
+ * `probeUrl` returned "ok" and the weekly cron never proposed a fallback.
+ *
+ * `scripts/verify-direct-links.mjs` had checked for these all along, which is why
+ * it reported 30 unavailable while `audit-affiliate-links` reported no hard 404s.
+ * Two checks of the same thing at different rigour; this closes the weaker one.
+ *
+ * For the reader's purposes an unavailable item is as useless as a missing one,
+ * and the remedy is the same search fallback, so it resolves to "dead" — with a
+ * distinct note, because the causes differ and that matters when auditing.
+ */
+const UNAVAILABLE_MARKERS = [
+  "currently unavailable",
+  "no longer available for purchase",
+];
+
+/*
+ * A buy-affordance guard was tried here first and removed. The idea was to only
+ * call a page unavailable when no "add to cart" / "buy now" text was present, so
+ * the wording appearing in a recommendations strip would not count. Measured
+ * against the real pages, Amazon ships those strings in scripts and
+ * other-sellers widgets on unavailable listings too:
+ *
+ *   B00FZEURMC  Tegu blocks, unavailable   "currently unavailable"=yes  "add to cart"=yes
+ *   B0053X62GK  VTech walker, unavailable  "currently unavailable"=yes  "add to cart"=yes
+ *   B000BNCA4K  Winkel rattle, buyable     "currently unavailable"=NO   "add to cart"=yes
+ *
+ * The guard therefore suppressed every detection — all 44 links came back "ok".
+ * The phrase alone is what discriminates: absent on the buyable control, present
+ * on both dead ones. Residual risk accepted: a buyable page that happens to carry
+ * the phrase elsewhere reads as dead, and the remedy is a search URL for the same
+ * product, which is a safe outcome rather than a broken one.
+ */
+
 /** Phrases indicating we were bot-blocked rather than given a real answer. */
 const BOT_BLOCK_MARKERS = [
   "api-services-support@amazon.com",
@@ -130,6 +170,15 @@ export async function probeUrl(
         verdict: "dead",
         httpStatus: status,
         note: "soft 404 (not-found page served with 200)",
+      };
+    }
+    // Real product page, unbuyable item. Checked after the bot-wall and
+    // not-found branches so those keep their more specific verdicts.
+    if (body && UNAVAILABLE_MARKERS.some((m) => body.includes(m))) {
+      return {
+        verdict: "dead",
+        httpStatus: status,
+        note: "product currently unavailable (200 with no buy affordance)",
       };
     }
     if (status >= 200 && status < 400) {
