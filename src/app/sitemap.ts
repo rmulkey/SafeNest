@@ -14,6 +14,7 @@ import {
   getBaseUrl,
   createSitemapEntries,
   createStaticPageEntries,
+  newestContentDate,
 } from "@/lib/seo/sitemap";
 import { GIFT_GUIDES } from "@/lib/seo/gift-guides";
 import {
@@ -23,7 +24,10 @@ import {
 
 /** GROQ query to fetch all published content slugs for the sitemap. */
 const sitemapContentQuery = groq`{
-  "reviews": *[_type == "toyReview"] | order(_updatedAt desc) { slug, _updatedAt },
+  // _createdAt/publishedAt/recallCheckedAt are needed because the nightly recall
+  // sweep bumps _updatedAt on every review; contentLastModified() uses them to
+  // tell a real edit from that bookkeeping write.
+  "reviews": *[_type == "toyReview"] | order(_updatedAt desc) { slug, _updatedAt, _createdAt, publishedAt, recallCheckedAt },
   "guides": *[_type == "buyingGuide"] | order(_updatedAt desc) { slug, _updatedAt },
   "blogPosts": *[_type == "blogPost" && (!defined(publishedAt) || publishedAt <= now())] | order(_updatedAt desc) { slug, _updatedAt },
   "categories": *[_type == "category"] | order(_updatedAt desc) { slug, _updatedAt },
@@ -34,7 +38,13 @@ const sitemapContentQuery = groq`{
 // /articles route, so those URLs 404. Their content is surfaced under /blog.
 
 interface SitemapContent {
-  reviews: Array<{ slug: { current: string }; _updatedAt?: string }>;
+  reviews: Array<{
+    slug: { current: string };
+    _updatedAt?: string;
+    _createdAt?: string;
+    publishedAt?: string | null;
+    recallCheckedAt?: string | null;
+  }>;
   guides: Array<{ slug: { current: string }; _updatedAt?: string }>;
   blogPosts: Array<{ slug: { current: string }; _updatedAt?: string }>;
   categories: Array<{ slug: { current: string }; _updatedAt?: string }>;
@@ -52,6 +62,10 @@ function toDate(value?: string | null): Date | undefined {
 /**
  * Newest `_updatedAt` in a list that the GROQ query already ordered by
  * `_updatedAt desc`, so the first entry wins.
+ *
+ * Only safe for document types nothing writes to on a schedule. Reviews use
+ * `newestContentDate` instead, because ordering by `_updatedAt` puts whichever
+ * review the nightly recall sweep happened to touch last at the front.
  */
 function newestUpdatedAt(
   items: Array<{ _updatedAt?: string }>
@@ -79,7 +93,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   const staticPages = createStaticPageEntries(baseUrl, {
-    reviews: newestUpdatedAt(content.reviews),
+    reviews: newestContentDate(content.reviews),
     guides: newestUpdatedAt(content.guides),
     blogPosts: newestUpdatedAt(content.blogPosts),
     categories: newestUpdatedAt(content.categories),

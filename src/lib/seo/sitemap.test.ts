@@ -5,6 +5,8 @@ import {
   createSitemapEntry,
   createSitemapEntries,
   createStaticPageEntries,
+  contentLastModified,
+  newestContentDate,
 } from "./sitemap";
 
 /**
@@ -285,5 +287,138 @@ describe("createStaticPageEntries", () => {
   it("emits each URL only once", () => {
     const urls = createStaticPageEntries(baseUrl).map((e) => e.url);
     expect(new Set(urls).size).toBe(urls.length);
+  });
+});
+
+/**
+ * Dating must survive the nightly CPSC recall sweep.
+ *
+ * Measured on production 2026-08-26: all 138 toyReview documents reported an
+ * `_updatedAt` of that day, and none had been created or edited that day. The
+ * sweep in src/lib/recalls/sync.ts patches `recallCheckedAt` on every review
+ * nightly, so the sitemap claimed 138 pages had changed, every day.
+ */
+describe("contentLastModified — ignores the nightly recall sweep", () => {
+  const PUBLISHED = "2026-06-01T09:00:00.000Z";
+  const CREATED = "2026-05-20T09:00:00.000Z";
+
+  it("dates by publishedAt when the newest write was the sweep", () => {
+    const d = contentLastModified({
+      _updatedAt: "2026-08-26T05:00:11.000Z",
+      _createdAt: CREATED,
+      publishedAt: PUBLISHED,
+      recallCheckedAt: "2026-08-26T05:00:00.000Z",
+    });
+    expect(d?.toISOString()).toBe(PUBLISHED);
+  });
+
+  it("tolerates _updatedAt trailing the shared syncedAt across a long sweep", () => {
+    // The sweep commits reviews one at a time, so the last review's _updatedAt is
+    // minutes after the syncedAt every review records.
+    const d = contentLastModified({
+      _updatedAt: "2026-08-26T05:24:00.000Z",
+      _createdAt: CREATED,
+      publishedAt: PUBLISHED,
+      recallCheckedAt: "2026-08-26T05:00:00.000Z",
+    });
+    expect(d?.toISOString()).toBe(PUBLISHED);
+  });
+
+  it("reports a real edit made well away from the sweep", () => {
+    const edited = "2026-08-26T14:30:00.000Z";
+    const d = contentLastModified({
+      _updatedAt: edited,
+      _createdAt: CREATED,
+      publishedAt: PUBLISHED,
+      recallCheckedAt: "2026-08-26T05:00:00.000Z",
+    });
+    expect(d?.toISOString()).toBe(edited);
+  });
+
+  it("falls back to _createdAt when there is no publishedAt", () => {
+    const d = contentLastModified({
+      _updatedAt: "2026-08-26T05:00:05.000Z",
+      _createdAt: CREATED,
+      recallCheckedAt: "2026-08-26T05:00:00.000Z",
+    });
+    expect(d?.toISOString()).toBe(CREATED);
+  });
+
+  it("uses _updatedAt for documents the sweep never touches", () => {
+    // Guides, posts and categories carry no recallCheckedAt.
+    const d = contentLastModified({ _updatedAt: PUBLISHED });
+    expect(d?.toISOString()).toBe(PUBLISHED);
+  });
+
+  it("returns undefined rather than a fabricated date when nothing is known", () => {
+    expect(contentLastModified({})).toBeUndefined();
+    expect(contentLastModified({ _updatedAt: null })).toBeUndefined();
+    expect(contentLastModified({ _updatedAt: "not a date" })).toBeUndefined();
+  });
+
+  it("never reports a date newer than the document's own writes", () => {
+    const d = contentLastModified({
+      _updatedAt: "2026-08-26T05:00:00.000Z",
+      _createdAt: CREATED,
+      publishedAt: PUBLISHED,
+      recallCheckedAt: "2026-08-26T05:00:00.000Z",
+    });
+    expect(d!.getTime()).toBeLessThanOrEqual(
+      new Date("2026-08-26T05:00:00.000Z").getTime()
+    );
+  });
+});
+
+describe("newestContentDate", () => {
+  it("does not report today merely because the sweep ran today", () => {
+    const swept = Array.from({ length: 138 }, (_, i) => ({
+      _updatedAt: "2026-08-26T05:00:00.000Z",
+      _createdAt: "2026-05-01T00:00:00.000Z",
+      publishedAt: `2026-06-${String((i % 28) + 1).padStart(2, "0")}T00:00:00.000Z`,
+      recallCheckedAt: "2026-08-26T05:00:00.000Z",
+    }));
+    const d = newestContentDate(swept);
+    expect(d?.toISOString()).toBe("2026-06-28T00:00:00.000Z");
+  });
+
+  it("takes the max rather than trusting list order", () => {
+    // The GROQ query orders by _updatedAt desc, which no longer correlates with
+    // the content date once the sweep has run.
+    const d = newestContentDate([
+      { _updatedAt: "2026-08-26T05:00:00.000Z", publishedAt: "2026-06-01T00:00:00.000Z", recallCheckedAt: "2026-08-26T05:00:00.000Z" },
+      { _updatedAt: "2026-08-26T04:59:00.000Z", publishedAt: "2026-07-15T00:00:00.000Z", recallCheckedAt: "2026-08-26T05:00:00.000Z" },
+    ]);
+    expect(d?.toISOString()).toBe("2026-07-15T00:00:00.000Z");
+  });
+
+  it("returns undefined for an empty list", () => {
+    expect(newestContentDate([])).toBeUndefined();
+  });
+});
+
+describe("createSitemapEntries — dating", () => {
+  it("omits lastModified rather than defaulting to now", () => {
+    const [entry] = createSitemapEntries(
+      [{ slug: { current: "a" } }],
+      "/reviews"
+    );
+    expect(entry.lastModified).toBeUndefined();
+  });
+
+  it("dates a swept review by its publication date", () => {
+    const [entry] = createSitemapEntries(
+      [
+        {
+          slug: { current: "a" },
+          _updatedAt: "2026-08-26T05:00:02.000Z",
+          publishedAt: "2026-06-01T09:00:00.000Z",
+          recallCheckedAt: "2026-08-26T05:00:00.000Z",
+        },
+      ],
+      "/reviews"
+    );
+    expect((entry.lastModified as Date).toISOString()).toBe(
+      "2026-06-01T09:00:00.000Z"
+    );
   });
 });

@@ -32,6 +32,11 @@ const SITE = process.env.GSC_SITE_URL || "sc-domain:safenesttoys.com";
 const KEY_PATH = process.env.GSC_SERVICE_ACCOUNT_KEY;
 const OUT = "gsc";
 const LIMIT = Number(process.env.LIMIT || 0);
+/** Comma-separated exact paths, e.g. ONLY=/reviews,/blog. Takes precedence over LIMIT. */
+const ONLY = (process.env.ONLY || "")
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
 const CONCURRENCY = 4;
 /** Pause between batches. 600 QPM is the ceiling; this stays far under it. */
 const PAUSE_MS = 350;
@@ -77,6 +82,22 @@ async function sitemapUrls() {
   const res = await fetch("https://safenesttoys.com/sitemap.xml");
   const xml = await res.text();
   const urls = [...new Set([...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim()))];
+  // ONLY takes exact paths, so the hub pages can be rechecked for ~7 inspections
+  // instead of 221. LIMIT slices the head of the list, which never contains them.
+  if (ONLY.length > 0) {
+    const wanted = new Set(ONLY.map((p) => p.replace(/\/+$/, "") || "/"));
+    const picked = urls.filter((u) => {
+      const path = new URL(u).pathname.replace(/\/+$/, "") || "/";
+      return wanted.has(path);
+    });
+    const missing = [...wanted].filter(
+      (p) => !picked.some((u) => (new URL(u).pathname.replace(/\/+$/, "") || "/") === p)
+    );
+    if (missing.length > 0) {
+      console.warn(`not in sitemap, skipped: ${missing.join(", ")}`);
+    }
+    return picked;
+  }
   return LIMIT > 0 ? urls.slice(0, LIMIT) : urls;
 }
 

@@ -89,11 +89,86 @@ export function createSitemapEntry(options: SitemapEntryOptions): MetadataRoute.
   };
 }
 
+/** Timestamps a Sanity document can offer for dating its content. */
+export interface ContentTimestamps {
+  _updatedAt?: string | null;
+  _createdAt?: string | null;
+  publishedAt?: string | null;
+  /** Written by the daily CPSC sweep; see `contentLastModified`. */
+  recallCheckedAt?: string | null;
+}
+
+/** Parse an ISO timestamp, or undefined when absent or unparseable. */
+function toDate(value?: string | Date | null): Date | undefined {
+  if (!value) return undefined;
+  const d = value instanceof Date ? value : new Date(value);
+  return Number.isNaN(d.getTime()) ? undefined : d;
+}
+
+/**
+ * How close `_updatedAt` must be to `recallCheckedAt` to be read as the sweep's
+ * own write rather than an edit.
+ *
+ * The sweep patches every review in sequence, so `_updatedAt` trails the shared
+ * `syncedAt` by however long the loop takes. Thirty minutes is far longer than
+ * that loop and far shorter than a day, so it separates the two cases cleanly.
+ */
+export const RECALL_SWEEP_WINDOW_MS = 30 * 60 * 1000;
+
+/**
+ * The date this document's *content* last changed, ignoring bookkeeping writes.
+ *
+ * `_updatedAt` is not a content signal on toyReview documents. The daily
+ * `sync-recalls` cron patches `recallCheckedAt` on every review in the catalog
+ * (src/lib/recalls/sync.ts) so a page can truthfully say "no matching CPSC recall
+ * as of <date>". That write is required, but it bumps `_updatedAt` on all 138
+ * reviews every night. Measured 2026-08-26: all 138 reviews reported
+ * `_updatedAt` of that day and none had been created or edited that day, so the
+ * sitemap was declaring 138 pages freshly modified daily.
+ *
+ * That is precisely the failure `createSitemapEntry` already warns about: a
+ * `<lastmod>` that is always "now" is inaccurate, and search engines discount the
+ * field across the whole sitemap once they notice. The site could least afford it
+ * — Search Console showed all seven hub pages had never been crawled at all.
+ *
+ * So when the newest write looks like the sweep, fall back to the publication
+ * date, which is a real content date.
+ *
+ * KNOWN LIMITATION: a genuine edit is reported until the next nightly sweep, and
+ * from then on the entry reports its publication date again. Removing that would
+ * require storing a dedicated content-revision timestamp, which means a schema
+ * change and a Studio document action. Reporting a slightly stale date is honest;
+ * reporting a fabricated fresh one is not.
+ */
+export function contentLastModified(doc: ContentTimestamps): Date | undefined {
+  const updated = toDate(doc._updatedAt);
+  const checked = toDate(doc.recallCheckedAt);
+
+  if (
+    updated &&
+    checked &&
+    Math.abs(updated.getTime() - checked.getTime()) <= RECALL_SWEEP_WINDOW_MS
+  ) {
+    return newestOf(toDate(doc.publishedAt), toDate(doc._createdAt));
+  }
+  return updated;
+}
+
+/** Newest content date across a set of documents, ignoring bookkeeping writes. */
+export function newestContentDate(
+  items: readonly ContentTimestamps[]
+): Date | undefined {
+  return newestOf(...items.map(contentLastModified));
+}
+
 /**
  * Creates sitemap entries from an array of content items with slugs.
+ *
+ * Dating goes through `contentLastModified`, so a document whose newest write was
+ * the nightly recall sweep is dated by its publication date instead.
  */
 export function createSitemapEntries(
-  items: Array<{ slug: { current: string }; _updatedAt?: string }>,
+  items: Array<{ slug: { current: string } } & ContentTimestamps>,
   prefix: string,
   changeFrequency: SitemapChangeFrequency = "weekly",
   priority: number = 0.7
@@ -102,7 +177,7 @@ export function createSitemapEntries(
     createSitemapEntry({
       slug: item.slug.current,
       prefix,
-      lastModified: item._updatedAt,
+      lastModified: contentLastModified(item),
       changeFrequency,
       priority,
     })
