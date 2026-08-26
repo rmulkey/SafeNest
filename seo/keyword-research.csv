@@ -1,0 +1,137 @@
+keyword,volume,cpc_usd,competition,difficulty,reachable,score,is_question,already_covered,sources
+"check your recall unit 9",8100,0,0.33,16,true,4860,false,false,related
+"wooden toys",4400,0.55,1,20,true,2200,false,false,related
+"crib recall",14800,0,0.33,35,true,1850,false,false,related
+"stuffed dolls for infants",3600,0.67,1,22,true,1620,false,false,related
+"baby toy",9900,0.47,0.72,34,true,1485,false,false,related
+"evermore surprise eggs recall lead",1900,0,0.33,15,true,1188,false,false,related
+"stuffed toys for infants",3600,0.67,1,27,true,1170,false,false,related
+"cpsc recall ml837-15",2900,0,0,24,true,1160,false,false,related
+"toys with wood",1900,0.55,1,17,true,1093,false,false,related
+"plush animals for infants",2400,0.67,1,23,true,1020,false,false,related
+"infant toys",3600,0.44,1,30,true,900,false,false,related
+"soft plush toys",2900,0.43,0.7,28,true,870,false,false,related
+"baby toys 0-6 months",1600,0,0,19,true,840,false,false,related
+"newborn toys 0-3 months",1000,0.53,1,7,true,825,false,false,related
+"recall cribs",2900,0,0.33,29,true,798,false,false,related
+"cpsc recalled chinese products",2400,0,0.33,27,true,780,false,false,related
+"baby stuffed animals",1900,0,0,24,true,760,false,false,related
+"wooden baby toys",1600,0.68,1,22,true,720,false,false,related
+"toys for babies",1900,0,0,26,true,665,false,false,related
+"wooden toy",1900,0.55,1,26,true,665,false,true,related
+"baby boy toys",1900,0.38,1,26,true,665,false,false,related
+"shock websites",4400,1.05,0.33,34,true,660,false,false,related
+"toys for newborns and infants",3600,0.77,1,33,true,630,false,false,related
+"11 products at walmart amazon recalled over safety issues",1600,0,0.33,25,true,600,false,false,related
+"toys for infants",2900,0.47,0.72,32,true,580,false,false,related
+"soft toys soft toys",1300,0.57,0.9,23,true,553,false,false,related
+"toys for 2 month old",880,0.41,0.97,17,true,506,false,false,related
+"wooden toys for toddlers",720,0,0,13,true,486,false,false,related
+"wood toys",2400,0.55,1,32,true,480,false,false,related
+"stuffed animals for babies",1300,0,0,26,true,455,false,false,related
+"newborn toys",3600,0.77,1,35,true,450,false,false,related
+"soft toys",1300,0.59,0.9,27,true,423,false,false,related
+"toys for neonates",2400,0.77,1,33,true,420,false,false,related
+"best wooden toys for babies",720,0,0,20,true,360,false,false,related
+"infant learning toys",1000,0.76,1,26,true,350,false,false,related
+"great infant toys",1300,0.59,1,30,true,325,false,false,related
+"soft stuffed animals",1600,0.85,1,32,true,320,false,false,related
+"bpa free toys for infants",480,0.59,1,14,true,312,false,false,related
+"avoid toys made from likzaproz",480,0,0.33,15,true,300,false,false,related
+"infant toys 0 6 months",1300,0.42,1,31,true,293,false,false,related
+"what are eco-friendly baby toys",720,0,0,24,true,288,true,false,related
+"wooden toys for newborns",1000,0.67,1,29,true,275,false,false,related
+"infant toys for 2 month old",880,0.4,0.97,28,true,264,false,false,related
+"cool infant toys",480,0.59,1,19,true,252,false,false,related
+"five month old toys",480,0.6,0.66,19,true,252,false,false,related
+"4 month old toys",720,0.54,1,29,true,198,false,false,related
+"bbay toys",720,0.47,0.72,29,true,198,false,false,related
+"baby toys 3 months",480,0,0,26,true,168,false,false,related
+"infant toy",1300,0.44,1,35,true,163,false,true,related
+"children's stuffed toys",1300,0.67,1,35,true,163,false,false,related
+"newborn baby toys",590,0.49,1,29,true,162,false,false,related
+"infant toys 0 3 months",720,0.53,1,32,true,144,false,false,related
+"new born toys",720,0.77,1,32,true,144,false,false,related
+"developmental toys for infants",590,1.11,1,31,true,133,false,false,related
+"bady toys",590,0.47,0.72,33,true,103,false,false,related
+"newborns and toys",590,0.77,1,35,true,74,false,false,related
+"product recall",201000,0.88,0.08,91,false,0,false,false,related
+"amazon cpsc product recalls",135000,0,0.33,70,false,0,false,false,related
+"amazon recalls",90500,0,0.33,51,false,0,false,false,related
+"products that are recalled",49500,0.88,0.08,100,false,0,false,false,related
+"amazon product recalls",27100,0,0.33,67,false,0,false,false,related
+"u.s. cpsc has recalled several popular products sold on amazon",22200,0,0,55,false,0,false,false,related
+"target product recall safety concerns",18100,0,0.33,45,false,0,false,false,related
+"amazon product recall",14800,0,0.33,57,false,0,false,false,related
+"amazon recalls today",12100,0,0.33,65,false,0,false,false,related
+"infant bed recall",9900,0,0.33,44,false,0,false,false,related
+"product recalls",9900,0.88,0.08,97,false,0,false,false,related
+"amazon product safety recall",8100,0,0.33,55,false,0,false,false,related
+"amazon recalled several baby products over safety risks",8100,0,0,56,false,0,false,false,related
+"product recall amazon",6600,0,0.33,65,false,0,false,false,related
+"walmart product recalls cpsc",5400,0,0.33,42,false,0,false,false,related
+"amazon recall update",3600,0,0.33,67,false,0,false,false,related
+"products recall",3600,0.88,0.08,96,false,0,false,false,related
+"the cpsc recalled two baby products due to injury risks",3600,0,0,50,false,0,false,false,related
+"recent food recalls",2400,1.68,0.02,88,false,0,false,false,related
+"walmart cpsc recall information",2400,0,0.33,43,false,0,false,false,related
+"amazon product recall cpsc",1900,0,0.33,60,false,0,false,false,related
+"amazon product recall list",1900,0,0.33,69,false,0,false,false,related
+"current food recalls",1900,1.68,0.02,71,false,0,false,false,related
+"amazon walmart product recalls cpsc",1600,0,0.33,50,false,0,false,false,related
+"cpsc orders recalls of children's products sold on amazon",1600,0,0,47,false,0,false,false,related
+"cpsc recalled nearly 50 products in february",1600,0,0.33,54,false,0,false,false,related
+"food product recall",1600,1.78,0.02,91,false,0,false,false,related
+"food product safety recalls",1600,0,0.09,87,false,0,false,false,related
+"products recalled sold amazon walmart",1600,0,0.33,46,false,0,false,false,related
+"baby toys",2740000,0.47,0.72,42,false,0,false,false,related
+"infant development toys",1300,1.11,1,36,false,0,false,false,related
+"toys for baby",720,0,0,39,false,0,false,false,related
+"newborn development toys",480,1.11,1,36,false,0,false,false,related
+"toys stuffed toys",3600,0.62,0.5,43,false,0,false,false,related
+"infant bed toy",1000,0.29,1,100,false,0,false,false,related
+"newborn plush animals",1000,0.71,1,100,false,0,false,false,related
+"pop up toys for infants",1000,0.29,1,100,false,0,false,false,related
+"3 month old toys",880,0.5,1,100,false,0,false,false,related
+"baby bum toys",880,0.34,0.56,100,false,0,false,false,related
+"cotton stuffed",880,0.4,0.94,100,false,0,false,false,related
+"infant plush animals",880,0.71,1,100,false,0,false,false,related
+"infant stuffed animals",880,0.67,1,100,false,0,false,false,related
+"what are safety standards for toys",90,0,0,100,false,0,true,false,question+related
+"define toy",880,0,0.33,100,false,0,false,false,related
+"astm f963",720,1.12,0.02,100,false,0,false,false,related
+"avoid toys with zodinatin",720,0,0.33,100,false,0,false,false,related
+"cpsc toy recalls",390,0,0.33,100,false,0,false,false,related
+"avoid toys with vaxhiza",320,0,0.33,100,false,0,false,false,related
+"cpsia compliant",320,2.64,0.05,100,false,0,false,false,related
+"amazon toy compliance",260,0,0.33,100,false,0,false,false,related
+"make it toy quality",260,0,0,100,false,0,false,false,related
+"cpsia certified",210,2.57,0.04,100,false,0,false,false,related
+"toy safety",210,0.37,0.67,100,false,0,false,true,related
+"toy testing",210,2.64,0.02,100,false,0,false,false,related
+"safe children's toys",170,0.52,0.96,100,false,0,false,false,related
+"astm f963 toy safety standard",140,0,0.33,100,false,0,false,false,related
+"astm f963-23",140,2.19,0.06,100,false,0,false,false,related
+"avoid tusehmesto in toys",140,0,0.33,100,false,0,false,false,related
+"classification of stuffed animals",140,0,0,100,false,0,false,false,related
+"safety in children's toys",140,0.52,0.96,100,false,0,false,false,related
+"astm f963-17",110,0,0.03,100,false,0,false,false,related
+"children's toy safety",110,0.52,0.96,100,false,0,false,false,related
+"toys for tots toy guidelines",110,0,0.33,100,false,0,false,false,related
+"a toy is made up of four pieces",90,0,0.33,100,false,0,false,false,related
+"choking hazard toys",90,0,0.05,100,false,0,false,false,related
+"toy quality testing",90,0,0,100,false,0,false,false,related
+"toy safety testing",90,0,0.07,100,false,0,false,false,related
+"astm f963 23",70,1.29,0.05,100,false,0,false,false,related
+"get toys tested",70,0,0,100,false,0,false,false,related
+"infant toy safety",70,0.59,0.92,100,false,0,false,false,related
+"not liable for data collection on toys",70,0,0.33,100,false,0,false,false,related
+"product safety testing toys",70,0,0,100,false,0,false,false,related
+"toy certification",70,0,0.01,100,false,0,false,false,related
+"toy testing company",70,0,0,100,false,0,false,false,related
+"astm f2923",50,0,0.02,100,false,0,false,false,related
+"astm f963 17",50,0,0.01,100,false,0,false,false,related
+"dangerous infant toys",50,0,0.33,100,false,0,false,false,related
+"toy guidelines",50,0,0.1,100,false,0,false,false,related
+"toy inspection",50,0,0.02,100,false,0,false,false,related
+"toy safety directive",50,0,0.33,100,false,0,false,false,related
