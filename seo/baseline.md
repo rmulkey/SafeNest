@@ -1,5 +1,12 @@
 # SafeNest Toys — SEO baseline
 
+> **SUPERSEDED IN PART — read `seo/gsc-findings.md` first.**
+> First-party Search Console data obtained 2026-08-25 contradicts several
+> Semrush-derived conclusions in this document. Most importantly: Semrush
+> reported nothing above position 25, while Search Console shows **22 queries in
+> the top 20 and 12 in the top 10**, and review pages (positions 7–12) outrank the
+> buying guides (38–84). Corrections are itemised in `seo/gsc-findings.md`.
+
 **Data date:** 2026-08-25
 **Site:** https://safenesttoys.com
 **Framework:** Next.js 16.2.7 / React 19.2.4, App Router, `cacheComponents: true` (Partial Prerendering), deployed on Vercel
@@ -55,13 +62,18 @@ From `seo/data/organic-positions.csv` (30 keywords):
 | 21–50 | 9 |
 | 51–100 | 21 |
 
-Nothing ranks above position 25. The single best position on the entire site is
-**25**. That is why modelled traffic is 0 despite 12,360 monthly searches across
+Nothing ranks above position 25 **in Semrush's database**. That turned out to be
+a limitation of Semrush rather than a fact about the site: first-party Search
+Console data shows 22 queries in the top 20 and 12 in the top 10, with pages
+averaging as high as position 6.9. Semrush's keyword universe does not contain
+this site's long-tail product queries. See `seo/gsc-findings.md`. That is why modelled traffic is 0 despite 12,360 monthly searches across
 the ranking set — every ranking sits below where clicks occur.
 
-**This materially changes how the brief's priorities apply.** The brief asks for
-"striking-distance wins" at positions 4–20 and "high-impression, low-CTR pages".
-Neither set exists. There are no positions 4–20 to improve, and with no GSC data
+**This appeared to change how the brief's priorities apply** — on Semrush data
+alone there were no positions 4–20 to work with. First-party data has since shown
+that both that class and the high-impression class do exist; see
+`seo/gsc-findings.md`. The paragraph below reflects the Semrush-only view and is
+retained for the record. There are no positions 4–20 to improve, and with no GSC data
 there are no observed impressions. Priority has to shift to the 21–50 band and to
 the structural reasons nothing has climbed out of it.
 

@@ -210,12 +210,11 @@ in `seo/content-roadmap.md` and has not been done.
 4. **Both Semrush projects are on `www`.** 22 of 30 ranking URLs are recorded
    there. Until rebuilt on the apex, no Site Audit or Position Tracking figure is
    trustworthy.
-5. **No Search Console data.** Blocks all CTR work and half the brief's
-   priorities. `scripts/pull-search-console.mjs` is written and self-tested and
-   will pull 16 months of queries, pages, query+page, dates, devices and
-   countries the moment a service-account key exists — see `gsc/README.md`. The
-   browser route was attempted and abandoned: Chrome refuses remote debugging on
-   the default profile, so the signed-in session cannot be driven.
+5. **Search Console is now connected** — resolved 2026-08-25. Service account
+   reads `sc-domain:safenesttoys.com`; `scripts/pull-search-console.mjs` pulls six
+   reports into `gsc/`. The data contradicts several Semrush-derived conclusions in
+   this directory; see `seo/gsc-findings.md`. Only 83 days of history exists (the
+   property was created ~2026-06-02), so there is no 16-month baseline to recover.
 6. **Zero legitimate backlinks.** The other candidate explanation for positions
    25–98, and it cannot be separated from the depth hypothesis with current data.
 7. **Three pages carry no JSON-LD** — `/about`, `/transparency`, `/best-toys`.

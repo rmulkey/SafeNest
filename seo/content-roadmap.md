@@ -1,5 +1,12 @@
 # Content roadmap
 
+> **SUPERSEDED IN PART — read `seo/gsc-findings.md` first.**
+> First-party Search Console data obtained 2026-08-25 contradicts several
+> Semrush-derived conclusions in this document. Most importantly: Semrush
+> reported nothing above position 25, while Search Console shows **22 queries in
+> the top 20 and 12 in the top 10**, and review pages (positions 7–12) outrank the
+> buying guides (38–84). Corrections are itemised in `seo/gsc-findings.md`.
+
 **Data date:** 2026-08-25
 **Depends on:** `seo/keyword-map.csv`, `seo/competitor-gap.md`, `seo/baseline.md`
 

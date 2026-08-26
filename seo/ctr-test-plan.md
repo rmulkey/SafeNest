@@ -1,7 +1,20 @@
 # CTR test plan
 
 **Data date:** 2026-08-25
-**Status: BLOCKED. Do not run this yet.**
+**Status: still do not run this yet — but the reason has changed.**
+
+Search Console data now exists in `gsc/` (obtained 2026-08-25). So this is no
+longer blocked on data availability. It is blocked on **volume**: 1,138
+impressions across 83 days, roughly 14 a day, with most pages carrying 1–40
+impressions. A page at position 6.4 with 16 impressions has an expected click
+count of 0.8, so a title test there would measure noise.
+
+Sitewide CTR is 0.70% against a rough position-based expectation of ~2%. That is
+suggestive, not a finding — see `seo/gsc-findings.md` for why the counts are too
+small and why Search Console's averaged `position` inflates the expectation.
+
+Re-read this once a page clears a few hundred impressions. The cohort design,
+title variants and guardrails below are unchanged and ready.
 
 ---
 
