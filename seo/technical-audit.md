@@ -236,3 +236,74 @@ absent from the other.
 | 186 of 270 errors | `/privacy` and `/terms`, which did not exist at crawl time and were added in `66ccc7b` on 2026-08-17. |
 | 84 of 270 errors | The `www`/apex double-crawl caused by the campaign host. |
 | 31 spam referring domains | Google's link spam systems discount these automatically; a disavow file is busywork. |
+
+## Semrush apex crawl, 2026-08-26 — reconciliation
+
+Project `30984142` (apex, 243 pages, limit 500) replaces `30424632` (www, 100
+pages). The www project's numbers were distorted by the 308 redirect to apex and
+should not be quoted; keep it only for its historical July snapshot.
+
+### What the fixes actually moved
+
+| Semrush issue | www crawl | apex crawl | Why |
+|---|---|---|---|
+| Broken internal links | 182 | **0** | `/privacy`, `/terms` now exist |
+| Duplicate title / content / meta | 28 / 28 / 28 | **0** | www double-crawl gone |
+| 4xx pages | 4 | **0** | same |
+| Title element too long | 37 | 7 | title rewrites |
+| Pages crawled | 100 | 243 | limit raised past the 100 cap |
+
+### Issue 45, "structured data that contains markup errors" — 138 pages. DO NOT FIX.
+
+This is the only error class in the crawl, and it is a false positive. It fires on
+all 138 review pages, targeting `J:18:/itemReviewed:<hash>`.
+
+Verified independently with Google's own validator
+(`https://validator.schema.org/validate`, `isRendered: true`, so JS ran):
+
+```
+/reviews/vtech-turn-and-learn-driver   types=[BreadcrumbList, Review]  0 errors  0 warnings
+/reviews/tegu-sunset-24-piece          types=[BreadcrumbList, Review]  0 errors  0 warnings
+/reviews/radio-flyer-scoot-2-scooter   types=[BreadcrumbList, Review]  0 errors  0 warnings
+```
+
+A sweep of all 138 review pages (every JSON-LD block parsed) found:
+zero standalone `Product` nodes, zero `Review` nodes missing a Google-required
+field (`itemReviewed.name`, `reviewRating.ratingValue`, `author`).
+
+The only thing Semrush can be objecting to is that `itemReviewed` is a `Product`
+carrying no `offers`, `aggregateRating`, or `review` — i.e. it is applying
+Google's **product-page** requirements to a Product that appears as the *object of
+a review*, where `name` is the only requirement. Satisfying it would require
+adding one of:
+
+- `offers` — we hold no verified price. Fabricating one breaks the project's
+  data-integrity rule, and caching Amazon prices outside their API breaks theirs.
+- `aggregateRating` — would present a single editorial score as an aggregate of
+  customer ratings we never collected. Misrepresentation, and explicitly ruled out.
+- `review` nested inside `itemReviewed` — circular; the Product is already the
+  `itemReviewed` of that very Review.
+
+All three are worse than the warning. Same category as the 1,173
+"nofollow attributes in external links" notices: the tool is flagging a
+deliberate, correct choice.
+
+### What the crawl did NOT catch, and my own sweep did
+
+10 review pages shipped ungrammatical `reviewBody` text, visible on the page and
+inside the Review JSON-LD, from a mid-clause splice in
+`src/lib/content/qualify-claims.ts`. Fixed; see `seo-changelog.csv`. Semrush
+flagged none of them. Its 254 warnings and 1,194 notices contain no content-quality
+signal of this kind, which is worth remembering before trusting its issue counts as
+a definition of "clean".
+
+### Open items
+
+- `crawlSubdomains: True` on the new project. 243 pages crawled against 221 in the
+  sitemap. Turn it off, or the www duplication that produced the 84 phantom
+  duplicate-content errors can come back.
+- Position Tracking still sits on the retired www project `30424632` with
+  `targets: null`, so it reports nothing. Re-seed it on `30984142` using real GSC
+  queries rather than guessed keywords.
+- Warnings worth real work: `112` low text-to-HTML on 228 pages is the page-weight
+  problem (`/best-toys/1-2-years` 1,260 KB, `/reviews` 1,080 KB), not thin content.

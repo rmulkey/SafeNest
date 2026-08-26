@@ -34,6 +34,25 @@ export interface QualificationRule {
   pattern: RegExp;
   /** Replacement, or null to drop the sentence entirely. */
   replacement: string | null;
+  /**
+   * Clause-level form of `replacement`, used when the match does NOT begin its
+   * sentence.
+   *
+   * Several patterns match a noun phrase ("no small parts") whose replacement is
+   * a full sentence ("No small parts are described in..."). Substituting the
+   * sentence form mid-clause spliced one sentence inside another and shipped to
+   * production on 10 review pages:
+   *
+   *   "flush-mounted with no small parts; battery compartment is screw-secured."
+   *   -> "flush-mounted with No small parts are described in the published
+   *       product information.; battery compartment is screw-secured."
+   *
+   * Note the capitalised "No" mid-sentence and the ".;". A fragment must
+   * therefore be lowercase, carry no terminal punctuation, and read
+   * grammatically as a continuation of the preceding clause. Rules whose pattern
+   * can only start a sentence may omit this.
+   */
+  fragment?: string;
   /** Why this is qualified, for documentation and tests. */
   reason: string;
 }
@@ -48,6 +67,8 @@ export const QUALIFICATION_RULES: QualificationRule[] = [
     pattern: /\bno choking hazard(?:\s+for\s+[\w+\s]+?)?\b\.?/gi,
     replacement:
       "SafeNest did not identify a small-parts concern in the published product information. SafeNest has not physically measured the product or performed small-parts testing.",
+    fragment:
+      "no small-parts concern identified in the published product information",
     reason:
       "'No choking hazard' is a test conclusion SafeNest cannot make. Reworded as the limit of what public information supports.",
   },
@@ -55,18 +76,21 @@ export const QUALIFICATION_RULES: QualificationRule[] = [
     pattern: /\bsafe from birth\b\.?/gi,
     replacement:
       "The manufacturer labels this product for use from birth.",
+    fragment: "labeled by the manufacturer for use from birth",
     reason: "Age suitability is the manufacturer's labelling, not a SafeNest finding.",
   },
   {
     pattern: /\bsafe for\s+(\d+)\s*m(?:o|os|onths?)?\s*\+?\.?/gi,
     replacement:
       "The manufacturer labels this product for ages $1 months and older.",
+    fragment: "labeled by the manufacturer for ages $1 months and older",
     reason: "Attributes age guidance to the manufacturer rather than asserting safety.",
   },
   {
     pattern: /\bsafe for\s+(\d+)\s*(?:years?|yrs?)\s*\+?\.?/gi,
     replacement:
       "The manufacturer labels this product for ages $1 years and older.",
+    fragment: "labeled by the manufacturer for ages $1 years and older",
     reason: "Attributes age guidance to the manufacturer rather than asserting safety.",
   },
   // ─── Unsupportable absolutes: remove, since no attribution rescues them ────
@@ -84,6 +108,8 @@ export const QUALIFICATION_RULES: QualificationRule[] = [
     pattern: /\bpasses the small[\s-]*parts test\b\.?/gi,
     replacement:
       "Published dimensions suggest the parts are larger than the small-parts cylinder. SafeNest has not verified this by testing.",
+    fragment:
+      "published dimensions that suggest the parts are larger than the small-parts cylinder, which SafeNest has not verified by testing",
     reason: "SafeNest runs no small-parts test, so it cannot report a pass.",
   },
   // ─── Dimensions: attribute, never present as independently measured ───────
@@ -91,6 +117,8 @@ export const QUALIFICATION_RULES: QualificationRule[] = [
     pattern: /\ball\s+(\w+)\s+are\s+large diameter\s*\(([\d.]+)\s*inches\+?\)/gi,
     replacement:
       "The manufacturer or retailer reports dimensions of approximately $2 inches or larger.",
+    fragment:
+      "manufacturer- or retailer-reported dimensions of approximately $2 inches or larger",
     reason:
       "Dimensions come from published product information, not from SafeNest measuring the product.",
   },
@@ -98,6 +126,8 @@ export const QUALIFICATION_RULES: QualificationRule[] = [
     pattern: /\ball\s+(\w+)\s+are\s+([\d.]+)\+?\s*inches(?:\s+(?:in\s+)?diameter)?/gi,
     replacement:
       "The manufacturer or retailer reports dimensions of approximately $2 inches or larger.",
+    fragment:
+      "manufacturer- or retailer-reported dimensions of approximately $2 inches or larger",
     reason:
       "Dimensions come from published product information, not from SafeNest measuring the product.",
   },
@@ -114,9 +144,12 @@ export const QUALIFICATION_RULES: QualificationRule[] = [
     reason: "Material composition claims are attributed, not verified.",
   },
   {
-    pattern: /\bno small parts\b(?!\s+are described)/gi,
+    // The lookahead covers both output forms ("are described" from `replacement`
+    // and "described" from `fragment`) so re-running is a no-op.
+    pattern: /\bno small parts\b(?!\s+(?:are\s+)?described)/gi,
     replacement:
       "No small parts are described in the published product information.",
+    fragment: "no small parts described in the published product information",
     reason:
       "Restated as the limit of what the public information shows rather than an inspection finding.",
   },
@@ -129,8 +162,47 @@ function tidy(text: string): string {
     .replace(/\s+([.,;])/g, "$1")
     .replace(/([.;])\s*\1+/g, "$1")
     .replace(/\.\s*\./g, ".")
+    // A full stop immediately followed by another mark ("...information.;")
+    // means a sentence landed mid-clause. Keep the weaker mark, which is the one
+    // the original author wrote. Position-aware substitution should prevent this;
+    // this is the backstop that keeps the artifact off the page if it does not.
+    .replace(/\.\s*([;,])/g, "$1")
     .replace(/^[\s.;,]+/, "")
     .trim();
+}
+
+/**
+ * Expand `$1`..`$9` in a replacement template from a match's capture groups.
+ *
+ * Needed because position-aware substitution uses a replacer function, and
+ * functions receive no automatic `$n` expansion the way string replacements do.
+ */
+function expandTemplate(
+  template: string,
+  groups: readonly (string | undefined)[]
+): string {
+  return template.replace(/\$(\d)/g, (_m, digit: string) => {
+    return groups[Number(digit) - 1] ?? "";
+  });
+}
+
+/**
+ * Apply one rule, choosing the sentence or clause form per match.
+ *
+ * A match is "mid-clause" when any letter or digit precedes it in the sentence.
+ * Leading punctuation and quotes do not count, so `"No small parts."` still takes
+ * the sentence form.
+ */
+function applyRule(sentence: string, rule: QualificationRule): string {
+  return sentence.replace(rule.pattern, (_match: string, ...rest: unknown[]) => {
+    const whole = rest[rest.length - 1] as string;
+    const offset = rest[rest.length - 2] as number;
+    const groups = rest.slice(0, rest.length - 2) as (string | undefined)[];
+    const midClause = /[A-Za-z0-9]/.test(whole.slice(0, offset));
+    const template =
+      midClause && rule.fragment ? rule.fragment : (rule.replacement as string);
+    return expandTemplate(template, groups);
+  });
 }
 
 /** Capitalise the first letter of each sentence after rewriting. */
@@ -214,7 +286,7 @@ export function qualifyClaimText(input: string | null | undefined): QualifyResul
         continue;
       }
 
-      current = current.replace(rule.pattern, rule.replacement);
+      current = applyRule(current, rule);
       reasons.push(rule.reason);
     }
 

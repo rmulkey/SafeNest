@@ -244,3 +244,119 @@ describe("qualifyClaimList", () => {
     expect(qualifyClaimList(["Completely safe"])).toEqual([]);
   });
 });
+
+/**
+ * Regression tests for the mid-clause splice bug.
+ *
+ * These inputs are reconstructed from the text that was live on production
+ * review pages, where a full-sentence replacement was substituted into the
+ * middle of a clause. The output carried a capitalised word mid-sentence and a
+ * ".;" punctuation pair, and it reached the visible page and the Review JSON-LD
+ * `reviewBody` on 10 URLs.
+ */
+describe("qualifyClaimText — clause-level substitution (mid-sentence matches)", () => {
+  /** Artifacts that prove a sentence was spliced inside another sentence. */
+  function assertNoSpliceArtifacts(text: string) {
+    expect(text).not.toMatch(/\.\s*[;,]/); // ".;" or ".,"
+    expect(text).not.toMatch(/\.\./); // ".."
+    // A capital starting a word mid-sentence, excluding brand-ish all-caps and
+    // known proper nouns that legitimately appear (SafeNest, ASTM, BPA...).
+    const midSentenceCapital = /[a-z,]\s+(?!SafeNest|ASTM|CPSC|BPA|PVC|EN71)[A-Z][a-z]+/;
+    expect(text).not.toMatch(midSentenceCapital);
+  }
+
+  const productionStrings = [
+    "Steering wheel and buttons are flush-mounted with no small parts; battery compartment is screw-secured. Labeled for ages 6 months and up.",
+    "Steering-wheel toy with flush-mounted controls and no small parts; battery compartment screw-secured. Labeled for ages 2 and up.",
+    "Wobble-and-roll toy is a single molded piece with soft textured spikes and no small parts; labeled for ages 6 months and up.",
+    "Two-in-one toy that suctions to a tray or detaches as a hand rattle. All textured surfaces are molded to the body with no small parts.",
+    "Ride-on scooter has no small parts; a low seat and four wheels provide stability. Labeled for ages 1 to 4.",
+    "Foot-to-floor ride-on with attached activity features and no small parts; wide wheelbase for stability. Labeled for ages 1 and up.",
+  ];
+
+  it.each(productionStrings)(
+    "produces grammatical output for: %s",
+    (input) => {
+      const { text } = qualifyClaimText(input);
+      assertNoSpliceArtifacts(text);
+      // The qualification must still be present, just in clause form.
+      expect(text.toLowerCase()).toContain(
+        "no small parts described in the published product information"
+      );
+    }
+  );
+
+  it("uses the sentence form when the phrase starts the sentence", () => {
+    const { text } = qualifyClaimText("One-piece build. No small parts.");
+    expect(text).toContain(
+      "No small parts are described in the published product information."
+    );
+    assertNoSpliceArtifacts(text);
+  });
+
+  it("uses the clause form when the phrase is mid-sentence", () => {
+    const { text } = qualifyClaimText("Molded in one piece with no small parts.");
+    expect(text).toBe(
+      "Molded in one piece with no small parts described in the published product information."
+    );
+  });
+
+  it("keeps the sentence form after a quote or opening bracket", () => {
+    const { text } = qualifyClaimText('"No small parts."');
+    expect(text.toLowerCase()).toContain("no small parts are described");
+  });
+
+  it("is idempotent for both the sentence and the clause form", () => {
+    for (const input of [
+      "One-piece build. No small parts.",
+      "Molded in one piece with no small parts.",
+    ]) {
+      const once = qualifyClaimText(input).text;
+      const twice = qualifyClaimText(once).text;
+      expect(twice).toBe(once);
+    }
+  });
+
+  it("substitutes clause forms for every rule that can match mid-sentence", () => {
+    const cases: Array<[string, string]> = [
+      [
+        "Large pieces throughout with no choking hazard.",
+        "no small-parts concern identified in the published product information",
+      ],
+      [
+        "Soft-bodied doll that is safe from birth.",
+        "labeled by the manufacturer for use from birth",
+      ],
+      [
+        "Chunky knob puzzle that is safe for 18m+.",
+        "labeled by the manufacturer for ages 18 months and older",
+      ],
+      [
+        "Wooden ride-on that is safe for 3 years+.",
+        "labeled by the manufacturer for ages 3 years and older",
+      ],
+      [
+        "Chunky design that passes the small-parts test.",
+        "published dimensions that suggest the parts are larger than the small-parts cylinder",
+      ],
+    ];
+    for (const [input, expected] of cases) {
+      const { text } = qualifyClaimText(input);
+      expect(text.toLowerCase()).toContain(expected.toLowerCase());
+      assertNoSpliceArtifacts(text);
+    }
+  });
+
+  it("expands capture groups in clause forms", () => {
+    const { text } = qualifyClaimText("A stacking set that is safe for 9mo+.");
+    expect(text).toContain("ages 9 months and older");
+    expect(text).not.toContain("$1");
+  });
+
+  it("repairs a stray full stop before a weaker mark as a backstop", () => {
+    // Directly exercises tidy() through a removal rule, which is the other path
+    // that can leave dangling punctuation.
+    const { text } = qualifyClaimText("Sturdy build, completely safe, great value.");
+    expect(text).not.toMatch(/\.\s*[;,]/);
+  });
+});
