@@ -35,9 +35,15 @@ would burn the one clean baseline available on pages that cannot yet benefit.
 
 ## Unblocking, in order
 
-1. **Export Search Console** — Performance → Queries and Pages, 12 months, CSV
-   into `semrush/` (gitignored). This is the single highest information-value
-   action available on the whole engagement, and it costs a few minutes.
+1. **Get Search Console data into `gsc/`.** Either run
+   `scripts/pull-search-console.mjs` after a one-time service-account setup
+   (durable, repeatable, ~5 minutes — steps in `gsc/README.md`), or export the
+   16-month CSV by hand from the Performance report. This is the single highest
+   information-value action available on the whole engagement.
+
+   Note the browser cannot do this for you: Chrome refuses remote debugging on
+   the default profile as of Chrome 136, verified on 151, so a signed-in session
+   cannot be driven.
 2. Let 28 days of data accumulate as a clean baseline.
 3. Get at least a few pages into the top 20 — see `seo/content-roadmap.md`.
 4. Then run the test below.

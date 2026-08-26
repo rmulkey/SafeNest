@@ -53,10 +53,17 @@ scripts/asin-candidates.json
 # Local backups written before destructive CMS operations
 backups/
 
-# Semrush / Search Console exports (account + traffic data)
-semrush/
+# Semrush exports (account + traffic data).
+# `semrush/*` not `semrush/`: excluding the directory itself means a negation
+# inside it can never apply, so `!semrush/README.md` silently did nothing.
+semrush/*
 !semrush/README.md
 
 # Browser profile for vendor dashboards that have no write API. Holds live
 # session cookies for Semrush and Google — must never be committed.
 .playwright-profile/
+
+# Search Console exports (first-party traffic data) and the service-account key.
+# `gsc/*` not `gsc/`, for the same reason as semrush above.
+gsc/*
+!gsc/README.md
