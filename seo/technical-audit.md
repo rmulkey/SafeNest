@@ -342,3 +342,78 @@ The ranking is what makes the manual work tractable: greedy set cover puts
 `/reviews` first because it alone links to 97 of the 143 uncrawled URLs, and the
 top 12 reach 137 of 143. One day's quota, ~96% of the backlog one hop from
 Googlebot, instead of 143 days of one-at-a-time requests.
+
+## Semrush apex crawl — every remaining issue, triaged
+
+Each of the ten issue classes checked against production rather than taken on
+trust, because this tool has now been wrong four times on this site.
+
+### Acted on
+
+**Out-of-range `?page=` served an indexable empty page.** Not something Semrush
+named — it surfaced only as notices 213 and 212 listing `?page=` URLs, which is
+what prompted the check. `/recalls?page=10|99|99999` and
+`/categories/outdoor-toys?page=50` all returned HTTP 200 with an empty state and
+**no robots meta**, so they were indexable soft 404s, and `?page=` accepted any
+integer. Fixed in `src/lib/seo/pagination.ts`. Also dropped `?page=1` from the
+link graph (byte-identical to the bare path) and made the parse reject fractional
+and Infinity values.
+
+### Correctly ignored
+
+**Issue 45, structured data, 138 pages** — false positive, see above. Google's
+validator: 0 errors, 0 warnings.
+
+**Issue 202, nofollow external links, 1,173** — required on affiliate links.
+
+**Issue 207, "orphaned sitemap page" on `/sitemap.xml`** — `/sitemap.xml` is not
+listed inside itself (verified). Tool artifact.
+
+**Issue 112, low text-to-HTML on 228 pages** — this is page weight, not thin text.
+`/best-toys/1-2-years` is 1,260 KB of HTML and `/reviews` 1,080 KB, from 87 and
+138 product cards. Real CWV and crawl-budget concern, but the remedy is
+pagination or lighter card markup, which is a design decision. Unchanged.
+
+### Real but low priority
+
+**Issue 102, seven titles over 60 characters.** All seven are long because the
+product name itself is long, plus an 18-character `— Safety NN/100` suffix:
+
+```
+98  Melissa & Doug Self-Correcting Alphabet Wooden Puzzles with Storage Box (52pc) — Safety 84/100
+85  Melissa & Doug Deluxe Jumbo Knob Wooden Puzzle - Geometric Shapes — Safety 89/100
+82  PicassoTiles 100 Piece Magnetic Building Tiles Set with Carry Case — Safety 88/100
+```
+
+Google truncates near 60, so the safety score never renders on these — the suffix
+costs nothing and buys nothing. A targeted fix is to drop the suffix only when it
+would push the title past 60, keeping it everywhere it fits. Deliberately not done
+here: it changes title generation for all 138 reviews to serve 7 outliers, and
+review pages are the only content already ranking (positions 6.9–11.6). Worth
+doing as its own change with its own before/after.
+
+**Issue 105, h1 identical to title on 11 pages.** Eight blog posts and three
+`/safe-toys` pages. Not a defect — it means the title carries no extra keyword
+surface beyond the headline. Minor upside, no urgency.
+
+### The finding that matters for the indexing work
+
+**Issue 117, low word count — three of the eight are hub pages in the top-12
+Request Indexing queue.**
+
+```
+/categories     181 words
+/best-toys      219 words
+/gift-guides    287 words
+```
+
+"Discovered – currently not indexed" frequently reflects perceived low value, and
+these are the pages we are about to ask Google to prioritise. A 181-word hub is a
+weak candidate both for getting indexed and for ranking once it is. This is the
+one place where a content change would directly support the indexing push, and it
+is editorial work rather than a code fix: each hub needs a real introduction
+explaining what the collection covers and how the scores are derived, in the
+site's own voice.
+
+Note this does not apply to `/reviews`, the highest-value entry in the queue —
+16,587 words. Request that one regardless.
