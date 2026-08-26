@@ -1,79 +1,17 @@
 {
   "domain": "safenesttoys.com",
   "database": "us",
-  "projectId": 30424632,
-  "fetchedAt": "2026-08-25T21:28:00.442Z",
+  "projectId": 30984142,
+  "fetchedAt": "2026-08-26T16:13:03.295Z",
   "endpoint": "https://mcp.semrush.com/v2/mcp",
   "auth": "Authorization: Apikey (SEMRUSH_API_KEY)",
   "note": "Semrush organic traffic and volume figures are modelled estimates, not measured. No Google Search Console or GA4 data is available in this repo or environment (NEXT_PUBLIC_GA4_MEASUREMENT_ID and NEXT_PUBLIC_POSTHOG_KEY are both empty), so nothing first-party overrides them.",
   "pulls": [
     {
-      "label": "overview/domain-overview.csv",
-      "report": "domain_ranks",
-      "ok": true,
-      "rows": 2
-    },
-    {
-      "label": "organic/organic-positions.csv",
-      "report": "resource_organic",
-      "ok": true,
-      "rows": 31
-    },
-    {
-      "label": "organic/organic-pages.csv",
-      "report": "resource_organic_unique",
-      "ok": true,
-      "rows": 7
-    },
-    {
-      "label": "organic/organic-positions-new.csv",
-      "report": "resource_organic",
-      "ok": true,
-      "rows": 2
-    },
-    {
-      "label": "organic/organic-positions-lost.csv",
-      "report": "resource_organic",
-      "ok": true,
-      "rows": 0,
-      "empty": true
-    },
-    {
-      "label": "competitors/organic-competitors.csv",
-      "report": "domain_organic_organic",
-      "ok": true,
-      "rows": 0,
-      "empty": true
-    },
-    {
-      "label": "backlinks/backlinks-overview.csv",
-      "report": "backlinks_overview",
-      "ok": true,
-      "rows": 2
-    },
-    {
-      "label": "backlinks/referring-domains.csv",
-      "report": "backlinks_refdomains",
-      "ok": true,
-      "rows": 32
-    },
-    {
-      "label": "backlinks/backlinks.csv",
-      "report": "backlinks",
-      "ok": true,
-      "rows": 39
-    },
-    {
-      "label": "backlinks/backlink-anchors.csv",
-      "report": "backlinks_anchors",
-      "ok": true,
-      "rows": 23
-    },
-    {
       "label": "site_audit/site-audit-info.json",
       "report": "info",
       "ok": true,
-      "rows": 59
+      "rows": 63
     },
     {
       "label": "site_audit/site-audit-snapshots.json",
@@ -86,30 +24,6 @@
       "report": "meta_issues",
       "ok": true,
       "rows": 688
-    },
-    {
-      "label": "tracking/tracking-campaigns.json",
-      "report": "campaigns",
-      "ok": true,
-      "rows": 7
-    },
-    {
-      "label": "tracking/tracking-positions.csv",
-      "report": "tracking_position_organic",
-      "ok": false,
-      "error": "execute_report reported an error: get organic positions campaign 30424632: tracking API error 0: campaign not found"
-    },
-    {
-      "label": "tracking/tracking-visibility.csv",
-      "report": "tracking_visibility_organic",
-      "ok": false,
-      "error": "execute_report reported an error: get organic visibility campaign 30424632: tracking API error 0: campaign not found"
-    },
-    {
-      "label": "tracking/tracking-landing-pages.csv",
-      "report": "tracking_landing_pages_organic",
-      "ok": false,
-      "error": "execute_report reported an error: get organic landing pages campaign 30424632: tracking API error 0: campaign not found"
     }
   ]
 }

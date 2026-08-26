@@ -1,6 +1,6 @@
 # Semrush report: backlinks_refdomains
 # params: {"target":"safenesttoys.com","target_type":"root_domain","display_limit":200}
-# fetched: 2026-08-25T21:28:00.442Z
+# fetched: 2026-08-26T15:28:29.357Z
 # via: mcp.semrush.com/v2/mcp (Authorization: Apikey)
 domain;backlinks_num;domain_score;domain_trust_score;first_seen;last_seen;ip;country
 seopxl-traffic-growth-lab.shop;3;2;2;1780698449;1786503208;162.0.229.243;us
@@ -22,7 +22,7 @@ fiverr-seo-for-business-growth.site;1;3;3;1781426296;1787162715;104.21.12.116;
 fiverr-seo-for-small-businesses.site;1;2;2;1781470341;1787088535;104.21.45.8;
 flavorandwellness.com;1;4;4;1784318585;1785777442;136.111.38.238;us
 high-traffic-backlinks.site;1;3;3;1785986850;1786345256;104.21.57.231;
-linknora.shop;1;0;0;1786965987;1786965987;104.21.91.99;
+linknora.shop;1;0;0;1786965987;1787741412;172.67.214.239;
 pbnlinks.shop;1;2;2;1786602058;1787309930;172.67.159.182;
 pbnlinksmaster.shop;1;2;2;1786841560;1787609481;104.21.1.23;
 rdxextremez.com;1;2;2;1783284183;1787387291;104.21.42.231;

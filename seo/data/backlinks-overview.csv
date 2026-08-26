@@ -1,6 +1,6 @@
 # Semrush report: backlinks_overview
 # params: {"target":"safenesttoys.com","target_type":"root_domain"}
-# fetched: 2026-08-25T21:28:00.442Z
+# fetched: 2026-08-26T15:28:29.357Z
 # via: mcp.semrush.com/v2/mcp (Authorization: Apikey)
 total;domains_num;ips_num;follows_num;nofollows_num;score;trust_score;urls_num;ipclassc_num;texts_num;forms_num;frames_num;images_num
 38;31;24;12;20;2;2;36;23;38;0;0;0

@@ -28,7 +28,11 @@ import { callTool } from "./semrush-mcp.mjs";
 const OUT = "seo/data";
 const DOMAIN = "safenesttoys.com";
 const DB = "us";
-const PROJECT_ID = Number(process.env.SEMRUSH_PROJECT_ID || 30424632);
+// Apex project. The previous default, 30424632, was built on www.safenesttoys.com:
+// it capped at 100 pages and crawled both www and apex, so it reported 182 broken
+// internal links, 84 duplicate-content errors and 4 4xx pages that did not exist.
+// Do not point this back at it. See seo/technical-audit.md.
+const PROJECT_ID = Number(process.env.SEMRUSH_PROJECT_ID || 30984142);
 const STAMP = new Date().toISOString();
 
 const only = (process.argv.find((a) => a.startsWith("--only=")) || "")

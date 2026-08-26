@@ -1,11 +1,12 @@
 # Semrush report: resource_organic
 # params: {"target":"safenesttoys.com","database":"us","display_limit":500,"display_sort":"position_asc"}
-# fetched: 2026-08-25T21:28:00.442Z
+# fetched: 2026-08-26T15:28:29.357Z
 # via: mcp.semrush.com/v2/mcp (Authorization: Apikey)
 Keyword;Position;Previous Position;Position Difference;Search Volume;CPC;Url;Traffic (%);Traffic Cost (%);Competition;Number of Results;Trends
+vtech race & learn driver reviews;20;0;0;260;0.00;https://www.safenesttoys.com/reviews/vtech-race-and-learn-driver;0.00;0.00;0.00;168;0.00,0.10,0.55,1.00,0.55,0.13,0.03,0.00,0.00,0.03,0.03,0.00
 vtech race & learn driver product info and reviews;25;25;0;260;0.00;https://www.safenesttoys.com/reviews/vtech-race-and-learn-driver;0.00;0.00;0.00;189;0.05,0.55,1.00,0.55,0.13,0.03,0.00,0.00,0.00,0.00,0.00
 mega bloks first builders big building bag reviews;35;35;0;50;0.00;https://safenesttoys.com/reviews/mega-bloks-first-builders-big-bag-of-blocks;0.00;0.00;0.00;179;0.02,0.00,0.82,1.00,0.02,0.00,0.00,0.00,0.00,0.00,0.00,0.00
-3 in 1 splash n grow water table;38;0;0;40;0.30;https://www.safenesttoys.com/reviews/little-tikes-3-in-1-splash-n-grow-water-table;0.00;0.00;0.99;178;0.14,0.14,0.78,0.14,0.14,0.14,0.14,0.14,0.14,0.78,0.78,0.14
+3 in 1 splash n grow water table;38;38;0;40;0.30;https://www.safenesttoys.com/reviews/little-tikes-3-in-1-splash-n-grow-water-table;0.00;0.00;0.99;178;0.14,0.14,0.78,0.14,0.14,0.14,0.14,0.14,0.14,0.78,0.78,0.14
 sensory toys newborn;40;40;0;70;0.58;https://www.safenesttoys.com/guides/best-sensory-toys-babies;0.00;0.00;1.00;187;0.03,1.00,0.12,0.43,0.09,0.09,0.09,0.03,0.03,0.43,0.00,0.03
 sensory toys for newborns;40;40;0;720;0.58;https://www.safenesttoys.com/guides/best-sensory-toys-babies;0.00;0.00;1.00;197;0.79,0.79,1.00,0.05,0.00,0.04,0.08,0.10,0.02,0.10,0.20,0.10
 sensory baby toys;41;41;0;170;0.00;https://www.safenesttoys.com/guides/best-sensory-toys-babies;0.00;0.00;0.00;188;0.08,0.05,0.08,0.08,0.07,0.07,0.10,0.10,0.04,0.04,0.00,0.02
@@ -18,8 +19,8 @@ sensory toys baby;58;58;0;40;0.00;https://www.safenesttoys.com/guides/best-senso
 sensory toys for baby;59;59;0;170;0.00;https://www.safenesttoys.com/guides/best-sensory-toys-babies;0.00;0.00;0.00;195;0.00,0.03,0.03,0.00,0.01,0.00,0.05,0.00,0.00,1.00,0.06,0.55
 sensory toys for infants;59;59;0;590;0.62;https://www.safenesttoys.com/guides/best-sensory-toys-babies;0.00;0.00;0.99;190;0.44,0.08,0.05,0.16,0.13,0.13,0.82,0.07,0.07,0.30,0.04,0.01
 best building sets for 3 year olds;59;59;0;90;0.38;https://safenesttoys.com/guides/best-building-toys-preschoolers;0.00;0.00;1.00;191;0.33,0.33,0.52,0.33,0.52,1.00,1.00,0.33,0.23,0.33,0.19,0.23
+sensory toys for babies;60;62;2;3600;0.62;https://www.safenesttoys.com/guides/best-sensory-toys-babies;0.00;0.00;0.99;217;0.81,0.66,0.12,0.16,0.29,0.81,1.00,0.35,0.29,0.35,0.23,0.23
 sensory toy for infant;62;62;0;50;0.62;https://www.safenesttoys.com/guides/best-sensory-toys-babies;0.00;0.00;0.99;185;0.00,0.00,0.00,0.00,0.00,1.00,0.00,0.00,0.00,0.00,0.00,0.00
-sensory toys for babies;62;62;0;3600;0.62;https://www.safenesttoys.com/guides/best-sensory-toys-babies;0.00;0.00;0.99;198;0.81,0.66,0.12,0.16,0.29,0.81,1.00,0.35,0.29,0.35,0.23,0.23
 baby sensory toy;65;65;0;70;0.00;https://www.safenesttoys.com/guides/best-sensory-toys-babies;0.00;0.00;0.00;223;0.50,0.64,0.50,0.50,0.50,0.78,0.78,0.78,0.00,0.14,0.21,0.00
 baby sensory toys year;69;69;0;40;0.00;https://www.safenesttoys.com/guides/best-sensory-toys-babies;0.00;0.00;0.00;195;0.28,0.50,0.64,0.78,1.00,0.28,0.07,0.00,0.00,0.00,0.07,0.00
 best building toys for 3 year olds;75;75;0;70;0.58;https://safenesttoys.com/guides/best-building-toys-preschoolers;0.00;0.00;1.00;183;0.15,0.26,0.19,0.26,0.26,0.65,0.65,0.15,0.19,0.15,0.11,0.19
@@ -30,6 +31,7 @@ best building construction toys;80;80;0;70;0.56;https://safenesttoys.com/guides/
 best sensory toys for babies;80;80;0;50;0.00;https://www.safenesttoys.com/guides/best-sensory-toys-babies;0.00;0.00;0.00;150;0.15,0.12,0.10,0.07,0.03,0.10,0.00,0.04,0.02,0.03,0.03,0.03
 best building toy;82;82;0;50;0.44;https://safenesttoys.com/guides/best-building-toys-preschoolers;0.00;0.00;0.76;176;0.19,0.23,0.33,0.14,0.33,0.42,0.52,0.00,0.19,0.23,0.19,0.09
 sensory toys for 12 month old;89;89;0;50;0.35;https://www.safenesttoys.com/guides/best-sensory-toys-babies;0.00;0.00;0.99;196;0.52,0.09,0.09,0.09,0.52,0.52,0.66,0.09,0.09,0.09,0.09,0.09
+most durable building toys;91;0;0;50;0.00;https://safenesttoys.com/best-toys/category/building-toys/6-12-months;0.00;0.00;0.00;186;0.00,0.50,1.00,0.78,0.64,0.21,0.14,0.28,0.28,0.64,0.07,0.14
 best sensory toys for newborns;91;91;0;90;0.68;https://www.safenesttoys.com/guides/best-sensory-toys-babies;0.00;0.00;1.00;162;0.15,0.18,0.15,0.15,0.18,0.18,0.18,0.11,0.15,0.15,0.18,0.11
 what are baby sensory toys;93;93;0;170;0.00;https://www.safenesttoys.com/guides/best-sensory-toys-babies;0.00;0.00;0.00;185;1.00,0.10,0.04,0.08,0.14,0.22,1.00,0.02,0.43
 best toys for building independence;98;98;0;4400;0.00;https://safenesttoys.com/guides/best-building-toys-preschoolers;0.00;0.00;0.00;29600000;0.10,0.43,0.43,1.00,1.00,0.81

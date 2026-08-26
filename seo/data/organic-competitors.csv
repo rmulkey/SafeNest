@@ -1,4 +1,20 @@
 # Semrush report: domain_organic_organic
 # params: {"domain":"safenesttoys.com","database":"us","display_limit":60}
-# fetched: 2026-08-25T21:28:00.442Z
-# result: empty (ERROR 50 NOTHING FOUND)
+# fetched: 2026-08-26T15:28:29.357Z
+# via: mcp.semrush.com/v2/mcp (Authorization: Apikey)
+Domain;Competitor Relevance;Common Keywords;Organic Keywords;Organic Traffic;Organic Cost;Adwords Keywords
+instacart.com;0.00;1;3940498;5027231;6692404;7448
+ebay.com;0.00;1;47418952;83918784;52216849;13334
+walmart.com;0.00;1;37160157;151182840;59847021;15846
+amazon.com;0.00;1;99020642;531284755;432396968;208004
+vtech.com.au;0.00;1;1156;698;104;0
+kohls.com;0.00;1;2820843;13204681;19566940;5243
+macys.com;0.00;1;4545465;23493461;16957249;3691
+facebook.com;0.00;1;622553589;1267247194;1335989271;6350
+shopsavvy.com;0.00;1;50428;9574;11258;0
+toysrus.com;0.00;1;71162;417106;129867;1
+target.com;0.00;1;14322259;67948489;22571114;5765
+vtechkids.com;0.00;1;30966;177844;35960;0
+youtube.com;0.00;1;2120332413;3512801944;2449002266;3384
+californiadadreviews.com;0.00;1;60;42;3;0
+diypartycentral.com.au;0.00;1;368;66;7;0
