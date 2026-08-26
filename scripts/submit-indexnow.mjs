@@ -1,110 +1,75 @@
 #!/usr/bin/env node
 /**
- * Submit every URL in the live sitemap to the IndexNow participants.
+ * One-off backfill of the whole sitemap to the IndexNow participants.
  *
- * The Sanity webhook already pushes individual pages as they are published;
- * this is for the cases the webhook cannot cover — the first submission for a
- * new site, or after a bulk change such as adding a whole family of pages.
+ * WHY THIS EXISTS
+ * submitToIndexNow is already wired into the Sanity webhook and the publish path,
+ * so anything that *changes* gets pushed. Nothing ever submitted the back
+ * catalogue, so the 221 URLs that existed before those hooks were added were
+ * never announced. This closes that gap.
  *
- * IMPORTANT: this does not submit anything to Google. Google is not an IndexNow
- * participant, its Indexing API accepts only JobPosting and BroadcastEvent
- * pages, and the sitemap ping endpoint was retired in 2024. For Google, the
- * `Sitemap:` line in robots.txt plus Search Console are the only channels.
+ * WHAT THIS DOES NOT DO
+ * Google is not an IndexNow participant, so this submits nothing to Google
+ * Search and will not move Google's index coverage. Participants are Bing,
+ * Yandex, Seznam, Naver and IndexNow's other members. That is still worth having
+ * — Bing's index feeds DuckDuckGo and several assistant search products — but if
+ * the goal is Google specifically, this is not the lever. Google needs Request
+ * Indexing in the Search Console UI, which has no API.
  *
  * Usage:
- *   node scripts/submit-indexnow.mjs                       # live site
- *   node scripts/submit-indexnow.mjs https://example.com    # another origin
- *   DRY_RUN=1 node scripts/submit-indexnow.mjs              # show, don't send
+ *   set -a; . ./.env.local; set +a
+ *   node scripts/submit-indexnow.mjs --dry-run
+ *   node scripts/submit-indexnow.mjs
  */
 
-const BASE = (process.argv[2] || "https://safenesttoys.com").replace(/\/$/, "");
-const ORIGIN = new URL(BASE).origin;
-const HOST = new URL(BASE).host;
-const KEY_PATH = "/indexnow-key.txt";
-const ENDPOINT = "https://api.indexnow.org/indexnow";
-const DRY_RUN = process.env.DRY_RUN === "1";
+import { execFileSync } from "node:child_process";
 
-/** The key must be served from the site itself — that is how ownership is proven. */
-async function fetchKey() {
-  const res = await fetch(`${ORIGIN}${KEY_PATH}`);
-  if (!res.ok) {
-    throw new Error(`${KEY_PATH} returned HTTP ${res.status} — deploy it first`);
-  }
-  const key = (await res.text()).trim();
-  if (!/^[a-zA-Z0-9-]{8,128}$/.test(key)) {
-    throw new Error(`${KEY_PATH} does not contain a valid IndexNow key`);
-  }
-  return key;
+const DRY_RUN = process.argv.includes("--dry-run");
+const SITEMAP = process.env.SITEMAP_URL || "https://safenesttoys.com/sitemap.xml";
+
+const res = await fetch(SITEMAP, { headers: { "Cache-Control": "no-cache" } });
+if (!res.ok) {
+  console.error(`could not fetch ${SITEMAP}: HTTP ${res.status}`);
+  process.exit(1);
 }
+const xml = await res.text();
+const urls = [...new Set([...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim()))];
+console.log(`${SITEMAP}: ${urls.length} URLs`);
 
-async function fetchSitemapUrls() {
-  const res = await fetch(`${ORIGIN}/sitemap.xml`);
-  if (!res.ok) {
-    throw new Error(`sitemap.xml returned HTTP ${res.status}`);
-  }
-  const xml = await res.text();
-  const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim());
-  // Off-host URLs would make the endpoint reject the entire batch.
-  return [...new Set(locs.filter((u) => new URL(u).origin === ORIGIN))];
-}
-
-const key = await fetchKey();
-const urlList = await fetchSitemapUrls();
-
-console.log(`host        ${HOST}`);
-console.log(`key         ${key.slice(0, 8)}… (served at ${KEY_PATH})`);
-console.log(`urls        ${urlList.length}`);
-
-if (DRY_RUN) {
-  console.log("\nDRY_RUN=1 — nothing submitted. First 5 URLs:");
-  for (const u of urlList.slice(0, 5)) console.log(`  ${u}`);
-  process.exit(0);
-}
-
-const res = await fetch(ENDPOINT, {
-  method: "POST",
-  headers: { "Content-Type": "application/json; charset=utf-8" },
-  body: JSON.stringify({
-    host: HOST,
-    key,
-    keyLocation: `${ORIGIN}${KEY_PATH}`,
-    urlList,
-  }),
-});
-
-const body = await res.text();
-console.log(`\nHTTP ${res.status}${body ? ` — ${body.slice(0, 300)}` : ""}`);
-
-// 200 = accepted; 202 = accepted, key validation pending.
-if (res.status === 200 || res.status === 202) {
-  console.log(`ACCEPTED: ${urlList.length} URLs submitted to the IndexNow participants.`);
-  console.log("Reminder: Google is not among them — use Search Console for Google.");
-  process.exit(0);
-}
-
-let errorCode = "";
-try {
-  errorCode = JSON.parse(body)?.errorCode ?? "";
-} catch {
-  /* body is not JSON */
-}
-
-// On a freshly deployed key file the endpoint answers 403
-// SiteVerificationNotCompleted: it has not fetched the key yet. That is a
-// "retry shortly", not a misconfiguration.
-if (res.status === 403 && errorCode === "SiteVerificationNotCompleted") {
-  console.error(
-    `PENDING: the endpoint has not yet fetched ${ORIGIN}${KEY_PATH}. ` +
-      "Wait a few minutes and run this again — no configuration change is needed."
-  );
+// Verify the key file resolves before submitting. A 404 here means the endpoint
+// answers 403 and the whole batch is silently wasted.
+const keyPath = "/indexnow-key.txt";
+const origin = new URL(urls[0]).origin;
+const keyRes = await fetch(`${origin}${keyPath}`);
+const servedKey = (await keyRes.text()).trim();
+console.log(`${keyPath}: HTTP ${keyRes.status}, serves ${servedKey || "(empty)"}`);
+if (!keyRes.ok || !servedKey) {
+  console.error("key file is not serving; IndexNow would reject the batch with 403");
   process.exit(1);
 }
 
-const reasons = {
-  400: "Bad request — malformed key or payload",
-  403: `Key rejected — check that ${KEY_PATH} serves the submitted key`,
-  422: "URLs do not belong to the submitted host, or the key does not match",
-  429: "Rate limited — too many submissions",
-};
-console.error(`FAILED: ${reasons[res.status] ?? `unexpected status ${res.status}`}`);
-process.exit(1);
+if (DRY_RUN) {
+  console.log("\n--dry-run: nothing submitted");
+  console.log(urls.slice(0, 10).map((u) => `  ${u}`).join("\n"));
+  console.log(`  ... and ${Math.max(0, urls.length - 10)} more`);
+  process.exit(0);
+}
+
+// submitToIndexNow lives in TypeScript under src/, so run it through tsx rather
+// than duplicating the protocol handling (host/key/keyLocation, the off-host
+// filter, and the 200-vs-202 distinction) in this script.
+const inline = `
+import { submitToIndexNow } from "./src/lib/seo/indexnow.ts";
+const urls = ${JSON.stringify(urls)};
+const r = await submitToIndexNow(urls, { baseUrl: ${JSON.stringify(origin)} });
+console.log(JSON.stringify(r, null, 2));
+process.exit(r.outcome === "submitted" ? 0 : 1);
+`;
+const tmp = "./.indexnow-run.tmp.mts";
+const { writeFileSync, rmSync } = await import("node:fs");
+writeFileSync(tmp, inline);
+try {
+  execFileSync("npx", ["tsx", tmp], { stdio: "inherit" });
+} finally {
+  rmSync(tmp, { force: true });
+}
