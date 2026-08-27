@@ -1,0 +1,42 @@
+import { describe, it, expect } from "vitest";
+import { computeAllAxes } from "@core";
+import siteConfig from "@/site.config";
+
+/**
+ * Generated smoke test for __SITE_NAME__.
+ *
+ * Proves the scaffolded `SiteConfig` is coherent against the engine:
+ *  1. it loaded (i.e. `defineSiteConfig` validated it — a bad config throws at
+ *     import time), and
+ *  2. the configured scoring axes compute a bounded integer score for every
+ *     axis when fed mid-range factor values.
+ *
+ * Replace/extend this once you author the real config + content.
+ */
+describe("site.config", () => {
+  it("loads a valid SiteConfig with at least one scoring axis", () => {
+    expect(siteConfig.siteId).toBeTruthy();
+    expect(siteConfig.scoring.length).toBeGreaterThan(0);
+    expect(siteConfig.segmentation.buckets.length).toBeGreaterThan(0);
+    expect(siteConfig.taxonomy.length).toBeGreaterThan(0);
+  });
+
+  it("computes a bounded score for every configured axis", () => {
+    // Feed every configured factor a mid-range value.
+    const factorValues: Record<string, number> = {};
+    for (const axis of siteConfig.scoring) {
+      for (const factor of axis.factors) {
+        factorValues[factor.key] = 50;
+      }
+    }
+
+    const scores = computeAllAxes(siteConfig, factorValues);
+
+    for (const axis of siteConfig.scoring) {
+      const value = scores[axis.key];
+      expect(Number.isInteger(value)).toBe(true);
+      expect(value).toBeGreaterThanOrEqual(0);
+      expect(value).toBeLessThanOrEqual(100);
+    }
+  });
+});

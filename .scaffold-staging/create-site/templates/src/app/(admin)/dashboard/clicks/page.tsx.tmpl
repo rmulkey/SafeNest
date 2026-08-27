@@ -1,0 +1,101 @@
+import { connection } from "next/server";
+import { withSite } from "@core";
+import siteConfig from "@/site.config";
+
+/**
+ * Affiliate clicks dashboard. Reads ONLY this app's rows via `withSite(siteId)`
+ * (Req 6.5 — dashboards show only the current site's data).
+ *
+ * ⚠️ SECURITY: this admin route has NO authentication. Because Next route groups
+ * `(admin)` do NOT appear in the URL, it is reachable at the public path
+ * `/dashboard/clicks`. Place it behind auth (e.g. middleware) or network-restrict
+ * it before exposing the site publicly.
+ */
+
+type TimePeriod = "today" | "7days" | "30days";
+
+function getDateRange(period: TimePeriod): { start: Date; end: Date } {
+  const now = new Date();
+  const start = new Date(now);
+  if (period === "today") start.setHours(0, 0, 0, 0);
+  else if (period === "30days") start.setDate(start.getDate() - 30);
+  else start.setDate(start.getDate() - 7);
+  return { start, end: now };
+}
+
+export default async function ClicksDashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ period?: TimePeriod }>;
+}) {
+  await connection();
+  const { period = "7days" } = await searchParams;
+  const { start, end } = getDateRange(period);
+
+  const db = withSite(siteConfig.siteId);
+  const clicks = await db.affiliateClicks.findMany({
+    where: { timestamp: { gte: start, lte: end } },
+  });
+
+  const byProduct = new Map<string, number>();
+  for (const click of clicks) {
+    byProduct.set(click.productId, (byProduct.get(click.productId) ?? 0) + 1);
+  }
+  const rows = [...byProduct.entries()].sort((a, b) => b[1] - a[1]);
+
+  const periods: { value: TimePeriod; label: string }[] = [
+    { value: "today", label: "Today" },
+    { value: "7days", label: "Last 7 days" },
+    { value: "30days", label: "Last 30 days" },
+  ];
+
+  return (
+    <div className="mx-auto max-w-4xl px-4 py-8">
+      <h1 className="text-2xl font-bold mb-6">Affiliate Clicks Dashboard</h1>
+
+      <div className="flex flex-wrap gap-2">
+        {periods.map((p) => (
+          <a
+            key={p.value}
+            href={`?period=${p.value}`}
+            className={`inline-flex items-center rounded-lg px-3 py-1.5 text-sm font-medium ${
+              period === p.value
+                ? "bg-primary text-primary-foreground"
+                : "bg-secondary text-secondary-foreground"
+            }`}
+          >
+            {p.label}
+          </a>
+        ))}
+      </div>
+
+      <div className="mt-6 rounded-lg border border-border bg-background p-4">
+        <p className="text-sm text-muted-foreground mb-2">
+          {start.toLocaleDateString()} – {end.toLocaleDateString()}
+        </p>
+        <p className="text-lg font-semibold mb-6">Total clicks: {clicks.length}</p>
+
+        {rows.length === 0 ? (
+          <p className="text-muted-foreground">No clicks recorded for this period.</p>
+        ) : (
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-border">
+                <th className="text-left py-2 font-medium">Product ID</th>
+                <th className="text-right py-2 font-medium">Clicks</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map(([productId, count]) => (
+                <tr key={productId} className="border-b border-border last:border-0">
+                  <td className="py-2">{productId}</td>
+                  <td className="py-2 text-right tabular-nums">{count}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+    </div>
+  );
+}

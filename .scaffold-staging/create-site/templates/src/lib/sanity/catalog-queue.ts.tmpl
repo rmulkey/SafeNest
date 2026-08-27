@@ -1,0 +1,87 @@
+import type { QueuedProduct } from "@core";
+import siteConfig from "@/site.config";
+
+/**
+ * Pure (framework-free) data shapes + mapping for the Sanity-backed
+ * `CatalogStore`. Kept free of `server-only` / the live Sanity client so the
+ * projection and the queued-doc → engine `QueuedProduct` mapping are
+ * unit-testable.
+ *
+ * The factor values and the segmentation field are read GENERICALLY from
+ * `site.config.ts` (the scoring factor keys + the segmentation key), so this
+ * mapping does not hardcode any niche field names — change the config and the
+ * mapping follows.
+ */
+
+const AXES = siteConfig.scoring;
+const SEGMENT_KEY = siteConfig.segmentation.key;
+
+/**
+ * Raw `queuedProduct` projection. The known identity/verification fields are
+ * typed explicitly; the config-driven factor + segmentation fields are read off
+ * the open index signature.
+ */
+export interface RawQueuedDoc {
+  _id: string;
+  productName: string;
+  brand: string;
+  categoryRef: string;
+  affiliateUrl: string;
+  imageUrl: string;
+  imageAlt: string;
+  pros: string[];
+  cons: string[];
+  /** Factor fields + the segmentation field (config-driven shape). */
+  [field: string]: unknown;
+}
+
+/**
+ * GROQ for the next batch of queued products. Projects every field (`...`) so
+ * the config-driven factor + segmentation fields come through without naming
+ * them here. (Kept as a plain template literal — runtime-identical to the `groq`
+ * tag — so this module stays free of framework imports and is unit-testable.)
+ */
+export const queuedBatchQuery = `
+  *[_type == "queuedProduct" && status == "queued"] | order(_createdAt asc)[0...$limit]{ ... }
+`;
+
+/**
+ * Map a raw queued doc into the engine's CMS-agnostic `QueuedProduct`. Factor
+ * values are collected by the configured factor keys; the segmentation value is
+ * carried under the configured segmentation key so the publisher writes the
+ * standard review-document shape.
+ */
+export function toQueuedProduct(d: RawQueuedDoc): QueuedProduct {
+  const factorValues: Record<string, number> = {};
+  for (const axis of AXES) {
+    for (const factor of axis.factors) {
+      const value = d[factor.key];
+      if (typeof value === "number") factorValues[factor.key] = value;
+    }
+  }
+
+  return {
+    _id: d._id,
+    productName: d.productName,
+    brand: d.brand,
+    categoryRef: d.categoryRef,
+    affiliateUrl: d.affiliateUrl,
+    imageUrl: d.imageUrl,
+    imageAlt: d.imageAlt,
+    factorValues,
+    segmentation: { [SEGMENT_KEY]: d[SEGMENT_KEY] },
+    fields: {
+      pros: d.pros,
+      cons: d.cons,
+    },
+  };
+}
+
+/** Map computed axis scores `{ quality }` → review score fields `{ qualityScore }`. */
+export function toScoreFields(
+  scores: Record<string, number>,
+): Record<string, number> {
+  return Object.fromEntries(
+    Object.entries(scores).map(([axisKey, value]) => [`${axisKey}Score`, value]),
+  );
+}

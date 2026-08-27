@@ -1,0 +1,52 @@
+import { createClient } from "next-sanity";
+import imageUrlBuilder, { type SanityImageSource } from "@sanity/image-url";
+import type { ImageRef, ResolveImageUrl } from "@ui";
+
+/**
+ * Public, browser-safe Sanity read client + image-URL builder. The CMS wiring
+ * lives IN THE APP (the engine is CMS-agnostic via ports); this module is the
+ * public half (no write token) and is therefore safe to import from client
+ * components — notably the `resolveImageUrl` the app injects into `@ui`'s
+ * `FrameworkProvider`.
+ *
+ * The server-only WRITE client (token-bearing) lives in `./write-client`.
+ */
+
+export const sanityProjectId =
+  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "placeholder";
+export const sanityDataset =
+  process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
+export const sanityApiVersion = "2024-01-01";
+
+/** Published-content read client (uses the CDN; no auth token). */
+export const sanityClient = createClient({
+  projectId: sanityProjectId,
+  dataset: sanityDataset,
+  apiVersion: sanityApiVersion,
+  useCdn: true,
+  perspective: "published",
+});
+
+const builder = imageUrlBuilder(sanityClient);
+
+/** Build an image-URL builder chain for a Sanity image source. */
+export function urlForImage(source: SanityImageSource) {
+  return builder.image(source);
+}
+
+/**
+ * The `@ui` framework-seam image resolver: turns a CMS image ref into a sized
+ * URL (or `null` so components fall back to a placeholder). Injected into
+ * `FrameworkProvider` by `AppProviders` so no `@ui` component touches Sanity.
+ */
+export const resolveImageUrl: ResolveImageUrl = (ref: ImageRef, { width, height }) => {
+  if (!ref?.asset?._ref) return null;
+  try {
+    return urlForImage(ref as SanityImageSource)
+      .width(width)
+      .height(height)
+      .url();
+  } catch {
+    return null;
+  }
+};

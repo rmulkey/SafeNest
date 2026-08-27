@@ -1,0 +1,22 @@
+import { NextRequest, NextResponse } from "next/server";
+import { filterReviews, SEARCH_RESULT_LIMIT } from "@core";
+import { getSearchCatalog } from "@/lib/sanity/search-catalog";
+
+/**
+ * GET /api/search?q=<term>
+ *
+ * Server-side search over the review catalog. Reuses the cached searchable
+ * catalog and `@core`'s `filterReviews` matcher. Resilient: any failure returns
+ * `{ results: [] }` with a 200 so the UI degrades gracefully.
+ */
+export async function GET(request: NextRequest) {
+  const query = request.nextUrl.searchParams.get("q") ?? "";
+  try {
+    const catalog = await getSearchCatalog();
+    const results = filterReviews(catalog, query, SEARCH_RESULT_LIMIT);
+    return NextResponse.json({ results });
+  } catch (error) {
+    console.error("[search] query failed:", error instanceof Error ? error.message : error);
+    return NextResponse.json({ results: [] });
+  }
+}

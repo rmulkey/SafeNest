@@ -1,0 +1,124 @@
+import { groq } from "next-sanity";
+import siteConfig from "@/site.config";
+
+/**
+ * GROQ queries for the app's Sanity binding. The engine is CMS-agnostic; these
+ * queries (and the provider/store implementations in this folder) bind the
+ * factory-generated documents — the configured review type, `category`,
+ * `blogPost`, `queuedProduct` — to this app.
+ *
+ * Everything niche-specific is derived from `site.config.ts`:
+ *  - the review document type   ← `product.reviewTypeName`
+ *  - the primary ranking score  ← `${scoring[0].key}Score`
+ *  - the segmentation field      ← `segmentation.key` (factory `{ min, max }` shape)
+ *
+ * so changing the config (not these queries) re-targets them.
+ */
+
+const REVIEW_TYPE = siteConfig.product.reviewTypeName;
+const PRIMARY_AXIS = siteConfig.scoring[0]?.key ?? "score";
+/** The computed primary-axis score field on the review document. */
+const PRIMARY_SCORE = `${PRIMARY_AXIS}Score`;
+/** The segmentation field name (factory default: an object with min/max). */
+const SEGMENT = siteConfig.segmentation.key;
+
+// ─── Reviews ─────────────────────────────────────────────────────────────────
+
+export const reviewBySlugQuery = groq`
+  *[_type == "${REVIEW_TYPE}" && slug.current == $slug][0]{
+    ...,
+    category->{_id, title, slug},
+    "alternatives": alternatives[]->{ ... }
+  }
+`;
+
+export const allReviewSlugsQuery = groq`
+  *[_type == "${REVIEW_TYPE}" && defined(slug.current)].slug.current
+`;
+
+// Lightweight catalog for the global client-side search.
+export const searchableReviewsQuery = groq`
+  *[_type == "${REVIEW_TYPE}"] | order(${PRIMARY_SCORE} desc) {
+    _id,
+    productName,
+    slug,
+    "category": category->title,
+    "score": ${PRIMARY_SCORE},
+    mainImage
+  }
+`;
+
+// ─── Programmatic-page support (ProductReviewProvider) ───────────────────────
+
+// Reviews whose segmentation window overlaps a [min,max] bucket. Projected to
+// the engine's ReviewSummary shape (primaryScore = the primary configured axis).
+export const reviewsBySegmentWindowQuery = groq`
+  *[
+    _type == "${REVIEW_TYPE}" &&
+    ${SEGMENT}.min <= $max &&
+    ${SEGMENT}.max >= $min
+  ] | order(${PRIMARY_SCORE} desc) {
+    _id,
+    productName,
+    slug,
+    "segmentMin": ${SEGMENT}.min,
+    "segmentMax": ${SEGMENT}.max,
+    "primaryScore": ${PRIMARY_SCORE},
+    hasActiveRecall
+  }
+`;
+
+// Distinct category titles act as the product "type" axis for /collections/[type].
+export const distinctCategoryTitlesQuery = groq`
+  array::unique(*[_type == "${REVIEW_TYPE}" && defined(category->title)].category->title)
+`;
+
+export const reviewsByCategoryTitleQuery = groq`
+  *[_type == "${REVIEW_TYPE}" && category->title == $type] | order(${PRIMARY_SCORE} desc) {
+    _id,
+    productName,
+    slug,
+    "segmentMin": ${SEGMENT}.min,
+    "segmentMax": ${SEGMENT}.max,
+    "primaryScore": ${PRIMARY_SCORE},
+    hasActiveRecall
+  }
+`;
+
+// ─── Categories ──────────────────────────────────────────────────────────────
+
+export const categoryBySlugQuery = groq`
+  *[_type == "category" && slug.current == $slug][0] {
+    _id, title, slug, description
+  }
+`;
+
+// ─── Blog posts ──────────────────────────────────────────────────────────────
+
+export const allBlogPostsQuery = groq`
+  *[_type == "blogPost"] | order(publishedAt desc) {
+    _id, title, slug, publishedAt, excerpt
+  }
+`;
+
+export const blogPostBySlugQuery = groq`
+  *[_type == "blogPost" && slug.current == $slug][0] {
+    _id, title, slug, publishedAt, excerpt, body
+  }
+`;
+
+// ─── Recalls (reviews flagged with an active recall) ─────────────────────────
+
+export const activeRecallReviewsQuery = groq`
+  *[_type == "${REVIEW_TYPE}" && hasActiveRecall == true] | order(_updatedAt desc) {
+    _id, productName, slug, category->{title, slug}
+  }
+`;
+
+// ─── Sitemap content slugs ───────────────────────────────────────────────────
+
+export const sitemapContentQuery = groq`{
+  "reviews": *[_type == "${REVIEW_TYPE}"] | order(_updatedAt desc) { slug, _updatedAt },
+  "blogPosts": *[_type == "blogPost"] | order(_updatedAt desc) { slug, _updatedAt },
+  "categories": *[_type == "category"] | order(_updatedAt desc) { slug, _updatedAt }
+}`;

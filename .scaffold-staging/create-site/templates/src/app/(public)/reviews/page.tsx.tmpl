@@ -1,0 +1,71 @@
+import type { Metadata } from "next";
+import { ReviewCard, JsonLd } from "@ui";
+import {
+  generatePageMetadata,
+  generateBreadcrumbJsonLd,
+  getBaseUrl,
+} from "@core/seo";
+import siteConfig from "@/site.config";
+import { getAllReviewSummaries } from "@/lib/sanity/review-views";
+
+const baseUrl = getBaseUrl(siteConfig);
+
+export const metadata: Metadata = generatePageMetadata(
+  siteConfig,
+  `All ${siteConfig.product.nounSingular} reviews | ${siteConfig.brand.name}`,
+  `Browse every ${siteConfig.product.nounSingular} we've independently scored.`,
+  { url: `${baseUrl}/reviews` },
+) as Metadata;
+
+/** Reviews index (thin shell): all reviews rendered as `@ui` `ReviewCard`s. */
+export default async function ReviewsIndexPage() {
+  const reviews = await getAllReviewSummaries();
+
+  return (
+    <main className="mx-auto max-w-6xl px-4 py-10 md:px-6 lg:px-8">
+      <JsonLd
+        data={generateBreadcrumbJsonLd([
+          { name: "Home", url: baseUrl },
+          { name: "Reviews", url: `${baseUrl}/reviews` },
+        ])}
+      />
+
+      <header className="mb-8">
+        <h1 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+          All {siteConfig.product.nounSingular} reviews
+        </h1>
+        <p className="mt-3 max-w-2xl text-muted-foreground">
+          Every {siteConfig.product.nounSingular} below is independently scored.
+          Sorted by our primary score, highest first.
+        </p>
+        <p className="mt-4 text-sm text-primary-700">
+          {reviews.length} {reviews.length === 1 ? "review" : "reviews"} and growing.
+        </p>
+      </header>
+
+      {reviews.length === 0 ? (
+        <div className="rounded-xl border border-dashed border-border bg-muted/30 px-6 py-16 text-center">
+          <h2 className="text-xl font-semibold text-foreground">Reviews coming soon</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            We&apos;re publishing scored reviews now — check back shortly.
+          </p>
+        </div>
+      ) : (
+        <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {reviews.map((r) => (
+            <li key={r._id}>
+              <ReviewCard
+                productName={r.productName}
+                slug={r.slug}
+                scores={r.scores}
+                segment={r.segment}
+                category={r.category}
+                hasActiveRecall={r.hasActiveRecall}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
+    </main>
+  );
+}

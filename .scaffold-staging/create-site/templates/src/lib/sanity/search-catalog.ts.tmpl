@@ -1,0 +1,24 @@
+import "server-only";
+import { cacheLife } from "next/cache";
+import type { SearchableReviewView } from "@ui";
+import { sanityClient } from "./client";
+import { searchableReviewsQuery } from "./queries";
+
+/**
+ * Fetch the lightweight, client-side search catalog the header's search dialog
+ * filters via `@core`'s `filterReviews`. Wrapped in `use cache` so the full
+ * catalog is fetched once and reused across requests. Degrades to an empty
+ * catalog if Sanity is unavailable (e.g. during a build without credentials).
+ */
+export async function getSearchCatalog(): Promise<SearchableReviewView[]> {
+  "use cache";
+  cacheLife("hours");
+  try {
+    const rows = await sanityClient.fetch<SearchableReviewView[]>(
+      searchableReviewsQuery,
+    );
+    return rows ?? [];
+  } catch {
+    return [];
+  }
+}

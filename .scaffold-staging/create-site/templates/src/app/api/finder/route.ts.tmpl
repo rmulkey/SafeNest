@@ -1,0 +1,94 @@
+import { NextRequest, NextResponse } from "next/server";
+import { groq } from "next-sanity";
+import siteConfig from "@/site.config";
+import { sanityClient } from "@/lib/sanity/client";
+import {
+  parseFinderRequest,
+  shouldRelaxCategoryFilter,
+} from "@/lib/finder/finder-request";
+
+/**
+ * POST /api/finder
+ *
+ * Backs the @ui `Finder` wizard. Matching uses VERIFIED data only: the chosen
+ * segment value against each review's configured segmentation window, plus
+ * optional category interests. Results are ranked by the primary scoring axis.
+ * Budget is captured for intent but never filters (we don't store verified
+ * per-product prices). Returns the products shaped for `Finder`.
+ *
+ * Request parsing + the category-relaxation decision live in the framework-free
+ * `@/lib/finder/finder-request` helpers; this route keeps the JSON read + the
+ * Sanity GROQ I/O. Everything niche-specific is derived from `site.config.ts`.
+ */
+
+const REVIEW_TYPE = siteConfig.product.reviewTypeName;
+const SEGMENT = siteConfig.segmentation.key;
+const PRIMARY_AXIS = siteConfig.scoring[0]?.key ?? "score";
+const PRIMARY_SCORE = `${PRIMARY_AXIS}Score`;
+// Project the configured axes into a `scores` object: { "<axisKey>": <axisKey>Score }.
+const SCORES_PROJECTION = siteConfig.scoring
+  .map((axis) => `"${axis.key}": ${axis.key}Score`)
+  .join(", ");
+
+const matchQuery = groq`
+  *[
+    _type == "${REVIEW_TYPE}" &&
+    ${SEGMENT}.min <= $segmentValue &&
+    ${SEGMENT}.max >= $segmentValue &&
+    (count($cats) == 0 || category->slug.current in $cats)
+  ] | order(${PRIMARY_SCORE} desc) [0...6] {
+    _id, productName, slug, hasActiveRecall, affiliateLinks, mainImage,
+    "scores": { ${SCORES_PROJECTION} },
+    category->{ title, "slug": slug.current }
+  }
+`;
+
+const segmentOnlyQuery = groq`
+  *[
+    _type == "${REVIEW_TYPE}" &&
+    ${SEGMENT}.min <= $segmentValue &&
+    ${SEGMENT}.max >= $segmentValue
+  ] | order(${PRIMARY_SCORE} desc) [0...6] {
+    _id, productName, slug, hasActiveRecall, affiliateLinks, mainImage,
+    "scores": { ${SCORES_PROJECTION} },
+    category->{ title, "slug": slug.current }
+  }
+`;
+
+export async function POST(request: NextRequest) {
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+  }
+
+  const parsed = parseFinderRequest(body);
+  if (!parsed.ok) {
+    return NextResponse.json({ error: parsed.error }, { status: parsed.status });
+  }
+  const { segmentValue, categories: cats } = parsed.value;
+  const budget = (body as { budget?: string }).budget ?? "any";
+
+  try {
+    let results = await sanityClient.fetch(matchQuery, { segmentValue, cats });
+    let relaxed = false;
+
+    if (shouldRelaxCategoryFilter(results?.length ?? 0, cats.length)) {
+      results = await sanityClient.fetch(segmentOnlyQuery, { segmentValue });
+      relaxed = true;
+    }
+
+    return NextResponse.json({
+      results: results ?? [],
+      relaxed,
+      echo: { segmentValue, categories: cats, budget },
+    });
+  } catch (error) {
+    console.error("[finder] query failed:", error instanceof Error ? error.message : error);
+    return NextResponse.json(
+      { error: "We couldn't load recommendations right now. Please try again." },
+      { status: 500 },
+    );
+  }
+}

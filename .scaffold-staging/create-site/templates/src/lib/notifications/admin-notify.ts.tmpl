@@ -1,0 +1,55 @@
+/**
+ * Admin notification helper. Posts unhealthy-link alerts to `ADMIN_WEBHOOK_URL`,
+ * falling back to a console warning. Used by the link-health cron.
+ */
+
+export interface UnhealthyLinkAlert {
+  linkId: string;
+  destinationUrl: string;
+  httpStatus: number | null;
+  flaggedAt: Date;
+}
+
+export interface AdminNotificationPayload {
+  type: "unhealthy_links";
+  timestamp: string;
+  summary: string;
+  links: UnhealthyLinkAlert[];
+}
+
+export async function notifyAdminUnhealthyLinks(
+  unhealthyLinks: UnhealthyLinkAlert[],
+): Promise<boolean> {
+  if (unhealthyLinks.length === 0) return true;
+
+  const payload: AdminNotificationPayload = {
+    type: "unhealthy_links",
+    timestamp: new Date().toISOString(),
+    summary: `${unhealthyLinks.length} affiliate link(s) flagged as unhealthy and require admin review.`,
+    links: unhealthyLinks,
+  };
+
+  const webhookUrl = process.env.ADMIN_WEBHOOK_URL;
+
+  if (webhookUrl) {
+    try {
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (response.ok) {
+        console.log(
+          `[admin-notify] Notification sent for ${unhealthyLinks.length} unhealthy link(s).`,
+        );
+        return true;
+      }
+      console.error(`[admin-notify] Webhook responded with status ${response.status}`);
+    } catch (error) {
+      console.error("[admin-notify] Failed to send webhook notification:", error);
+    }
+  }
+
+  console.warn("[admin-notify] UNHEALTHY LINKS ALERT:", JSON.stringify(payload, null, 2));
+  return !webhookUrl;
+}

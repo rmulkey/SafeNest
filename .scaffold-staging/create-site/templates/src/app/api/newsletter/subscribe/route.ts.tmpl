@@ -1,0 +1,68 @@
+import { NextResponse } from "next/server";
+import { subscribeToNewsletter, NEWSLETTER_HTTP_STATUS } from "@core";
+import siteConfig from "@/site.config";
+
+/**
+ * POST /api/newsletter/subscribe
+ *
+ * First-party, site-scoped newsletter capture. The handler logic lives in
+ * `@core` (`subscribeToNewsletter`): it validates the email + the submitted
+ * segment against THIS site's configured segmentation buckets and stores the
+ * row through `withSite(siteId)` (per-site dedupe). The thin route maps the
+ * structured result to an HTTP status. The @ui form posts `{ email, ageRange }`
+ * where `ageRange` is the chosen segment slug/value.
+ */
+export async function POST(request: Request) {
+  let body: { email?: unknown; ageRange?: unknown };
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json(
+      { success: false, message: "Invalid request body" },
+      { status: 400 },
+    );
+  }
+
+  try {
+    const result = await subscribeToNewsletter({
+      config: siteConfig,
+      email: body.email,
+      segment: body.ageRange,
+    });
+
+    const status = NEWSLETTER_HTTP_STATUS[result.status];
+
+    switch (result.status) {
+      case "subscribed":
+        return NextResponse.json(
+          { success: true, message: "Successfully subscribed to the newsletter" },
+          { status },
+        );
+      case "already-subscribed":
+        return NextResponse.json(
+          {
+            success: true,
+            message: "This email is already subscribed",
+            alreadySubscribed: true,
+          },
+          { status },
+        );
+      case "invalid-email":
+        return NextResponse.json(
+          { success: false, message: "Invalid email format" },
+          { status },
+        );
+      case "invalid-segment":
+        return NextResponse.json(
+          { success: false, message: "Invalid or missing selection" },
+          { status },
+        );
+    }
+  } catch (error) {
+    console.error("[Newsletter] Subscription error:", error);
+    return NextResponse.json(
+      { success: false, message: "An unexpected error occurred" },
+      { status: 500 },
+    );
+  }
+}

@@ -1,0 +1,64 @@
+import { NextRequest } from "next/server";
+import { revalidatePath } from "next/cache";
+import { generateBiweeklyPost, isoWeek } from "@core";
+import siteConfig from "@/site.config";
+import { createSanityBlogStore } from "@/lib/sanity/blog-store";
+
+/**
+ * GET /api/cron/generate-blog-post
+ *
+ * Runs daily but only generates a post on EVEN ISO weeks (bi-weekly cadence
+ * from a single daily schedule). Delegates to `@core`'s `generateBiweeklyPost`,
+ * which builds a roundup from products ALREADY in the catalog (no fabricated
+ * data). The CMS I/O is the app's Sanity `BlogStore`. Protected by `CRON_SECRET`;
+ * requires a write token. `?force=1` overrides the week gate for manual runs.
+ */
+export const maxDuration = 30;
+
+export async function GET(request: NextRequest) {
+  const authHeader = request.headers.get("authorization");
+  const cronSecret = process.env.CRON_SECRET;
+  if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
+    return Response.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  if (!process.env.SANITY_API_TOKEN) {
+    return Response.json({ error: "SANITY_API_TOKEN not configured" }, { status: 500 });
+  }
+
+  const now = new Date();
+  const { week } = isoWeek(now);
+  const force = new URL(request.url).searchParams.get("force") === "1";
+  if (week % 2 !== 0 && !force) {
+    return Response.json({
+      ok: true,
+      skipped: true,
+      reason: `odd ISO week (${week}) — bi-weekly cadence runs on even weeks`,
+    });
+  }
+
+  try {
+    const outcome = await generateBiweeklyPost(
+      { config: siteConfig, store: createSanityBlogStore() },
+      now,
+    );
+
+    if (outcome.status === "published") {
+      for (const path of ["/", "/blog"]) {
+        try {
+          revalidatePath(path);
+        } catch {
+          // best-effort
+        }
+      }
+    }
+
+    console.log(`[cron/generate-blog-post] ${JSON.stringify(outcome)}`);
+    return Response.json({ ok: true, ...outcome });
+  } catch (error) {
+    console.error("[cron/generate-blog-post] error:", error);
+    return Response.json(
+      { error: error instanceof Error ? error.message : "Unknown error" },
+      { status: 500 },
+    );
+  }
+}

@@ -1,0 +1,54 @@
+# __SITE_SLUG__
+
+__SITE_NAME__ — an app on the affiliate engine, scaffolded by `create-site`.
+
+This is a **thin app shell**: all niche-agnostic logic lives in the engine
+packages (`@affiliate-engine/core`, `@affiliate-engine/ui`,
+`@affiliate-engine/sanity-schema`). The app provides:
+
+- **Sanity wiring** (`src/lib/sanity/*`) — the public/write clients, GROQ
+  queries, and the engine port implementations (`ProductReviewProvider`,
+  `CatalogStore`, `BlogStore`) backed by the real Sanity client.
+- **Config injection** — `src/app/providers.tsx` wraps the tree in the engine's
+  `FrameworkProvider` (real `next/link` / `next/image` / `next/navigation`) and
+  `SiteConfigProvider`.
+- **Thin route shells** — `src/app/**` pages/route handlers that call the engine
+  + UI.
+
+## ⚠️ Fill in the SiteConfig before going live
+
+`src/site.config.ts` is a **valid but skeletal** `SiteConfig` full of `TODO`
+placeholders. Replace them with real values:
+
+- brand (name, domain, affiliate tag, founders, tagline),
+- theme palette (and the matching tokens in `src/app/globals.css`),
+- scoring axes (factor weights must sum to 1.0 per axis),
+- segmentation buckets,
+- taxonomy categories,
+- editorial copy and gift guides.
+
+Do **not** fabricate real-world data (products, ASINs, affiliate links, images):
+those are added later through the verified-content pipeline.
+
+> The plural product noun is baked into the `src/app/(public)/best-__PRODUCT_NOUN_PLURAL__`
+> route directory and must stay in sync with `SiteConfig.product.nounPlural`
+> (the engine's navigation + sitemap build `/best-<noun>` paths). If you change
+> the plural noun, rename that directory to match.
+
+## Environment
+
+See `.env.example`. A full `next build` works without live credentials (data
+routes degrade gracefully); production needs `NEXT_PUBLIC_SANITY_PROJECT_ID`,
+`SANITY_API_TOKEN`, `DATABASE_URL`, and `CRON_SECRET`.
+
+## Scripts
+
+- `dev`, `build`, `start`, `lint`, `type-check`, `test`
+
+## Security notes
+
+- Cron routes (`/api/cron/*`) require `Authorization: Bearer ${CRON_SECRET}`.
+- The Sanity webhook verifies an HMAC signature (`SANITY_WEBHOOK_SECRET`).
+- The admin dashboards (`/dashboard/*`) are **unauthenticated** out of the box.
+  Place them behind auth (e.g. middleware) or network-restrict them before
+  exposing the site publicly.

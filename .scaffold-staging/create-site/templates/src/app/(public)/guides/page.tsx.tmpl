@@ -1,0 +1,54 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import siteConfig from "@/site.config";
+
+export const metadata: Metadata = {
+  title: `Buying Guides | ${siteConfig.brand.name}`,
+  description: `Buying guides for choosing the right ${siteConfig.product.nounPlural}.`,
+};
+
+/**
+ * Guides hub (thin shell). Links to the buying guides (one per configured
+ * segmentation bucket) and the category pages.
+ */
+export default function GuidesHubPage() {
+  const { segmentation, taxonomy, product } = siteConfig;
+  return (
+    <main className="mx-auto max-w-4xl px-4 py-12">
+      <h1 className="text-3xl font-bold tracking-tight text-foreground">Buying guides</h1>
+      <p className="mt-4 text-muted-foreground">
+        Practical guides to choosing {product.nounPlural}.
+      </p>
+
+      <h2 className="mt-10 text-xl font-semibold text-foreground">
+        By {segmentation.label.toLowerCase()}
+      </h2>
+      <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        {segmentation.buckets.map((b) => (
+          <li key={b.slug}>
+            <Link
+              href={`/guides/${b.slug}`}
+              className="block rounded-lg border border-border px-4 py-3 text-center text-sm font-medium text-foreground hover:bg-muted"
+            >
+              {b.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      <h2 className="mt-10 text-xl font-semibold text-foreground">By category</h2>
+      <ul className="mt-4 flex flex-wrap gap-3">
+        {taxonomy.map((t) => (
+          <li key={t.id}>
+            <Link
+              href={`/categories/${t.slug}`}
+              className="inline-flex rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-muted"
+            >
+              {t.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
+}

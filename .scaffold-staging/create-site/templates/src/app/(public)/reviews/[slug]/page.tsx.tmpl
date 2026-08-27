@@ -1,0 +1,195 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import {
+  ScoreAxes,
+  BuyButton,
+  AffiliateDisclosure,
+  ComparisonTable,
+  computeAwards,
+  JsonLd,
+  type ReviewSummary,
+} from "@ui";
+import {
+  generateReviewMetadata,
+  generateProductReviewJsonLd,
+  generateBreadcrumbJsonLd,
+  getBaseUrl,
+} from "@core/seo";
+import siteConfig from "@/site.config";
+import { sanityClient } from "@/lib/sanity/client";
+import { reviewBySlugQuery } from "@/lib/sanity/queries";
+
+const baseUrl = getBaseUrl(siteConfig);
+const AXES = siteConfig.scoring;
+const PRIMARY_AXIS = AXES[0]?.key ?? "score";
+
+interface RawReview {
+  _id: string;
+  productName: string;
+  slug: { current: string };
+  category?: { _id: string; title: string; slug: { current: string } } | null;
+  pros?: string[];
+  cons?: string[];
+  alternatives?: Array<Record<string, unknown> & {
+    _id: string;
+    productName: string;
+    slug: { current: string };
+    mainImage?: { asset?: { _ref?: string }; alt?: string };
+  }>;
+  affiliateLinks?: Array<{
+    partnerId?: string;
+    url?: string;
+    destinationUrl?: string;
+    tag?: string;
+    affiliateTag?: string;
+  }>;
+  hasActiveRecall?: boolean;
+  /** Config-driven factor + computed-score + segmentation fields. */
+  [field: string]: unknown;
+}
+
+/** Read the configured per-axis scores off a fetched review document. */
+function scoresFromDoc(doc: Record<string, unknown>): Record<string, number> {
+  const scores: Record<string, number> = {};
+  for (const axis of AXES) {
+    const value = doc[`${axis.key}Score`];
+    if (typeof value === "number") scores[axis.key] = value;
+  }
+  return scores;
+}
+
+async function getReview(slug: string): Promise<RawReview | null> {
+  try {
+    return await sanityClient.fetch<RawReview | null>(reviewBySlugQuery, { slug });
+  } catch {
+    return null;
+  }
+}
+
+/** Rendered dynamically (no `generateStaticParams`): review slugs come from the
+ * CMS, so under Cache Components this resolves per request rather than
+ * enumerating params at build (which would require live Sanity credentials). */
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const review = await getReview(slug);
+  if (!review) return { title: "Review not found" };
+  return generateReviewMetadata(siteConfig, {
+    productName: review.productName,
+    slug: review.slug.current,
+  }) as Metadata;
+}
+
+export default async function ReviewDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const review = await getReview(slug);
+  if (!review) notFound();
+
+  // Per-factor breakdown (factor key → value) for every configured axis.
+  const breakdown: Record<string, number> = {};
+  for (const axis of AXES) {
+    for (const factor of axis.factors) {
+      const value = review[factor.key];
+      if (typeof value === "number") breakdown[factor.key] = value;
+    }
+  }
+  const scores = scoresFromDoc(review);
+
+  const link = review.affiliateLinks?.[0];
+  const buyUrl = link?.url ?? link?.destinationUrl ?? "";
+  const buyTag = link?.tag ?? link?.affiliateTag ?? siteConfig.brand.affiliateTag;
+
+  const alternatives: ReviewSummary[] = (review.alternatives ?? []).map((a) => ({
+    _id: a._id,
+    productName: a.productName,
+    slug: a.slug,
+    scores: scoresFromDoc(a),
+    segment: null,
+    category: null,
+    materials: [],
+    hasActiveRecall: false,
+    mainImage: a.mainImage,
+  }));
+
+  const productJsonLd = generateProductReviewJsonLd(siteConfig, {
+    productName: review.productName,
+    score: scores[PRIMARY_AXIS] ?? 0,
+    reviewBody: `Our independent review of ${review.productName}.`,
+    url: `${baseUrl}/reviews/${review.slug.current}`,
+  });
+
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: "Home", url: baseUrl },
+    { name: "Reviews", url: `${baseUrl}/reviews` },
+    {
+      name: review.productName,
+      url: `${baseUrl}/reviews/${review.slug.current}`,
+    },
+  ]);
+
+  return (
+    <main className="mx-auto max-w-4xl px-4 py-10">
+      <JsonLd data={productJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
+
+      <header className="mb-6">
+        <h1 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+          {review.productName}
+        </h1>
+        {review.hasActiveRecall && (
+          <p className="mt-2 inline-block rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-700">
+            ⚠ Active recall — read before buying
+          </p>
+        )}
+      </header>
+
+      <ScoreAxes breakdown={breakdown} scores={scores} />
+
+      {buyUrl && (
+        <div className="mt-8 space-y-3">
+          <BuyButton url={buyUrl} tag={buyTag} size="lg" productId={review.slug.current} />
+          <AffiliateDisclosure />
+        </div>
+      )}
+
+      {(review.pros?.length || review.cons?.length) && (
+        <section className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+          {review.pros?.length ? (
+            <div>
+              <h2 className="mb-3 text-lg font-semibold text-foreground">Pros</h2>
+              <ul className="list-disc space-y-1 pl-5 text-muted-foreground">
+                {review.pros.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+          {review.cons?.length ? (
+            <div>
+              <h2 className="mb-3 text-lg font-semibold text-foreground">Cons</h2>
+              <ul className="list-disc space-y-1 pl-5 text-muted-foreground">
+                {review.cons.map((c) => (
+                  <li key={c}>{c}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+        </section>
+      )}
+
+      {alternatives.length > 0 && (
+        <section className="mt-12">
+          <h2 className="mb-4 text-xl font-semibold text-foreground">Alternatives</h2>
+          <ComparisonTable reviews={alternatives} awards={computeAwards(alternatives)} />
+        </section>
+      )}
+    </main>
+  );
+}

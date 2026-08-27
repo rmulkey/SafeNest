@@ -1,0 +1,16 @@
+import type { ReviewRequiredFieldsOptions } from "@core";
+
+/**
+ * Options for the engine's publish-time required-field gate
+ * (`buildReviewRequiredFields(config, options)`).
+ *
+ * The default set is derived from `site.config.ts`: product name, brand, slug,
+ * the configured segmentation field, category, one field per scoring factor,
+ * and pros/cons/alternatives. That is sufficient for the scaffolded config, so
+ * this starts empty.
+ *
+ * If you add niche-specific document fields (e.g. a custom segmentation field
+ * shape, or extra required fields), declare them here AND in
+ * `schema.ts`'s `schemaOptions` so the schema and the publish gate stay in sync.
+ */
+export const reviewFieldOptions: ReviewRequiredFieldsOptions = {};

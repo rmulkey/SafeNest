@@ -1,0 +1,40 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import siteConfig from "@/site.config";
+
+export const metadata: Metadata = {
+  title: `Best ${siteConfig.product.nounPlural} by ${siteConfig.segmentation.label.toLowerCase()} | ${siteConfig.brand.name}`,
+  description: `Our top-scoring picks for the best ${siteConfig.product.nounPlural}, organized by ${siteConfig.segmentation.label.toLowerCase()}.`,
+};
+
+/**
+ * "Best [nouns]" hub (thin shell). The segment links come from the configured
+ * segmentation buckets; each links to a programmatic `/best-${noun}/[segment]`
+ * page.
+ */
+export default function BestHubPage() {
+  const { segmentation, product } = siteConfig;
+  return (
+    <main className="mx-auto max-w-4xl px-4 py-12">
+      <h1 className="text-3xl font-bold tracking-tight text-foreground">
+        Best {product.nounPlural} by {segmentation.label.toLowerCase()}
+      </h1>
+      <p className="mt-4 text-muted-foreground">
+        Pick a {segmentation.label.toLowerCase()} to see our highest-scoring{" "}
+        {product.nounPlural}.
+      </p>
+      <ul className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+        {segmentation.buckets.map((bucket) => (
+          <li key={bucket.slug}>
+            <Link
+              href={`/best-${product.nounPlural}/${bucket.slug}`}
+              className="flex items-center justify-center rounded-xl border border-border bg-card px-4 py-6 text-center text-sm font-medium text-foreground transition-colors hover:border-primary-200 hover:bg-muted"
+            >
+              {bucket.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
+}

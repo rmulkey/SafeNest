@@ -1,0 +1,12 @@
+import type { MetadataRoute } from "next";
+import { generateRobots } from "@core/seo";
+import siteConfig from "@/site.config";
+
+/**
+ * robots.txt — delegated to the engine (`@core/seo`). The disallow list
+ * (api/admin route groups) is engine-structural; the sitemap URL is derived
+ * from the config/env base URL.
+ */
+export default function robots(): MetadataRoute.Robots {
+  return generateRobots(siteConfig) as MetadataRoute.Robots;
+}

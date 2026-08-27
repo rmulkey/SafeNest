@@ -1,0 +1,69 @@
+/**
+ * Pure (framework-free) request parsing for the `/api/finder` route.
+ *
+ * Kept free of `next/server` and the Sanity client so the wizard's input
+ * validation and the category-relaxation decision are unit-testable. The route
+ * keeps the JSON body read + the GROQ I/O; this module owns the pure decisions.
+ *
+ * The `@ui` `Finder` posts the chosen segment's representative value under the
+ * (historically named) `ageMonths` key, plus optional category interests and a
+ * `budget` (captured for intent only — never used to filter, since we do not
+ * store verified per-product prices).
+ */
+
+/** Upper bound for a segment value accepted by the finder (generous). */
+export const FINDER_MAX_SEGMENT_VALUE = 100000;
+
+/** The validated, normalized finder inputs the route uses to query the catalog. */
+export interface ParsedFinderRequest {
+  segmentValue: number;
+  categories: string[];
+}
+
+/** Result of parsing a raw finder request body. */
+export type FinderParseResult =
+  | { ok: true; value: ParsedFinderRequest }
+  | { ok: false; status: number; error: string };
+
+/**
+ * Validate and normalize a raw finder request body.
+ *
+ * `segmentValue` (sent as `ageMonths`) must coerce to a finite number within
+ * [0, {@link FINDER_MAX_SEGMENT_VALUE}]; anything else is a 400. `categories` is
+ * normalized to an array of truthy strings; a missing / non-array value → `[]`.
+ */
+export function parseFinderRequest(body: unknown): FinderParseResult {
+  const b = (body ?? {}) as { ageMonths?: unknown; categories?: unknown };
+
+  const segmentValue = Number(b.ageMonths);
+  if (
+    !Number.isFinite(segmentValue) ||
+    segmentValue < 0 ||
+    segmentValue > FINDER_MAX_SEGMENT_VALUE
+  ) {
+    return {
+      ok: false,
+      status: 400,
+      error: "A valid segment selection is required.",
+    };
+  }
+
+  const categories = Array.isArray(b.categories)
+    ? b.categories.filter((c): c is string => typeof c === "string" && c.length > 0)
+    : [];
+
+  return { ok: true, value: { segmentValue, categories } };
+}
+
+/**
+ * Decide whether to relax the category filter to a segment-only query. The
+ * finder first matches on segment AND interests; when that yields nothing but
+ * the user DID pick interests, it falls back to segment-only so a visitor always
+ * gets appropriate suggestions rather than an empty result.
+ */
+export function shouldRelaxCategoryFilter(
+  resultCount: number,
+  categoryCount: number,
+): boolean {
+  return resultCount === 0 && categoryCount > 0;
+}

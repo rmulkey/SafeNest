@@ -1,0 +1,47 @@
+import { NextRequest, NextResponse } from "next/server";
+import {
+  decideAffiliateClick,
+  generateAnonymizedSessionId,
+  createAffiliateClickRecorder,
+  type AffiliateClickInput,
+} from "@core";
+import siteConfig from "@/site.config";
+
+/**
+ * POST /api/affiliate/click
+ *
+ * Records an affiliate click (best-effort, scoped to this app's siteId) and
+ * 302-redirects to the destination. The decision/validation logic lives in
+ * `@core` (`decideAffiliateClick`); the recorder is `@core/db`'s
+ * `withSite`-backed `createAffiliateClickRecorder(siteId)`. The redirect is
+ * never blocked by a recording failure.
+ *
+ * Public by design (the click→redirect hop); it persists only an anonymized
+ * session hash, never raw IP/user-agent.
+ */
+export async function POST(request: NextRequest) {
+  let body: AffiliateClickInput;
+  try {
+    body = (await request.json()) as AffiliateClickInput;
+  } catch {
+    return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+  }
+
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    request.headers.get("x-real-ip") ||
+    "unknown";
+  const userAgent = request.headers.get("user-agent") || "unknown";
+  const sessionId = generateAnonymizedSessionId(ip, userAgent);
+
+  const recorder = createAffiliateClickRecorder(siteConfig.siteId);
+  const decision = await decideAffiliateClick(body, { sessionId, recorder });
+
+  if (decision.kind === "redirect") {
+    return NextResponse.redirect(decision.destinationUrl, decision.status);
+  }
+  return NextResponse.json(
+    { error: decision.error, missing: decision.missing },
+    { status: decision.status },
+  );
+}

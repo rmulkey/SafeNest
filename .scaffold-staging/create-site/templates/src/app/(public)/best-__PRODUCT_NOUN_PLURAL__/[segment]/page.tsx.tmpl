@@ -1,0 +1,71 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { ComparisonTable, computeAwards } from "@ui";
+import {
+  resolveSegmentParam,
+  formatSegmentParamLabel,
+  MIN_REVIEWS_FOR_PAGE,
+} from "@core/seo";
+import siteConfig from "@/site.config";
+import { getReviewSummariesBySegmentWindow } from "@/lib/sanity/review-views";
+
+/**
+ * Programmatic "Best [nouns] for [segment]" page (thin shell). Segment
+ * resolution + eligibility come from `@core/seo`; the matching reviews are
+ * fetched via the app's Sanity binding and rendered with the `@ui`
+ * `ComparisonTable`. The page enforces the ≥ MIN_REVIEWS_FOR_PAGE eligibility at
+ * request time (insufficient → not-found, Req 4.3).
+ *
+ * `generateStaticParams` enumerates the CONFIGURED segmentation buckets (always
+ * non-empty, no build-time CMS dependency); a bucket without enough reviews
+ * still resolves to a not-found page at runtime.
+ */
+export function generateStaticParams(): Array<{ segment: string }> {
+  return siteConfig.segmentation.buckets.map((b) => ({ segment: b.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ segment: string }>;
+}): Promise<Metadata> {
+  const { segment } = await params;
+  const label = formatSegmentParamLabel(siteConfig, segment);
+  const title = `Best ${siteConfig.product.nounPlural} for ${label} | ${siteConfig.brand.name}`;
+  return {
+    title,
+    description: `The best ${siteConfig.product.nounPlural} for ${label}, independently scored.`,
+  };
+}
+
+export default async function BestForSegmentPage({
+  params,
+}: {
+  params: Promise<{ segment: string }>;
+}) {
+  const { segment } = await params;
+  const bucket = resolveSegmentParam(siteConfig, segment);
+  if (!bucket || typeof bucket.min !== "number" || typeof bucket.max !== "number") {
+    notFound();
+  }
+
+  const reviews = await getReviewSummariesBySegmentWindow(bucket.min, bucket.max);
+  if (reviews.length < MIN_REVIEWS_FOR_PAGE) {
+    notFound();
+  }
+
+  const label = formatSegmentParamLabel(siteConfig, segment);
+
+  return (
+    <main className="mx-auto max-w-4xl px-4 py-8">
+      <h1 className="text-3xl font-bold mb-2 text-foreground">
+        Best {siteConfig.product.nounPlural} for {label}
+      </h1>
+      <p className="text-muted-foreground mb-8">
+        {reviews.length} expert-reviewed {siteConfig.product.nounPlural} suitable for{" "}
+        {label}, sorted by score.
+      </p>
+      <ComparisonTable reviews={reviews} awards={computeAwards(reviews)} />
+    </main>
+  );
+}

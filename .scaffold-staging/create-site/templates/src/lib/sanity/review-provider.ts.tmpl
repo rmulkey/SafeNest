@@ -1,0 +1,45 @@
+import "server-only";
+import type { ProductReviewProvider, ReviewSummary, SegmentationBucket } from "@core";
+import { sanityClient } from "./client";
+import {
+  reviewsBySegmentWindowQuery,
+  distinctCategoryTitlesQuery,
+  reviewsByCategoryTitleQuery,
+} from "./queries";
+
+/**
+ * Sanity-backed `ProductReviewProvider` (the engine's SEO/programmatic-page CMS
+ * seam). The engine's page-generation helpers call this; the GROQ lives here in
+ * the app, not the engine.
+ *
+ * Buckets are resolved by their `[min, max]` window (numericRange segmentation);
+ * the "type" axis maps to distinct category titles (powers `/collections/[type]`).
+ * For an `enum` segmentation, adjust `getReviewsByBucket` to match `bucket.value`.
+ */
+export function createSanityReviewProvider(): ProductReviewProvider {
+  return {
+    async getReviewsByBucket(bucket: SegmentationBucket): Promise<ReviewSummary[]> {
+      if (typeof bucket.min !== "number" || typeof bucket.max !== "number") {
+        return [];
+      }
+      const reviews = await sanityClient.fetch<ReviewSummary[]>(
+        reviewsBySegmentWindowQuery,
+        { min: bucket.min, max: bucket.max },
+      );
+      return reviews ?? [];
+    },
+
+    async getAllTypes(): Promise<string[]> {
+      const types = await sanityClient.fetch<string[]>(distinctCategoryTitlesQuery);
+      return (types ?? []).filter((t): t is string => typeof t === "string");
+    },
+
+    async getReviewsByType(type: string): Promise<ReviewSummary[]> {
+      const reviews = await sanityClient.fetch<ReviewSummary[]>(
+        reviewsByCategoryTitleQuery,
+        { type },
+      );
+      return reviews ?? [];
+    },
+  };
+}

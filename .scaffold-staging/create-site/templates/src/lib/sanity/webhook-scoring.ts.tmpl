@@ -1,0 +1,59 @@
+import { computeAllAxes, type SiteConfig } from "@core";
+
+/**
+ * Pure (framework-free) score-recomputation logic for the Sanity webhook.
+ *
+ * Kept free of `server-only`, the live Sanity clients, and `next/cache` so it is
+ * unit-testable. The route owns the Sanity I/O (fetch the doc, patch it back);
+ * this module owns the two pure steps in between: read each configured scoring
+ * factor off the fetched review document, and compute every configured axis via
+ * `@core`'s `computeAllAxes`, shaped into `<axisKey>Score` patch fields.
+ *
+ * The recompute is generic over `config.scoring` — no hardcoded axis names — so
+ * it works for any site built from the engine.
+ */
+
+/** Collect the configured scoring-factor values off a fetched review document. */
+export function collectFactorValues(
+  config: SiteConfig,
+  doc: Record<string, unknown>,
+): Record<string, number> {
+  const factorValues: Record<string, number> = {};
+  for (const axis of config.scoring) {
+    for (const factor of axis.factors) {
+      const value = doc[factor.key];
+      if (typeof value === "number") factorValues[factor.key] = value;
+    }
+  }
+  return factorValues;
+}
+
+/**
+ * Build the review document's score patch from collected factor values. Throws
+ * (via `computeAllAxes`) if any required factor value is missing, non-finite, or
+ * outside [0, 100] — the caller treats that as a skip-and-log, never a partial
+ * patch.
+ */
+export function buildScorePatch(
+  config: SiteConfig,
+  factorValues: Record<string, number>,
+): Record<string, number> {
+  const scores = computeAllAxes(config, factorValues);
+  const patch: Record<string, number> = {};
+  for (const [axisKey, value] of Object.entries(scores)) {
+    patch[`${axisKey}Score`] = value;
+  }
+  return patch;
+}
+
+/**
+ * Convenience composition of {@link collectFactorValues} + {@link buildScorePatch}:
+ * given a fetched review document, return the `<axisKey>Score` patch to write
+ * back. Throws if the document is missing any configured factor value.
+ */
+export function recomputeScorePatch(
+  config: SiteConfig,
+  doc: Record<string, unknown>,
+): Record<string, number> {
+  return buildScorePatch(config, collectFactorValues(config, doc));
+}

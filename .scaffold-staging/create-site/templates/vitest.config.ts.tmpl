@@ -1,0 +1,39 @@
+import { defineConfig } from "vitest/config";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const repoRoot = path.resolve(here, "../..");
+
+const coreSrc = path.resolve(repoRoot, "packages/core/src");
+const uiSrc = path.resolve(repoRoot, "packages/ui/src");
+const schemaSrc = path.resolve(repoRoot, "packages/sanity-schema/src");
+const appSrc = path.resolve(here, "src");
+
+/**
+ * App test runner. Scoped to the app's framework-free `src/**` helpers (the
+ * generated config smoke test, plus any niche logic added later). A `node`
+ * environment is used because these are pure data checks with no DOM.
+ *
+ * Aliases mirror the app `tsconfig.json`, written as ANCHORED REGEXES so a
+ * subpath import (`@core/scoring`, `@/site.config`) resolves into the
+ * package/app `src` directory rather than colliding with the bare `@core`
+ * → `index.ts` mapping. Subpath regexes are listed before the exact ones.
+ */
+export default defineConfig({
+  test: {
+    environment: "node",
+    include: ["src/**/*.test.ts"],
+  },
+  resolve: {
+    alias: [
+      { find: /^@core\/(.*)$/, replacement: `${coreSrc}/$1` },
+      { find: /^@core$/, replacement: `${coreSrc}/index.ts` },
+      { find: /^@ui\/(.*)$/, replacement: `${uiSrc}/$1` },
+      { find: /^@ui$/, replacement: `${uiSrc}/index.ts` },
+      { find: /^@sanity-schema\/(.*)$/, replacement: `${schemaSrc}/$1` },
+      { find: /^@sanity-schema$/, replacement: `${schemaSrc}/index.ts` },
+      { find: /^@\/(.*)$/, replacement: `${appSrc}/$1` },
+    ],
+  },
+});

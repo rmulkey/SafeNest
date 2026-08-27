@@ -1,0 +1,80 @@
+import { connection } from "next/server";
+import { withSite } from "@core";
+import siteConfig from "@/site.config";
+
+/**
+ * Affiliate link-health dashboard. Reads ONLY this app's rows via
+ * `withSite(siteId)` (Req 6.5).
+ *
+ * ⚠️ SECURITY: no authentication. Reachable at the public path
+ * `/dashboard/links`. Gate behind auth or restrict network access before
+ * exposing the site publicly.
+ */
+export default async function AdminLinksPage() {
+  await connection();
+
+  const db = withSite(siteConfig.siteId);
+  const unhealthyLinks = await db.linkStatuses.findMany({
+    where: { isHealthy: false },
+    orderBy: { flaggedAt: "desc" },
+  });
+
+  return (
+    <main className="mx-auto max-w-6xl px-4 py-8">
+      <h1 className="text-2xl font-bold mb-6">Affiliate Link Health Dashboard</h1>
+
+      {unhealthyLinks.length === 0 ? (
+        <p className="text-muted-foreground">
+          All affiliate links are healthy. No flagged links found.
+        </p>
+      ) : (
+        <div className="overflow-x-auto rounded-lg border">
+          <table className="w-full text-sm">
+            <thead className="bg-muted/50">
+              <tr>
+                <th className="px-4 py-3 text-left font-medium">Destination URL</th>
+                <th className="px-4 py-3 text-left font-medium">Product ID</th>
+                <th className="px-4 py-3 text-left font-medium">Partner ID</th>
+                <th className="px-4 py-3 text-left font-medium">HTTP Status</th>
+                <th className="px-4 py-3 text-left font-medium">Last Checked</th>
+                <th className="px-4 py-3 text-left font-medium">Flagged At</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              {unhealthyLinks.map((link) => (
+                <tr key={link.id} className="hover:bg-muted/30">
+                  <td className="px-4 py-3 max-w-xs truncate" title={link.destinationUrl}>
+                    <a
+                      href={link.destinationUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-600 hover:underline"
+                    >
+                      {link.destinationUrl}
+                    </a>
+                  </td>
+                  <td className="px-4 py-3">{link.productId}</td>
+                  <td className="px-4 py-3">{link.partnerId}</td>
+                  <td className="px-4 py-3">
+                    <span className="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">
+                      {link.httpStatus ?? "Timeout"}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3">{link.lastChecked.toLocaleString()}</td>
+                  <td className="px-4 py-3">
+                    {link.flaggedAt ? link.flaggedAt.toLocaleString() : "—"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      <p className="mt-4 text-sm text-muted-foreground">
+        Showing {unhealthyLinks.length} flagged link
+        {unhealthyLinks.length !== 1 ? "s" : ""} for {siteConfig.brand.name}.
+      </p>
+    </main>
+  );
+}

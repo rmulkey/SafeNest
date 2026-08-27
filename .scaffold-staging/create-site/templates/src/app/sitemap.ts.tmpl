@@ -1,0 +1,34 @@
+import type { MetadataRoute } from "next";
+import { getBaseUrl, createStaticPageEntries, createSitemapEntries } from "@core/seo";
+import siteConfig from "@/site.config";
+import { sanityClient } from "@/lib/sanity/client";
+import { sitemapContentQuery } from "@/lib/sanity/queries";
+
+interface SitemapContent {
+  reviews: Array<{ slug: { current: string }; _updatedAt?: string }>;
+  blogPosts: Array<{ slug: { current: string }; _updatedAt?: string }>;
+  categories: Array<{ slug: { current: string }; _updatedAt?: string }>;
+}
+
+/**
+ * sitemap.xml — engine `createStaticPageEntries(config)` for the structural +
+ * config-derived (segment/guide) routes, plus dynamic content slugs fetched
+ * from Sanity. Degrades to static entries only if Sanity is unavailable.
+ */
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = getBaseUrl(siteConfig);
+
+  let content: SitemapContent = { reviews: [], blogPosts: [], categories: [] };
+  try {
+    content = await sanityClient.fetch<SitemapContent>(sitemapContentQuery);
+  } catch (error) {
+    console.error("[sitemap] Failed to fetch content from Sanity:", error);
+  }
+
+  const staticPages = createStaticPageEntries(baseUrl, siteConfig);
+  const reviewEntries = createSitemapEntries(content.reviews ?? [], "/reviews", "weekly", 0.9, baseUrl);
+  const blogEntries = createSitemapEntries(content.blogPosts ?? [], "/blog", "weekly", 0.7, baseUrl);
+  const categoryEntries = createSitemapEntries(content.categories ?? [], "/categories", "monthly", 0.6, baseUrl);
+
+  return [...staticPages, ...reviewEntries, ...blogEntries, ...categoryEntries] as MetadataRoute.Sitemap;
+}

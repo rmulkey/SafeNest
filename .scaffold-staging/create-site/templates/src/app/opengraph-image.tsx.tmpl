@@ -1,0 +1,15 @@
+import { createDefaultOgImage, OG_IMAGE_SIZE, OG_IMAGE_CONTENT_TYPE } from "@core/seo";
+import siteConfig from "@/site.config";
+import { renderOgImage } from "@/lib/og/render-og";
+
+/**
+ * Default site-wide Open Graph card. The engine computes the descriptor from
+ * `site.config.ts` (colors/brand/headline); the app renders it.
+ */
+export const size = OG_IMAGE_SIZE;
+export const contentType = OG_IMAGE_CONTENT_TYPE;
+export const alt = `${siteConfig.brand.name} — ${siteConfig.brand.tagline}`;
+
+export default function OpengraphImage() {
+  return renderOgImage(createDefaultOgImage(siteConfig));
+}

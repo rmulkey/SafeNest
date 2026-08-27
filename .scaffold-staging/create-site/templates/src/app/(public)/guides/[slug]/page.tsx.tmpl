@@ -1,0 +1,73 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { ReviewCard } from "@ui";
+import { resolveSegment, getSegmentLabel } from "@core/config";
+import siteConfig from "@/site.config";
+import { getReviewSummariesBySegmentWindow } from "@/lib/sanity/review-views";
+
+/**
+ * Buying guide (thin shell). The slug resolves against the configured
+ * segmentation buckets; unknown slugs → not-found (Req 4.3). Renders the
+ * matching reviews as `@ui` `ReviewCard`s.
+ */
+export function generateStaticParams(): Array<{ slug: string }> {
+  return siteConfig.segmentation.buckets.map((b) => ({ slug: b.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const label = getSegmentLabel(siteConfig.segmentation, slug);
+  if (!label) return { title: "Guide not found" };
+  return {
+    title: `${siteConfig.product.nounSingular} buying guide: ${label} | ${siteConfig.brand.name}`,
+    description: `What to look for when choosing ${siteConfig.product.nounPlural} for ${label}.`,
+  };
+}
+
+export default async function GuidePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const bucket = resolveSegment(siteConfig.segmentation, slug);
+  if (!bucket || typeof bucket.min !== "number" || typeof bucket.max !== "number") {
+    notFound();
+  }
+
+  const reviews = await getReviewSummariesBySegmentWindow(bucket.min, bucket.max);
+
+  return (
+    <main className="mx-auto max-w-6xl px-4 py-10">
+      <h1 className="text-3xl font-bold tracking-tight text-foreground">
+        Buying guide: {bucket.label}
+      </h1>
+      <p className="mt-3 max-w-2xl text-muted-foreground">
+        Our scored {siteConfig.product.nounPlural} suitable for {bucket.label}.
+      </p>
+
+      {reviews.length === 0 ? (
+        <p className="mt-8 text-muted-foreground">No reviews for this guide yet.</p>
+      ) : (
+        <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {reviews.map((r) => (
+            <li key={r._id}>
+              <ReviewCard
+                productName={r.productName}
+                slug={r.slug}
+                scores={r.scores}
+                segment={r.segment}
+                category={r.category}
+                hasActiveRecall={r.hasActiveRecall}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
+    </main>
+  );
+}

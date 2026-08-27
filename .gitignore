@@ -36,6 +36,10 @@ yarn-error.log*
 # environment needs. It carries variable names and non-secret defaults only;
 # every credential in it is empty and DATABASE_URL points at localhost.
 !.env.example
+# The scaffolder's env template is matched by `.env*` on its basename, so it
+# needs its own negation or a generated site ships with no .env.example at all
+# and nothing records which variables it requires.
+!.scaffold-staging/**/.env.example.tmpl
 
 # vercel
 .vercel

@@ -1,0 +1,42 @@
+import type { NextConfig } from "next";
+
+/**
+ * __SITE_NAME__ — Next.js config.
+ *
+ * The app consumes the engine packages (`@affiliate-engine/core` / `@ui` /
+ * `@sanity-schema`), which ship as TypeScript source (main → ./src/index.ts),
+ * so they are transpiled by Next rather than pre-built.
+ */
+const nextConfig: NextConfig = {
+  cacheComponents: true,
+  compress: true,
+  transpilePackages: [
+    "@affiliate-engine/core",
+    "@affiliate-engine/ui",
+    "@affiliate-engine/sanity-schema",
+  ],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
+    ],
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
+  },
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+        ],
+      },
+    ];
+  },
+};
+
+export default nextConfig;

@@ -1,0 +1,94 @@
+import "server-only";
+import { groq } from "next-sanity";
+import type { BlogStore, BlogProduct, BlogPostDocument } from "@core";
+import siteConfig from "@/site.config";
+import { sanityWriteClient } from "./write-client";
+
+/**
+ * Sanity-backed `BlogStore` (the bi-weekly blog generator's CMS seam). The
+ * engine builds the roundup from real catalog products; this store reads the
+ * products for a category, guards idempotency, and creates the post.
+ *
+ * Generic + config-driven: per-product `scores` are read from the configured
+ * scoring axes and `segmentValue` from the configured segmentation field.
+ */
+
+const REVIEW_TYPE = siteConfig.product.reviewTypeName;
+const AXES = siteConfig.scoring;
+const SEGMENT_KEY = siteConfig.segmentation.key;
+const PRIMARY_SCORE = `${AXES[0]?.key ?? "score"}Score`;
+
+interface RawBlogProductDoc {
+  _id: string;
+  productName: string;
+  brand: string;
+  slug: { current: string };
+  imageRef?: string | null;
+  imageAlt?: string | null;
+  /** Computed score fields + the segmentation field (config-driven shape). */
+  [field: string]: unknown;
+}
+
+const productsByCategoryQuery = groq`
+  *[_type == "${REVIEW_TYPE}" && category._ref == $cat && !(_id in path("drafts.**"))]{
+    ...,
+    "imageRef": mainImage.asset._ref,
+    "imageAlt": mainImage.alt
+  } | order(${PRIMARY_SCORE} desc)
+`;
+
+/** Read the generic per-axis scores off a fetched review document. */
+function buildScores(doc: RawBlogProductDoc): Record<string, number> {
+  const scores: Record<string, number> = {};
+  for (const axis of AXES) {
+    const value = doc[`${axis.key}Score`];
+    if (typeof value === "number") scores[axis.key] = value;
+  }
+  return scores;
+}
+
+/** Read the segmentation value used to resolve the segment label in the post. */
+function buildSegmentValue(doc: RawBlogProductDoc): number | string | undefined {
+  const raw = doc[SEGMENT_KEY];
+  if (typeof raw === "string") return raw;
+  if (raw && typeof raw === "object") {
+    const { min } = raw as { min?: number };
+    if (typeof min === "number") return min;
+  }
+  return undefined;
+}
+
+export function createSanityBlogStore(): BlogStore {
+  const client = sanityWriteClient;
+
+  return {
+    async fetchProductsByCategory(categoryRef: string): Promise<BlogProduct[]> {
+      const docs = await client.fetch<RawBlogProductDoc[]>(productsByCategoryQuery, {
+        cat: categoryRef,
+      });
+      return (docs ?? []).map((d) => ({
+        _id: d._id,
+        productName: d.productName,
+        brand: d.brand,
+        slug: d.slug,
+        scores: buildScores(d),
+        segmentValue: buildSegmentValue(d),
+        imageRef: d.imageRef ?? null,
+        imageAlt: d.imageAlt ?? null,
+      }));
+    },
+
+    async findPostIdById(postId: string): Promise<string | null> {
+      const id = await client.fetch<string | null>(
+        groq`*[_type == "blogPost" && _id == $id][0]._id`,
+        { id: postId },
+      );
+      return id ?? null;
+    },
+
+    async createPost(post: BlogPostDocument): Promise<{ postId: string }> {
+      const created = await client.create(post);
+      return { postId: created._id };
+    },
+  };
+}

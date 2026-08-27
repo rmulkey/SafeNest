@@ -1,0 +1,43 @@
+/**
+ * App-layer structured-data inputs for __SITE_NAME__.
+ *
+ * The `@core/seo` JSON-LD generators are niche-agnostic: they read brand name,
+ * base URL, logo, founders, and location from the `SiteConfig`. The
+ * Organization *editorial* signals (a longer description, the `knowsAbout` topic
+ * list, `sameAs` profiles) and the homepage FAQ pairs are NOT part of the
+ * `SiteConfig` contract, so they live here in the app.
+ *
+ * These are scaffold placeholders — replace the TODOs with your real signals.
+ * Keep them truthful (no fabricated claims): they are emitted as structured data
+ * search engines read.
+ */
+
+import type { OrganizationJsonLdOptions, FaqItem } from "@core/seo";
+
+/** Organization signals merged into the home page's Organization JSON-LD. */
+export const ORG_SIGNALS: OrganizationJsonLdOptions = {
+  // TODO: a 1–2 sentence description of who runs the site and why it is trustworthy.
+  description: "TODO: describe __SITE_NAME__ and what makes its reviews independent.",
+  // TODO: real founder names, or remove (the generator falls back to the config).
+  founders: [],
+  // TODO: { locality, region, country } — or remove.
+  knowsAbout: [],
+  sameAs: [],
+};
+
+/**
+ * Homepage FAQ pairs, rendered as a `FAQPage` via `generateFaqPageJsonLd`.
+ * Replace these with real, accurate Q&A for your niche.
+ */
+export const HOMEPAGE_FAQS: FaqItem[] = [
+  {
+    question: "TODO: How do you review and score products?",
+    answer:
+      "TODO: explain your independent scoring methodology in 1–3 sentences.",
+  },
+  {
+    question: "TODO: Are your reviews independent?",
+    answer:
+      "TODO: explain how affiliate revenue works and that it never influences scores.",
+  },
+];

@@ -1,0 +1,70 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { getTypeFromSlug, slugifyType, MIN_REVIEWS_FOR_PAGE } from "@core/seo";
+import siteConfig from "@/site.config";
+import { createSanityReviewProvider } from "@/lib/sanity/review-provider";
+
+/**
+ * "/collections/[type]" programmatic page (thin shell). The product "type" axis
+ * maps to the catalog's distinct category titles (via the app's Sanity
+ * `ProductReviewProvider`). Unknown/insufficient → not-found (Req 4.3).
+ *
+ * Rendered dynamically (no `generateStaticParams`): valid type slugs come from
+ * CMS data, so under Cache Components this route resolves per request rather
+ * than enumerating params at build (which would require live Sanity credentials).
+ */
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ type: string }>;
+}): Promise<Metadata> {
+  const { type } = await params;
+  const provider = createSanityReviewProvider();
+  const resolved = await getTypeFromSlug(provider, type);
+  if (!resolved) return { title: "Not found" };
+  return {
+    title: `${resolved} | ${siteConfig.brand.name}`,
+    description: `Our independently scored ${resolved.toLowerCase()}.`,
+  };
+}
+
+export default async function CollectionTypePage({
+  params,
+}: {
+  params: Promise<{ type: string }>;
+}) {
+  const { type } = await params;
+  const provider = createSanityReviewProvider();
+  const resolved = await getTypeFromSlug(provider, type);
+  if (!resolved) notFound();
+
+  const reviews = await provider.getReviewsByType(resolved);
+  if (reviews.length < MIN_REVIEWS_FOR_PAGE) notFound();
+
+  return (
+    <main className="mx-auto max-w-4xl px-4 py-10">
+      <h1 className="text-3xl font-bold tracking-tight text-foreground">{resolved}</h1>
+      <p className="mt-3 text-muted-foreground">
+        {reviews.length} independently scored {resolved.toLowerCase()}, best first.
+      </p>
+      <ul className="mt-8 divide-y divide-border" role="list">
+        {reviews.map((r) => (
+          <li key={r._id} className="flex items-center justify-between py-4">
+            <Link
+              href={`/reviews/${r.slug.current}`}
+              className="font-medium text-foreground hover:text-primary-600"
+            >
+              {r.productName}
+            </Link>
+            <span className="text-sm text-muted-foreground">
+              {siteConfig.scoring[0]?.label ?? "Score"}: {r.primaryScore}/100
+            </span>
+          </li>
+        ))}
+      </ul>
+      <p className="sr-only">{slugifyType(resolved)}</p>
+    </main>
+  );
+}

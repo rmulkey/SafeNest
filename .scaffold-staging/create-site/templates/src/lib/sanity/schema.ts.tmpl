@@ -1,0 +1,20 @@
+import { buildSchema, type BuildSchemaOptions, type SchemaTypeDef } from "@sanity-schema";
+import siteConfig from "@/site.config";
+
+/**
+ * The app's Sanity Studio schema, generated from `site.config.ts` by the
+ * engine's schema factory (`@sanity-schema`). The factory derives the scoring
+ * factor / computed-score / segmentation fields from the config.
+ *
+ * Add niche-specific review fields (e.g. a custom segmentation field shape or
+ * extra required fields) via `schemaOptions` if your product documents need
+ * them — keep these in lockstep with `review-fields.ts` (the publisher's
+ * required-field set). A Studio (`sanity.config.ts`) registers `studioSchema`
+ * under `schema.types`.
+ */
+export const schemaOptions: BuildSchemaOptions = {
+  // TODO (optional): segmentationField override + extraReviewFields for any
+  // niche-specific fields your documents need beyond the config-derived set.
+};
+
+export const studioSchema: SchemaTypeDef[] = buildSchema(siteConfig, schemaOptions);

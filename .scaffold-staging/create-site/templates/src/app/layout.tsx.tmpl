@@ -1,0 +1,67 @@
+import type { Metadata } from "next";
+import { Suspense } from "react";
+import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Header, Footer } from "@ui";
+import { getBaseUrl } from "@core/seo";
+import siteConfig from "@/site.config";
+import { getSearchCatalog } from "@/lib/sanity/search-catalog";
+import { AppProviders } from "./providers";
+import "./globals.css";
+
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+
+const baseUrl = getBaseUrl(siteConfig);
+
+export const metadata: Metadata = {
+  title: `${siteConfig.brand.name} — ${siteConfig.brand.tagline}`,
+  description: siteConfig.copy.hero.subheadline,
+  metadataBase: new URL(baseUrl),
+  manifest: "/manifest.json",
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
+  openGraph: {
+    title: `${siteConfig.brand.name} — ${siteConfig.brand.tagline}`,
+    description: siteConfig.copy.hero.subheadline,
+    url: baseUrl,
+    siteName: siteConfig.brand.name,
+    type: "website",
+  },
+};
+
+export default async function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  const searchCatalog = await getSearchCatalog();
+
+  return (
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-primary-600 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:shadow-lg focus:outline-none"
+        >
+          Skip to main content
+        </a>
+        <Suspense>
+          <AppProviders>
+            <Header searchCatalog={searchCatalog} />
+            <main id="main-content" tabIndex={-1} className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </AppProviders>
+        </Suspense>
+        {/* Cookieless Vercel analytics + speed insights, mounted on every route. */}
+        <Analytics />
+        <SpeedInsights />
+      </body>
+    </html>
+  );
+}

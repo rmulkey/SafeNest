@@ -1,0 +1,57 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import siteConfig from "@/site.config";
+import { sanityClient } from "@/lib/sanity/client";
+import { allBlogPostsQuery } from "@/lib/sanity/queries";
+
+export const metadata: Metadata = {
+  title: `Blog | ${siteConfig.brand.name}`,
+  description: `Roundups, guides, and updates from ${siteConfig.brand.name}.`,
+};
+
+interface BlogListItem {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  publishedAt?: string;
+  excerpt?: string;
+}
+
+/** Blog index (thin shell). */
+export default async function BlogIndexPage() {
+  let posts: BlogListItem[] = [];
+  try {
+    posts = await sanityClient.fetch<BlogListItem[]>(allBlogPostsQuery);
+  } catch (error) {
+    console.error("[blog] fetch failed:", error);
+  }
+
+  return (
+    <main className="mx-auto max-w-3xl px-4 py-12">
+      <h1 className="text-3xl font-bold tracking-tight text-foreground">Blog</h1>
+      {posts.length === 0 ? (
+        <p className="mt-6 text-muted-foreground">No posts yet — check back soon.</p>
+      ) : (
+        <ul className="mt-8 space-y-8" role="list">
+          {posts.map((post) => (
+            <li key={post._id} className="border-b border-border pb-6">
+              <Link href={`/blog/${post.slug.current}`} className="group">
+                <h2 className="text-xl font-semibold text-foreground group-hover:text-primary-600">
+                  {post.title}
+                </h2>
+              </Link>
+              {post.publishedAt && (
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {new Date(post.publishedAt).toLocaleDateString()}
+                </p>
+              )}
+              {post.excerpt && (
+                <p className="mt-2 text-muted-foreground">{post.excerpt}</p>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+    </main>
+  );
+}

@@ -1,0 +1,33 @@
+import type { Metadata } from "next";
+import { generatePageMetadata, getBaseUrl } from "@core/seo";
+import siteConfig from "@/site.config";
+
+export const metadata: Metadata = generatePageMetadata(
+  siteConfig,
+  `About | ${siteConfig.brand.name}`,
+  `How ${siteConfig.brand.name} independently reviews ${siteConfig.product.nounPlural}.`,
+  { url: `${getBaseUrl(siteConfig)}/about` },
+) as Metadata;
+
+/** About page (thin shell). Brand/founder copy comes from `site.config.ts`. */
+export default function AboutPage() {
+  const { brand } = siteConfig;
+  return (
+    <main className="mx-auto max-w-3xl px-4 py-12">
+      <h1 className="text-3xl font-bold tracking-tight text-foreground">
+        About {brand.name}
+      </h1>
+      <p className="mt-4 text-muted-foreground">{brand.tagline}</p>
+      {brand.founders && (
+        <p className="mt-4 text-muted-foreground">
+          Built by {brand.founders}
+          {brand.location ? ` in ${brand.location}` : ""}.
+        </p>
+      )}
+      <p className="mt-4 text-muted-foreground">
+        We independently score every {siteConfig.product.nounSingular} we review.
+        We never accept payment for a favorable score.
+      </p>
+    </main>
+  );
+}

@@ -1,0 +1,87 @@
+import Link from "next/link";
+import { ReviewCard, NewsletterForm, Finder, FounderStrip, JsonLd } from "@ui";
+import {
+  generateOrganizationJsonLd,
+  generateWebSiteJsonLd,
+  generateFaqPageJsonLd,
+} from "@core/seo";
+import siteConfig from "@/site.config";
+import { getAllReviewSummaries } from "@/lib/sanity/review-views";
+import { ORG_SIGNALS, HOMEPAGE_FAQS } from "@/lib/seo/structured-data";
+
+/**
+ * Home page (thin shell). Renders the config-driven hero + the engine UI:
+ * featured `ReviewCard`s, the product `Finder` (wired to `/api/finder`), the
+ * first-party `NewsletterForm`, and the `FounderStrip` (renders only when
+ * `brand.founders` is set). All product data is fetched via the app's Sanity
+ * binding; the heavy logic lives in `@core`/`@ui`.
+ */
+export default async function HomePage() {
+  let featured = await getAllReviewSummaries();
+  featured = featured.slice(0, 6);
+
+  const { hero } = siteConfig.copy;
+
+  return (
+    <div>
+      <JsonLd data={generateOrganizationJsonLd(siteConfig, ORG_SIGNALS)} />
+      <JsonLd data={generateWebSiteJsonLd(siteConfig)} />
+      <JsonLd data={generateFaqPageJsonLd(HOMEPAGE_FAQS)} />
+
+      <section className="mx-auto max-w-5xl px-4 py-12 text-center md:py-16">
+        <h1 className="text-3xl font-bold tracking-tight text-foreground md:text-5xl">
+          {hero.headline}
+        </h1>
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+          {hero.subheadline}
+        </p>
+        <div className="mt-6 flex justify-center gap-3">
+          <Link
+            href="/reviews"
+            className="inline-flex items-center rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-700"
+          >
+            {hero.ctaLabel ?? "Browse reviews"}
+          </Link>
+          <Link
+            href="/best-__PRODUCT_NOUN_PLURAL__"
+            className="inline-flex items-center rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted"
+          >
+            Best by {siteConfig.segmentation.label.toLowerCase()}
+          </Link>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-4 pb-12">
+        <Finder finderEndpoint="/api/finder" />
+      </section>
+
+      <FounderStrip />
+
+      {featured.length > 0 && (
+        <section className="mx-auto max-w-6xl px-4 py-12">
+          <h2 className="mb-6 text-2xl font-bold text-foreground">
+            Top-rated {siteConfig.product.nounPlural}
+          </h2>
+          <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((r) => (
+              <li key={r._id}>
+                <ReviewCard
+                  productName={r.productName}
+                  slug={r.slug}
+                  scores={r.scores}
+                  segment={r.segment}
+                  category={r.category}
+                  hasActiveRecall={r.hasActiveRecall}
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <section className="mx-auto max-w-3xl px-4 py-12">
+        <NewsletterForm variant="hero" />
+      </section>
+    </div>
+  );
+}

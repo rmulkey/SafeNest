@@ -1,0 +1,18 @@
+import "server-only";
+import { createClient } from "next-sanity";
+import { sanityProjectId, sanityDataset, sanityApiVersion } from "./client";
+
+/**
+ * Server-only Sanity write client (bears `SANITY_API_TOKEN`). Used by the
+ * publisher / blog-generator catalog stores and the webhook score-patcher. The
+ * `server-only` import makes it a build error to pull this into a client
+ * bundle, so the token never ships to the browser.
+ */
+export const sanityWriteClient = createClient({
+  projectId: sanityProjectId,
+  dataset: sanityDataset,
+  apiVersion: sanityApiVersion,
+  useCdn: false,
+  token: process.env.SANITY_API_TOKEN,
+  perspective: "published",
+});

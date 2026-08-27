@@ -1,0 +1,71 @@
+"use client";
+
+import NextLink from "next/link";
+import NextImage from "next/image";
+import { usePathname, useRouter } from "next/navigation";
+import type { ReactNode } from "react";
+import {
+  FrameworkProvider,
+  SiteConfigProvider,
+  AnalyticsProvider,
+  type FrameworkLinkProps,
+  type FrameworkImageProps,
+  type FrameworkRouter,
+} from "@ui";
+import siteConfig from "@/site.config";
+import { resolveImageUrl } from "@/lib/sanity/client";
+
+/**
+ * `AppProviders` — the single client boundary that injects the engine's seams
+ * into the `@ui` component tree:
+ *
+ *  • `FrameworkProvider` supplies the real Next.js primitives (`next/link`,
+ *    `next/image`, `next/navigation` hooks) plus the Sanity-backed
+ *    `resolveImageUrl`, so no `@ui` component imports `next/*` directly.
+ *  • `SiteConfigProvider` supplies the app's validated `SiteConfig` so every
+ *    component reads brand/theme/taxonomy/segmentation/copy from config.
+ *  • `AnalyticsProvider` (a thin shell over `@core`'s consent state machine)
+ *    loads the configured analytics scripts only after consent.
+ */
+
+/** Adapt `next/link` to the engine's `FrameworkLinkProps`. */
+function LinkAdapter(props: FrameworkLinkProps) {
+  return <NextLink {...props} />;
+}
+
+/** Adapt `next/image` to the engine's `FrameworkImageProps`. */
+function ImageAdapter({ fill, width, height, ...rest }: FrameworkImageProps) {
+  if (fill) {
+    return <NextImage fill {...rest} />;
+  }
+  return <NextImage width={width} height={height} {...rest} />;
+}
+
+/** Adapt `next/navigation`'s router to the engine's minimal `FrameworkRouter`. */
+function useFrameworkRouter(): FrameworkRouter {
+  const router = useRouter();
+  return { push: (href: string) => router.push(href) };
+}
+
+/** Analytics provider keys, sourced from public env (absent → no-op gating). */
+const analyticsConfig = {
+  ga4MeasurementId: process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID,
+  posthogKey: process.env.NEXT_PUBLIC_POSTHOG_KEY,
+  metaPixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID,
+};
+
+export function AppProviders({ children }: { children: ReactNode }) {
+  return (
+    <FrameworkProvider
+      Link={LinkAdapter}
+      Image={ImageAdapter}
+      usePathname={usePathname}
+      useRouter={useFrameworkRouter}
+      resolveImageUrl={resolveImageUrl}
+    >
+      <SiteConfigProvider config={siteConfig}>
+        <AnalyticsProvider config={analyticsConfig}>{children}</AnalyticsProvider>
+      </SiteConfigProvider>
+    </FrameworkProvider>
+  );
+}

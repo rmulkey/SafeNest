@@ -1,0 +1,64 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { ComparisonTable, computeAwards } from "@ui";
+import { resolveSegmentParam, formatSegmentParamLabel } from "@core/seo";
+import siteConfig from "@/site.config";
+import { getReviewSummariesBySegmentWindow } from "@/lib/sanity/review-views";
+
+/**
+ * Combined "best [category] for [segment]" programmatic page (thin shell).
+ * Resolves a taxonomy category + a segmentation bucket, then renders the
+ * matching reviews. Unknown category or segment → not-found (Req 4.3).
+ */
+function findCategory(slug: string) {
+  return siteConfig.taxonomy.find((t) => t.slug === slug) ?? null;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string; segment: string }>;
+}): Promise<Metadata> {
+  const { category, segment } = await params;
+  const cat = findCategory(category);
+  const label = formatSegmentParamLabel(siteConfig, segment);
+  if (!cat) return { title: "Not found" };
+  return {
+    title: `Best ${cat.label} for ${label} | ${siteConfig.brand.name}`,
+    description: `Our top-scoring ${cat.label.toLowerCase()} picks for ${label}.`,
+  };
+}
+
+export default async function BestCategoryForSegmentPage({
+  params,
+}: {
+  params: Promise<{ category: string; segment: string }>;
+}) {
+  const { category, segment } = await params;
+  const cat = findCategory(category);
+  const bucket = resolveSegmentParam(siteConfig, segment);
+  if (!cat || !bucket || typeof bucket.min !== "number" || typeof bucket.max !== "number") {
+    notFound();
+  }
+
+  const inWindow = await getReviewSummariesBySegmentWindow(bucket.min, bucket.max);
+  const reviews = inWindow.filter((r) => r.category?.slug.current === cat.slug);
+  if (reviews.length === 0) {
+    notFound();
+  }
+
+  const label = formatSegmentParamLabel(siteConfig, segment);
+
+  return (
+    <main className="mx-auto max-w-4xl px-4 py-8">
+      <h1 className="text-3xl font-bold mb-2 text-foreground">
+        Best {cat.label} for {label}
+      </h1>
+      <p className="text-muted-foreground mb-8">
+        {reviews.length} {cat.label.toLowerCase()} suitable for {label}, sorted by
+        score.
+      </p>
+      <ComparisonTable reviews={reviews} awards={computeAwards(reviews)} />
+    </main>
+  );
+}

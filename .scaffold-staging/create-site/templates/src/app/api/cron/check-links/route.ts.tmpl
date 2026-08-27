@@ -1,0 +1,80 @@
+import { NextRequest } from "next/server";
+import { withSite, checkLinkHealth } from "@core";
+import siteConfig from "@/site.config";
+import {
+  notifyAdminUnhealthyLinks,
+  type UnhealthyLinkAlert,
+} from "@/lib/notifications/admin-notify";
+
+/**
+ * GET /api/cron/check-links
+ *
+ * Daily cron: checks every affiliate link's health for THIS site (scoped via
+ * `withSite(siteId)`), flags 4xx/5xx/timeouts, and notifies the admin of newly
+ * unhealthy links. Protected by `CRON_SECRET` (Vercel cron sends it as a Bearer
+ * token). The health check itself is `@core/affiliate`'s `checkLinkHealth`.
+ */
+export async function GET(request: NextRequest) {
+  const authHeader = request.headers.get("authorization");
+  const cronSecret = process.env.CRON_SECRET;
+  if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
+    return Response.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const db = withSite(siteConfig.siteId);
+  const links = await db.linkStatuses.findMany();
+
+  const results: {
+    id: string;
+    url: string;
+    isHealthy: boolean;
+    httpStatus: number | null;
+  }[] = [];
+  const newlyFlagged: UnhealthyLinkAlert[] = [];
+
+  for (const link of links) {
+    const { isHealthy, httpStatus } = await checkLinkHealth(link.destinationUrl);
+    const now = new Date();
+
+    if (isHealthy) {
+      await db.linkStatuses.update({
+        where: { id: link.id },
+        data: { lastChecked: now, isHealthy: true, httpStatus, flaggedAt: null },
+      });
+    } else {
+      const flaggedAt = link.flaggedAt ?? now;
+      await db.linkStatuses.update({
+        where: { id: link.id },
+        data: { lastChecked: now, isHealthy: false, httpStatus, flaggedAt },
+      });
+      newlyFlagged.push({
+        linkId: link.id,
+        destinationUrl: link.destinationUrl,
+        httpStatus,
+        flaggedAt,
+      });
+    }
+
+    results.push({ id: link.id, url: link.destinationUrl, isHealthy, httpStatus });
+  }
+
+  const healthy = results.filter((r) => r.isHealthy).length;
+  const unhealthy = results.length - healthy;
+
+  let notificationSent = false;
+  if (newlyFlagged.length > 0) {
+    notificationSent = await notifyAdminUnhealthyLinks(newlyFlagged);
+  }
+
+  console.log(
+    `[cron/check-links] checked=${results.length} healthy=${healthy} unhealthy=${unhealthy}`,
+  );
+
+  return Response.json({
+    checked: results.length,
+    healthy,
+    unhealthy,
+    notificationSent,
+    results,
+  });
+}

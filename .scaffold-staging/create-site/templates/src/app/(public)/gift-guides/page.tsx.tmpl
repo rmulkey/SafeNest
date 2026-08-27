@@ -1,0 +1,42 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import siteConfig from "@/site.config";
+
+export const metadata: Metadata = {
+  title: `Gift Guides | ${siteConfig.brand.name}`,
+  description: siteConfig.copy.giftGuideHubIntro,
+};
+
+/** Gift-guides hub (thin shell). Guides come from `SiteConfig.giftGuides`. */
+export default function GiftGuidesHubPage() {
+  const guides = siteConfig.giftGuides;
+  return (
+    <main className="mx-auto max-w-4xl px-4 py-12">
+      <h1 className="text-3xl font-bold tracking-tight text-foreground">Gift guides</h1>
+      <p className="mt-4 max-w-2xl text-muted-foreground">
+        {siteConfig.copy.giftGuideHubIntro}
+      </p>
+
+      {guides.length === 0 ? (
+        <p className="mt-8 text-muted-foreground">Gift guides coming soon.</p>
+      ) : (
+        <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {guides.map((g) => (
+            <li key={g.slug}>
+              <Link
+                href={`/gift-guides/${g.slug}`}
+                className="flex h-full flex-col rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary-200 hover:bg-muted"
+              >
+                <span className="text-3xl" aria-hidden="true">
+                  {g.emoji}
+                </span>
+                <h2 className="mt-3 text-lg font-semibold text-foreground">{g.title}</h2>
+                <p className="mt-2 text-sm text-muted-foreground">{g.description}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </main>
+  );
+}

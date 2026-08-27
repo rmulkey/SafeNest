@@ -1,0 +1,19 @@
+{
+  "name": "@affiliate-engine/create-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Scaffolder: generate a new apps/<name> site that builds against the engine with no engine edits.",
+  "type": "module",
+  "bin": {
+    "create-site": "./index.mjs"
+  },
+  "main": "./index.mjs",
+  "scripts": {
+    "create-site": "node ./index.mjs",
+    "lint": "eslint index.mjs lib",
+    "type-check": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  }
+}

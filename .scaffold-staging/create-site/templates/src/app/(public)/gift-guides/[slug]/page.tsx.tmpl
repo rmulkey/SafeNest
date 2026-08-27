@@ -1,0 +1,127 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { JsonLd } from "@ui";
+import {
+  getGiftGuideBySlug,
+  getGiftGuideProducts,
+  generateItemListJsonLd,
+  getBaseUrl,
+} from "@core/seo";
+import siteConfig from "@/site.config";
+import { createSanityReviewProvider } from "@/lib/sanity/review-provider";
+
+const baseUrl = getBaseUrl(siteConfig);
+
+/**
+ * Gift-guide detail (thin shell). The guide + its product selection come from
+ * `@core/seo` (config-driven, ranked by the primary axis); reviews are read via
+ * the app's Sanity `ProductReviewProvider`. Products link to their real review
+ * pages — no fabricated links/prices on the guide itself.
+ */
+export function generateStaticParams(): Array<{ slug: string }> {
+  return siteConfig.giftGuides.map((g) => ({ slug: g.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const guide = getGiftGuideBySlug(siteConfig, slug);
+  if (!guide) return { title: "Gift guide not found" };
+  return {
+    title: `${guide.title} | ${siteConfig.brand.name}`,
+    description: guide.description,
+  };
+}
+
+export default async function GiftGuideDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const guide = getGiftGuideBySlug(siteConfig, slug);
+  if (!guide) notFound();
+
+  let products: Awaited<ReturnType<typeof getGiftGuideProducts>> = [];
+  try {
+    products = await getGiftGuideProducts(siteConfig, createSanityReviewProvider(), guide);
+  } catch (error) {
+    console.error("[gift-guide] product fetch failed:", error);
+  }
+
+  const itemListJsonLd = generateItemListJsonLd({
+    name: guide.title,
+    description: guide.description,
+    items: products.map((p) => ({
+      url: `${baseUrl}/reviews/${p.slug.current}`,
+      name: p.productName,
+    })),
+  });
+
+  return (
+    <main className="mx-auto max-w-4xl px-4 py-10">
+      <JsonLd data={itemListJsonLd} />
+
+      <nav className="mb-6 text-sm text-muted-foreground" aria-label="Breadcrumb">
+        <Link href="/gift-guides" className="hover:text-foreground">
+          Gift guides
+        </Link>
+        <span className="mx-2" aria-hidden="true">/</span>
+        <span className="text-foreground">{guide.title}</span>
+      </nav>
+
+      <header className="mb-8">
+        <span className="text-4xl" aria-hidden="true">{guide.emoji}</span>
+        <h1 className="mt-3 text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+          {guide.title}
+        </h1>
+        <p className="mt-3 max-w-2xl text-muted-foreground">{guide.intro}</p>
+        <p className="mt-2 text-xs text-muted-foreground">{siteConfig.copy.disclosure.short}</p>
+      </header>
+
+      {products.length === 0 ? (
+        <p className="text-muted-foreground">
+          Picks coming soon — browse{" "}
+          <Link href="/reviews" className="text-primary-600 hover:underline">
+            all reviews
+          </Link>
+          .
+        </p>
+      ) : (
+        <ol className="space-y-4">
+          {products.map((p, index) => (
+            <li
+              key={p._id}
+              className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5"
+            >
+              <span
+                className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary-100 text-sm font-bold text-primary-700"
+                aria-hidden="true"
+              >
+                {index + 1}
+              </span>
+              <div className="min-w-0">
+                <Link
+                  href={`/reviews/${p.slug.current}`}
+                  className="font-semibold text-foreground hover:text-primary-600"
+                >
+                  {p.productName}
+                </Link>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {siteConfig.scoring[0]?.label ?? "Score"}: {p.primaryScore}/100
+                  {p.hasActiveRecall && (
+                    <span className="ml-2 text-red-600">· active recall</span>
+                  )}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      )}
+    </main>
+  );
+}

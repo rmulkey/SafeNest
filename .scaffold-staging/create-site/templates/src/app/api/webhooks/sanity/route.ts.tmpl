@@ -1,0 +1,133 @@
+import { createHmac, timingSafeEqual } from "crypto";
+import { Buffer } from "node:buffer";
+import { revalidatePath } from "next/cache";
+import { NextResponse } from "next/server";
+import { groq } from "next-sanity";
+import { pingSearchEngines } from "@core/seo";
+import siteConfig from "@/site.config";
+import { sanityClient } from "@/lib/sanity/client";
+import { sanityWriteClient } from "@/lib/sanity/write-client";
+import { collectFactorValues, buildScorePatch } from "@/lib/sanity/webhook-scoring";
+
+/**
+ * POST /api/webhooks/sanity
+ *
+ * On-demand ISR revalidation + score recomputation for Sanity content changes.
+ * The payload signature is verified with `SANITY_WEBHOOK_SECRET` (HMAC SHA-256,
+ * timing-safe). For review create/update, scores are recomputed GENERICALLY via
+ * `@core`'s `computeAllAxes` over the configured scoring axes — the pure
+ * recompute lives in `@/lib/sanity/webhook-scoring` — then patched back. Search
+ * engines are pinged for sitemap freshness.
+ */
+
+interface SanityWebhookPayload {
+  _type: string;
+  _id: string;
+  _rev?: string;
+  operation: "create" | "update" | "delete";
+}
+
+const reviewType = siteConfig.product.reviewTypeName;
+
+/** Path prefixes for revalidation, keyed by document type. */
+const typeToPathMap: Record<string, string> = {
+  [reviewType]: "/reviews",
+  blogPost: "/blog",
+  category: "/categories",
+};
+
+function verifyWebhookSignature(
+  body: string,
+  signature: string | null,
+  secret: string,
+): boolean {
+  if (!signature) return false;
+  const expected = createHmac("sha256", secret).update(body).digest("base64");
+  try {
+    const sigBuffer = Buffer.from(signature, "base64");
+    const expectedBuffer = Buffer.from(expected, "base64");
+    if (sigBuffer.length !== expectedBuffer.length) return false;
+    return timingSafeEqual(sigBuffer, expectedBuffer);
+  } catch {
+    return false;
+  }
+}
+
+/** Recompute the configured axis scores for a review and patch them back. */
+async function recalculateScores(documentId: string): Promise<void> {
+  const doc = await sanityClient.fetch<Record<string, unknown> | null>(
+    groq`*[_id == $id][0]`,
+    { id: documentId },
+  );
+  if (!doc) {
+    console.warn(`[webhook] review ${documentId} not found for score recalculation`);
+    return;
+  }
+
+  try {
+    // Generic, config-driven recompute. The helpers throw on a missing/out-of-range
+    // factor value, in which case we skip the patch rather than write a partial score.
+    const factorValues = collectFactorValues(siteConfig, doc);
+    const patch = buildScorePatch(siteConfig, factorValues);
+    await sanityWriteClient.patch(documentId).set(patch).commit();
+    console.log(`[webhook] recalculated scores for ${documentId}: ${JSON.stringify(patch)}`);
+  } catch (error) {
+    console.error(`[webhook] failed to recalculate scores for ${documentId}:`, error);
+  }
+}
+
+function revalidateForContentChange(type: string, slug?: string): void {
+  const pathPrefix = typeToPathMap[type];
+  if (pathPrefix && slug) revalidatePath(`${pathPrefix}/${slug}`);
+  revalidatePath("/");
+  if (pathPrefix) revalidatePath(pathPrefix);
+  revalidatePath("/sitemap.xml");
+}
+
+export async function POST(request: Request): Promise<NextResponse> {
+  try {
+    const rawBody = await request.text();
+
+    const webhookSecret = process.env.SANITY_WEBHOOK_SECRET;
+    if (webhookSecret) {
+      const signature = request.headers.get("sanity-webhook-signature");
+      if (!verifyWebhookSignature(rawBody, signature, webhookSecret)) {
+        console.warn("[webhook] invalid webhook signature");
+        return NextResponse.json({ message: "Invalid signature" }, { status: 401 });
+      }
+    }
+
+    const payload = JSON.parse(rawBody) as SanityWebhookPayload;
+    const { _type, _id, operation } = payload;
+    if (!_type || !_id || !operation) {
+      return NextResponse.json({ message: "Invalid webhook payload" }, { status: 400 });
+    }
+
+    if (_type === reviewType && (operation === "create" || operation === "update")) {
+      await recalculateScores(_id);
+    }
+
+    let slug: string | undefined;
+    if (operation !== "delete") {
+      try {
+        const doc = await sanityClient.fetch<{ slug?: { current: string } } | null>(
+          groq`*[_id == $id][0] { slug }`,
+          { id: _id },
+        );
+        slug = doc?.slug?.current;
+      } catch {
+        console.warn(`[webhook] could not fetch slug for ${_id}`);
+      }
+    }
+
+    revalidateForContentChange(_type, slug);
+    pingSearchEngines().catch((error) => {
+      console.warn("[webhook] search engine ping failed:", error);
+    });
+
+    return NextResponse.json({ message: "OK", revalidated: true });
+  } catch (error) {
+    console.error("[webhook] processing error:", error);
+    return NextResponse.json({ message: "Webhook processing failed" }, { status: 500 });
+  }
+}

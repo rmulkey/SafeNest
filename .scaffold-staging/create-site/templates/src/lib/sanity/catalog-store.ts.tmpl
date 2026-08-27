@@ -1,0 +1,102 @@
+import "server-only";
+import { groq } from "next-sanity";
+import type {
+  CatalogStore,
+  QueuedProduct,
+  PreparedReview,
+  ImageUpload,
+  QueueStatusUpdate,
+} from "@core";
+import siteConfig from "@/site.config";
+import { sanityWriteClient } from "./write-client";
+import {
+  queuedBatchQuery,
+  toQueuedProduct,
+  toScoreFields,
+  type RawQueuedDoc,
+} from "./catalog-queue";
+
+/**
+ * Sanity-backed `CatalogStore` (the publisher's CMS seam). The engine
+ * (`publishQueuedBatch`) owns the data-integrity gate and scoring; this store
+ * only does the Sanity I/O: read the queue, dedupe by slug, upload the verified
+ * image bytes, create the live review document, and patch the queue doc's
+ * status. The review document type is read from `site.config.ts`.
+ */
+
+const REVIEW_TYPE = siteConfig.product.reviewTypeName;
+
+export function createSanityCatalogStore(): CatalogStore {
+  const client = sanityWriteClient;
+
+  return {
+    async fetchQueuedBatch(limit: number): Promise<QueuedProduct[]> {
+      const docs = await client.fetch<RawQueuedDoc[]>(queuedBatchQuery, { limit });
+      return (docs ?? []).map(toQueuedProduct);
+    },
+
+    async findReviewIdBySlug(slug: string): Promise<string | null> {
+      const id = await client.fetch<string | null>(
+        groq`*[_type == "${REVIEW_TYPE}" && slug.current == $slug][0]._id`,
+        { slug },
+      );
+      return id ?? null;
+    },
+
+    async uploadImage(input: ImageUpload): Promise<{ assetId: string }> {
+      const asset = await client.assets.upload("image", input.buffer, {
+        filename: input.filename,
+        contentType: input.contentType,
+      });
+      return { assetId: asset._id };
+    },
+
+    async createReview(review: PreparedReview): Promise<{ reviewId: string }> {
+      await client.createOrReplace({
+        _id: review.reviewId,
+        _type: REVIEW_TYPE,
+        productName: review.productName,
+        brand: review.brand,
+        slug: { _type: "slug", current: review.slug },
+        category: { _type: "reference", _ref: review.categoryRef },
+        ...review.factorValues,
+        ...toScoreFields(review.scores),
+        ...review.segmentation,
+        ...review.fields,
+        affiliateLinks: [
+          {
+            _type: "affiliateLink",
+            _key: "amazon",
+            partnerId: "amazon",
+            // Store the URL WITHOUT the tag; the BuyButton appends it at render.
+            destinationUrl: review.affiliateUrl,
+            url: review.affiliateUrl,
+            affiliateTag: review.affiliateTag,
+            tag: review.affiliateTag,
+            label: "Buy on Amazon",
+          },
+        ],
+        mainImage: {
+          _type: "image",
+          alt: review.image.alt,
+          asset: { _type: "reference", _ref: review.image.assetId },
+        },
+        hasActiveRecall: false,
+        needsReview: false,
+        publishedAt: review.publishedAt,
+      });
+      return { reviewId: review.reviewId };
+    },
+
+    async setQueueStatus(queueId: string, update: QueueStatusUpdate): Promise<void> {
+      await client
+        .patch(queueId)
+        .set({
+          status: update.status,
+          publishedReviewId: update.publishedReviewId ?? "",
+          lastError: update.lastError ?? "",
+        })
+        .commit();
+    },
+  };
+}

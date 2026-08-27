@@ -1,0 +1,23 @@
+import {
+  createSegmentOgImage,
+  formatSegmentParamLabel,
+  OG_IMAGE_SIZE,
+  OG_IMAGE_CONTENT_TYPE,
+} from "@core/seo";
+import siteConfig from "@/site.config";
+import { renderOgImage } from "@/lib/og/render-og";
+
+/** Per-segment OG card for the programmatic "best [nouns] for [segment]" page. */
+export const size = OG_IMAGE_SIZE;
+export const contentType = OG_IMAGE_CONTENT_TYPE;
+export const alt = `Best ${siteConfig.product.nounPlural} by ${siteConfig.segmentation.label.toLowerCase()}`;
+
+export default async function Image({
+  params,
+}: {
+  params: Promise<{ segment: string }>;
+}) {
+  const { segment } = await params;
+  const label = formatSegmentParamLabel(siteConfig, segment);
+  return renderOgImage(createSegmentOgImage(siteConfig, label));
+}

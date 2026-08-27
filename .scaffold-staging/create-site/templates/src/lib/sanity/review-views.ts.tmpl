@@ -1,0 +1,138 @@
+import { groq } from "next-sanity";
+import type { ReviewSummary } from "@ui";
+import siteConfig from "@/site.config";
+import { sanityClient } from "./client";
+
+/**
+ * Maps the app's review documents into the `@ui` `ReviewSummary` view-model the
+ * listing/comparison components render. Centralizes the projection so every page
+ * renders reviews consistently.
+ *
+ * Generic + config-driven: `scores` is built from the configured scoring axes
+ * (reading each `${axisKey}Score` field) and `segment` is resolved from the
+ * configured segmentation field — no hardcoded axis names or month windows.
+ */
+
+const REVIEW_TYPE = siteConfig.product.reviewTypeName;
+const AXES = siteConfig.scoring;
+const SEGMENTATION = siteConfig.segmentation;
+const PRIMARY_SCORE = `${AXES[0]?.key ?? "score"}Score`;
+const SEGMENT_KEY = SEGMENTATION.key;
+
+interface RawReviewDoc {
+  _id: string;
+  productName: string;
+  slug: { current: string };
+  category?: { _id: string; title: string; slug: { current: string } } | null;
+  hasActiveRecall?: boolean;
+  mainImage?: { asset?: { _ref?: string }; alt?: string };
+  affiliateLinks?: Array<{
+    partnerId?: string;
+    url?: string;
+    destinationUrl?: string;
+    tag?: string;
+    affiliateTag?: string;
+  }>;
+  /** Factor / computed-score / segmentation fields (config-driven shape). */
+  [field: string]: unknown;
+}
+
+const reviewViewFields = groq`..., category->{_id, title, slug}`;
+
+const allReviewsViewQuery = groq`
+  *[_type == "${REVIEW_TYPE}"] | order(${PRIMARY_SCORE} desc) { ${reviewViewFields} }
+`;
+
+const reviewsBySegmentWindowViewQuery = groq`
+  *[_type == "${REVIEW_TYPE}" && ${SEGMENT_KEY}.min <= $max && ${SEGMENT_KEY}.max >= $min]
+    | order(${PRIMARY_SCORE} desc) { ${reviewViewFields} }
+`;
+
+const reviewsByCategorySlugViewQuery = groq`
+  *[_type == "${REVIEW_TYPE}" && category->slug.current == $slug]
+    | order(${PRIMARY_SCORE} desc) { ${reviewViewFields} }
+`;
+
+/** Build the generic per-axis scores map from the document's score fields. */
+function buildScores(doc: RawReviewDoc): Record<string, number> {
+  const scores: Record<string, number> = {};
+  for (const axis of AXES) {
+    const value = doc[`${axis.key}Score`];
+    if (typeof value === "number") scores[axis.key] = value;
+  }
+  return scores;
+}
+
+/** Resolve the document's segmentation value to a `{ slug?, label }` view. */
+function buildSegment(doc: RawReviewDoc): { slug?: string; label: string } | null {
+  const raw = doc[SEGMENT_KEY];
+
+  if (SEGMENTATION.kind === "numericRange") {
+    if (raw && typeof raw === "object") {
+      const { min, max } = raw as { min?: number; max?: number };
+      if (typeof min === "number" && typeof max === "number") {
+        const bucket = SEGMENTATION.buckets.find(
+          (b) =>
+            typeof b.min === "number" &&
+            typeof b.max === "number" &&
+            b.min <= max &&
+            b.max >= min,
+        );
+        return bucket
+          ? { slug: bucket.slug, label: bucket.label }
+          : { label: `${min}–${max}` };
+      }
+    }
+    return null;
+  }
+
+  if (typeof raw === "string") {
+    const bucket = SEGMENTATION.buckets.find((b) => (b.value ?? b.slug) === raw);
+    return bucket ? { slug: bucket.slug, label: bucket.label } : { label: raw };
+  }
+  return null;
+}
+
+function toReviewSummary(d: RawReviewDoc): ReviewSummary {
+  return {
+    _id: d._id,
+    productName: d.productName,
+    slug: d.slug,
+    scores: buildScores(d),
+    segment: buildSegment(d),
+    category: d.category ?? null,
+    materials: [],
+    hasActiveRecall: Boolean(d.hasActiveRecall),
+    affiliateLinks: (d.affiliateLinks ?? []).map((l) => ({
+      partnerId: l.partnerId ?? "amazon",
+      url: l.url ?? l.destinationUrl ?? "",
+      tag: l.tag ?? l.affiliateTag ?? "",
+    })),
+    mainImage: d.mainImage,
+  };
+}
+
+export async function getAllReviewSummaries(): Promise<ReviewSummary[]> {
+  const docs = await sanityClient.fetch<RawReviewDoc[]>(allReviewsViewQuery);
+  return (docs ?? []).map(toReviewSummary);
+}
+
+export async function getReviewSummariesBySegmentWindow(
+  min: number,
+  max: number,
+): Promise<ReviewSummary[]> {
+  const docs = await sanityClient.fetch<RawReviewDoc[]>(
+    reviewsBySegmentWindowViewQuery,
+    { min, max },
+  );
+  return (docs ?? []).map(toReviewSummary);
+}
+
+export async function getReviewSummariesByCategorySlug(
+  slug: string,
+): Promise<ReviewSummary[]> {
+  const docs = await sanityClient.fetch<RawReviewDoc[]>(reviewsByCategorySlugViewQuery, {
+    slug,
+  });
+  return (docs ?? []).map(toReviewSummary);
+}
