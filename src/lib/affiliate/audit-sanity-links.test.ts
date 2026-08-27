@@ -182,10 +182,55 @@ describe("auditReviewLinks", () => {
       delayMs: 0,
       autoFix: true,
       applyFix,
+      // This test is about the no-rewrite guarantee, not the retry schedule.
+      // Left at the default it sits through the real backoff and times out.
+      probeAttempts: 1,
     });
     expect(applyFix).not.toHaveBeenCalled();
     expect(summary.inconclusive).toBe(1);
     expect(summary.dead).toBe(0);
+  });
+
+  it("retries while inconclusive and keeps a verdict that arrives late", async () => {
+    // Amazon throttles under sustained crawling, and throttling worsens with
+    // volume, so a second full run does not help: 22 inconclusive became 37 and
+    // only 4 of 30 dead links were fixed. Backoff has to converge within one run.
+    let call = 0;
+    const flaky = (async () => {
+      call += 1;
+      if (call < 3) return { status: 503, text: async () => "" } as unknown as Response;
+      return {
+        status: 200,
+        text: async () => "<div>Currently unavailable.</div>",
+      } as unknown as Response;
+    }) as unknown as typeof fetch;
+
+    const summary = await auditReviewLinks([review()], {
+      fetchImpl: flaky,
+      delayMs: 0,
+      probeAttempts: 3,
+      probeBackoffMs: 1,
+    });
+    expect(call).toBe(3);
+    expect(summary.dead).toBe(1);
+    expect(summary.inconclusive).toBe(0);
+  });
+
+  it("gives up after the configured attempts rather than looping", async () => {
+    let call = 0;
+    const alwaysBlocked = (async () => {
+      call += 1;
+      return { status: 503, text: async () => "" } as unknown as Response;
+    }) as unknown as typeof fetch;
+
+    const summary = await auditReviewLinks([review()], {
+      fetchImpl: alwaysBlocked,
+      delayMs: 0,
+      probeAttempts: 3,
+      probeBackoffMs: 1,
+    });
+    expect(call).toBe(3);
+    expect(summary.inconclusive).toBe(1);
   });
 
   it("leaves healthy links untouched", async () => {

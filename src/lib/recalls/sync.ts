@@ -13,7 +13,7 @@
  *    `recallMatchCandidate` documents for human adjudication.
  *  - Nothing about a recall is inferred; every stored field comes from CPSC.
  */
-import type { SanityClient } from "@sanity/client";
+import type { SanityClient, Transaction } from "@sanity/client";
 import { fetchCpscRecalls, toIsoDate, CPSC_ATTRIBUTION } from "./cpsc-client";
 import {
   normalizeBatch,
@@ -154,12 +154,12 @@ export async function syncRecalls(
     const syncedAt = now.toISOString();
 
     // Idempotent upsert of recall documents.
-    for (const r of relevant) {
+    await commitChunked(client, relevant, (tx, r) => {
       const doc = buildRecallDoc(r, syncedAt);
       const confirmedForThis = confirmed.filter(
         (m) => m.recallNumber === r.recallNumber
       );
-      await client.createOrReplace({
+      tx.createOrReplace({
         ...doc,
         ...(confirmedForThis.length
           ? {
@@ -171,8 +171,9 @@ export async function syncRecalls(
             }
           : {}),
       });
-      base.persisted++;
-    }
+    });
+    // A chunk is atomic, so a resolved commit means every document in it landed.
+    base.persisted = relevant.length;
 
     // Record that every product in the catalog was compared against this recall
     // set, and when. This is what lets a review page state "No matching CPSC
@@ -181,27 +182,26 @@ export async function syncRecalls(
     // run cannot imply a complete check.
     const confirmedIds = new Set(confirmed.map((m) => m.productId));
     if (fetchRes.failedWindows.length === 0) {
-      for (const p of products) {
-        await client
-          .patch(p._id)
-          .set({
+      await commitChunked(client, products, (tx, p) => {
+        tx.patch(p._id, {
+          set: {
             recallCheckedAt: syncedAt,
             ...(confirmedIds.has(p._id) ? { hasActiveRecall: true } : {}),
-          })
-          .commit();
-      }
+          },
+        });
+      });
     } else {
       // Still flag confirmed hits from the partial data, but do not claim a
       // complete check for anything.
-      for (const id of confirmedIds) {
-        await client.patch(id).set({ hasActiveRecall: true }).commit();
-      }
+      await commitChunked(client, [...confirmedIds], (tx, id) => {
+        tx.patch(id, { set: { hasActiveRecall: true } });
+      });
     }
 
     // Queue uncertain matches for human adjudication (idempotent by key).
-    for (const m of needsReview) {
+    await commitChunked(client, needsReview, (tx, m) => {
       const recall = relevant.find((r) => r.recallNumber === m.recallNumber);
-      await client.createIfNotExists({
+      tx.createIfNotExists({
         _id: `recall-candidate-${m.recallNumber}-${m.productId}`.replace(
           /[^a-zA-Z0-9-]/g,
           "-"
@@ -216,7 +216,7 @@ export async function syncRecalls(
         matchScore: m.score,
         detectedAt: syncedAt,
       });
-    }
+    });
 
     const allWindowsOk = fetchRes.failedWindows.length === 0;
     base.ok = allWindowsOk;
@@ -242,6 +242,63 @@ export async function syncRecalls(
       }).catch(() => {});
     }
     return base;
+  }
+}
+
+/**
+ * Mutations per transaction.
+ *
+ * Chosen to keep each request small enough to be quick and retryable while still
+ * collapsing hundreds of round trips into a handful.
+ */
+const TRANSACTION_CHUNK = 50;
+
+/**
+ * Commit many mutations as chunked transactions instead of one request each.
+ *
+ * WHY THIS EXISTS
+ * This function used to issue one HTTP round trip per mutation: one
+ * `createOrReplace` per recall, one `patch().commit()` per catalogue product, one
+ * `createIfNotExists` per match candidate. On 2026-08-26 that was 204 + 138 + 91
+ * = 433 sequential requests against a route declaring `maxDuration = 300`.
+ *
+ * It did not fit, and the failure was silent and misleading. Measured on
+ * production: `recallCheckedAt` was written to all 138 reviews at
+ * 2026-08-26T05:42:46Z, with `_updatedAt` spread across 05:45:20-05:47:39 — the
+ * patch loop alone finished 293 seconds after `syncedAt`, with 91 candidate
+ * writes still to come. `recordSyncStatus` never ran, so
+ * `recallSyncStatus.lastAttemptAt` stayed at 2026-08-17T16:48Z. Since
+ * `recordSyncStatus` is called on both the success path and the catch path, the
+ * only explanation is the process being killed rather than throwing.
+ *
+ * The visible result was `/recalls` telling readers "The last successful
+ * synchronisation was 2026-08-17 16:48 UTC" when the check had run that morning,
+ * and `audit-catalog-health` reporting the cron as not running at all.
+ *
+ * ATOMICITY CHANGE, DELIBERATE
+ * A transaction is all-or-nothing, so a chunk either lands completely or not at
+ * all. That is a change from the previous behaviour, where a mid-loop failure
+ * left some products stamped and others not. Atomic is the safer direction here:
+ * `recallCheckedAt` is what licenses a review page to say "no matching CPSC
+ * recall was located as of <date>", and a half-stamped catalogue means some pages
+ * make that claim on the back of a run that never finished.
+ *
+ * `visibility: "async"` is used because nothing downstream reads these documents
+ * back within the same request, and waiting for query visibility is most of the
+ * latency.
+ */
+async function commitChunked<T>(
+  client: SanityClient,
+  items: readonly T[],
+  add: (tx: Transaction, item: T) => void
+): Promise<void> {
+  for (let i = 0; i < items.length; i += TRANSACTION_CHUNK) {
+    const chunk = items.slice(i, i + TRANSACTION_CHUNK);
+    const tx = client.transaction();
+    for (const item of chunk) {
+      add(tx, item);
+    }
+    await tx.commit({ visibility: "async" });
   }
 }
 

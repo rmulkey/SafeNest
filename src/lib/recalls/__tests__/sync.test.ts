@@ -47,6 +47,33 @@ function makeClient(
         },
       }),
     })),
+    /**
+     * Transactions record into the same arrays as the single-document methods.
+     *
+     * syncRecalls batches its writes (see commitChunked) because 433 sequential
+     * round trips exceeded the route's 300s limit. Routing the transaction
+     * methods to `created`, `createdIfNotExists` and `patched` keeps every
+     * existing assertion in this file meaningful without restating it in terms
+     * of transactions.
+     */
+    transaction: vi.fn(() => {
+      const tx = {
+        createOrReplace: (doc: Record<string, unknown>) => {
+          created.push(doc);
+          return tx;
+        },
+        createIfNotExists: (doc: Record<string, unknown>) => {
+          createdIfNotExists.push(doc);
+          return tx;
+        },
+        patch: (id: string, ops: { set?: unknown }) => {
+          patched.push({ id, data: ops.set });
+          return tx;
+        },
+        commit: async () => undefined,
+      };
+      return tx;
+    }),
   };
 
   return { client: client as unknown as SanityClient, created, createdIfNotExists, patched };
@@ -302,5 +329,96 @@ describe("syncRecalls — recall-check provenance", () => {
     );
     // Not flagged as recalled just because it was checked.
     expect((patched[0].data as { hasActiveRecall?: boolean }).hasActiveRecall).toBeUndefined();
+  });
+});
+
+/**
+ * Regression guard for the timeout that made this cron look dead.
+ *
+ * Before batching, syncRecalls made one HTTP round trip per mutation: one per
+ * recall, one per catalogue product, one per match candidate. On 2026-08-26 that
+ * was 433 sequential requests against a route declaring maxDuration = 300.
+ *
+ * It did not fit, and it failed silently. recallCheckedAt reached all 138 reviews
+ * at 05:42:46Z with _updatedAt spread over 05:45:20-05:47:39, so the patch loop
+ * alone finished 293s after syncedAt. recordSyncStatus never ran, leaving
+ * lastAttemptAt at 2026-08-17T16:48Z. Because recordSyncStatus is called on both
+ * the success and catch paths, the process must have been killed rather than
+ * throwing. /recalls then told readers the last successful sync was nine days
+ * earlier than it actually was.
+ *
+ * These tests pin the batching so a future edit cannot quietly restore
+ * per-document commits.
+ */
+describe("syncRecalls — write batching", () => {
+  /** A catalogue big enough to span several chunks (TRANSACTION_CHUNK is 50). */
+  const bigCatalog = Array.from({ length: 138 }, (_, i) => ({
+    _id: `review-${i}`,
+    productName: `Toy ${i}`,
+    brand: "TestBrand",
+  }));
+
+  it("stamps the whole catalogue without one request per product", async () => {
+    const { client, patched } = makeClient(bigCatalog);
+    const outcome = await syncRecalls(client, {
+      now: NOW,
+      fetchImpl: okFetch([TEETHING_TOY_RECALL]),
+    });
+
+    expect(outcome.ok).toBe(true);
+    // Every product still gets recallCheckedAt — the integrity guarantee that
+    // lets a review page say "no matching recall was located as of <date>".
+    expect(patched).toHaveLength(bigCatalog.length);
+    for (const p of patched) {
+      expect((p.data as { recallCheckedAt?: string }).recallCheckedAt).toBe(
+        NOW.toISOString()
+      );
+    }
+
+    // The single-document patch path must not be used at all.
+    expect(client.patch).not.toHaveBeenCalled();
+
+    // 138 products in chunks of 50 is 3 transactions, plus one for the recall
+    // upsert. Far below the 138 round trips this replaced.
+    const txCalls = (client.transaction as unknown as { mock: { calls: unknown[] } })
+      .mock.calls.length;
+    expect(txCalls).toBeLessThanOrEqual(8);
+    expect(txCalls).toBeGreaterThan(0);
+  });
+
+  it("still records sync status after batching the catalogue", async () => {
+    // The whole point: the status write has to be reachable.
+    const { client, created } = makeClient(bigCatalog);
+    await syncRecalls(client, {
+      now: NOW,
+      fetchImpl: okFetch([TEETHING_TOY_RECALL]),
+    });
+    const status = created.find((d) => d._id === SYNC_STATUS_DOC_ID)!;
+    expect(status).toBeDefined();
+    expect(status.lastAttemptOk).toBe(true);
+    expect(status.lastSuccessfulSyncAt).toBe(NOW.toISOString());
+  });
+
+  it("does not use single-document createOrReplace for recall documents", async () => {
+    const { client, created } = makeClient(bigCatalog);
+    await syncRecalls(client, {
+      now: NOW,
+      fetchImpl: okFetch([TEETHING_TOY_RECALL]),
+    });
+    // recallAlert docs go through a transaction; only the status doc is written
+    // on its own, because it is a single document and needs read-then-write.
+    const direct = (client.createOrReplace as unknown as { mock: { calls: Array<[Record<string, unknown>]> } })
+      .mock.calls.map((c) => c[0]);
+    expect(direct.every((d) => d._id === SYNC_STATUS_DOC_ID)).toBe(true);
+    expect(created.some((d) => d._type === "recallAlert")).toBe(true);
+  });
+
+  it("reports persisted as the number of recalls actually committed", async () => {
+    const { client } = makeClient(bigCatalog);
+    const outcome = await syncRecalls(client, {
+      now: NOW,
+      fetchImpl: okFetch([TEETHING_TOY_RECALL]),
+    });
+    expect(outcome.persisted).toBe(outcome.usable);
   });
 });

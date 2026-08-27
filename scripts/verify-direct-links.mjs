@@ -12,9 +12,59 @@
  */
 import fs from "node:fs";
 
-const direct = JSON.parse(
-  fs.readFileSync(new URL("./direct-links.json", import.meta.url), "utf8")
+/*
+ * Reads the direct links from Sanity, which is what customers actually click.
+ *
+ * This used to read a checked-in snapshot, scripts/direct-links.json, which made
+ * the check meaningless as soon as the catalogue changed. After 30 dead
+ * /dp/{ASIN} links were rewritten to search URLs on 2026-08-26, Sanity held 14
+ * direct links and this script still reported the original 44 — including the 30
+ * it had just helped fix. A verifier pointed at a frozen copy of the thing it is
+ * verifying cannot fail usefully.
+ */
+const PROJECT_ID = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+const DATASET = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
+const TOKEN = process.env.SANITY_API_TOKEN || process.env.SANITY_API_WRITE_TOKEN;
+
+if (!PROJECT_ID) {
+  console.error(
+    "NEXT_PUBLIC_SANITY_PROJECT_ID is not set.\n" +
+      "Run: set -a; . ./.env.local; set +a"
+  );
+  process.exit(2);
+}
+
+async function groqFetch(query) {
+  const url =
+    `https://${PROJECT_ID}.api.sanity.io/v2024-01-01/data/query/${DATASET}` +
+    `?query=${encodeURIComponent(query)}`;
+  const res = await fetch(url, {
+    headers: TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {},
+  });
+  if (!res.ok) {
+    throw new Error(`Sanity query failed: HTTP ${res.status}`);
+  }
+  return (await res.json()).result;
+}
+
+const rows = await groqFetch(
+  `*[_type=="toyReview" && count(affiliateLinks[url match "*/dp/*"])>0]{
+     productName, "slug": slug.current,
+     "urls": affiliateLinks[url match "*/dp/*"].url
+   } | order(slug asc)`
 );
+
+/** One entry per direct link, shaped as the rest of this script expects. */
+const direct = rows.flatMap((r) =>
+  (r.urls ?? [])
+    .map((u) => {
+      const m = String(u).match(/\/(?:dp|gp\/product)\/([A-Z0-9]{10})/i);
+      return m ? { name: r.productName, slug: r.slug, detail: m[1] } : null;
+    })
+    .filter(Boolean)
+);
+
+console.log(`${direct.length} direct /dp/ link(s) in Sanity to verify\n`);
 
 const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36";

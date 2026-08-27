@@ -211,6 +211,13 @@ export interface AuditOptions {
   fetchImpl?: typeof fetch;
   /** Patch callback, invoked only when autoFix is true. */
   applyFix?: (reviewId: string, links: unknown[]) => Promise<void>;
+  /**
+   * How many times to probe a URL while the answer stays inconclusive.
+   * Set to 1 in tests to keep them fast and deterministic.
+   */
+  probeAttempts?: number;
+  /** Base backoff between inconclusive attempts; doubles each time. */
+  probeBackoffMs?: number;
 }
 
 export interface AuditSummary {
@@ -225,6 +232,39 @@ export interface AuditSummary {
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
+/**
+ * Probe a URL, retrying with backoff while the answer is inconclusive.
+ *
+ * WHY
+ * "Inconclusive" almost always means Amazon rate-limited or bot-walled us, which
+ * says nothing about the product. Without a retry the link is skipped and the run
+ * makes no progress on it, and because throttling gets worse with request volume,
+ * simply running the audit again does not help: a full pass over 138 reviews went
+ * from 22 inconclusive to 37 on the second attempt, fixing only 4 of 30 known
+ * dead links.
+ *
+ * Backoff turns most of those into a real verdict within the same run, which is
+ * what lets the weekly cron actually converge instead of stalling on the same
+ * links every week.
+ */
+async function probeWithBackoff(
+  url: string,
+  fetchImpl: typeof fetch,
+  attempts: number,
+  backoffMs: number
+): Promise<ProbeResult> {
+  let last: ProbeResult = { verdict: "inconclusive", httpStatus: null };
+  for (let attempt = 0; attempt < Math.max(1, attempts); attempt += 1) {
+    last = await probeUrl(url, fetchImpl);
+    if (last.verdict !== "inconclusive") return last;
+    if (attempt < attempts - 1) {
+      // Doubling each time: a throttle that just tripped needs real time to clear.
+      await sleep(backoffMs * 2 ** attempt);
+    }
+  }
+  return last;
+}
+
 export async function auditReviewLinks(
   reviews: ReviewWithLinks[],
   options: AuditOptions = {}
@@ -234,6 +274,8 @@ export async function auditReviewLinks(
     delayMs = 600,
     fetchImpl = fetch,
     applyFix,
+    probeAttempts = 3,
+    probeBackoffMs = 2_000,
   } = options;
 
   const results: AuditedLink[] = [];
@@ -263,7 +305,12 @@ export async function auditReviewLinks(
         continue;
       }
 
-      const probe = await probeUrl(url, fetchImpl);
+      const probe = await probeWithBackoff(
+        url,
+        fetchImpl,
+        probeAttempts,
+        probeBackoffMs
+      );
       const entry: AuditedLink = {
         reviewId: review._id,
         productName: review.productName,
