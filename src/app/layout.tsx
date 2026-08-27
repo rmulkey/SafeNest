@@ -10,6 +10,7 @@ import { SITE_URL } from "@/lib/seo/site-config";
 import { buildVerification } from "@/lib/seo/verification";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { AmazonGlyphSprite } from "@/components/affiliate/BuyButton";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -59,6 +60,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {/* Defines the Amazon glyph once so every BuyButton can <use> it instead
+            of inlining 1,220 bytes of path data per button. Must precede the
+            content that references it. See AmazonGlyphSprite for the measurements. */}
+        <AmazonGlyphSprite />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-primary-600 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-offset-2"
