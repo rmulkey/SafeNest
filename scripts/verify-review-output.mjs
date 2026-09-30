@@ -21,18 +21,42 @@
  *   node scripts/verify-review-output.mjs http://localhost:3100 # local build
  */
 
-const BASE = (process.argv[2] || "https://safenesttoys.com").replace(/\/$/, "");
+const argv = process.argv.slice(2);
+const slugArgIdx = argv.indexOf("--slugs");
 
-/** Representative reviews: the two named in the brief plus a spread of others. */
-const SLUGS = [
-  "green-toys-stacking-cups",
-  "lovevery-play-kits-0-12",
-  "kiwico-panda-crate",
-  "oball-classic-ball",
-  "hape-rainbow-bead-abacus",
-  "fisher-price-giant-rock-a-stack",
-  "step2-naturally-playful-sandbox",
-];
+// The base URL is the first bare argument that is neither a flag nor a flag's
+// value, so --slugs can be passed with or without a URL in either order.
+const baseArg = argv.find(
+  (a, i) => !a.startsWith("--") && i !== slugArgIdx + 1
+);
+const BASE = (baseArg || "https://safenesttoys.com").replace(/\/$/, "");
+
+/**
+ * Representative reviews: the two named in the brief plus a spread of others.
+ *
+ * The last two carry recorded certification provenance, which no other review
+ * does. They render "<cert> (reported on a retailer listing)" instead of
+ * "Manufacturer reports compliance with <cert>", so they are the only pages that
+ * exercise that branch — a fixed list of pre-provenance reviews would have
+ * reported everything green while that wording went untested.
+ *
+ * Override with --slugs a,b,c to check specific pages, e.g. a freshly published
+ * batch.
+ */
+const SLUGS =
+  slugArgIdx !== -1 && argv[slugArgIdx + 1]
+    ? argv[slugArgIdx + 1].split(",").map((s) => s.trim()).filter(Boolean)
+    : [
+        "green-toys-stacking-cups",
+        "lovevery-play-kits-0-12",
+        "kiwico-panda-crate",
+        "oball-classic-ball",
+        "hape-rainbow-bead-abacus",
+        "fisher-price-giant-rock-a-stack",
+        "step2-naturally-playful-sandbox",
+        "lamaze-mortimer-the-moose",
+        "tiny-love-magical-tales-black-and-white-gymini",
+      ];
 
 /** Must appear in this relative order in the served HTML. */
 const REQUIRED_ORDER = [

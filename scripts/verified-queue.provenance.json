@@ -1,0 +1,219 @@
+[
+  {
+    "productName": "Manhattan Toy Wimmer Discovery Mirror",
+    "targetUrl": "https://www.target.com/p/-/A-1006304317",
+    "tcin": "1006304317",
+    "listingTitle": "Manhattan Toy Wimmer Discovery Mirror and Baby Toy for Newborns",
+    "listingBrand": "The Manhattan Toy Company",
+    "suggestedAge": "0-36 Months",
+    "material": "Polyester",
+    "chokingWarnings": [],
+    "imageBytes": 12374,
+    "checkedAt": "2026-09-30T22:34:45.536Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Manhattan Toy Wimmer Seek & Explore Tummy Time Mat",
+    "targetUrl": "https://www.target.com/p/-/A-1006304313",
+    "tcin": "1006304313",
+    "listingTitle": "Manhattan Toy Wimmer Seek & Explore Double-Sided Tummy Time Mat for Infants and Toddlers",
+    "listingBrand": "The Manhattan Toy Company",
+    "suggestedAge": "0-36 Months",
+    "material": "Polyester",
+    "chokingWarnings": [],
+    "imageBytes": 53407,
+    "checkedAt": "2026-09-30T22:34:47.246Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Tiny Love Magical Tales Black & White Gymini",
+    "targetUrl": "https://www.target.com/p/-/A-76152398",
+    "tcin": "76152398",
+    "listingTitle": "Tiny Love Magical Tales Black & White Gymini Play Activity Gym",
+    "listingBrand": "Tiny Love",
+    "suggestedAge": "0-12 Months",
+    "material": "Polyester, Plastic",
+    "chokingWarnings": [],
+    "imageBytes": 31873,
+    "checkedAt": "2026-09-30T22:34:48.988Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "retailer_reported"
+      },
+      "certificationEvidence": [
+        {
+          "certification": "Meets ASTM standards",
+          "status": "retailer_reported",
+          "sourceUrl": "https://www.target.com/p/-/A-76152398"
+        }
+      ]
+    }
+  },
+  {
+    "productName": "Fisher-Price 3-in-1 Kick & Sway Activity Gym",
+    "targetUrl": "https://www.target.com/p/-/A-94795187",
+    "tcin": "94795187",
+    "listingTitle": "Fisher-Price 3-in-1 Kick & Sway Activity Gym, Baby Play Mat & Sensory Learning Toys for Newborn Developmental Play",
+    "listingBrand": "Fisher-Price",
+    "suggestedAge": "0 Years",
+    "material": "Plastic",
+    "chokingWarnings": [],
+    "imageBytes": 53903,
+    "checkedAt": "2026-09-30T22:34:50.656Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Lamaze Mortimer the Moose",
+    "targetUrl": "https://www.target.com/p/-/A-75003345",
+    "tcin": "75003345",
+    "listingTitle": "Lamaze Mortimer the Moose Toy",
+    "listingBrand": "Lamaze",
+    "suggestedAge": "Newborn and Up",
+    "material": "Polyester",
+    "chokingWarnings": [],
+    "imageBytes": 38583,
+    "checkedAt": "2026-09-30T22:34:52.303Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "retailer_reported"
+      },
+      "certificationEvidence": [
+        {
+          "certification": "Meets ASTM standards",
+          "status": "retailer_reported",
+          "sourceUrl": "https://www.target.com/p/-/A-75003345"
+        },
+        {
+          "certification": "JPMA certified",
+          "status": "retailer_reported",
+          "sourceUrl": "https://www.target.com/p/-/A-75003345"
+        }
+      ]
+    }
+  },
+  {
+    "productName": "Learning Resources Snap-n-Learn Matching Dinos",
+    "targetUrl": "https://www.target.com/p/-/A-80395810",
+    "tcin": "80395810",
+    "listingTitle": "Learning Resources Snap-n-Learn Matching Dinos, Fine Motor, Counting & Sorting Toy, 18 Pieces, Ages 18+ months",
+    "listingBrand": "Learning Resources",
+    "suggestedAge": "1.5 Years and Up",
+    "material": "Plastic",
+    "chokingWarnings": [],
+    "imageBytes": 38866,
+    "checkedAt": "2026-09-30T22:34:54.035Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "LEGO DUPLO My First Animal Train 10412",
+    "targetUrl": "https://www.target.com/p/-/A-89144285",
+    "tcin": "89144285",
+    "listingTitle": "LEGO DUPLO My First Animal Train and Horse Toy 10412",
+    "listingBrand": "LEGO",
+    "suggestedAge": "1.5 Years and Up",
+    "material": "Plastic",
+    "chokingWarnings": [],
+    "imageBytes": 58849,
+    "checkedAt": "2026-09-30T22:34:55.869Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Green Toys Sand Play Set",
+    "targetUrl": "https://www.target.com/p/-/A-93055862",
+    "tcin": "93055862",
+    "listingTitle": "Green Toys: Sand Play Set - Green",
+    "listingBrand": "Green Toys",
+    "suggestedAge": "18 Months and Up",
+    "material": "Plastic",
+    "chokingWarnings": [],
+    "imageBytes": 18892,
+    "checkedAt": "2026-09-30T22:34:57.741Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Strider 12 Sport Balance Bike",
+    "targetUrl": "https://www.target.com/p/-/A-16965574",
+    "tcin": "16965574",
+    "listingTitle": "Strider Sport 12\" Kids' Balance Bike - Pink: Adjustable Handlebar & Seat, Steel Frame",
+    "listingBrand": "Strider",
+    "suggestedAge": "1-4 Years",
+    "material": null,
+    "chokingWarnings": [],
+    "imageBytes": 31115,
+    "checkedAt": "2026-09-30T22:34:59.206Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Fisher-Price Little People Caring for Animals Tractor Playset",
+    "targetUrl": "https://www.target.com/p/-/A-1006774079",
+    "tcin": "1006774079",
+    "listingTitle": "Fisher-Price Little People Caring for Animals Tractor Playset",
+    "listingBrand": "Fisher-Price",
+    "suggestedAge": "1-5 Years",
+    "material": "Plastic",
+    "chokingWarnings": [],
+    "imageBytes": 53874,
+    "checkedAt": "2026-09-30T22:35:01.105Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  }
+]
