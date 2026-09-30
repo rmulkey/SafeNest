@@ -64,13 +64,27 @@ export function RecallList({ recalls }: RecallListProps) {
                 {recall.affectedProduct}
               </h2>
 
+              {/*
+                Each row is `flex gap-2` with a label and a value. Flex items
+                default to min-width:auto, so a value containing one long
+                unbreakable token cannot shrink or wrap and pushes the row past
+                the viewport. CPSC data supplies exactly that — a manufacturer
+                named "HuNanBoLuoDianZiShangWuYouXianGongSi" made /recalls scroll
+                sideways by 24px at 375px. `min-w-0 break-words` on each value
+                lets it wrap; `shrink-0` keeps the label intact.
+
+                `min-w-0` is needed on each row too, not only on the value. Every
+                row is itself a grid item of this <dl> and inherits the same
+                min-width:auto default, so fixing only the <dd> left the overflow
+                measuring exactly the same 24px.
+              */}
               <dl className="grid gap-1.5 text-sm">
                 {displayDate && (
-                  <div className="flex gap-2">
-                    <dt className="font-medium text-zinc-700 dark:text-zinc-300">
+                  <div className="flex min-w-0 gap-2">
+                    <dt className="shrink-0 font-medium text-zinc-700 dark:text-zinc-300">
                       Recall date:
                     </dt>
-                    <dd className="text-zinc-600 dark:text-zinc-400">
+                    <dd className="min-w-0 break-words text-zinc-600 dark:text-zinc-400">
                       <time dateTime={recall.recallDate ?? recall.publishedAt}>
                         {displayDate}
                       </time>
@@ -78,51 +92,51 @@ export function RecallList({ recalls }: RecallListProps) {
                   </div>
                 )}
 
-                <div className="flex gap-2">
-                  <dt className="font-medium text-zinc-700 dark:text-zinc-300">
+                <div className="flex min-w-0 gap-2">
+                  <dt className="shrink-0 font-medium text-zinc-700 dark:text-zinc-300">
                     Hazard:
                   </dt>
-                  <dd className="text-zinc-600 dark:text-zinc-400">{hazard}</dd>
+                  <dd className="min-w-0 break-words text-zinc-600 dark:text-zinc-400">{hazard}</dd>
                 </div>
 
                 {recall.recommendedAction && (
-                  <div className="flex gap-2">
-                    <dt className="font-medium text-zinc-700 dark:text-zinc-300">
+                  <div className="flex min-w-0 gap-2">
+                    <dt className="shrink-0 font-medium text-zinc-700 dark:text-zinc-300">
                       Remedy:
                     </dt>
-                    <dd className="text-zinc-600 dark:text-zinc-400">
+                    <dd className="min-w-0 break-words text-zinc-600 dark:text-zinc-400">
                       {recall.recommendedAction}
                     </dd>
                   </div>
                 )}
 
                 {recall.affectedModels && recall.affectedModels.length > 0 && (
-                  <div className="flex gap-2">
-                    <dt className="font-medium text-zinc-700 dark:text-zinc-300">
+                  <div className="flex min-w-0 gap-2">
+                    <dt className="shrink-0 font-medium text-zinc-700 dark:text-zinc-300">
                       Affected model(s):
                     </dt>
-                    <dd className="text-zinc-600 dark:text-zinc-400">
+                    <dd className="min-w-0 break-words text-zinc-600 dark:text-zinc-400">
                       {recall.affectedModels.join(", ")}
                     </dd>
                   </div>
                 )}
 
                 {recall.manufacturers && recall.manufacturers.length > 0 && (
-                  <div className="flex gap-2">
-                    <dt className="font-medium text-zinc-700 dark:text-zinc-300">
+                  <div className="flex min-w-0 gap-2">
+                    <dt className="shrink-0 font-medium text-zinc-700 dark:text-zinc-300">
                       Manufacturer:
                     </dt>
-                    <dd className="text-zinc-600 dark:text-zinc-400">
+                    <dd className="min-w-0 break-words text-zinc-600 dark:text-zinc-400">
                       {recall.manufacturers.join(", ")}
                     </dd>
                   </div>
                 )}
 
-                <div className="flex gap-2">
-                  <dt className="font-medium text-zinc-700 dark:text-zinc-300">
+                <div className="flex min-w-0 gap-2">
+                  <dt className="shrink-0 font-medium text-zinc-700 dark:text-zinc-300">
                     Source:
                   </dt>
-                  <dd className="text-zinc-600 dark:text-zinc-400">
+                  <dd className="min-w-0 break-words text-zinc-600 dark:text-zinc-400">
                     {recall.sourceAttribution ?? recall.issuingAuthority}
                     {recall.cpscRecallNumber
                       ? ` · Recall no. ${recall.cpscRecallNumber}`

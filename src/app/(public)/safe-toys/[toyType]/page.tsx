@@ -97,9 +97,14 @@ export default async function SafeToyTypePage({
           <Link
             key={review._id}
             href={`/reviews/${review.slug.current}`}
-            className="block rounded-lg border p-6 hover:shadow-md transition-shadow"
+            // min-w-0 because this is a grid item, and a grid item's default
+            // min-width:auto refuses to go below its min-content width. The score
+            // group below is shrink-0 and "Development" is a single 73px word at
+            // text-xs, so min-content exceeded the 295px available at 375px and
+            // the whole page scrolled sideways by 45px. Measured, not guessed.
+            className="block min-w-0 rounded-lg border p-6 hover:shadow-md transition-shadow"
           >
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex min-w-0 items-start justify-between gap-4">
               <div className="flex min-w-0 items-start gap-4">
                 <ProductThumb
                   mainImage={review.mainImage}

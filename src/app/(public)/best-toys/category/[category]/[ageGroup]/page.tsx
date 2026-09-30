@@ -122,15 +122,19 @@ export default async function BestCategoryToysForAgeGroupPage({
           return (
           <div
             key={review._id}
-            className="rounded-lg border hover:shadow-md transition-shadow"
+            // min-w-0: grid items default to min-width:auto and will not shrink
+            // below min-content. With the shrink-0 score group inside, that
+            // overflowed the viewport at 375px on the sibling /safe-toys pages.
+            // Same card shape here, so the same guard applies.
+            className="min-w-0 rounded-lg border hover:shadow-md transition-shadow"
           >
           {/* Card body links to the review; the buy button is a sibling, because
               an interactive control cannot nest inside an anchor. */}
           <Link
             href={`/reviews/${review.slug.current}`}
-            className="block p-6"
+            className="block min-w-0 p-6"
           >
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex min-w-0 items-start justify-between gap-4">
               <div className="flex min-w-0 items-start gap-4">
                 <ProductThumb
                   mainImage={review.mainImage}
