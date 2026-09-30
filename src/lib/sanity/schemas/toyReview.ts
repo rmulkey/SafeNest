@@ -4,7 +4,7 @@ import { defineType, defineField } from "sanity";
  * Human-readable evidence statuses for Studio dropdowns. Values must stay in sync
  * with EvidenceStatus in src/lib/scoring/evidence-status.ts.
  */
-const EVIDENCE_STATUS_OPTIONS = [
+export const EVIDENCE_STATUS_OPTIONS = [
   { title: "Supported by accessible documentation", value: "verified_documentation" },
   { title: "Manufacturer-reported (unverified)", value: "manufacturer_reported" },
   { title: "Retailer-reported (unverified)", value: "retailer_reported" },

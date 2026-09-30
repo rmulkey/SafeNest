@@ -20,9 +20,14 @@
  * Anything that fails is reported and dropped — never fabricated or patched.
  *
  * Scores/materials/pros/cons/assessment are authored editorially (allowed for a
- * review site) in the candidate file and copied through unchanged. An optional
- * `evidence` block (factorEvidence / certificationEvidence) is not part of the
- * queue schema, so it is written to a provenance sidecar instead of the queue.
+ * review site) in the candidate file and copied through unchanged.
+ *
+ * The candidate's `evidence` block travels two ways. factorEvidence and
+ * certificationEvidence go into the queue payload, because the published review
+ * needs them: a review recording no evidence status inherits the legacy
+ * "manufacturer-reported" default, which would credit the manufacturer for facts
+ * transcribed from a retailer listing. The full block, including source URLs and
+ * the raw listing facts, also goes to a provenance sidecar for auditing.
  *
  * Usage:
  *   node scripts/build-verified-queue.mjs scripts/new-products.json scripts/verified-queue.json
@@ -133,6 +138,16 @@ for (const c of candidates) {
       affiliateUrl: searchUrl(c.brand, c.productName),
       imageUrl,
       imageAlt: c.imageAlt || c.productName,
+      // Provenance travels with the product rather than only into the sidecar.
+      // These facts were transcribed from a Target listing, and a review that
+      // records no evidence status inherits the "manufacturer-reported" default
+      // — which would credit the manufacturer for a claim the retailer made.
+      ...(evidence?.factorEvidence
+        ? { factorEvidence: evidence.factorEvidence }
+        : {}),
+      ...(evidence?.certificationEvidence?.length
+        ? { certificationEvidence: evidence.certificationEvidence }
+        : {}),
     });
     provenance.push({
       productName: c.productName,

@@ -1,4 +1,5 @@
 import { defineType, defineField } from "sanity";
+import { EVIDENCE_STATUS_OPTIONS } from "./toyReview";
 
 /**
  * Queued Product — a verified-but-unpublished toy waiting to be auto-published
@@ -114,6 +115,52 @@ export const queuedProduct = defineType({
       title: "Certifications",
       type: "array",
       of: [{ type: "string" }],
+    }),
+    // ─── Evidence provenance, carried through to the published review ───────
+    // These mirror the toyReview fields of the same names. Without them the
+    // queue silently dropped provenance, and a published review fell back to
+    // the legacy "manufacturer-reported" default — which attributed a claim
+    // transcribed from a retailer listing to the manufacturer. For a product
+    // whose facts came from Target, that default is simply false.
+    defineField({
+      name: "factorEvidence",
+      title: "Evidence Status per Safety Factor",
+      type: "object",
+      options: { collapsible: true, collapsed: true },
+      fields: [
+        defineField({ name: "materialSafety", title: "Material safety", type: "string", options: { list: EVIDENCE_STATUS_OPTIONS } }),
+        defineField({ name: "chokingRisk", title: "Choking risk", type: "string", options: { list: EVIDENCE_STATUS_OPTIONS } }),
+        defineField({ name: "recallHistory", title: "Recall history", type: "string", options: { list: EVIDENCE_STATUS_OPTIONS } }),
+        defineField({ name: "certificationPresence", title: "Certification claims", type: "string", options: { list: EVIDENCE_STATUS_OPTIONS } }),
+      ],
+    }),
+    defineField({
+      name: "certificationEvidence",
+      title: "Certification Claim Sources",
+      type: "array",
+      description:
+        "Per-certification provenance. Use this instead of asserting compliance.",
+      of: [
+        {
+          type: "object",
+          fields: [
+            { name: "certification", title: "Certification", type: "string" },
+            {
+              name: "status",
+              title: "Claim Status",
+              type: "string",
+              options: { list: EVIDENCE_STATUS_OPTIONS },
+            },
+            {
+              name: "sourceUrl",
+              title: "Supporting Document URL",
+              type: "url",
+              description:
+                "Only fill this in if a real accessible document exists. Never invent one.",
+            },
+          ],
+        },
+      ],
     }),
     defineField({
       name: "pros",

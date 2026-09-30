@@ -44,6 +44,28 @@ export interface QueuedProductDoc {
   materials: string[];
   chokingHazardAssessment: string;
   certifications?: string[];
+  /**
+   * Evidence provenance, copied through to the published review.
+   *
+   * Omitting these is not neutral. resolveFactorStatus falls back to
+   * "manufacturer_reported" for a review that records nothing, so a product whose
+   * facts were transcribed from a retailer listing would be published asserting
+   * the manufacturer as the source, and a certification read off that listing
+   * would render as "Manufacturer reports compliance with ...". Carrying the
+   * recorded status through is what keeps the claim attributable to where it
+   * actually came from.
+   */
+  factorEvidence?: {
+    materialSafety?: string;
+    chokingRisk?: string;
+    recallHistory?: string;
+    certificationPresence?: string;
+  } | null;
+  certificationEvidence?: Array<{
+    certification?: string;
+    status?: string;
+    sourceUrl?: string;
+  }> | null;
   pros: string[];
   cons: string[];
 }
@@ -169,6 +191,23 @@ export async function publishOneQueued(
       materials: q.materials,
       chokingHazardAssessment: q.chokingHazardAssessment,
       certifications: q.certifications ?? [],
+      // Written only when actually recorded. An empty object or array would be
+      // indistinguishable in the Studio from "we recorded that there is nothing",
+      // whereas an absent field correctly means "no provenance captured" and
+      // lets resolveFactorStatus apply its documented per-factor default.
+      ...(q.factorEvidence ? { factorEvidence: q.factorEvidence } : {}),
+      ...(q.certificationEvidence && q.certificationEvidence.length > 0
+        ? {
+            certificationEvidence: q.certificationEvidence.map((e, i) => ({
+              // Sanity needs a key per array item; derive it from the
+              // certification so it stays stable if the batch is republished.
+              _key: e.certification
+                ? slugifyProductName(e.certification).slice(0, 40) || `cert-${i}`
+                : `cert-${i}`,
+              ...e,
+            })),
+          }
+        : {}),
       pros: q.pros,
       cons: q.cons,
       affiliateLinks: [
@@ -236,7 +275,9 @@ export async function publishQueuedBatch(
       affiliateUrl, imageUrl, imageAlt,
       materialSafety, chokingRisk, recallHistory, certificationPresence,
       motorSkills, cognitiveSkills, sensoryEngagement,
-      materials, chokingHazardAssessment, certifications, pros, cons
+      materials, chokingHazardAssessment, certifications, pros, cons,
+      factorEvidence,
+      certificationEvidence[]{certification, status, sourceUrl}
     }`,
     { limit }
   );
