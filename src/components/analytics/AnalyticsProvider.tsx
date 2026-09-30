@@ -117,6 +117,16 @@ export function AnalyticsProvider({ children }: AnalyticsProviderProps) {
   const scriptsLoaded = useRef(false);
 
   useEffect(() => {
+    /*
+     * `undefined` means hydration has not committed yet, so storage has not been
+     * read and the visitor's choice is still unknown. Doing nothing here matters:
+     * the previous version started at `null` ("asked, not answered") and so
+     * counted an anonymous page view for every visitor on every page load,
+     * including those who had already granted consent, before correcting itself
+     * a render later.
+     */
+    if (consent === undefined) return;
+
     if (consent === "granted" && !scriptsLoaded.current) {
       // Load analytics scripts only after consent is granted
       if (GA4_MEASUREMENT_ID) loadGA4(GA4_MEASUREMENT_ID);
