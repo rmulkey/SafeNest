@@ -4,21 +4,37 @@
  * DATA INTEGRITY (mandatory):
  *  - Each candidate names a real, currently-sold toy and points at its real
  *    Target.com product page (targetUrl).
- *  - We fetch that page, read Target's own `primary_image.image_name` (the
- *    canonical product photo — never a guess), build the scene7 image URL, and
- *    verify it returns real image bytes (HTTP 200, content-type image/*, >2KB).
- *  - Only candidates whose image verifies are written to the output queue file.
- *    Anything that fails is reported and dropped — never fabricated.
+ *  - The page's own product record is read (scripts/lib/target-product.mjs) and
+ *    the candidate is rejected unless:
+ *      · the listing's title and brand match the product being reviewed, so a
+ *        wrong URL cannot attach another product's photo to the review;
+ *      · the listing states a suggested age, and the candidate's minimum age
+ *        equals it (and its maximum too, when the listing gives one);
+ *      · a small-parts warning on the listing is not contradicted by a minimum
+ *        age under 3 years.
+ *  - The photo is Target's canonical primary image for that record, and it must
+ *    return real image bytes (HTTP 200, content-type image/*, >2KB).
  *  - Affiliate links are Amazon SEARCH urls (no tag; BuyButton appends it), so
  *    there are no invented /dp/{ASIN} links.
  *
+ * Anything that fails is reported and dropped — never fabricated or patched.
+ *
  * Scores/materials/pros/cons/assessment are authored editorially (allowed for a
- * review site) in the candidate file and copied through unchanged.
+ * review site) in the candidate file and copied through unchanged. An optional
+ * `evidence` block (factorEvidence / certificationEvidence) is not part of the
+ * queue schema, so it is written to a provenance sidecar instead of the queue.
  *
  * Usage:
  *   node scripts/build-verified-queue.mjs scripts/new-products.json scripts/verified-queue.json
+ *   -> also writes scripts/verified-queue.provenance.json
  */
 import { readFileSync, writeFileSync } from "node:fs";
+import {
+  UA,
+  canonicalTargetUrl,
+  fetchTargetProduct,
+  titleMatches,
+} from "./lib/target-product.mjs";
 
 const [, , inFile, outFile] = process.argv;
 if (!inFile || !outFile) {
@@ -28,23 +44,9 @@ if (!inFile || !outFile) {
   process.exit(1);
 }
 
-const UA =
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36";
 const MIN_IMAGE_BYTES = 2000;
+const SMALL_PARTS_AGE_MONTHS = 36;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-/** Pull Target's canonical primary image id from a product page. */
-async function getPrimaryImageId(targetUrl) {
-  const res = await fetch(targetUrl, {
-    headers: { "User-Agent": UA, "Accept-Language": "en-US,en;q=0.9" },
-    redirect: "follow",
-  });
-  if (!res.ok) throw new Error(`target page HTTP ${res.status}`);
-  const html = await res.text();
-  const m = html.match(/"primary_image":\{"image_name":"(GUEST_[a-f0-9-]+)"/);
-  if (!m) throw new Error("primary_image not found on page");
-  return m[1];
-}
 
 /** Verify an image URL returns real image bytes. */
 async function verifyImage(url) {
@@ -67,28 +69,86 @@ function searchUrl(brand, name) {
   return `https://www.amazon.com/s?k=${encodeURIComponent(q.trim())}`;
 }
 
+/** Reasons the candidate disagrees with its own listing; empty when it agrees. */
+function listingConflicts(c, facts) {
+  const problems = [];
+
+  const match = titleMatches(c.productName, c.brand, facts);
+  if (!match.ok) {
+    problems.push(
+      `listing does not describe this product (brand ${match.brandOk ? "ok" : "MISMATCH"}, ` +
+        `${Math.round(match.share * 100)}% of name words found, missing: ${match.missing.join(", ") || "-"}) ` +
+        `— listing title: "${facts.title}"`
+    );
+  }
+
+  if (!facts.age) {
+    problems.push(`listing states no parseable suggested age ("${facts.suggestedAge ?? ""}")`);
+  } else {
+    if (c.ageMinMonths !== facts.age.minMonths) {
+      problems.push(
+        `ageMinMonths ${c.ageMinMonths} disagrees with listing "${facts.suggestedAge}" (${facts.age.minMonths})`
+      );
+    }
+    if (facts.age.maxMonths != null && c.ageMaxMonths !== facts.age.maxMonths) {
+      problems.push(
+        `ageMaxMonths ${c.ageMaxMonths} disagrees with listing "${facts.suggestedAge}" (${facts.age.maxMonths})`
+      );
+    }
+  }
+
+  const smallParts = facts.choking.some((w) => /small.?parts/i.test(`${w.code} ${w.message}`));
+  if (smallParts && c.ageMinMonths < SMALL_PARTS_AGE_MONTHS) {
+    problems.push(
+      `listing carries a small-parts warning but ageMinMonths is ${c.ageMinMonths}`
+    );
+  }
+
+  if (!facts.imageName) problems.push("listing has no primary image");
+  return problems;
+}
+
 const candidates = JSON.parse(readFileSync(inFile, "utf-8"));
 const verified = [];
+const provenance = [];
 const failures = [];
 
 console.log(`Verifying ${candidates.length} candidate products...\n`);
 
 for (const c of candidates) {
   try {
-    const gid = await getPrimaryImageId(c.targetUrl);
-    const imageUrl = `https://target.scene7.com/is/image/Target/${gid}?wid=800&hei=800&qlt=80`;
+    const facts = await fetchTargetProduct(c.targetUrl);
+    const conflicts = listingConflicts(c, facts);
+    if (conflicts.length) throw new Error(conflicts.join("; "));
+
+    const imageUrl = `https://target.scene7.com/is/image/Target/${facts.imageName}?wid=800&hei=800&qlt=80`;
     const v = await verifyImage(imageUrl);
     if (!v.ok) {
       throw new Error(`image failed (HTTP ${v.status}, ${v.ct}, ${v.bytes}B)`);
     }
-    const { targetUrl, ...rest } = c;
+
+    const { targetUrl, evidence, ...rest } = c;
     verified.push({
       ...rest,
       affiliateUrl: searchUrl(c.brand, c.productName),
       imageUrl,
       imageAlt: c.imageAlt || c.productName,
     });
+    provenance.push({
+      productName: c.productName,
+      targetUrl: canonicalTargetUrl(targetUrl),
+      tcin: facts.tcin,
+      listingTitle: facts.title,
+      listingBrand: facts.brand,
+      suggestedAge: facts.suggestedAge,
+      material: facts.material,
+      chokingWarnings: facts.choking,
+      imageBytes: v.bytes,
+      checkedAt: new Date().toISOString(),
+      evidence: evidence ?? null,
+    });
     console.log(`✓ ${c.productName}  (${v.bytes}B)`);
+    console.log(`    listing: "${facts.title.slice(0, 90)}" · age ${facts.suggestedAge}`);
   } catch (e) {
     failures.push({ productName: c.productName, error: e.message });
     console.log(`✗ ${c.productName}  — ${e.message}`);
@@ -97,9 +157,10 @@ for (const c of candidates) {
 }
 
 writeFileSync(outFile, JSON.stringify(verified, null, 2));
-console.log(
-  `\n${verified.length}/${candidates.length} verified → ${outFile}`
-);
+const provFile = outFile.replace(/\.json$/, "") + ".provenance.json";
+writeFileSync(provFile, JSON.stringify(provenance, null, 2));
+console.log(`\n${verified.length}/${candidates.length} verified → ${outFile}`);
+console.log(`provenance → ${provFile}`);
 if (failures.length) {
   console.log(`\nFailed (${failures.length}):`);
   failures.forEach((f) => console.log(`  - ${f.productName}: ${f.error}`));

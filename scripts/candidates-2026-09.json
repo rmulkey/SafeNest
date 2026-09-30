@@ -1,0 +1,436 @@
+[
+  {
+    "productName": "Manhattan Toy Wimmer Discovery Mirror",
+    "brand": "Manhattan Toy",
+    "categoryRef": "cat-sensory",
+    "ageMinMonths": 0,
+    "ageMaxMonths": 36,
+    "targetUrl": "https://www.target.com/p/-/A-1006304317",
+    "materialSafety": 86,
+    "chokingRisk": 92,
+    "recallHistory": 90,
+    "certificationPresence": 55,
+    "motorSkills": 70,
+    "cognitiveSkills": 72,
+    "sensoryEngagement": 90,
+    "materials": [
+      "polyester fabric",
+      "mirror panel"
+    ],
+    "chokingHazardAssessment": "Target lists this as a single piece for ages 0 to 36 months and shows no small-parts warning. SafeNest has not physically measured the product. Before each use, check the mirror panel and the kick-stand bar for cracks or loose edges, and keep it out of the crib.",
+    "certifications": [],
+    "pros": [
+      "Wide horizontal mirror shows more of baby than a round one",
+      "High-contrast pattern on the back for the first weeks",
+      "Stands on its own kick-stand bar during tummy time",
+      "Flat and light enough to pack in a diaper bag"
+    ],
+    "cons": [
+      "One activity, so it works best alongside other toys",
+      "Most babies lose interest once they crawl, well before the 36-month label",
+      "Meant for supervised floor time, not for leaving in the crib"
+    ],
+    "imageAlt": "Manhattan Toy Wimmer Discovery Mirror, a horizontal baby mirror with black-and-white patterns",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Manhattan Toy Wimmer Seek & Explore Tummy Time Mat",
+    "brand": "Manhattan Toy",
+    "categoryRef": "cat-sensory",
+    "ageMinMonths": 0,
+    "ageMaxMonths": 36,
+    "targetUrl": "https://www.target.com/p/-/A-1006304313",
+    "materialSafety": 86,
+    "chokingRisk": 88,
+    "recallHistory": 90,
+    "certificationPresence": 55,
+    "motorSkills": 80,
+    "cognitiveSkills": 70,
+    "sensoryEngagement": 92,
+    "materials": [
+      "polyester fabric",
+      "padded fill",
+      "removable mirror",
+      "soft rattle ball"
+    ],
+    "chokingHazardAssessment": "Target lists two pieces, the padded mat and a soft rattle ball, plus a removable mirror, for ages 0 to 36 months, and shows no small-parts warning. SafeNest has not physically measured any part. The ball and mirror come away from the mat, so check them for splits or loose seams, and keep the mat for supervised awake time on the floor.",
+    "certifications": [],
+    "pros": [
+      "Padded, double-sided mat softens the floor for tummy time",
+      "Flaps, textures and a rattle ball in one place",
+      "The mirror comes off so the mat can go in the washing machine",
+      "32 by 32 inches, with room for a baby to roll"
+    ],
+    "cons": [
+      "No arch, so there is nothing to bat at when baby lies on their back",
+      "The rattle ball rolls off and needs fetching",
+      "Takes up a playmat's worth of floor space"
+    ],
+    "imageAlt": "Manhattan Toy Wimmer Seek & Explore double-sided tummy time mat with black-and-white patterns",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Tiny Love Magical Tales Black & White Gymini",
+    "brand": "Tiny Love",
+    "categoryRef": "cat-sensory",
+    "ageMinMonths": 0,
+    "ageMaxMonths": 12,
+    "targetUrl": "https://www.target.com/p/-/A-76152398",
+    "materialSafety": 86,
+    "chokingRisk": 88,
+    "recallHistory": 90,
+    "certificationPresence": 70,
+    "motorSkills": 84,
+    "cognitiveSkills": 74,
+    "sensoryEngagement": 92,
+    "materials": [
+      "polyester fabric",
+      "plastic arches and toys"
+    ],
+    "chokingHazardAssessment": "Toys hang from the arches, and Target lists the gym for ages 0 to 12 months with no small-parts warning. The listing says it meets ASTM standards; SafeNest has not verified that claim or physically measured the toys. Check that each hanging toy is still firmly attached before play, and supervise once baby starts pulling on the arches.",
+    "certifications": [
+      "Meets ASTM standards"
+    ],
+    "pros": [
+      "Black-and-white design suits newborn eyesight",
+      "Adjustable arches give more than one way to play",
+      "18 activities, including a musical toy baby can set off",
+      "Works for tummy time as well as back play"
+    ],
+    "cons": [
+      "Adult assembly required, though no tools are needed",
+      "The musical toy has only three melodies",
+      "Usually outgrown around the first birthday"
+    ],
+    "imageAlt": "Tiny Love Magical Tales black and white Gymini activity gym with hanging toys",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "retailer_reported"
+      },
+      "certificationEvidence": [
+        {
+          "certification": "Meets ASTM standards",
+          "status": "retailer_reported",
+          "sourceUrl": "https://www.target.com/p/-/A-76152398"
+        }
+      ]
+    }
+  },
+  {
+    "productName": "Fisher-Price 3-in-1 Kick & Sway Activity Gym",
+    "brand": "Fisher-Price",
+    "categoryRef": "cat-sensory",
+    "ageMinMonths": 0,
+    "ageMaxMonths": 12,
+    "targetUrl": "https://www.target.com/p/-/A-94795187",
+    "materialSafety": 84,
+    "chokingRisk": 86,
+    "recallHistory": 90,
+    "certificationPresence": 55,
+    "motorSkills": 86,
+    "cognitiveSkills": 74,
+    "sensoryEngagement": 90,
+    "materials": [
+      "plastic frame and toys",
+      "fabric playmat"
+    ],
+    "chokingHazardAssessment": "Target lists this for ages 0 and up with no small-parts warning. The rattle, mobile and other toys link onto the gym and can be taken off; the listing does not describe any of them as small, but SafeNest has not measured them. Check that each link is closed before play, and remove any toy that cracks.",
+    "certifications": [],
+    "pros": [
+      "Baby's kicks set the arch swaying, with no batteries needed",
+      "Three setups: lie and play, tummy time, and sit and play",
+      "Machine-washable padded playmat",
+      "Mirror, rattle and textures in one gym"
+    ],
+    "cons": [
+      "The sway is gentle, so older babies may lose interest",
+      "Large footprint, about 30 by 38 inches",
+      "The linkable toys come off and wander"
+    ],
+    "imageAlt": "Fisher-Price 3-in-1 Kick & Sway activity gym with arch, playmat and linkable toys",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Lamaze Mortimer the Moose",
+    "brand": "Lamaze",
+    "categoryRef": "cat-sensory",
+    "ageMinMonths": 0,
+    "ageMaxMonths": 24,
+    "targetUrl": "https://www.target.com/p/-/A-75003345",
+    "materialSafety": 84,
+    "chokingRisk": 88,
+    "recallHistory": 90,
+    "certificationPresence": 76,
+    "motorSkills": 74,
+    "cognitiveSkills": 66,
+    "sensoryEngagement": 90,
+    "materials": [
+      "polyester fabric",
+      "satin ribbon legs"
+    ],
+    "chokingHazardAssessment": "One soft toy with ribbon legs, textured antlers for teething and a clip. Target lists it for newborns and up, shows no small-parts warning, and says it meets ASTM standards and is JPMA certified; SafeNest has not verified either claim or measured the toy. Check the stitching and ribbons as it gets chewed, and use the clip on strollers and bags, not in the crib.",
+    "certifications": [
+      "Meets ASTM standards",
+      "JPMA certified"
+    ],
+    "pros": [
+      "Teethable antlers and crinkle hooves give several textures",
+      "A squeaker in the tummy rewards a squeeze",
+      "Clips onto a stroller or bag",
+      "Very light for small hands"
+    ],
+    "cons": [
+      "Soft toys that get chewed need regular washing",
+      "Ribbons and crinkle parts wear with heavy chewing",
+      "Easy to lose on outings"
+    ],
+    "imageAlt": "Lamaze Mortimer the Moose soft baby toy with ribbon legs and clip",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "retailer_reported"
+      },
+      "certificationEvidence": [
+        {
+          "certification": "Meets ASTM standards",
+          "status": "retailer_reported",
+          "sourceUrl": "https://www.target.com/p/-/A-75003345"
+        },
+        {
+          "certification": "JPMA certified",
+          "status": "retailer_reported",
+          "sourceUrl": "https://www.target.com/p/-/A-75003345"
+        }
+      ]
+    }
+  },
+  {
+    "productName": "Learning Resources Snap-n-Learn Matching Dinos",
+    "brand": "Learning Resources",
+    "categoryRef": "cat-educational",
+    "ageMinMonths": 18,
+    "ageMaxMonths": 48,
+    "targetUrl": "https://www.target.com/p/-/A-80395810",
+    "materialSafety": 84,
+    "chokingRisk": 86,
+    "recallHistory": 90,
+    "certificationPresence": 55,
+    "motorSkills": 86,
+    "cognitiveSkills": 84,
+    "sensoryEngagement": 72,
+    "materials": [
+      "plastic"
+    ],
+    "chokingHazardAssessment": "Nine two-piece dinosaurs, 18 pieces in all, which Target lists for ages 18 months and up with no small-parts warning. SafeNest has not measured the pieces. A cracked half is smaller than a whole dinosaur, so check for breaks and remove damaged pieces.",
+    "certifications": [],
+    "pros": [
+      "Snapping halves together builds grip and hand strength",
+      "Colors and shapes to match now, numbers later",
+      "Everything stores in its own bucket",
+      "No batteries or screens"
+    ],
+    "cons": [
+      "The halves can be stiff for younger toddlers at first",
+      "18 pieces to keep track of",
+      "Most of the learning comes from an adult naming colors and shapes"
+    ],
+    "imageAlt": "Learning Resources Snap-n-Learn Matching Dinos, colorful two-piece dinosaurs with a storage bucket",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "LEGO DUPLO My First Animal Train 10412",
+    "brand": "LEGO DUPLO",
+    "categoryRef": "cat-building",
+    "ageMinMonths": 18,
+    "ageMaxMonths": 60,
+    "targetUrl": "https://www.target.com/p/-/A-89144285",
+    "materialSafety": 88,
+    "chokingRisk": 90,
+    "recallHistory": 90,
+    "certificationPresence": 55,
+    "motorSkills": 88,
+    "cognitiveSkills": 84,
+    "sensoryEngagement": 74,
+    "materials": [
+      "plastic bricks"
+    ],
+    "chokingHazardAssessment": "19 pieces, which Target lists for ages 18 months and up with no small-parts warning. SafeNest has not measured the pieces. Keep the set apart from regular LEGO bricks, which are much smaller and are not made for children under 3.",
+    "certifications": [],
+    "pros": [
+      "Matching each animal to its colored carriage is an early puzzle",
+      "Build cards, plus spare bricks for free building",
+      "Works with other DUPLO sets",
+      "Rolls along as a push train"
+    ],
+    "cons": [
+      "At 19 pieces it is small, so many families add a larger DUPLO box",
+      "The build cards can be ahead of the youngest builders",
+      "Needs keeping separate from regular LEGO"
+    ],
+    "imageAlt": "LEGO DUPLO My First Animal Train 10412 with buildable animals and colored carriages",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Green Toys Sand Play Set",
+    "brand": "Green Toys",
+    "categoryRef": "cat-outdoor",
+    "ageMinMonths": 18,
+    "ageMaxMonths": 60,
+    "targetUrl": "https://www.target.com/p/-/A-93055862",
+    "materialSafety": 92,
+    "chokingRisk": 94,
+    "recallHistory": 90,
+    "certificationPresence": 55,
+    "motorSkills": 86,
+    "cognitiveSkills": 70,
+    "sensoryEngagement": 84,
+    "materials": [
+      "recycled plastic from milk jugs",
+      "BPA-free",
+      "PVC-free",
+      "phthalate-free"
+    ],
+    "chokingHazardAssessment": "Four large pieces, a bucket, shovel, rake and sandcastle mold, which Target lists for ages 18 months and up with no small-parts warning. SafeNest has not measured them. Plastic left in the sun can go brittle, so check the shovel and rake edges for cracks each season.",
+    "certifications": [],
+    "pros": [
+      "Green Toys says it is made from recycled milk-jug plastic",
+      "Bucket, shovel, rake and mold cover the basics",
+      "Chunky shapes suited to toddler hands",
+      "Rinses clean after a day at the beach"
+    ],
+    "cons": [
+      "Only four pieces",
+      "Long sun exposure can fade the plastic",
+      "No carry bag listed"
+    ],
+    "imageAlt": "Green Toys Sand Play Set in green with bucket, shovel, rake and sandcastle mold",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Strider 12 Sport Balance Bike",
+    "brand": "Strider",
+    "categoryRef": "cat-outdoor",
+    "ageMinMonths": 12,
+    "ageMaxMonths": 48,
+    "targetUrl": "https://www.target.com/p/-/A-16965574",
+    "materialSafety": 86,
+    "chokingRisk": 94,
+    "recallHistory": 90,
+    "certificationPresence": 55,
+    "motorSkills": 95,
+    "cognitiveSkills": 70,
+    "sensoryEngagement": 70,
+    "materials": [
+      "steel frame",
+      "polypropylene seat",
+      "foam rubber tires"
+    ],
+    "chokingHazardAssessment": "Target lists it for ages 1 to 4 years with a 60-pound limit and no small-parts warning. For a balance bike the real risk is falls, not choking, so a helmet, closed shoes and a flat, traffic-free space matter more than the bike itself. SafeNest has not physically tested the bike.",
+    "certifications": [],
+    "pros": [
+      "Learning balance first can make the move to pedals easier",
+      "Light enough for a toddler to handle, about 6.5 pounds per the listing",
+      "Seat and handlebar adjust without tools",
+      "Foam tires cannot go flat"
+    ],
+    "cons": [
+      "Children steer and stop with their feet down, so it suits flat paths away from traffic",
+      "A helmet is needed from the first ride",
+      "Most children outgrow the 12-inch size by around 4"
+    ],
+    "imageAlt": "Strider 12 Sport balance bike in pink with adjustable seat and handlebar",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Fisher-Price Little People Caring for Animals Tractor Playset",
+    "brand": "Fisher-Price",
+    "categoryRef": "cat-educational",
+    "ageMinMonths": 12,
+    "ageMaxMonths": 60,
+    "targetUrl": "https://www.target.com/p/-/A-1006774079",
+    "materialSafety": 84,
+    "chokingRisk": 84,
+    "recallHistory": 86,
+    "certificationPresence": 55,
+    "motorSkills": 80,
+    "cognitiveSkills": 82,
+    "sensoryEngagement": 80,
+    "materials": [
+      "plastic"
+    ],
+    "chokingHazardAssessment": "Two farmer figures and six animals, which Target lists for ages 1 to 5 years with no small-parts warning. SafeNest has not measured them. A different Little People figure set was recalled in March 2024 for a choking hazard (CPSC recall 24-167). That recall does not cover this set, but it is a reason to check the figures for broken-off pieces. The tractor plays sounds, so make sure the battery cover stays secured.",
+    "certifications": [],
+    "pros": [
+      "Push-along tractor with a trailer that comes off",
+      "Eight figures for naming animals and pretend farm play",
+      "Songs and phrases start from the driver's seat or a button",
+      "Figures sized for small hands to grip"
+    ],
+    "cons": [
+      "Batteries for the sounds are not included",
+      "Small figures are easy to lose",
+      "The songs repeat, which some parents find wearing"
+    ],
+    "imageAlt": "Fisher-Price Little People Caring for Animals tractor with trailer, farmer figures and farm animals",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  }
+]
