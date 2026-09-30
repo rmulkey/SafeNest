@@ -1,0 +1,25 @@
+keyword,volume,cpc_usd,competition,difficulty,reachable,score,is_question,already_covered,sources
+"a beka homeschool curriculum",720,1.16,0.36,100,false,0,false,false,question
+"what is the best homeschool curriculum",320,3.24,0.83,100,false,0,true,false,question
+"how to choose curriculum for homeschooling",90,1.12,0.55,100,false,0,true,false,question
+"how to pick a homeschool curriculum",90,1.12,0.55,100,false,0,true,false,question
+"where to buy homeschool curriculum",90,2.06,1,100,false,0,true,false,question
+"how to choose a homeschool curriculum",50,1.63,0.55,100,false,0,true,false,question
+"how to choose homeschool curriculum",50,0.96,0.7,100,false,0,true,false,question
+"is ixl a homeschool curriculum",50,3.21,0.18,100,false,0,true,false,question
+"what homeschool curriculums are accredited",50,1.93,0.38,100,false,0,true,false,question
+"where can i buy homeschool curriculum",50,2.03,1,100,false,0,true,false,question
+"where to purchase homeschool curriculum",50,2.06,1,100,false,0,true,false,question
+"are homeschool curriculum accredited",40,0,0.13,100,false,0,true,false,question
+"can ixl be used as homeschool curriculum",40,3.32,0.33,100,false,0,true,false,question
+"how to evaluate homeschool curriculum rigor",40,0,0,100,false,0,true,false,question
+"is ixl a full homeschool curriculum",40,2.76,0.22,100,false,0,true,false,question
+"what homeschool curriculum is accredited",40,1.62,0.43,100,false,0,true,false,question
+"can ixl be used as a homeschool curriculum",30,3.05,0.24,100,false,0,true,false,question
+"can you create your own homeschool curriculum",30,1.43,0.16,100,false,0,true,false,question
+"how to create a homeschool curriculum",30,1.86,0.67,100,false,0,true,false,question
+"is ixl a good homeschool curriculum",30,2.7,0.18,100,false,0,true,false,question
+"is there a homeschool curriculum",30,2.18,0.49,100,false,0,true,false,question
+"what is the best christian homeschool curriculum",30,1.14,1,100,false,0,true,false,question
+"what is the best online homeschool curriculum",30,3.75,0.71,100,false,0,true,false,question
+"where to get homeschool curriculum",30,3.99,0.91,100,false,0,true,false,question

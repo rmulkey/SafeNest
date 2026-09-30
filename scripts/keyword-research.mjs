@@ -34,8 +34,11 @@ const DB = "us";
 const OUT_DIR = "seo/data";
 const OUT = "seo/keyword-research.csv";
 
-/** Safety-concern shaped seeds, matching the shape that already ranks. */
-const SEEDS = [
+/**
+ * Default seeds: safety-concern shaped, matching the shape that ranks on
+ * SafeNest. Override with SEEDS="a,b,c" to research a different niche.
+ */
+const DEFAULT_SEEDS = [
   "toy choking hazard",
   "toy recall",
   "non toxic baby toys",
@@ -49,6 +52,15 @@ const SEEDS = [
   "toy age labels",
   "secondhand toy safety",
 ];
+
+const SEEDS = (process.env.SEEDS || "")
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+const ACTIVE_SEEDS = SEEDS.length > 0 ? SEEDS : DEFAULT_SEEDS;
+
+/** Where to write, so one niche's research cannot overwrite another's. */
+const OUT_FILE = process.env.OUT || OUT;
 
 async function report(name, params) {
   try {
@@ -99,8 +111,8 @@ function add(kw, row, source) {
 }
 
 const seedsOnly = process.env.SEEDS_ONLY === "1";
-console.log(`expanding ${SEEDS.length} seeds (database=${DB})`);
-for (const seed of SEEDS) {
+console.log(`expanding ${ACTIVE_SEEDS.length} seeds (database=${DB})`);
+for (const seed of ACTIVE_SEEDS) {
   const [questions, related] = await Promise.all([
     report("phrase_questions", { database: DB, phrase: seed, display_limit: 40 }),
     seedsOnly ? [] : report("phrase_related", { database: DB, phrase: seed, display_limit: 40 }),
@@ -177,7 +189,7 @@ const scored = scoreable
   .sort((a, b) => b.score - a.score);
 
 writeFileSync(
-  OUT,
+  OUT_FILE,
   ["keyword,volume,cpc_usd,competition,difficulty,reachable,score,is_question,already_covered,sources"]
     .concat(
       scored.map((s) =>
@@ -209,7 +221,7 @@ const show = (label, rows) => {
 };
 show("TOP REACHABLE — QUESTIONS (blog posts)", open.filter((s) => s.isQuestion));
 show("TOP REACHABLE — NON-QUESTIONS (products / listings)", open.filter((s) => !s.isQuestion));
-console.log(`\nfull table -> ${OUT}`);
+console.log(`\nfull table -> ${OUT_FILE}`);
 console.log(
   "\nVolume and difficulty are Semrush model estimates, not measurements.\n" +
     "Cross-check anything acted on against gsc/*.csv, which is first-party."
