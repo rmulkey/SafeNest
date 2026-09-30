@@ -52,6 +52,8 @@ export interface EvidenceSectionProps {
   /** The score currently published for this review. */
   storedScore?: number;
   certifications?: string[] | null;
+  /** Where each certification claim came from, when that was recorded. */
+  certificationEvidence?: Array<{ certification?: string; status?: string }> | null;
   /** When the CPSC recall lookup for this product last ran. */
   recallCheckedAt?: string | null;
   /** Whether that lookup found a match. */
@@ -120,6 +122,7 @@ export function EvidenceSection({
   assessment,
   storedScore,
   certifications,
+  certificationEvidence,
   recallCheckedAt,
   hasActiveRecall = false,
   reviewedBy,
@@ -139,6 +142,8 @@ export function EvidenceSection({
   const published = formatDate(publishedAt);
   const lastReviewed = formatDate(lastReviewedAt);
   const hasCerts = Boolean(certifications && certifications.length > 0);
+  const certStatus = (c: string) =>
+    certificationEvidence?.find((e) => e.certification === c)?.status;
 
   return (
     <>
@@ -249,7 +254,7 @@ export function EvidenceSection({
               <>
                 <ul className="list-disc space-y-0.5 pl-5">
                   {certifications!.map((c) => (
-                    <li key={c}>{certificationClaimLabel(c)}</li>
+                    <li key={c}>{certificationClaimLabel(c, certStatus(c))}</li>
                   ))}
                 </ul>
                 <p className="mt-1">

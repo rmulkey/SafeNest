@@ -227,8 +227,23 @@ export const EVIDENCE_EXPLANATIONS: Record<EvidenceSource, string> = {
 export const NO_LAB_TESTING_NOTICE =
   "Not independently laboratory tested by SafeNest.";
 
-/** How to describe manufacturer certification claims. */
-export function certificationClaimLabel(certification: string): string {
+/**
+ * How to describe a reported certification.
+ *
+ * Every claim used to read "Manufacturer reports compliance with …", including
+ * claims read off a retailer listing. The site's published evidence model
+ * separates the two ("Retailer-reported: taken from a retailer listing, which is
+ * often less reliable than the manufacturer's own documentation"), so a claim
+ * recorded as retailer-reported says so. With no recorded status the wording is
+ * unchanged, which keeps every existing review rendering exactly as before.
+ */
+export function certificationClaimLabel(
+  certification: string,
+  status?: string | null
+): string {
+  if (status === "retailer_reported") {
+    return `${certification} (reported on a retailer listing)`;
+  }
   return `Manufacturer reports compliance with ${certification}`;
 }
 

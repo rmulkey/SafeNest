@@ -525,6 +525,7 @@ export default async function ToyReviewPage({ params }: PageProps) {
         assessment={assessment}
         storedScore={review.safetyScore}
         certifications={review.certifications}
+        certificationEvidence={review.certificationEvidence}
         recallCheckedAt={review.recallCheckedAt}
         hasActiveRecall={review.hasActiveRecall}
         reviewedBy={review.reviewedBy}
