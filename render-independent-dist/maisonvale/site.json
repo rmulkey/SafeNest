@@ -4,7 +4,7 @@
   "baseUrl": "https://maisonvale.onrender.com",
   "platform": "Render Static Site Hosting",
   "affiliateTag": "render-sites-20",
-  "lastUpdated": "2026-06-23",
+  "lastUpdated": "2026-10-29",
   "productCount": 60,
   "monetizationSurface": [
     {
@@ -35,8 +35,7 @@
     "https://maisonvale.onrender.com/best/maisonvale-bar/",
     "https://maisonvale.onrender.com/affiliate-disclosure/",
     "https://maisonvale.onrender.com/editorial-policy/",
-    "https://maisonvale.onrender.com/contact/",
-    "https://maisonvale.onrender.com/prime-day/"
+    "https://maisonvale.onrender.com/contact/"
   ],
   "products": [
     {
@@ -698,48 +697,6 @@
       "image": "https://m.media-amazon.com/images/I/81zqjxDem-L._AC_SL1500_.jpg",
       "imageAlt": "Rubtlamp 175 Pcs Plastic Dinnerware Set (25 Guests), Blue Disposable Plates With Gold Rim, Hammered Party Plates Set Include Dinner Platos,...",
       "url": "https://www.amazon.com/dp/B0CY3SJ3SN?tag=render-sites-20"
-    }
-  ],
-  "primeDayTrendProducts": [
-    {
-      "asin": "B0C9WSP6LW",
-      "title": "6 Pcs Best Wooden Coasters with Holder Coffee Table Decor Acacia Wood Coaster Set Modern Cup Coaster for Drink Home...",
-      "image": "https://m.media-amazon.com/images/I/71OEWl8tiWL._AC_SL1500_.jpg",
-      "url": "https://www.amazon.com/dp/B0C9WSP6LW?tag=render-sites-20",
-      "trend": "summer routine upgrade",
-      "addedFor": "Prime Day 2026 trend watch"
-    },
-    {
-      "asin": "B0FB2XCM5F",
-      "title": "YQBRAO 4-Tier Liquor Bottle Display Shelf, Spice Rack - 16-Inch Coffee Syrup Organizer Rack - Heavy-Duty Countertop...",
-      "image": "https://m.media-amazon.com/images/I/81H79VCyHdL._AC_SL1500_.jpg",
-      "url": "https://www.amazon.com/dp/B0FB2XCM5F?tag=render-sites-20",
-      "trend": "cleaner storage",
-      "addedFor": "Prime Day 2026 trend watch"
-    },
-    {
-      "asin": "B0BW6SYNVM",
-      "title": "White and Gold Paper Plates Napkins Party Supplies,Disposable Gold Dot Paper Dessert Plates,105 PCS Birthday Plates...",
-      "image": "https://m.media-amazon.com/images/I/71tQShJImFL._AC_SL1500_.jpg",
-      "url": "https://www.amazon.com/dp/B0BW6SYNVM?tag=render-sites-20",
-      "trend": "grab-and-go setup",
-      "addedFor": "Prime Day 2026 trend watch"
-    },
-    {
-      "asin": "B0CCP3YXNJ",
-      "title": "WOWBOX 4 pcs Serving Tray for Party, Grilling Accessories, Serving Platters for Snacks, Fruit, Reusable Plastic Tra...",
-      "image": "https://m.media-amazon.com/images/I/719pRWSWZnL._AC_SL1500_.jpg",
-      "url": "https://www.amazon.com/dp/B0CCP3YXNJ?tag=render-sites-20",
-      "trend": "portable utility",
-      "addedFor": "Prime Day 2026 trend watch"
-    },
-    {
-      "asin": "B09J16XVGX",
-      "title": "AIRE 175PCS Pink Rose Gold Party Supplies, Heavy Duty Disposable Dinnerware Set Serves 25, Paper Plates Plastic For...",
-      "image": "https://m.media-amazon.com/images/I/81WyVWdNAmL._AC_SL1500_.jpg",
-      "url": "https://www.amazon.com/dp/B09J16XVGX?tag=render-sites-20",
-      "trend": "small-space reset",
-      "addedFor": "Prime Day 2026 trend watch"
     }
   ]
 }
