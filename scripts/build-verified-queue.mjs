@@ -67,11 +67,20 @@ async function verifyImage(url) {
   return { ok, status: res.status, ct, bytes };
 }
 
+/**
+ * Amazon search URL for a product.
+ *
+ * The brand is dropped when the product name already carries it, and the test
+ * ignores a parenthesised parent company. "Oball (Kids II)" and
+ * "B. toys (Battat)" name the corporate owner, while the product name carries
+ * only the consumer-facing brand ("Oball Classic Ball"), so comparing the full
+ * string found no match and prepended the lot — searching Amazon for
+ * "Oball (Kids II) Oball Classic Ball", which names the brand twice.
+ */
 function searchUrl(brand, name) {
-  const q = name.toLowerCase().includes(brand.toLowerCase())
-    ? name
-    : `${brand} ${name}`;
-  return `https://www.amazon.com/s?k=${encodeURIComponent(q.trim())}`;
+  const bare = brand.replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
+  const q = name.toLowerCase().includes(bare.toLowerCase()) ? name : `${bare} ${name}`;
+  return `https://www.amazon.com/s?k=${encodeURIComponent(q.replace(/\s+/g, " ").trim())}`;
 }
 
 /** Reasons the candidate disagrees with its own listing; empty when it agrees. */

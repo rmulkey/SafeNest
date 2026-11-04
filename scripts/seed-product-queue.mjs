@@ -24,9 +24,13 @@ const client = createClient({
   token: process.env.SANITY_API_TOKEN,
 });
 
+// Ignores a parenthesised parent company when testing whether the product name
+// already carries the brand, so "Oball (Kids II)" + "Oball Classic Ball" does not
+// become a query that searches for the brand twice. Mirrors build-verified-queue.mjs.
 function searchUrl(brand, name) {
-  const q = name.toLowerCase().includes(brand.toLowerCase()) ? name : `${brand} ${name}`;
-  return `https://www.amazon.com/s?k=${encodeURIComponent(q.trim())}`;
+  const bare = brand.replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
+  const q = name.toLowerCase().includes(bare.toLowerCase()) ? name : `${bare} ${name}`;
+  return `https://www.amazon.com/s?k=${encodeURIComponent(q.replace(/\s+/g, " ").trim())}`;
 }
 
 // Real products, none already in the 75-item catalog. Images pre-verified.
