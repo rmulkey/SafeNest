@@ -67,6 +67,15 @@ PAGES = [
 # Minimum comfortable tap target. WCAG 2.5.8 sets 24px as the AA floor; 44px is
 # the platform guidance both Apple and Google publish, and what this site's own
 # button sizing already targets.
+# Two thresholds, because conflating them makes the output useless.
+#
+# 24x24 is WCAG 2.5.8 Target Size (Minimum), Level AA — a genuine failure.
+# 44x44 is WCAG 2.5.5 Target Size (Enhanced), Level AAA — advisory, and a target
+# can miss it while still being easy to hit if it is short in only one dimension.
+# A single 44px threshold reported the whole 36px-tall header every run alongside
+# a 32x32 square button that was actually hard to tap, which buried the one
+# finding worth acting on.
+MIN_TAP_AA = 24
 MIN_TAP = 44
 
 PROBE = r"""
@@ -157,21 +166,94 @@ PROBE = r"""
     });
   }
 
-  // Interactive controls smaller than the comfortable minimum.
+  /*
+   * Interactive controls smaller than the comfortable minimum.
+   *
+   * Measured by hit area, not by the painted box. Enlarging a touch target
+   * without changing the design means an absolutely-positioned ::before with
+   * negative insets — the pseudo-element is part of the element for hit testing,
+   * so a 32x32 control with ::before at -6px on every side is a 44x44 target.
+   * getBoundingClientRect cannot see that, so the search button would have been
+   * reported as 32x32 forever and no real fix could ever clear the check.
+   */
+  const hitPadding = (el) => {
+    const pad = { top: 0, right: 0, bottom: 0, left: 0 };
+    for (const pseudo of ['::before', '::after']) {
+      const cs = getComputedStyle(el, pseudo);
+      if (cs.content === 'none' || cs.position !== 'absolute') continue;
+      if (cs.pointerEvents === 'none') continue;
+      const neg = (v) => {
+        const f = parseFloat(v);
+        return Number.isFinite(f) && f < 0 ? -f : 0;
+      };
+      pad.top = Math.max(pad.top, neg(cs.top));
+      pad.right = Math.max(pad.right, neg(cs.right));
+      pad.bottom = Math.max(pad.bottom, neg(cs.bottom));
+      pad.left = Math.max(pad.left, neg(cs.left));
+    }
+    return pad;
+  };
+
   for (const el of document.querySelectorAll('a[href], button, input, select, [role="button"]')) {
     const cs = getComputedStyle(el);
     if (cs.display === 'none' || cs.visibility === 'hidden') continue;
     const r = el.getBoundingClientRect();
     if (r.width === 0 || r.height === 0) continue;
     if (r.width <= 1 && r.height <= 1) continue;
-    // Inline links inside prose are not tap targets in the button sense.
-    const inProse = el.closest('p, li');
+    /*
+     * Inline links inside prose are not tap targets in the button sense.
+     *
+     * The <li> part has to exclude navigation. Every nav item is an <a> inside an
+     * <li>, so treating any <li> as prose silently exempted the entire nav while
+     * still flagging the one nav control that happens to be a <button> — the
+     * audit reported "Age Groups" and said nothing about the eight links beside
+     * it at exactly the same height.
+     */
+    /*
+     * WCAG 2.5.8 exempts a target "in a sentence or whose size is otherwise
+     * constrained by the line-height of non-target text". A link rendered as
+     * display:inline is exactly that: its height is the line box, so demanding
+     * 24px of it means demanding a bigger font. "official CPSC database" inside a
+     * paragraph is the shape being exempted.
+     *
+     * Anything the author laid out as a box — inline-flex, inline-block, block,
+     * grid — is not line-constrained and is held to the minimum.
+     */
+    if (el.tagName === 'A' && cs.display === 'inline') continue;
+    /*
+     * The <li> prose test has to exclude navigation. Every nav item is an <a>
+     * inside an <li>, so treating any <li> as prose silently exempted the whole
+     * nav while still flagging the one nav control that happens to be a <button>
+     * — the audit reported "Age Groups" and said nothing about the eight links
+     * beside it at exactly the same height.
+     */
+    const inNav = el.closest('nav, [role="navigation"]');
+    const inProse = !inNav && el.closest('p, li');
     if (inProse && el.tagName === 'A') continue;
-    if (r.height < %MIN_TAP% || r.width < %MIN_TAP%) {
+    /*
+     * Skip controls deliberately removed from the accessibility tree. The
+     * desktop "⌘K" hint is aria-hidden with tabindex=-1 and duplicates the
+     * Search button sitting next to it; it is a visual affordance, not a target
+     * anyone is expected to acquire, so holding it to a target-size minimum
+     * reports a problem that cannot be fixed without inventing one.
+     */
+    if (el.getAttribute('aria-hidden') === 'true') continue;
+    if (el.closest('[aria-hidden="true"]')) continue;
+
+    const pad = hitPadding(el);
+    const w = r.width + pad.left + pad.right;
+    const h = r.height + pad.top + pad.bottom;
+    if (h < %MIN_TAP% || w < %MIN_TAP%) {
       out.smallTaps.push({
         tag: el.tagName.toLowerCase(),
-        w: Math.round(r.width),
-        h: Math.round(r.height),
+        w: Math.round(w),
+        h: Math.round(h),
+        // Fails the Level AA floor in both dimensions, not merely the AAA target.
+        failsAA: h < %MIN_TAP_AA% || w < %MIN_TAP_AA%,
+        painted:
+          w !== r.width || h !== r.height
+            ? `${Math.round(r.width)}x${Math.round(r.height)}`
+            : '',
         text: (el.textContent || '').trim().slice(0, 40),
         aria: el.getAttribute('aria-label') || '',
       });
@@ -240,14 +322,69 @@ PROBE = r"""
   out.stuckSkeletons = document.querySelectorAll('[role="status"][aria-label*="oading" i]').length;
   return out;
 }
-""".replace("%MIN_TAP%", str(MIN_TAP))
+""".replace("%MIN_TAP_AA%", str(MIN_TAP_AA)).replace("%MIN_TAP%", str(MIN_TAP))
+
+
+def playwright_help() -> str:
+    """
+    Explain a missing playwright in terms of *which* interpreter is missing it.
+
+    "playwright is not installed" is misleading when it is installed, just not
+    for the python3 currently first on PATH. That is not hypothetical: a homebrew
+    upgrade moved the default python3 from 3.13 to 3.15 and this script started
+    reporting playwright missing on a machine that had it the whole time, which
+    costs more time than it should because the obvious next step — pip install —
+    appears to succeed and changes nothing for the interpreter you then re-run.
+    """
+    import shutil
+    import subprocess
+
+    candidates = [
+        "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "/usr/local/bin/python3",
+        "/opt/homebrew/bin/python3.13",
+        "/opt/homebrew/bin/python3.12",
+        shutil.which("python3.13") or "",
+        shutil.which("python3.12") or "",
+    ]
+    have = []
+    for c in dict.fromkeys(p for p in candidates if p and Path(p).exists()):
+        if c == sys.executable:
+            continue
+        try:
+            r = subprocess.run(
+                [c, "-c", "import playwright"],
+                capture_output=True,
+                timeout=15,
+            )
+            if r.returncode == 0:
+                have.append(c)
+        except Exception:  # noqa: BLE001 - probing, any failure just means "no"
+            pass
+
+    lines = [
+        "playwright is not available to this interpreter.",
+        f"  running: {sys.executable}",
+    ]
+    if have:
+        lines.append("  interpreters that do have it:")
+        lines += [f"    {h}" for h in have]
+        lines.append("  retry with:")
+        lines.append(f"    {have[0]} {' '.join(sys.argv)}")
+    else:
+        lines.append("  no other interpreter on this machine has it either.")
+    lines.append("  or install it for this one:")
+    lines.append(f"    {sys.executable} -m pip install playwright")
+    lines.append(f"    {sys.executable} -m playwright install chromium")
+    return "\n".join(lines)
 
 
 def main() -> int:
     try:
         from playwright.sync_api import sync_playwright
     except ImportError:
-        print("playwright is not installed: pip3 install playwright && playwright install chromium")
+        print(playwright_help())
         return 2
 
     if SHOTS:
@@ -300,6 +437,8 @@ def main() -> int:
                 glyph_total += len(glyphs)
                 glyph_bad += len(bad_glyphs)
 
+                taps_aa = [t for t in taps if t.get("failsAA")]
+
                 flags = []
                 if hscroll > 1:
                     flags.append(f"H-SCROLL +{hscroll}px")
@@ -313,8 +452,10 @@ def main() -> int:
                     flags.append(f"invisible text x{len(invis)}")
                 if r["stuckSkeletons"]:
                     flags.append(f"stuck skeleton x{r['stuckSkeletons']}")
-                if taps:
-                    flags.append(f"tap<{MIN_TAP}px x{len(taps)}")
+                if taps_aa:
+                    flags.append(f"TAP<{MIN_TAP_AA}px x{len(taps_aa)}")
+                elif taps:
+                    flags.append(f"tap<{MIN_TAP}px x{len(taps)} (advisory)")
                 if errs:
                     flags.append(f"console x{len(errs)}")
                     console_errors.setdefault(path, []).extend(errs[:3])
@@ -344,9 +485,19 @@ def main() -> int:
                           f"{t['text'][:30]!r} cls={t['cls'][:40]!r}")
                 if hscroll > 1:
                     findings.append(f"{vp_name} {path}: horizontal scroll +{hscroll}px")
+                # Tap sizes stay advisory and are deliberately not added to
+                # `findings`. Gating on the Level AA floor would fail the run on
+                # roughly six shared link styles — "View all →", "How we score",
+                # "Browse all reviews" and friends — which are 20px tall because
+                # that is their line box. Fixing those means adding min-height to
+                # the shared styles: a deliberate design change, not a defect to
+                # be caught in passing. The sizes are printed so the decision
+                # stays visible.
                 for t in taps[:3]:
-                    print(f"        tap {t['w']}x{t['h']} <{t['tag']}> "
-                          f"{(t['text'] or t['aria'])[:34]!r}")
+                    note = f" (painted {t['painted']})" if t.get("painted") else ""
+                    level = f"below AA {MIN_TAP_AA}px" if t.get("failsAA") else f"below AAA {MIN_TAP}px"
+                    print(f"        tap {t['w']}x{t['h']}{note} <{t['tag']}> "
+                          f"{(t['text'] or t['aria'])[:34]!r} — {level}")
 
                 if SHOTS:
                     safe = path.strip("/").replace("/", "_").replace("?", "-") or "home"

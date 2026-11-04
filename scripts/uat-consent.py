@@ -25,7 +25,21 @@ import json
 import os
 import sys
 
-from playwright.sync_api import sync_playwright
+try:
+    from playwright.sync_api import sync_playwright
+except ImportError:  # pragma: no cover - environment, not logic
+    # Importing at module scope meant a missing playwright produced a raw
+    # traceback rather than a usable message. It is usually present but tied to a
+    # different interpreter than whichever python3 is first on PATH, so say which
+    # one is running and which one to use instead.
+    sys.exit(
+        "playwright is not available to this interpreter.\n"
+        f"  running: {sys.executable}\n"
+        "  scripts/uat-visual.py prints the interpreters that do have it; "
+        "run that first, or:\n"
+        f"    {sys.executable} -m pip install playwright\n"
+        f"    {sys.executable} -m playwright install chromium"
+    )
 
 BASE = os.environ.get("BASE", "http://localhost:3141").rstrip("/")
 PAGE = os.environ.get("PAGE", "/reviews/green-toys-stacking-cups")
