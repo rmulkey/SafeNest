@@ -1,8 +1,23 @@
 [
   {
+    "name": "B. toys Bristle Blocks Basic Set",
+    "slug": "b-toys-bristle-blocks",
+    "detail": "B. toys (Battat) B. toys Bristle Blocks Basic Set"
+  },
+  {
+    "name": "B. toys One Two Squeeze Soft Blocks",
+    "slug": "b-toys-one-two-squeeze-blocks",
+    "detail": "B. toys One Two Squeeze Soft Blocks"
+  },
+  {
     "name": "Baby Banana Infant Teething Toothbrush",
     "slug": "baby-banana-infant-teething-toothbrush",
     "detail": "Baby Banana Infant Teething Toothbrush"
+  },
+  {
+    "name": "Baby Einstein Take Along Tunes Musical Toy",
+    "slug": "baby-einstein-take-along-tunes",
+    "detail": "Baby Einstein Take Along Tunes Musical Toy"
   },
   {
     "name": "Bright Starts Everything Nice Rattle & Teether Set",
@@ -25,9 +40,24 @@
     "detail": "Bright Starts Oball Shaker Toy"
   },
   {
+    "name": "Crayola My First Washable Tripod Crayons",
+    "slug": "crayola-my-first-tripod-crayons",
+    "detail": "Crayola My First Washable Tripod Crayons"
+  },
+  {
+    "name": "Crayola Washable Finger Paints (6 Count)",
+    "slug": "crayola-washable-finger-paints",
+    "detail": "Crayola Washable Finger Paints (6 Count)"
+  },
+  {
     "name": "Disney Baby Winnie the Pooh Jingle & Shake Rattle",
     "slug": "disney-baby-winnie-the-pooh-jingle-and-shake-rattle",
     "detail": "Bright Starts Disney Baby Winnie the Pooh Jingle & Shake Rattle"
+  },
+  {
+    "name": "Edushape Sensory Ball Mega Pack",
+    "slug": "edushape-sensory-ball-set",
+    "detail": "Edushape Sensory Ball Mega Pack"
   },
   {
     "name": "Fat Brain Toys Dimpl Baby Toy",
@@ -40,14 +70,39 @@
     "detail": "Fat Brain Toys Dimpl Digits"
   },
   {
+    "name": "Fat Brain Toys InnyBin Shape Sorter",
+    "slug": "fat-brain-toys-innybin",
+    "detail": "Fat Brain Toys InnyBin Shape Sorter"
+  },
+  {
     "name": "Fat Brain Toys PipSquigz Loops",
     "slug": "fat-brain-toys-pipsquigz-loops",
     "detail": "Fat Brain Toys PipSquigz Loops"
   },
   {
+    "name": "Fisher-Price 3-in-1 Kick & Sway Activity Gym",
+    "slug": "fisher-price-3-in-1-kick-and-sway-activity-gym",
+    "detail": "Fisher-Price 3-in-1 Kick & Sway Activity Gym"
+  },
+  {
+    "name": "Fisher-Price Baby's First Blocks Shape Sorter",
+    "slug": "fisher-price-shape-sorter",
+    "detail": "Fisher-Price Baby's First Blocks Shape Sorter"
+  },
+  {
     "name": "Fisher-Price Giant Rock-a-Stack",
     "slug": "fisher-price-giant-rock-a-stack",
     "detail": "Fisher-Price Giant Rock-a-Stack"
+  },
+  {
+    "name": "Fisher-Price Laugh & Learn Smart Stages Chair",
+    "slug": "fisher-price-laugh-learn-smart-stages-chair",
+    "detail": "Fisher-Price Laugh & Learn Smart Stages Chair"
+  },
+  {
+    "name": "Fisher-Price Little People Caring for Animals Tractor Playset",
+    "slug": "fisher-price-little-people-caring-for-animals-tractor-playset",
+    "detail": "Fisher-Price Little People Caring for Animals Tractor Playset"
   },
   {
     "name": "Fisher-Price Sensory Rock-a-Stack",
@@ -65,6 +120,11 @@
     "detail": "Green Toys Bubbling Submarine"
   },
   {
+    "name": "Green Toys Dump Truck",
+    "slug": "green-toys-dump-truck",
+    "detail": "Green Toys Dump Truck"
+  },
+  {
     "name": "Green Toys My First Submarine",
     "slug": "green-toys-my-first-submarine",
     "detail": "Green Toys My First Submarine"
@@ -73,6 +133,11 @@
     "name": "Green Toys Rescue Boat & Helicopter",
     "slug": "green-toys-rescue-boat-and-helicopter",
     "detail": "Green Toys Rescue Boat & Helicopter"
+  },
+  {
+    "name": "Green Toys Sand Play Set",
+    "slug": "green-toys-sand-play-set",
+    "detail": "Green Toys Sand Play Set"
   },
   {
     "name": "Hape Double Rainbow Stacker",
@@ -115,6 +180,16 @@
     "detail": "Hape Walk-A-Long Snail"
   },
   {
+    "name": "Infantino Flip & Peek Fun Phone",
+    "slug": "infantino-flip-peek-fun-phone",
+    "detail": "Infantino Flip & Peek Fun Phone"
+  },
+  {
+    "name": "Infantino Textured Multi Ball Set",
+    "slug": "infantino-textured-ball-set",
+    "detail": "Infantino Textured Multi Ball Set"
+  },
+  {
     "name": "Janod Translucent Sensory Stacking Blocks",
     "slug": "janod-translucent-sensory-stacking-blocks",
     "detail": "Janod Translucent Sensory Stacking Blocks"
@@ -123,6 +198,26 @@
     "name": "KiwiCo Panda Crate (0-24 months)",
     "slug": "kiwico-panda-crate",
     "detail": "KiwiCo Panda Crate (0-24 months)"
+  },
+  {
+    "name": "LEGO DUPLO My First Animal Train 10412",
+    "slug": "lego-duplo-my-first-animal-train-10412",
+    "detail": "LEGO DUPLO My First Animal Train 10412"
+  },
+  {
+    "name": "LEGO DUPLO Number Train - Learn to Count",
+    "slug": "lego-duplo-number-train",
+    "detail": "LEGO DUPLO Number Train - Learn to Count"
+  },
+  {
+    "name": "Lamaze Mortimer the Moose",
+    "slug": "lamaze-mortimer-the-moose",
+    "detail": "Lamaze Mortimer the Moose"
+  },
+  {
+    "name": "LeapFrog Learning Friends 100 Words Book",
+    "slug": "leapfrog-learning-friends-book",
+    "detail": "LeapFrog Learning Friends 100 Words Book"
   },
   {
     "name": "LeapFrog Shapes & Sharing Picnic Basket",
@@ -140,9 +235,19 @@
     "detail": "Learning Resources 10-Row Rekenrek Counting Frame"
   },
   {
+    "name": "Learning Resources Playfoam Sensory Set",
+    "slug": "learning-resources-playfoam-sensory",
+    "detail": "Learning Resources Playfoam Sensory Set"
+  },
+  {
     "name": "Learning Resources Snap Cubes 100-Piece Set",
     "slug": "learning-resources-snap-cubes-100-piece-set",
     "detail": "Learning Resources Snap Cubes 100-Piece Set"
+  },
+  {
+    "name": "Learning Resources Snap-n-Learn Matching Dinos",
+    "slug": "learning-resources-snap-n-learn-matching-dinos",
+    "detail": "Learning Resources Snap-n-Learn Matching Dinos"
   },
   {
     "name": "Learning Resources Wooden Pattern Blocks 250-Piece Set",
@@ -158,6 +263,11 @@
     "name": "Little Tikes 3-in-1 Splash 'n Grow Water Table",
     "slug": "little-tikes-3-in-1-splash-n-grow-water-table",
     "detail": "Little Tikes 3-in-1 Splash 'n Grow Water Table"
+  },
+  {
+    "name": "Little Tikes Cozy Coupe Ride-On Car",
+    "slug": "little-tikes-cozy-coupe",
+    "detail": "Little Tikes Cozy Coupe Ride-On Car"
   },
   {
     "name": "Little Tikes Easy Score Soccer Set",
@@ -185,9 +295,34 @@
     "detail": "MEGA BLOKS First Builders Big Bag of Blocks"
   },
   {
+    "name": "MEGA BLOKS First Builders Big Building Bag",
+    "slug": "mega-bloks-first-builders",
+    "detail": "MEGA BLOKS First Builders Big Building Bag"
+  },
+  {
+    "name": "Magna-Tiles Stardust 15-Piece Set",
+    "slug": "magna-tiles-stardust-15pc",
+    "detail": "Magna-Tiles Stardust 15-Piece Set"
+  },
+  {
+    "name": "Manhattan Toy Skwish Classic Rattle",
+    "slug": "manhattan-toy-skwish-rattle",
+    "detail": "Manhattan Toy Skwish Classic Rattle"
+  },
+  {
     "name": "Manhattan Toy Whirzle",
     "slug": "manhattan-toy-whirzle",
     "detail": "Manhattan Toy Whirzle"
+  },
+  {
+    "name": "Manhattan Toy Wimmer Discovery Mirror",
+    "slug": "manhattan-toy-wimmer-discovery-mirror",
+    "detail": "Manhattan Toy Wimmer Discovery Mirror"
+  },
+  {
+    "name": "Manhattan Toy Wimmer Seek & Explore Tummy Time Mat",
+    "slug": "manhattan-toy-wimmer-seek-and-explore-tummy-time-mat",
+    "detail": "Manhattan Toy Wimmer Seek & Explore Tummy Time Mat"
   },
   {
     "name": "Melissa & Doug Bead Sequencing Set",
@@ -253,6 +388,11 @@
     "name": "Melissa & Doug K's Kids Fish & Count Learning Game",
     "slug": "melissa-and-doug-ks-kids-fish-and-count-learning-game",
     "detail": "Melissa & Doug K's Kids Fish & Count Learning Game"
+  },
+  {
+    "name": "Melissa & Doug Latches Board",
+    "slug": "melissa-doug-latches-board",
+    "detail": "Melissa & Doug Latches Board"
   },
   {
     "name": "Melissa & Doug Magnetic Wooden Puzzle Game Set",
@@ -325,6 +465,11 @@
     "detail": "Melissa & Doug Underwater Ocean Floor Puzzle"
   },
   {
+    "name": "Melissa & Doug Wooden Building Blocks Set",
+    "slug": "melissa-doug-wooden-blocks",
+    "detail": "Melissa & Doug Wooden Building Blocks Set"
+  },
+  {
     "name": "Melissa & Doug Wooden Construction Building Set in a Box",
     "slug": "melissa-and-doug-wooden-construction-building-set-in-a-box",
     "detail": "Melissa & Doug Wooden Construction Building Set in a Box"
@@ -345,6 +490,11 @@
     "detail": "Munchkin Bath Bobbers"
   },
   {
+    "name": "Oball Classic Ball",
+    "slug": "oball-classic-ball",
+    "detail": "Oball (Kids II) Oball Classic Ball"
+  },
+  {
     "name": "PicassoTiles 100 Piece Magnetic Building Tiles Set with Carry Case",
     "slug": "picassotiles-100-piece-magnetic-tiles",
     "detail": "PicassoTiles 100 Piece Magnetic Building Tiles Set with Carry Case"
@@ -360,6 +510,16 @@
     "detail": "Piccalio Pikler Triangle Climbing Frame"
   },
   {
+    "name": "PlanToys My First Camera",
+    "slug": "plantoys-my-first-camera",
+    "detail": "PlanToys My First Camera"
+  },
+  {
+    "name": "Play-Doh Starter Set",
+    "slug": "play-doh-starter-set",
+    "detail": "Play-Doh Starter Set"
+  },
+  {
     "name": "Radio Flyer 4-in-1 Stroll 'N Trike",
     "slug": "radio-flyer-4-in-1-stroll-n-trike",
     "detail": "Radio Flyer 4-in-1 Stroll 'N Trike"
@@ -368,6 +528,11 @@
     "name": "Radio Flyer Busy Buggy Ride-On",
     "slug": "radio-flyer-busy-buggy-ride-on",
     "detail": "Radio Flyer Busy Buggy Ride-On"
+  },
+  {
+    "name": "Radio Flyer Classic Red Wagon",
+    "slug": "radio-flyer-classic-red-wagon",
+    "detail": "Radio Flyer Classic Red Wagon"
   },
   {
     "name": "Radio Flyer Scoot 2 Scooter",
@@ -388,6 +553,11 @@
     "name": "Sassy Teethe & Twirl Sensation Station",
     "slug": "sassy-teethe-and-twirl-sensation-station",
     "detail": "Sassy Teethe & Twirl Sensation Station"
+  },
+  {
+    "name": "Skip Hop Bandana Buddies Activity Toy",
+    "slug": "skip-hop-bandana-buddies",
+    "detail": "Skip Hop Bandana Buddies Activity Toy"
   },
   {
     "name": "Skip Hop Explore & More Roll-Around Hedgehog",
@@ -450,6 +620,31 @@
     "detail": "Step2 Waterpark Wonders Two-Tier Water Table"
   },
   {
+    "name": "Strider 12 Sport Balance Bike",
+    "slug": "strider-12-sport-balance-bike",
+    "detail": "Strider 12 Sport Balance Bike"
+  },
+  {
+    "name": "Tegu 14-Piece Magnetic Wooden Blocks",
+    "slug": "tegu-14-piece-magnetic-blocks",
+    "detail": "Tegu 14-Piece Magnetic Wooden Blocks"
+  },
+  {
+    "name": "Tegu Sunset 24-Piece Magnetic Block Set",
+    "slug": "tegu-sunset-24-piece",
+    "detail": "Tegu Sunset 24-Piece Magnetic Block Set"
+  },
+  {
+    "name": "Tiny Love Magical Tales Black & White Gymini",
+    "slug": "tiny-love-magical-tales-black-and-white-gymini",
+    "detail": "Tiny Love Magical Tales Black & White Gymini"
+  },
+  {
+    "name": "VTech KidiBeats Drum Set",
+    "slug": "vtech-kidibeats-drum-set",
+    "detail": "VTech KidiBeats Drum Set"
+  },
+  {
     "name": "VTech Pop-a-Balls Push & Pop Bulldozer",
     "slug": "vtech-pop-a-balls-push-and-pop-bulldozer",
     "detail": "VTech Pop-a-Balls Push & Pop Bulldozer"
@@ -458,6 +653,11 @@
     "name": "VTech Race & Learn Driver",
     "slug": "vtech-race-and-learn-driver",
     "detail": "VTech Race & Learn Driver"
+  },
+  {
+    "name": "VTech Sit-to-Stand Learning Walker",
+    "slug": "vtech-sit-to-stand-walker",
+    "detail": "VTech Sit-to-Stand Learning Walker"
   },
   {
     "name": "VTech Sort & Discover Activity Wagon",
