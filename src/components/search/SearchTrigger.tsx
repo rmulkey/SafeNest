@@ -67,7 +67,16 @@ export function SearchTrigger() {
         aria-label="Search"
         aria-keyshortcuts="Control+K /"
         onClick={openDialog}
-        className="text-muted-foreground hover:text-foreground"
+        /*
+         * The visible button is size-8 — 32x32 — which clears WCAG 2.5.8 (24x24,
+         * AA) but not 2.5.5 (44x44, AAA), and on a phone it is the smallest and
+         * squarest target in the header. The ::before box extends the hit area to
+         * exactly 44x44 (32 + 6px on each side) without changing what is drawn,
+         * so the header keeps its proportions and the target stops being fiddly.
+         * Growing the shared `icon` size variant instead would have resized every
+         * icon button on the site.
+         */
+        className="relative text-muted-foreground before:absolute before:-inset-1.5 before:content-[''] hover:text-foreground"
       >
         <Search className="size-5" />
       </Button>
