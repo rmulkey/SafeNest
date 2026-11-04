@@ -71,3 +71,7 @@ semrush/*
 # `gsc/*` not `gsc/`, for the same reason as semrush above.
 gsc/*
 !gsc/README.md
+
+# Python bytecode from the Playwright-based audits in scripts/
+__pycache__/
+*.pyc
