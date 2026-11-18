@@ -1,0 +1,835 @@
+{
+  "schemaVersion": 1,
+  "auditDateLocal": "2026-11-17",
+  "timeZone": "America/New_York",
+  "purpose": "Prioritized review-only ASIN candidates; not a production mutation payload.",
+  "sourceRepository": "rmulkey/SafeNest",
+  "sourceCommit": "76b1419dea6144c804a0a80217b482cf814a4c5e",
+  "sourceCommitDate": "2026-11-04T20:39:03Z",
+  "inventory": {
+    "repositorySnapshot": {
+      "search": 134,
+      "direct": 14,
+      "total": 148
+    },
+    "livePublicSanity": {
+      "direct": 14,
+      "reviews": 148,
+      "search": 134
+    },
+    "liveFetchedAt": "2026-11-18T01:17:29.845910+00:00",
+    "hypotheticalIfAllSixEventuallyClear": {
+      "search": 128,
+      "direct": 20,
+      "total": 148,
+      "applied": false
+    }
+  },
+  "priorityMethod": "Descending historical page impressions among the six supplied reviews. Historical position is context only; current traffic, rankings, purchase conversion and revenue are unverified.",
+  "historicalCohort": {
+    "impressions": 269,
+    "days": 83,
+    "note": "Impressions are search-result exposures, not review visits or affiliate clicks."
+  },
+  "verificationSummary": {
+    "candidates": 6,
+    "wellFormedAsins": 6,
+    "exactLiveAmazonVerified": 0,
+    "productionReady": 0,
+    "inconclusiveHttp503": 6,
+    "verifiedAsins": [],
+    "productionApprovedCandidates": []
+  },
+  "approvalBoundary": {
+    "productionSanityChanges": 0,
+    "repositoryCommits": 0,
+    "pushes": 0,
+    "pullRequests": 0,
+    "publishingActions": 0,
+    "userApprovalRequiredBefore": [
+      "Any production Sanity mutation",
+      "Any repository commit or push",
+      "Any publication/deployment"
+    ]
+  },
+  "limitations": {
+    "sanityToken": "SANITY_API_TOKEN absent; the unmodified worksheet and verify-asins scripts exit 1 before querying, even with --dry-run. Public GET reads succeeded without credentials.",
+    "amazon": "All six product GET probes returned HTTP 503; browser inspection of Dimpl redirected to /error/500 and said the session/client is unsupported. No selected live variant or offer was visible.",
+    "amazonCreators": "AMAZON_CREATORS_CLIENT_ID and AMAZON_CREATORS_CLIENT_SECRET absent; no authorized catalog verification performed.",
+    "gsc": "GSC_SERVICE_ACCOUNT_KEY absent; current Search Console rankings/impressions not refreshed.",
+    "analytics": "No GA4/PostHog/Vercel dashboard or Amazon Associates purchase-report access supplied. No purchase-conversion or revenue baseline measured."
+  },
+  "workflow": {
+    "worksheet": {
+      "command": "node scripts/make-asin-worksheet.mjs <outfile>",
+      "result": "Blocked: SANITY_API_TOKEN required, exit 1.",
+      "substitute": "Read the six live public documents via Sanity GET and populated only research files."
+    },
+    "verifier": {
+      "command": "node scripts/verify-asins.mjs scripts/asin-priority-dry-run.json --dry-run",
+      "result": "Unmodified CLI blocked: missing SANITY_API_TOKEN, exit 1.",
+      "supportedProbe": "Exact probeAsin/tokens/constants reused in an isolated read-only wrapper; Sanity q/mutate functions and apply loop excluded.",
+      "probeResults": "6 inconclusive; 0 approved."
+    },
+    "scriptLimitations": [
+      "Loose title overlap threshold is 50%; it does not validate model, language, color, pack size or child/parent ASIN.",
+      "The script does not establish current offer availability or validate the final canonical ASIN.",
+      "Even --dry-run requires a token. Never remove --dry-run for this unverified candidate set.",
+      "Future mutations should target only the keyed URL and use a freshly read revision; avoid overwriting a stale whole affiliateLinks array."
+    ]
+  },
+  "measurementPlan": {
+    "status": "proposal_only",
+    "steps": [
+      "Refresh GSC through the existing read-only pull script once its service-account key is available; inspect canonical and www versions, especially Hape.",
+      "Capture comparable review visits and affiliate_click events by source_page/product_id for an adequate baseline; preserve consent-aware denominators.",
+      "After approved, verified replacements, compare equivalent periods/cohorts and track qualifying Amazon orders, returns and net commission separately from outbound-click rate.",
+      "Use aggregate cohort results cautiously with the existing shared tag. Page-level purchase attribution would require separately approved tracking/reporting changes.",
+      "Wait for adequate observations; the historical 269 impressions in 83 days cannot support a reliable lift or revenue forecast."
+    ],
+    "earningsHypothesisFormula": "Eligible outbound clicks × (direct-link purchase rate − search-link purchase rate) × mean qualifying commission per order. All inputs are currently unmeasured."
+  },
+  "candidates": [
+    {
+      "priority": 1,
+      "slug": "manhattan-toy-skwish-rattle",
+      "productName": "Manhattan Toy Skwish Classic Rattle",
+      "historicalGsc": {
+        "sourceDate": "2026-08-25",
+        "windowStart": "2026-06-02",
+        "windowEnd": "2026-08-23",
+        "impressions": 80,
+        "averagePosition": 11.6,
+        "currentRankVerified": false,
+        "originalHostNote": null
+      },
+      "reviewedProduct": {
+        "requiredModelAndVariant": "Skwish Classic; maker SKU 200970, candidate metadata 200980",
+        "identity": "Single multicolored rubberwood/elastic Skwish Classic with sliding beads. SafeNest's image matches the Classic design; exclude Natural, Color Burst, Colorpop and gift bundles.",
+        "currentImageUrl": "https://cdn.sanity.io/images/ofvgjgsi/production/0506e55444adfb496b383d824d5ac152734b3960-800x800.heif",
+        "liveImageInspected": true,
+        "confirmedFacts": [
+          "Review name and live image identify the multicolored Classic design.",
+          "Current maker page identifies the Classic as 200970.",
+          "Secondary metadata prints B000GI0S4E for model 200980."
+        ],
+        "uncertainMatches": [
+          "Confirm whether the candidate is boxed Classic 200980 and physically equivalent to the pictured 200970. Cached packaging evidence supports this explanation, but the live Amazon selection remains inaccessible.",
+          "Do not equate differing SKU, dimensions or packaging without checking the selected child ASIN and actual model.",
+          "Maker describes a teether; SafeNest's current cons say it is not suitable for teething. This editorial discrepancy is flagged, not changed."
+        ],
+        "productIdentityConfidence": "medium"
+      },
+      "candidate": {
+        "asin": "B000GI0S4E",
+        "productUrl": "https://www.amazon.com/dp/B000GI0S4E",
+        "asinOrigin": "Retrieved from cited external product/ASIN evidence; not invented or derived from the name.",
+        "asinFormatValid": true,
+        "verifiedAsin": false,
+        "exactLiveAmazonMatchVerified": false,
+        "usAvailabilityVerified": false,
+        "evidenceIds": [
+          "M-SKWISH",
+          "A-SKWISH",
+          "P-SKWISH"
+        ],
+        "alternativeCandidates": []
+      },
+      "liveSanitySnapshot": {
+        "documentId": "review-manhattan-toy-skwish",
+        "revision": "KwC3Wet2UY7XK46TaFhgJE",
+        "updatedAt": "2026-11-17T05:01:05Z",
+        "amazonLinkKey": "amazon-direct",
+        "currentStoredUrl": "https://www.amazon.com/s?k=Manhattan%20Toy%20Skwish%20Classic%20Rattle",
+        "affiliateTag": "safeneststore-20",
+        "otherLinkFields": {
+          "_key": "amazon-direct",
+          "_type": "affiliateLink",
+          "partnerId": "amazon",
+          "tag": "safeneststore-20",
+          "url": "https://www.amazon.com/s?k=Manhattan%20Toy%20Skwish%20Classic%20Rattle"
+        }
+      },
+      "proposedChange": {
+        "apply": false,
+        "status": "HOLD",
+        "targetDocumentId": "review-manhattan-toy-skwish",
+        "targetPath": "affiliateLinks[_key==\"amazon-direct\"].url",
+        "from": "https://www.amazon.com/s?k=Manhattan%20Toy%20Skwish%20Classic%20Rattle",
+        "to": "https://www.amazon.com/dp/B000GI0S4E",
+        "preserve": "All existing affiliateLinks entries, _key, _type, partnerId, tag, label and all review/content fields.",
+        "requiredBeforeApply": [
+          "Explicit user approval for production data change.",
+          "Re-read current document; confirm current URL and use a fresh revision precondition.",
+          "Resolve the listed model/variant/label uncertainties.",
+          "Obtain a real Amazon.com product page or authorized first-party catalog response showing the selected child ASIN and exact model/variant.",
+          "Check current offer availability; inspect final canonical/redirect destination and preserved affiliate tag.",
+          "Run the repository verifier with --dry-run when credentials/access permit; its loose title match is not sufficient by itself."
+        ]
+      },
+      "verification": {
+        "repositoryProbe": {
+          "verdict": "inconclusive",
+          "note": "HTTP 503 bot wall"
+        },
+        "httpStatus": 503,
+        "checkedAt": "2026-11-18T01:17:05.771Z",
+        "productTitle": null,
+        "liveAsinVerified": false,
+        "verdict": "INCONCLUSIVE_DO_NOT_APPLY",
+        "meaning": "HTTP 503 is an access failure, not proof of a dead ASIN or a correct product.",
+        "formatCheck": "PASS",
+        "productionWritePerformed": false
+      },
+      "conversionHypothesis": {
+        "measured": false,
+        "hypothesis": "Removing the search step could keep safety-focused readers on the intended Classic product instead of sibling variants. This page had the most historical impressions in this six-page cohort.",
+        "mechanism": "Removes one product-selection step after the affiliate click.",
+        "expectedDirection": "Potential improvement, not established; no numeric uplift or revenue estimate.",
+        "purchaseMetric": "Qualifying orders per eligible Amazon outbound click; earnings per eligible outbound click.",
+        "limitation": "Existing affiliate_click events measure outbound clicks, not Amazon purchases. Shared affiliate tag does not isolate page-level sales."
+      }
+    },
+    {
+      "priority": 2,
+      "slug": "fat-brain-dimpl",
+      "productName": "Fat Brain Toys Dimpl Baby Toy",
+      "historicalGsc": {
+        "sourceDate": "2026-08-25",
+        "windowStart": "2026-06-02",
+        "windowEnd": "2026-08-23",
+        "impressions": 58,
+        "averagePosition": 9.9,
+        "currentRankVerified": false,
+        "originalHostNote": null
+      },
+      "reviewedProduct": {
+        "requiredModelAndVariant": "Original Dimpl FA192-1; UPC 811802023230",
+        "identity": "One white ABS frame containing five differently sized colorful silicone bubbles, as shown in the review image. Exclude Dimpl Digits, Duo, Simpl Dimpl, Bright, Pops and multipacks.",
+        "currentImageUrl": "https://cdn.sanity.io/images/ofvgjgsi/production/6ceffb58786dabfc387a7d62e7b50cc4c19c3a93-800x800.heif",
+        "liveImageInspected": true,
+        "confirmedFacts": [
+          "SafeNest's live image shows the original five-bubble toy.",
+          "Retailer specifications connect the five-bubble toy to UPC 811802023230 and model FA192-1.",
+          "Secondary ASIN metadata identifies B079CH7PLF for the Original Dimpl."
+        ],
+        "uncertainMatches": [
+          "The manufacturer detail page was inaccessible (403); retailer evidence supports product identity but is not a live Amazon check.",
+          "Age labeling differs between the reviewed 10 months+ product and Target's 6 months+ display; confirm the current package/model before deployment.",
+          "Confirm single-unit quantity, maker identity, selected child ASIN and current Amazon.com offer."
+        ],
+        "productIdentityConfidence": "high_product_identity_not_live_asin"
+      },
+      "candidate": {
+        "asin": "B079CH7PLF",
+        "productUrl": "https://www.amazon.com/dp/B079CH7PLF",
+        "asinOrigin": "Retrieved from cited external product/ASIN evidence; not invented or derived from the name.",
+        "asinFormatValid": true,
+        "verifiedAsin": false,
+        "exactLiveAmazonMatchVerified": false,
+        "usAvailabilityVerified": false,
+        "evidenceIds": [
+          "R-DIMPL",
+          "R-DIMPL-MODEL",
+          "A-DIMPL"
+        ],
+        "alternativeCandidates": []
+      },
+      "liveSanitySnapshot": {
+        "documentId": "review-fat-brain-dimpl",
+        "revision": "yGJxT1olW6QwV5JCn3WTI6",
+        "updatedAt": "2026-11-17T05:01:05Z",
+        "amazonLinkKey": "amazon-search",
+        "currentStoredUrl": "https://www.amazon.com/s?k=Fat%20Brain%20Toys%20Dimpl%20Baby%20Toy",
+        "affiliateTag": "safeneststore-20",
+        "otherLinkFields": {
+          "_key": "amazon-search",
+          "_type": "affiliateLink",
+          "partnerId": "amazon",
+          "tag": "safeneststore-20",
+          "url": "https://www.amazon.com/s?k=Fat%20Brain%20Toys%20Dimpl%20Baby%20Toy"
+        }
+      },
+      "proposedChange": {
+        "apply": false,
+        "status": "HOLD",
+        "targetDocumentId": "review-fat-brain-dimpl",
+        "targetPath": "affiliateLinks[_key==\"amazon-search\"].url",
+        "from": "https://www.amazon.com/s?k=Fat%20Brain%20Toys%20Dimpl%20Baby%20Toy",
+        "to": "https://www.amazon.com/dp/B079CH7PLF",
+        "preserve": "All existing affiliateLinks entries, _key, _type, partnerId, tag, label and all review/content fields.",
+        "requiredBeforeApply": [
+          "Explicit user approval for production data change.",
+          "Re-read current document; confirm current URL and use a fresh revision precondition.",
+          "Resolve the listed model/variant/label uncertainties.",
+          "Obtain a real Amazon.com product page or authorized first-party catalog response showing the selected child ASIN and exact model/variant.",
+          "Check current offer availability; inspect final canonical/redirect destination and preserved affiliate tag.",
+          "Run the repository verifier with --dry-run when credentials/access permit; its loose title match is not sufficient by itself."
+        ]
+      },
+      "verification": {
+        "repositoryProbe": {
+          "verdict": "inconclusive",
+          "note": "HTTP 503 bot wall"
+        },
+        "httpStatus": 503,
+        "checkedAt": "2026-11-18T01:17:09.789Z",
+        "productTitle": null,
+        "liveAsinVerified": false,
+        "verdict": "INCONCLUSIVE_DO_NOT_APPLY",
+        "meaning": "HTTP 503 is an access failure, not proof of a dead ASIN or a correct product.",
+        "formatCheck": "PASS",
+        "productionWritePerformed": false
+      },
+      "conversionHypothesis": {
+        "measured": false,
+        "hypothesis": "A direct Original Dimpl destination could reduce accidental selection of Digits, Duo or Simpl Dimpl after an outbound click.",
+        "mechanism": "Removes one product-selection step after the affiliate click.",
+        "expectedDirection": "Potential improvement, not established; no numeric uplift or revenue estimate.",
+        "purchaseMetric": "Qualifying orders per eligible Amazon outbound click; earnings per eligible outbound click.",
+        "limitation": "Existing affiliate_click events measure outbound clicks, not Amazon purchases. Shared affiliate tag does not isolate page-level sales."
+      }
+    },
+    {
+      "priority": 3,
+      "slug": "hape-pound-tap-xylophone",
+      "productName": "Hape Pound & Tap Bench with Xylophone",
+      "historicalGsc": {
+        "sourceDate": "2026-08-25",
+        "windowStart": "2026-06-02",
+        "windowEnd": "2026-08-23",
+        "impressions": 39,
+        "averagePosition": 8.4,
+        "currentRankVerified": false,
+        "originalHostNote": "Historical row was www/reviews/hape-pound-tap-xylophone; do not silently combine canonical variants."
+      },
+      "reviewedProduct": {
+        "requiredModelAndVariant": "E0305 Pound & Tap Bench",
+        "identity": "Yellow/natural wooden pounding bench, three colored balls, mallet and slide-out xylophone, matching SafeNest's image. Exclude E0334 Shape Sorter Xylophone and Piano, which has a separate review and direct link.",
+        "currentImageUrl": "https://cdn.sanity.io/images/ofvgjgsi/production/1e2dbb310a9d76bda11f6749433b4670cf8f8c07-800x800.webp",
+        "liveImageInspected": true,
+        "confirmedFacts": [
+          "SafeNest's image shows the bench, three balls, mallet and removable xylophone.",
+          "Hape identifies that product as E0305.",
+          "Secondary metadata explicitly pairs E0305 with B00712O2D6."
+        ],
+        "uncertainMatches": [
+          "Confirm the live Amazon child ASIN is E0305 with all components, rather than a bare instrument or sibling product.",
+          "The maker page includes a small-parts warning; the review currently states no small parts. Reconcile the actual current package warning before treating this as ready.",
+          "Stock, seller, US delivery and current availability were not verified."
+        ],
+        "productIdentityConfidence": "high_product_identity_not_live_asin"
+      },
+      "candidate": {
+        "asin": "B00712O2D6",
+        "productUrl": "https://www.amazon.com/dp/B00712O2D6",
+        "asinOrigin": "Retrieved from cited external product/ASIN evidence; not invented or derived from the name.",
+        "asinFormatValid": true,
+        "verifiedAsin": false,
+        "exactLiveAmazonMatchVerified": false,
+        "usAvailabilityVerified": false,
+        "evidenceIds": [
+          "M-HAPE",
+          "A-HAPE"
+        ],
+        "alternativeCandidates": []
+      },
+      "liveSanitySnapshot": {
+        "documentId": "review-hape-xylophone",
+        "revision": "yGJxT1olW6QwV5JCn3WTI6",
+        "updatedAt": "2026-11-17T05:01:05Z",
+        "amazonLinkKey": "amazon-search",
+        "currentStoredUrl": "https://www.amazon.com/s?k=Hape%20Pound%20%26%20Tap%20Bench%20with%20Xylophone",
+        "affiliateTag": "safeneststore-20",
+        "otherLinkFields": {
+          "_key": "amazon-search",
+          "_type": "affiliateLink",
+          "partnerId": "amazon",
+          "tag": "safeneststore-20",
+          "url": "https://www.amazon.com/s?k=Hape%20Pound%20%26%20Tap%20Bench%20with%20Xylophone"
+        }
+      },
+      "proposedChange": {
+        "apply": false,
+        "status": "HOLD",
+        "targetDocumentId": "review-hape-xylophone",
+        "targetPath": "affiliateLinks[_key==\"amazon-search\"].url",
+        "from": "https://www.amazon.com/s?k=Hape%20Pound%20%26%20Tap%20Bench%20with%20Xylophone",
+        "to": "https://www.amazon.com/dp/B00712O2D6",
+        "preserve": "All existing affiliateLinks entries, _key, _type, partnerId, tag, label and all review/content fields.",
+        "requiredBeforeApply": [
+          "Explicit user approval for production data change.",
+          "Re-read current document; confirm current URL and use a fresh revision precondition.",
+          "Resolve the listed model/variant/label uncertainties.",
+          "Obtain a real Amazon.com product page or authorized first-party catalog response showing the selected child ASIN and exact model/variant.",
+          "Check current offer availability; inspect final canonical/redirect destination and preserved affiliate tag.",
+          "Run the repository verifier with --dry-run when credentials/access permit; its loose title match is not sufficient by itself."
+        ]
+      },
+      "verification": {
+        "repositoryProbe": {
+          "verdict": "inconclusive",
+          "note": "HTTP 503 bot wall"
+        },
+        "httpStatus": 503,
+        "checkedAt": "2026-11-18T01:17:09.848Z",
+        "productTitle": null,
+        "liveAsinVerified": false,
+        "verdict": "INCONCLUSIVE_DO_NOT_APPLY",
+        "meaning": "HTTP 503 is an access failure, not proof of a dead ASIN or a correct product.",
+        "formatCheck": "PASS",
+        "productionWritePerformed": false
+      },
+      "conversionHypothesis": {
+        "measured": false,
+        "hypothesis": "A direct E0305 link could reduce confusion with Hape's different shape-sorter/xylophone products.",
+        "mechanism": "Removes one product-selection step after the affiliate click.",
+        "expectedDirection": "Potential improvement, not established; no numeric uplift or revenue estimate.",
+        "purchaseMetric": "Qualifying orders per eligible Amazon outbound click; earnings per eligible outbound click.",
+        "limitation": "Existing affiliate_click events measure outbound clicks, not Amazon purchases. Shared affiliate tag does not isolate page-level sales."
+      }
+    },
+    {
+      "priority": 4,
+      "slug": "leapfrog-learning-friends-book",
+      "productName": "LeapFrog Learning Friends 100 Words Book",
+      "historicalGsc": {
+        "sourceDate": "2026-08-25",
+        "windowStart": "2026-06-02",
+        "windowEnd": "2026-08-23",
+        "impressions": 37,
+        "averagePosition": 8,
+        "currentRankVerified": false,
+        "originalHostNote": null
+      },
+      "reviewedProduct": {
+        "requiredModelAndVariant": "Green Learning Friends, English/Spanish; candidate 80-601541 (frustration-free packaging)",
+        "identity": "Green handle, blue front cover, white body, Turtle/Tiger/Monkey and English/Spanish switch, visible in SafeNest's live image. Exclude pink/purple, English/Chinese, 100 Animals, Places I Go, Things That Go and Scout & Violet.",
+        "currentImageUrl": "https://cdn.sanity.io/images/ofvgjgsi/production/94ef82a1843239dbdc06e9d4e4fe69294d6cefe7-800x800.heif",
+        "liveImageInspected": true,
+        "confirmedFacts": [
+          "Review pros specify English/Spanish and the live image confirms those labels.",
+          "LeapFrog's US page corroborates the Learning Friends characters, language pair, age range and controls.",
+          "B07CCFDZZ3 is independently documented as the green frustration-free-packaging edition, model 80-601541."
+        ],
+        "uncertainMatches": [
+          "SafeNest does not record a packaging SKU. The primary candidate is frustration-free packaging, not the maker page's standard model 80-601540.",
+          "The likely standard-package alternative B07B6ZN7P8 should be preferred if an exact 80-601540 listing is required, but it also needs a live check.",
+          "Physical/content equivalence across packaging codes is supported by descriptions, not confirmed by a live Amazon variant comparison."
+        ],
+        "productIdentityConfidence": "high_product_family_packaging_unconfirmed"
+      },
+      "candidate": {
+        "asin": "B07CCFDZZ3",
+        "productUrl": "https://www.amazon.com/dp/B07CCFDZZ3",
+        "asinOrigin": "Retrieved from cited external product/ASIN evidence; not invented or derived from the name.",
+        "asinFormatValid": true,
+        "verifiedAsin": false,
+        "exactLiveAmazonMatchVerified": false,
+        "usAvailabilityVerified": false,
+        "evidenceIds": [
+          "M-LEAP",
+          "A-LEAP-FFP",
+          "A-LEAP-STANDARD"
+        ],
+        "alternativeCandidates": [
+          {
+            "asin": "B07B6ZN7P8",
+            "url": "https://www.amazon.com/dp/B07B6ZN7P8",
+            "model": "80-601540, standard packaging, green English/Spanish",
+            "status": "unverified_alternative_not_probed",
+            "evidenceIds": [
+              "M-LEAP",
+              "A-LEAP-STANDARD"
+            ],
+            "reasonNotProbed": "Amazon had already rejected the browser session; no further Amazon access attempts were made."
+          }
+        ]
+      },
+      "liveSanitySnapshot": {
+        "documentId": "review-leapfrog-learning-friends",
+        "revision": "yGJxT1olW6QwV5JCn3WTI6",
+        "updatedAt": "2026-11-17T05:01:05Z",
+        "amazonLinkKey": "amazon-direct",
+        "currentStoredUrl": "https://www.amazon.com/s?k=LeapFrog%20Learning%20Friends%20100%20Words%20Book",
+        "affiliateTag": "safeneststore-20",
+        "otherLinkFields": {
+          "_key": "amazon-direct",
+          "_type": "affiliateLink",
+          "partnerId": "amazon",
+          "tag": "safeneststore-20",
+          "url": "https://www.amazon.com/s?k=LeapFrog%20Learning%20Friends%20100%20Words%20Book"
+        }
+      },
+      "proposedChange": {
+        "apply": false,
+        "status": "HOLD",
+        "targetDocumentId": "review-leapfrog-learning-friends",
+        "targetPath": "affiliateLinks[_key==\"amazon-direct\"].url",
+        "from": "https://www.amazon.com/s?k=LeapFrog%20Learning%20Friends%20100%20Words%20Book",
+        "to": "https://www.amazon.com/dp/B07CCFDZZ3",
+        "preserve": "All existing affiliateLinks entries, _key, _type, partnerId, tag, label and all review/content fields.",
+        "requiredBeforeApply": [
+          "Explicit user approval for production data change.",
+          "Re-read current document; confirm current URL and use a fresh revision precondition.",
+          "Resolve the listed model/variant/label uncertainties.",
+          "Obtain a real Amazon.com product page or authorized first-party catalog response showing the selected child ASIN and exact model/variant.",
+          "Check current offer availability; inspect final canonical/redirect destination and preserved affiliate tag.",
+          "Run the repository verifier with --dry-run when credentials/access permit; its loose title match is not sufficient by itself."
+        ]
+      },
+      "verification": {
+        "repositoryProbe": {
+          "verdict": "inconclusive",
+          "note": "HTTP 503 bot wall"
+        },
+        "httpStatus": 503,
+        "checkedAt": "2026-11-18T01:17:09.927Z",
+        "productTitle": null,
+        "liveAsinVerified": false,
+        "verdict": "INCONCLUSIVE_DO_NOT_APPLY",
+        "meaning": "HTTP 503 is an access failure, not proof of a dead ASIN or a correct product.",
+        "formatCheck": "PASS",
+        "productionWritePerformed": false
+      },
+      "conversionHypothesis": {
+        "measured": false,
+        "hypothesis": "A direct green English/Spanish Learning Friends link could prevent readers selecting another language, book title or color family.",
+        "mechanism": "Removes one product-selection step after the affiliate click.",
+        "expectedDirection": "Potential improvement, not established; no numeric uplift or revenue estimate.",
+        "purchaseMetric": "Qualifying orders per eligible Amazon outbound click; earnings per eligible outbound click.",
+        "limitation": "Existing affiliate_click events measure outbound clicks, not Amazon purchases. Shared affiliate tag does not isolate page-level sales."
+      }
+    },
+    {
+      "priority": 5,
+      "slug": "janod-translucent-sensory-stacking-blocks",
+      "productName": "Janod Translucent Sensory Stacking Blocks",
+      "historicalGsc": {
+        "sourceDate": "2026-08-25",
+        "windowStart": "2026-06-02",
+        "windowEnd": "2026-08-23",
+        "impressions": 35,
+        "averagePosition": 7.3,
+        "currentRankVerified": false,
+        "originalHostNote": null
+      },
+      "reviewedProduct": {
+        "requiredModelAndVariant": "J05306; 18 blocks plus six model cards",
+        "identity": "12 translucent geometric wooden-framed blocks plus six printed wooden pieces and six activity cards. SafeNest's image shows the translucent shapes and printed animal pieces.",
+        "currentImageUrl": "https://cdn.sanity.io/images/ofvgjgsi/production/944aa41f1e75622256b75758efdedd1dee1f43d4-800x800.heif",
+        "liveImageInspected": true,
+        "confirmedFacts": [
+          "Janod identifies the reviewed set as J05306.",
+          "Maker and secondary catalog agree on the 12+6 blocks and six cards.",
+          "Secondary metadata explicitly prints candidate ASIN B0DTQC82NN for J05306."
+        ],
+        "uncertainMatches": [
+          "No accessible first-party US Amazon catalog evidence confirms that B0DTQC82NN exists or is offered on Amazon.com; an overseas ASIN is not sufficient.",
+          "Some listings say 24 pieces because they include six cards; confirm contents rather than treating that count alone as a different product.",
+          "Exclude generic sensory blocks, 16-block sets, other Janod sets and multipacks; verify the pictured printed pieces."
+        ],
+        "productIdentityConfidence": "high_model_match_low_us_catalog_confirmation"
+      },
+      "candidate": {
+        "asin": "B0DTQC82NN",
+        "productUrl": "https://www.amazon.com/dp/B0DTQC82NN",
+        "asinOrigin": "Retrieved from cited external product/ASIN evidence; not invented or derived from the name.",
+        "asinFormatValid": true,
+        "verifiedAsin": false,
+        "exactLiveAmazonMatchVerified": false,
+        "usAvailabilityVerified": false,
+        "evidenceIds": [
+          "M-JANOD",
+          "A-JANOD"
+        ],
+        "alternativeCandidates": []
+      },
+      "liveSanitySnapshot": {
+        "documentId": "review-janod-translucent-stacking-blocks",
+        "revision": "yGJxT1olW6QwV5JCn3WTI6",
+        "updatedAt": "2026-11-17T05:01:05Z",
+        "amazonLinkKey": "amazon-search",
+        "currentStoredUrl": "https://www.amazon.com/s?k=Janod%20Translucent%20Sensory%20Stacking%20Blocks",
+        "affiliateTag": "safeneststore-20",
+        "otherLinkFields": {
+          "_key": "amazon-search",
+          "_type": "affiliateLink",
+          "partnerId": "amazon",
+          "tag": "safeneststore-20",
+          "url": "https://www.amazon.com/s?k=Janod%20Translucent%20Sensory%20Stacking%20Blocks"
+        }
+      },
+      "proposedChange": {
+        "apply": false,
+        "status": "HOLD",
+        "targetDocumentId": "review-janod-translucent-stacking-blocks",
+        "targetPath": "affiliateLinks[_key==\"amazon-search\"].url",
+        "from": "https://www.amazon.com/s?k=Janod%20Translucent%20Sensory%20Stacking%20Blocks",
+        "to": "https://www.amazon.com/dp/B0DTQC82NN",
+        "preserve": "All existing affiliateLinks entries, _key, _type, partnerId, tag, label and all review/content fields.",
+        "requiredBeforeApply": [
+          "Explicit user approval for production data change.",
+          "Re-read current document; confirm current URL and use a fresh revision precondition.",
+          "Resolve the listed model/variant/label uncertainties.",
+          "Obtain a real Amazon.com product page or authorized first-party catalog response showing the selected child ASIN and exact model/variant.",
+          "Check current offer availability; inspect final canonical/redirect destination and preserved affiliate tag.",
+          "Run the repository verifier with --dry-run when credentials/access permit; its loose title match is not sufficient by itself."
+        ]
+      },
+      "verification": {
+        "repositoryProbe": {
+          "verdict": "inconclusive",
+          "note": "HTTP 503 bot wall"
+        },
+        "httpStatus": 503,
+        "checkedAt": "2026-11-18T01:17:09.994Z",
+        "productTitle": null,
+        "liveAsinVerified": false,
+        "verdict": "INCONCLUSIVE_DO_NOT_APPLY",
+        "meaning": "HTTP 503 is an access failure, not proof of a dead ASIN or a correct product.",
+        "formatCheck": "PASS",
+        "productionWritePerformed": false
+      },
+      "conversionHypothesis": {
+        "measured": false,
+        "hypothesis": "A direct exact-set link could avoid generic sensory-block substitutions, but a missing or import-only US offer could worsen the funnel. Keep the fallback until US catalog presence is confirmed.",
+        "mechanism": "Removes one product-selection step after the affiliate click.",
+        "expectedDirection": "Potential improvement, not established; no numeric uplift or revenue estimate.",
+        "purchaseMetric": "Qualifying orders per eligible Amazon outbound click; earnings per eligible outbound click.",
+        "limitation": "Existing affiliate_click events measure outbound clicks, not Amazon purchases. Shared affiliate tag does not isolate page-level sales."
+      }
+    },
+    {
+      "priority": 6,
+      "slug": "bright-starts-oball-shaker-toy",
+      "productName": "Bright Starts Oball Shaker Toy",
+      "historicalGsc": {
+        "sourceDate": "2026-08-25",
+        "windowStart": "2026-06-02",
+        "windowEnd": "2026-08-23",
+        "impressions": 20,
+        "averagePosition": 8.1,
+        "currentRankVerified": false,
+        "originalHostNote": null
+      },
+      "reviewedProduct": {
+        "requiredModelAndVariant": "81107 / 81107-000; UPC 074451811072",
+        "identity": "One blue/green dumbbell-shaped Oball Shaker with clear rattling-bead handle and two flexible ends, matching the current review photo.",
+        "currentImageUrl": "https://cdn.sanity.io/images/ofvgjgsi/production/aeb50f6e7ef472df043ece86342cca261aa7ab26-800x800.webp",
+        "liveImageInspected": true,
+        "confirmedFacts": [
+          "SafeNest's image matches the blue/green two-ended shaker.",
+          "Kids2 identifies that form as 81107-000; Target supplies matching UPC 074451811072.",
+          "A US catalog tracker explicitly prints B008J1QP7Y for the Oball Shaker."
+        ],
+        "uncertainMatches": [
+          "Do not reuse the repository's review-oball-rattle ASIN B00ZRD99C0; that is a different review/product.",
+          "Exclude the round Oball Rattle (81031), Easy-Grasp ball, barbell look-alikes and gift sets.",
+          "Confirm selected color, single-item quantity, model/UPC and actual Amazon.com availability. Maker age guidance differs from SafeNest, so check the package."
+        ],
+        "productIdentityConfidence": "high_product_identity_not_live_asin"
+      },
+      "candidate": {
+        "asin": "B008J1QP7Y",
+        "productUrl": "https://www.amazon.com/dp/B008J1QP7Y",
+        "asinOrigin": "Retrieved from cited external product/ASIN evidence; not invented or derived from the name.",
+        "asinFormatValid": true,
+        "verifiedAsin": false,
+        "exactLiveAmazonMatchVerified": false,
+        "usAvailabilityVerified": false,
+        "evidenceIds": [
+          "M-OBALL",
+          "R-OBALL",
+          "A-OBALL"
+        ],
+        "alternativeCandidates": []
+      },
+      "liveSanitySnapshot": {
+        "documentId": "review-bright-starts-oball-shaker-toy",
+        "revision": "yGJxT1olW6QwV5JCn3WTI6",
+        "updatedAt": "2026-11-17T05:01:05Z",
+        "amazonLinkKey": "amazon",
+        "currentStoredUrl": "https://www.amazon.com/s?k=Bright%20Starts%20Oball%20Shaker%20Toy",
+        "affiliateTag": "safeneststore-20",
+        "otherLinkFields": {
+          "_key": "amazon",
+          "_type": "affiliateLink",
+          "label": "Buy on Amazon",
+          "partnerId": "amazon",
+          "tag": "safeneststore-20",
+          "url": "https://www.amazon.com/s?k=Bright%20Starts%20Oball%20Shaker%20Toy"
+        }
+      },
+      "proposedChange": {
+        "apply": false,
+        "status": "HOLD",
+        "targetDocumentId": "review-bright-starts-oball-shaker-toy",
+        "targetPath": "affiliateLinks[_key==\"amazon\"].url",
+        "from": "https://www.amazon.com/s?k=Bright%20Starts%20Oball%20Shaker%20Toy",
+        "to": "https://www.amazon.com/dp/B008J1QP7Y",
+        "preserve": "All existing affiliateLinks entries, _key, _type, partnerId, tag, label and all review/content fields.",
+        "requiredBeforeApply": [
+          "Explicit user approval for production data change.",
+          "Re-read current document; confirm current URL and use a fresh revision precondition.",
+          "Resolve the listed model/variant/label uncertainties.",
+          "Obtain a real Amazon.com product page or authorized first-party catalog response showing the selected child ASIN and exact model/variant.",
+          "Check current offer availability; inspect final canonical/redirect destination and preserved affiliate tag.",
+          "Run the repository verifier with --dry-run when credentials/access permit; its loose title match is not sufficient by itself."
+        ]
+      },
+      "verification": {
+        "repositoryProbe": {
+          "verdict": "inconclusive",
+          "note": "HTTP 503 bot wall"
+        },
+        "httpStatus": 503,
+        "checkedAt": "2026-11-18T01:17:10.105Z",
+        "productTitle": null,
+        "liveAsinVerified": false,
+        "verdict": "INCONCLUSIVE_DO_NOT_APPLY",
+        "meaning": "HTTP 503 is an access failure, not proof of a dead ASIN or a correct product.",
+        "formatCheck": "PASS",
+        "productionWritePerformed": false
+      },
+      "conversionHypothesis": {
+        "measured": false,
+        "hypothesis": "A direct shaker link could prevent confusion with the round Oball or gift bundles. This page has the lowest historical exposure of the six, so it is last in the exposure-based queue.",
+        "mechanism": "Removes one product-selection step after the affiliate click.",
+        "expectedDirection": "Potential improvement, not established; no numeric uplift or revenue estimate.",
+        "purchaseMetric": "Qualifying orders per eligible Amazon outbound click; earnings per eligible outbound click.",
+        "limitation": "Existing affiliate_click events measure outbound clicks, not Amazon purchases. Shared affiliate tag does not isolate page-level sales."
+      }
+    }
+  ],
+  "sources": [
+    {
+      "id": "M-SKWISH",
+      "kind": "manufacturer",
+      "url": "https://www.manhattantoy.com/products/skwish-classic",
+      "evidence": "Skwish Classic is identified as SKU 200970, with multicolored rubberwood rods, sliding beads, elastic cords, and a 0+ age label.",
+      "accessedOn": "2026-11-17",
+      "liveAmazonEvidence": false
+    },
+    {
+      "id": "A-SKWISH",
+      "kind": "secondary_asin_metadata",
+      "url": "https://pricehistory.app/p/manhattan-toy-skwish-classic-af8qvxce",
+      "evidence": "Maps Amazon.com identifier B000GI0S4E to Skwish Classic, model 200980. This differs from the current maker's SKU; it does not establish the selected live Amazon variant.",
+      "accessedOn": "2026-11-17",
+      "liveAmazonEvidence": false
+    },
+    {
+      "id": "P-SKWISH",
+      "kind": "cached_manufacturer_branded_price_list_on_sales_representative_site",
+      "url": "https://www.esptoysales.com/pricelist/manhattan-toy-2025-price-list.pdf",
+      "evidence": "The retrieved 2025 list distinguishes 200970 unboxed (UPC 011964408924) and 200980 boxed (UPC 011964419630). A subsequent fetch returned 404; treat this as cached historical packaging evidence, not current catalog verification.",
+      "accessedOn": "2026-11-17",
+      "liveAmazonEvidence": false
+    },
+    {
+      "id": "R-DIMPL",
+      "kind": "retailer_product_specification",
+      "url": "https://www.target.com/p/fat-brain-toys-dimpl-baby-and-toddler-learning-toy/-/A-76544054",
+      "evidence": "Describes one toy with five silicone bubbles in an ABS frame, UPC 811802023230. Its displayed age is 6 months+, while the review and candidate metadata use 10 months+; the current package label must resolve that difference.",
+      "accessedOn": "2026-11-17",
+      "liveAmazonEvidence": false
+    },
+    {
+      "id": "R-DIMPL-MODEL",
+      "kind": "retailer_product_specification",
+      "url": "https://kazootoysatlanta.com/product/dimpl/",
+      "evidence": "Identifies Dimpl as manufacturer SKU FA192-1 and UPC 811802023230, with five bubbles and an ABS frame.",
+      "accessedOn": "2026-11-17",
+      "liveAmazonEvidence": false
+    },
+    {
+      "id": "A-DIMPL",
+      "kind": "secondary_asin_metadata",
+      "url": "https://montessoritoys.info/toys/fat-brain-toys-original-dimpl-brand-baby-toy-sensory-toys-for-babies/",
+      "evidence": "Lists ASIN B079CH7PLF for the Original Dimpl, one piece, with a 10-month+ description. Its prices, availability and review counts were not used as verified Amazon facts.",
+      "accessedOn": "2026-11-17",
+      "liveAmazonEvidence": false
+    },
+    {
+      "id": "M-HAPE",
+      "kind": "manufacturer",
+      "url": "https://toys.hape.com/products/e0305",
+      "evidence": "Identifies E0305 as the Pound & Tap Bench with removable xylophone, suitable for 12M+. Its warning section includes a small-parts warning, which conflicts with the review's no-small-parts wording.",
+      "accessedOn": "2026-11-17",
+      "liveAmazonEvidence": false
+    },
+    {
+      "id": "A-HAPE",
+      "kind": "secondary_asin_metadata",
+      "url": "https://device.report/hape/e0305",
+      "evidence": "Explicitly associates E0305 with ASIN B00712O2D6. This is ID corroboration only; unrelated document matches, battery data and safety claims on the aggregator are not verification.",
+      "accessedOn": "2026-11-17",
+      "liveAmazonEvidence": false
+    },
+    {
+      "id": "M-LEAP",
+      "kind": "manufacturer",
+      "url": "https://store.leapfrog.com/en-us/store/p/learning-friends-100-words-book/_/A-prod80-601540",
+      "evidence": "The US Learning Friends book teaches English and Spanish, for ages 18–48 months, with Turtle, Tiger and Monkey, a language switch and star button. The standard product path identifies the 80-601540 family.",
+      "accessedOn": "2026-11-17",
+      "liveAmazonEvidence": false
+    },
+    {
+      "id": "A-LEAP-FFP",
+      "kind": "secondary_asin_metadata",
+      "url": "https://www.slashskill.com/deals/product/B07CCFDZZ3/leapfrog-learning-friends-100-words-book-frustration-free-packaging-green/",
+      "evidence": "Associates B07CCFDZZ3 with green, English/Spanish Learning Friends, frustration-free packaging, model 80-601541. Its stock, seller and price claims were not treated as current verified facts.",
+      "accessedOn": "2026-11-17",
+      "liveAmazonEvidence": false
+    },
+    {
+      "id": "A-LEAP-STANDARD",
+      "kind": "secondary_asin_metadata",
+      "url": "https://pricehistory.app/p/leapfrog-learning-friends-100-words-book-RTnGzrmb",
+      "evidence": "Associates standard model 80-601540 with Amazon.com identifier B07B6ZN7P8 and the English/Spanish book. This alternative was not directly probed after Amazon rejected access.",
+      "accessedOn": "2026-11-17",
+      "liveAmazonEvidence": false
+    },
+    {
+      "id": "M-JANOD",
+      "kind": "manufacturer",
+      "url": "https://www.janod.us/1140-sensory-translucent-stacking-blocks.html",
+      "evidence": "Identifies J05306: 12 translucent blocks plus six printed wooden blocks and six model cards, for children from 12 months. There are 18 blocks; counting the cards explains some 24-piece descriptions.",
+      "accessedOn": "2026-11-17",
+      "liveAmazonEvidence": false
+    },
+    {
+      "id": "A-JANOD",
+      "kind": "secondary_cross_border_catalog_metadata",
+      "url": "https://www.desertcart.in/products/772107545-sensory-translucent-blocks-sensory-toy-baby-toy-from-12-months",
+      "evidence": "Associates B0DTQC82NN with J05306 and the same 12 translucent blocks, six printed blocks and six cards. It is a non-US catalog page and does not prove Amazon.com listing existence or US availability.",
+      "accessedOn": "2026-11-17",
+      "liveAmazonEvidence": false
+    },
+    {
+      "id": "M-OBALL",
+      "kind": "manufacturer",
+      "url": "https://shop.kids2.com/collections/bright-starts-0-3-months/products/bright-starts-shaker-toy",
+      "evidence": "Identifies the single blue/green dumbbell-shaped shaker as SKU 81107-000, with a transparent bead handle and two flexible ends. The maker lists ages 0–36 months; SafeNest currently says 3–18 months.",
+      "accessedOn": "2026-11-17",
+      "liveAmazonEvidence": false
+    },
+    {
+      "id": "R-OBALL",
+      "kind": "retailer_product_specification",
+      "url": "https://www.target.com/p/-/A-76152378",
+      "evidence": "The Oball Shaker listing supplies UPC 074451811072 and matches the clear handle/two-ended design.",
+      "accessedOn": "2026-11-17",
+      "liveAmazonEvidence": false
+    },
+    {
+      "id": "A-OBALL",
+      "kind": "secondary_us_asin_metadata",
+      "url": "https://app.parseshelf.com/best-sellers/asin/B008J1QP7Y/",
+      "evidence": "Explicitly associates US Amazon ASIN B008J1QP7Y with Bright Starts Oball Shaker Rattle Toy. The latest displayed snapshot was November 9, 2026; this does not confirm present stock or the live selected variant.",
+      "accessedOn": "2026-11-17",
+      "liveAmazonEvidence": false
+    }
+  ]
+}

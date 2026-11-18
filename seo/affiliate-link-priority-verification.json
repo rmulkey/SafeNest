@@ -1,0 +1,235 @@
+{
+  "sourceCommit": "76b1419dea6144c804a0a80217b482cf814a4c5e",
+  "auditDateLocal": "2026-11-17",
+  "unmodifiedWorkflow": {
+    "credentialPresence": {
+      "SANITY_API_TOKEN": false,
+      "AMAZON_CREATORS_CLIENT_ID": false,
+      "AMAZON_CREATORS_CLIENT_SECRET": false,
+      "GSC_SERVICE_ACCOUNT_KEY": false
+    },
+    "checks": [
+      {
+        "command": [
+          "node",
+          "source/scripts/make-asin-worksheet.mjs",
+          "worksheet.json"
+        ],
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Usage: SANITY_API_TOKEN=... node scripts/make-asin-worksheet.mjs [outfile]\n",
+        "performedNetworkRequests": false,
+        "wroteProductionData": false
+      },
+      {
+        "command": [
+          "node",
+          "source/scripts/verify-asins.mjs",
+          "candidate-input.json",
+          "--dry-run"
+        ],
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Usage: SANITY_API_TOKEN=... node scripts/verify-asins.mjs <candidates.json> [--dry-run]\n",
+        "performedNetworkRequests": false,
+        "wroteProductionData": false
+      }
+    ]
+  },
+  "amazonProbe": {
+    "sourceCommit": "76b1419dea6144c804a0a80217b482cf814a4c5e",
+    "sourceFile": "scripts/verify-asins.mjs",
+    "sourceSha256": "7e7a8c427406ea18a83b0ccca485823aceec06514a3552cbd38112bb99981838",
+    "method": "Exact probeAsin() and token matching copied at runtime into GET-only wrapper; Sanity write path excluded.",
+    "results": [
+      {
+        "slug": "manhattan-toy-skwish-rattle",
+        "asin": "B000GI0S4E",
+        "name": "Manhattan Toy Skwish Classic Rattle",
+        "checkedAt": "2026-11-18T01:17:05.771Z",
+        "httpStatus": 503,
+        "finalUrl": "https://www.amazon.com/dp/B000GI0S4E",
+        "pageTitle": null,
+        "productTitle": null,
+        "canonicalUrl": null,
+        "bodySha256": "cb826e29e15b8c33a379422b8451a19651a148d8b4715bb57c8aea52aa10c40d",
+        "currentlyUnavailable": false,
+        "botWall": false,
+        "repositoryProbe": {
+          "verdict": "inconclusive",
+          "note": "HTTP 503 bot wall"
+        },
+        "liveExactMatchVerified": false,
+        "note": "Even an OK loose-title result needs separate exact model/variant confirmation."
+      },
+      {
+        "slug": "fat-brain-dimpl",
+        "asin": "B079CH7PLF",
+        "name": "Fat Brain Toys Dimpl Baby Toy",
+        "checkedAt": "2026-11-18T01:17:09.789Z",
+        "httpStatus": 503,
+        "finalUrl": "https://www.amazon.com/dp/B079CH7PLF",
+        "pageTitle": null,
+        "productTitle": null,
+        "canonicalUrl": null,
+        "bodySha256": "cb826e29e15b8c33a379422b8451a19651a148d8b4715bb57c8aea52aa10c40d",
+        "currentlyUnavailable": false,
+        "botWall": false,
+        "repositoryProbe": {
+          "verdict": "inconclusive",
+          "note": "HTTP 503 bot wall"
+        },
+        "liveExactMatchVerified": false,
+        "note": "Even an OK loose-title result needs separate exact model/variant confirmation."
+      },
+      {
+        "slug": "hape-pound-tap-xylophone",
+        "asin": "B00712O2D6",
+        "name": "Hape Pound & Tap Bench with Xylophone",
+        "checkedAt": "2026-11-18T01:17:09.848Z",
+        "httpStatus": 503,
+        "finalUrl": "https://www.amazon.com/dp/B00712O2D6",
+        "pageTitle": null,
+        "productTitle": null,
+        "canonicalUrl": null,
+        "bodySha256": "cb826e29e15b8c33a379422b8451a19651a148d8b4715bb57c8aea52aa10c40d",
+        "currentlyUnavailable": false,
+        "botWall": false,
+        "repositoryProbe": {
+          "verdict": "inconclusive",
+          "note": "HTTP 503 bot wall"
+        },
+        "liveExactMatchVerified": false,
+        "note": "Even an OK loose-title result needs separate exact model/variant confirmation."
+      },
+      {
+        "slug": "leapfrog-learning-friends-book",
+        "asin": "B07CCFDZZ3",
+        "name": "LeapFrog Learning Friends 100 Words Book",
+        "checkedAt": "2026-11-18T01:17:09.927Z",
+        "httpStatus": 503,
+        "finalUrl": "https://www.amazon.com/dp/B07CCFDZZ3",
+        "pageTitle": null,
+        "productTitle": null,
+        "canonicalUrl": null,
+        "bodySha256": "cb826e29e15b8c33a379422b8451a19651a148d8b4715bb57c8aea52aa10c40d",
+        "currentlyUnavailable": false,
+        "botWall": false,
+        "repositoryProbe": {
+          "verdict": "inconclusive",
+          "note": "HTTP 503 bot wall"
+        },
+        "liveExactMatchVerified": false,
+        "note": "Even an OK loose-title result needs separate exact model/variant confirmation."
+      },
+      {
+        "slug": "janod-translucent-sensory-stacking-blocks",
+        "asin": "B0DTQC82NN",
+        "name": "Janod Translucent Sensory Stacking Blocks",
+        "checkedAt": "2026-11-18T01:17:09.994Z",
+        "httpStatus": 503,
+        "finalUrl": "https://www.amazon.com/dp/B0DTQC82NN",
+        "pageTitle": null,
+        "productTitle": null,
+        "canonicalUrl": null,
+        "bodySha256": "cb826e29e15b8c33a379422b8451a19651a148d8b4715bb57c8aea52aa10c40d",
+        "currentlyUnavailable": false,
+        "botWall": false,
+        "repositoryProbe": {
+          "verdict": "inconclusive",
+          "note": "HTTP 503 bot wall"
+        },
+        "liveExactMatchVerified": false,
+        "note": "Even an OK loose-title result needs separate exact model/variant confirmation."
+      },
+      {
+        "slug": "bright-starts-oball-shaker-toy",
+        "asin": "B008J1QP7Y",
+        "name": "Bright Starts Oball Shaker Toy",
+        "checkedAt": "2026-11-18T01:17:10.105Z",
+        "httpStatus": 503,
+        "finalUrl": "https://www.amazon.com/dp/B008J1QP7Y",
+        "pageTitle": null,
+        "productTitle": null,
+        "canonicalUrl": null,
+        "bodySha256": "cb826e29e15b8c33a379422b8451a19651a148d8b4715bb57c8aea52aa10c40d",
+        "currentlyUnavailable": false,
+        "botWall": false,
+        "repositoryProbe": {
+          "verdict": "inconclusive",
+          "note": "HTTP 503 bot wall"
+        },
+        "liveExactMatchVerified": false,
+        "note": "Even an OK loose-title result needs separate exact model/variant confirmation."
+      }
+    ]
+  },
+  "browser": {
+    "url": "https://www.amazon.com/error/500",
+    "observed": "We do not support your session or client.",
+    "result": "BLOCKED_SESSION",
+    "productTitleObserved": false
+  },
+  "sourceIntegrity": {
+    "gitBlobSha": "c71c64add5b0d3f9866a5ec16feb932a25d739fa",
+    "sha256": "fb949c467540d5a0bded9794d96a7af27d23c2d57db8c00a740f089cd61ac5e4"
+  },
+  "sourceMaterializationNote": "The initial probe used a source materialization with an added trailing newline; extracted constants/tokens/probe function bytes are unaffected. The bundled verifier is restored byte-for-byte to the pinned GitHub blob.",
+  "currentSanityInventory": {
+    "fetchedAt": "2026-11-18T01:17:29.845910+00:00",
+    "queryUrl": "https://ofvgjgsi.api.sanity.io/v2024-01-01/data/query/production?query=%7B+%22counts%22%3A+%7B+%22reviews%22%3A+count%28%2A%5B_type%3D%3D%22toyReview%22%5D%29%2C+%22search%22%3A+count%28%2A%5B_type%3D%3D%22toyReview%22+%26%26+count%28affiliateLinks%5Burl+match+%22%2A%2Fs%3Fk%3D%2A%22%5D%29%3E0%5D%29%2C+%22direct%22%3A+count%28%2A%5B_type%3D%3D%22toyReview%22+%26%26+count%28affiliateLinks%5Burl+match+%22%2A%2Fdp%2F%2A%22%5D%29%3E0%5D%29+%7D%2C+%22assets%22%3A+%2A%5B_type%3D%3D%22toyReview%22+%26%26+slug.current+in+%5B%22bright-starts-oball-shaker-toy%22%2C+%22fat-brain-dimpl%22%2C+%22hape-pound-tap-xylophone%22%2C+%22janod-translucent-sensory-stacking-blocks%22%2C+%22leapfrog-learning-friends-book%22%2C+%22manhattan-toy-skwish-rattle%22%5D%5D%7B%22slug%22%3Aslug.current%2C%22imageUrl%22%3A+mainImage.asset-%3Eurl%7D%7D",
+    "response": {
+      "query": "{ \"counts\": { \"reviews\": count(*[_type==\"toyReview\"]), \"search\": count(*[_type==\"toyReview\" && count(affiliateLinks[url match \"*/s?k=*\"])>0]), \"direct\": count(*[_type==\"toyReview\" && count(affiliateLinks[url match \"*/dp/*\"])>0]) }, \"assets\": *[_type==\"toyReview\" && slug.current in [\"bright-starts-oball-shaker-toy\", \"fat-brain-dimpl\", \"hape-pound-tap-xylophone\", \"janod-translucent-sensory-stacking-blocks\", \"leapfrog-learning-friends-book\", \"manhattan-toy-skwish-rattle\"]]{\"slug\":slug.current,\"imageUrl\": mainImage.asset->url}}",
+      "result": {
+        "assets": [
+          {
+            "imageUrl": "https://cdn.sanity.io/images/ofvgjgsi/production/aeb50f6e7ef472df043ece86342cca261aa7ab26-800x800.webp",
+            "slug": "bright-starts-oball-shaker-toy"
+          },
+          {
+            "imageUrl": "https://cdn.sanity.io/images/ofvgjgsi/production/6ceffb58786dabfc387a7d62e7b50cc4c19c3a93-800x800.heif",
+            "slug": "fat-brain-dimpl"
+          },
+          {
+            "imageUrl": "https://cdn.sanity.io/images/ofvgjgsi/production/1e2dbb310a9d76bda11f6749433b4670cf8f8c07-800x800.webp",
+            "slug": "hape-pound-tap-xylophone"
+          },
+          {
+            "imageUrl": "https://cdn.sanity.io/images/ofvgjgsi/production/944aa41f1e75622256b75758efdedd1dee1f43d4-800x800.heif",
+            "slug": "janod-translucent-sensory-stacking-blocks"
+          },
+          {
+            "imageUrl": "https://cdn.sanity.io/images/ofvgjgsi/production/94ef82a1843239dbdc06e9d4e4fe69294d6cefe7-800x800.heif",
+            "slug": "leapfrog-learning-friends-book"
+          },
+          {
+            "imageUrl": "https://cdn.sanity.io/images/ofvgjgsi/production/0506e55444adfb496b383d824d5ac152734b3960-800x800.heif",
+            "slug": "manhattan-toy-skwish-rattle"
+          }
+        ],
+        "counts": {
+          "direct": 14,
+          "reviews": 148,
+          "search": 134
+        }
+      },
+      "syncTags": [
+        "s1:gXlcGw",
+        "s1:79KZKg",
+        "s1:x8hVYg",
+        "s1:Gn7Qsg",
+        "s1:aO6ETA",
+        "s1:r3NV/g",
+        "s1:Z88acA",
+        "s1:9L6mTw",
+        "s1:uSc/bQ",
+        "s1:oDwb3g",
+        "s1:ITFhBg",
+        "s1:xgV8ew",
+        "s1:Ox0hZA"
+      ],
+      "ms": 43
+    }
+  },
+  "productionWrites": 0
+}
