@@ -244,7 +244,40 @@ export function certificationClaimLabel(
   if (status === "retailer_reported") {
     return `${certification} (reported on a retailer listing)`;
   }
+  /*
+   * A claim we cannot attribute to anyone.
+   *
+   * 132 reviews list certifications that were written directly into the seed
+   * scripts — `certifications: ['ASTM F963', 'CPSIA compliant', 'EN-71']` — with
+   * no source recorded anywhere. Rendering those as "Manufacturer reports
+   * compliance with ASTM F963" states something nobody checked: that the
+   * manufacturer made the claim. Saying the source is missing is the only
+   * accurate description available, and it is the same position the site already
+   * takes elsewhere ("Absence of information is not evidence of safety").
+   */
+  if (status === "no_evidence_found") {
+    return `${certification} (no source on file)`;
+  }
   return `Manufacturer reports compliance with ${certification}`;
+}
+
+/** Statuses that name where a claim actually came from. */
+const SOURCED_CERT_STATUSES = new Set([
+  "verified_documentation",
+  "manufacturer_reported",
+  "retailer_reported",
+  "secondary_source",
+]);
+
+/**
+ * Whether a certification claim can be attributed to a source at all.
+ *
+ * Drives the wording under the certification list: describing claims as
+ * "manufacturer or retailer claims" is itself an attribution, and it is wrong
+ * for a claim whose origin was never recorded.
+ */
+export function certificationHasSource(status?: string | null): boolean {
+  return Boolean(status && SOURCED_CERT_STATUSES.has(status));
 }
 
 /**

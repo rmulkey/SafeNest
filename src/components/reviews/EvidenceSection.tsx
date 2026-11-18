@@ -12,6 +12,7 @@ import type { SafetyAssessment } from "@/lib/scoring/assess-safety";
 import {
   NO_LAB_TESTING_NOTICE,
   certificationClaimLabel,
+  certificationHasSource,
   recallSearchStatement,
   REVIEW_METHOD_SENTENCE,
 } from "@/lib/content/evidence";
@@ -144,6 +145,11 @@ export function EvidenceSection({
   const hasCerts = Boolean(certifications && certifications.length > 0);
   const certStatus = (c: string) =>
     certificationEvidence?.find((e) => e.certification === c)?.status;
+  // True when at least one claim names where it came from. When none do, the
+  // summary line below must not call them manufacturer or retailer claims.
+  const anyCertSourced = Boolean(
+    certifications?.some((c) => certificationHasSource(certStatus(c)))
+  );
 
   return (
     <>
@@ -258,8 +264,9 @@ export function EvidenceSection({
                   ))}
                 </ul>
                 <p className="mt-1">
-                  These are manufacturer or retailer claims. SafeNest has not
-                  independently verified them.
+                  {anyCertSourced
+                    ? "These are manufacturer or retailer claims. SafeNest has not independently verified them."
+                    : "No source is on file for these claims, so SafeNest cannot say who reported them. They have not been verified."}
                 </p>
               </>
             ) : (
