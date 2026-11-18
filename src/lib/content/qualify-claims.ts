@@ -79,15 +79,33 @@ export const QUALIFICATION_RULES: QualificationRule[] = [
     fragment: "labeled by the manufacturer for use from birth",
     reason: "Age suitability is the manufacturer's labelling, not a SafeNest finding.",
   },
+  /*
+   * The unit alternation must run longest-first.
+   *
+   * This was `m(?:o|os|onths?)?`, and alternation in JavaScript is ordered: for
+   * "safe for 6 months and up", `o` matches before `onths` is ever tried, so the
+   * rule consumed "safe for 6 mo" and left "nths and up." stranded after the
+   * replacement. Three live review pages read "...for ages 6 months and
+   * older.nths and up." — munchkin-bath-bobbers,
+   * sassy-stacks-of-circles-ring-stacker and
+   * sassy-teethe-and-twirl-sensation-station.
+   *
+   * The trailing "and up" has to be absorbed too. Fixing only the alternation
+   * would have left "...for ages 6 months and older. and up.", because the
+   * replacement already supplies "and older" and the source's own "and up" is
+   * then redundant rather than stranded.
+   */
   {
-    pattern: /\bsafe for\s+(\d+)\s*m(?:o|os|onths?)?\s*\+?\.?/gi,
+    pattern:
+      /\bsafe for\s+(\d+)\s*m(?:onths?|os|o)?\s*\+?(?:\s*(?:and|or)\s+(?:up|older|above|over|more))?\s*\.?/gi,
     replacement:
       "The manufacturer labels this product for ages $1 months and older.",
     fragment: "labeled by the manufacturer for ages $1 months and older",
     reason: "Attributes age guidance to the manufacturer rather than asserting safety.",
   },
   {
-    pattern: /\bsafe for\s+(\d+)\s*(?:years?|yrs?)\s*\+?\.?/gi,
+    pattern:
+      /\bsafe for\s+(\d+)\s*(?:years?|yrs?)\s*\+?(?:\s*(?:and|or)\s+(?:up|older|above|over|more))?\s*\.?/gi,
     replacement:
       "The manufacturer labels this product for ages $1 years and older.",
     fragment: "labeled by the manufacturer for ages $1 years and older",
