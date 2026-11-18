@@ -37,14 +37,43 @@ export interface MatchResult {
   score: number;
 }
 
-/** Words too generic to carry matching signal on their own. */
+/**
+ * Words too generic to carry matching signal on their own.
+ *
+ * The original list covered toy-catalogue filler ("set", "wooden", "baby") but
+ * not ordinary English, and the recall corpus is full of ordinary English. That
+ * is what produced a 192-item review queue: "Dresbe LED Christmas Headbands" was
+ * queued against "B. toys One Two Squeeze Blocks" because both contain "one" and
+ * "two", and 33 candidates rested on "black" and "white". A recall is issued to
+ * one firm for one product, so a colour word shared with it is not a lead.
+ *
+ * Two groups are deliberately NOT here, because they name hazard classes CPSC
+ * actually recalls on and so do carry signal: physical forms that choke or
+ * ingest ("ball", "bead", "magnet", "magnetic", "button", "cord", "battery",
+ * "teether"), and specific materials. "blocks" and "shape" are included because
+ * they appear in 8.1% and 6.1% of this catalogue's product names respectively,
+ * measured, which makes them common vocabulary here rather than identifying.
+ */
 const STOPWORDS = new Set([
+  // Original catalogue filler.
   "the", "and", "for", "with", "set", "sets", "toy", "toys", "kids", "kid",
   "baby", "babies", "infant", "infants", "toddler", "toddlers", "child",
   "children", "piece", "pieces", "pc", "pcs", "count", "pack", "play",
   "playset", "game", "games", "first", "my", "of", "in", "a", "an", "to",
   "classic", "deluxe", "jumbo", "mini", "large", "small", "wooden", "wood",
   "plastic", "learning", "educational", "activity", "new", "original",
+  // Number words. "One Two Squeeze" is a product name, not a shared lead.
+  "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+  "ten", "twelve",
+  // Colours. Never what distinguishes a recalled unit from a safe one.
+  "black", "white", "red", "blue", "green", "pink", "yellow", "purple",
+  "orange", "grey", "gray", "brown", "silver", "gold", "multi", "colour",
+  "color", "colors", "colours", "colored", "coloured",
+  // Generic form and function words, including the two measured as frequent in
+  // this catalogue.
+  "blocks", "block", "shape", "shapes", "sorter", "sorting", "stack",
+  "stacker", "stacking", "box", "storage", "soft", "size", "sized", "mega",
+  "giant", "portable", "travel", "gift", "bag", "case", "tray",
 ]);
 
 export function tokenize(text: string): string[] {
