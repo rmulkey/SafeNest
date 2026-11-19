@@ -316,11 +316,31 @@ export default async function ToyReviewPage({ params }: PageProps) {
         </div>
       </header>
 
-      {/* Product Image */}
+      {/*
+        Product image — shows the whole toy.
+
+        This asked Sanity for 900x500 from product photography that is square,
+        and the builder honours a mismatched aspect by cropping the source: the
+        URL came back with `rect=0,178,800,444`, discarding the top and bottom
+        178px of an 800x800 image. object-contain could not recover it because
+        the crop had already happened server-side, so every review showed the
+        middle 55% of its product — the stacking cups lost their top and base,
+        and "Bubbling" was sliced off the submarine's box.
+
+        Requesting width only keeps the source proportional, and a 4:3 box suits
+        a square subject far better than 16:9 did. Letterboxing is the standard
+        retail treatment and is the right trade for a site whose entire purpose
+        is looking at the product.
+
+        The panel is white rather than bg-muted because these photographs have
+        white backgrounds: against grey, the letterbox showed as two visible
+        bars down the sides and read as a framing bug. White makes the padding
+        disappear into the photo.
+      */}
       {review.mainImage && (
-        <div className="mb-8 relative w-full aspect-[16/9] max-h-[400px] rounded-xl overflow-hidden bg-muted border border-border">
+        <div className="mb-8 relative w-full aspect-[4/3] max-h-[420px] rounded-xl overflow-hidden bg-white border border-border">
           <Image
-            src={urlForImage(review.mainImage).width(900).height(500).url()}
+            src={urlForImage(review.mainImage).width(900).url()}
             alt={review.mainImage.alt || review.productName}
             fill
             className="object-contain"

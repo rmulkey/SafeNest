@@ -96,21 +96,26 @@ export default async function ReviewsIndexPage() {
                 href={`/reviews/${review.slug.current}`}
                 className="group flex h-full flex-col rounded-xl border border-border bg-card p-5 transition-all duration-200 hover:border-primary-200 hover:shadow-lg"
               >
+                {/*
+                  Product shots are cropped by neither Sanity nor CSS here.
+                  Requesting 400x260 from a square source made the builder emit
+                  a `rect` that cut the top and bottom off every photo, and
+                  object-cover then cropped what survived a second time. A
+                  browsing grid where no product is fully visible is a poor way
+                  to choose a toy.
+                */}
                 {review.mainImage ? (
-                  <div className="relative mb-4 h-40 w-full overflow-hidden rounded-lg bg-muted">
+                  <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-lg bg-white">
                     <Image
-                      src={urlForImage(review.mainImage)
-                        .width(400)
-                        .height(260)
-                        .url()}
+                      src={urlForImage(review.mainImage).width(600).url()}
                       alt={review.mainImage.alt || review.productName}
                       fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="object-contain transition-transform duration-300 group-hover:scale-105"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </div>
                 ) : (
-                  <div className="mb-4 flex h-40 w-full items-center justify-center rounded-lg bg-muted text-4xl">
+                  <div className="mb-4 flex aspect-[4/3] w-full items-center justify-center rounded-lg bg-muted text-4xl">
                     🧸
                   </div>
                 )}
@@ -124,7 +129,14 @@ export default async function ReviewsIndexPage() {
                   {review.category && <> · {review.category.title}</>}
                 </p>
 
-                <div className="mt-4 flex items-center gap-5">
+                {/*
+                  mt-auto, not mt-4: the card is already `flex h-full flex-col`,
+                  so pushing the scores to the bottom aligns them across a row.
+                  With a fixed top margin they sat wherever the title ended, and
+                  a two-line name like "Lovevery The Play Kits (0-12 months)"
+                  dropped its dials below those of the cards beside it.
+                */}
+                <div className="mt-auto flex items-center gap-5 pt-4">
                   <ScoreBadge score={review.safetyScore} label="Safety" size="sm" />
                   <ScoreBadge
                     score={review.developmentScore}

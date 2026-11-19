@@ -243,15 +243,18 @@ export default async function HomePage() {
             <Link
               key={review._id}
               href={`/reviews/${review.slug.current}`}
-              className="group rounded-xl border border-border bg-card p-5 hover:shadow-lg hover:border-primary-200 transition-all duration-200"
+              className="group flex h-full flex-col rounded-xl border border-border bg-card p-5 hover:shadow-lg hover:border-primary-200 transition-all duration-200"
             >
               {review.mainImage && (
-                <div className="relative w-full h-40 mb-4 rounded-lg overflow-hidden bg-muted">
+                /* Uncropped product shot — see the note in /reviews. Asking for
+                   400x260 from a square source made Sanity cut the top and
+                   bottom off the photo before object-cover cropped it again. */
+                <div className="relative w-full aspect-[4/3] mb-4 rounded-lg overflow-hidden bg-white">
                   <Image
-                    src={urlForImage(review.mainImage).width(400).height(260).url()}
+                    src={urlForImage(review.mainImage).width(600).url()}
                     alt={review.mainImage.alt || review.productName}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-contain group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
@@ -262,7 +265,9 @@ export default async function HomePage() {
               <p className="mt-1 text-sm text-muted-foreground">
                 Ages: {formatAgeRange(review.ageRange)}
               </p>
-              <div className="mt-4 flex items-center gap-5">
+              {/* mt-auto so the dials line up across the row regardless of how
+                  many lines the product name takes. */}
+              <div className="mt-auto flex items-center gap-5 pt-4">
                 <ScoreBadge score={review.safetyScore} label="Safety" size="sm" />
                 <ScoreBadge score={review.developmentScore} label="Development" size="sm" />
               </div>
