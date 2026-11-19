@@ -325,7 +325,10 @@ const CROSS_LINKS = [
   {
     slug: BATTERIES,
     xlinkKey: "xlink-holiday-batteries",
-    anchorStartsWith: "Pay extra attention during gift season and visits",
+    // The last of the five bullets under "What to do right now". Anchoring on
+    // any earlier bullet puts a paragraph inside the list and splits it in two
+    // on the rendered page — see assertDoesNotSplitList, which now refuses it.
+    anchorStartsWith: "Tell every caregiver, including grandparents and sitters",
     position: "after",
     text: `Holidays concentrate both of these. Decorations with coin cells go up at child height, cards that play music arrive in the post, and an older cousin's magnetic set comes out on a floor with a crawling toddler on it. Two companion pieces cover those days specifically: [toy safety at family gatherings](/blog/${THANKSGIVING}) and [the morning the presents are opened](/blog/${CHRISTMAS}).`,
   },
@@ -410,6 +413,40 @@ async function assertHrefsResolve(newSlugs) {
   console.log("  all resolve ✓");
 }
 
+/**
+ * Refuse to insert a paragraph into the middle of a list.
+ *
+ * ArticleBody buffers only *consecutive* list blocks and calls flushList() on
+ * anything else (src/components/content/ArticleBody.tsx), so a normal block
+ * landing between two list items of the same type closes the <ul> and the next
+ * item opens a second one. The first run of this script did exactly that: it
+ * anchored on the fourth of five bullets under "What to do right now" in the
+ * button-battery post, and shipped that checklist to a live page as four
+ * bullets, a cross-promotional paragraph, and a separate one-bullet list.
+ *
+ * It is checked here because nothing downstream can catch it. The patch
+ * succeeds, the body is valid Portable Text, the anchor match is correct, and
+ * the run prints a success line — the damage exists only in rendered HTML.
+ * Same reason assertHrefsResolve runs before the writes rather than after.
+ *
+ * Only a non-list insertion can fragment a list. Blocks of differing listItem
+ * types already render as separate lists, so an insertion between those is
+ * harmless.
+ */
+function assertDoesNotSplitList(slug, body, insertAt, block) {
+  if (block.listItem) return;
+  const before = body[insertAt - 1]?.listItem;
+  const after = body[insertAt]?.listItem;
+  if (before && after && before === after) {
+    throw new Error(
+      `${slug}: inserting at index ${insertAt} would land between two "${before}" ` +
+        `list items (blocks ${insertAt - 1} and ${insertAt}), splitting one list into ` +
+        `two on the rendered page. Anchor on the last item of the list, or on the ` +
+        `block after it, rather than mid-list.`
+    );
+  }
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -486,10 +523,23 @@ async function main() {
       );
     }
     const block = { ...p.block, _key: p.xlinkKey };
-    body.splice(p.position === "after" ? at + 1 : at, 0, block);
+    const insertAt = p.position === "after" ? at + 1 : at;
+    assertDoesNotSplitList(p.slug, body, insertAt, block);
+
+    /*
+     * Read the neighbours before the splice, not after: inserting at `at`
+     * shifts the anchor to `at + 1`, so a log line indexing the mutated array
+     * would describe the wrong block for `position: "before"`.
+     */
+    const neighbour = (i) =>
+      body[i] ? `${body[i].listItem || body[i].style || "?"}` : "—";
+    const context = `${neighbour(insertAt - 1)} → [link] → ${neighbour(insertAt)}`;
+
+    body.splice(insertAt, 0, block);
     await client.patch(post._id).set({ body }).commit();
     console.log(
-      `✓ cross-link into /blog/${p.slug}\n    ${post._id} · inserted at block ${at + 1} · key ${p.xlinkKey}`
+      `✓ cross-link into /blog/${p.slug}\n    ${post._id} · index ${insertAt} of ${body.length}` +
+        ` · ${context} · key ${p.xlinkKey}`
     );
   }
 
