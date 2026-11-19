@@ -21,6 +21,15 @@ const SEEDS = [
   "/guides",
   "/guides/best-bath-water-toys",
   "/blog",
+  // Individual posts, because the blog index links titles only and never the
+  // in-body links. The seasonal holiday articles cross-link each other and four
+  // older posts by hand-written href, which is exactly the shape that produced
+  // this repo's dangling-reference bug once already.
+  "/blog/christmas-toy-safety-unwrapping-day",
+  "/blog/thanksgiving-toy-safety-family-gatherings",
+  "/blog/black-friday-toy-deals-recall-check",
+  "/blog/button-batteries-and-magnets-toy-safety",
+  "/blog/homeschool-manipulatives-safety-mixed-ages",
   "/categories",
   "/categories/sensory-toys",
   "/recalls",

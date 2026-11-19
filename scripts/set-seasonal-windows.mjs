@@ -18,12 +18,39 @@ const client = createClient({
   token: process.env.SANITY_API_TOKEN,
 });
 
-/** slug -> { startMonthDay, endMonthDay } (MM-DD, inclusive, recurs yearly) */
+/**
+ * slug -> { startMonthDay, endMonthDay } (MM-DD, inclusive, recurs yearly)
+ *
+ * The holiday windows below all end on a fixed date rather than on the holiday,
+ * because the holidays themselves move: US Thanksgiving is the fourth Thursday
+ * of November and so falls anywhere from the 22nd to the 28th, which drags Black
+ * Friday across the 23rd to the 29th and Cyber Monday across the 26th to
+ * December 2nd. Each end date is the latest the occasion can reach, so the
+ * window is correct in every year without being re-tagged.
+ */
 const WINDOWS = {
   // Ramps up mid-June, ends the day after the holiday.
   "top-7-toys-safe-fourth-of-july": {
     startMonthDay: "06-15",
     endMonthDay: "07-05",
+  },
+  // Deal season now starts well before the weekend itself. Ends 12-02, the
+  // latest Cyber Monday (Thanksgiving on the 28th -> Friday 29th, Monday 2nd).
+  "black-friday-toy-deals-recall-check": {
+    startMonthDay: "11-01",
+    endMonthDay: "12-02",
+  },
+  // Two or three weeks of travel planning, through the weekend after the latest
+  // possible Thanksgiving.
+  "thanksgiving-toy-safety-family-gatherings": {
+    startMonthDay: "11-05",
+    endMonthDay: "11-30",
+  },
+  // Opens with the gift-buying run-up and stays open through the week after
+  // Christmas, when the new toys are in the house and the boxes are still around.
+  "christmas-toy-safety-unwrapping-day": {
+    startMonthDay: "11-15",
+    endMonthDay: "12-28",
   },
 };
 
