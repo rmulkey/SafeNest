@@ -152,7 +152,7 @@ export default async function BuyingGuidePage({
             <span aria-hidden="true">·</span>
             <Link
               href="/transparency"
-              className="font-medium underline underline-offset-4 hover:text-primary-900"
+              className="tap-safe font-medium underline underline-offset-4 hover:text-primary-900"
             >
               How we score
             </Link>

@@ -23,7 +23,7 @@ export function RecallBanner({ recallReason }: RecallBannerProps) {
           </p>
           <Link
             href="/recalls"
-            className="mt-1 text-sm font-medium text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
+            className="tap-safe mt-1 text-sm font-medium text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
           >
             View all recall alerts →
           </Link>

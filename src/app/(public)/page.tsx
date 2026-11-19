@@ -188,13 +188,13 @@ export default async function HomePage() {
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
             <Link
               href="/reviews"
-              className="font-medium text-primary-700 hover:text-primary-900 underline-offset-4 hover:underline"
+              className="tap-safe font-medium text-primary-700 hover:text-primary-900 underline-offset-4 hover:underline"
             >
               Browse all reviews
             </Link>
             <Link
               href="/transparency"
-              className="font-medium text-primary-700 hover:text-primary-900 underline-offset-4 hover:underline"
+              className="tap-safe font-medium text-primary-700 hover:text-primary-900 underline-offset-4 hover:underline"
             >
               How we score
             </Link>
@@ -233,7 +233,7 @@ export default async function HomePage() {
           </h2>
           <Link
             href="/reviews"
-            className="text-sm font-medium text-primary-600 hover:text-primary-700"
+            className="tap-safe text-sm font-medium text-primary-600 hover:text-primary-700"
           >
             View all →
           </Link>
@@ -324,7 +324,7 @@ export default async function HomePage() {
             </h2>
             <Link
               href="/blog"
-              className="text-sm font-medium text-primary-600 hover:text-primary-700"
+              className="tap-safe text-sm font-medium text-primary-600 hover:text-primary-700"
             >
               All safety articles →
             </Link>

@@ -240,7 +240,7 @@ export function ToyFinder() {
                   type="button"
                   onClick={() => setStep((s) => (s > 0 ? ((s - 1) as Step) : s))}
                   disabled={step === 0}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground disabled:opacity-0"
+                  className="tap-safe text-sm font-medium text-muted-foreground hover:text-foreground disabled:opacity-0"
                 >
                   ← Back
                 </button>

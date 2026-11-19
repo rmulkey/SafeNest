@@ -136,7 +136,7 @@ export function TrustSection({
       <div className="mt-5 text-center">
         <Link
           href="/transparency"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-primary-600 hover:text-primary-700"
+          className="tap-safe inline-flex items-center gap-1.5 text-sm font-medium text-primary-600 hover:text-primary-700"
         >
           See our full scoring methodology →
         </Link>

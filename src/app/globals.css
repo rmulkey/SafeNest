@@ -177,6 +177,32 @@ textarea:focus-visible,
   outline-offset: 2px;
 }
 
+/* Enlarge a text link's touch target without changing what is drawn.
+ *
+ * WCAG 2.5.8 (Level AA) asks for 24x24 CSS pixels. A standalone text link has no
+ * vertical padding, so its height is its line box — 20px at text-sm — which
+ * misses the minimum. The criterion's inline exemption does not cleanly cover
+ * these: they are laid out as their own blocks or flex items, not as words
+ * inside a sentence, so "constrained by the line-height of non-target text"
+ * does not really apply.
+ *
+ * The ::before box extends the hit area 4px above and below, reaching 28px,
+ * while leaving layout and paint untouched — the same approach used for the
+ * header search button. Only the vertical axis is expanded: these links are all
+ * far wider than 24px already, and growing both axes would make adjacent
+ * stacked links overlap and capture each other's taps.
+ */
+@utility tap-safe {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset-block: -0.25rem;
+    inset-inline: 0;
+  }
+}
+
 /* Smooth animations */
 @keyframes slide-in-from-top-2 {
   from {

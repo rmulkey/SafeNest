@@ -140,7 +140,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <header className="mb-10 border-b border-border pb-8">
           <Link
             href="/blog"
-            className="text-sm font-medium text-primary-600 hover:text-primary-700"
+            className="tap-safe text-sm font-medium text-primary-600 hover:text-primary-700"
           >
             ← Back to Blog
           </Link>

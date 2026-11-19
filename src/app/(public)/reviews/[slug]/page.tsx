@@ -307,7 +307,7 @@ export default async function ToyReviewPage({ params }: PageProps) {
               <span>·</span>
               <Link
                 href={`/categories/${review.category.slug.current}`}
-                className="hover:text-primary-500 underline"
+                className="tap-safe hover:text-primary-500 underline"
               >
                 {review.category.title}
               </Link>
