@@ -30,15 +30,19 @@ import {
 /**
  * The most two guides may share, as a fraction of the larger list.
  *
- * Set at the current worst pair rather than at an aspirational number, so the
- * guard reflects reality and any regression trips it. That pair is
- * stocking-stuffers-toddlers (12–36 months) against gifts-for-2-year-olds
- * (24–36): one window nests inside the other, and the catalogue holds too few
- * toys labelled exactly 24–36 months to fill twelve slots, so both guides reach
- * into the same 12–36 month pool. Before age-fit ranking the pair shared 11 of
- * 12 picks (92%).
+ * A third, which is one shared pick above the current worst pair rather than an
+ * aspirational number. Two pairs sit at 3 of 12: gifts-for-2-year-olds against
+ * gifts-for-3-year-olds, and gifts-for-4-to-6-year-olds against
+ * gifts-for-school-age-kids. Both are the same catalogue limit — no toy is
+ * labelled exactly 36–48 months and only one is labelled from 48, so the upper
+ * guides have to reach down into labels the guide below them also uses.
+ *
+ * The single pick of headroom exists because the catalogue grows: a new review
+ * landing in a sparse band can move one pick without any page becoming a
+ * duplicate. A fourth shared pick is worth a human looking at. Before age-fit
+ * ranking the worst pair shared 11 of 12 (92%); under symmetric fit, 6 of 12.
  */
-const MAX_OVERLAP = 0.5;
+const MAX_OVERLAP = 1 / 3;
 
 /** A guide with fewer picks than this is a stub, not a page worth publishing. */
 const MIN_PICKS = 6;

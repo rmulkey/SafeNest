@@ -6,6 +6,7 @@ import { ShieldCheck } from "lucide-react";
 import { urlForImage } from "@/lib/sanity/client";
 import {
   GIFT_GUIDES,
+  GIFT_GUIDE_SELECTION_NOTE,
   getGiftGuideBySlug,
   getGiftGuideProducts,
 } from "@/lib/seo/gift-guides";
@@ -104,11 +105,9 @@ export default async function GiftGuideDetailPage({
         </h1>
         <p className="mt-3 text-muted-foreground max-w-2xl">{guide.intro}</p>
 
-        <div className="mt-4 flex items-center gap-2 text-sm text-primary-700">
-          <ShieldCheck className="size-4" aria-hidden="true" />
-          <span>
-            Every pick has a SafeNest editorial safety assessment and has been checked against publicly available recall information.
-          </span>
+        <div className="mt-4 flex max-w-2xl items-start gap-2 text-sm text-primary-700">
+          <ShieldCheck className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+          <span>{GIFT_GUIDE_SELECTION_NOTE}</span>
         </div>
         <AffiliateDisclosure className="mt-2" />
       </header>
