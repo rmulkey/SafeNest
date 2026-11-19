@@ -144,6 +144,11 @@ export interface ToyReviewSummary {
   _id: string;
   productName: string;
   slug: { current: string };
+  /**
+   * Manufacturer/brand. Required by the toyReview schema, but Sanity validation
+   * is editor-side only, so callers must tolerate its absence.
+   */
+  brand?: string;
   ageRange: { minMonths: number; maxMonths: number };
   category: { _id: string; title: string; slug: { current: string } } | null;
   safetyScore: number;
@@ -167,6 +172,32 @@ const reviewsByAgeQuery = groq`
     _id,
     productName,
     slug,
+    brand,
+    ageRange,
+    category->{_id, title, slug},
+    safetyScore,
+    developmentScore,
+    materials,
+    hasActiveRecall,
+    affiliateLinks,
+    mainImage
+  }
+`;
+
+/**
+ * Every review whose manufacturer age range overlaps a window.
+ *
+ * Distinct from reviewsByAgeQuery, which matches a single age in months. A gift
+ * guide covers a span, and a toy labelled 24–40 months belongs in a 36–48 month
+ * guide even though it does not reach that window's midpoint — so the guide
+ * queries the window directly rather than probing one age inside it.
+ */
+const reviewsByAgeWindowQuery = groq`
+  *[_type == "toyReview" && ageRange.minMonths <= $maxMonths && ageRange.maxMonths >= $minMonths] | order(safetyScore desc) {
+    _id,
+    productName,
+    slug,
+    brand,
     ageRange,
     category->{_id, title, slug},
     safetyScore,
@@ -183,6 +214,7 @@ const reviewsByCategoryAndAgeGroupQuery = groq`
     _id,
     productName,
     slug,
+    brand,
     ageRange,
     category->{_id, title, slug},
     safetyScore,
@@ -199,6 +231,7 @@ const reviewsByToyTypeQuery = groq`
     _id,
     productName,
     slug,
+    brand,
     ageRange,
     category->{_id, title, slug},
     safetyScore,
@@ -232,6 +265,19 @@ export async function getReviewsByAge(
   age: number
 ): Promise<ToyReviewSummary[]> {
   return sanityClient.fetch<ToyReviewSummary[]>(reviewsByAgeQuery, { age });
+}
+
+/**
+ * Fetch every review whose manufacturer age range overlaps [minMonths, maxMonths].
+ */
+export async function getReviewsByAgeWindow(
+  minMonths: number,
+  maxMonths: number
+): Promise<ToyReviewSummary[]> {
+  return sanityClient.fetch<ToyReviewSummary[]>(reviewsByAgeWindowQuery, {
+    minMonths,
+    maxMonths,
+  });
 }
 
 /**
