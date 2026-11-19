@@ -1,0 +1,429 @@
+[
+  {
+    "productName": "Plus-Plus BIG 200 Piece Tub with 2 Baseplates",
+    "targetUrl": "https://www.target.com/p/-/A-91340327",
+    "tcin": "91340327",
+    "listingTitle": "Plus-Plus® BIG - 200 piece Tub with 2 Baseplates",
+    "listingBrand": "Plus-Plus",
+    "suggestedAge": "3 Years and Up",
+    "material": "Polyethylene",
+    "chokingWarnings": [],
+    "imageBytes": 46181,
+    "checkedAt": "2026-11-19T19:16:06.122Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Plus-Plus Super Tube Rainbow 500 Pieces",
+    "targetUrl": "https://www.target.com/p/-/A-1012462322",
+    "tcin": "1012462322",
+    "listingTitle": "Plus-Plus: Super Tube - Rainbow, 500 Pieces, Interlocking Mini Puzzle Toy Blocks",
+    "listingBrand": "Plus-Plus",
+    "suggestedAge": "5 Years and Up",
+    "material": "Plastic",
+    "chokingWarnings": [
+      {
+        "code": "choking_hazard_small_parts",
+        "message": "WARNING: choking hazard - small parts. Not for children under 3 yrs."
+      }
+    ],
+    "imageBytes": 88088,
+    "checkedAt": "2026-11-19T19:16:08.144Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "BRIO World Starter Travel Train Set",
+    "targetUrl": "https://www.target.com/p/-/A-95097283",
+    "tcin": "95097283",
+    "listingTitle": "BRIO World Starter Travel Train Set Playsets",
+    "listingBrand": "BRIO",
+    "suggestedAge": "3 Years and Up",
+    "material": "Wood, Plastic",
+    "chokingWarnings": [],
+    "imageBytes": 60636,
+    "checkedAt": "2026-11-19T19:16:09.727Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "retailer_reported"
+      },
+      "certificationEvidence": [
+        {
+          "certification": "FSC certified wood (FSC-C111262)",
+          "status": "retailer_reported",
+          "sourceUrl": "https://www.target.com/p/-/A-95097283"
+        }
+      ]
+    }
+  },
+  {
+    "productName": "BRIO World Starter Lift & Load Train Set",
+    "targetUrl": "https://www.target.com/p/-/A-95097267",
+    "tcin": "95097267",
+    "listingTitle": "BRIO World Starter Lift & Load Train Set Playset",
+    "listingBrand": "BRIO",
+    "suggestedAge": "3 Years and Up",
+    "material": "Wood, Plastic",
+    "chokingWarnings": [],
+    "imageBytes": 66336,
+    "checkedAt": "2026-11-19T19:16:11.707Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "retailer_reported"
+      },
+      "certificationEvidence": [
+        {
+          "certification": "FSC certified wood (FSC-C111262)",
+          "status": "retailer_reported",
+          "sourceUrl": "https://www.target.com/p/-/A-95097267"
+        }
+      ]
+    }
+  },
+  {
+    "productName": "LEGO Classic Medium Creative Brick Box 10696",
+    "targetUrl": "https://www.target.com/p/-/A-16747750",
+    "tcin": "16747750",
+    "listingTitle": "LEGO Classic Medium Creative Brick Box Building Toys for Creative Play, Kids Creative Kit 10696",
+    "listingBrand": "LEGO",
+    "suggestedAge": "4 Years and Up",
+    "material": "ABS (Acrylonitrile Butadiene Styrene)",
+    "chokingWarnings": [
+      {
+        "code": "choking_hazard_small_parts",
+        "message": "WARNING: choking hazard - small parts. Not for children under 3 yrs."
+      }
+    ],
+    "imageBytes": 91615,
+    "checkedAt": "2026-11-19T19:16:13.752Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "LEGO Classic Creative Colorful Bricks 11045",
+    "targetUrl": "https://www.target.com/p/-/A-95046225",
+    "tcin": "95046225",
+    "listingTitle": "LEGO Classic Creative Colorful Bricks 11045",
+    "listingBrand": "LEGO",
+    "suggestedAge": "5 Years and Up",
+    "material": "ABS (Acrylonitrile Butadiene Styrene)",
+    "chokingWarnings": [
+      {
+        "code": "choking_hazard_small_parts",
+        "message": "WARNING: choking hazard - small parts. Not for children under 3 yrs."
+      }
+    ],
+    "imageBytes": 81411,
+    "checkedAt": "2026-11-19T19:16:15.127Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Magna-Tiles Travel Set 55",
+    "targetUrl": "https://www.target.com/p/-/A-94304743",
+    "tcin": "94304743",
+    "listingTitle": "MAGNA-TILES Travel Set 55",
+    "listingBrand": "Magna-Tiles",
+    "suggestedAge": "3 Years and Up",
+    "material": null,
+    "chokingWarnings": [
+      {
+        "code": "choking_hazard_small_parts",
+        "message": "WARNING: choking hazard - small parts. Not for children under 3 yrs."
+      }
+    ],
+    "imageBytes": 66320,
+    "checkedAt": "2026-11-19T19:16:16.943Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "GraviTrax Junior Starter Set My Planet XXL",
+    "targetUrl": "https://www.target.com/p/-/A-1013642328",
+    "tcin": "1013642328",
+    "listingTitle": "GraviTrax Ravensburger Junior Starter Set My Planet Construction Marble Runs - XXL",
+    "listingBrand": "GraviTrax",
+    "suggestedAge": "3-7 Years",
+    "material": "Metal, Cardboard, Plastic",
+    "chokingWarnings": [
+      {
+        "code": "choking_hazard_small_parts",
+        "message": "WARNING: choking hazard - small parts. Not for children under 3 yrs."
+      }
+    ],
+    "imageBytes": 77635,
+    "checkedAt": "2026-11-19T19:16:18.614Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "GraviTrax Dino Starter Set",
+    "targetUrl": "https://www.target.com/p/-/A-1013642335",
+    "tcin": "1013642335",
+    "listingTitle": "GraviTrax Ravensburger Dino Starter Set Construction Marble Runs",
+    "listingBrand": "GraviTrax",
+    "suggestedAge": "3-7 Years",
+    "material": "Metal, Plastic",
+    "chokingWarnings": [
+      {
+        "code": "choking_hazard_small_parts",
+        "message": "WARNING: choking hazard - small parts. Not for children under 3 yrs."
+      }
+    ],
+    "imageBytes": 53370,
+    "checkedAt": "2026-11-19T19:16:20.213Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Educational Insights Kanoodle Jr. Spatial Reasoning Strategy Game",
+    "targetUrl": "https://www.target.com/p/-/A-52345412",
+    "tcin": "52345412",
+    "listingTitle": "Educational Insights Kanoodle Jr. Spatial Reasoning Strategy Game 8pc",
+    "listingBrand": "Educational Insights",
+    "suggestedAge": "4 Years and Up",
+    "material": "Plastic",
+    "chokingWarnings": [],
+    "imageBytes": 41595,
+    "checkedAt": "2026-11-19T19:16:21.997Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Educational Insights Kanoodle Brain-Teasing Puzzles",
+    "targetUrl": "https://www.target.com/p/-/A-50557404",
+    "tcin": "50557404",
+    "listingTitle": "Educational Insights Kanoodle Brain-Teasing Puzzles 14pc",
+    "listingBrand": "Educational Insights",
+    "suggestedAge": "7 Years and Up",
+    "material": "Plastic",
+    "chokingWarnings": [
+      {
+        "code": "choking_hazard_small_parts",
+        "message": "WARNING: choking hazard - small parts. Not for children under 3 yrs."
+      }
+    ],
+    "imageBytes": 36698,
+    "checkedAt": "2026-11-19T19:16:23.688Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Peaceable Kingdom Giant Feed the Woozle Cooperative Game",
+    "targetUrl": "https://www.target.com/p/-/A-93665203",
+    "tcin": "93665203",
+    "listingTitle": "Peaceable Kingdom Giant Feed the Woozle Cooperative Game - Ages 3 and Up",
+    "listingBrand": "MindWare",
+    "suggestedAge": "3 Years and Up",
+    "material": null,
+    "chokingWarnings": [],
+    "imageBytes": 134657,
+    "checkedAt": "2026-11-19T19:16:25.398Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Peaceable Kingdom Round the Mountain Cooperative Train Game",
+    "targetUrl": "https://www.target.com/p/-/A-1010802703",
+    "tcin": "1010802703",
+    "listingTitle": "Peaceable Kingdom Round the Mountain Cooperative Train Game",
+    "listingBrand": "MindWare",
+    "suggestedAge": "3 Years and Up",
+    "material": null,
+    "chokingWarnings": [],
+    "imageBytes": 62882,
+    "checkedAt": "2026-11-19T19:16:27.287Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "MindWare KEVA Contraptions 200 Planks",
+    "targetUrl": "https://www.target.com/p/-/A-81528476",
+    "tcin": "81528476",
+    "listingTitle": "MindWare Keva: Contraptions 200 Planks - Building Toys",
+    "listingBrand": "MindWare",
+    "suggestedAge": "7 Years and Up",
+    "material": "Pine",
+    "chokingWarnings": [
+      {
+        "code": "choking_hazard_contains_small_ball",
+        "message": "WARNING: choking hazard - toy contains a small ball. Not for children under 3 yrs."
+      }
+    ],
+    "imageBytes": 80307,
+    "checkedAt": "2026-11-19T19:16:28.824Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "MindWare KEVA Brain Builders Deluxe Wooden Plank Set",
+    "targetUrl": "https://www.target.com/p/-/A-81647782",
+    "tcin": "81647782",
+    "listingTitle": "MindWare Keva Brain Builders Deluxe Wooden Plank Set - Building Blocks -123 Pieces",
+    "listingBrand": "MindWare",
+    "suggestedAge": "7 Years and Up",
+    "material": "Pine",
+    "chokingWarnings": [],
+    "imageBytes": 67692,
+    "checkedAt": "2026-11-19T19:16:30.219Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Kinetic Sand Sandyland Folding Sandbox Playset",
+    "targetUrl": "https://www.target.com/p/-/A-1007601193",
+    "tcin": "1007601193",
+    "listingTitle": "Kinetic Sand Sandyland Folding Sandbox Playset (Target Exclusive)",
+    "listingBrand": "Kinetic Sand",
+    "suggestedAge": "3 Years and Up",
+    "material": null,
+    "chokingWarnings": [
+      {
+        "code": "choking_hazard_small_parts",
+        "message": "WARNING: choking hazard - small parts. Not for children under 3 yrs."
+      }
+    ],
+    "imageBytes": 71234,
+    "checkedAt": "2026-11-19T19:16:31.569Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Sink N' Sand Game with Kinetic Sand",
+    "targetUrl": "https://www.target.com/p/-/A-85017167",
+    "tcin": "85017167",
+    "listingTitle": "Sink N' Sand Game with Kinetic Sand",
+    "listingBrand": "Spin Master Games",
+    "suggestedAge": "4 Years and Up",
+    "material": null,
+    "chokingWarnings": [
+      {
+        "code": "choking_hazard_small_parts",
+        "message": "WARNING: choking hazard - small parts. Not for children under 3 yrs."
+      }
+    ],
+    "imageBytes": 108279,
+    "checkedAt": "2026-11-19T19:16:33.120Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Crayola Scribble Scrubbies Ocean Glow Lagoon Toy Set",
+    "targetUrl": "https://www.target.com/p/-/A-89227132",
+    "tcin": "89227132",
+    "listingTitle": "Crayola Scribble Scrubbies Ocean Glow Lagoon Toy Set, 12pc, Washable Marker Arts and Crafts, Holiday and Christmas Gifts for Kids, Ages 3+",
+    "listingBrand": "Crayola",
+    "suggestedAge": "3 Years and Up",
+    "material": "Plastic",
+    "chokingWarnings": [
+      {
+        "code": "choking_hazard_small_parts",
+        "message": "WARNING: choking hazard - small parts. Not for children under 3 yrs."
+      }
+    ],
+    "imageBytes": 63678,
+    "checkedAt": "2026-11-19T19:16:34.492Z",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  }
+]

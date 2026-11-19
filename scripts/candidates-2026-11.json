@@ -1,0 +1,703 @@
+[
+  {
+    "productName": "Plus-Plus BIG 200 Piece Tub with 2 Baseplates",
+    "brand": "Plus-Plus",
+    "categoryRef": "cat-building",
+    "ageMinMonths": 36,
+    "ageMaxMonths": 72,
+    "targetUrl": "https://www.target.com/p/-/A-91340327",
+    "materialSafety": 86,
+    "chokingRisk": 88,
+    "recallHistory": 88,
+    "certificationPresence": 50,
+    "motorSkills": 88,
+    "cognitiveSkills": 84,
+    "sensoryEngagement": 62,
+    "materials": ["polyethylene"],
+    "chokingHazardAssessment": "Target labels this set for 3 years and up and shows no small-parts warning, which is the difference between the BIG range and standard Plus-Plus. The listing gives each BIG piece as 2 by 1.125 inches. SafeNest has not measured the pieces and does not perform small-parts testing, so treat the published dimensions as the manufacturer's. The two baseplates are thin and rigid; keep them off stair treads where they can slide.",
+    "certifications": [],
+    "pros": [
+      "One piece shape builds flat mosaics or 3D models, so the set has no single right answer",
+      "BIG pieces are sized for a three-year-old's grip rather than a school-age one",
+      "The tub is the storage, which matters for a 200-piece set",
+      "Compatible with other Plus-Plus BIG sets if the collection grows"
+    ],
+    "cons": [
+      "A child who already builds with small Plus-Plus will find BIG pieces limiting",
+      "Interlocking takes more hand strength than stacking blocks, so the first sessions can frustrate",
+      "No figures or wheels, so it does not feed pretend play on its own"
+    ],
+    "imageAlt": "Plus-Plus BIG 200-piece tub with two baseplates, interlocking plastic building pieces",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Plus-Plus Super Tube Rainbow 500 Pieces",
+    "brand": "Plus-Plus",
+    "categoryRef": "cat-building",
+    "ageMinMonths": 60,
+    "ageMaxMonths": 120,
+    "targetUrl": "https://www.target.com/p/-/A-1012462322",
+    "materialSafety": 86,
+    "chokingRisk": 72,
+    "recallHistory": 88,
+    "certificationPresence": 50,
+    "motorSkills": 86,
+    "cognitiveSkills": 88,
+    "sensoryEngagement": 60,
+    "materials": ["plastic"],
+    "chokingHazardAssessment": "Target labels this set for 5 years and up and carries the CPSC small-parts warning, which is the right reading for 500 mini pieces: it is not a toy for a household where a toddler plays on the same floor. SafeNest has not measured the pieces. The reusable tube helps, but 500 pieces spread fast, so plan where this gets built and tidied.",
+    "certifications": [],
+    "pros": [
+      "500 pieces in seven colours is enough for sorting and colour-mixing as well as building",
+      "The single interlocking shape rewards planning rather than following a step list",
+      "Reusable tube makes the set portable and gives the pieces somewhere to live",
+      "Holds up well past the labelled five years, so it is not a one-season gift"
+    ],
+    "cons": [
+      "Mini pieces carry a small-parts warning and need a toddler-free play surface",
+      "Fiddly for a five-year-old with still-developing pincer strength",
+      "No baseplate in the tube, so large flat builds need a hard table"
+    ],
+    "imageAlt": "Plus-Plus Super Tube in rainbow colours with 500 interlocking mini building pieces",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "BRIO World Starter Travel Train Set",
+    "brand": "BRIO",
+    "categoryRef": "cat-building",
+    "ageMinMonths": 36,
+    "ageMaxMonths": 72,
+    "targetUrl": "https://www.target.com/p/-/A-95097283",
+    "materialSafety": 90,
+    "chokingRisk": 88,
+    "recallHistory": 88,
+    "certificationPresence": 66,
+    "motorSkills": 86,
+    "cognitiveSkills": 80,
+    "sensoryEngagement": 70,
+    "materials": ["FSC-certified European beech wood", "plastic", "metal"],
+    "chokingHazardAssessment": "Target labels this 22-piece set for 3 years and up and shows no small-parts warning. The track pieces and the travel train are hand-sized rather than small. SafeNest has not measured them and does not perform small-parts testing. The driver, passenger and luggage figures are the smallest items in the box, so count them back in if a younger sibling shares the room.",
+    "certifications": ["FSC certified wood (FSC-C111262)"],
+    "pros": [
+      "Figure-eight layout with a tunnel and a bridge gives a three-year-old a complete railway on day one",
+      "Works on its own or added to an existing BRIO layout, so it is not a dead end",
+      "Wooden track and magnetic couplings need no batteries",
+      "The retailer listing names the FSC certificate number for the beech wood"
+    ],
+    "cons": [
+      "22 pieces is a small layout; the fun scales with expansion packs that cost more",
+      "Wooden track shifts on carpet and needs a flat floor",
+      "Driver and passenger figures are loose and easy to lose"
+    ],
+    "imageAlt": "BRIO World Starter Travel Train Set with wooden figure-eight track, tunnel, bridge and travel train",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "retailer_reported"
+      },
+      "certificationEvidence": [
+        {
+          "certification": "FSC certified wood (FSC-C111262)",
+          "status": "retailer_reported",
+          "sourceUrl": "https://www.target.com/p/-/A-95097283"
+        }
+      ]
+    }
+  },
+  {
+    "productName": "BRIO World Starter Lift & Load Train Set",
+    "brand": "BRIO",
+    "categoryRef": "cat-building",
+    "ageMinMonths": 36,
+    "ageMaxMonths": 72,
+    "targetUrl": "https://www.target.com/p/-/A-95097267",
+    "materialSafety": 90,
+    "chokingRisk": 88,
+    "recallHistory": 88,
+    "certificationPresence": 66,
+    "motorSkills": 88,
+    "cognitiveSkills": 80,
+    "sensoryEngagement": 68,
+    "materials": ["FSC-certified European beech wood", "plastic", "metal"],
+    "chokingHazardAssessment": "Target labels this 14-piece set for 3 years and up and shows no small-parts warning. The cargo train, truck and crane are large single units. SafeNest has not measured them and does not perform small-parts testing. The crane works by magnet rather than by a small hook, which is one fewer loose part to track.",
+    "certifications": ["FSC certified wood (FSC-C111262)"],
+    "pros": [
+      "Lifting and loading cargo gives the railway a task, not just a loop to watch",
+      "Magnetic crane play is achievable for three-year-old hands",
+      "Compatible with other BRIO World track, so it extends an existing set",
+      "The retailer listing names the FSC certificate number for the beech wood"
+    ],
+    "cons": [
+      "14 pieces makes a very short run; this is an add-on more than a standalone railway",
+      "No tunnel or bridge, so the layout stays flat",
+      "Cargo blocks are the easiest part of the set to lose under furniture"
+    ],
+    "imageAlt": "BRIO World Starter Lift and Load Train Set with cargo train, blue truck and wooden crane",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "retailer_reported"
+      },
+      "certificationEvidence": [
+        {
+          "certification": "FSC certified wood (FSC-C111262)",
+          "status": "retailer_reported",
+          "sourceUrl": "https://www.target.com/p/-/A-95097267"
+        }
+      ]
+    }
+  },
+  {
+    "productName": "LEGO Classic Medium Creative Brick Box 10696",
+    "brand": "LEGO",
+    "categoryRef": "cat-building",
+    "ageMinMonths": 48,
+    "ageMaxMonths": 120,
+    "targetUrl": "https://www.target.com/p/-/A-16747750",
+    "materialSafety": 88,
+    "chokingRisk": 72,
+    "recallHistory": 88,
+    "certificationPresence": 50,
+    "motorSkills": 88,
+    "cognitiveSkills": 90,
+    "sensoryEngagement": 62,
+    "materials": ["ABS plastic"],
+    "chokingHazardAssessment": "Target labels this 484-piece set for 4 years and up and carries the CPSC small-parts warning. That warning is the governing fact here: standard LEGO bricks, tyres and eye elements are small parts, and the set is unsuitable for a room a under-three shares at floor level. SafeNest has not measured the pieces. The box doubles as storage, which is the practical way to keep the set off a younger child's floor.",
+    "certifications": [],
+    "pros": [
+      "484 bricks in 35 colours with no model to finish, so the set does not get solved and shelved",
+      "Includes wheels, windows and a baseplate, which is what turns loose bricks into vehicles and houses",
+      "Compatible with every other LEGO System set the child already owns",
+      "The storage box is part of the product rather than an afterthought"
+    ],
+    "cons": [
+      "Carries a small-parts warning and is wrong for a household with a crawling baby",
+      "No printed model instructions beyond build ideas, which some four-year-olds find daunting",
+      "Bricks underfoot are genuinely painful, so this needs a tidying habit"
+    ],
+    "imageAlt": "LEGO Classic Medium Creative Brick Box 10696 with assorted colourful bricks, wheels and a green baseplate",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "LEGO Classic Creative Colorful Bricks 11045",
+    "brand": "LEGO",
+    "categoryRef": "cat-building",
+    "ageMinMonths": 60,
+    "ageMaxMonths": 120,
+    "targetUrl": "https://www.target.com/p/-/A-95046225",
+    "materialSafety": 88,
+    "chokingRisk": 74,
+    "recallHistory": 88,
+    "certificationPresence": 50,
+    "motorSkills": 86,
+    "cognitiveSkills": 90,
+    "sensoryEngagement": 62,
+    "materials": ["ABS plastic"],
+    "chokingHazardAssessment": "Target labels this 820-piece set for 5 years and up and carries the CPSC small-parts warning. SafeNest has not measured the pieces. At 820 pieces the practical risk is less about one brick and more about where 820 of them end up, so a household with a toddler needs a table this can be built on and a lid it goes back into.",
+    "certifications": [],
+    "pros": [
+      "820 pieces with printed instructions for 14 models plus open building afterwards",
+      "The model list spans animals, vehicles and objects, so a child picks rather than follows",
+      "Bricks join whatever LEGO System collection already exists",
+      "Digital instructions in the LEGO Builder app help a five-year-old who cannot yet read a step diagram"
+    ],
+    "cons": [
+      "Carries a small-parts warning and is not for a room with an under-three in it",
+      "820 pieces with no sorting trays means hunting for the piece you need",
+      "The app adds a screen to a set bought partly to avoid one"
+    ],
+    "imageAlt": "LEGO Classic Creative Colorful Bricks 11045 set with 820 assorted bricks and building pieces",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Magna-Tiles Travel Set 55",
+    "brand": "Magna-Tiles",
+    "categoryRef": "cat-building",
+    "ageMinMonths": 36,
+    "ageMaxMonths": 96,
+    "targetUrl": "https://www.target.com/p/-/A-94304743",
+    "materialSafety": 88,
+    "chokingRisk": 76,
+    "recallHistory": 88,
+    "certificationPresence": 50,
+    "motorSkills": 84,
+    "cognitiveSkills": 88,
+    "sensoryEngagement": 78,
+    "materials": [
+      "MABS plastic",
+      "non-toxic",
+      "BPA-free",
+      "phthalate-free"
+    ],
+    "chokingHazardAssessment": "Target labels this set for 3 years and up and carries the CPSC small-parts warning. The tiles themselves are larger than a three-year-old's mouth, but a magnetic tile that cracks exposes a magnet, and swallowed magnets are a surgical emergency rather than an ordinary choking incident. SafeNest has not measured or stress-tested the tiles. Check tiles for cracks before each session and retire any that sound loose when shaken.",
+    "certifications": [],
+    "pros": [
+      "Magnetic tiles stand up on the first try, which is why they work at three when blocks still topple",
+      "55 pieces is enough for a real structure rather than a demonstration",
+      "Shape and colour are built into the play, so sorting happens without being set as a task",
+      "Compatible with other Magna-Tiles sets, including Classic and Stardust"
+    ],
+    "cons": [
+      "Carries a small-parts warning, and a cracked tile exposes a magnet that must be removed from the house",
+      "Magnet strength varies between sets, so mixing brands of tile disappoints",
+      "Travel-size pieces are smaller than the full Classic set, which some builders notice"
+    ],
+    "imageAlt": "Magna-Tiles Travel Set 55 magnetic building tiles in translucent colours",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "GraviTrax Junior Starter Set My Planet XXL",
+    "brand": "GraviTrax (Ravensburger)",
+    "categoryRef": "cat-building",
+    "ageMinMonths": 36,
+    "ageMaxMonths": 84,
+    "targetUrl": "https://www.target.com/p/-/A-1013642328",
+    "materialSafety": 86,
+    "chokingRisk": 72,
+    "recallHistory": 88,
+    "certificationPresence": 50,
+    "motorSkills": 86,
+    "cognitiveSkills": 90,
+    "sensoryEngagement": 80,
+    "materials": ["wood bioplastic", "metal", "cardboard", "plastic"],
+    "chokingHazardAssessment": "Target states a suggested age of 3 to 7 years and carries the CPSC small-parts warning. A marble run is the clearest case of that warning mattering: the marbles are the whole point of the toy and they are exactly the size a toddler mouths. SafeNest has not measured them. Count the marbles back into the box at the end of play, and keep the set on a table rather than on a floor a baby crawls across.",
+    "certifications": [],
+    "pros": [
+      "Target states an age range rather than an open-ended minimum, so the labelling is unusually specific",
+      "200 components make four themed worlds, which gives a three-year-old something to decorate as well as build",
+      "Cause and effect is immediate, so a failed track teaches without an adult explaining",
+      "Expansion sets extend the same system rather than replacing it"
+    ],
+    "cons": [
+      "Marbles carry a small-parts warning and need counting in and out every session",
+      "A tall run collapses easily, which frustrates at the younger end of the range",
+      "Takes more floor or table area than the box suggests"
+    ],
+    "imageAlt": "GraviTrax Junior Starter Set My Planet XXL marble run with themed track components and marbles",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "GraviTrax Dino Starter Set",
+    "brand": "GraviTrax (Ravensburger)",
+    "categoryRef": "cat-building",
+    "ageMinMonths": 36,
+    "ageMaxMonths": 84,
+    "targetUrl": "https://www.target.com/p/-/A-1013642335",
+    "materialSafety": 86,
+    "chokingRisk": 72,
+    "recallHistory": 88,
+    "certificationPresence": 50,
+    "motorSkills": 84,
+    "cognitiveSkills": 88,
+    "sensoryEngagement": 80,
+    "materials": ["wood bioplastic", "metal", "plastic"],
+    "chokingHazardAssessment": "Target states a suggested age of 3 to 7 years and carries the CPSC small-parts warning. The marbles are small and are the moving part of the toy, so this belongs on a table and not on a floor shared with a child under three. SafeNest has not measured the components. The dinosaur figures are the next-smallest pieces and should be counted back in with the marbles.",
+    "certifications": [],
+    "pros": [
+      "Target states a 3 to 7 year range rather than an open minimum, which is rare on a construction set",
+      "Dinosaur figures give the marble run a story, which holds attention longer at three and four",
+      "Smaller than the XXL set, so it suits a child who has not built a run before",
+      "Part of the GraviTrax Junior system, so it combines with other Junior sets"
+    ],
+    "cons": [
+      "Marbles carry a small-parts warning and need supervision in a mixed-age household",
+      "Fewer components than the XXL starter set, so the runs are short",
+      "Dinosaur figures are decorative, which disappoints a child expecting them to do something"
+    ],
+    "imageAlt": "GraviTrax Dino Starter Set marble run with dinosaur figures and track components",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Educational Insights Kanoodle Jr. Spatial Reasoning Strategy Game",
+    "brand": "Educational Insights",
+    "categoryRef": "cat-educational",
+    "ageMinMonths": 48,
+    "ageMaxMonths": 84,
+    "targetUrl": "https://www.target.com/p/-/A-52345412",
+    "materialSafety": 86,
+    "chokingRisk": 86,
+    "recallHistory": 88,
+    "certificationPresence": 50,
+    "motorSkills": 74,
+    "cognitiveSkills": 92,
+    "sensoryEngagement": 58,
+    "materials": ["plastic"],
+    "chokingHazardAssessment": "Target labels this for 4 years and up and shows no small-parts warning, which separates Kanoodle Jr. from the adult Kanoodle sets: the listing describes six large pieces sized for small hands rather than twelve standard ones. SafeNest has not measured them. The case closes over the pieces, which is what keeps a six-piece set from becoming a five-piece set.",
+    "certifications": [],
+    "pros": [
+      "The only Kanoodle in the range with no small-parts warning on its Target listing",
+      "60 challenges across three puzzle types, so difficulty climbs with the child",
+      "Single-player, which makes it a genuine quiet-time toy rather than one needing a partner",
+      "Case doubles as the board and holds every piece, so it travels"
+    ],
+    "cons": [
+      "Six pieces and 60 puzzles is a finite set; a quick four-year-old exhausts it",
+      "Solo play by design, so it does nothing for a child who wants a game with someone",
+      "Puzzle cards are paper and will not survive being treated as toys"
+    ],
+    "imageAlt": "Educational Insights Kanoodle Jr. spatial reasoning game with large coloured puzzle pieces and carrying case",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Educational Insights Kanoodle Brain-Teasing Puzzles",
+    "brand": "Educational Insights",
+    "categoryRef": "cat-educational",
+    "ageMinMonths": 84,
+    "ageMaxMonths": 144,
+    "targetUrl": "https://www.target.com/p/-/A-50557404",
+    "materialSafety": 86,
+    "chokingRisk": 80,
+    "recallHistory": 88,
+    "certificationPresence": 50,
+    "motorSkills": 70,
+    "cognitiveSkills": 94,
+    "sensoryEngagement": 55,
+    "materials": ["plastic"],
+    "chokingHazardAssessment": "Target labels this for 7 years and up and carries the CPSC small-parts warning. At seven the warning is about the rest of the household rather than the player: the twelve puzzle pieces are small and this set should not be left open on a floor a toddler reaches. SafeNest has not measured the pieces. The case doubles as the board and shuts over all twelve.",
+    "certifications": [],
+    "pros": [
+      "228 puzzles from beginner to advanced, so the set lasts years rather than an afternoon",
+      "Both 2D and 3D configurations, which are genuinely different problems",
+      "Pocket case makes it one of the few quiet activities that fits in a bag",
+      "No batteries, no screen and no second player needed"
+    ],
+    "cons": [
+      "Carries a small-parts warning, so it needs storing out of a younger sibling's reach",
+      "Solo puzzle; it will not fill a family game slot",
+      "Later challenges are hard enough to put off a child who wants quick wins"
+    ],
+    "imageAlt": "Educational Insights Kanoodle brain-teasing puzzle game with coloured pieces, case and challenge booklet",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Peaceable Kingdom Giant Feed the Woozle Cooperative Game",
+    "brand": "Peaceable Kingdom (MindWare)",
+    "categoryRef": "cat-educational",
+    "ageMinMonths": 36,
+    "ageMaxMonths": 72,
+    "targetUrl": "https://www.target.com/p/-/A-93665203",
+    "materialSafety": 84,
+    "chokingRisk": 88,
+    "recallHistory": 88,
+    "certificationPresence": 50,
+    "motorSkills": 90,
+    "cognitiveSkills": 78,
+    "sensoryEngagement": 76,
+    "materials": ["nylon"],
+    "chokingHazardAssessment": "Target labels this for 3 years and up and shows no small-parts warning. The listing describes jumbo dice, a supersized spoon and a pop-up Woozle over two feet tall, so the components are large by design. SafeNest has not measured them. The snack cards are the smallest pieces; the Woozle folds flat for storage, which keeps the whole set off the floor between games.",
+    "certifications": [],
+    "pros": [
+      "Cooperative rather than competitive, which avoids the losing-badly problem at three and four",
+      "Balancing snacks on a long spoon trains gross motor control, not just turn-taking",
+      "Three difficulty levels, so the same box works for a three-year-old and a five-year-old",
+      "Folds down from over two feet tall to flat storage"
+    ],
+    "cons": [
+      "Needs floor space and movement, so it does not suit a small or quiet room",
+      "The pop-up Woozle is fabric and will not survive being sat on",
+      "Snack cards are loose card and go missing before the game does"
+    ],
+    "imageAlt": "Peaceable Kingdom Giant Feed the Woozle cooperative game with pop-up Woozle, jumbo spoon and snack cards",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Peaceable Kingdom Round the Mountain Cooperative Train Game",
+    "brand": "Peaceable Kingdom (MindWare)",
+    "categoryRef": "cat-educational",
+    "ageMinMonths": 36,
+    "ageMaxMonths": 72,
+    "targetUrl": "https://www.target.com/p/-/A-1010802703",
+    "materialSafety": 86,
+    "chokingRisk": 86,
+    "recallHistory": 88,
+    "certificationPresence": 50,
+    "motorSkills": 80,
+    "cognitiveSkills": 82,
+    "sensoryEngagement": 74,
+    "materials": ["wood"],
+    "chokingHazardAssessment": "Target labels this for 3 years and up and shows no small-parts warning. The wooden train and the mining carts are the pieces a child handles most and are sized for a preschool grip. SafeNest has not measured them. The gems are the smallest components in the box, so count them back into the carts rather than leaving the game set up overnight in a mixed-age house.",
+    "certifications": [],
+    "pros": [
+      "No reading required, so a three-year-old plays without an adult translating",
+      "Hiding the die under the train turns a dice roll into something worth doing",
+      "Cooperative, so a slower player is not punished for being slow",
+      "Fifteen minutes is honest for the attention span it is aimed at"
+    ],
+    "cons": [
+      "Colour matching is the whole mechanic, and it stops challenging by about five",
+      "Gems are small enough to vanish into carpet",
+      "One track layout, so there is no variation between games"
+    ],
+    "imageAlt": "Peaceable Kingdom Round the Mountain cooperative game with wooden train, mountain track and gem mining carts",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "MindWare KEVA Contraptions 200 Planks",
+    "brand": "MindWare",
+    "categoryRef": "cat-building",
+    "ageMinMonths": 84,
+    "ageMaxMonths": 144,
+    "targetUrl": "https://www.target.com/p/-/A-81528476",
+    "materialSafety": 90,
+    "chokingRisk": 86,
+    "recallHistory": 88,
+    "certificationPresence": 50,
+    "motorSkills": 88,
+    "cognitiveSkills": 92,
+    "sensoryEngagement": 66,
+    "materials": ["pine"],
+    "chokingHazardAssessment": "Target labels this for 7 years and up and carries the CPSC warning that the toy contains a small ball, not the small-parts warning. That distinction matters: a ball that fits the throat can block an airway completely, which is why the small-ball rule exists separately. The 200 planks are plank-sized and are not the concern; the two KEVA balls are. SafeNest has not measured either. Count both balls back into the bin after play and keep the set away from a child under three.",
+    "certifications": [],
+    "pros": [
+      "200 identical planks with no connectors, so every structure is a balance problem",
+      "Ramps and chain reactions give the set a goal beyond stacking",
+      "Solid pine stacks true, which is what makes tall builds possible at all",
+      "Open-ended enough that the labelled seven years is a floor, not a ceiling"
+    ],
+    "cons": [
+      "No connectors means builds collapse, which suits a patient child and frustrates an impatient one",
+      "The listing carries a small-ball choking warning for the two KEVA balls, even though the planks themselves are large",
+      "200 loose planks need a bin; the box is not long-term storage"
+    ],
+    "imageAlt": "MindWare KEVA Contraptions set of 200 identical pine building planks with two balls",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "MindWare KEVA Brain Builders Deluxe Wooden Plank Set",
+    "brand": "MindWare",
+    "categoryRef": "cat-educational",
+    "ageMinMonths": 84,
+    "ageMaxMonths": 120,
+    "targetUrl": "https://www.target.com/p/-/A-81647782",
+    "materialSafety": 90,
+    "chokingRisk": 88,
+    "recallHistory": 88,
+    "certificationPresence": 50,
+    "motorSkills": 80,
+    "cognitiveSkills": 94,
+    "sensoryEngagement": 62,
+    "materials": ["pine"],
+    "chokingHazardAssessment": "Target labels this for 7 years and up and shows no small-parts warning. The set is 75 pine planks and 40 card challenges, with no small or round components at all. SafeNest has not measured the planks. The cards are the only part that will not survive rough handling.",
+    "certifications": [],
+    "pros": [
+      "Each card shows a 2D puzzle from several angles with the 3D answer on the back, which is a genuinely different skill from free building",
+      "Difficulty climbs across the 40 cards rather than sitting at one level",
+      "No small or round parts, so it is the easier KEVA set to have in a mixed-age house",
+      "Planks are compatible with other KEVA sets if the collection grows"
+    ],
+    "cons": [
+      "40 cards is a finite set, and a child who likes it will finish them",
+      "75 planks is too few for the free-building a bigger KEVA set allows",
+      "Card stock creases, and a creased card is harder to read than a new one"
+    ],
+    "imageAlt": "MindWare KEVA Brain Builders Deluxe set with pine planks and 3D puzzle challenge cards",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Kinetic Sand Sandyland Folding Sandbox Playset",
+    "brand": "Kinetic Sand",
+    "categoryRef": "cat-sensory",
+    "ageMinMonths": 36,
+    "ageMaxMonths": 72,
+    "targetUrl": "https://www.target.com/p/-/A-1007601193",
+    "materialSafety": 80,
+    "chokingRisk": 74,
+    "recallHistory": 88,
+    "certificationPresence": 50,
+    "motorSkills": 84,
+    "cognitiveSkills": 70,
+    "sensoryEngagement": 94,
+    "materials": ["moldable play sand"],
+    "chokingHazardAssessment": "Target labels this for 3 years and up and carries the CPSC small-parts warning. The warning fits the fifteen-plus moulds and tools rather than the sand, and loose sand brings its own problem: it is not a choking hazard but it does not belong near eyes or an airway. SafeNest has not measured the tools. The folding case contains both the sand and the tools, which is the practical control here.",
+    "certifications": [],
+    "pros": [
+      "Two pounds of sand in three colours is enough for the sand to be the activity, not a sample",
+      "Over fifteen moulds and tools, so there is more to do than fill and tip",
+      "The folding case is the play surface and the storage, which is what makes indoor sand workable",
+      "Sticks to itself rather than to hands, so cleanup is sweeping rather than washing"
+    ],
+    "cons": [
+      "Carries a small-parts warning for the moulds, so it needs supervision below the labelled age",
+      "Sand escapes the case and ends up in carpet whatever the marketing says",
+      "The candy theme is narrower than plain sand and dates faster"
+    ],
+    "imageAlt": "Kinetic Sand Sandyland folding sandbox playset with pink, yellow and blue sand and candy-themed moulds",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Sink N' Sand Game with Kinetic Sand",
+    "brand": "Spin Master Games",
+    "categoryRef": "cat-sensory",
+    "ageMinMonths": 48,
+    "ageMaxMonths": 96,
+    "targetUrl": "https://www.target.com/p/-/A-85017167",
+    "materialSafety": 80,
+    "chokingRisk": 76,
+    "recallHistory": 88,
+    "certificationPresence": 50,
+    "motorSkills": 82,
+    "cognitiveSkills": 72,
+    "sensoryEngagement": 90,
+    "materials": ["moldable play sand"],
+    "chokingHazardAssessment": "Target labels this for 4 years and up and carries the CPSC small-parts warning. The dice and the animal game pieces are the small parts, not the sand. SafeNest has not measured them. The sand stays in the game box between sessions, which is the only realistic way to keep a sand-based board game off the floor.",
+    "certifications": [],
+    "pros": [
+      "A board game built around a sensory material, which is unusual and holds a four-year-old's attention",
+      "Two to four players, so it works as an actual family game rather than solo play",
+      "Five to fifteen minutes a round matches the age it is labelled for",
+      "Sand stores in the box, so the game is self-contained"
+    ],
+    "cons": [
+      "Carries a small-parts warning for the dice and pieces",
+      "Rules come via a QR code rather than a printed sheet, which is awkward without a phone to hand",
+      "Sand needs fluffing before each game or the mechanic does not work"
+    ],
+    "imageAlt": "Sink N' Sand board game with Kinetic Sand, jungle-themed board, dice and animal game pieces",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  },
+  {
+    "productName": "Crayola Scribble Scrubbies Ocean Glow Lagoon Toy Set",
+    "brand": "Crayola",
+    "categoryRef": "cat-sensory",
+    "ageMinMonths": 36,
+    "ageMaxMonths": 84,
+    "targetUrl": "https://www.target.com/p/-/A-89227132",
+    "materialSafety": 82,
+    "chokingRisk": 76,
+    "recallHistory": 88,
+    "certificationPresence": 50,
+    "motorSkills": 86,
+    "cognitiveSkills": 70,
+    "sensoryEngagement": 88,
+    "materials": ["plastic", "non-toxic", "washable marker ink"],
+    "chokingHazardAssessment": "Target labels this 12-piece set for 3 years and up and carries the CPSC small-parts warning. The four flocked sea creatures and the scrub brush are hand-sized; the marker caps are the small parts worth watching, as they are on any marker set. SafeNest has not measured the components. Keep caps accounted for and the scrub tub emptied after use.",
+    "certifications": [],
+    "pros": [
+      "Colour it, wash it, colour it again, so one set does not become one afternoon",
+      "Washable markers come off skin and most washable clothing, which is the point of the range",
+      "Four creatures means two children can use the set at once",
+      "The scrub tub gives the washing step somewhere to happen other than the bathroom sink"
+    ],
+    "cons": [
+      "Carries a small-parts warning; marker caps are the piece to watch",
+      "Needs water nearby, so it is not a car or waiting-room activity",
+      "The companion app adds a screen to what is otherwise a screen-free set"
+    ],
+    "imageAlt": "Crayola Scribble Scrubbies Ocean Glow Lagoon set with four flocked sea creature figures, washable markers, scrub tub and brush",
+    "evidence": {
+      "factorEvidence": {
+        "materialSafety": "retailer_reported",
+        "chokingRisk": "retailer_reported",
+        "certificationPresence": "no_evidence_found"
+      },
+      "certificationEvidence": []
+    }
+  }
+]
