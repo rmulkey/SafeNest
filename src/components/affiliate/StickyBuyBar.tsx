@@ -37,7 +37,14 @@ export function StickyBuyBar({ productName, url, tag, safetyScore, confidence }:
 
   return (
     <div
-      className={`fixed left-0 right-0 z-40 lg:hidden border-t border-border bg-background/95 backdrop-blur transition-transform duration-300 ${
+      /*
+       * Opaque, matching the header. At bg-background/95 with an 8px blur a
+       * faint line of article text still ghosted through the lower edge of the
+       * bar. The header had the same pattern much worse — see the note there —
+       * and the two sticky surfaces should not disagree about whether content
+       * shows through them.
+       */
+      className={`fixed left-0 right-0 z-40 lg:hidden border-t border-border bg-background transition-transform duration-300 ${
         visible ? "translate-y-0" : "translate-y-full"
       }`}
       /*

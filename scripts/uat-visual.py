@@ -383,6 +383,7 @@ def playwright_help() -> str:
 def main() -> int:
     try:
         from playwright.sync_api import sync_playwright
+        from playwright.sync_api import TimeoutError as PWTimeout
     except ImportError:
         print(playwright_help())
         return 2
@@ -418,6 +419,32 @@ def main() -> int:
                 try:
                     resp = page.goto(url, wait_until="load", timeout=90_000)
                     page.wait_for_timeout(1200)
+                    # Let in-viewport images finish before judging them broken.
+                    #
+                    # `load` fires without waiting for images that began
+                    # fetching after layout settled, so an image still in flight
+                    # was reported as broken — and reported against its
+                    # `?w=3840` srcset fallback, because currentSrc is empty
+                    # until a candidate is actually chosen. That produced four
+                    # phantom broken images on /reviews purely because taller
+                    # cards moved which images sat in the viewport.
+                    try:
+                        page.wait_for_function(
+                            """() => {
+                                const vh = innerHeight, vw = innerWidth;
+                                return [...document.images].every((i) => {
+                                  const r = i.getBoundingClientRect();
+                                  const inView =
+                                    r.bottom > 0 && r.top < vh && r.right > 0 && r.left < vw;
+                                  if (i.loading === 'lazy' && !inView) return true;
+                                  return i.complete;
+                                });
+                            }""",
+                            timeout=15_000,
+                        )
+                    except PWTimeout:
+                        # A genuinely stuck image should still be reported below.
+                        pass
                 except Exception as e:
                     print(f"  {path:<42} LOAD FAILED {str(e)[:50]}")
                     findings.append(f"{vp_name} {path}: load failed")
