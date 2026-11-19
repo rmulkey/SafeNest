@@ -281,6 +281,30 @@ export function certificationHasSource(status?: string | null): boolean {
 }
 
 /**
+ * The single sentence describing where a product's certification claims came from.
+ *
+ * Shared because two places on a review print it: the Certifications section
+ * near the top of the page, and the "How we assessed this toy" disclosure at the
+ * bottom. They disagreed. The top section asserted a flat
+ * "Manufacturer-reported. Not independently verified by SafeNest." for every
+ * product, while the disclosure read the recorded provenance and said, of the
+ * same three claims, that no source was on file. For the 132 reviews whose
+ * certifications were written straight into the seed scripts, the top section
+ * was the wrong one: nobody recorded that the manufacturer said it.
+ *
+ * Taking a status per claim rather than a single status is deliberate — one
+ * sourced claim among several is still enough to attribute the set, and that is
+ * the distinction `certificationHasSource` draws.
+ */
+export function certificationAttributionSentence(
+  statuses: Array<string | null | undefined>
+): string {
+  return statuses.some((s) => certificationHasSource(s))
+    ? "These are manufacturer or retailer claims. SafeNest has not independently verified them."
+    : "No source is on file for these claims, so SafeNest cannot say who reported them. They have not been verified.";
+}
+
+/**
  * How to describe the result of a recall lookup. The date matters: a recall
  * search is only true as of when it ran.
  */

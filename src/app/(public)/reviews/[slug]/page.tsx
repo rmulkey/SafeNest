@@ -32,6 +32,7 @@ import {
   qualifyClaimText,
   QUALIFIED_CLAIM_NOTE,
 } from "@/lib/content/qualify-claims";
+import { certificationAttributionSentence } from "@/lib/content/evidence";
 import { DevelopmentScoreDisplay } from "@/components/reviews/DevelopmentScoreDisplay";
 import { InternalLinks } from "@/components/seo/InternalLinks";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
@@ -244,6 +245,14 @@ export default async function ToyReviewPage({ params }: PageProps) {
   const notIdealFor = firstNonEmpty(review.cons);
   const mainLimitation = secondNonEmpty(review.cons) ?? notIdealFor;
 
+  // Recorded provenance for each certification claim, in the order the claims
+  // are listed. Looked up rather than assumed: most of the catalog has no source
+  // on file, and the attribution sentence has to say so.
+  const certificationStatuses = (review.certifications ?? []).map(
+    (c) =>
+      review.certificationEvidence?.find((e) => e.certification === c)?.status
+  );
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 pb-24 lg:pb-12">
       <BreadcrumbSchema
@@ -373,14 +382,12 @@ export default async function ToyReviewPage({ params }: PageProps) {
 
       {/* Score Displays */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        {/* Fed from the same assessment as the evidence section below, so the
+            two cannot label the same factor differently or disagree about what
+            evidence supports it. */}
         <SafetyScoreDisplay
           score={review.safetyScore}
-          breakdown={{
-            materialSafety: review.materialSafety,
-            chokingRisk: review.chokingRisk,
-            recallHistory: review.recallHistory,
-            certificationPresence: review.certificationPresence,
-          }}
+          factors={assessment.factors}
         />
         <DevelopmentScoreDisplay
           score={review.developmentScore}
@@ -454,10 +461,13 @@ export default async function ToyReviewPage({ params }: PageProps) {
       {review.certifications && review.certifications.length > 0 && (
         <section className="mb-6">
           <h2 className="text-xl font-semibold mb-2">Certifications</h2>
-          {/* Attribution matters: these are claims made by the manufacturer or
-              retailer, not findings verified by SafeNest. */}
+          {/* Attribution matters, and it has to match what was actually
+              recorded. This line used to read "Manufacturer-reported" for every
+              product, which contradicted the disclosure further down the page
+              whenever no source was on file for the claims. Both now come from
+              certificationAttributionSentence. */}
           <p className="mb-2 text-sm text-muted-foreground">
-            Manufacturer-reported. Not independently verified by SafeNest.
+            {certificationAttributionSentence(certificationStatuses)}
           </p>
           <div className="flex flex-wrap gap-2">
             {review.certifications.map((cert, i) => (

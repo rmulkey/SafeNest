@@ -1,10 +1,22 @@
+import { DEVELOPMENT_SCORE_WEIGHTS } from "@/lib/scoring/development-score";
+
 /**
  * DevelopmentScoreDisplay - Visual breakdown of the development score.
  *
  * Shows each factor's score and weight with progress bars:
- * - Motor Skills (40%)
- * - Cognitive Skills (35%)
- * - Sensory Engagement (25%)
+ * - Motor skills (40%)
+ * - Cognitive skills (35%)
+ * - Sensory engagement (25%)
+ *
+ * Unlike the safety breakdown, no per-factor evidence status is shown, because
+ * there is none to show: these are editorial judgements about developmental
+ * value, not claims about the product that anyone could source or verify. The
+ * card says that once, under the heading, rather than repeating it per factor.
+ *
+ * It needs saying because of what sits next to it. The safety card beside this
+ * one now names the evidence behind each of its four numbers, so a reader who
+ * has learned to look for that line finds nothing here and is left to assume
+ * these numbers rest on the same kind of evidence. They do not.
  *
  * Uses safety score colors for consistency: high (>=70), medium (40-69), low (<40)
  *
@@ -22,15 +34,25 @@ interface DevelopmentScoreDisplayProps {
   breakdown: DevelopmentScoreBreakdown;
 }
 
+/*
+ * Labels are sentence case to match the safety breakdown beside this card and
+ * the factor names used throughout the site. The two cards sit side by side in
+ * the same grid row, so "Motor Skills" next to "Material safety" read as a
+ * styling bug.
+ *
+ * Weights come from DEVELOPMENT_SCORE_WEIGHTS rather than being written out
+ * again. The hardcoded copy had already drifted: this list labelled the second
+ * factor "Cognitive" while the component's own documentation, the Sanity field
+ * and the scoring module all call it cognitive skills.
+ */
 const FACTORS = [
-  { key: "motorSkills" as const, label: "Motor Skills", weight: "40%" },
-  { key: "cognitiveSkills" as const, label: "Cognitive", weight: "35%" },
-  {
-    key: "sensoryEngagement" as const,
-    label: "Sensory Engagement",
-    weight: "25%",
-  },
-];
+  { key: "motorSkills" as const, label: "Motor skills" },
+  { key: "cognitiveSkills" as const, label: "Cognitive skills" },
+  { key: "sensoryEngagement" as const, label: "Sensory engagement" },
+].map((f) => ({
+  ...f,
+  weight: `${Math.round(DEVELOPMENT_SCORE_WEIGHTS[f.key] * 100)}%`,
+}));
 
 function getScoreColor(score: number): string {
   if (score >= 70) return "bg-safety-high";
@@ -62,6 +84,11 @@ export function DevelopmentScoreDisplay({
           {score}/100
         </span>
       </div>
+
+      <p className="-mt-2 mb-4 text-xs text-muted-foreground">
+        SafeNest&apos;s editorial assessment of developmental value, not a
+        measured or certified result.
+      </p>
 
       <div
         className="space-y-3"
