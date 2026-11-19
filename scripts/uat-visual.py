@@ -56,6 +56,10 @@ PAGES = [
     "/recalls",
     "/recalls?page=2",
     "/blog",
+    # The blog post template had no entry here, so the one page type made
+    # entirely of long-form Portable Text — headings, bullet lists, inline links
+    # — was never checked at any viewport. This post is the longest of them.
+    "/blog/christmas-toy-safety-unwrapping-day",
     "/gift-guides",
     "/safe-toys/wood",
     "/about",
